@@ -1,0 +1,798 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+	<title>Helper Scripts script class</title>
+	<link rel="stylesheet" href="../stylesheet.css" type="text/css" />
+</head>
+
+<body>
+
+	<a name="top"></a>
+
+	<div id="container">
+
+		<div style="background-color:#fff7cc" id="main">
+
+			<div style="background-color:#fff7cc" id="navigation_left">
+				<br/>
+				<h1 class="navigation_header"><i>Campaign Documentation</i></h1>
+				<a href="../index.html">Scripting Homepage</a>
+				<h2 style="background-color:#ffed8c">Search</h2>
+				<ul>
+				<form id="search_env_checkbox" class="search_env_checkbox">
+					<label for="search_current_env_only">Search campaign only</label>
+					<input type="checkbox" name="search_current_env_only" checked /><br />
+				</form>
+				<form id="search" class="search_form" onsubmit="return false">
+					<input class="search_input" type="text" placeholder="Search.."/><br />
+					<div id="search_dropdown" class="search_dropdown"></div>
+				</form>				<h2 style="background-color:#ffed8c">Game Areas</h2>
+				<ul>
+					<li><strong> > Campaign Index</strong></li>
+					<li><a href="../battle/battle_index.html">Battle Index</a></li>
+					<li><a href="../frontend/frontend_index.html">Frontend Index</a></li>
+				</ul>
+
+				<h2 style="background-color:#ffed8c">On this page</h2>
+				<ul>
+				<div class="key">
+					<strong>Key</strong>
+					<table class="key">
+						<tr>
+							<td width="75%">Loaded in Campaign</td>
+							<td><img alt="Loaded in Campaign" style="float:right;" src="../images/loaded_in_campaign.png" height="10" width="10" /></td>
+						</tr>
+						<tr>
+							<td width="75%">Loaded in Battle</td>
+							<td><img alt="Loaded in Battle" style="float:right;" src="../images/loaded_in_battle.png" height="10" width="10" /></td>
+						</tr>
+						<tr>
+							<td width="75%">Loaded in Frontend</td>
+							<td><img alt="Loaded in Frontend" style="float:right;" src="../images/loaded_in_frontend.png" height="10" width="10" /></td>
+						</tr>
+						</table>
+				</div>
+					<li><a href="#class:intro_campaign_scripts">Helper Scripts</a><img alt="Loaded in Campaign" style="float:right; margin-right:1em;" src="../images/loaded_in_campaign.png" height="10" width="10" /></li>
+					<ul>
+					</ul>
+					<li><a href="#class:intro_campaign_camera_marker">Campaign Camera Marker</a><img alt="Loaded in Campaign" style="float:right; margin-right:1em;" src="../images/loaded_in_campaign.png" height="10" width="10" /></li>
+					<ul>
+						<li>&emsp;&emsp;<a href="#section:intro_campaign_camera_marker:Creation">Creation</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:intro_campaign_camera_marker:new">new</a></li>
+						<li>&emsp;&emsp;<a href="#section:intro_campaign_camera_marker:Usage">Usage</a></li>
+						<li>&emsp;&emsp;<a href="#section:intro_campaign_camera_marker:methods">methods</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:intro_campaign_camera_marker:set_skip_camera">set_skip_camera</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:intro_campaign_camera_marker:action">action</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:intro_campaign_camera_marker:wait_for_advisor">wait_for_advisor</a></li>
+					</ul>
+					<li><a href="#class:intro_campaign_camera_positions_advice">Campaign Camera Positions Advice</a><img alt="Loaded in Campaign" style="float:right; margin-right:1em;" src="../images/loaded_in_campaign.png" height="10" width="10" /></li>
+					<ul>
+						<li>&emsp;&emsp;<a href="#section:intro_campaign_camera_positions_advice:Creation">Creation</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:intro_campaign_camera_positions_advice:new">new</a></li>
+						<li>&emsp;&emsp;<a href="#section:intro_campaign_camera_positions_advice:Usage">Usage</a></li>
+						<li>&emsp;&emsp;<a href="#section:intro_campaign_camera_positions_advice:Configuration">Configuration</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:intro_campaign_camera_positions_advice:set_should_skip">set_should_skip</a></li>
+						<li>&emsp;&emsp;<a href="#section:intro_campaign_camera_positions_advice:Starting">Starting</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:intro_campaign_camera_positions_advice:start">start</a></li>
+						<li>&emsp;&emsp;<a href="#section:intro_campaign_camera_positions_advice:Example">Example</a></li>
+					</ul>
+					<li><a href="#class:intro_campaign_select_and_attack_advice">Campaign Select And Attack Advice</a><img alt="Loaded in Campaign" style="float:right; margin-right:1em;" src="../images/loaded_in_campaign.png" height="10" width="10" /></li>
+					<ul>
+						<li>&emsp;&emsp;<a href="#section:intro_campaign_select_and_attack_advice:Creation">Creation</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:intro_campaign_select_and_attack_advice:new">new</a></li>
+					</ul>
+
+				</ul>
+			</div>
+
+			<div style="background-color:#fff7cc" id="navigation_right">				<h2 style="background-color:#ffed8c">Campaign Topics</h2>
+				<ul>
+					<li><a href="campaign_index.html">Campaign Index</a></li>
+					<li><a href="campaign_script_structure.html">Campaign Script Structure</a></li>
+					<li><a href="lua.html">Lua Language</a></li>
+					<li><a href="narrative_system.html">Narrative System</a></li>
+					<li><a href="scripted_events.html">Scripted Events</a></li>
+
+				</ul>
+
+				<h2 style="background-color:#ffed8c">Game Code Interfaces</h2>
+				<ul>
+					<li><a href="campaignui.html">CampaignUI</a></li>
+					<li><a href="cinematics.html">Cinematics</a></li>
+					<li><a href="common.html">Common</a></li>
+					<li><a href="episodic_scripting.html">Episodic Scripting</a></li>
+					<li><a href="scriptedvalueregistry.html">ScriptedValueRegistry</a></li>
+					<li><a href="uicomponent.html">UIComponents</a></li>
+
+				</ul>
+
+				<h2 style="background-color:#ffed8c">Script Interfaces</h2>
+				<ul>
+					<li><a href="campaign_manager.html">Campaign Manager</a></li>
+					<li><a href="core.html">Core</a></li>
+					<li><a href="campaign_cutscene.html">Campaign Cutscenes</a></li>
+					<li><a href="campaign_ui_manager.html">Campaign UI Manager</a></li>
+					<li><a href="chapter_mission.html">Chapter Missions</a></li>
+					<li><a href="convex_area.html">Convex Areas</a></li>
+					<li><a href="global.html">Global</a></li>
+					<li><a href="infotext_manager.html">Infotext Manager</a></li>
+					<li><a href="intervention.html">Interventions</a></li>
+					<li><strong> > Helper Scripts</strong></li>
+					<li><a href="invasion_manager.html">Invasion Manager</a></li>
+					<li><a href="mission_manager.html">Mission Managers</a></li>
+					<li><a href="movie_overlay.html">Movie Overlays</a></li>
+					<li><a href="narrative_event.html">Narrative Events</a></li>
+					<li><a href="navigable_tour.html">Navigable Tours</a></li>
+					<li><a href="objectives_manager.html">Objectives Manager</a></li>
+					<li><a href="payload.html">Payload String Constructor</a></li>
+					<li><a href="random_army_manager.html">Random Army Manager</a></li>
+					<li><a href="script_messager.html">Script Messager</a></li>
+					<li><a href="scripted_tour.html">Scripted Tours</a></li>
+					<li><a href="text_pointer.html">Text Pointers</a></li>
+					<li><a href="timer_manager.html">Timer Manager</a></li>
+					<li><a href="topic_leader.html">Topic Leader</a></li>
+					<li><a href="unique_table.html">Unique Table</a></li>
+					<li><a href="validate.html">Validate</a></li>
+
+				</ul>
+
+				<h2 style="background-color:#ffed8c">Data Interfaces</h2>
+				<ul>
+					<li><a href="narrative.html">Narrative</a></li>
+					<li><a href="narrative_events.html">Narrative Event Templates</a></li>
+					<li><a href="narrative_queries.html">Narrative Query Templates</a></li>
+					<li><a href="narrative_triggers.html">Narrative Trigger Templates</a></li>
+
+				</ul>
+
+				</ul>
+			</div>
+
+			<div id="content">
+				<a name="class:intro_campaign_scripts"><h1 class="content_header">Helper Scripts</h1></a>
+				<p>The objects described in this file can be used by campaign tutorial scripts to deliver certain discrete chunks of tutorial gameplay.</p>
+							<table class="loaded_in" style="margin-top: 1em;">
+								<tr>
+									<td>
+										Loaded in Campaign
+									</td>
+									<td>
+										<img alt="Loaded in Campaign" style="float:right;" src="../images/loaded_in_campaign.png" height="18" width="18" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Loaded in Battle
+									</td>
+									<td>
+										<img alt="Loaded in Battle" style="float:right;" src="../images/loaded_in_battle.png" height="18" width="18" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Loaded in Frontend
+									</td>
+									<td>
+										<img alt="Loaded in Frontend" style="float:right;" src="../images/loaded_in_frontend.png" height="18" width="18" />
+									</td>
+								</tr>
+							</table>
+				<hr class="superblock_divider" />
+
+
+				<a name="class:intro_campaign_camera_marker"><h1 class="content_header">Campaign Camera Marker</h1></a>
+				<p>During campaign tutorial gameplay it is common to have scripted sections where the player has to inspect camera positions in order to progress. Camera markers are placed down in set positions, and when the player moves the camera close to them a cutscene plays which delivers narrative regarding the marker. The intention behind this is that the player learns about camera controls whilst narrative content is delivered to them.</p>
+				<p>An <code>intro_campaign_camera_marker</code> represents an individual camera marker in a scripted section such as this. One or more markers are created and associated with a <code><a href="#class:intro_campaign_camera_positions_advice">intro_campaign_camera_positions_advice</a></code> object in order to make such a sequence work.</p>
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:intro_campaign_camera_marker:Creation"><h2 class="section_header">Creation</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:intro_campaign_camera_marker:new"><h3 class="function_name"><strong><code>Intro:new(string </strong></code><i class="parameter">name</i><code><strong>, number </strong></code><i class="parameter">x</i><code><strong>, number </strong></code><i class="parameter">y</i><code><strong>, number </strong></code><i class="parameter">duration</i><code><strong>, [number </strong></code><i class="parameter">trigger distance</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Creates and returns an <code>intro_campaign_camera_marker</code> object.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Unique name camera marker.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>x co-ordinate of marker, using display co-ordinate system.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>y co-ordinate of marker, using display co-ordinate system.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>4</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>duration of cutscene triggered by camera moving close to marker in seconds.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>5</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=nil</i></p>
+										<p>override for the distance at which the camera marker will trigger.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>intro_campaign_camera_marker</code> camera marker</li>
+							</ol>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_campaign_tutorial.lua, line 65</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:intro_campaign_camera_marker:Usage"><h2 class="section_header">Usage</h2></a>
+				</div>
+				<p>Once an <code>intro_campaign_camera_marker</code> object has been created with <code><a href="#function:intro_campaign_camera_marker:new">Intro:new</a></code>, functions on it may be called in the form showed below.</p>
+
+				<h4>Example - Specification:</h4>
+				<div id="example_code"><code>
+					 <i>&lt;object&gt;</i>:<i>&lt;function_name&gt;</i>(<i>&lt;args&gt;</i>)<br />
+				</code></div>
+
+				<h4>Example - Creation and Usage:</h4>
+				<div id="example_code"><code>
+					 local cm_settlement = intro_campaign_camera_marker:new(<br />
+					 &emsp;&emsp;&emsp;&emsp;"settlement",<br />
+					 &emsp;&emsp;&emsp;&emsp;124.6,<br />
+					 &emsp;&emsp;&emsp;&emsp;74.1,<br />
+					 &emsp;&emsp;&emsp;&emsp;12.0<br />
+					 )<br />
+					 cm_settlement:wait_for_advisor(1)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-- calling a function on the object once created<br />
+				</code></div>
+				<div class="section_body">
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:intro_campaign_camera_marker:methods"><h2 class="section_header">methods</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:intro_campaign_camera_marker:set_skip_camera"><h3 class="function_name"><strong><code>Intro:set_skip_camera(number </strong></code><i class="parameter">x</i><code><strong>, number </strong></code><i class="parameter">y</i><code><strong>, number </strong></code><i class="parameter">d</i><code><strong>, number </strong></code><i class="parameter">b</i><code><strong>, number </strong></code><i class="parameter">h</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Sets a skip camera position for the camera marker, so that if the related cutscene is skipped then the camera gets repositioned. See <code><a href="campaign_cutscene.html#function:campaign_cutscene:set_skip_camera">campaign_cutscene:set_skip_camera</a></code> for more information.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>skip camera x co-ordinate.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>skip camera x co-ordinate.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>skip camera d co-ordinate.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>4</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>skip camera b co-ordinate.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>5</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>skip camera h co-ordinate.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_campaign_tutorial.lua, line 143</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:intro_campaign_camera_marker:action"><h3 class="function_name"><strong><code>Intro:action(function </strong></code><i class="parameter">callback</i><code><strong>, number </strong></code><i class="parameter">delay</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Adds a cutscene action related to this camera marker. After the camera marker is triggered the actions enqueued on the marker with this function are played as a <code><a href="campaign_cutscene.html#class:campaign_cutscene">campaign_cutscene</a></code>. See <code><a href="campaign_cutscene.html#function:campaign_cutscene:action">campaign_cutscene:action</a></code> for more information.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>function</code></p>
+									</td>
+									<td>
+										<p>Callback to call.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>Delay in seconds after the start of the cutscene at which to call this action.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_campaign_tutorial.lua, line 184</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:intro_campaign_camera_marker:wait_for_advisor"><h3 class="function_name"><strong><code>Intro:wait_for_advisor(number </strong></code><i class="parameter">delay</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Adds a <code><a href="campaign_cutscene.html#function:campaign_cutscene:wait_for_advisor">campaign_cutscene:wait_for_advisor</a></code> to the camera marker. This causes <code><a href="campaign_cutscene.html#function:campaign_cutscene:wait_for_advisor">campaign_cutscene:wait_for_advisor</a></code> to be called at the specified interval after the marker's cutscene begins playing.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>Delay in seconds after the start of the cutscene at which to call <code><a href="campaign_cutscene.html#function:campaign_cutscene:wait_for_advisor">campaign_cutscene:wait_for_advisor</a></code>.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_campaign_tutorial.lua, line 208</p>
+						</dd>
+					</dl>
+				</div>
+
+				<hr class="superblock_divider" />
+
+
+				<a name="class:intro_campaign_camera_positions_advice"><h1 class="content_header">Campaign Camera Positions Advice</h1></a>
+				<p>During campaign tutorial gameplay it is common to have scripted sections where the player has to inspect camera positions in order to progress. Camera markers are placed down in set positions, and when the player moves the camera close to them a cutscene plays which delivers narrative regarding the marker. The intention behind this is that the player learns about camera controls whilst narrative content is delivered to them.</p>
+				<p>An <code>intro_campaign_camera_positions_advice</code> facilitates this behaviour. One or more <code><a href="#class:intro_campaign_camera_marker">intro_campaign_camera_marker</a></code> objects are created and associated with a <code>intro_campaign_camera_positions_advice</code> object in order to make such a sequence work.</p>
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:intro_campaign_camera_positions_advice:Creation"><h2 class="section_header">Creation</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:intro_campaign_camera_positions_advice:new"><h3 class="function_name"><strong><code>Intro:new(string </strong></code><i class="parameter">objective key</i><code><strong>, function </strong></code><i class="parameter">completion callback</i><code><strong>, table </strong></code><i class="parameter">markers</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Creates and returns an <code>intro_campaign_camera_marker</code> object.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Key for a record in the <code>scripted_objectives</code> table which is displayed as objective text. </p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>function</code></p>
+									</td>
+									<td>
+										<p>Callback to call when all markers have been viewed.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code>table</code></p>
+									</td>
+									<td>
+										<p>a table containing one or more <code><a href="#class:intro_campaign_camera_marker">intro_campaign_camera_marker</a></code> objects to be associated with this camera positions advice object.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>intro_campaign_camera_positions_advice</code> camera positions advice</li>
+							</ol>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_campaign_tutorial.lua, line 272</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:intro_campaign_camera_positions_advice:Usage"><h2 class="section_header">Usage</h2></a>
+				</div>
+				<p>Once an <code>intro_campaign_camera_positions_advice</code> object has been created with <code><a href="#function:intro_campaign_camera_positions_advice:new">Intro:new</a></code>, functions on it may be called in the form showed below.</p>
+
+				<h4>Example - Specification:</h4>
+				<div id="example_code"><code>
+					 <i>&lt;object&gt;</i>:<i>&lt;function_name&gt;</i>(<i>&lt;args&gt;</i>)<br />
+				</code></div>
+
+				<h4>Example - Creation and Usage:</h4>
+				<div id="example_code"><code>
+					 local ca = intro_campaign_camera_positions_advice:new(<br />
+					 &emsp;&emsp;&emsp;&emsp;-- Move the camera to see what lies ahead<br />
+					 &emsp;&emsp;&emsp;&emsp;"wh_intro_camp_camera_advice_001",<br />
+					 &emsp;&emsp;&emsp;&emsp;function() intro_campaign_camera_positions_advice_progress() end,<br />
+					 &emsp;&emsp;&emsp;&emsp;{camera_marker_player_capital, camera_marker_swamp, camera_marker_enemy_army}<br />
+					 )<br />
+					 ca:start(1)&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-- calling a function on the object once created<br />
+				</code></div>
+				<div class="section_body">
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:intro_campaign_camera_positions_advice:Configuration"><h2 class="section_header">Configuration</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:intro_campaign_camera_positions_advice:set_should_skip"><h3 class="function_name"><strong><code>Intro:set_should_skip([boolean </strong></code><i class="parameter">should skip</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Sets whether the <code>intro_campaign_camera_positions_advice</code> should complete as soon as it is started. This can be useful to set during development to quickly progress through tutorial gameplay.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=true</i></p>
+										<p>should skip</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_campaign_tutorial.lua, line 350</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:intro_campaign_camera_positions_advice:Starting"><h2 class="section_header">Starting</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:intro_campaign_camera_positions_advice:start"><h3 class="function_name"><strong><code>Intro:start()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Starts the camera positions advice sequence. This object will have no visible effect until this is called. 
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_campaign_tutorial.lua, line 367</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:intro_campaign_camera_positions_advice:Example"><h2 class="section_header">Example</h2></a>
+				</div>
+				<p>The following script gives a simple example of the creation of multiple <code><a href="#class:intro_campaign_camera_marker">intro_campaign_camera_marker</a></code> objects, linked to a single <code><a href="#class:intro_campaign_camera_positions_advice">intro_campaign_camera_positions_advice</a></code> object.</p>
+
+				<h4>Example:</h4>
+				<div id="example_code"><code>
+					 -- get a handle to the enemy settlement and its display position<br />
+					 local enemy_settlement = cm:get_region(cm:get_faction(ENEMY_FACTION_KEY):home_region():name()):settlement()<br />
+					 local enemy_settlement_x = enemy_settlement:display_position_x()<br />
+					 local enemy_settlement_y = enemy_settlement:display_position_y()<br />
+					 <br />
+					 -- create enemy settlement marker<br />
+					 local marker_enemy_settlement = intro_campaign_camera_marker:new(<br />
+					 &emsp;&emsp;&emsp;&emsp;"enemy_settlement",<br />
+					 &emsp;&emsp;&emsp;&emsp;enemy_settlement_x,<br />
+					 &emsp;&emsp;&emsp;&emsp;enemy_settlement_y, <br />
+					 &emsp;&emsp;&emsp;&emsp;12<br />
+					 )<br />
+					 <br />
+					 -- add actions to enemy settlement marker cutscene<br />
+					 marker_enemy_settlement:action(<br />
+					 &emsp;&emsp;&emsp;&emsp;function()<br />
+					 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;cm:scroll_camera_from_current(false, 6, {enemy_settlement_x, enemy_settlement_y, 14.1, 0, 4.0}) end, 0)<br />
+					 &emsp;&emsp;&emsp;&emsp;end,<br />
+					 &emsp;&emsp;&emsp;&emsp;0<br />
+					 )<br />
+					 marker_enemy_settlement:action(function() cm:show_advice("intro_enemy_settlement_advice_01") end, 1)<br />
+					 marker_enemy_settlement:action(function() cm:scroll_camera_from_current(true, 5, {174.3, 51.4, 26.1, 0, 14.0}) end, 7)<br />
+					 <br />
+					 -- get a handle to the player's army and its diplay position<br />
+					 local players_army = cm:get_character_by_cqi(PLAYER_ARMY_CQI)<br />
+					 local players_army_x = players_army:display_position_x()<br />
+					 local players_army_y = players_army:display_position_y()<br />
+					 <br />
+					 -- create player army marker<br />
+					 local marker_player_army = intro_campaign_camera_marker:new(<br />
+					 &emsp;&emsp;&emsp;&emsp;"player_army",<br />
+					 &emsp;&emsp;&emsp;&emsp;players_army_x,<br />
+					 &emsp;&emsp;&emsp;&emsp;players_army_y, <br />
+					 &emsp;&emsp;&emsp;&emsp;10<br />
+					 )<br />
+					 <br />
+					 -- add actions to playe army marker cutscene<br />
+					 marker_player_army:action(<br />
+					 &emsp;&emsp;&emsp;&emsp;function()<br />
+					 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;cm:scroll_camera_from_current(false, 5, {players_army_x, players_army_y, 14.1, 0, 4.0})<br />
+					 &emsp;&emsp;&emsp;&emsp;end,<br />
+					 &emsp;&emsp;&emsp;&emsp;0<br />
+					 )<br />
+					 marker_player_army:action(function() cm:show_advice("intro_player_army_advice_01") end, 1)<br />
+					 marker_player_army:action(function() cm:scroll_camera_from_current(true, 4, {174.3, 51.4, 26.1, 0, 12.0}) end, 6)<br />
+					 <br />
+					 -- create intro_campaign_camera_positions_advice object, associated with markers above<br />
+					 local ca = intro_campaign_camera_positions_advice:new(<br />
+					 &emsp;&emsp;&emsp;&emsp;"intro_camera_movement_objective",<br />
+					 &emsp;&emsp;&emsp;&emsp;function() progress_from_intro_campaign_camera_advice() end,<br />
+					 &emsp;&emsp;&emsp;&emsp;{marker_enemy_settlement, marker_player_army}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-- table containing all markers<br />
+					 )<br />
+					 <br />
+					 -- start behaviour<br />
+					 ca:start()&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<br />
+				</code></div>
+				<div class="section_body">
+				</div>
+
+				<hr class="superblock_divider" />
+
+
+				<a name="class:intro_campaign_select_and_attack_advice"><h1 class="content_header">Campaign Select And Attack Advice</h1></a>
+				<p>During campaign tutorial gameplay it is common to have scripted sections where the player has to select an army and then attack a target in order to progress. An <code>intro_campaign_select_and_attack_advice</code> facilitates this behaviour - locking the UI, showing advice, compelling the player to move their army and controlling the movement of the army as this is done.</p>
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:intro_campaign_select_and_attack_advice:Creation"><h2 class="section_header">Creation</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:intro_campaign_select_and_attack_advice:new"><h3 class="function_name"><strong><code>Intro:new(number </strong></code><i class="parameter">player cqi</i><code><strong>, number </strong></code><i class="parameter">enemy cqi</i><code><strong>, string </strong></code><i class="parameter">initial advice</i><code><strong>, string </strong></code><i class="parameter">sleection objective</i><code><strong>, table </strong></code><i class="parameter">markers</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Creates and returns an <code>intro_campaign_select_and_attack_advice</code> object.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>Command queue index of the player's army that they have to attack with.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>Command queue index of the target enemy army.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Initial advice key, from the <code>advice_threads</code> table. This is delivered when the objective is issued to the player, and should set up the task narratively.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>4</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Initial selection objective key, from the <code>scripted_objectives</code> table. This is delivered when the objective is issued to the player, and should set up the task narratively.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>5</strong></p>
+									</td>
+									<td>
+										<p><code>table</code></p>
+									</td>
+									<td>
+										<p>a table containing one or more <code><a href="#class:intro_campaign_camera_marker">intro_campaign_camera_marker</a></code> objects to be associated with this camera positions advice object.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>intro_campaign_camera_positions_advice</code> camera positions advice</li>
+							</ol>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_campaign_tutorial.lua, line 653</p>
+						</dd>
+					</dl>
+				</div>
+
+
+			</div>
+
+		</div>
+
+		<div id="about">Last updated 20/01/2022 17:32:52</div>
+
+	</div>
+
+	<script src="../searchdata.js"></script>
+	<script src="../search.js"></script>
+	<script>const page_env = "campaign"; const path_to_document_root = "../";</script>
+
+</body>
+</html>

@@ -1,0 +1,1944 @@
+		
+Command: 	enable_ui	
+Description: 	Enable ui true|false	
+Usage: 		enable_ui(true)
+---------------------------------------------		
+Command: 	add_restricted_building_level_record	
+Description: 	Stop a building from being an building option	
+Usage: 		add_restricted_building_level_record("building_key")
+---------------------------------------------		
+Command: 	remove_restricted_building_level_record	
+Description: 	Restore a building option to default	
+Usage: 		remove_restricted_building_level_record("building_key")
+---------------------------------------------		
+Command: 	add_restricted_building_level_record_for_faction	
+Description: 	Stop a building from being an building option	
+Usage: 		add_restricted_building_level_record("building_key", "faction_key")
+---------------------------------------------		
+Command: 	remove_restricted_building_level_record_for_faction	
+Description: 	Restore a building option to default	
+Usage: 		remove_restricted_building_level_record("building_key", "faction_key")
+---------------------------------------------		
+Command: 	get_building_level_upgrades	
+Description: 	Returns a table of building level keys that are upgrades from the supplied building levels key	
+Usage: 		get_building_level_upgrades(string building_levels key)
+---------------------------------------------		
+Command: 	add_custom_battlefield	
+Description: 	Instead of a generated map, use a custom map for this location	
+Usage: 		add_custom_battlefield(id, x, y, radius, dump_campaign?, loading screen (can be empty), script(can be empty string), battle path (can be empty string), human alliance (0 or 1, required for scripted battles, use any value for non-scripted), launch_battle_immediately (exit campaign without saving), is_land_battle (only used when launching battle without campaign pending battle), force_autoresolve_result (forces the application of the autoresolver result post-battle, regardless of the battle results))
+---------------------------------------------		
+Command: 	remove_custom_battlefield	
+Description: 	Remove a custom map	
+Usage: 		remove_custom_battlefield(id)
+---------------------------------------------		
+Command: 	clear_custom_battlefields	
+Description: 	Removes all custom battlefield overrides	
+Usage: 		clear_custom_battlefields()
+---------------------------------------------		
+Command: 	disable_elections	
+Description: 	Remove elections from the game	
+Usage: 		disable_elections(true/false)
+---------------------------------------------		
+Command: 	register_movies	
+Description: 	Kicks off a movie next change over	
+Usage: 		register_movies("path_to_movie")
+---------------------------------------------		
+Command: 	disable_movement_for_ai_under_shroud	
+Description: 	stop ai movement if a AI character is under this player's shroud	
+Usage: 		disable_movement_for_ai_under_shroud("Player_faction_key", "AI_faction_key"/context_with_faction)
+---------------------------------------------		
+Command: 	cancel_actions_for	
+Description: 	Cancel the action for a character	
+Usage: 		cancel_actions_for(context_with_character)
+---------------------------------------------		
+Command: 	compare_localised_string	
+Description: 	return true if the label matches the text of a component taking localisation into account	
+Usage: 		compare_localised_string(UIComponent, "label")
+---------------------------------------------		
+Command: 	advance_to_next_campaign	
+Description: 	move onto the next stage if it exist, this info is set by the frontend	
+Usage: 		advance_to_next_campaign()
+---------------------------------------------		
+Command: 	add_time_trigger	
+Description: 	register a timer to fire in a X sec time	
+Usage: 		add_time_trigger("id", time, (optional) repeat)
+---------------------------------------------		
+Command: 	remove_time_trigger	
+Description: 	remove a time trigger	
+Usage: 		remove_time_trigger("id")
+---------------------------------------------		
+Command: 	scroll_camera	
+Description: 	scroll the camera along a spline. ScrollCamera(compute_valid_endpoint, seconds_it_takes_to_complete, list_of_coodinates...)	
+Usage: 		This replaces the old CampaignUI.ScrollCamera function
+---------------------------------------------		
+Command: 	scroll_camera_with_direction	
+Description: 	scroll the camera along a spline. scroll_camera_with_direction(compute_valid_endpoint, seconds_it_takes_to_complete, list_of_coodinates_with_heading...)	
+Usage: 		This replaces the old CampaignUI.ScrollCamera function
+---------------------------------------------		
+Command: 	stop_camera	
+Description: 	Stop a scrolling camera.	
+Usage: 		This replaces the old CampaignUI.StopCamera function
+---------------------------------------------		
+Command: 	set_camera_position	
+Description: 	Set the camera to the specified position	
+Usage: 		set_camera_postion(<target.x>,<target.y>,<distance>,<bearing>,<height>)
+---------------------------------------------		
+Command: 	get_camera_position	
+Description: 	Gets the camera position	
+Usage: 		<target.x>,<target.y>,<distance>,<bearing>,<height> get_camera_postion()
+---------------------------------------------		
+Command: 	enable_camera_bearing_clamp	
+Description: 	Sets the camera yaw rotation constraint	
+Usage: 		enable_camera_bearing_clamp(<bearing_bound_1>, <bearing_bound_2>)
+---------------------------------------------		
+Command: 	disable_camera_bearing_clamp	
+Description: 	Disables the camera yaw rotation constraint	
+Usage: 		disable_camera_bearing_clamp(<bearing_bound_1>, <bearing_bound_2>)
+---------------------------------------------		
+Command: 	fade_scene	
+Description: 	Fade the scene to black and back	
+Usage: 		fade_scene(<duration_seconds>)
+---------------------------------------------		
+Command: 	dismiss_advice	
+Description: 	Dismisses advice panel in the ui	
+Usage: 		This replaces the old CampaignUI.DismissAdvice function
+---------------------------------------------		
+Command: 	disable_movement_for_character	
+Description: 	freeze a character in place, identify the character with any/all info as shown. Seperate by comma and in any order. White space are NOT ignored	
+Usage: 		disable_movement_for_character("faction:f,type:t,ability:a,surname:s,forename:f,garrison:g,x:1,y:2,r:3")
+---------------------------------------------		
+Command: 	disable_movement_for_faction	
+Description: 	freeze all characters of a  faction in place	
+Usage: 		disable_movement_for_faction("faction_key")
+---------------------------------------------		
+Command: 	reset_shroud	
+Description: 	resets the shroud of a faction interface. If no interface is provided, resets the shroud of every faction	
+Usage: 		reset_shroud(faction_interface)
+---------------------------------------------		
+Command: 	show_shroud	
+Description: 	disable the shroud(fog of war)	
+Usage: 		show_shroud(true/false)
+---------------------------------------------		
+Command: 	take_shroud_snapshot	
+Description: 	Take snapshot of current shroud	
+Usage: 		take_shroud_snapshot()
+---------------------------------------------		
+Command: 	restore_shroud_from_snapshot	
+Description: 	Restore snapshot of shroud	
+Usage: 		restore_shroud_from_snapshot()
+---------------------------------------------		
+Command: 	make_neighbouring_regions_visible_in_shroud	
+Description: 	make_neighbouring_regions_visible_in_shroud	
+Usage: 		make_neighbouring_regions_visible_in_shroud()
+---------------------------------------------		
+Command: 	make_neighbouring_regions_seen_in_shroud	
+Description: 	make_neighbouring_regions_seen_in_shroud	
+Usage: 		make_neighbouring_regions_seen_in_shroud()
+---------------------------------------------		
+Command: 	make_sea_region_visible_in_shroud	
+Description: 	make_sea_region_visible_in_shroud	
+Usage: 		make_sea_region_visible_in_shroud("region_key")
+---------------------------------------------		
+Command: 	make_sea_region_seen_in_shroud	
+Description: 	make_sea_region_seen_in_shroud	
+Usage: 		make_sea_region_seen_in_shroud("region_key")
+---------------------------------------------		
+Command: 	force_diplomacy	
+Description: 	Force a certain stance of a faction towards another	
+Usage: 		force_diplomacy("faction_key", "target_faction", "type listed below", offer, accept)
+		trade agreement
+		military access
+		cancel military access
+		alliance
+		regions
+		technology
+		state_gift
+		payments
+		vassal
+		peace
+		war
+---------------------------------------------		
+Command: 	force_diplomacy_new	
+Description: 	Force availability of a set of diplomacy types between factions described in the faction and target specifiers. Specifiers can be "all" or "faction:faction_key" or "subculture:subculture_key" or "culture:culture_key"	
+Usage: 		force_diplomacy_new("all", "all", "types listed below as a bitmask", offer, accept)
+---------------------------------------------		
+Command: 	display_turns	
+Description: 	Show turn number instead of year	
+Usage: 		display_turns(true/false)
+---------------------------------------------		
+Command: 	stop_user_input	
+Description: 	disable interaction during cutscenes	
+Usage: 		stop_user_input(true/false)
+---------------------------------------------		
+Command: 	steal_user_input	
+Description: 	steal interaction	
+Usage: 		steal_user_input(true/false)
+---------------------------------------------		
+Command: 	steal_escape_key	
+Description: 	steal escape key	
+Usage: 		steal_escape_key(true/false)
+---------------------------------------------		
+Command: 	is_new_game	
+Description: 	returns true if it's a new game	
+Usage: 		is_new_game()
+---------------------------------------------		
+Command: 	save_named_value	
+Description: 	write the a bool or int to the save game	
+Usage: 		save_named_value(name, value, FileHandle)
+---------------------------------------------		
+Command: 	load_named_value	
+Description: 	restore a named variable from the save game, if the value is not found, default is used	
+Usage: 		load_named_value(name, default, FileHandle)
+---------------------------------------------		
+Command: 	disable_shopping_for_ai_under_shroud	
+Description: 	Stop the AI from building or training when under the black shroud. This is a toggle, no need to call it every turn.	
+Usage: 		disable_shopping_for_ai_under_shroud(true/false)
+---------------------------------------------		
+Command: 	add_settlement_model_override	
+Description: 	use a different model for a settlement	
+Usage: 		add_settlement_model_override("settlement_key", "model_name")
+---------------------------------------------		
+Command: 	add_building_model_override	
+Description: 	use a different model for a slot, generated slots are named: settlement_army-admin, settlement_culture, settlement_government, settlement_navy-admin, settlement_ordnance, settlement_minor, settlement_fortification	
+Usage: 		add_building_model_override("slot_key", "building_key", "model_name")
+---------------------------------------------		
+Command: 	remove_settlement_model_override	
+Description: 	use the default model	
+Usage: 		remove_settlement_model_override("settlement_key")
+---------------------------------------------		
+Command: 	remove_building_model_override	
+Description: 	use the default model	
+Usage: 		remove_building_model_override("slot_key", "building_key")
+---------------------------------------------		
+Command: 	optional_extras_for_episodics	
+Description: 	returns extra parameters	
+Usage: 		optional_extras_for_episodics()
+---------------------------------------------		
+Command: 	add_experience_to_units_commanded_by_character	
+Description: 	increase the experience of an army (increase only! -ve numbers will break the game), identify the character with any/all info as shown. Seperate by comma and in any order. White space are NOT ignored	
+Usage: 		add_experience_to_units_commanded_by_character("faction:f,type:t,ability:a,surname:s,forename:f,garrison:g,x:1,y:2,r:3", level)
+---------------------------------------------		
+Command: 	add_experience_to_unit	
+Description: 	increase experience of the unit on the provided interface, by level, it's additive	
+Usage: 		add_experience_to_unit(unit_interface, level)
+---------------------------------------------		
+Command: 	add_agent_experience	
+Description: 	Awards experience points to a specified character	
+Usage: 		add_agent_experience("faction:f,type:t,ability:a,surname:s,forename:f,garrison:g,x:1,y:2,r:3", points)
+---------------------------------------------		
+Command: 	add_agent_experience_through_family_member	
+Description: 	Awards experience points to a specified character	
+Usage: 		add_agent_experience_through_family_member(FAMILY_MEMBER_SCRIPT_INTERFACE* family_member_interface, card32 points)
+---------------------------------------------		
+Command: 	enable_auto_generated_missions	
+Description: 	Enable or disable non-scripted missions	
+Usage: 		enable_auto_generated_missions(false/true)
+---------------------------------------------		
+Command: 	add_unit_model_overrides	
+Description: 	Swap a model for a certain character, needs to be set up at a new session	
+Usage: 		add_unit_model_overrides("faction:f,type:t,ability:a,surname:s,forename:f,garrison:g,x:1,y:2,r:3", "Name_of_model")
+---------------------------------------------		
+Command: 	add_character_model_override	
+Description: 	Swap a model for a specific character. Same as add_unit_model_overrides, but doesn't use the character lookup	
+Usage: 		add_character_model_override(CHARACTER_SCRIPT_INTERFACE character, String art_set_key)
+---------------------------------------------		
+Command: 	add_attack_of_opportunity_overrides	
+Description: 	Tell a certain character to always or never use attack of opportunity	
+Usage: 		add_attack_of_opportunity_overrides("faction:f,type:t,ability:a,surname:s,forename:f,garrison:g,x:1,y:2,r:3", attack?)
+---------------------------------------------		
+Command: 	remove_attack_of_opportunity_overrides	
+Description: 	Let the AI decide attack of opportunity as normal	
+Usage: 		remove_attack_of_opportunity_overrides("faction:f,type:t,ability:a,surname:s,forename:f,garrison:g,x:1,y:2,r:3")
+---------------------------------------------		
+Command: 	register_instant_movie	
+Description: 	register_instant_movie("Movie_name")	
+Usage: 		can only register one at a time
+---------------------------------------------		
+Command: 	register_outro_movie	
+Description: 	register_outro_movie("Movie_name")	
+Usage: 		can only register one at a time
+---------------------------------------------		
+Command: 	show_message_event	
+Description: 	Show a message event with the specified title, primary detail and secondary detail to the specified faction.  The penultimate parameter indicates if this message persists in the event log.  The final parameter is the message event type index, used to pick message variants with different images and other details.	
+Usage: 		show_message_event("faction_key", "title_localisation_key", "primary_detail_localisation_key", "secondary_detail_localisation_key", true, 0)
+---------------------------------------------		
+Command: 	show_message_event_located	
+Description: 	Show a message event with the specified title, primary detail, secondary detail and location to the specified faction.  The penultimate parameter indicates if this message persists in the event log.  The final parameter is the message event type index, used to pick message variants with different images and other details.	
+Usage: 		show_message_event("faction_key", "title_localisation_key", "primary_detail_localisation_key", "secondary_detail_localisation_key", 104, 273, false, 0)
+---------------------------------------------		
+Command: 	grant_unit	
+Description: 	Grant the local faction a unit specified by the unit key, unit created in the settlement/slot specified. Unit will only be created if their is an appropriate force in the settlement and the force has room for the unit. This command may fail in some circumstances - ask Ed	
+Usage: 		grant_unit("settlement:ita_alpes_maritimes:nice", "Inf_Elite_Grenadier_Guards")
+---------------------------------------------		
+Command: 	grant_unit_to_character	
+Description: 	Create and add a unit (specified by the unit key) to a character's army. Unit will only be created if their is room for the unit in the force. 	
+Usage: 		grant_unit_to_character("wh2_main_hef_cha_tyrion_0 ", "wh2_main_hef_inf_spearmen_0")
+---------------------------------------------		
+Command: 	set_tax_rate	
+Description: 	Set the tax rate for a faction in a governorship, for a population class, to a specific level (0-4 inclusive)	
+Usage: 		set_tax_rate("france", "europe", true (use true to set lower class rate), 4) (sets the tax level for the lower class to extortionate, for the French faction in the europe governorship)
+---------------------------------------------		
+Command: 	exempt_region_from_tax	
+Description: 	Exempt the province containing specified region from tax (use true to exempt)	
+Usage: 		exempt_region_from_tax(france, true)
+---------------------------------------------		
+Command: 	exempt_province_from_tax_for_all_factions_and_set_default	
+Description: 	Exempt the province containing specified region from tax, for all factions currently present and set the defualt for future factions (use true to exempt)	
+Usage: 		exempt_province_from_tax_for_all_factions_and_set_default(wh_main_reikland, true)
+---------------------------------------------		
+Command: 	disable_rebellions_worldwide	
+Description: 	Disable all rebellions (true to disable)	
+Usage: 		disable_rebellions_worldwide(true/false)
+---------------------------------------------		
+Command: 	force_declare_war	
+Description: 	Force faction A to declare war on faction B	
+Usage: 		force_declare_war("france", "prussia", bool invite_attacker_allies, bool invite_defender_allies
+---------------------------------------------		
+Command: 	force_make_peace	
+Description: 	Force faction A to declare peace with faction B	
+Usage: 		force_make_peace("france", "prussia")
+---------------------------------------------		
+Command: 	force_confederation	
+Description: 	Force faction B to be subsumed into confederation of B	
+Usage: 		force_confederation("empire", "stirland")
+---------------------------------------------		
+Command: 	force_add_trait_to_character_details	
+Description: 	Grant the specified character the specified trait. If the character already has the trait, a trait point will be added.	
+Usage: 		force_add_trait_to_character_details(CHARACTER_DETAILS_SCRIPT_INTERFACE character_details, String trait_key)
+---------------------------------------------		
+Command: 	force_add_trait	
+Description: 	Grant the specified character the specified trait. If the character already has the trait, a trait point will be added. Uses standard character lookup system	
+Usage: 		force_add_trait("faction:france,surname:Bonaparte", "C_General_Attacker_Good", true, 3)
+---------------------------------------------		
+Command: 	force_remove_trait	
+Description: 	Remove the specified trait from the specified character. If the character is past the point of no return in the trait, it will be removed anyway.	
+Usage: 		force_remove_trait(("faction:france,surname:Bonaparte", "trait_id")
+---------------------------------------------		
+Command: 	force_add_ancillary	
+Description: 	Grant the specified character the specified ancillary. It will be added to their faction pool if they cannot currently equip it (and force is not specified)	
+Usage: 		bool force_add_ancillary(CHARACTER_SCRIPT_INTERFACE character, String ancillary_key, bool force_equip, bool suppress_event_feed)
+---------------------------------------------		
+Command: 	force_remove_ancillary	
+Description: 	Remove the specified ancilliary from the specified character	
+Usage: 		force_remove_ancillary(CHARACTER_SCRIPT_INTERFACE character, String ancillary_key, bool remove_to_pool, bool suppress_event_feed)
+---------------------------------------------		
+Command: 	force_remove_ancillary_from_faction	
+Description: 	Remove all instances of the specified ancillary from every character, and the shared ancillary pool, of the specified faction	
+Usage: 		force_remove_ancillary_from_faction(FACTION_SCRIPT_INTERFACE faction, String ancillary_key)
+---------------------------------------------		
+Command: 	add_ancillary_to_faction	
+Description: 	Grant the specified faction the specified ancillary	
+Usage: 		add_ancillary_to_faction(FACTION_SCRIPT_INTERFACE faction, string ancillary_key, bool suppress_event_feed)
+---------------------------------------------		
+Command: 	reassign_ancillaries_to_character_of_same_faction	
+Description: 	Reassign all ancillaries from one character to another. 	
+Usage: 		bool reassign_ancillaries_to_character_of_same_faction(CHARACTER_DETAILS_SCRIPT_INTERFACE from_character, CHARACTER_DETAILS_SCRIPT_INTERFACE to_character)
+---------------------------------------------		
+Command: 	force_add_skill	
+Description: 	Grant the specified character the specified skill, or adds a point if they already have it. Uses standard character lookup system	
+Usage: 		force_add_skill("faction:france,surname:Bonaparte", "skill_key")
+---------------------------------------------		
+Command: 	remove_skill_point	
+Description: 	Remove a skill point from the specified character and skill. Returns true if successful	
+Usage: 		remove_skill_point(String character_lookup, String skill_key)
+---------------------------------------------		
+Command: 	force_reset_skills	
+Description: 	Completely resets the skill points of the target character. Does not remove background skills	
+Usage: 		force_reset_skills(String character_lookup)
+---------------------------------------------		
+Command: 	remove_all_background_skills	
+Description: 	Forcibly remove all background skills for the character	
+Usage: 		remove_all_background_skills(String character_lookup)
+---------------------------------------------		
+Command: 	add_marker	
+Description: 	Add a marker at a position (x, y, z), using a specific VFX, with a specific active state. First parameter is the unique ID	
+Usage: 		add_marker("test", "ping_type", 10, 50, 2)
+---------------------------------------------		
+Command: 	remove_marker	
+Description: 	Remove the marker with the specified unique ID	
+Usage: 		remove_marker("test")
+---------------------------------------------		
+Command: 	add_vfx	
+Description: 	Add a vfx at a position (x, y, z), using a specific VFX, with a specific active state. First parameter is the unique ID	
+Usage: 		add_vfx("test", "vfx_id (campaign_vfx_lookup_table) ", 10, 50, 2)
+---------------------------------------------		
+Command: 	remove_vfx	
+Description: 	Remove the vfx with the specified unique ID	
+Usage: 		remove_vfx("test")
+---------------------------------------------		
+Command: 	force_make_trade_agreement	
+Description: 	Force the specified factions to have a trade agreement. If no agreement is possible, nothing will happen	
+Usage: 		force_make_trade_agreement("france", "prussia")
+---------------------------------------------		
+Command: 	move_to	
+Description: 	Move the specified character to position X, Y. Uses normal character lookup.	
+Usage: 		move_to("faction:france,surname:619", 10, 60)
+---------------------------------------------		
+Command: 	move_to_queued	
+Description: 	Add the specified character to the queue to move to position X, Y. Uses normal character lookup.	
+Usage: 		move_to("faction:france,surname:619", 10, 60)
+---------------------------------------------		
+Command: 	teleport_to	
+Description: 	Immediately teleport the specified character to position X, Y. Uses normal character lookup.	
+Usage: 		teleport_to("faction:france,surname:619", 10, 60)
+---------------------------------------------		
+Command: 	teleport_military_force_to	
+Description: 	Immediately teleport the specified force to logical position X, Y. Returns true on success.	
+Usage: 		bool teleport_military_force_to(MILITARY_FORCE_SCRIPT_INTERFACE force, int x, int y)
+---------------------------------------------		
+Command: 	join_garrison	
+Description: 	Move the specified character to the specified garrison. Uses normal character lookup and garrison lookup. Works for armies and navies	
+Usage: 		join_garrison("faction:france,surname:619", "settlement:france:paris")
+---------------------------------------------		
+Command: 	leave_garrison	
+Description: 	Make the specified character leave his current garrison, and move to positon X, Y. Uses normal character lookup. Works for armies and navies	
+Usage: 		leave_garrison("faction:france,surname:619", 50.1, -150.9)
+---------------------------------------------		
+Command: 	attack	
+Description: 	Force a character to attack a target. Uses normal character lookup.  Final parameter specified whether the command goes via the command queue	
+Usage: 		attack("faction:oda,surname:619", "faction:chosokabe,surname:7", (optional) Lay Siege: false, (optional) Ignore Shroud Restrictions: true)
+---------------------------------------------		
+Command: 	attack_queued	
+Description: 	Force a character to attack a target. Added to queue if another queued attacker is currently active. Uses normal character lookup.  Final parameter specified whether the command goes via the command queue	
+Usage: 		attack("faction:oda,surname:619", "faction:chosokabe,surname:7", (optional) Lay Siege: false)
+---------------------------------------------		
+Command: 	attack_region	
+Description: 	Force a character to attack a region. Uses normal character lookup and region key.  Final parameter specifies whether the command goes via the command queue	
+Usage: 		attack_region("faction:oda,surname:619", "region_key")
+---------------------------------------------		
+Command: 	force_attack_of_opportunity	
+Description: 	Force a character to attack another character through an attack of opportunity.	
+Usage: 		force_attack_of_opportunity(attacker_force_cqi, target_force_cqi, is_ambush <true|false>)
+---------------------------------------------		
+Command: 	seek_exchange	
+Description: 	Make the first character merge with the second character.  Third parameter is whether the exchange UI should appear.  Final parameter specifies whether the command goes via the command queue	
+Usage: 		seek_exchange("faction:france,surname:619", "faction:france,surname:620", false, true)
+---------------------------------------------		
+Command: 	set_looting_options_disabled_for_human	
+Description: 	Disable the looting options screen for humans	
+Usage: 		set_looting_options_disabled_for_human(true)
+---------------------------------------------		
+Command: 	disable_saving_game	
+Description: 	Prevent the game from being saved	
+Usage: 		disable_saving_game(true)
+---------------------------------------------		
+Command: 	set_non_scripted_traits_disabled	
+Description: 	Prevent non scripted traits from being applied	
+Usage: 		set_non_scripted_traits_disabled(true)
+---------------------------------------------		
+Command: 	set_non_scripted_ancillaries_disabled	
+Description: 	Prevent non scripted ancillaries from being applied	
+Usage: 		set_non_scripted_ancillaries_disabled(true)
+---------------------------------------------		
+Command: 	set_technology_research_disabled	
+Description: 	Disable tech functionality in game	
+Usage: 		set_technology_research_disabled(true)
+---------------------------------------------		
+Command: 	set_liberation_options_disabled	
+Description: 	Disable the liberation feature	
+Usage: 		set_liberation_options_disabled(true)
+---------------------------------------------		
+Command: 	set_ui_notification_of_victory_disabled	
+Description: 	Disable notification of victory for the UI	
+Usage: 		set_ui_notification_of_victory_disabled(true)
+---------------------------------------------		
+Command: 	enable_movement_for_character	
+Description: 	unfreeze a character who was frozen in place, identify the character with any/all info as shown. Seperate by comma and in any order. White space are NOT ignored	
+Usage: 		enable_movement_for_character("faction:f,type:t,ability:a,surname:s,forename:f,garrison:g,x:1,y:2,r:3")
+---------------------------------------------		
+Command: 	enable_movement_for_faction	
+Description: 	unfreeze all characters of a faction	
+Usage: 		enable_movement_for_faction("faction_key")
+---------------------------------------------		
+Command: 	create_force	
+Description: 	create a navy or army at a position.	
+Usage: 		create_force("faction_key", "unit_list", "region_key", x_position, y_position, exclude_named_characters, "id")
+---------------------------------------------		
+Command: 	create_force_with_general	
+Description: 	create a navy or army at a position.	
+Usage: 		CHARACTER_SCRIPT_INTERFACE create_force_with_general(String faction_key, String unit_list, String region_key, float x_position, float y_position, String general_agent_type_key, String general_agent_subtype_key, String forename_id, String faction_name_id, String family_name_id, String other_name_id, String id, bool make_faction_leader, (optional) bool force_diplomatic_discovery)
+---------------------------------------------		
+Command: 	create_force_with_existing_general	
+Description: 	create a navy or army at a position	
+Usage: 		create_force_with_existing_general("faction:chosokabe,forename:2147274846", "faction_key", "unit_list", "region_key", "x_position", "y_position", "id")
+---------------------------------------------		
+Command: 	create_force_with_full_diplomatic_discovery	
+Description: 	create a navy or army at a position.	
+Usage: 		create_force_with_full_diplomatic_discovery("faction_key", "unit_list", "region_key", x_position, y_position, exclude_named_characters, "id", true)
+---------------------------------------------		
+Command: 	replace_general_in_force	
+Description: 	Replace general in a force with a new character	
+Usage: 		CHARACTER_SCRIPT_INTERFACE replace_general_in_force(MILITARY_FORCE_SCRIPT_INTERFACE military_force_script_interface, String agent_subtype_key)
+---------------------------------------------		
+Command: 	disable_end_turn	
+Description: 	Prevent the turn from being ended	
+Usage: 		disable_end_turn(true)
+---------------------------------------------		
+Command: 	end_turn	
+Description: 	End the turn (only do this for a player faction)	
+Usage: 		end_turn()
+---------------------------------------------		
+Command: 	end_turn_for_faction	
+Description: 	End the turn for the specified faction	
+Usage: 		end_turn_for_faction(FACTION_SCRIPT_INTERFACE faction)
+---------------------------------------------		
+Command: 	force_normal_character_locomotion_speed_for_turn	
+Description: 	Forces any characters visible to humans to move at normal speed during the current turn if parameter is set to true	
+Usage: 		force_normal_character_locomotion_speed(true)
+---------------------------------------------		
+Command: 	hide_character	
+Description: 	Remove a character from the map but leave them alive	
+Usage: 		hide_character("x:-258,y:-277,r:1", true)
+---------------------------------------------		
+Command: 	unhide_character	
+Description: 	Replace a hidden character onto the map at the specified position.	
+Usage: 		unhide_character("faction:chosokabe,forename:2147274846", -258, -277, true)
+---------------------------------------------		
+Command: 	add_circle_area_trigger	
+Description: 	Set up a circular area trigger, used with AreaEntered/AreaExited.  name is a name for this trigger area. Multiple triggers with the same name act as a single trigger.	
+Usage: 		add_circle_area_trigger(x, y, radius, "name", "filter", trigger_on_enter, trigger_on_exit, trigger_once_only)
+---------------------------------------------		
+Command: 	add_outline_area_trigger	
+Description: 	Set up an area trigger, used with AreaEntered/AreaExited.  name is a name for this trigger area.  Multiple triggers with the same name act as a single trigger.	
+Usage: 		add_outline_area_trigger("name", "filter", trigger_on_enter, trigger_on_exit, trigger_once_only, list_of_coordinates...)
+---------------------------------------------		
+Command: 	remove_area_trigger	
+Description: 	Remove the names area trigger.	
+Usage: 		remove_area_trigger("name")
+---------------------------------------------		
+Command: 	add_hex_area_trigger	
+Description: 	Adds a hex area trigger with the specified id and filters	
+Usage: 		bool add_hex_area_trigger(String unique_id, int position_x, int position_y, int radius (max of 20), String valid_faction_record_key, String valid_subculture_record_key)
+---------------------------------------------		
+Command: 	remove_hex_area_trigger	
+Description: 	Removes a hex area trigger with the specified id	
+Usage: 		remove_hex_area_trigger(String unique_id)
+---------------------------------------------		
+Command: 	dismiss_advice_at_end_turn	
+Description: 	Set whether or not advice should be dismissed on ending turn.	
+Usage: 		dismiss_advice_at_end_turn(false)
+---------------------------------------------		
+Command: 	disable_shortcut	
+Description: 	Disable or enable a shortcut.	
+Usage: 		disable_shortcut("object_id", "function_id", true)
+---------------------------------------------		
+Command: 	apply_effect_bundle	
+Description: 	Apply an effect bundle to a faction for a number of turns (-1 turns means indefinitely).	
+Usage: 		apply_effect_bundle("effect_bundle_key", "faction_key", turns)
+---------------------------------------------		
+Command: 	remove_effect_bundle	
+Description: 	Remove a previously applied effect bundle from a faction	
+Usage: 		remove_effect_bundle("effect_bundle_key", "faction_key")
+---------------------------------------------		
+Command: 	apply_effect_bundle_to_force	
+Description: 	Apply an effect bundle to a military force (by cqi) for a number of turns (-1 turns means indefinitely).	
+Usage: 		apply_effect_bundle("effect_bundle_key", 58 /*force cqi*/, turns)
+---------------------------------------------		
+Command: 	remove_effect_bundle_from_force	
+Description: 	Remove a previously applied effect bundle from a military force (by cqi)	
+Usage: 		remove_effect_bundle("effect_bundle_key", 58 /*force cqi*/)
+---------------------------------------------		
+Command: 	apply_effect_bundle_to_characters_force	
+Description: 	Apply an effect bundle to a characters military force (by character cqi) for a number of turns (-1 turns means indefinitely).	
+Usage: 		apply_effect_bundle("effect_bundle_key", 58 /*character cqi*/, turns)
+---------------------------------------------		
+Command: 	remove_effect_bundle_from_characters_force	
+Description: 	Remove a previously applied effect bundle from a characters military force (by character cqi)	
+Usage: 		remove_effect_bundle("effect_bundle_key", 58 /*character cqi*/)
+---------------------------------------------		
+Command: 	apply_effect_bundle_to_region	
+Description: 	Apply an effect bundle to a region for a number of turns (-1 turns means indefinitely).	
+Usage: 		apply_effect_bundle_to_region("effect_bundle_key", "region_key", turns)
+---------------------------------------------		
+Command: 	remove_effect_bundle_from_region	
+Description: 	Remove a previously applied effect bundle from a region	
+Usage: 		remove_effect_bundle_from_region("effect_bundle_key", "region_key")
+---------------------------------------------		
+Command: 	apply_effect_bundle_to_character	
+Description: 	Apply an effect bundle to a character	
+Usage: 		apply_effect_bundle_to_character(String effect_bundle_key, CHARACTER_SCRIPT_INTERFACE character, int turns)
+---------------------------------------------		
+Command: 	remove_effect_bundle_from_character	
+Description: 	Remove an effect bundle from a character	
+Usage: 		remove_effect_bundle_from_character(String effect_bundle_key, CHARACTER_SCRIPT_INTERFACE character)
+---------------------------------------------		
+Command: 	apply_effect_bundle_to_faction_province	
+Description: 	Apply an effect bundle to a faction province	
+Usage: 		apply_effect_bundle_to_faction_province(String effect_bundle_key, REGION_SCRIPT_INTERFACE region, int turns)
+---------------------------------------------		
+Command: 	remove_effect_bundle_from_faction_province	
+Description: 	Remove an effect bundle from a faction province	
+Usage: 		remove_effect_bundle_from_faction_province(String effect_bundle_key, REGION_SCRIPT_INTERFACE region)
+---------------------------------------------		
+Command: 	create_new_custom_effect_bundle	
+Description: 	Creates a new custom effect bundle from the specified effect bundle record	
+Usage: 		CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE create_new_custom_effect_bundle(String effect_bundle_key)
+---------------------------------------------		
+Command: 	apply_custom_effect_bundle_to_faction	
+Description: 	Apply a custom effect bundle to a faction. Replaces any existing effect bundle with the same record	
+Usage: 		apply_custom_effect_bundle_to_faction(CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE effect_bundle, FACTION_SCRIPT_INTERFACE faction)
+---------------------------------------------		
+Command: 	apply_custom_effect_bundle_to_character	
+Description: 	Apply a custom effect bundle to a character. Replaces any existing effect bundle with the same record	
+Usage: 		apply_custom_effect_bundle_to_faction(CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE effect_bundle, CHARACTER_SCRIPT_INTERFACE character)
+---------------------------------------------		
+Command: 	apply_custom_effect_bundle_to_force	
+Description: 	Apply a custom effect bundle to a force. Replaces any existing effect bundle with the same record	
+Usage: 		apply_custom_effect_bundle_to_force(CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE effect_bundle, MILITARY_FORCE_SCRIPT_INTERFACE force)
+---------------------------------------------		
+Command: 	apply_custom_effect_bundle_to_characters_force	
+Description: 	Apply a custom effect bundle to a characters force. Replaces any existing effect bundle with the same record	
+Usage: 		apply_custom_effect_bundle_to_faction(CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE effect_bundle, CHARACTER_SCRIPT_INTERFACE character)
+---------------------------------------------		
+Command: 	apply_custom_effect_bundle_to_region	
+Description: 	Apply a custom effect bundle to a region. Replaces any existing effect bundle with the same record	
+Usage: 		apply_custom_effect_bundle_to_faction(CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE effect_bundle, REGION_SCRIPT_INTERFACE region)
+---------------------------------------------		
+Command: 	apply_custom_effect_bundle_to_faction_province	
+Description: 	Apply a custom effect bundle to a faction province. Replaces any existing effect bundle with the same record	
+Usage: 		apply_custom_effect_bundle_to_faction(CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE effect_bundle, REGION_SCRIPT_INTERFACE target_region)
+---------------------------------------------		
+Command: 	create_agent	
+Description: 	create an agent at a position	
+Usage: 		create_agent("faction_key", "agent_key", "agent_subtype_key", x_position, y_position, "id")
+---------------------------------------------		
+Command: 	region_slot_instantly_dismantle_building	
+Description: 	Dismantle the building in the specified slot	
+Usage: 		instantly_dismantle_building("SLOT_SCRIPT_INTERFACE slot")
+---------------------------------------------		
+Command: 	region_slot_instantly_upgrade_building	
+Description: 	Instantly upgrade the building in the specified slot to the specified key	
+Usage: 		BUILDING_SCRIPT_INTERFACE instantly_upgrade_building("SLOT_SCRIPT_INTERFACE slot, String building_key")
+---------------------------------------------		
+Command: 	instantly_set_settlement_primary_slot_level	
+Description: 	Instantly set a settlements primary slot level. Will be clamped to the maximum level of the chain. Returns the new primary slot building	
+Usage: 		BUILDING_SCRIPT_INTERFACE instantly_set_settlement_primary_slot_level(SETTLEMENT_SCRIPT_INTERFACE settlement, card32 level)
+---------------------------------------------		
+Command: 	win_next_autoresolve_battle	
+Description: 	The specified faction will win the next autoresolve battle	
+Usage: 		win_next_autoresolve_battle("faction_key")
+---------------------------------------------		
+Command: 	modify_next_autoresolve_battle	
+Description: 	The next autoresolve battle will add this modifier to the win chance and casualties	
+Usage: 		modify_next_autoresolve_battle("attacker win chance, defender win chance, attacker losses modifier (soldiers), defender losses modifier (soldiers), force wipe out loser)")
+---------------------------------------------		
+Command: 	replenish_action_points	
+Description: 	Replenish action points for the specified character. A unary AP proportion (0-1) may optionally be specified.	
+Usage: 		replenish_action_points("faction:chosokabe,forename:2147274846", factor = 1.0)
+---------------------------------------------		
+Command: 	zero_action_points	
+Description: 	Zero action points for the specified character	
+Usage: 		zero_action_points("faction:chosokabe,forename:2147274846")
+---------------------------------------------		
+Command: 	override_ui	
+Description: 	Enable or disable the specified ui override	
+Usage: 		override_ui("disable_end_turn", true)
+---------------------------------------------		
+Command: 	kill_character	
+Description: 	Kill a character  Second parameter indicates whether to destroy the commanded military force (if any).	
+Usage: 		kill_character("faction:chosokabe,forename:2147274846", true)
+---------------------------------------------		
+Command: 	kill_character_and_commanded_unit	
+Description: 	Kill a character and associated unit Second parameter indicates whether to destroy the commanded military force (if any).	
+Usage: 		kill_character_and_commanded_unit("faction:chosokabe,forename:2147274846", true)
+---------------------------------------------		
+Command: 	stop_character_convalescing	
+Description: 	Instantly stop a character from convalescing	
+Usage: 		stop_character_convalescing(card32 character_cqi)
+---------------------------------------------		
+Command: 	wound_character	
+Description: 	Wound a character	
+Usage: 		wound_character("faction:chosokabe,forename:2147274846", "convalescence_time")
+---------------------------------------------		
+Command: 	force_agent_action_success_for_human	
+Description: 	Force the local faction to succeed at all agent actions	
+Usage: 		force_agent_action_success_for_human(true/false)
+---------------------------------------------		
+Command: 	region_slot_instantly_repair_building	
+Description: 	Repair the building in the specified slot	
+Usage: 		instantly_repair_building(SLOT_SCRIPT_INTERFACE region_slot)
+---------------------------------------------		
+Command: 	render_campaign_to_file	
+Description: 	Render campaign game to a set of tga files, enable_campaign_render_to_file must be defined in user script	
+Usage: 		render_campaign_to_file("output_folder", "frame_name", frames_per_second, motion_blur_frames, duration(seconds))
+---------------------------------------------		
+Command: 	force_character_force_into_stance	
+Description: 	Forces a character's military force into a military force stance. Second parameter is the stance type	
+Usage: 		force_character_force_into_stance("faction:chosokabe,forename:2147274846", "MILITARY_FORCE_ACTIVE_STANCE_TYPE_AMBUSH")
+---------------------------------------------		
+Command: 	model	
+Description: 	Returns a script interface to the campaign model.	
+Usage: 		model()
+---------------------------------------------		
+Command: 	set_region_abandoned	
+Description: 	Set a region as abandoned, already abandoned regions will do nothing	
+Usage: 		set_region_abandoned(REGION_KEY)
+---------------------------------------------		
+Command: 	change_home_region_of_faction	
+Description: 	Changes the home region of a faction.	
+Usage: 		change_home_region_of_faction(FACTION_SCRIPT_INTERFACE, REGION_KEY)
+---------------------------------------------		
+Command: 	override_attacker_win_chance_prediction	
+Description: 	Set the attackers predicted win chance percentage. This will not change the result.	
+Usage: 		override_attacker_win_chance_prediction(prediction percentage)
+---------------------------------------------		
+Command: 	transfer_region_to_faction	
+Description: 	Transfer a region ownership to a faction.	
+Usage: 		transfer_region_to_faction("region", "faction")
+---------------------------------------------		
+Command: 	suppress_all_event_feed_event_types	
+Description: 	Forces all event feed messages to be suppressed/unsuppressed	
+Usage: 		suppress_all_event_feed_event_types(true)
+---------------------------------------------		
+Command: 	whitelist_event_feed_event_type	
+Description: 	Removes a targeted event feed event from the set of suppressed events	
+Usage: 		whitelist_event_feed_event_type("agent_action_vs_armyevent_feed_target_agent_faction")
+---------------------------------------------		
+Command: 	event_feed_event_type_pending	
+Description: 	Returns true if there is a targeted event feed event of the specified type that was issued since the suppression was applied and is currently being suppressed.	
+Usage: 		event_feed_event_type_pending("agent_action_vs_armyevent_feed_target_agent_faction", "wh_main_emp_empire")
+---------------------------------------------		
+Command: 	highlight_movement_extents	
+Description: 	Highlights and pulses the  movement extents	
+Usage: 		highlight_movement_extents(activate)
+---------------------------------------------		
+Command: 	highlight_selected_character_zoc	
+Description: 	Highlight zoc of selected character	
+Usage: 		highlight_selected_character_zoc(activate)
+---------------------------------------------		
+Command: 	spawn_rogue_army	
+Description: 	Spawn a rogue army, will fail if the rogue army is alive or is flagged to naturally spawn	
+Usage: 		spawn_rogue_army(String faction_key, uint16 x, uint16 y)
+---------------------------------------------		
+Command: 	create_storm_for_region	
+Description: 	Create a storm in the targeted region with the desired strength	
+Usage: 		create_storm_for_region(String region_key, card32 strength, card32 max_turns_duration)
+---------------------------------------------		
+Command: 	heal_garrison	
+Description: 	Heals the Garrison in a region back to full health	
+Usage: 		heal_garrison(card32 region_cqi)
+---------------------------------------------		
+Command: 	heal_military_force	
+Description: 	Heals the military force back to full health	
+Usage: 		heal_military_force(MILITARY_FORCE_SCRIPT_INTERFACE force)
+---------------------------------------------		
+Command: 	trigger_mission	
+Description: 	Start a player mission. Returns true if launched successfully.	
+Usage: 		trigger_mission("faction_key", "mission_key", fire_immediately)
+---------------------------------------------		
+Command: 	trigger_dilemma	
+Description: 	Start a player mission. Returns true if launched successfully.	
+Usage: 		trigger_dilemma("faction_key", "dilemma_key", fire_immediately)
+---------------------------------------------		
+Command: 	trigger_incident	
+Description: 	Start a player mission. Returns true if launched successfully.	
+Usage: 		trigger_incident("faction_key", "incident_key", fire_immediately)
+---------------------------------------------		
+Command: 	trigger_custom_mission	
+Description: 	Start a player mission	
+Usage: 		trigger_custom_mission("faction_key", "mission_key")
+---------------------------------------------		
+Command: 	add_custom_pending_mission_from_string	
+Description: 	Add pending mission	
+Usage: 		add_custom_pending_mission_from_string(FACTION_SCRIPT_INTERFACE faction_interface, FACTION_SCRIPT_INTERFACE faction_issuer_interface, String mission_def_str)
+---------------------------------------------		
+Command: 	clear_pending_missions	
+Description: 	Clears the pending missions	
+Usage: 		clear_pending_missions(FACTION_SCRIPT_INTERFACE faction_interface)
+---------------------------------------------		
+Command: 	trigger_custom_mission_from_string	
+Description: 	Start a player mission	
+Usage: 		trigger_custom_mission_from_string("faction_key", "mission_def_str")
+---------------------------------------------		
+Command: 	cancel_custom_mission	
+Description: 	Cancel a player mission	
+Usage: 		cancel_custom_mission("faction_key", "mission_key")
+---------------------------------------------		
+Command: 	fail_custom_mission	
+Description: 	Fail a player mission	
+Usage: 		fail_custom_mission("faction_key", "mission_key")
+---------------------------------------------		
+Command: 	mission_is_active_for_faction	
+Description: 	Checks if the faction has the mission as active.	
+Usage: 		mission_is_activated_for_faction("faction interface", "mission_key")
+---------------------------------------------		
+Command: 	trigger_custom_dilemma	
+Description: 	Start a player dilemma	
+Usage: 		trigger_custom_dilemma("faction_key", "dilemma_record_key", "first_choice_payload", "second_choice_payload")
+---------------------------------------------		
+Command: 	trigger_custom_dilemma_for_character	
+Description: 	Start a player dilemma using a character CQI or character name	
+Usage: 		trigger_custom_dilemma_for_character("character_key", "dilemma_record_key", "first_choice_payload", "second_choice_payload")
+---------------------------------------------		
+Command: 	trigger_custom_incident	
+Description: 	Start a player mission	
+Usage: 		trigger_custom_incident("faction_key", "incident_key", fire_immediately, payload)
+---------------------------------------------		
+Command: 	trigger_custom_incident_with_targets	
+Description: 	Triggers a custom incident with targets	
+Usage: 		trigger_custom_incident_with_targets("faction_key", "incident_key", fire_immediately, payload)
+---------------------------------------------		
+Command: 	grant_faction_handover	
+Description: 	Hand over faction to control of another	
+Usage: 		grant_faction_handover("recipient", "handed_over", first_possible_turn, last_possible_turn, context_if_avaliable)
+---------------------------------------------		
+Command: 	set_campaign_ai_force_all_factions_boardering_humans_to_have_invasion_behaviour	
+Description: 	Force minor (non-rebel) factions to have the region group expansion behaviour if they boarder player owned territory.	
+Usage: 		set_campaign_ai_force_all_factions_boardering_humans_to_have_invasion_behaviour(true/false)
+---------------------------------------------		
+Command: 	set_campaign_ai_force_all_factions_boardering_human_vassals_to_have_invasion_behaviour	
+Description: 	Force minor (non-rebel) factions to have the region group expansion behaviour if they boarder player protected factions.	
+Usage: 		set_campaign_ai_force_all_factions_boardering_human_vassals_to_have_invasion_behaviour(true/false)
+---------------------------------------------		
+Command: 	technology_osmosis_for_playables_enable_culture	
+Description: 	Enable tech osmosis for playable factions of the specific culture	
+Usage: 		technology_osmosis_for_playables_enable_culture(culture_key)
+---------------------------------------------		
+Command: 	technology_osmosis_for_playables_enable_all	
+Description: 	Enable tech osmosis for playable factions	
+Usage: 		technology_osmosis_for_playables_enable_all()
+---------------------------------------------		
+Command: 	force_make_vassal	
+Description: 	Force a faction to become the master of another faction	
+Usage: 		force_make_vassal("france", "prussia") (force france to be the master of prussia)
+---------------------------------------------		
+Command: 	force_alliance	
+Description: 	Force two factions to become allies	
+Usage: 		force_alliance("france", "prussia", true) (force france and prussia to become military allies)
+---------------------------------------------		
+Command: 	force_grant_military_access	
+Description: 	Force a faction to grant another military access	
+Usage: 		force_grant_military_access("france", "prussia", false) (force france and prussia to grant soft military access)
+---------------------------------------------		
+Command: 	force_rebellion_in_region	
+Description: 	Force a rebellion of a specified size in the specified region	
+Usage: 		force_rebellion_in_region("france", 10, x, y, false) (force a rebellion in france with 10 units, don't suppress message)
+---------------------------------------------		
+Command: 	force_rebellion_with_faction	
+Description: 	Force a rebellion of a specified size and faction in a given region. Returns the spawned rebellion force.	
+Usage: 		MILITARY_FORCE_SCRIPT_INTERFACE force_rebellion_with_faction(REGION_SCRIPT_INTERFACE region, String faction_key, card32 max_unit_count, bool spawn_at_full_strength, bool does_not_affect_public_order (optional, false by default))
+---------------------------------------------		
+Command: 	treasury_mod	
+Description: 	modify the specified faction's treasury by the specified amount	
+Usage: 		treasury_mod("faction_key", amount)
+---------------------------------------------		
+Command: 	lock_technology	
+Description: 	Lock a technology and all children	
+Usage: 		lock_technology("faction_key", "technology_key")
+---------------------------------------------		
+Command: 	lock_one_technology_node	
+Description: 	Lock one technology node, children will not be changed	
+Usage: 		lock_one_technology_node("faction_key", "technology_key")
+---------------------------------------------		
+Command: 	unlock_technology	
+Description: 	unlock a technology and all children	
+Usage: 		unlock_technology("faction_key", "technology_key")
+---------------------------------------------		
+Command: 	update_technology_unlock_progress_values	
+Description: 	Provides multiple unlock progress values for specific technology, for a faction, this is required for UI. Values are updated in order, as in table. If less amount of values is provided, old values with higher indexes won't be overwritten	
+Usage: 		set_technology_unlock_progress("faction_key", "technology_key", card32 table progress_values
+---------------------------------------------		
+Command: 	set_general_offered_dilemma_permitted	
+Description: 	Enable or disable the general offered dilemma	
+Usage: 		set_general_offered_dilemma_permitted(true)
+---------------------------------------------		
+Command: 	instant_set_building_health_percent	
+Description: 	Alter building health	
+Usage: 		instant_set_building_health_percent(region key, building level or chain key, health percent)
+---------------------------------------------		
+Command: 	make_son_come_of_age	
+Description: 	Make a character come of age	
+Usage: 		make_son_come_of_age(character_lookup_string)
+---------------------------------------------		
+Command: 	allow_player_to_embark_navies	
+Description: 	Set whether the player is allowed to embark armies and agents onto navies	
+Usage: 		allow_player_to_embark_navies(true)
+---------------------------------------------		
+Command: 	force_change_cai_faction_personality	
+Description: 	Force faction X to take on DB defined personality Y	
+Usage: 		force_change_cai_faction_personality("takeda", "random")
+---------------------------------------------		
+Command: 	set_ignore_end_of_turn_public_order	
+Description: 	Set whether we ignore end of turn public order being negative to have riots or rebellions - default false, ie must be negative at end of turn	
+Usage: 		set_ignore_end_of_turn_public_order(true)
+---------------------------------------------		
+Command: 	set_only_allow_basic_recruit_stance	
+Description: 	Stops military forces automatically enter non default recruitment stances.	
+Usage: 		set_only_allow_basic_recruit_stance(true)
+---------------------------------------------		
+Command: 	set_imperium_level_change_disabled	
+Description: 	Disable all imperium level changes	
+Usage: 		set_imperium_level_change_disabled(true)
+---------------------------------------------		
+Command: 	set_army_trespass_disabled	
+Description: 	Globally disable army trespassing penalties	
+Usage: 		set_army_trespass_disabled(true)
+---------------------------------------------		
+Command: 	set_army_outer_movement_extents_rendering_disabled	
+Description: 	Globally disable army movement_extents_rendering	
+Usage: 		set_army_outer_movement_extents_rendering_disabled(true)
+---------------------------------------------		
+Command: 	set_character_experience_disabled	
+Description: 	Set whether we ignore character experience for all character types false	
+Usage: 		set_character_experience_disabled(true)
+---------------------------------------------		
+Command: 	set_unit_experience_disabled	
+Description: 	Set whether we ignore unit experience for all units	
+Usage: 		set_unit_experience_disabled(true)
+---------------------------------------------		
+Command: 	set_character_skill_tier_limit	
+Description: 	Set limit on tiers available in skill tree	
+Usage: 		set_character_skill_tier_limit(value) - 0 is first available level, etc
+---------------------------------------------		
+Command: 	set_event_generation_enabled	
+Description: 	Set whether event generation is enabled	
+Usage: 		set_event_generation_enabled(value)
+---------------------------------------------		
+Command: 	autosave_at_next_opportunity	
+Description: 	Set to autosave when next possible	
+Usage: 		autosave_at_next_opportunity()
+---------------------------------------------		
+Command: 	add_event_restricted_unit_record	
+Description: 	Prevent a unit from being recruited until a scripted event has occurred	
+Usage: 		add_event_restricted_unit_record("unit_record")
+---------------------------------------------		
+Command: 	remove_event_restricted_unit_record	
+Description: 	Remove a restriction added by 'add_event_restricted_unit_record'	
+Usage: 		remove_event_restricted_unit_record("unit_record")
+---------------------------------------------		
+Command: 	add_event_restricted_unit_record_for_faction	
+Description: 	Prevent a unit from being recruited until a scripted event has occurred. Restriction only applies to specified faction	
+Usage: 		add_event_restricted_unit_record("unit_record", "faction_key")
+---------------------------------------------		
+Command: 	remove_event_restricted_unit_record_for_faction	
+Description: 	Remove a restriction added by 'add_event_restricted_unit_record_for_faction'	
+Usage: 		remove_event_restricted_unit_record_for_faction("unit_record", "faction_key")
+---------------------------------------------		
+Command: 	add_event_restricted_building_record	
+Description: 	Prevent a building from being build until a scripted event has occurred	
+Usage: 		add_event_restricted_building_record("building_record")
+---------------------------------------------		
+Command: 	remove_event_restricted_building_record	
+Description: 	Remove a restriction added by 'add_event_restricted_building_record'	
+Usage: 		remove_event_restricted_building_record("building_record")
+---------------------------------------------		
+Command: 	add_event_restricted_building_record_for_faction	
+Description: 	Prevent a building from being build until a scripted event has occurred. Restriction only applies to specified faction	
+Usage: 		add_event_restricted_building_record_for_faction("building_record", "faction_key")
+---------------------------------------------		
+Command: 	remove_event_restricted_building_record_for_faction	
+Description: 	Remove a restriction added by 'add_event_restricted_building_record_for_faction'	
+Usage: 		remove_event_restricted_building_record_for_faction("building_record", "faction_key")
+---------------------------------------------		
+Command: 	set_ai_uses_human_display_speed	
+Description: 	Limit tick speedup for visible characters, making AI use lower speed as if the human's turn	
+Usage: 		set_ai_uses_human_display_speed(value)
+---------------------------------------------		
+Command: 	set_public_order_of_province_for_region	
+Description: 	Set public order value for province this region is in	
+Usage: 		set_public_order_of_province_for_region(region_key, order)
+---------------------------------------------		
+Command: 	set_public_order_disabled_for_province_for_region	
+Description: 	Set public order disabled for province for region	
+Usage: 		set_public_order_disabled_for_province_for_region(region_key, is_disabled)
+---------------------------------------------		
+Command: 	set_public_order_disabled_for_province_for_region_for_all_factions_and_set_default	
+Description: 	Set public order disabled for province for region for all factions	
+Usage: 		set_public_order_disabled_for_province_for_region_for_all_factions_and_set_default(region_key, is_disabled)
+---------------------------------------------		
+Command: 	make_region_visible_in_shroud	
+Description: 	Uncover shroud for region	
+Usage: 		make_region_visible_in_shroud(faction_key, region_key)
+---------------------------------------------		
+Command: 	make_region_seen_in_shroud	
+Description: 	Uncover shroud for region	
+Usage: 		make_region_seen_in_shroud(faction_key, region_key)
+---------------------------------------------		
+Command: 	modify_faction_slaves_in_a_faction	
+Description: 	Change the number of faction slaves in a faction. Positive increases, negative decreases.	
+Usage: 		modify_faction_slaves_in_a_faction(faction_key, change_in_slaves)
+---------------------------------------------		
+Command: 	modify_faction_slaves_in_a_faction_province	
+Description: 	Change the number of faction slaves in a faction province (for the provided region key). Positive increases, negative decreases.	
+Usage: 		modify_faction_slaves_in_a_faction_province(region_key, change_in_slaves)
+---------------------------------------------		
+Command: 	add_development_points_to_region	
+Description: 	Add development points to a region	
+Usage: 		add_development_points_to_region(region_key, num_points)
+---------------------------------------------		
+Command: 	add_growth_points_to_region	
+Description: 	Add growth points to a region	
+Usage: 		add_growth_points_to_region(region_key, num_points)
+---------------------------------------------		
+Command: 	add_growth_points_to_horde	
+Description: 	Add growth points to a horde	
+Usage: 		add_growth_points_to_horde(military_force_script_interface, num_points)
+---------------------------------------------		
+Command: 	add_development_points_to_horde	
+Description: 	Add development points to a horde	
+Usage: 		add_development_points_to_horde(military_force_script_interface, num_points)
+---------------------------------------------		
+Command: 	faction_set_food_factor_multiplier	
+Description: 	Set food factor multiplier for the specified faction	
+Usage: 		faction_set_food_factor_multiplier(faction_key, food_factor_key, multiplier)
+---------------------------------------------		
+Command: 	faction_set_food_factor_value	
+Description: 	Set food factor base value for the specified faction	
+Usage: 		faction_set_food_factor_value(faction_key, food_factor_key, value)
+---------------------------------------------		
+Command: 	faction_mod_food_factor_value	
+Description: 	Mod food factor base value for the specified faction	
+Usage: 		faction_mod_food_factor_value(faction_key, food_factor_key, delta)
+---------------------------------------------		
+Command: 	faction_add_pooled_resource	
+Description: 	Add the specified amount to the specified pool as the specified factor. Clamped to pool and factor bounds	
+Usage: 		faction_add_pooled_resource(faction_key, resource_key, factor_key, amount (can be negative))
+---------------------------------------------		
+Command: 	faction_set_unit_purchasable_effect_lock_state	
+Description: 	Lock/Unlock unit_purchasable_effect faction-wide with an optional lock_reason_record	
+Usage: 		faction_set_unit_purchasable_effect_lock_state(faction, unit_purchasable_effect_key, optional_lock_reason_key, availability)
+---------------------------------------------		
+Command: 	faction_purchase_unit_effect	
+Description: 	Make the faction purchase an effect for a unit	
+Usage: 		faction_purchase_unit_effect(faction, unit, unit_purchasable_effect)
+---------------------------------------------		
+Command: 	faction_unpurchase_unit_effect	
+Description: 	Mark an effect for a unit as purchasable	
+Usage: 		faction_unpurchase_unit_effect(unit, unit_purchasable_effect)
+---------------------------------------------		
+Command: 	faction_perform_action_on_prisoner	
+Description: 	Perform an action on a prisoner in the faction prison	
+Usage: 		faction_perform_action_on_prisoner(FACTION_SCRIPT_INTERFACE warden_faction, FAMILY_MEMBER_SCRIPT_INTERFACE prisoner_family_member, String action_record_key)
+---------------------------------------------		
+Command: 	faction_imprison_character	
+Description: 	Put character in faction's campaign prison	
+Usage: 		faction_imprison_character(FACTION_SCRIPT_INTERFACE warden_faction, CHARACTER_SCRIPT_INTERFACE prisoner_character)
+---------------------------------------------		
+Command: 	change_custom_faction_name	
+Description: 	Set the faction name to the custom name provided	
+Usage: 		change_custom_faction_name(faction_key, faction_new_name)
+---------------------------------------------		
+Command: 	change_localised_faction_name	
+Description: 	Set the faction name to the localised key name provided	
+Usage: 		change_localised_faction_name(faction_key, faction_localised_key)
+---------------------------------------------		
+Command: 	change_custom_settlement_name	
+Description: 	Gives the settlement specified by the supplied SETTLEMENT_SCRIPT_INTERFACE an unlocalised custom name	
+Usage: 		change_custom_settlement_name(SETTLEMENT_SCRIPT_INTERFACE target_settlement, string custom_name)
+---------------------------------------------		
+Command: 	change_localised_settlement_name	
+Description: 	Gives the settlement specified by the supplied SETTLEMENT_SCRIPT_INTERFACE a localised name	
+Usage: 		change_localised_settlement_name(SETTLEMENT_SCRIPT_INTERFACE target_settlement, string localised_name_key)
+---------------------------------------------		
+Command: 	change_custom_region_name	
+Description: 	Gives the region specified by the supplied REGION_SCRIPT_INTERFACE an unlocalised custom name	
+Usage: 		change_custom_region_name(REGION_SCRIPT_INTERFACE target_region, string custom_name)
+---------------------------------------------		
+Command: 	change_localised_region_name	
+Description: 	Gives the region specified by the supplied REGION_SCRIPT_INTERFACE a localised name	
+Usage: 		change_localised_region_name(REGION_SCRIPT_INTERFACE target_region, string localised_name_key)
+---------------------------------------------		
+Command: 	change_custom_unit_name	
+Description: 	Gives the unit specified by the supplied UNIT_SCRIPT_INTERFACE an unlocalised custom name	
+Usage: 		change_custom_unit_name(UNIT_SCRIPT_INTERFACE target_unit, string custom_name)
+---------------------------------------------		
+Command: 	change_localised_unit_name	
+Description: 	Gives the unit specified by the supplied UNIT_SCRIPT_INTERFACE a localised name	
+Usage: 		change_localised_unit_name(UNIT_SCRIPT_INTERFACE target_unit, string localised_name_key)
+---------------------------------------------		
+Command: 	change_character_custom_name	
+Description: 	Replace a characters custom name with a new one. Be warned that our lua implementation only deals with ANSI strings, so you're limited to latin characters	
+Usage: 		change_character_custom_name(CHARACTER_SCRIPT_INTERFACE character, String forename, String surname, String clan_name, String other_name)
+---------------------------------------------		
+Command: 	change_character_localised_name	
+Description: 	Replace a characters name with a new one. Names must be in the localised string table. Don't use with rebels	
+Usage: 		change_character_localised_name(CHARACTER_SCRIPT_INTERFACE character, String forename_key, String surname_key, String clan_name_key, String other_name_key)
+---------------------------------------------		
+Command: 	randomise_character_name	
+Description: 	Replace a characters name with a new random one from the pool. Don't use with rebels	
+Usage: 		randomise_character_name(CHARACTER_SCRIPT_INTERFACE character)
+---------------------------------------------		
+Command: 	add_interactable_campaign_marker	
+Description: 	Add an interactable campaign marker to the campaign map, returns AREA_TRIGGER_ENTER/EXIT events when appropriate	
+Usage: 		add_interactable_campaign_marker(unique_id, marker_info_key, log_position_x, log_position_y, radius_hexes, faction_record (can be empty), subculture_record (can be empty))
+---------------------------------------------		
+Command: 	remove_interactable_campaign_marker	
+Description: 	Remove an interactable campaign marker from the campaign map	
+Usage: 		remove_interactable_campaign_marker( unique_id )
+---------------------------------------------		
+Command: 	complete_scripted_mission_objective	
+Description: 	Complete a scripted mission objective	
+Usage: 		complete_scripted_mission_objective(string faction_key, string mission_key, string script_key, bool success)
+---------------------------------------------		
+Command: 	set_scripted_mission_text	
+Description: 	Set the text of a scripted mission objective	
+Usage: 		set_scripted_mission_text(string mission_key, string script_key, string override_text_key)
+---------------------------------------------		
+Command: 	set_scripted_mission_position	
+Description: 	Set the position of a scripted mission objective	
+Usage: 		set_scripted_mission_position(string mission_key, string script_key, card16 pos_x, card16 pos_y)
+---------------------------------------------		
+Command: 	set_scripted_mission_entity_completion_states	
+Description: 	Set the completion state for entities targeted by a scripted mission objective. This will add entities if they were not already present. Expects a table of interface/boolean pairs as the last parameter, { {region, true}, {character, false} }	
+Usage: 		set_scripted_mission_entity_completion_states(String mission_key, String script_key, EntityTable)
+---------------------------------------------		
+Command: 	remove_scripted_mission_entities	
+Description: 	Remove specified entity completion states from a scripted mission objective. Expects a table of entity interfaces as the last parameter. {region, character, faction}	
+Usage: 		remove_scripted_mission_entities(String mission_key, String script_key, EntityTable
+---------------------------------------------		
+Command: 	spawn_unique_agent	
+Description: 	Spawn a unique agent using its default spawn behaviour	
+Usage: 		spawn_unique_agent( card32 faction_cqi, String agent_record, bool force )
+---------------------------------------------		
+Command: 	spawn_unique_agent_at_region	
+Description: 	Spawn a unique agent at the specified region	
+Usage: 		spawn_unique_agent_at_region(card32 faction_cqi, String agent_record, card32 region_cqi, bool force)
+---------------------------------------------		
+Command: 	spawn_unique_agent_at_character	
+Description: 	Spawn a unique agent at the specified character	
+Usage: 		spawn_unique_agent_at_character(card32 faction_cqi, String agent_record, card32 character_cqi, bool force)
+---------------------------------------------		
+Command: 	spawn_agent_at_military_force	
+Description: 	Spawn an agent at the specified military force	
+Usage: 		CHARACTER_SCRIPT_INTERFACE spawn_agent_at_military_force(FACTION_SCRIPT_INTERFACE owning_faction, MILITARY_FORCE_SCRIPT_INTERFACE target_force, String agent_record, (optional) String agent_subtype_record)
+---------------------------------------------		
+Command: 	spawn_agent_at_settlement	
+Description: 	Spawn an agent at the specified settlement	
+Usage: 		CHARACTER_SCRIPT_INTERFACE spawn_agent_at_settlement(FACTION_SCRIPT_INTERFACE owning_faction, SETTLEMENT_SCRIPT_INTERFACE target_settlement, String agent_record, (optional) String agent_subtype_record)
+---------------------------------------------		
+Command: 	spawn_agent_at_position	
+Description: 	Spawn an agent at the specified position	
+Usage: 		CHARACTER_SCRIPT_INTERFACE spawn_agent_at_position(FACTION_SCRIPT_INTERFACE owning_faction, card32 x, card32 y , String agent_record, (optional) String agent_subtype_record)
+---------------------------------------------		
+Command: 	embed_agent_in_force	
+Description: 	Embed the specified agent in the specified force	
+Usage: 		bool embed_agent_in_force(CHARACTER_SCRIPT_INTERFACE agent, MILITARY_FORCE_SCRIPT_INTERFACE force)
+---------------------------------------------		
+Command: 	set_force_has_retreated_this_turn	
+Description: 	Set retreated flag of the specified force to true	
+Usage: 		set_force_has_retreated( MILITARY_FORCE_SCRIPT_INTERFACE force force)
+---------------------------------------------		
+Command: 	award_achievement	
+Description: 	Award an achievement	
+Usage: 		award_achievement( String achievement )
+---------------------------------------------		
+Command: 	add_character_vfx	
+Description: 	Add VFX to specified character	
+Usage: 		add_character_vfx(card32 character_cqi, String vfx_lookup_key, bool show_in_shroud)
+---------------------------------------------		
+Command: 	remove_character_vfx	
+Description: 	Remove VFX from specified character	
+Usage: 		remove_character_vfx(card32 character_cqi, String vfx_type)
+---------------------------------------------		
+Command: 	add_garrison_residence_vfx	
+Description: 	Add VFX to specified garrison_residence	
+Usage: 		add_garrison_residence_vfx(card32 garrison_residence_cqi, String vfx_lookup_key, bool show_in_shroud))
+---------------------------------------------		
+Command: 	remove_garrison_residence_vfx	
+Description: 	Remove VFX from specified garrison_residence	
+Usage: 		remove_garrison_residence_vfx(card32 garrison_residence_cqi, String vfx_type)
+---------------------------------------------		
+Command: 	pooled_resource_mod	
+Description: 	Modify the specified factions pooled resource by the specified amount	
+Usage: 		pooled_resource_mod( card32 faction_cqi, String resource_key, String factor_key, int32 amount )
+---------------------------------------------		
+Command: 	pooled_resource_transaction	
+Description: 	Apply a resource transaction to a resource manager	
+Usage: 		pooled_resource_transaction(POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE resource_manager, String resource_transaction_key)
+---------------------------------------------		
+Command: 	pooled_resource_factor_transaction	
+Description: 	Apply a transaction to a single pooled resource factor	
+Usage: 		pooled_resource_factor_transaction(POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE, String resource_factor_key, int32 amount)
+---------------------------------------------		
+Command: 	perform_ritual	
+Description: 	Perform a ritual, it must be available and valid for this call to succeed. Target faction assumed to be self if empty. Ritual chain only required for rituals in chains, can be empty.	
+Usage: 		perform_ritual(String performing_faction, String target_faction, String ritual_key)
+---------------------------------------------		
+Command: 	create_new_ritual_setup	
+Description: 	Create a new modify ritual setup interface	
+Usage: 		MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE create_new_ritual_setup(FACTION_SCRIPT_INTERFACE performing_faction, String ritual_record_key)
+---------------------------------------------		
+Command: 	perform_ritual_with_setup	
+Description: 	Perform a ritual with the provided setup, it must be available and valid for this call to succeed. Both modify and standard ritual setup interfaces are valid for this method	
+Usage: 		perform_ritual(RITUAL_SETUP_SCRIPT_INTERFACE setup)
+---------------------------------------------		
+Command: 	rollback_linked_ritual_chain	
+Description: 	Rollback a linked ritual chain to the specified stage. Safe to call if the ritual isn't at this stage yet	
+Usage: 		rollback_linked_ritual_chain(String campaign_group_ritual_chain_key, card32 stage)
+---------------------------------------------		
+Command: 	lock_ritual	
+Description: 	Lock a ritual for a faction	
+Usage: 		lock_ritual(FACTION_SCRIPT_INTERFACE faction, String ritual_key)
+---------------------------------------------		
+Command: 	unlock_ritual	
+Description: 	Unlock a ritual for a faction	
+Usage: 		unlock_ritual(FACTION_SCRIPT_INTERFACE faction, String ritual_key, (optional) int32 duration)
+---------------------------------------------		
+Command: 	lock_ritual_chain	
+Description: 	Lock a ritual chain for a faction	
+Usage: 		lock_ritual_chain(FACTION_SCRIPT_INTERFACE faction, String ritual_chain_key)
+---------------------------------------------		
+Command: 	unlock_ritual_chain	
+Description: 	Unlock a ritual chain for a faction	
+Usage: 		unlock_ritual_chain(FACTION_SCRIPT_INTERFACE faction, String ritual_chain_key, (optional) int32 duration)
+---------------------------------------------		
+Command: 	lock_rituals_in_category	
+Description: 	Lock all rituals in a category	
+Usage: 		lock_rituals_in_category(FACTION_SCRIPT_INTERFACE faction, String ritual_category_key)
+---------------------------------------------		
+Command: 	unlock_rituals_in_category	
+Description: 	Unlock all rituals in a category	
+Usage: 		unlock_rituals_in_category(FACTION_SCRIPT_INTERFACE faction, String ritual_category_key, (optional) int32 duration)
+---------------------------------------------		
+Command: 	apply_active_ritual	
+Description: 	Attempt to apply an active ritual. This will only succeed if its cast time has been exceeded	
+Usage: 		apply_active_ritual(FACTION_SCRIPT_INTERFACE performing_faction, ACTIVE_RITUAL_SCRIPT_INTERFACE ritual)
+---------------------------------------------		
+Command: 	apply_active_rituals	
+Description: 	Attempt to apply all active rituals. This will also complete any delayed rituals	
+Usage: 		apply_active_rituals(FACTION_SCRIPT_INTERFACE performing_faction)
+---------------------------------------------		
+Command: 	make_diplomacy_available	
+Description: 	Make diplomacy available between two factions	
+Usage: 		make_diplomacy_available(String lhs_faction_key, String rhs_faction_key)
+---------------------------------------------		
+Command: 	remove_unit_from_character	
+Description: 	Remove the first instance of the specified unit from the force commanded by the specified character	
+Usage: 		remove_unit_from_character(String character_lookup_string, String main_unit_record_key)
+---------------------------------------------		
+Command: 	skip_winds_of_magic_gambler	
+Description: 	Makes next battle skip the winds of magic gambler phase	
+Usage: 		skip_winds_of_magic_gambler(bool skip)
+---------------------------------------------		
+Command: 	spawn_character_to_pool	
+Description: 	Spawn a new character in a faction recruitment pool	
+Usage: 		CHARACTER_DETAILS_SCRIPT_INTERFACE spawn_character_to_pool(string faction_key, string forename_key, string family_name_key, string clan_name_key, string other_name_key, int age, bool male, string agent_key, string agent_subtype_key, bool is_immortal, string art_set_id)
+---------------------------------------------		
+Command: 	override_building_chain_display	
+Description: 	Override the display of a building chain so that it appears as another building chain	
+Usage: 		override_building_chain_display(string chain_key, string override_chain_key, string region_key (optional))
+---------------------------------------------		
+Command: 	pending_battle_add_scripted_tile_upgrade_tag	
+Description: 	Add the specified tile upgrade to the currently active pending battle. Returns true if successful	
+Usage: 		pending_battle_add_scripted_tile_upgrade_tag(String tile_upgrade_tag)
+---------------------------------------------		
+Command: 	pending_battle_remove_scripted_tile_upgrade_tags	
+Description: 	Remove the specified tile upgrade to the currently active pending battle. Returns true if successful	
+Usage: 		pending_battle_remove_scripted_tile_upgrade_tags(String tile_upgrade_tag)
+---------------------------------------------		
+Command: 	find_valid_spawn_location_for_character_from_settlement	
+Description: 	Utilise the pathfinder to locate a valid spawn point for a character, based around a settlement. Returns -1, -1 if invalid	
+Usage: 		find_valid_spawn_location_for_character_from_settlement(String faction_key, String settlement_region_key, bool on_sea, bool in_same_region, (optional) card32 preferred_spawn_distance)
+---------------------------------------------		
+Command: 	find_valid_spawn_location_for_character_from_character	
+Description: 	Utilise the pathfinder to locate a valid spawn point for a character, based around another character. Returns -1, -1 if invalid	
+Usage: 		find_valid_spawn_location_for_character_from_character(String faction_key, String character_lookup, bool in_same_region, (optional) card32 preferred_spawn_distance)
+---------------------------------------------		
+Command: 	find_valid_spawn_location_for_character_from_position	
+Description: 	Utilise the pathfinder to locate a valid spawn point for a character, based around a position. Returns -1, -1 if invalid	
+Usage: 		find_valid_spawn_location_for_character_from_position(String faction_key, int start_x, int start_y, bool in_same_region, (optional) card32 preferred_spawn_distance)
+---------------------------------------------		
+Command: 	spawn_plague_at_settlement	
+Description: 	Spawn plague at settlement	
+Usage: 		spawn_plague_at_settlement(FACION_SCRIPT_INTERFACE spreader_faction, SETTLEMENT_SCRIPT_INTERFACE settlement, String plague_key)
+---------------------------------------------		
+Command: 	spawn_plague_at_region	
+Description: 	Spawn plague at region	
+Usage: 		spawn_plague_at_region(FACION_SCRIPT_INTERFACE spreader_faction, REGION_SCRIPT_INTERFACE region, String plague_key)
+---------------------------------------------		
+Command: 	spawn_plague_at_military_force	
+Description: 	Spawn plague at military force	
+Usage: 		spawn_plague_at_military_force(FACION_SCRIPT_INTERFACE spreader_faction, MILITARY_FORCE_SCRIPT_INTERFACE settlement, String plague_key)
+---------------------------------------------		
+Command: 	set_military_force_plague	
+Description: 	Set military force plague	
+Usage: 		set_military_force_plague(MILITARY_FORCE_SCRIPT_INTERFACE force, String plague_key)
+---------------------------------------------		
+Command: 	set_base_strategic_threat_score	
+Description: 	Set the base strategic threat score for a faction	
+Usage: 		set_base_strategic_threat_score(FACTION_SCRIPT_INTERFACE faction, card32 score)
+---------------------------------------------		
+Command: 	set_next_winds_of_magic_compass_selection_cooldown	
+Description: 	Set the next round that the WOM compass direction may be selected. This will modify the global selection round if no faction is provided	
+Usage: 		set_next_winds_of_magic_compass_selection_cooldown((optional) FACTION_SCRIPT_INTERFACE faction, card32 round_offset)
+---------------------------------------------		
+Command: 	cai_strategic_stance_manager_block_all_stances_but_that_specified_towards_target_faction	
+Description: 	cai_strategic_stance_manager_block_all_stances_but_that_specified_towards_target_faction	
+Usage: 		cai_strategic_stance_manager_block_all_stances_but_that_specified_towards_target_faction("stance_managing_faction_key", "target_faction_key", "stance_type")
+---------------------------------------------		
+Command: 	cai_strategic_stance_manager_promote_specified_stance_towards_target_faction	
+Description: 	cai_strategic_stance_manager_promote_specified_stance_towards_target_faction	
+Usage: 		cai_strategic_stance_manager_promote_specified_stance_towards_target_faction("stance_managing_faction_key", "target_faction_key", "stance_type")
+---------------------------------------------		
+Command: 	cai_evaluate_quick_deal_action	
+Description: 	cai_evaluate_quick_deal_action	
+Usage: 		number score, bool can_propose cai_evaluate_quick_deal_action("FACTION_SCRIPT_INTERFACE proposer, FACTION_SCRIPT_INTERFACE recipient, String deal type")
+---------------------------------------------		
+Command: 	cai_force_personality_change	
+Description: 	cai_force_personality_change	
+Usage: 		cai_force_personality_change("faction_key")
+---------------------------------------------		
+Command: 	cai_force_personality_change_with_override_round_number	
+Description: 	cai_force_personality_change_with_override_round_number	
+Usage: 		cai_force_personality_change_with_override_round_number("faction_key", "override_round_numer")
+---------------------------------------------		
+Command: 	cai_strategic_stance_manager_force_stance_update_between_factions	
+Description: 	cai_strategic_stance_manager_force_stance_update_between_factions	
+Usage: 		cai_strategic_stance_manager_force_stance_update_between_factions("stance_managing_faction_key", "target_faction_key")
+---------------------------------------------		
+Command: 	cai_strategic_stance_manager_set_stance_promotion_between_factions_for_a_given_stance	
+Description: 	cai_strategic_stance_manager_set_stance_promotion_between_factions_for_a_given_stance	
+Usage: 		cai_strategic_stance_manager_set_stance_promotion_between_factions_for_a_given_stance("stance_managing_faction_key", "target_faction_key", "stance_type_key", "start_round", "start_level", "end_round", "end_level")
+---------------------------------------------		
+Command: 	cai_strategic_stance_manager_clear_all_promotions_between_factions	
+Description: 	cai_strategic_stance_manager_clear_all_promotions_between_factions	
+Usage: 		cai_strategic_stance_manager_clear_all_promotions_between_factions("stance_managing_faction_key", "target_faction_key")
+---------------------------------------------		
+Command: 	cai_strategic_stance_manager_set_stance_blocking_between_factions_for_a_given_stance	
+Description: 	cai_strategic_stance_manager_set_stance_blocking_between_factions_for_a_given_stance	
+Usage: 		cai_strategic_stance_manager_set_stance_blocking_between_factions_for_a_given_stance("stance_managing_faction_key", "target_faction_key", "stance_type_key", "final_inclusive_blocking_round")
+---------------------------------------------		
+Command: 	cai_strategic_stance_manager_clear_all_blocking_between_factions	
+Description: 	cai_strategic_stance_manager_clear_all_blocking_between_factions	
+Usage: 		cai_strategic_stance_manager_clear_all_blocking_between_factions("stance_managing_faction_key", "target_faction_key")
+---------------------------------------------		
+Command: 	cai_disable_movement_for_character	
+Description: 	cai_disable_movement_for_character	
+Usage: 		cai_disable_movement_for_character("faction:f,type:t,ability:a,surname:s,forename:f,garrison:g,x:1,y:2,r:3")
+---------------------------------------------		
+Command: 	cai_disable_movement_for_faction	
+Description: 	cai_disable_movement_for_faction	
+Usage: 		cai_disable_movement_for_faction("faction_key")
+---------------------------------------------		
+Command: 	cai_enable_movement_for_character	
+Description: 	cai_enable_movement_for_character	
+Usage: 		cai_enable_movement_for_character("faction:f,type:t,ability:a,surname:s,forename:f,garrison:g,x:1,y:2,r:3")
+---------------------------------------------		
+Command: 	cai_enable_movement_for_faction	
+Description: 	cai_enable_movement_for_faction	
+Usage: 		cai_enable_movement_for_faction("faction_key")
+---------------------------------------------		
+Command: 	cai_disable_command_assignment_for_character	
+Description: 	cai_disable_command_assignment_for_character	
+Usage: 		cai_disable_command_assignment_for_character("faction:f,type:t,ability:a,surname:s,forename:f,garrison:g,x:1,y:2,r:3")
+---------------------------------------------		
+Command: 	cai_enable_command_assignment_for_character	
+Description: 	cai_enable_command_assignment_for_character	
+Usage: 		cai_enable_command_assignment_for_character("faction:f,type:t,ability:a,surname:s,forename:f,garrison:g,x:1,y:2,r:3")
+---------------------------------------------		
+Command: 	cai_disable_targeting_against_settlement	
+Description: 	cai_disable_targeting_against_settlement	
+Usage: 		cai_disable_targeting_against_settlement("settlement_key")
+---------------------------------------------		
+Command: 	cai_enable_targeting_against_settlement	
+Description: 	cai_enable_targeting_against_settlement	
+Usage: 		cai_enable_targeting_against_settlement("settlement_key")
+---------------------------------------------		
+Command: 	cai_get_global_script_context	
+Description: 	cai_get_global_script_context	
+Usage: 		cai_get_global_script_context()
+---------------------------------------------		
+Command: 	cai_set_global_script_context	
+Description: 	cai_set_global_script_context	
+Usage: 		cai_set_global_script_context("global_script_context_key")
+---------------------------------------------		
+Command: 	cai_clear_global_script_context	
+Description: 	cai_clear_global_script_context	
+Usage: 		cai_clear_global_script_context()
+---------------------------------------------		
+Command: 	cai_get_faction_script_context	
+Description: 	cai_get_faction_script_context	
+Usage: 		cai_get_faction_script_context("faction_key")
+---------------------------------------------		
+Command: 	cai_set_faction_script_context	
+Description: 	cai_set_faction_script_context	
+Usage: 		cai_set_faction_script_context("faction_key", "faction_script_context_key")
+---------------------------------------------		
+Command: 	cai_clear_faction_script_context	
+Description: 	cai_clear_faction_script_context	
+Usage: 		cai_clear_faction_script_context("faction_key")
+---------------------------------------------		
+Command: 	cai_insert_caravan_diplomatic_event	
+Description: 	cai_insert_caravan_diplomatic_event	
+Usage: 		cai_insert_caravan_diplomatic_event("event_faction", "caravan_faction")
+---------------------------------------------		
+Command: 	cai_add_point_of_interest_generic_marker	
+Description: 	cai_add_point_of_interest_generic_marker	
+Usage: 		cai_add_point_of_interest_generic_marker("poi_group_identifier_index", "poi_identifier_index", "logical_position_x", "logical_position_y", "optional_faction_owner_key")
+---------------------------------------------		
+Command: 	cai_remove_point_of_interest_generic_marker	
+Description: 	cai_remove_point_of_interest_generic_marker	
+Usage: 		cai_remove_point_of_interest_generic_marker("poi_group_identifier_index", "poi_identifier_index")
+---------------------------------------------		
+Command: 	cai_add_diplomatic_event	
+Description: 	cai_add_diplomatic_event	
+Usage: 		cai_add_diplomatic_event("from_faction_key", "to_faction_key", "diplomatic_event_key")
+---------------------------------------------		
+Command: 	faction_offers_peace_to_other_faction	
+Description: 	faction_offers_peace_to_other_faction	
+Usage: 		faction_offers_peace_to_other_faction("proposer_key", "reciever_key")
+---------------------------------------------		
+Command: 	disable_pathfinding_restriction	
+Description: 	disable_pathfinding_restriction	
+Usage: 		disable_pathfinding_restriction(id)
+---------------------------------------------		
+Command: 	set_character_immortality	
+Description: 	set_character_immortality	
+Usage: 		set_character_immortality(character_lookup_string, is_immortal)
+---------------------------------------------		
+Command: 	suppress_immortality	
+Description: 	suppress_immortality	
+Usage: 		suppress_immortality(family_member_cqi, suppress)
+---------------------------------------------		
+Command: 	set_character_unique	
+Description: 	set_character_unique	
+Usage: 		set_character_unique(character_lookup_string, is_unique)
+---------------------------------------------		
+Command: 	spawn_character_into_family_tree	
+Description: 	spawn_character_into_family_tree	
+Usage: 		spawn_character_into_family_tree(faction, forename_key, family_name_key, clan_name_key, other_name_key, age, male, father_lookup, mother_lookup, is_immortal, art_set_id, make_heir)
+---------------------------------------------		
+Command: 	appoint_character_to_force	
+Description: 	appoint_character_to_force	
+Usage: 		appoint_character_to_force(character_lookup_string, military_force_cqi)
+---------------------------------------------		
+Command: 	appoint_character_to_most_expensive_force	
+Description: 	appoint_character_to_most_expensive_force	
+Usage: 		appoint_character_to_most_expensive_force(character_lookup_string)
+---------------------------------------------		
+Command: 	modify_character_personal_loyalty_factor	
+Description: 	modify_character_personal_loyalty_factor	
+Usage: 		modify_character_personal_loyalty_factor(character_lookup_string, loyalty_change)
+---------------------------------------------		
+Command: 	play_movie_in_ui	
+Description: 	play_movie_in_ui	
+Usage: 		play_movie_in_ui(att_seal_3)
+---------------------------------------------		
+Command: 	trigger_music_state	
+Description: 	trigger_music_state	
+Usage: 		trigger_music_state(string music_faction, float valid_timer, bool instant_change, string optional_sound_event)
+---------------------------------------------		
+Command: 	activate_music_trigger	
+Description: 	activate_music_trigger	
+Usage: 		activate_music_trigger(string trigger, string argument)
+---------------------------------------------		
+Command: 	set_music_paused	
+Description: 	set_music_paused	
+Usage: 		set_music_paused(bool paused)
+---------------------------------------------		
+Command: 	trigger_campaign_vo	
+Description: 	trigger_campaign_vo	
+Usage: 		trigger_campaign_vo(string vo_event_name, string character_lookup_string, float32 delay)
+---------------------------------------------		
+Command: 	stop_campaign_vo	
+Description: 	stop_campaign_vo	
+Usage: 		stop_campaign_vo(string event_to_stop)
+---------------------------------------------		
+Command: 	stop_campaign_advisor_vo	
+Description: 	stop_campaign_advisor_vo	
+Usage: 		stop_campaign_advisor_vo()
+---------------------------------------------		
+Command: 	trigger_2d_ui_sound	
+Description: 	trigger_2d_ui_sound	
+Usage: 		trigger_2d_ui_sound(string event_name, float32 delay)
+---------------------------------------------		
+Command: 	stop_2d_ui_sound	
+Description: 	stop_2d_ui_sound	
+Usage: 		stop_2d_ui_sound(string event_name)
+---------------------------------------------		
+Command: 	set_global_vo_argument	
+Description: 	Sets a VO state that can be used to alter what VO will play	
+Usage: 		set_global_vo_argument(string state_group, string state)
+---------------------------------------------		
+Command: 	contextual_vo_enabled	
+Description: 	enable_contextual_voo	
+Usage: 		enable_contextual_vo(bool enabled)
+---------------------------------------------		
+Command: 	add_character_actor_group_override	
+Description: 	Override the actor of the desired character with an actor id from the provided actor group record	
+Usage: 		add_character_actor_group_override(CHARACTER_SCRIPT_INTERFACE character, String actor_vo_record_key)
+---------------------------------------------		
+Command: 	is_benchmark_mode	
+Description: 	is_benchmark_mode	
+Usage: 		returns if current campaign is a benchmark
+---------------------------------------------		
+Command: 	is_replay	
+Description: 	is_benchmark_mode	
+Usage: 		returns if we're playing a replay
+---------------------------------------------		
+Command: 	is_cinematic_editor_attached	
+Description: 	is_benchmark_mode	
+Usage: 		returns if we're playing a replay
+---------------------------------------------		
+Command: 	cinematic	
+Description: 	creates a cinematic scripting interface	
+Usage: 		This interface provides functions like cindy_playback
+---------------------------------------------		
+Command: 	filesystem_lookup	
+Description: 	Perform a VFS lookup in the specified path (root is working_data/) for files matching the pattern. Returns a comma-delimited list of files found	
+Usage: 		filesystem_lookup("/script/", "*.lua")
+---------------------------------------------		
+Command: 	is_dlc_flag_enabled	
+Description: 	Bheck if the dlc is activated	
+Usage: 		is_dlc_flag_enabled("/dlc_flag_name/")
+---------------------------------------------		
+Command: 	disable_event_feed_events	
+Description: 	Enable or disable event feed events by category, subcategory or event (any list can be empty).  Note that if you disable something by for example subcategory then you can only re-enable it by subcategory, enabling the category it is in (or the specific event) will not re-enable it.	
+Usage: 		disable_event_feed_events(true, "category_key_1;category_key_2", "", "event_key")
+---------------------------------------------		
+Command: 	lock_starting_general_recruitment	
+Description: 	lock recruitment of a starting general. Works for convalescing generals as well	
+Usage: 		lock_starting_general_recruitment("character_startpos_id", "faction_key")
+---------------------------------------------		
+Command: 	unlock_starting_general_recruitment	
+Description: 	Unlock recruitment of a starting general. Works for convalescing generals as well	
+Usage: 		unlock_starting_general_recruitment("character_startpos_id", "faction_key")
+---------------------------------------------		
+Command: 	toggle_dilemma_generation	
+Description: 	Set dilemma generation to be allowed or not	
+Usage: 		toggle_dilemma_generation(<bool>)
+---------------------------------------------		
+Command: 	toggle_incident_generation	
+Description: 	Set incident generation to be allowed or not	
+Usage: 		toggle_incident_generation(<bool>)
+---------------------------------------------		
+Command: 	toggle_mission_generation	
+Description: 	Set mission generation to be allowed or not	
+Usage: 		toggle_mission_generation(<bool>)
+---------------------------------------------		
+Command: 	add_building_to_force	
+Description: 	Add building to a military force	
+Usage: 		add_building_to_force(<military_force>, <building_record_key>)
+---------------------------------------------		
+Command: 	add_building_to_settlement	
+Description: 	Add building to a settlement. Returns true if successful	
+Usage: 		add_building_to_settlement(String region_key, String building_level_key)
+---------------------------------------------		
+Command: 	add_building_to_settlement_queue	
+Description: 	Add building to a settlement queue. Returns true if successful	
+Usage: 		add_building_to_settlement(SLOT_SCRIPT_INTERFACE target_slot, String building_level_key)
+---------------------------------------------		
+Command: 	add_units_to_faction_mercenary_pool	
+Description: 	Add count of a specified unit to the factions mercenary pool	
+Usage: 		add_units_to_faction_mercenary_pool(faction_cqi, "awesome_unit", 2)
+---------------------------------------------		
+Command: 	add_units_to_province_mercenary_pool_by_region	
+Description: 	Add count of a specified unit to the province mercenary pool	
+Usage: 		add_units_to_province_mercenary_pool_by_region(region_key, "awesome_unit", 2)
+---------------------------------------------		
+Command: 	add_scripted_composite_scene_to_settlement_port	
+Description: 	Add a composite scene to a settlements port, returns true if successful	
+Usage: 		bool add_scripted_composite_scene_to_settlement_port(String name, String composite_scene, REGION_SCRIPT_INTERFACE region, bool one_shot, bool visible_in_seen_shroud, bool visible_in_unseen_shroud, (optional) FACTION_SCRIPT_INTERFACE visible_to_faction)
+---------------------------------------------		
+Command: 	add_scripted_composite_scene_to_settlement	
+Description: 	Add a composite scene to a settlement, returns true if action was successful on the campaign model level	
+Usage: 		bool add_scripted_composite_scene_to_settlement(String name, String composite_scene, REGION_SCRIPT_INTERFACE region, card16 facing_x, card16 facing_y, bool one_shot, bool visible_in_seen_shroud, bool visible_in_unseen_shroud, (optional) FACTION_SCRIPT_INTERFACE visible_to_faction)
+---------------------------------------------		
+Command: 	add_scripted_composite_scene_to_logical_position	
+Description: 	Add a composite scene to a logical position, returns true if action was successful on the campaign model level	
+Usage: 		bool add_scripted_composite_scene_to_logical_position(String name, String composite_scene, card16 logical_x, card16 logical_y, card16 facing_pos_logical_x, card16 facing_pos_logical_y, bool one_shot, bool visible_in_seen_shroud, bool visible_in_unseen_shroud, (optional) FACTION_SCRIPT_INTERFACE visible_to_faction)
+---------------------------------------------		
+Command: 	remove_scripted_composite_scene	
+Description: 	Remove a scripted composite scene, returns true if action was successful	
+Usage: 		bool remove_scripted_composite_scene(name)
+---------------------------------------------		
+Command: 	add_foreign_slot_set_to_region_for_faction	
+Description: 	Add the specified foreign slot set to the target region, for the target faction. Returns the foreign slot manager of the faction (may be null if parameters are invalid)	
+Usage: 		add_foreign_slot_set_to_region_for_faction(faction_cqi, region_cqi, slot_set_key)
+---------------------------------------------		
+Command: 	remove_faction_foreign_slots_from_region	
+Description: 	Add the specified foreign slot set to the target region, for the target faction.	
+Usage: 		remove_faction_foreign_slots_from_region(faction_cqi, region_cqi)
+---------------------------------------------		
+Command: 	foreign_slot_instantly_upgrade_building	
+Description: 	Instantly upgrade the building in the specified foreign slot	
+Usage: 		foreign_slot_instantly_upgrade_building(FOREIGN_SLOT_SCRIPT_INTERFACE slot, String upgrade_building_key)
+---------------------------------------------		
+Command: 	foreign_slot_instantly_dismantle_building	
+Description: 	Instantly dismantle the building in the specified foreign slot	
+Usage: 		foreign_slot_instantly_dismantle_building(FOREIGN_SLOT_SCRIPT_INTERFACE slot)
+---------------------------------------------		
+Command: 	trigger_mission_with_targets	
+Description: 	Trigger a mission with specified targets. Pass zero for CQI's if you don't want a target set.	
+Usage: 		bool trigger_mission_with_targets(owning_faction_cqi, mission_key, faction_cqi, secondary_faction_cqi, character_cqi, military_force_cqi, region_cqi, settlement_cqi)
+---------------------------------------------		
+Command: 	trigger_incident_with_targets	
+Description: 	Trigger an incident with specified targets. Pass zero for CQI's if you don't want a target set.	
+Usage: 		bool trigger_incident_with_targets(owning_faction_cqi, incident_key, faction_cqi, secondary_faction_cqi, character_cqi, military_force_cqi, region_cqi, settlement_cqi)
+---------------------------------------------		
+Command: 	trigger_dilemma_with_targets	
+Description: 	Trigger an dilemma with specified targets. Pass zero for CQI's if you don't want a target set.	
+Usage: 		bool trigger_dilemma_with_targets(owning_faction_cqi, dilemma_key, faction_cqi, secondary_faction_cqi, character_cqi, military_force_cqi, region_cqi, settlement_cqi)
+---------------------------------------------		
+Command: 	trigger_intrigue	
+Description: 	Triggers an intrigue incident which improves or worsens diplomatic relations between two factions. Fourth boolean argument improves relations if set to true, worsens them if set to false. Fifth argument exempts the issuing faction from the influence cost if true.	
+Usage: 		trigger_intrigue(issuing faction key, first target faction key, second target faction key, should_improve, exempt_from_cost)
+---------------------------------------------		
+Command: 	apply_dilemma_diplomatic_bonus	
+Description: 	Directly applies a diplomatic bonus or penalty between two factions, as if it had come from a dilemma. The bonus should be an integer between -6 and +6, each integer value of which corresponds to a change type (from PENALTY_XXXLARGE (-6) to BONUS_XXXLARGE (+6)) which carries a diplomatic attitude modifier that is actually applied.	
+Usage: 		apply_dilemma_diplomatic_penalty(first_faction_key, second_faction_key, attitude_bonus)
+---------------------------------------------		
+Command: 	toggle_character_initiative_active	
+Description: 	Toggle a character initiative to active/inactive. Return value is true if toggle was successful	
+Usage: 		bool toggle_character_initiative_active(CHARACTER_INITIATIVE_INTERFACE initiative, bool active)
+---------------------------------------------		
+Command: 	toggle_character_initiative_script_locked	
+Description: 	Toggle whether a character initiative is script locked. Returns true if successful	
+Usage: 		bool toggle_character_initiative_active(CHARACTER_INITIATIVE_SET_INTERFACE initiative, String initiative_key, bool locked)
+---------------------------------------------		
+Command: 	set_camera_minimum_height	
+Description: 	Set minimum camera height above the terrain.	
+Usage: 		set_camera_minimum_height(float32 minimum_height_above_terrain)
+---------------------------------------------		
+Command: 	set_camera_maximum_height	
+Description: 	Set maximum camera height	
+Usage: 		set_camera_maximum_height(float32 maximum_height)
+---------------------------------------------		
+Command: 	set_camera_height	
+Description: 	Set camera height at the current position clamped between the cameras current min and max. 	
+Usage: 		set_camera_height(float32 new_height)
+---------------------------------------------		
+Command: 	set_character_path_traversal_speed_multiplier	
+Description: 	Set the locomotion speed multiplier of a character	
+Usage: 		set_character_path_traversal_speed_multiplier(CHARACTER_SCRIPT_INTERFACE character, float32 multiplier)
+---------------------------------------------		
+Command: 	clear_character_path_traversal_speed_multiplier	
+Description: 	Clear the locomotion speed multiplier of a character (reset to 1.0)	
+Usage: 		clear_character_path_traversal_speed_multiplier(CHARACTER_SCRIPT_INTERFACE character)
+---------------------------------------------		
+Command: 	set_character_observation_options_for_faction	
+Description: 	Set character observation options for a faction	
+Usage: 		set_character_observation_options_for_faction(FACTION_SCRIPT_INTERFACE faction, CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE observation_options)
+---------------------------------------------		
+Command: 	set_character_observation_options_for_allies	
+Description: 	Set character observation options for allied factions	
+Usage: 		set_character_observation_options_for_allies(CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE observation_options)
+---------------------------------------------		
+Command: 	set_character_observation_options_for_enemies	
+Description: 	Set character observation options for enemy factions	
+Usage: 		set_character_observation_options_for_enemies(CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE observation_options)
+---------------------------------------------		
+Command: 	set_character_observation_options_for_neutrals	
+Description: 	Set character observation options for neutral factions	
+Usage: 		set_character_observation_options_for_neutrals(CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE observation_options)
+---------------------------------------------		
+Command: 	war_coordination	
+Description: 	Get a handle used to inspect favour points and targets	
+Usage: 		war_coordination()
+---------------------------------------------		
+Command: 	convert_force_to_type	
+Description: 	Convert a military force into another type of military force	
+Usage: 		bool convert_force_to_type(MILITARY_FORCE_SCRIPT_INTERFACE force, String force_type_key)
+---------------------------------------------		
+Command: 	add_unit_to_province_mercenary_pool	
+Description: 	Add a unit to the specified provinces mercenary pool. Will replace any existing entry with the same unit record	
+Usage: 		add_unit_to_province_mercenary_pool(REGION_SCRIPT_INTERFACE province, String unit_record, card32 count, float32 replenishment_chance_percentage, int32 max_units, float32 max_units_replenished_per_turn, (may be empty) String faction_restricted_record, (may be empty) String subculture_restricted_record, (may be empty) String tech_restricted_record, bool partial_replenishment)
+---------------------------------------------		
+Command: 	set_unit_hp_to_unary_of_maximum	
+Description: 	Sets the hit points/number of men to the given percentage of the maximum. The percentage will be clamped between 0.0 and 1.0.	
+Usage: 		set_unit_hp_to_unary_of_maximum(UNIT_SCRIPT_INTERFACE unit_interface, float32 unary)
+---------------------------------------------		
+Command: 	add_unit_to_faction_mercenary_pool	
+Description: 	Add a unit to the specified factions mercenary pool. Will replace any existing entry with the same unit record	
+Usage: 		add_unit_to_faction_mercenary_pool(FACTION_SCRIPT_INTERFACE faction, String unit_record, card32 count, float32 replenishment_chance_percentage, int32 max_units, float32 max_units_replenished_per_turn, (may be empty) String faction_restricted_record, (may be empty) String subculture_restricted_record, (may be empty) String tech_restricted_record, bool partial_replenishment)
+---------------------------------------------		
+Command: 	set_prebattle_display_configuration_override	
+Description: 	Set an override for the prebattle display camera configuration	
+Usage: 		set_prebattle_display_configuration_override(float camera_distance, float camera_height, float32 camera_angle, float scale, float separation)
+---------------------------------------------		
+Command: 	set_prebattle_display_configuration_camera_type_override	
+Description: 	Set an override for the prebattle display camera configuration type only	
+Usage: 		set_prebattle_display_configuration_camera_type_override(String new_type_str)
+---------------------------------------------		
+Command: 	clear_prebattle_display_configuration_override	
+Description: 	Clear any existing prebattle display configuration override	
+Usage: 		clear_prebattle_display_configuration_override()
+---------------------------------------------		
+Command: 	unlock_cooking_ingredient	
+Description: 	Unlock an ingredient for a faction. The ingredient must be permitted for the faction	
+Usage: 		unlock_cooking_ingredient(FACTION_SCRIPT_INTERFACE faction, String ingredient_key)
+---------------------------------------------		
+Command: 	unlock_cooking_recipe	
+Description: 	Unlock a recipe for a faction. The recipe must be permitted for the faction	
+Usage: 		unlock_cooking_recipe(FACTION_SCRIPT_INTERFACE faction, String recipe_key)
+---------------------------------------------		
+Command: 	cook_recipe	
+Description: 	Attempt to cook a recipe. Will just use default ingredients	
+Usage: 		bool cook_recipe(FACTION_SCRIPT_INTERFACE faction, String recipe_key)
+---------------------------------------------		
+Command: 	cook_recipe_with_ingredients	
+Description: 	Attempt to cook a recipe. Will use specified ingredients	
+Usage: 		bool cook_recipe_with_ingredients(FACTION_SCRIPT_INTERFACE faction, String recipe_key, StringTable primary_ingredients, StringTable secondary_ingredients)
+---------------------------------------------		
+Command: 	force_cook_recipe	
+Description: 	Force cook a recipe. Will just use default ingredients	
+Usage: 		bool force_cook_recipe(FACTION_SCRIPT_INTERFACE faction, String recipe_key, bool pay_cost)
+---------------------------------------------		
+Command: 	force_cook_recipe_with_ingredients	
+Description: 	Force to cook a recipe. Will use specified ingredients	
+Usage: 		bool force_cook_recipe_with_ingredients(FACTION_SCRIPT_INTERFACE faction, String recipe_key, StringTable primary_ingredients, StringTable secondary_ingredients, bool pay_cost)
+---------------------------------------------		
+Command: 	clear_active_cooking_recipe	
+Description: 	Clear the active recipe for the specified faction. Returns true if a dish was cleared	
+Usage: 		bool clear_active_cooking_recipe(FACTION_SCRIPT_INTERFACE faction)
+---------------------------------------------		
+Command: 	set_faction_max_primary_cooking_ingredients	
+Description: 	Sets the max primary ingredients the faction may cook with. Clamped between 0 and 10	
+Usage: 		void set_faction_max_primary_cooking_ingredients(FACTION_SCRIPT_INTERFACE faction, card32 max_ingredients)
+---------------------------------------------		
+Command: 	set_faction_max_secondary_cooking_ingredients	
+Description: 	Sets the max secondary ingredients the faction may cook with. Clamped between 0 and 10	
+Usage: 		void set_faction_max_secondary_cooking_ingredients(FACTION_SCRIPT_INTERFACE faction, card32 max_ingredients)
+---------------------------------------------		
+Command: 	trigger_performance_metrics_start	
+Description: 	Start timing information gather.	
+Usage: 		trigger_performance_metrics_start()
+---------------------------------------------		
+Command: 	trigger_performance_metrics_stop	
+Description: 	Stop timing information gather and send.	
+Usage: 		trigger_performance_metrics_stop()
+---------------------------------------------		
+Command: 	trigger_scripted_tour_metrics_start	
+Description: 	Report that a scripted tour was started by a user.	
+Usage: 		trigger_scripted_tour_metrics_start()
+---------------------------------------------		
+Command: 	add_armory_item_to_character	
+Description: 	Add amory item to character, will equip the default variant if it contains one and if the associated slot is empty	
+Usage: 		bool add_armory_item_to_character(CHARACTER_SCRIPT_INTERFACE character, String armory_item_record_key, bool equip_default_items, bool clear_conflicting_items)
+---------------------------------------------		
+Command: 	add_armory_item_set_to_character	
+Description: 	Add amory item set to character, will equip the default variant if it contains one and if the associated slot is empty	
+Usage: 		bool add_armory_item_set_to_character(CHARACTER_SCRIPT_INTERFACE character, String armory_item_set_record_key, bool equip_default_items, bool clear_conflicting_items)
+---------------------------------------------		
+Command: 	remove_armory_item_from_character	
+Description: 	Remove amory item from character, will unequip associated variant if they are equipped in the armory item's slot	
+Usage: 		bool remove_armory_item_from_character(CHARACTER_SCRIPT_INTERFACE character, String armory_item_record_key)
+---------------------------------------------		
+Command: 	equip_armory_item_variant_on_character	
+Description: 	Equip amory item variant on character	
+Usage: 		bool equip_armory_item_variant_on_character(CHARACTER_SCRIPT_INTERFACE character, String armory_item_variant_record_key, bool clear_conflicts)
+---------------------------------------------		
+Command: 	equip_armory_item_set_on_character	
+Description: 	Equip amory item variant on character	
+Usage: 		bool equip_armory_item_set_on_character(CHARACTER_SCRIPT_INTERFACE character, String armory_item_set_record_key, bool clear_conflicts)
+---------------------------------------------		
+Command: 	unequip_armory_item_variant_from_character	
+Description: 	Unequip amory item variant on character	
+Usage: 		bool unequip_armory_item_variant_from_character(CHARACTER_SCRIPT_INTERFACE character, String armory_item_variant_record_key)
+---------------------------------------------		
+Command: 	unequip_active_item_variant_in_slot_from_character	
+Description: 	Unequip amory item variant on character	
+Usage: 		bool unequip_active_item_variant_in_slot_from_character(CHARACTER_SCRIPT_INTERFACE character, String armory_slot_key)
+---------------------------------------------		
+Command: 	unequip_all_armory_items_from_character	
+Description: 	Unequip all amory item variants from character	
+Usage: 		bool unequip_all_armory_items_from_character(CHARACTER_SCRIPT_INTERFACE character)
+---------------------------------------------		
+Command: 	get_active_armory_item_variant_slot_state_for_character	
+Description: 	Unequip amory item variant on character, will return INVALID on failure	
+Usage: 		String get_active_armory_item_variant_slot_state_for_character(CHARACTER_SCRIPT_INTERFACE character, String armory_item_variant_record_key)
+---------------------------------------------		
+Command: 	can_armory_item_be_equipped_on_character	
+Description: 	Checks whether an armory item can be equipped on a character	
+Usage: 		Bool can_armory_item_be_equipped_on_character(CHARACTER_SCRIPT_INTERFACE character, String armory_item_record_key)
+---------------------------------------------		
+Command: 	is_armory_item_compatible_with_agent_subtype	
+Description: 	Checks whether an armory item is compatibel with a characters agent_subtype	
+Usage: 		Bool is_armory_item_compatible_with_agent_subtype(CHARACTER_SCRIPT_INTERFACE character, String armory_item_record_key)
+---------------------------------------------		
+Command: 	is_armory_item_compatible_with_categories_on_character	
+Description: 	Checks whether an armory item is compatibel with categories registered with a characters.	
+Usage: 		Bool is_armory_item_compatible_with_categories_on_character(CHARACTER_SCRIPT_INTERFACE character, String armory_item_record_key)
+---------------------------------------------		
+Command: 	add_armory_item_category_set_membership	
+Description: 	Adds am armory item category to a character, will return true if items had to be removed in order to assign the category.	
+Usage: 		Bool add_armory_item_category_set_membership(CHARACTER_SCRIPT_INTERFACE character, String armory_item_category_set_record_key)
+---------------------------------------------		
+Command: 	remove_armory_item_category_set_membership	
+Description: 	Removes a armory item category from a character	
+Usage: 		Void remove_armory_item_category_set_membership(CHARACTER_SCRIPT_INTERFACE character, String armory_item_category_set_record_key)
+---------------------------------------------		
+Command: 	clear_armory_item_category_membership	
+Description: 	Removes a armory item category from a character	
+Usage: 		Void clear_armory_item_category_membership(CHARACTER_SCRIPT_INTERFACE character)
+---------------------------------------------		
+Command: 	set_tint_activity_state_for_character	
+Description: 	Enables or disables the tint colour set using "set_tint_colour_for_character" for a character	
+Usage: 		Void set_tint_activity_state_for_character(CHARACTER_SCRIPT_INTERFACE character, bool is_tint_active)
+---------------------------------------------		
+Command: 	set_tint_colour_for_character	
+Description: 	Sets the tint colour for a character that needs to be enabled and disabled using "set_tint_colour_for_character"	
+Usage: 		Void set_tint_colour_for_character(CHARACTER_SCRIPT_INTERFACE character, String colour1_key, float colour1_intensity, String colour2_key, float color2_intensity)
+---------------------------------------------		
+Command: 	get_tint_activity_state_for_characters	
+Description: 	Gets wheterh tinting is actie for character	
+Usage: 		Void get_tint_activity_state_for_characters(CHARACTER_SCRIPT_INTERFACE character)
+---------------------------------------------		
+Command: 	set_loading_screen_id	
+Description: 	Sets loading screen id which gets saved into save game header and used by loading screen to customise loading screen. Added so can have different loading screens for campaigns based on stage reached, as determined by script (originally added for WH3 prologue)	
+Usage: 		Void set_loading_screen_id(String id)
+---------------------------------------------		
+Command: 	set_script_state	
+Description: 	Set script state in model.	
+Usage: 		set_script_state((optional) entity interface, key, value)
+---------------------------------------------		
+Command: 	remove_script_state	
+Description: 	Remove script state.	
+Usage: 		remove_script_state((optional) entity interface, key)
+---------------------------------------------		
+Command: 	set_region_caravan_banditry	
+Description: 	Set the banditry value of a region	
+Usage: 		int set_region_caravan_banditry(REGION_DATA_SCRIPT_INTERFACE region, int value)
+---------------------------------------------		
+Command: 	set_multi_region_caravan_banditry	
+Description: 	Set the banditry value of a table of regions	
+Usage: 		set_multi_region_caravan_banditry((Table)REGION_DATA_SCRIPT_INTERFACE region, int value)
+---------------------------------------------		
+Command: 	set_caravan_cargo	
+Description: 	Set the cargo value of a caravan. Returns the new cargo value	
+Usage: 		int set_caravan_cargo(CARAVAN_SCRIPT_INTERFACE caravan, int value)
+---------------------------------------------		
+Command: 	set_caravan_path	
+Description: 	Set the path of a caravan. Returns true if set successfully	
+Usage: 		bool set_caravan_path(CARAVAN_SCRIPT_INTERFACE caravan, ROUTE_PATH_SCRIPT_INTERFACE path)
+---------------------------------------------		
+Command: 	set_caravan_auto_path	
+Description: 	Set the path of a caravan. Auto-generates the path to avoid banditry. Returns true if set successfully	
+Usage: 		bool set_caravan_auto_path(CARAVAN_SCRIPT_INTERFACE caravan, ROUTE_POSITION_SCRIPT_INTERFACE target)
+---------------------------------------------		
+Command: 	clear_caravan_path	
+Description: 	Clear the path of a caravan. Returns true if cleared successfully	
+Usage: 		bool clear_caravan_path(CARAVAN_SCRIPT_INTERFACE caravan)
+---------------------------------------------		
+Command: 	recruit_caravan	
+Description: 	Recruit the specified caravan. Returns the caravan if successful	
+Usage: 		CARAVAN_SCRIPT_INTERFACE recruit_caravan(FACTION_SCRIPT_INTERFACE faction, CARAVAN_RECRUITMENT_ITEM_SCRIPT_INTERFACE recruitment_item)
+---------------------------------------------		
+Command: 	start_caravan	
+Description: 	Start a caravan on a new journey. Returns the caravan if successful	
+Usage: 		CARAVAN_SCRIPT_INTERFACE start_caravan(FACTION_SCRIPT_INTERFACE faction, FAMILY_MEMBER_SCRIPT_INTERFACE caravan_master, int cargo, ROUTE_NODE_SCRIPT_INTERFACE start_node)
+---------------------------------------------		
+Command: 	move_caravan	
+Description: 	Move a caravan along its current path	
+Usage: 		bool move_caravan(CARAVAN_SCRIPT_INTERFACE caravan)
+---------------------------------------------		
+Command: 	building_level_unlocks_technology_for_faction	
+Description: 	Returns whether the supplied building (by string level) unlocks any technologies for the specified faction	
+Usage: 		bool building_level_unlocks_technology_for_faction(FACTION_SCRIPT_INTERFACE faction, string building_level_key)
+---------------------------------------------		
+Command: 	create_payload	
+Description: 	Create a new payload builder, which can be used to tailor a new payload from script	
+Usage: 		CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE create_payload()
+---------------------------------------------		
+Command: 	apply_payload	
+Description: 	Apply a built payload. It will only be applied if it's still valid	
+Usage: 		bool apply_payload(CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE payload, FACTION_SCRIPT_INTERFACE target_faction)
+---------------------------------------------		
+Command: 	create_dilemma_builder	
+Description: 	Create an empty dilemma builder. This interface can be used to tailor a new custom dilemma from script	
+Usage: 		CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE create_dilemma_builder(String dilemma_record_key)
+---------------------------------------------		
+Command: 	launch_custom_dilemma_from_builder	
+Description: 	Trigger a custom dilemma from a dilemma builder script interface.	
+Usage: 		bool launch_custom_dilemma_from_builder(CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE dilemma_interface, FACTION_SCRIPT_INTERFACE target_faction)
+---------------------------------------------		
+Command: 	add_or_remove_faction_features	
+Description: 	Add or remove faction features.	
+Usage: 		bool add_or_remove_faction_features(FACTION_SCRIPT_INTERFACE faction, StringTable feature_mask, bool add_or_remove)
+---------------------------------------------		
+Command: 	teleportation_network_open_node	
+Description: 	Open a specific teleportation node. You may omit the template key if one is already defined in the database, otherwise it's required	
+Usage: 		bool teleportation_network_open_node(String node_record_key, (Optional) String template_record_key)
+---------------------------------------------		
+Command: 	teleportation_network_close_node	
+Description: 	Close a specific teleportation node.	
+Usage: 		bool teleportation_network_close_node(String node_record_key)
+---------------------------------------------		
+Command: 	teleportation_network_open_random_nodes	
+Description: 	Open random nodes in a teleportation network with a specific template type. Returns the amount opened	
+Usage: 		int teleportation_network_open_random_nodes(String network_key, String template_key, int amount)
+---------------------------------------------		
+Command: 	teleportation_network_close_random_nodes	
+Description: 	Close random nodes in a teleportation network with a specific template type. Returns the amount closed	
+Usage: 		int teleportation_network_close_random_nodes(String network_key, String template_key, int amount)
+---------------------------------------------		
+Command: 	teleportation_network_close_all_nodes	
+Description: 	Close all nodes in a teleportation network with a specific template type. You may omit the template type in order to close the entire network.	
+Usage: 		bool teleportation_network_close_all_nodes(String network_key, (optional) String template_key)
+---------------------------------------------		
+Command: 	teleportation_network_set_effect_level_modifier	
+Description: 	Set an effect level modifier to be applied to the nodes of a given teleportation network.	
+Usage: 		bool teleportation_network_set_effect_level_modifier(String network_key, int level_modifier)
+---------------------------------------------		
+Command: 	force_winds_of_magic_change	
+Description: 	Force a change in the winds of magic for a given area	
+Usage: 		bool force_winds_of_magic_change(String wom_area_key, String wom_strength_key)
+---------------------------------------------		
+Command: 	set_multi_turn_movement_enabled	
+Description: 	Set multiturn movement enabled. If disabled, characters will only be able to walk to the extents allowed by their remaining action points	
+Usage: 		set_multi_turn_movement_enabled(bool enabled)
+---------------------------------------------		
+Command: 	override_human_player_max_units	
+Description: 	Override the maximum number of units a human player may have in their force. Pass any value at or below 0 to clear the override. Does not remove existing units.	
+Usage: 		void override_human_player_max_units(int max_units)
+---------------------------------------------		
+Command: 	set_character_excluded_from_trespassing	
+Description: 	Set if character is excluded from trespassing calculations	
+Usage: 		set_character_excluded_from_trespassing(CHARACTER_SCRIPT_INTERFACE character, bool is_excluded)
+---------------------------------------------		
+Command: 	update_pending_battle	
+Description: 	Rebuild pending battle setup and autoresolve results, should be called after any model modification, when processing PendingBattle event	
+Usage: 		update_pending_battle()
+---------------------------------------------		
+Command: 	grant_faction_additional_vision	
+Description: 	Grant a faction an additional vision entry. This will persist through shroud recalculation. Durations <= 0 will be infinite	
+Usage: 		bool grant_faction_additional_vision(FACTION_SCRIPT_INTERFACE faction, REGION_DATA_SCRIPT_INTERFACE region, (optional) int duration)
+---------------------------------------------		
+Command: 	remove_faction_additional_vision	
+Description: 	Remove a faction additional vision entry. Will do nothing if the entry doesn't exist	
+Usage: 		bool remove_faction_additional_vision(FACTION_SCRIPT_INTERFACE faction, REGION_DATA_SCRIPT_INTERFACE region)
+---------------------------------------------		
+Command: 	set_character_cannot_disband	
+Description: 	Sets whether the provided character cannot disband	
+Usage: 		set_character_cannot_be_disbanded(CHARACTER_SCRIPT_INTERFACE character_details, bool cannot_disband)
+---------------------------------------------		
+Command: 	set_battle_lighting_env_override	
+Description: 	Set a lighting override for battles fought on the campaign. Pass an empty string, or nothing, to clear the override	
+Usage: 		set_battle_lighting_env_override((optional) String lighting_file)
+---------------------------------------------		
+Command: 	add_regular_pooled_resource_transaction	
+Description: 	Add a regular resource transaction to an entity. Must be defined in the database. 0 duration is infinite	
+Usage: 		add_regular_pooled_resource_transaction(EntityInterface (character, region, etc) entity, String resource_cost_key, card32 duration)
+---------------------------------------------		
+Command: 	remove_regular_pooled_resource_transaction	
+Description: 	Remove a regular resource transaction from an entity. An empty key will remove all transactions for the entity in the system	
+Usage: 		remove_regular_pooled_resource_transaction(EntityInterface (character, region, etc) entity, String resource_cost_key)
+---------------------------------------------		
+Command: 	apply_regular_reset_income	
+Description: 	Apply regular pooled resoure income and expenditure on provided pooled resource manager, for reset before income types	
+Usage: 		apply_regular_reset_income(POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE resource_manager)
+---------------------------------------------		
+Command: 	set_skip_faction_turn	
+Description: 	Set a faction to have their turn skipped, or not. A faction that is skipped is entirely removed from the turn sequence, no start/end of turn/round will be ran on them or objects they own	
+Usage: 		set_skip_faction_turn(FACTION_SCRIPT_INTERFACE faction, bool skip)
+---------------------------------------------		
+Command: 	skip_all_ai_factions	
+Description: 	Set all AI factions to have their turn skipped. A faction that is skipped is entirely removed from the turn sequence, no start/end of turn/round will be ran on them or objects they own	
+Usage: 		skip_all_ai_factions()
+---------------------------------------------		
+Command: 	unskip_all_factions	
+Description: 	Restore the turn of every faction in the game. A faction that is skipped is entirely removed from the turn sequence, no start/end of turn/round will be ran on them or objects they own	
+Usage: 		unskip_all_factions()
+---------------------------------------------		
+Command: 	toggle_character_hidden_from_view	
+Description: 	Hides or unhides a character from the view	
+Usage: 		toggle_character_hidden_from_view(CHARACTER_SCRIPT_INTERFACE, bool hide)
+---------------------------------------------		
+Command: 	force_terrain_patch_visible	
+Description: 	Forces a terrain patch to be visible, alongside its associated props, trees and areas of interest. If an empty string is passed, all patch areas will be visible	
+Usage: 		force_terrain_patch_visible(String campaign_terrain_patch_area_record_key)
+---------------------------------------------		
+Command: 	reset_forced_terrain_patch_visibility	
+Description: 	Resets the forced terrain patch visibility mask set with force_terrain_patch_visible	
+Usage: 		reset_forced_terrain_patch_visibility()
+---------------------------------------------

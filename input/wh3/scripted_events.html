@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+	<title>Scripted Events</title>
+	<link rel="stylesheet" href="stylesheet.css" type="text/css" />
+</head>
+
+<body>
+
+	<a name="top"></a>
+
+	<div id="container">
+
+		<div style="background-color:#f0f0f0" id="main">
+
+			<div style="background-color:#f0f0f0" id="navigation_left">
+				<br/>
+				<h1 class="navigation_header"><i>Script Documentation</i></h1>
+				<strong> > Scripting Homepage</strong>
+				<h2 style="background-color:#e7e7e7">Search</h2>
+				<ul>
+				<form id="search" class="search_form" onsubmit="return false">
+					<input class="search_input" type="text" placeholder="Search.."/><br />
+					<div id="search_dropdown" class="search_dropdown"></div>
+				</form>				<h2 style="background-color:#e7e7e7">Game Areas</h2>
+				<ul>
+					<li><a href="campaign/campaign_index.html">Campaign Index</a></li>
+					<li><a href="battle/battle_index.html">Battle Index</a></li>
+					<li><a href="frontend/frontend_index.html">Frontend Index</a></li>
+				<h2 style="background-color:#e7e7e7">Script Topics</h2>
+				<ul>
+					<li><a href="index.html">Main Index</a></li>
+					<li><strong> > Scripted Events</strong></li>
+					<li><a href="ui_scripting.html">UI Scripting</a></li>
+
+				</ul>
+				</ul>
+
+				<h2 style="background-color:#e7e7e7">On this page</h2>
+				<ul>
+									<li><a href="#class:scripted_events">Scripted Events</a></li>
+					<ul>
+						<li>&emsp;&emsp;<a href="#section:scripted_events:Listening for Events">Listening for Events</a></li>
+						<li>&emsp;&emsp;<a href="#section:scripted_events:Under the Hood">Under the Hood</a></li>
+						<li>&emsp;&emsp;<a href="#section:scripted_events:Adding New Events">Adding New Events</a></li>
+					</ul>
+
+				</ul>
+			</div>
+
+			<div style="background-color:#f0f0f0" id="navigation_right">
+				</ul>
+			</div>
+
+			<div id="content">
+				<a name="class:scripted_events"><h1 class="content_header">Scripted Events</h1></a>
+				<p>Script events provide a mechanism for the game to notify running scripts when a noteworthy change in the game or UI state has occurred. Scripts can listen for events by registering lua functions to be called when a particular event occurs. When the event occurs the game calls each listener function, allowing them to respond to the change in the state of the game. Examples of available events include <code>FactionTurnStart</code>, <code>PanelOpenedCampaign</code>, <code>CharacterCreated</code> and <code>ComponentLClickUp</code>. Additionally, the game provides a context object to each listener function it calls which encapsulates information about the state change that has occured - this object may be queried in script to find out more information about the event.</p>
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:scripted_events:Listening for Events"><h2 class="section_header">Listening for Events</h2></a>
+				</div>
+				<p>The script may register a listener for an event with the <code><a href="campaign/core.html#function:core:add_listener">core:add_listener</a></code> command on the core object.</p>
+				<p>Once registered, listeners may be removed with <code><a href="campaign/core.html#function:core:remove_listener">core:remove_listener</a></code>. Listeners may also be configured to stop themselves once they have triggered.</p>
+
+				<h4>Example - FactionTurnEnd listener:</h4>
+					Listen for a FactionTurnEnd event for a specific faction on a specific turn.
+				<div id="example_code"><code>
+					 core:add_listener(<br />
+					 &emsp;&emsp;&emsp;&emsp;"faction_turn_end_listener",<br />
+					 &emsp;&emsp;&emsp;&emsp;"FactionTurnEnd",<br />
+					 &emsp;&emsp;&emsp;&emsp;function(context)<br />
+					 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;return context:faction():name() == "wh_main_emp_empire" and cm:turn_number() == 7<br />
+					 &emsp;&emsp;&emsp;&emsp;end,<br />
+					 &emsp;&emsp;&emsp;&emsp;function()<br />
+					 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;empire_ending_turn_seven()<br />
+					 &emsp;&emsp;&emsp;&emsp;end,<br />
+					 &emsp;&emsp;&emsp;&emsp;false<br />
+					 );<br />
+				</code></div>
+				<div class="section_body">
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:scripted_events:Under the Hood"><h2 class="section_header">Under the Hood</h2></a>
+				</div>
+				<p>The events system is underpinned by a table called events which is created each time the script loads. This table contains many subtables, one for each event which may be triggered by the game.</p>
+				<p>The events table and related subtables may be seen in the <code>events.lua</code> file which lives in script folder.</p>
+				<p>By registering a listener, the script must add an element to one of these subtables that contains a function callback. When the game code wishes to trigger an event, it looks for the subtable in the events table that matches that event’s name, and calls each element within that subtable with the event context object as a single argument. To remove a listener, the script has to remove the appropriate listener entry within the appropriate subtable.</p>
+				<p>The core object provides another layer on top of this functionality which stores listeners by name, allowing them to also be removed by name, as well as a centralised interface for adding and removing listeners.</p>
+				<div class="section_body">
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:scripted_events:Adding New Events"><h2 class="section_header">Adding New Events</h2></a>
+				</div>
+				<p>When a new event type is added, a subtable with the same name must be added in events.lua. Without it, the game will not be able to trigger the event. In this case, an error message will be printed to the <code>Lua</code> console spool.</p>
+				<div class="section_body">
+				</div>
+
+
+			</div>
+
+		</div>
+
+		<div id="about">Last updated 20/01/2022 17:32:54</div>
+
+	</div>
+
+	<script src="searchdata.js"></script>
+	<script src="search.js"></script>
+	<script>const page_env = "frontpage"; const path_to_document_root = "";</script>
+
+</body>
+</html>
