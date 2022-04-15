@@ -13,7 +13,7 @@ function objectives_manager:get_uicomponent() end
 function objectives_manager:activate_objective_chain(chain_name, objective_key, number_param_a, number_param_b) end
 
 --- Marks a scripted objective as completed for the player to see. Note that it will remain on the scripted objectives panel until removed with objectives_manager:remove_objective.<br />
----Note also that is possible to mark an objective as complete before it has been registered with objectives_manager:set_objective - in this case, it is marked as complete as soon as objectives_manager:set_objective is called.
+--- Note also that is possible to mark an objective as complete before it has been registered with objectives_manager:set_objective - in this case, it is marked as complete as soon as objectives_manager:set_objective is called.
 ---@param objective_key string Objective key, from the scripted_objectives table.
 function objectives_manager:complete_objective(objective_key) end
 
@@ -51,14 +51,14 @@ function objectives_manager:activate_objective_chain_with_leader(chain_name, obj
 function objectives_manager:remove_objective(objective_key) end
 
 --- Sets up a scripted objective for the player, which appears in the scripted objectives panel. This objective can then be updated, removed, or marked as completed or failed by the script at a later time.<br />
----A key to the scripted_objectives table must be supplied with set_objective, and optionally one or two numeric parameters to show some running count related to the objective. To update these parameter values later, set_objective may be re-called with the same objective key and updated values.
+--- A key to the scripted_objectives table must be supplied with set_objective, and optionally one or two numeric parameters to show some running count related to the objective. To update these parameter values later, set_objective may be re-called with the same objective key and updated values.
 ---@param objective_key string Objective key, from the scripted_objectives table.
 ---@param param_a number First numeric objective parameter. If set, the objective will be presented to the player in the form [objective text]: [param a]. Useful for showing a running count of something related to the objective.
 ---@param param_b number Second numeric objective parameter. A value for the first must be set if this is used. If set, the objective will be presented to the player in the form [objective text]: [param a] / [param b]. Useful for showing a running count of something related to the objective.
 function objectives_manager:set_objective(objective_key, param_a, param_b) end
 
 --- Sets up a scripted objective for the player which appears in the scripted objectives panel, with a topic_leader. This objective can then be updated, removed, or marked as completed or failed by the script at a later time.<br />
----A key to the scripted_objectives table must be supplied with set_objective, and optionally one or two numeric parameters to show some running count related to the objective. To update these parameter values later, set_objective may be re-called with the same objective key and updated values.
+--- A key to the scripted_objectives table must be supplied with set_objective, and optionally one or two numeric parameters to show some running count related to the objective. To update these parameter values later, set_objective may be re-called with the same objective key and updated values.
 ---@param objective_key string Objective key, from the scripted_objectives table.
 ---@param param_a number First numeric objective parameter. If set, the objective will be presented to the player in the form [objective text]: [param a]. Useful for showing a running count of something related to the objective.
 ---@param param_b number Second numeric objective parameter. A value for the first must be set if this is used. If set, the objective will be presented to the player in the form [objective text]: [param a] / [param b]. Useful for showing a running count of something related to the objective.

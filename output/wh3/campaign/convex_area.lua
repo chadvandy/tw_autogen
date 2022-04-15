@@ -3,7 +3,7 @@
 local convex_area = {}
 
 --- Returns true if any element of the supplied object or collection is in the convex area, false otherwise.<br />
----The second boolean flag, if set to true, instructs is_in_area to disregard any routing or dead units in the collection.
+--- The second boolean flag, if set to true, instructs is_in_area to disregard any routing or dead units in the collection.
 ---@param collection any Object or collection to test. Supported object/collection types are vector, unit, scriptunit, scriptunits, units, army, armies, alliance and table.
 ---@param standing_only boolean Disregard routing or dead units.
 function convex_area:is_in_area(collection, standing_only) end
@@ -25,13 +25,13 @@ function convex_area:item(index) end
 function convex_area:standing_number_in_area(collection) end
 
 --- Returns true if any element of the supplied object or collection is NOT in the convex area, false otherwise.<br />
----The second boolean flag, if set to true, instructs not_in_area to disregard any routing or dead units in the collection.
+--- The second boolean flag, if set to true, instructs not_in_area to disregard any routing or dead units in the collection.
 ---@param collection any Object or collection to test. Supported object/collection types are vector, unit, scriptunit, scriptunits, units, army, armies, alliance and table.
 ---@param standing_only boolean Disregard routing or dead units.
 function convex_area:not_in_area(collection, standing_only) end
 
 --- Returns the number of elements in the target collection that fall in the convex area.<br />
----The second boolean flag, if set to true, instructs number_in_area to disregard any routing or dead units in the collection.
+--- The second boolean flag, if set to true, instructs number_in_area to disregard any routing or dead units in the collection.
 ---@param collection any Object or collection to test. Supported object types are unit, units, scriptunit, scriptunits, army, armies, alliance and table. 
 ---@param standing_only boolean Disregard routing or dead units.
 function convex_area:number_in_area(collection, standing_only) end

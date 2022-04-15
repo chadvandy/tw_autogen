@@ -33,8 +33,8 @@ function script_units:have_all_deployed() end
 function script_units:refresh() end
 
 --- Checks for a scriptedvalueregistry string with the supplied name, and attempts to apply the health values it contains to the units in this script_units collection. These svr strings would be set by either <a href="../campaign/campaign_manager.html#function:campaign_manager:save_army_state_to_svr">campaign_manager:save_army_state_to_svr in campaign or script_units:save_state_to_svr in battle.<br />
----This is primarily intended to spoof casualties on a battle army that is coming from campaign, but where the army in battle is not logically related to that campaign army (for example, when loading from a campaign into a scripted xml battle).<br />
----The function returns whether the application was successful. A successful application is one that modifies all units in the script_units collection (a "modification" from 100% health to 100% health would count), unless the allow_partial flag is set, in which case even a partial application would be considered successful. If the application is not successful then no changes are applied. Output is generated in all cases.
+--- This is primarily intended to spoof casualties on a battle army that is coming from campaign, but where the army in battle is not logically related to that campaign army (for example, when loading from a campaign into a scripted xml battle).<br />
+--- The function returns whether the application was successful. A successful application is one that modifies all units in the script_units collection (a "modification" from 100% health to 100% health would count), unless the allow_partial flag is set, in which case even a partial application would be considered successful. If the application is not successful then no changes are applied. Output is generated in all cases.
 ---@param name string Name of string saved in the scriptedvalueregistry.
 ---@param allow_partial boolean Allow a partial application of the state string. If this is set to true</code then the application will be successful even if not all sunits in this collection end up being touched.
 function script_units:load_state_from_svr(name, allow_partial) end
@@ -208,29 +208,29 @@ function script_units:get_enemy_alliance() end
 function script_units:contains(object) end
 
 --- Sets all script_unit objects in the collection into a group formation.<br />
----A list of formations can be found in raw data. Valid entries at time of writing are:<br />
----flanking<br />
----generic_directfire_defence<br />
----generic_directfire_attack<br />
----generic<br />
----generic_ranged_protected<br />
----generic_melee_heavy<br />
----generic_melee_super_heavy<br />
----assault_gates_formation<br />
----assault_reserves_formation<br />
----Multiple Selection Drag Out Land<br />
----Multiple Selection Deployable Drag Out Land<br />
----single_line<br />
----Multiple Selection Naval<br />
----Ambush Defence Block<br />
----test_melee_forward_simple<br />
----test_missile_forward_simple<br />
----river_ai_attack<br />
----river_ai_attack_narrow<br />
----river_ai_stop_and_shoot<br />
----river_ai_defend<br />
----stop_and_shoot_artillery<br />
----stop_and_shoot_ranged_direct
+--- A list of formations can be found in raw data. Valid entries at time of writing are:<br />
+--- flanking<br />
+--- generic_directfire_defence<br />
+--- generic_directfire_attack<br />
+--- generic<br />
+--- generic_ranged_protected<br />
+--- generic_melee_heavy<br />
+--- generic_melee_super_heavy<br />
+--- assault_gates_formation<br />
+--- assault_reserves_formation<br />
+--- Multiple Selection Drag Out Land<br />
+--- Multiple Selection Deployable Drag Out Land<br />
+--- single_line<br />
+--- Multiple Selection Naval<br />
+--- Ambush Defence Block<br />
+--- test_melee_forward_simple<br />
+--- test_missile_forward_simple<br />
+--- river_ai_attack<br />
+--- river_ai_attack_narrow<br />
+--- river_ai_stop_and_shoot<br />
+--- river_ai_defend<br />
+--- stop_and_shoot_artillery<br />
+--- stop_and_shoot_ranged_direct
 ---@param group_formation_name string group formation name
 function script_units:change_formation(group_formation_name) end
 
@@ -352,8 +352,8 @@ function script_units:attack_enemy_scriptunits(enemy_script_units, should_run) e
 function script_units:start_kill_aura(target_sunits, range, casualties_proportion) end
 
 --- Performs a disordered teleport of all units contained within this collection to within a radius around a position, both supplied. A disordered teleport preserves the current orientation and width of each unit, but teleports them within the radius of the position if they're not already inside.<br />
----The function is intended to assist in transitions between different sections of gameplay within a heavily scripted battle. We may wish for the player to start the latter section with their troops in unformed order, akin to where they were at the end of the previous section, but to ensure that none of the player's forces are too far away from a known position (i.e. where we'd like them to start the latter section of gameplay).<br />
----Script control of the teleported units is automatically released after this function is called.
+--- The function is intended to assist in transitions between different sections of gameplay within a heavily scripted battle. We may wish for the player to start the latter section with their troops in unformed order, akin to where they were at the end of the previous section, but to ensure that none of the player's forces are too far away from a known position (i.e. where we'd like them to start the latter section of gameplay).<br />
+--- Script control of the teleported units is automatically released after this function is called.
 ---@param target_position battle_vector target position
 ---@param radius_in_m number radius in m
 ---@param release_control boolean release control

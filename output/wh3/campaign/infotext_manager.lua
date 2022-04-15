@@ -30,7 +30,7 @@ function infotext_manager:attach_to_advisor(should_attach) end
 function infotext_manager:set_state_override(infotext_key, component_state_override) end
 
 --- After the infotext panel is undocked, sets the priority to the supplied value, and caches the value previously set. The infotext priority can later be restored with restore_detatched_infotext_priority.<br />
----The register_topmost flag can also be set to force the infotext to topmost.
+--- The register_topmost flag can also be set to force the infotext to topmost.
 function infotext_manager:cache_and_set_detached_infotext_priority() end
 
 --- Adds one or more lines of infotext to the infotext panel, simultaneously. The infotext box will expand to the final required size and then all infotext lines are faded on at the same time. The first argument may optionally be an initial delay - this is useful when triggering infotext at the same time as advice, as it gives the advisor an amount of time to animate on-screen before infotext begins to display, which looks more refined.
@@ -52,8 +52,8 @@ function infotext_manager:add_infotext(first_param, additional_infotext_strings)
 function infotext_manager:get_infotext_panel() end
 
 --- Marks a advice infotext key with an override that causes a button to be shown if or when it's later displayed. After a particular infotext key is marked with this function, should that infotext be later displayed with infotext_manager:add_infotext then that infotext line will display a button instead of normal text. When the player clicks that button the supplied on-click callback is called.<br />
----Should an on-display callback be supplied to this function, that callback is called each time the infotext entry is added i.e. when the button is shown. It is passed the button uicomponent as a single argument. This callback can do processing to determine if it wants to change the state of the button e.g. make it inactive.<br />
----Should an event be supplied to this function, the button will disable when the event is received.
+--- Should an on-display callback be supplied to this function, that callback is called each time the infotext entry is added i.e. when the button is shown. It is passed the button uicomponent as a single argument. This callback can do processing to determine if it wants to change the state of the button e.g. make it inactive.<br />
+--- Should an event be supplied to this function, the button will disable when the event is received.
 ---@param infotext_key string infotext key
 ---@param event_name_to_disable_button_on function on-click callback
 function infotext_manager:set_button_state_override(infotext_key, event_name_to_disable_button_on) end

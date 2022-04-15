@@ -3,23 +3,23 @@
 local campaignui = {}
 
 --- Sets the overlay mode to display by numeric id with a mode mask, and one or more regions to display it across by region key. Multiple region keys may be specified with separate arguments. Calling this function has no effect until the overlay is subsequently enabled with CampaignUI.SetOverlayVisible.<br />
----Valid overlay mode ids:<br />
----overlay mode iddescription<br />
----0DIPLOMACY_STATUS
----1DIPLOMACY_ATTITUDE_FACTION
----2DIPLOMACY_ATTITUDE_OWNER
----3RADAR
----4HISTORICAL_OWNERSHIP
----5REGION_GROWTH
----6REGION_HAPPINESS
----7REGION_SLAVES
----8REGION_FOOD
----9REGION_CORRUPTION
----10WINDS_OF_MAGIC
----11CLIMATE_SUITABILITY
----12GEOMATIC_WEB
----13TUTORIAL_REGION_HIGHLIGHT
----14ATTRITION_FOR_SELECTED_CHARACTER
+--- Valid overlay mode ids:<br />
+--- overlay mode iddescription<br />
+--- 0DIPLOMACY_STATUS
+--- 1DIPLOMACY_ATTITUDE_FACTION
+--- 2DIPLOMACY_ATTITUDE_OWNER
+--- 3RADAR
+--- 4HISTORICAL_OWNERSHIP
+--- 5REGION_GROWTH
+--- 6REGION_HAPPINESS
+--- 7REGION_SLAVES
+--- 8REGION_FOOD
+--- 9REGION_CORRUPTION
+--- 10WINDS_OF_MAGIC
+--- 11CLIMATE_SUITABILITY
+--- 12GEOMATIC_WEB
+--- 13TUTORIAL_REGION_HIGHLIGHT
+--- 14ATTRITION_FOR_SELECTED_CHARACTER
 ---@param overlay_mode number Overlay mode (see lookup table above).
 ---@param overlay_mode_mask number When showing the corruption overlay, this value specifies a corruption type (in order within the corruption_types table). When showing the happiness overlay, supplying a value other than 0 shows happiness trending rather than current happiness.
 function campaignui:SetOverlayMode(overlay_mode, overlay_mode_mask) end
@@ -86,7 +86,7 @@ function campaignui:ClearBuildingChainWhitelist() end
 function campaignui:ToggleScreenCover(enable_cover) end
 
 --- Allows the script running on one machine in a multiplayer game to cause a scripted event, UITrigger, to be triggered on all machines in that game. By listening for this event, scripts on all machines in a multiplayer game can therefore respond to a UI event occuring on just one of those machines.<br />
----An optional string event id and number faction cqi may be specified. If specified, these values are passed from the triggering script through to all listening scripts, using the context objects supplied with the events. The event id may be accessed by listening scripts by calling &lt;context&gt;:trigger() on the supplied context object, and can be used to identify the script event being triggered. The faction cqi may be accessed by calling &lt;context&gt;:faction_cqi() on the context object, and can be used to identify a faction associated with the event. Both must be specified, or neither. 
+--- An optional string event id and number faction cqi may be specified. If specified, these values are passed from the triggering script through to all listening scripts, using the context objects supplied with the events. The event id may be accessed by listening scripts by calling &lt;context&gt;:trigger() on the supplied context object, and can be used to identify the script event being triggered. The faction cqi may be accessed by calling &lt;context&gt;:faction_cqi() on the context object, and can be used to identify a faction associated with the event. Both must be specified, or neither. 
 ---@param faction_cqi number faction cqi
 ---@param event_id string event id
 function campaignui:TriggerCampaignScriptEvent(faction_cqi, event_id) end
@@ -103,6 +103,6 @@ function campaignui:QuitToWindows() end
 function campaignui:WhiteListEventTypeInUI(event_type) end
 
 --- Returns whether or not an event of the specified type exists in the display queue (i.e. is being displayed or is pending to be displayed) and requires a response. Event types are specified by a compound key from the event_feed_targeted_events table - the key must be specified by concatenating the event and target> field values for a given record from that table.<br />
----This is of most use for testing if a dilemma is currently active.
+--- This is of most use for testing if a dilemma is currently active.
 ---@param event_type string event type
 function campaignui:DoesEventTypeRequireResponse(event_type) end

@@ -3,7 +3,7 @@
 local narrative = {}
 
 --- Adds a data override for a particular data key to the narrative system. This override is for all playable factions in the campaign, rather than any specific faction.<br />
----If narrative.get is later called and the data key supplied to it matches the campaign data override, then the data associated with that override is returned by narrative.get. Note that faction data overrides added with narrative.add_data_for_faction are checked before campaign-wide overrides.
+--- If narrative.get is later called and the data key supplied to it matches the campaign data override, then the data associated with that override is returned by narrative.get. Note that faction data overrides added with narrative.add_data_for_faction are checked before campaign-wide overrides.
 function narrative:add_data_for_campaign() end
 
 --- Helper function which prints output about narrative improvements to do.
@@ -25,12 +25,12 @@ function narrative:unimplemented_output(message) end
 function narrative:start() end
 
 --- Adds a playable faction, by key, to the narrative data. Calls to this function should be made within setup functions that are passed to narrative.add_data_setup_callback.<br />
----Factions will need to be added to the narrative data with this function before any data can be added for them with narrative.add_data_for_faction.
+--- Factions will need to be added to the narrative data with this function before any data can be added for them with narrative.add_data_for_faction.
 ---@param faction_key string faction key
 function narrative:add_playable_faction(faction_key) end
 
 --- Adds a callback which sets up data for the narrative system. The callback can make calls to functions such as narrative.add_playable_faction and narrative.add_data_for_faction to set up narrative override data.<br />
----Callbacks added here will be called when narrative.start is called.
+--- Callbacks added here will be called when narrative.start is called.
 ---@param callback function callback
 function narrative:add_data_setup_callback(callback) end
 
@@ -40,8 +40,8 @@ function narrative:add_data_setup_callback(callback) end
 function narrative:output_chain_header(chain_name, faction_key) end
 
 --- Adds a data override for a faction within the narrative system. Factions must have been added with narrative.add_playable_faction before data overrides can be added for them.<br />
----If narrative.get is later called and the faction and data keys supplied to it match a data override, then the data associated with that override is returned. This can be used to override data keys for specific factions.<br />
----Calls to narrative.get should be made within the narrative event declarations.
+--- If narrative.get is later called and the faction and data keys supplied to it match a data override, then the data associated with that override is returned. This can be used to override data keys for specific factions.<br />
+--- Calls to narrative.get should be made within the narrative event declarations.
 ---@param faction_key string faction key
 ---@param data_key string data key
 ---@param data any data

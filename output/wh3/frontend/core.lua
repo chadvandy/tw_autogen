@@ -149,17 +149,17 @@ function custom_context:add_data_with_key(value, function_name) end
 function custom_context:svr_load_registry_string() end
 
 --- adds data to the custom context object. Supported data types:<br />
----boolean: will be accessible to the receiving script as context.bool<br />
----string: will be accessible to the receiving script as context.string<br />
----region: will be accessible to the receiving script using context:region()<br />
----character: will be accessible to the receiving script using context:character()<br />
----faction: will be accessible to the receiving script using context:faction()<br />
----component: will be accessible to the receiving script using context:component()<br />
----military_force: will be accessible to the receiving script using context:military_force()<br />
----pending_battle: will be accessible to the receiving script using context:pending_battle()<br />
----garrison_residence: will be accessible to the receiving script using context:garrison_residence()<br />
----building: will be accessible to the receiving script using context:building()<br />
----A limitation of the implementation is that only one object of each type may be placed on the custom context.
+--- boolean: will be accessible to the receiving script as context.bool<br />
+--- string: will be accessible to the receiving script as context.string<br />
+--- region: will be accessible to the receiving script using context:region()<br />
+--- character: will be accessible to the receiving script using context:character()<br />
+--- faction: will be accessible to the receiving script using context:faction()<br />
+--- component: will be accessible to the receiving script using context:component()<br />
+--- military_force: will be accessible to the receiving script using context:military_force()<br />
+--- pending_battle: will be accessible to the receiving script using context:pending_battle()<br />
+--- garrison_residence: will be accessible to the receiving script using context:garrison_residence()<br />
+--- building: will be accessible to the receiving script using context:building()<br />
+--- A limitation of the implementation is that only one object of each type may be placed on the custom context.
 ---@param context_data any Data object to add
 function custom_context:add_data(context_data) end
 

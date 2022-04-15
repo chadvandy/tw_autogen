@@ -21,7 +21,7 @@ function UIC:GetCurrentStateImageDimensions(state_image_index) end
 function UIC:SetDockOffset(x_offset, y_offset) end
 
 --- Divorces the supplied child uicomponent from the subject uicomponent. The child uicomponent should be supplied by its address, which may be retrieved with uicomponent:Address.<br />
----Once divorced, the child uicomponent is not destroyed but goes into an orphan list, from where it may later be adopted by another uicomponent. Orphaned uicomponents are not rendered.
+--- Once divorced, the child uicomponent is not destroyed but goes into an orphan list, from where it may later be adopted by another uicomponent. Orphaned uicomponents are not rendered.
 ---@param child UIC_Address child
 function UIC:Divorce(child) end
 
@@ -164,7 +164,7 @@ function UIC:GetCurrentStateImageFlip(state_image_index) end
 function UIC:CanResizeCurrentStateImageWidth(state_image_index) end
 
 --- Compels this uicomponent to adopt a supplied uicomponent, which will then become a child of this uicomponent. The supplied uicomponent is removed from its previous parent. The target uicomponent must be supplied by its address, which may be retrieved with uicomponent:Address.<br />
----An insertion index may optionally be supplied, which determines where in this uicomponent's list of children this new child will be inserted. This can determine the display order in certain circumstances. By default, the new child is added to the end of the list.
+--- An insertion index may optionally be supplied, which determines where in this uicomponent's list of children this new child will be inserted. This can determine the display order in certain circumstances. By default, the new child is added to the end of the list.
 ---@param uicomponent_address UIC_Address uicomponent address
 ---@param insertion_index number insertion index
 function UIC:Adopt(uicomponent_address, insertion_index) end
@@ -178,7 +178,7 @@ function UIC:WidthOfTextLine(text_line) end
 function UIC:GetCurrentStateImageWidth(state_image_index) end
 
 --- Sets a new image path for an image associated with the uicomponent, replacing the original image with something new. Multiple images can be associated with a uicomponent - the index of the image to overwrite can be set with the second parameter or by setting a "script_icon_index" user property on the uicomponent with uicomponent:SetProperty. If an index value is not set with either of these methods then the first image, image 0, is swapped.<br />
----The uicomponent:GetImagePath and uicomponent:NumImages functions can be used to query images related to a uicomponent.
+--- The uicomponent:GetImagePath and uicomponent:NumImages functions can be used to query images related to a uicomponent.
 ---@param image_path string Path of image to load, from the working data folder.
 ---@param image_index number Index of image associated with this uicomponent to overwrite the path of. This takes precedence over any set "script_icon_index" property.
 ---@param resize boolean Resize the image metric to the size of the image being specified. If this is not set, the incoming image will take the size of the old.
@@ -225,7 +225,7 @@ function UIC:SetStateText(localised_text, text_source) end
 function UIC:SetCurrentStateImageMargins(state_image_index, top_margin, right_margin, bottom_margin, left_margin) end
 
 --- Finds and returns a child of this uicomponent by string name or by numeric index. If a numeric index is supplied, the immediate child uicomponent corresponding to this number is returned. If a string name is supplied, a recursive search is made through all children/descendants of this uicomponent. The first that is found with a matching name is returned.<br />
----If the search target was not found then nil is returned. If it was found then it is returned as a component address, which must be cast to a uicomponent script object using the UIComponent function. The find_uicomponent function provided by the script libraries does this automatically, so it's recommended to use that function in place of this function.
+--- If the search target was not found then nil is returned. If it was found then it is returned as a component address, which must be cast to a uicomponent script object using the UIComponent function. The find_uicomponent function provided by the script libraries does this automatically, so it's recommended to use that function in place of this function.
 ---@param identifier any Search target, identified by index number or string name.
 ---@param assert_on_fail boolean Assert if no matching uicomponent could be found.
 function UIC:Find(identifier, assert_on_fail) end
@@ -349,7 +349,7 @@ function UIC:FindByScriptTag(script_tag_unique_id_that_has_been_specified_in_the
 function UIC:InterfaceFunction(function_name, varargs) end
 
 --- Instructs this uicomponent to steal a game shortcut key, so that keypresses of that type are redirected to this uicomponent which will handle them. If a shortcut is stolen it must be released again at some suitable later time for the default keypress behaviour to be restored.<br />
----Keyboard shortcuts are listed in data\text\default_keys.xml.
+--- Keyboard shortcuts are listed in data\text\default_keys.xml.
 ---@param should_steal boolean If set to true, the key must be specified as the second argument. If false, all keys stolen by this uicomponent will be released so no second argument is required.
 ---@param key_type string Key type to steal.
 function UIC:StealShortcutKey(should_steal, key_type) end
@@ -406,7 +406,7 @@ function UIC:SimulateKeyDown(key_id) end
 function UIC:SimulateMouseOff() end
 
 --- Activates a priority lock on the uicomponent. This disables all uicomponents with a priority value less than the priority of the lock. A priority may optionally be specified - if not, the uicomponent's own priority is used.<br />
----uicomponent:UnLockPriority must be called after calling this function to restore normal ui functionality.
+--- uicomponent:UnLockPriority must be called after calling this function to restore normal ui functionality.
 ---@param priority number priority
 function UIC:LockPriority(priority) end
 
@@ -471,7 +471,7 @@ function UIC:GetImagePath(image_index) end
 function UIC:GetCurrentStateImageOpacity(state_image_index) end
 
 --- Many uicomponents are set to resize based on the text they are displaying. Despite this, it is sometimes desireable to resize these uicomponents (to set a different width for a text box that can grow, for example). However, any attempt by script to resize these uicomponents will be overriden by the text resizing behaviour.<br />
----This function provides a method of working around this, temporarily disabling the text-resizing behaviour so that the desired resize can be applied.
+--- This function provides a method of working around this, temporarily disabling the text-resizing behaviour so that the desired resize can be applied.
 ---@param width number Width in pixels.
 ---@param height number Height in pixels.
 function UIC:ResizeTextResizingComponentToInitialSize(width, height) end

@@ -9,7 +9,7 @@ function active_pointer:set_panel_width() end
 function active_pointer:set_close_button_component() end
 
 --- Sets up a listener that attempts to show this active pointer once the specified active pointer closes. Unlike active_pointer:wait_for_active_pointer this doesn't demand that the specified active pointer must have first been shown before this active pointer can be shown - this active pointer could trigger before the specified active pointer (from a different event, for example).<br />
----This active pointer must have registered itself in the advice history for this function to work.
+--- This active pointer must have registered itself in the advice history for this function to work.
 ---@param active_pointer_name string Name of active pointer to wait for. The active pointer being waited for must have registered itself in the advice history.
 ---@param delay_override number Delay override, which will be supplied to active_pointer:show_when_ready if this monitor tries to show the pointer. This is the delay between the uicomponent stopping moving/becoming visible and the text pointer actually being shown. This should be supplied in seconds in campaign, and in milliseconds in battle and the frontend. The default value is 1 second, or 1000ms, or whatever has been set with active_pointer:set_default_delay.
 ---@param timeout_override number Timeout period override, which will be supplied to active_pointer:show_when_ready if this monitor tries to show the pointer. The timeout is the elapsed period after which the show_when_ready process will halt if the target uicomponent has not stopped moving or become visible. In campaign this should be supplied in seconds, and defaults to either 5 or whatever value has been set with active_pointer:set_default_timeout. In battle and the frontend, the timeout period is set in milliseconds and defaults to 5000.
@@ -59,7 +59,7 @@ function active_pointer:get_text_label() end
 function active_pointer:set_text_show_animation() end
 
 --- Sets the active pointer to trigger when a script event is received, with an optional conditional check that must be passed.<br />
----This active pointer must have registered itself in the advice history for this function to work.
+--- This active pointer must have registered itself in the advice history for this function to work.
 ---@param event string Event name.
 ---@param condition boolean/function Conditional check. This may be omitted, or true may be supplied to always trigger whenever the supplied event is received.
 ---@param delay_override number Delay override, which will be supplied to active_pointer:show_when_ready if this monitor tries to show the pointer. This is the delay between the uicomponent stopping moving/becoming visible and the text pointer actually being shown. This should be supplied in seconds in campaign, and in milliseconds in battle and the frontend. The default value is 1 second, or 1000ms, or whatever has been set with active_pointer:set_default_delay.
@@ -67,8 +67,8 @@ function active_pointer:set_text_show_animation() end
 function active_pointer:show_on_event(event, condition, delay_override, timeout_override) end
 
 --- Prevents this active pointer from being shown before another active pointer has been shown. An active pointer may wait for multiple other active pointers, each wait being registered with a call to this function. Should multiple waits be set up for an active pointer, it will fail to display until all active pointers being waited for have finished showing.<br />
----This function sets up an active_pointer:show_after_active_pointer process automatically, which attempts to show this pointer once the active pointer being waited for is dismissed.<br />
----This active pointer must have registered itself in the advice history for this function to work.
+--- This function sets up an active_pointer:show_after_active_pointer process automatically, which attempts to show this pointer once the active pointer being waited for is dismissed.<br />
+--- This active pointer must have registered itself in the advice history for this function to work.
 ---@param active_pointer_name string Name of active pointer to wait for. The active pointer being waited for must have registered itself in the advice history.
 ---@param delay_override number Delay override, which will be supplied to active_pointer:show_when_ready if this monitor tries to show the pointer. This is the delay between the uicomponent stopping moving/becoming visible and the text pointer actually being shown. This should be supplied in seconds in campaign, and in milliseconds in battle and the frontend. The default value is 1 second, or 1000ms, or whatever has been set with active_pointer:set_default_delay.
 ---@param timeout_override number Timeout period override, which will be supplied to active_pointer:show_when_ready if this monitor tries to show the pointer. The timeout is the elapsed period after which the show_when_ready process will halt if the target uicomponent has not stopped moving or become visible. In campaign this should be supplied in seconds, and defaults to either 5 or whatever value has been set with active_pointer:set_default_timeout. In battle and the frontend, the timeout period is set in milliseconds and defaults to 5000.

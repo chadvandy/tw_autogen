@@ -93,10 +93,10 @@ function common:trigger_shortcut(shortcut_name) end
 function common:set_custom_loading_screen_text(key) end
 
 --- Returns the current advice level setting. The following table indicates potential returned values:<br />
----Returned ValueAdvice Level<br />
----0Minimal
----1Low
----2High
+--- Returned ValueAdvice Level<br />
+--- 0Minimal
+--- 1Low
+--- 2High
 function common:get_advice_level() end
 
 --- Pass a bool for enabling/disabling all shortcuts
@@ -196,7 +196,7 @@ function common:vfs_working_directory() end
 function common:VTune_pause_resume(pause) end
 
 --- Potentially adds the supplied trait points to the trait-recipient in the supplied context. When called, the function generates a random number between 0-100, and if this number is less than or equal to the supplied chance value then the trait points are added. The trait recipient is specified in the supplied context object, and the type of recipient must also be specified by a supplied string.<br />
----This function is somewhat archaic and should only be used in exported trait scripts. For adding traits to characters in general scripts force_add_trait is greatly preferred.
+--- This function is somewhat archaic and should only be used in exported trait scripts. For adding traits to characters in general scripts force_add_trait is greatly preferred.
 ---@param trait_key string Trait key, from the traits table.
 ---@param applicable_to string Specifies the type of object to apply the trait to. Valid strings here are agent (for all characters), region and unit. Not all recipient types may currently be supported.
 ---@param points number Number of trait points to add, if successful.
@@ -225,7 +225,7 @@ function common:take_screenshot(screenshot_filename) end
 function common:num_movies_that_can_play_in_parallel() end
 
 --- Potentially adds the supplied ancillary to the character in the supplied context. When called, the function generates a random number between 0-100, and if this number is less than or equal to the supplied chance value, then the ancillary is added. The character to add the ancillary to is specified in the supplied context object, which must be a context object created by a character event (e.g. CharacterCompletedBattle, CharacterCreated).<br />
----This function is somewhat archaic and should only be used in exported ancillary scripts. For general script usage force_add_ancillary is greatly preferred.
+--- This function is somewhat archaic and should only be used in exported ancillary scripts. For general script usage force_add_ancillary is greatly preferred.
 ---@param ancillary_key string Ancillary key, from the ancillaries table.
 ---@param chance number Percentage chance that the ancillary will actually be added.
 ---@param context userdata Context object, provided by a character event.

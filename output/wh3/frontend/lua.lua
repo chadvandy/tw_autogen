@@ -38,8 +38,8 @@ function math:gsub() end
 function math:format() end
 
 --- Provides an interface to the pseudo-random number generator provided by ANSI C. This function returns a random number between two optionally-supplied limits. If no arguments are supplied, those limits are 0 and 1. If one argument a is supplied, those limits are 1 and a. If two arguments a and b are supplied then those limits are a and b.<br />
----If no arguments are supplied the returned value is real, whereas if any arguments are supplied the returned value is an integer.<br />
----Note that use of this function is discouraged, as it will generate different results on different clients in a multiplayer game. Acting upon the result of this function in multiplayer scripts will likely cause desyncs.
+--- If no arguments are supplied the returned value is real, whereas if any arguments are supplied the returned value is an integer.<br />
+--- Note that use of this function is discouraged, as it will generate different results on different clients in a multiplayer game. Acting upon the result of this function in multiplayer scripts will likely cause desyncs.
 ---@param first_limit number first limit
 ---@param second_limit number second limit
 function math:random(first_limit, second_limit) end

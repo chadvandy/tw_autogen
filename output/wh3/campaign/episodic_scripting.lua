@@ -47,7 +47,7 @@ function episodic_scripting:remove_time_trigger(id) end
 function episodic_scripting:create_force_with_existing_general(character_lookup, faction_key, unit_list, region_key, x, y, id) end
 
 --- Spawns an agent of the specified type at the specified logical position.<br />
----See the Model Hierarchy documentation for more information on the FACTION_SCRIPT_INTERFACE interface.
+--- See the Model Hierarchy documentation for more information on the FACTION_SCRIPT_INTERFACE interface.
 ---@param faction FACTION_SCRIPT_INTERFACE Faction interface for the agent's faction.
 ---@param x number x logical co-ordinate.
 ---@param y number y logical co-ordinate.
@@ -68,7 +68,7 @@ function episodic_scripting:exempt_province_from_tax_for_all_factions_and_set_de
 function episodic_scripting:force_add_ancillary(target_character, ancillary_key, force_equip, suppress_event_feed) end
 
 --- Attempts to trigger a dilemma from database records with one or more target game objects. The game object or objects to associate the dilemma with are specified by command-queue index. The dilemma will need to pass any conditions set up in the cdir_events_dilemma_option_junctions table in order to trigger.<br />
----A value of 0 may be supplied to omit a particular type of target.
+--- A value of 0 may be supplied to omit a particular type of target.
 ---@param faction_cqi number Command-queue index of the faction to which the dilemma is issued. This must be supplied.
 ---@param dilemma_key string Dilemma key, from the dilemmas table.
 ---@param target_faction_cqi number Command-queue index of a target faction. 0 may be specified to omit this target (and other target arguments following this one).
@@ -123,8 +123,8 @@ function episodic_scripting:cook_recipe(faction, recipe) end
 function episodic_scripting:rollback_linked_ritual_chain(ritual_chain_key, stage) end
 
 --- Add an interactable campaign marker of a specified type to the campaign map at a specified location. A radius around the marker is specified. As matching campaign characters enter or leave this radius then AreaEntered/AreaExited events will be triggered.<br />
----Subculture and faction keys can be specified in order to filter what campaign characters should trigger the proximity events.<br />
----Interactable campaign markers can be used for game features such as encounters at sea.
+--- Subculture and faction keys can be specified in order to filter what campaign characters should trigger the proximity events.<br />
+--- Interactable campaign markers can be used for game features such as encounters at sea.
 ---@param unique_id string Unique id for this campaign marker, by which it may be later removed with cm:remove_interactable_campaign_marker.
 ---@param marker_info string Marker info key. This should match a record from the campaign_interactable_marker_infos table.
 ---@param x number Logical x position for the marker.
@@ -286,8 +286,8 @@ function episodic_scripting:make_region_visible_in_shroud(faction_key, region_ke
 function episodic_scripting:add_growth_points_to_region(region_key, growth_points) end
 
 --- Enables or disables event feed events by category, subcategory or event. Any of these types can be empty. This differs from event feed suppression in that messages blocked by this function will be discarded, never to be shown. This function is of most use for temporarily or momentarily blocking certain event messages that the game produces naturally for some reason. This function should be used with care, as it can cause a softlock if a dilemma is triggered while disabled.<br />
----For each specifier type (category/subcategory/event), multiple specifiers may be supplied in a single string, separated by semicolons. A category string of "wh_event_category_agent;wh_event_category_character" will block/unblock all event messages related to agents and characters, for example.<br />
----Note that the event type lists are independent of one another, so if an event message is blocked by category, this restriction will not be lifted by unblocking by subcategory.
+--- For each specifier type (category/subcategory/event), multiple specifiers may be supplied in a single string, separated by semicolons. A category string of "wh_event_category_agent;wh_event_category_character" will block/unblock all event messages related to agents and characters, for example.<br />
+--- Note that the event type lists are independent of one another, so if an event message is blocked by category, this restriction will not be lifted by unblocking by subcategory.
 ---@param should_disable boolean Disable the event messages specified by the supplied filters. Supply false here to re-enable previously disabled event messages.
 ---@param category string Event feed category to block, from the event_feed_categories table. Supply a blank string to not filter by category.
 ---@param subcategory string Event feed subcategory to block, from the event_feed_subcategories table. Supply a blank string to not filter by subcategory.
@@ -316,7 +316,7 @@ function episodic_scripting:cai_strategic_stance_manager_block_all_stances_but_t
 function episodic_scripting:trigger_custom_mission(faction_key, mission_key) end
 
 --- Creates an army or a navy commanded by a specified existing character at the specified position, belonging to the specified faction, with the specified list of units.<br />
----This command is distinct from cm:create_force in that it forces factions who can see the created force to be diplomatically aware of the force's faction.
+--- This command is distinct from cm:create_force in that it forces factions who can see the created force to be diplomatically aware of the force's faction.
 ---@param faction_key string Faction key from the factions table.
 ---@param unit_list string Unit list. This should be a comma-separated list of unit keys from the main_units table.
 ---@param region_key string Region in which the force is created, from the campaign_map_regions table.
@@ -369,12 +369,12 @@ function episodic_scripting:convert_force_to_type(force, type) end
 function episodic_scripting:faction_set_unit_purchasable_effect_availability(faction_key, purchasable_effect_key, available) end
 
 --- Prevents all characters in the specified faction from moving, regardless of where the move order comes from, until movement is subsequently re-enabled with cm:enable_movement_for_faction or cm:enable_movement_for_character. Note that characters created in the faction after this restriction is applied will not have this restriction applied and will be able to move.<br />
----This setting is saved into the campaign save file when the game is saved, and automatically re-established when the campaign is reloaded.
+--- This setting is saved into the campaign save file when the game is saved, and automatically re-established when the campaign is reloaded.
 ---@param faction_key string Faction key, from the factions table.
 function episodic_scripting:disable_movement_for_faction(faction_key) end
 
 --- Adds a restriction preventing a specified unit from being a recruitment option for a specified faction.<br />
----This setting is saved into the campaign save file when the game is saved, and automatically re-established when the campaign is reloaded.
+--- This setting is saved into the campaign save file when the game is saved, and automatically re-established when the campaign is reloaded.
 ---@param unit_key string Unit key, from the main_units table.
 ---@param faction_key string Faction key, from the factions table.
 ---@param tooltip_key string Key of localised text in full [table]_[field]_[key] format to show as a tooltip on the restricted unit icon. This can be omitted.
@@ -401,7 +401,7 @@ function episodic_scripting:remove_interactable_campaign_marker(unique_id) end
 function episodic_scripting:force_agent_action_success_for_human(force_success) end
 
 --- Orders the specified character to attack a target character through an attack of opportunity - either an interception or an ambush. Note that this function requires character cqis to be passed in as arguments and not lookup strings.<br />
----The two characters must be of different factions that are at war and neither may be garrisoned for the action to succeed.
+--- The two characters must be of different factions that are at war and neither may be garrisoned for the action to succeed.
 ---@param attacker_cqi number Command-queue index of the attacking character.
 ---@param target_cqi number Command-queue index of the target character.
 ---@param is_ambush boolean Set to true to ambush, or false to intercept.
@@ -446,7 +446,7 @@ function episodic_scripting:force_remove_ancillary_from_faction(faction, ancilla
 function episodic_scripting:unlock_cooking_ingredient(faction, ingredient) end
 
 --- Orders the specified character to move to a specified logical position. This is equivalent to the player or AI issuing the same order, and as such should only be done on that faction's turn.<br />
----Note that if the character is in a settlement, or the intended destination is a settlement, an enemy army, or another kind of special obstacle then it's likely that a different type of order is required - see cm:join_garrison, cm:leave_garrison and cm:attack, for example.
+--- Note that if the character is in a settlement, or the intended destination is a settlement, an enemy army, or another kind of special obstacle then it's likely that a different type of order is required - see cm:join_garrison, cm:leave_garrison and cm:attack, for example.
 ---@param character_lookup string Character lookup string. For more information, see Character Lookups.
 ---@param x number Logical x co-ordinate of target position.
 ---@param y number Logical y co-ordinate of target position.
@@ -492,18 +492,18 @@ function episodic_scripting:filesystem_lookup(path) end
 function episodic_scripting:disable_movement_for_ai_under_shroud(player_faction_key, ai_faction_key) end
 
 --- Sets the tax rate for a specified faction. The tax rate may be one of the following integer values:<br />
----ValueDescription<br />
----0minimal
----1low
----2normal
----3high
----4extortionate
+--- ValueDescription<br />
+--- 0minimal
+--- 1low
+--- 2normal
+--- 3high
+--- 4extortionate
 ---@param faction_key string Faction key, from the factions table.
 ---@param tax_rate number Tax rate, from the table above.
 function episodic_scripting:set_tax_rate(faction_key, tax_rate) end
 
 --- Modifies the per-turn modifier of a scripted food type for a specified faction. This is the amount of food of this type this faction will earn per-turn.<br />
----The supplied value is added to the existing modifier value.
+--- The supplied value is added to the existing modifier value.
 ---@param faction_key string Faction key, from the factions table.
 ---@param food_factor_key string Food factor key, from the food_factors table.
 ---@param modifier number Modifier.
@@ -562,8 +562,8 @@ function episodic_scripting:faction_imprison_character(imprisoning_faction, impr
 function episodic_scripting:apply_effect_bundle_to_character(effect_bundle, character, turns) end
 
 --- Activates or deactivates the episodic scripting event feed suppression system. Once activated, event messages of all types will be withheld from triggering until they are either whitelisted with cm:whitelist_event_feed_event_type or until suppression is lifted again with a subsequent call to this function. Once one of these two actions occurs, any event messages previously blocked will be triggered.<br />
----See also the equivalent UI-side suppression function CampaignUI.SuppressAllEventTypesInUI. This function should be used with care, as it can cause softlocks if dilemmas are suppressed. The UI-side functions are generally safer to use.<br />
----Message suppression using this system should not be maintained over the end-turn sequence.
+--- See also the equivalent UI-side suppression function CampaignUI.SuppressAllEventTypesInUI. This function should be used with care, as it can cause softlocks if dilemmas are suppressed. The UI-side functions are generally safer to use.<br />
+--- Message suppression using this system should not be maintained over the end-turn sequence.
 ---@param activate_suppression boolean activate suppression
 function episodic_scripting:suppress_all_event_feed_event_types(activate_suppression) end
 
@@ -632,7 +632,7 @@ function episodic_scripting:teleport_to(character_lookup, x, y) end
 function episodic_scripting:clear_active_cooking_recipe(faction) end
 
 --- Spawns a rogue army of a specified rogue army faction, at a specified position. This command will fail if the rogue army is already alive or is flagged to naturally spawn.<br />
----string faction key, Faction key, from the factions database table.
+--- string faction key, Faction key, from the factions database table.
 ---@param x number Logical x co-ordinate.
 ---@param y number Logical y co-ordinate.
 function episodic_scripting:spawn_rogue_army(x, y) end
@@ -650,7 +650,7 @@ function episodic_scripting:cai_strategic_stance_manager_set_stance_blocking_bet
 function episodic_scripting:set_character_unique(character_lookup, is_unique) end
 
 --- Disables a pathfinding restriction layer. These are layers that can be built into the campaign map data that prevent the player from being able to move into an area on the map. By calling this function to lift a restriction, the player will be able to pathfind into the new area.<br />
----Note that the enable_scripted_pathfinding_restrictions campaign variable must be set for restrictions to work - create an entry for this variable and the campaign in the campaigns_campaign_variables_junctions table.
+--- Note that the enable_scripted_pathfinding_restrictions campaign variable must be set for restrictions to work - create an entry for this variable and the campaign in the campaigns_campaign_variables_junctions table.
 ---@param id number Pathfinding restriction layer id to un-restrict. Layers are numbered sequentially - lifting the restriction on one layer will also lift it on all layers with a lower numerical id.
 function episodic_scripting:disable_pathfinding_restriction(id) end
 
@@ -691,7 +691,7 @@ function episodic_scripting:remove_effect_bundle_from_faction_province(effect_bu
 function episodic_scripting:create_new_custom_effect_bundle(base_effect_bundle) end
 
 --- Adds a restriction preventing a specified building from being a construction option for any faction.<br />
----This setting is saved into the campaign save file when the game is saved, and automatically re-established when the campaign is reloaded.
+--- This setting is saved into the campaign save file when the game is saved, and automatically re-established when the campaign is reloaded.
 ---@param building_key string Building key, from the building_levels table.
 ---@param tooltip_key string Key of localised text in full [table]_[field]_[key] format to show as a tooltip on the restricted building icon. This can be omitted.
 function episodic_scripting:add_event_restricted_building_record(building_key, tooltip_key) end
@@ -714,37 +714,37 @@ function episodic_scripting:region_slot_instantly_upgrade_building() end
 function episodic_scripting:make_region_seen_in_shroud(faction_key, region_key) end
 
 --- Disables or re-enables availability of a set of diplomacy types between factions described in the faction and target specifiers. Specifiers can be all, faction:&lt;faction_key&gt;, subculture:&lt;subculture_key&gt; or culture:&lt;culture_key&gt;.<br />
----The diplomacy types to be allowed or disallowed are specified with a bitmask. Diplomacy types can be included in the bitmask by adding the number corresponding to the diplomacy type to the mask value. This mapping is shown here:<br />
----Diplomacy TypeMask Value<br />
----trade agreement2^0
----hard military access2^1
----cancel hard military access2^2
----military alliance2^3
----regions2^4
----technology2^5
----state gift2^6
----payments2^7
----vassal2^8
----peace2^9
----war2^10
----join war2^11
----break trade2^12
----break alliance2^13
----hostages2^14
----marriage2^15
----non aggression pact2^16
----soft military access2^17
----cancel soft military access2^18
----defensive alliance2^19
----client state2^20
----form confederation2^21
----break non aggression pact2^22
----break soft military access2^23
----break defensive alliance2^24
----break vassal2^25
----break client state2^26
----state gift unilateral2^27
----The function campaign_manager:force_diplomacy on the campaign_manager interface wraps this function, providing a more useable interface and debug output. It's recommended to call that function rather than directly calling this one.
+--- The diplomacy types to be allowed or disallowed are specified with a bitmask. Diplomacy types can be included in the bitmask by adding the number corresponding to the diplomacy type to the mask value. This mapping is shown here:<br />
+--- Diplomacy TypeMask Value<br />
+--- trade agreement2^0
+--- hard military access2^1
+--- cancel hard military access2^2
+--- military alliance2^3
+--- regions2^4
+--- technology2^5
+--- state gift2^6
+--- payments2^7
+--- vassal2^8
+--- peace2^9
+--- war2^10
+--- join war2^11
+--- break trade2^12
+--- break alliance2^13
+--- hostages2^14
+--- marriage2^15
+--- non aggression pact2^16
+--- soft military access2^17
+--- cancel soft military access2^18
+--- defensive alliance2^19
+--- client state2^20
+--- form confederation2^21
+--- break non aggression pact2^22
+--- break soft military access2^23
+--- break defensive alliance2^24
+--- break vassal2^25
+--- break client state2^26
+--- state gift unilateral2^27
+--- The function campaign_manager:force_diplomacy on the campaign_manager interface wraps this function, providing a more useable interface and debug output. It's recommended to call that function rather than directly calling this one.
 ---@param source_faction string Specifier that specifies one or more source factions.
 ---@param target_faction string Specifier that specifies one or more target factions.
 ---@param bitmask number Bitmask.
@@ -753,13 +753,13 @@ function episodic_scripting:make_region_seen_in_shroud(faction_key, region_key) 
 function episodic_scripting:force_diplomacy_new(source_faction, target_faction, bitmask, can_offer, can_accept) end
 
 --- Removes a custom battle override previously set with cm:add_custom_battlefield.<br />
----Note that the campaign_manager intercepts calls which modify custom battlefield records, and will defer them if a battle is currently active and has been fought. This is to stop existing custom battlefield records, which are needed by the code to process the battle result, from being tampered with. See the Custom Battlefields section.
+--- Note that the campaign_manager intercepts calls which modify custom battlefield records, and will defer them if a battle is currently active and has been fought. This is to stop existing custom battlefield records, which are needed by the code to process the battle result, from being tampered with. See the Custom Battlefields section.
 ---@param id string id
 function episodic_scripting:remove_custom_battlefield(id) end
 
 --- Forces the balance of religions in a specified province to specified values. The key of a region within the target province must be specified, along with one or more argument pairs specifying a religion key and a proportion for that religion. The sum of all specified religion proportions must equal 1. At least one religion/religion proportion pair of arguments must therefore be specified. Religions not specified in the arguments of this function call will not be present in the target province.<br />
----The religion system in Warhammer is repurposed to represent corruption. Use this function to override the setup of corruption within a province.<br />
----Note that this function will only work if called on turn one.
+--- The religion system in Warhammer is repurposed to represent corruption. Use this function to override the setup of corruption within a province.<br />
+--- Note that this function will only work if called on turn one.
 ---@param region_key string Key of a region within the target province, from the campaign_map_regions table.
 ---@param religion_key string Key of a religion, from the religions table.
 ---@param religion_proportion number Unary proportion (0-1) of the religion specified by the previous argument. The unary proportion of all specified religions should add up to 1.
@@ -802,7 +802,7 @@ function episodic_scripting:add_units_to_province_mercenary_pool_by_region(regio
 function episodic_scripting:perform_ritual(performing_faction_key, target_faction_key, ritual_key) end
 
 --- Applies a custom effect bundle to a military force. This replaces any existing effect bundle with the same record.<br />
----For more information about the CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE or MILITARY_FORCE_SCRIPT_INTERFACE interfaces see the Model Hierarchy documentation.
+--- For more information about the CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE or MILITARY_FORCE_SCRIPT_INTERFACE interfaces see the Model Hierarchy documentation.
 ---@param custom_effect_bundle CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE custom effect bundle
 ---@param military_force MILITARY_FORCE_SCRIPT_INTERFACE military force
 function episodic_scripting:apply_custom_effect_bundle_to_force(custom_effect_bundle, military_force) end
@@ -813,7 +813,7 @@ function episodic_scripting:apply_custom_effect_bundle_to_force(custom_effect_bu
 function episodic_scripting:spawn_plague_at_region(region, plague_key) end
 
 --- Prevents the specified character from moving, regardless of where the move order comes from, until movement is subsequently re-enabled with cm:enable_movement_for_faction or cm:enable_movement_for_character.<br />
----This setting is saved into the campaign save file when the game is saved, and automatically re-established when the campaign is reloaded.
+--- This setting is saved into the campaign save file when the game is saved, and automatically re-established when the campaign is reloaded.
 ---@param character_lookup string Character lookup string - see Character Lookups for more information.
 function episodic_scripting:disable_movement_for_character(character_lookup) end
 
@@ -856,7 +856,7 @@ function episodic_scripting:set_character_immortality(character_lookup, is_immor
 function episodic_scripting:create_storm_for_region(region_key, storm_strength, duration, storm_type) end
 
 --- Reads a value from a loading game. Should only be called when the LoadingGame event is received, and must be passed the context object supplied by that event.<br />
----It's recommended to use the loading functions provided by the campaign manager, listed in the Loading Game section of this documentation, instead of directly calling this function.
+--- It's recommended to use the loading functions provided by the campaign manager, listed in the Loading Game section of this documentation, instead of directly calling this function.
 ---@param value_name string Value name.
 ---@param default_value string|number|boolean This defines the type of the value to load from the savegame and also a default value which will be returned if no value with the specified name could be found in the savegame. Can be a boolean, number or string.
 ---@param context_object context context object
@@ -893,7 +893,7 @@ function episodic_scripting:override_ui(ui_override_name, activate_override) end
 function episodic_scripting:add_units_to_faction_mercenary_pool(faction_cqi, unit_key, count) end
 
 --- Applies a custom effect bundle to a region. This replaces any existing effect bundle with the same record.<br />
----For more information about the CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE or REGION_SCRIPT_INTERFACE interfaces see the Model Hierarchy documentation.
+--- For more information about the CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE or REGION_SCRIPT_INTERFACE interfaces see the Model Hierarchy documentation.
 ---@param custom_effect_bundle CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE custom effect bundle
 ---@param region REGION_SCRIPT_INTERFACE region
 function episodic_scripting:apply_custom_effect_bundle_to_region(custom_effect_bundle, region) end
@@ -904,7 +904,7 @@ function episodic_scripting:apply_custom_effect_bundle_to_region(custom_effect_b
 function episodic_scripting:remove_character_vfx(character_cqi, vfx) end
 
 --- Instantly sets the primary slot level of the supplied settlement. The settlement is specified by SETTLEMENT_SCRIPT_INTERFACE - see the Model Hierarchy documentation for more information. The supplied level Will be clamped to the maximum level of the chain.<br />
----The new primary slot building will be returned, as a BUILDING_SCRIPT_INTERFACE object.
+--- The new primary slot building will be returned, as a BUILDING_SCRIPT_INTERFACE object.
 function episodic_scripting:instantly_set_settlement_primary_slot_level() end
 
 --- Plays a fullscreen movie for an outro, by path from the data/Movies directory. The campaign will exit once playback has completed.
@@ -932,7 +932,7 @@ function episodic_scripting:region_slot_instantly_repair_building(slot) end
 function episodic_scripting:set_ai_uses_human_display_speed(use_human_speed_) end
 
 --- Adds the specified tile upgrade to the currently active pending battle. This should match the key of a tile upgrade set within the map data of the tile the battle will be fought on, so its use is highly situational.<br />
----The function will only work if called while the pending battle is being set up.
+--- The function will only work if called while the pending battle is being set up.
 ---@param tile_upgrade_key string tile upgrade key
 function episodic_scripting:pending_battle_add_scripted_tile_upgrade_tag(tile_upgrade_key) end
 
@@ -1043,7 +1043,7 @@ function episodic_scripting:faction_set_food_factor_multiplier(faction_key, food
 function episodic_scripting:force_change_cai_faction_personality(faction_key, personality_key) end
 
 --- Set the attackers predicted win chance percentage for the next battle, affecting the balance of power shown on the pre-battle screen. This will not change the result.<br />
----This function will only work if called while the pending battle is being set up.
+--- This function will only work if called while the pending battle is being set up.
 ---@param chance number Chance as a percentage, so a value of 50 would display a 50/50 attacker/defender balance.
 function episodic_scripting:override_attacker_win_chance_prediction(chance) end
 
@@ -1093,11 +1093,11 @@ function episodic_scripting:modify_next_autoresolve_battle(attacker_win_chance, 
 function episodic_scripting:cai_strategic_stance_manager_promote_specified_stance_towards_target_faction(faction_key, target_faction_key, strategic_stance_key) end
 
 --- Removes all custom battle overrides previously set with cm:add_custom_battlefield.<br />
----Note that the campaign_manager intercepts calls which modify custom battlefield records, and will defer them if a battle is currently active and has been fought. This is to stop existing custom battlefield records, which are needed by the code to process the battle result, from being tampered with. See the Custom Battlefields section.
+--- Note that the campaign_manager intercepts calls which modify custom battlefield records, and will defer them if a battle is currently active and has been fought. This is to stop existing custom battlefield records, which are needed by the code to process the battle result, from being tampered with. See the Custom Battlefields section.
 function episodic_scripting:clear_custom_battlefields() end
 
 --- Adds a record which modifies or completely overrides a fought or autoresolved battle, if that battle happens within a certain supplied radius of a supplied campaign anchor position. Aspects of the battle may be specified, such as the loading screen and script to use, or the entire battle may be subsituted with an xml battle.<br />
----Note that the campaign_manager intercepts calls which modify custom battlefield records, and will defer them if a battle is currently active and has been fought. This is to stop existing custom battlefield records, which are needed by the code to process the battle result, from being tampered with. See the Custom Battlefields section.
+--- Note that the campaign_manager intercepts calls which modify custom battlefield records, and will defer them if a battle is currently active and has been fought. This is to stop existing custom battlefield records, which are needed by the code to process the battle result, from being tampered with. See the Custom Battlefields section.
 ---@param id string Id for this custom battle record. This may be used to later remove this override with cm:remove_custom_battlefield.
 ---@param x number X logical co-ordinate of anchor position.
 ---@param y number Y logical co-ordinate of anchor position.
@@ -1198,12 +1198,12 @@ function episodic_scripting:faction_offers_peace_to_other_faction(proposing_fact
 function episodic_scripting:create_new_ritual_setup(performing_faction, ritual_key) end
 
 --- Applies the effect of all rituals that are active for a faction right now. This is used in conjunction with the delay_payload_application field of the rituals database table. Should this field be set for a ritual, then that ritual will not apply its payload effects when triggered until this function or cm:apply_active_ritual is called.<br />
----Calls to this function will not succeed if the ritual has not been actively triggered.
+--- Calls to this function will not succeed if the ritual has not been actively triggered.
 ---@param faction FACTION_SCRIPT_INTERFACE Target faction.
 function episodic_scripting:apply_active_rituals(faction) end
 
 --- Adds a restriction preventing a specified building from being a construction option for a specified faction.<br />
----This setting is saved into the campaign save file when the game is saved, and automatically re-established when the campaign is reloaded.
+--- This setting is saved into the campaign save file when the game is saved, and automatically re-established when the campaign is reloaded.
 ---@param building_key string Building key, from the building_levels table.
 ---@param faction_key string Faction key, from the factions table.
 ---@param tooltip_key string Key of localised text in full [table]_[field]_[key] format to show as a tooltip on the restricted building icon. This can be omitted.
@@ -1250,7 +1250,7 @@ function episodic_scripting:lock_rituals_in_category(faction, ritual_category_ke
 function episodic_scripting:set_faction_max_secondary_cooking_ingredients(faction, max_ingredients) end
 
 --- Applies the effect of a ritual that is active right now. This is used in conjunction with the delay_payload_application field of the rituals database table. Should this field be set for a ritual, then that ritual will not apply its payload effects when triggered until this function or cm:apply_active_rituals is called.<br />
----Calls to this function will not succeed if the ritual has not been actively triggered.
+--- Calls to this function will not succeed if the ritual has not been actively triggered.
 ---@param faction FACTION_SCRIPT_INTERFACE Target faction.
 ---@param ritual ACTIVE_RITUAL_SCRIPT_INTERFACE Target ritual.
 function episodic_scripting:apply_active_ritual(faction, ritual) end
@@ -1266,7 +1266,7 @@ function episodic_scripting:remove_all_background_skills(character_lookup) end
 function episodic_scripting:apply_effect_bundle(effect_bundle_key, faction_key, turns) end
 
 --- Applies a custom effect bundle to a character. This replaces any existing effect bundle with the same record.<br />
----For more information about the CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE or CHARACTER_SCRIPT_INTERFACE interfaces see the Model Hierarchy documentation.
+--- For more information about the CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE or CHARACTER_SCRIPT_INTERFACE interfaces see the Model Hierarchy documentation.
 ---@param custom_effect_bundle CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE custom effect bundle
 ---@param character CHARACTER_SCRIPT_INTERFACE character
 function episodic_scripting:apply_custom_effect_bundle_to_character(custom_effect_bundle, character) end
@@ -1300,7 +1300,7 @@ function episodic_scripting:remove_effect_bundle_from_region(effect_bundle_key, 
 function episodic_scripting:add_unit_to_faction_mercenary_pool(faction, unit, count, replenishment_chance, max_units, max_per_turn, faction_restriction, subculture_restriction, tech_restriction, partial_replenishment) end
 
 --- Attempts to trigger a mission from database records with one or more target game objects. The game object or objects to associate the mission with are specified by command-queue index. The mission will need to pass any conditions set up in the cdir_events_mission_option_junctions table in order to trigger.<br />
----A value of 0 may be supplied to omit a particular type of target.
+--- A value of 0 may be supplied to omit a particular type of target.
 ---@param faction_cqi number Command-queue index of the faction to which the mission is issued. This must be supplied.
 ---@param mission_key string Mission key, from the missions table.
 ---@param target_faction_cqi number Command-queue index of a target faction. 0 may be specified to omit this target (and other target arguments following this one).
@@ -1317,7 +1317,7 @@ function episodic_scripting:trigger_mission_with_targets(faction_cqi, mission_ke
 function episodic_scripting:remove_unit_from_character(character_lookup, unit_key) end
 
 --- Returns a lua table containing a list of building keys that are upgrades from a supplied building key. If the building specified by the supplied key has no upgrades then the returned table will be empty. If the supplied key does not specify a building then nothing is returned.<br />
----Building keys all specify building records in the building_levels database table.
+--- Building keys all specify building records in the building_levels database table.
 ---@param building_key string building key
 function episodic_scripting:get_building_level_upgrades(building_key) end
 
@@ -1374,7 +1374,7 @@ function episodic_scripting:exempt_region_from_tax(region_key, exempt) end
 function episodic_scripting:seek_exchange(character_lookup, target_character_lookup, show_ui) end
 
 --- Spawns an agent of the specified type next to the specified settlement.<br />
----See the Model Hierarchy documentation for more information on the FACTION_SCRIPT_INTERFACE or SETTLEMENT_SCRIPT_INTERFACE interfaces.
+--- See the Model Hierarchy documentation for more information on the FACTION_SCRIPT_INTERFACE or SETTLEMENT_SCRIPT_INTERFACE interfaces.
 ---@param faction FACTION_SCRIPT_INTERFACE Faction interface for the agent's faction.
 ---@param settlement SETTLEMENT_SCRIPT_INTERFACE Settlement at which to spawn the agent.
 ---@param agent_type string Agent type key, from the agents table.
@@ -1398,7 +1398,7 @@ function episodic_scripting:spawn_agent_at_settlement(faction, settlement, agent
 function episodic_scripting:create_force_with_general(faction_key, unit_list, region_key, x, y, character_type, character_subtype, forename, clanname, surname, other_name, id, make_faction_leader) end
 
 --- Applies a custom effect bundle to a province. This replaces any existing effect bundle with the same record. The effect bundle will be applied to the portion of the province owned by the owner of the specified region - this can be the whole province if one faction controls it all.<br />
----For more information about the CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE or REGION_SCRIPT_INTERFACE interfaces see the Model Hierarchy documentation.
+--- For more information about the CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE or REGION_SCRIPT_INTERFACE interfaces see the Model Hierarchy documentation.
 ---@param custom_effect_bundle CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE custom effect bundle
 ---@param region REGION_SCRIPT_INTERFACE region
 function episodic_scripting:apply_custom_effect_bundle_to_faction_province(custom_effect_bundle, region) end
@@ -1476,7 +1476,7 @@ function episodic_scripting:remove_event_restricted_building_record_for_faction(
 function episodic_scripting:leave_garrison(character_lookup, settlement) end
 
 --- Lock a specified technology and all technologies that are children of it, for a specified faction.<br />
----This setting is saved into the campaign save file when the game is saved, and automatically re-established when the campaign is reloaded.
+--- This setting is saved into the campaign save file when the game is saved, and automatically re-established when the campaign is reloaded.
 ---@param faction_key string Faction key, from the factions table.
 ---@param technology_key string Technology key, from the technologies table.
 function episodic_scripting:lock_technology(faction_key, technology_key) end
@@ -1500,7 +1500,7 @@ function episodic_scripting:remove_event_restricted_unit_record_for_faction(unit
 function episodic_scripting:remove_effect_bundle_from_characters_force(effect_bundle_key, character_cqi) end
 
 --- Adds a restriction preventing a specified unit from being a recruitment option for any faction.<br />
----This setting is saved into the campaign save file when the game is saved, and automatically re-established when the campaign is reloaded.
+--- This setting is saved into the campaign save file when the game is saved, and automatically re-established when the campaign is reloaded.
 ---@param unit_key string Unit key, from the main_units table.
 ---@param tooltip_key string Key of localised text in full [table]_[field]_[key] format to show as a tooltip on the restricted unit icon. This can be omitted.
 function episodic_scripting:add_event_restricted_unit_record(unit_key, tooltip_key) end
@@ -1586,7 +1586,7 @@ function episodic_scripting:find_valid_spawn_location_for_character_from_charact
 function episodic_scripting:cai_strategic_stance_manager_clear_all_promotions_between_factions(faction_key, target_faction_key) end
 
 --- Applies a custom effect bundle to a character's military force. This replaces any existing effect bundle with the same record.<br />
----For more information about the CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE or CHARACTER_SCRIPT_INTERFACE interfaces see the Model Hierarchy documentation.
+--- For more information about the CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE or CHARACTER_SCRIPT_INTERFACE interfaces see the Model Hierarchy documentation.
 ---@param custom_effect_bundle CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE custom effect bundle
 ---@param character CHARACTER_SCRIPT_INTERFACE character
 function episodic_scripting:apply_custom_effect_bundle_to_characters_force(custom_effect_bundle, character) end
@@ -1607,7 +1607,7 @@ function episodic_scripting:add_garrison_residence_vfx(garrison_residence_cqi, v
 function episodic_scripting:set_public_order_of_province_for_region(region_key, public_order) end
 
 --- Applies a custom effect bundle to a faction. This replaces any existing effect bundle with the same record.<br />
----For more information about the CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE or FACTION_SCRIPT_INTERFACE interfaces see the Model Hierarchy documentation.
+--- For more information about the CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE or FACTION_SCRIPT_INTERFACE interfaces see the Model Hierarchy documentation.
 ---@param custom_effect_bundle CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE custom effect bundle
 ---@param faction FACTION_SCRIPT_INTERFACE faction
 function episodic_scripting:apply_custom_effect_bundle_to_faction(custom_effect_bundle, faction) end
@@ -1655,7 +1655,7 @@ function episodic_scripting:create_agent(faction_key, agent_type, agent_subtype,
 function episodic_scripting:attack_region(character_lookup, region_key) end
 
 --- Whitelists an event type, allowing it to be shown despite suppression being activated with cm:suppress_all_event_feed_event_types. Event types are specified by a compound key from the event_feed_targeted_events table, by concatenating the values from the event and target fields from that table. See the documentation for the ui-side equivalent of this function, CampaignUI.WhiteListEventTypeInUI, for more information.<br />
----This function has no effect if suppression has not been activated with cm:suppress_all_event_feed_event_types.
+--- This function has no effect if suppression has not been activated with cm:suppress_all_event_feed_event_types.
 ---@param event_type string Event type, specified with a compound key from the event_feed_targeted_events table.
 function episodic_scripting:whitelist_event_feed_event_type(event_type) end
 
@@ -1688,7 +1688,7 @@ function episodic_scripting:remove_effect_bundle_from_force(effect_bundle_key, f
 function episodic_scripting:unlock_starting_general_recruitment(startpos_id, faction_key) end
 
 --- Write a value to the savegame. This should only be called when the SavingGame event is received, and must be passed the context object supplied by that event.<br />
----It's recommended to use the saving functions provided by the campaign manager, listed in the Saving Game section of this documentation, instead of directly calling this function.
+--- It's recommended to use the saving functions provided by the campaign manager, listed in the Saving Game section of this documentation, instead of directly calling this function.
 ---@param value_name string Value name.
 ---@param value_to_save string|number|boolean Value to save. Can be a boolean, number or string.
 ---@param context_object context context object
@@ -1714,7 +1714,7 @@ function episodic_scripting:faction_perform_action_on_prisoner(faction, characte
 function episodic_scripting:replenish_action_points(character_lookup) end
 
 --- Attempts to trigger an incident from database records with one or more target game objects. The game object or objects to associate the incident with are specified by command-queue index. The incident will need to pass any conditions set up in the cdir_events_incident_option_junctions table in order to trigger.<br />
----A value of 0 may be supplied to omit a particular type of target.
+--- A value of 0 may be supplied to omit a particular type of target.
 ---@param faction_cqi number Command-queue index of the faction to which the incident is issued. This must be supplied.
 ---@param incident_key string Incident key, from the incidents table.
 ---@param target_faction_cqi string Command-queue index of a target faction. 0 may be specified to omit this target (and other target arguments following this one).
@@ -1726,7 +1726,7 @@ function episodic_scripting:replenish_action_points(character_lookup) end
 function episodic_scripting:trigger_incident_with_targets(faction_cqi, incident_key, target_faction_cqi, secondary_faction_cqi, character_cqi, military_force_cqi, region_cqi, settlement_cqi) end
 
 --- Spawns an agent of the specified type next to the specified military force.<br />
----See the Model Hierarchy documentation for more information on the FACTION_SCRIPT_INTERFACE or MILITARY_FORCE_SCRIPT_INTERFACE interfaces.
+--- See the Model Hierarchy documentation for more information on the FACTION_SCRIPT_INTERFACE or MILITARY_FORCE_SCRIPT_INTERFACE interfaces.
 ---@param faction FACTION_SCRIPT_INTERFACE Faction interface for the agent's faction.
 ---@param force MILITARY_FORCE_SCRIPT_INTERFACE Military force at which to spawn the agent.
 ---@param agent_type string Agent type key, from the agents table.

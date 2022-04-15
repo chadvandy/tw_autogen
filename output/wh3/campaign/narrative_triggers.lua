@@ -3,7 +3,7 @@
 local narrative_triggers = {}
 
 --- Creates and starts a narrative trigger that listens for a start message from another narrative object associated with one faction, and then sends one or more target messages associated with another faction. This can be useful if a desired narrative sequence flows over the player changing faction.<br />
----The target messages are always triggered immediately, with no intervention being created in singleplayer mode.
+--- The target messages are always triggered immediately, with no intervention being created in singleplayer mode.
 ---@param unique_name string Unique name amongst other declared narrative triggers.
 ---@param faction_key string Key of the faction to which this narrative trigger applies, from the factions database table. This should be the originator faction.
 ---@param start_message string Message on which this narrative trigger should initiate the faction switch process. If multiple messages are required then a table containing string message names can be supplied here instead.
@@ -51,7 +51,7 @@ function narrative_triggers:controls_provinces(unique_name, faction_key, start_m
 function narrative_triggers:foreign_slot_established(unique_name, faction_key, start_message, target_message, cancel_message, should_be_allied) end
 
 --- Creates and starts a narrative trigger that fires when the specified faction has an amount of a specified pooled resource equal to or greater than a specified threshold.<br />
----An optional flag makes the narrative trigger instead fire when the pooled resource is less than or equal to the threshold.
+--- An optional flag makes the narrative trigger instead fire when the pooled resource is less than or equal to the threshold.
 ---@param unique_name string Unique name amongst other declared narrative triggers.
 ---@param faction_key string Key of the faction to which this narrative trigger applies, from the factions database table.
 ---@param start_message string Message on which this narrative trigger should start its main listening process. If multiple messages are required then a table containing string message names can be supplied here instead. If no start messages are specified, then the trigger will start its main listeners when it is started.
@@ -63,7 +63,7 @@ function narrative_triggers:foreign_slot_established(unique_name, faction_key, s
 function narrative_triggers:pooled_resource_gained(unique_name, faction_key, start_message, target_message, cancel_message, pooled_resource_key, threshold_value, less_than) end
 
 --- Creates and starts a narrative trigger that listens for a message from another narrative object, and then waits a specified number of turns (for the specified faction) before sending one or more target messages.<br />
----The target messages are always triggered immediately, with no intervention being created in singleplayer mode.
+--- The target messages are always triggered immediately, with no intervention being created in singleplayer mode.
 ---@param unique_name string Unique name amongst other declared narrative triggers.
 ---@param faction_key string Key of the faction to which this narrative trigger applies, from the factions database table.
 ---@param start_message string Message on which this narrative trigger should start its turn countdown. If multiple messages are required then a table containing string message names can be supplied here instead.
@@ -194,7 +194,7 @@ function narrative_triggers:building_construction_issued(unique_name, faction_ke
 function narrative_triggers:net_income(unique_name, faction_key, start_message, target_message, cancel_message, threshold, trigger_when_lower) end
 
 --- Creates and starts a narrative trigger that fires when the specified faction has an amount of the skulls pooled resource equal to or greater than a specified threshold.<br />
----An optional flag makes the narrative trigger instead fire when the pooled resource is less than or equal to the threshold.
+--- An optional flag makes the narrative trigger instead fire when the pooled resource is less than or equal to the threshold.
 ---@param unique_name string Unique name amongst other declared narrative triggers.
 ---@param faction_key string Key of the faction to which this narrative trigger applies, from the factions database table.
 ---@param start_message string Message on which this narrative trigger should start its main listening process. If multiple messages are required then a table containing string message names can be supplied here instead. If no start messages are specified, then the trigger will start its main listeners when it is started.
@@ -205,7 +205,7 @@ function narrative_triggers:net_income(unique_name, faction_key, start_message, 
 function narrative_triggers:skulls_gained(unique_name, faction_key, start_message, target_message, cancel_message, threshold_value, less_than) end
 
 --- Creates and starts a narrative trigger that fires when the specified faction has an amount of the devotion pooled resource equal to or greater than a specified threshold.<br />
----An optional flag makes the narrative trigger instead fire when the pooled resource is less than or equal to the threshold.
+--- An optional flag makes the narrative trigger instead fire when the pooled resource is less than or equal to the threshold.
 ---@param unique_name string Unique name amongst other declared narrative triggers.
 ---@param faction_key string Key of the faction to which this narrative trigger applies, from the factions database table.
 ---@param start_message string Message on which this narrative trigger should start its main listening process. If multiple messages are required then a table containing string message names can be supplied here instead. If no start messages are specified, then the trigger will start its main listeners when it is started.
@@ -224,7 +224,7 @@ function narrative_triggers:devotion_gained(unique_name, faction_key, start_mess
 function narrative_triggers:message(unique_name, faction_key, trigger_message, target_message, cancel_message) end
 
 --- Creates and starts a narrative trigger that attempts to trigger when a specified event is received. An optional condition function may also be supplied, which must be passed for the narrative trigger to fire its target events. If supplied, the condition function will be called when the specified event is received, and will be passed the event context and the narrative trigger object as separate arguments. It must return a value that evaluates to true for the condition to pass. If no condition function is supplied then the condition always passes.<br />
----If the immediate flag is set, or if it is a multiplayer game, then the narrative trigger will immediately trigger the target messages when the event is received and condition passes. If the flag is not set and it's a singleplayer game the narrative will instead create an intervention which will fire the target messages when it gets to trigger.
+--- If the immediate flag is set, or if it is a multiplayer game, then the narrative trigger will immediately trigger the target messages when the event is received and condition passes. If the flag is not set and it's a singleplayer game the narrative will instead create an intervention which will fire the target messages when it gets to trigger.
 ---@param unique_name string Unique name amongst other declared narrative triggers.
 ---@param faction_key string Key of the faction to which this narrative trigger applies, from the factions database table.
 ---@param start_message string Message on which this narrative trigger should start its main listening process. If multiple messages are required then a table containing string message names can be supplied here instead. If no start messages are specified, then the trigger will start its main listeners when it is started.
@@ -245,7 +245,7 @@ function narrative_triggers:generic(unique_name, faction_key, start_message, tar
 function narrative_triggers:technology_building_construction_issued(unique_name, faction_key, start_message, target_message, cancel_message, condition) end
 
 --- Creates and starts a narrative trigger that fires when the specified faction has an amount of a specified pooled resource equal to or greater than a specified threshold. This differs from narrative_triggers.pooled_resource_gained as it allows the faction which is being monitored to be different from the faction with which the triggered messages are associated with.<br />
----An optional flag makes the narrative trigger instead fire when the pooled resource is less than or equal to the threshold.
+--- An optional flag makes the narrative trigger instead fire when the pooled resource is less than or equal to the threshold.
 ---@param unique_name string Unique name amongst other declared narrative triggers.
 ---@param faction_key string Key of the faction with which the triggered messages are associated with, from the factions database table.
 ---@param start_message string Message on which this narrative trigger should start its main listening process. If multiple messages are required then a table containing string message names can be supplied here instead. If no start messages are specified, then the trigger will start its main listeners when it is started.
@@ -277,7 +277,7 @@ function narrative_triggers:any_general_won_x_battles(unique_name, faction_key, 
 function narrative_triggers:general_created(unique_name, faction_key, start_message, target_message, cancel_message, condition) end
 
 --- Creates and starts a narrative trigger that attempts to trigger on start of turn for the specified faction. An optional condition function may also be supplied, which must be passed for the narrative trigger to fire its target events. If supplied, the condition function will be called when the faction starts its turn and will be passed the context of the FactionTurnStart event and the narrative trigger object as separate arguments. It must return a value that evaluates to true for the condition to pass. If no condition function is supplied then the condition always passes.<br />
----If the immediate flag is set, or if it is a multiplayer game, then the narrative trigger will immediately trigger the target messages when the turn start event is received. If the flag is not set and it's a singleplayer game the narrative will instead create an intervention which will fire the target messages when it gets to trigger.
+--- If the immediate flag is set, or if it is a multiplayer game, then the narrative trigger will immediately trigger the target messages when the turn start event is received. If the flag is not set and it's a singleplayer game the narrative will instead create an intervention which will fire the target messages when it gets to trigger.
 ---@param unique_name string Unique name amongst other declared narrative triggers.
 ---@param faction_key string Key of the faction to which this narrative trigger applies, from the factions database table.
 ---@param start_message string Message on which this narrative trigger should start its main listening process. If multiple messages are required then a table containing string message names can be supplied here instead. If no start messages are specified, then the trigger will start its main listeners when it is started.

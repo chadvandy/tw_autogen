@@ -21,7 +21,7 @@ function campaign_cutscene:action(callback, delay) end
 function campaign_cutscene:add_cinematic_trigger_listener(id, callback) end
 
 --- This function, when called, causes the cutscene to repeatedly stall while the advisor is still speaking and only allow the cutscene to progress once the advisor has finished. If the cutscene contains multiple lines of advice that are played one after the other, this function can be used to ensure that each item of advice only triggers once the previous item has finished playing, so they don't speak over the top of each other. This is useful when laying out multiple items of advice in a cutscene where the length of advice items cannot be known in different languages - a localised version of an advice item in German, for example, might be many seconds longer than the equivalent in English.<br />
----If a delay argument is passed in then the call to this function is enqueued as an campaign_cutscene:action with that delay. Alternatively, it may be called with no delay within an action.
+--- If a delay argument is passed in then the call to this function is enqueued as an campaign_cutscene:action with that delay. Alternatively, it may be called with no delay within an action.
 ---@param delay number Delay in seconds after the cutscene starts before invoking this function.
 function campaign_cutscene:wait_for_advisor(delay) end
 
@@ -30,8 +30,8 @@ function campaign_cutscene:wait_for_advisor(delay) end
 function campaign_cutscene:set_music_trigger_argument(music_trigger_argument) end
 
 --- Sets co-ordinates to which the game camera is restored when the cutscene ends. If a restore camera position is specified, the camera is scrolled to that position at the end of the cutscene over the supplied time in seconds. This is useful when it's desired to return the camera to the position it started the cutscene at when the cutscene finishes, or to a different position.<br />
----If no co-ordinates are supplied, the cutscene system takes the current position of the game camera as the restore camera position.<br />
----Note that if a skip camera position is set with campaign_cutscene:set_skip_camera, and the cutscene is skipped, the camera will be skipped and not restored. If the cutscene is skipped, has no skip camera position but has a restore camera position set, the camera will be immediately repositioned at the restore camera position while the screen is faded to black.
+--- If no co-ordinates are supplied, the cutscene system takes the current position of the game camera as the restore camera position.<br />
+--- Note that if a skip camera position is set with campaign_cutscene:set_skip_camera, and the cutscene is skipped, the camera will be skipped and not restored. If the cutscene is skipped, has no skip camera position but has a restore camera position set, the camera will be immediately repositioned at the restore camera position while the screen is faded to black.
 ---@param time number Time in seconds over which to scroll the camera.
 ---@param x number x co-ordinate. If no co-ordinates are set here the function takes the camera position at the moment the function is called.
 ---@param y number y co-ordinate.
@@ -56,7 +56,7 @@ function campaign_cutscene:set_skippable(set_skippable, skip_callback) end
 function campaign_cutscene:dismiss_advice() end
 
 --- Tells the cutscene whether to make neighbouring regions visible or not. Cutscenes by default will not do this - use this function to enable this behaviour if required. The 'neighbouring' regions in this case are those regions adjacent to the regions currently unshrouded.<br />
----Setting this property to true also enables the shroud.
+--- Setting this property to true also enables the shroud.
 ---@param disable_labels boolean disable labels
 function campaign_cutscene:set_neighbouring_regions_visible(disable_labels) end
 
@@ -95,8 +95,8 @@ function campaign_cutscene:set_show_advisor_close_button_on_end(show_advisor_clo
 function campaign_cutscene:set_use_cinematic_borders(show_borders) end
 
 --- Sets a position at which the game camera is repositioned to if the cutscene is skipped. The reposition happens behind a fade to black so the player does not see it.<br />
----If no position is supplied, the cutscene system takes the current position of the game camera as the skip camera position.<br />
----Note that this reposition will not happen if the cutscene is not skipped. 
+--- If no position is supplied, the cutscene system takes the current position of the game camera as the skip camera position.<br />
+--- Note that this reposition will not happen if the cutscene is not skipped. 
 ---@param x number x co-ordinate. If no co-ordinates are set here the function takes the camera position at the moment the function is called.
 ---@param y number y co-ordinate.
 ---@param d number d co-ordinate.
@@ -109,7 +109,7 @@ function campaign_cutscene:set_skip_camera(x, y, d, b, h) end
 function campaign_cutscene:set_dismiss_advice_on_end(dismiss_advice) end
 
 --- Instructs the cutscene to steal input immediately, before campaign_cutscene:start() is called. This is useful for campaign intro cutscenes as there's a short window of opportunity for the player to interact with the game as the loading screen is fading out, before the cutscene starts.<br />
----Note that cutscenes don't steal input when debug mode is set with campaign_cutscene:set_debug or campaign_cutscene:set_debug_all, which affects this command too.
+--- Note that cutscenes don't steal input when debug mode is set with campaign_cutscene:set_debug or campaign_cutscene:set_debug_all, which affects this command too.
 function campaign_cutscene:steal_input_immediately() end
 
 --- Sets whether the cutscene should immediately fade to black, and then optionally fade back to picture (after an optional delay), or not. By default the cutscene system will fade to black immediately if the cutscene is skipped, then wait a second, then fade to picture after a second. Use this function to change this behaviour.

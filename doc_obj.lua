@@ -1,4 +1,5 @@
 --- TODO an object for each "class" (ie. Event/Interface/Episodic Scripting/Etc)
+--- TODO separate "docobj" and "classobj", so a single document can have multiple classes or none at all.
 
 local new_class = require "includes.30-log"
 
@@ -6,8 +7,21 @@ local wild = "[%a%s_]+"
 local wild_un = "[%a_]+"
 local wild_sp = "[%a%s]+"
 
+--- TODO rework the DocObj; it should really just be the thing that reads the entire file and holds the individual classes, or groups of functions, together
 ---@class DocObj : Class The Documentation object; once built for each in-game class (ie. episodic_scripting, BuildingCompletedEvent, etc etc)
 local doc_obj_defaults = {
+    ---@type string The name of this class, for printing and referencing.
+    name = "",
+
+    ---@type string The description for this class. TODO multi-line support.
+    desc = "",
+
+    ---@type table<string, MethodObj> A table of all methods in this DocObj.
+    methods = {},
+}
+
+---@class ClassObj : Class The Class object; once built for each in-game class (ie. episodic_scripting, BuildingCompletedEvent, etc etc)
+local class_obj_defaults = {
     ---@type string The name of this class, for printing and referencing.
     name = "",
 

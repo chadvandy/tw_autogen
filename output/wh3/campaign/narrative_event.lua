@@ -65,18 +65,18 @@ function narrative_trigger:is_running() end
 function narrative_trigger:set_camera_scroll_target_callback() end
 
 --- Adds a start callback to the narrative trigger. This will be called when the narrative trigger starts its main monitoring processes, either when the start message is received or on startup (if no start message was specified). If the game is saved and reloaded at this point, causing the main monitors to be restarted, then any start callbacks are called again.<br />
----A boolean flag will be passed to any start functions to indicate whether the main monitors are being started from a savegame. If the main monitors are not being started from a savegame then it means a start message has just been received - in this case the start message string is supplied to each callback as a second argument.
+--- A boolean flag will be passed to any start functions to indicate whether the main monitors are being started from a savegame. If the main monitors are not being started from a savegame then it means a start message has just been received - in this case the start message string is supplied to each callback as a second argument.
 ---@param calllback function calllback
 function narrative_trigger:add_start_callback(calllback) end
 
 --- Creates and returns a narrative trigger object. As with all narrative objects a unique name and faction key to which the trigger applies must be supplied.<br />
----The main events and conditions table must be an indexed table containing one or more subtables for each event/condition pair. Each subtable should contain elements at the following keys:<br />
----KeyData Description<br />
----eventGame event to listen for. This should be a model event and not a UI event to prevent the game desynchronising in multiplayer mode.
----conditionCondition check to perform at the time the related event is received. This should be a function which returns a boolean value. When called, the function will be passed the event context and the narrative trigger object as two separate arguments.In common with other event/condition systems elsewhere, the boolean value true may be supplied here in place of a function, in which case the condition always passes.
----immediateOptional boolean value which, if set to true, forces the narrative trigger to fire its trigger events immediately if this event/condition pair pass. If this value is false or is not supplied, the target message(s) are fired in an intervention which can delay their issue. In multiplayer mode the target message(s) are always fired immediately.
----<br />
----See the Usage section of this documentation for a declaration example.
+--- The main events and conditions table must be an indexed table containing one or more subtables for each event/condition pair. Each subtable should contain elements at the following keys:<br />
+--- KeyData Description<br />
+--- eventGame event to listen for. This should be a model event and not a UI event to prevent the game desynchronising in multiplayer mode.
+--- conditionCondition check to perform at the time the related event is received. This should be a function which returns a boolean value. When called, the function will be passed the event context and the narrative trigger object as two separate arguments.In common with other event/condition systems elsewhere, the boolean value true may be supplied here in place of a function, in which case the condition always passes.
+--- immediateOptional boolean value which, if set to true, forces the narrative trigger to fire its trigger events immediately if this event/condition pair pass. If this value is false or is not supplied, the target message(s) are fired in an intervention which can delay their issue. In multiplayer mode the target message(s) are always fired immediately.
+--- <br />
+--- See the Usage section of this documentation for a declaration example.
 ---@param name string Unique name amongst narrative query objects.
 ---@param faction_key string Key of faction, from the factions database table, this narrative query is related to.
 ---@param target_message string String message which this narrative trigger fires when any event/condition pair are met. This may also be a table of multiple string message names, in which case all will be triggered.
@@ -119,7 +119,7 @@ function narrative_trigger:add_payload() end
 function narrative_trigger:add_monitor_event(event, condition, trigger_immediately) end
 
 --- Start the narrative trigger. If any start messages have been registered with the narrative trigger then a listener for these is started, otherwise the main event/condition listeners are started.<br />
----Some main monitor records must have been added to the narrative trigger prior to this function being called, either during construction (see narrative_trigger:new) or afterwards with narrative_trigger:add_monitor_event or narrative_trigger:add_monitor_message.
+--- Some main monitor records must have been added to the narrative trigger prior to this function being called, either during construction (see narrative_trigger:new) or afterwards with narrative_trigger:add_monitor_event or narrative_trigger:add_monitor_message.
 function narrative_trigger:start() end
 
 --- Returns whether this narrative event has triggered in this campaign save.

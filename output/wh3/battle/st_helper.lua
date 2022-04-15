@@ -3,7 +3,7 @@
 local st_helper = {}
 
 --- Returns camera offset positions for a supplied script unit. The first camera position is specified by an x and z offset from the supplied script unit, based on that unit's facing. The position height is determined by a vertical bearing (i.e. looking from the side) from the unit.<br />
----The second returned camera is rotated around the unit from the first by the horizontal delta. If the delta is 0 then only one camera position is returned.
+--- The second returned camera is rotated around the unit from the first by the horizontal delta. If the delta is 0 then only one camera position is returned.
 ---@param script_unit script_unit Subject script unit.
 ---@param vertical_bearing number X-offset of first camera position from the script unit, by that unit's facing.
 ---@param delta number Z-offset of first camera position from the script unit, by that unit's facing.
@@ -35,7 +35,7 @@ function st_helper:get_offset_camera_positions_from_walls_as_defender() end
 function st_helper:get_offset_camera_positions_by_bearing_vector(camera_target, bearing_vector, distance, v_bearing, delta) end
 
 --- Returns a second camera position from a supplied vector target and an initial camera position. The initial position and the second returned position defines a pair of camera co-ordinates that can be used to effect a camera rotation around the supplied target.<br />
----The returned position will be rotated around the camera target from the initial position by the horizontal delta.
+--- The returned position will be rotated around the camera target from the initial position by the horizontal delta.
 ---@param camera_target battle_vector Camera target.
 ---@param initial_camera_position battle_vector Initial camera position.
 ---@param delta number horizontal bearing delta in radians. The default value is equivalent to 10 degrees.
@@ -48,7 +48,7 @@ function st_helper:fort_wall_building_exists() end
 function st_helper:get_offset_camera_positions_from_major_victory_point() end
 
 --- Returns camera offset positions for a supplied scriptunits collection. The first camera position is specified by an x and z offset from the centre-point of the scriptunits collection, based on their average bearing (or a bearing override). The position height is determined by a vertical bearing (i.e. looking from the side) from that central point.<br />
----The second returned camera is rotated around the unit from the first by the horizontal delta. If the delta is 0 then only one camera position is returned.
+--- The second returned camera is rotated around the unit from the first by the horizontal delta. If the delta is 0 then only one camera position is returned.
 ---@param script_units script_units Subject script units.
 ---@param vertical_bearing number X-offset of first camera position from the script unit, by that unit's facing.
 ---@param horizontal_bearing_override number Z-offset of first camera position from the script unit, by that unit's facing.
@@ -63,7 +63,7 @@ function st_helper:victory_point_plaza_capture_location_exists() end
 function st_helper:get_offset_camera_positions_from_capture_location() end
 
 --- Returns a pair of vectors that define camera positions around a supplied vector target. These camera positions can be used by scripted tour scripts to position and animate the camera as it rotates around the camera target. The positions are computed from the target vector, a distance, and horizontal/vertical bearings supplied from the target vector to the initial camera position.<br />
----A horizontal bearing delta, which defines how separated the two returned positions are, may also be supplied. If the supplied horizontal bearing is 0 then only one position vector is returned.
+--- A horizontal bearing delta, which defines how separated the two returned positions are, may also be supplied. If the supplied horizontal bearing is 0 then only one position vector is returned.
 ---@param target battle_vector Target position.
 ---@param distance number Camera-to-target distance in m.
 ---@param horizontal_bearing number Horizontal bearing (i.e. looking from above) from camera target to initial camera position in radians.
@@ -86,7 +86,7 @@ function st_helper:building_is_standard_fort_wall_connected_n_times(building, co
 function st_helper:capture_location_of_type_with_toggleable_slot_exists(capture_location_type, partial_match) end
 
 --- Returns a building from a supplied list of buildings that matches a supplied filter function. The filter function should take a battle_building as a single argument and return a boolean result - true if the filter passes, or false otherwise. Each building in the list is tested sequentially, and the first building which passes the filter is returned.<br />
----If no building from the supplied list matches then nil is returned.
+--- If no building from the supplied list matches then nil is returned.
 ---@param building_list table List of buildings to test. This should be an indexed table of battle_building objects, such as (but not restricted to) those returned by functions documented in the Building Lists section of this documentation.
 ---@param filter_function function Filter function. This should take a battle_building object as a single argument and return a boolean result.
 function st_helper:get_building_from_list(building_list, filter_function) end

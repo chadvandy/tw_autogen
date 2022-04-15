@@ -5,6 +5,9 @@
 --- TODO also fix the assumption of every file being a single class (ie. core.html having custom_context and others)
 --- TODO remove the forced newline on everything
 --- TODO have the overrides file just be a hard-def of individual things in EmmyLua style; read that file to start, and determine if there's anything we need to override elsewhere.
+--- TODO change the overrides files to be .lua's so it reads better
+--- TODO change the overrides folder structure so it has /wh3/ etc. folders within
+--- TODO smartly create a single file called "all.lua" or "setup.lua" or something that basiucally defines all the relevant global variables and assigns them to the types
 
 --- TODO emmylua-ify LFS
 package.cpath = package.cpath .. ";includes/?.dll"
@@ -18,6 +21,7 @@ out_path = "output"
 function printf(t, ...)
     print(string.format(t, ...))
 end
+
 
 local OVERRIDES = require "overrides"
 local __ = require "doc_obj"
@@ -436,8 +440,6 @@ package.path = package.path .. ";.vscode/?.lua"
 
 --- TODO emmylua-ify LFS
 local function parse_all_games()
-    
-
     local path = "./input/"
     --- Each "file" is the path to one of the games; keep this in mind for the 
     for found_game in lfs.dir(path) do
@@ -521,7 +523,7 @@ local function init()
         end
     end
 
-    -- parse_all_games()
+    parse_all_games()
 end
 
 init()

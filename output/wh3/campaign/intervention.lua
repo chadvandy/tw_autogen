@@ -21,7 +21,7 @@ function intervention:set_completion_callback(callback) end
 function intervention:whitelist_events() end
 
 --- Registers that this intervention shares a turn countdown with another. If this is set on an intervention then when it restarts its turn countdown it will instruct the other intervention to restart its turn countdown also. This can be useful for advice interventions that share a common purpose.<br />
----Note that interventions that take or cede priority to another (see Taking and Ceding Priority) cannot share turn countdowns with other interventions.
+--- Note that interventions that take or cede priority to another (see Taking and Ceding Priority) cannot share turn countdowns with other interventions.
 ---@param intervention_name string Name of intervention that this intervention shares its turn countdown with. This only needs to be called on one of the two interventions.
 function intervention:register_shared_turn_countdown_intervention(intervention_name) end
 
@@ -44,14 +44,14 @@ function intervention:add_precondition_unvisited_page(help_page_name) end
 function intervention:scroll_camera_to_settlement_for_intervention(region_key, advice_key, infotext, mission, duration, scroll_callback, continuation_callback) end
 
 --- Set this intervention to trigger regardless of cost. This means that, assuming this intervention doesn't fail its precondition it is guaranteed to trigger when its trigger conditions are met. Interventions that must trigger will trigger ahead of other interventions, even if the former's assigned cost is more than the latter's. Its cost is still counted towards the maximum cost per-session, however, so if an intervention that must trigger and costs 80 points triggers, and another that costs 30 points and is not set to must trigger is queued up behind it, the second will not be able to fire as the maximum cost is exceeded.<br />
----If triggered at the same time as another intervention which is also set to disregard cost then they will trigger in order of cost priority. Both will always trigger, though, even if their combined cost is more than the maximum session allowance.<br />
----If the must trigger immediately flag is also set to true then this intervention will trigger the instant its trigger conditions pass, assuming that another intervention is not currently playing. This suppresses the grace period that normally happens when an intervention passes its trigger conditions to allow other interventions to be tested that are potentially more important. Only set this to true for interventions that convey essential narrative events.
+--- If triggered at the same time as another intervention which is also set to disregard cost then they will trigger in order of cost priority. Both will always trigger, though, even if their combined cost is more than the maximum session allowance.<br />
+--- If the must trigger immediately flag is also set to true then this intervention will trigger the instant its trigger conditions pass, assuming that another intervention is not currently playing. This suppresses the grace period that normally happens when an intervention passes its trigger conditions to allow other interventions to be tested that are potentially more important. Only set this to true for interventions that convey essential narrative events.
 ---@param must_trigger boolean must trigger
 ---@param must_trigger_immediately boolean must trigger immediately
 function intervention:set_must_trigger(must_trigger, must_trigger_immediately) end
 
 --- Adds a trigger event and condition to the intervention. The supplied event is listened for and, when received, the supplied condition function is called, with the context of the received event as a single parameter. Should the condition function return true the trigger is satisfied and the intervention is enqueued for triggering.<br />
----Alternatively the value true may be specified in place of a condition function - in this case, the intervention is enqueued for triggering as soon as the specified event is received.
+--- Alternatively the value true may be specified in place of a condition function - in this case, the intervention is enqueued for triggering as soon as the specified event is received.
 ---@param event_name string Event name to listen for.
 ---@param condition_check function Condition check to call when the event is received. Alternatively, true may be specified.
 function intervention:add_trigger_condition(event_name, condition_check) end
@@ -61,18 +61,18 @@ function intervention:add_trigger_condition(event_name, condition_check) end
 function intervention:add_player_faction_precondition(faction_key) end
 
 --- Registers that this intervention takes priority over another intervention with the supplied name, so that they cannot run at the same time. If the supplied intervention attempts to start and this intervention is already started, the supplied intervention will fail to start. If this intervention starts and the supplied intervention has already started, the supplied intervention will be stopped.<br />
----Furthermore, when this intervention stops it will notify the supplied intervention, which will then start.<br />
----Only persistent interventions can take priority over another. Transient interventions do not support this mechanism.
+--- Furthermore, when this intervention stops it will notify the supplied intervention, which will then start.<br />
+--- Only persistent interventions can take priority over another. Transient interventions do not support this mechanism.
 ---@param intervention_name string Name of intervention to take priority over.
 function intervention:take_priority_over_intervention(intervention_name) end
 
 --- Adds a function to be called when the intervention completes or is cancelled. If the context changes while this intervention is active it is not set to lock the ui then the intervention manager will complete the intervention while it's running. In this case, the intervention itself needs to know how to clean itself up - adding cleanup functions using this mechanism permits this.<br />
----Multiple cleanup callbacks may be added to any given intervention.
+--- Multiple cleanup callbacks may be added to any given intervention.
 ---@param callback function callback
 function intervention:add_cleanup_callback(callback) end
 
 --- Adds a precondition function to the intervention. This function will be called by the intervention from time to time and should return true if the intervention is allowed to start or trigger, false otherwise. Should the precondition return false when the intervention calls it the intervention will shut down.<br />
----Multiple preconditions may be added to an intervention.
+--- Multiple preconditions may be added to an intervention.
 ---@param precondition function precondition
 function intervention:add_precondition(precondition) end
 
@@ -87,7 +87,7 @@ function intervention:set_turn_countdown_restart(turns) end
 function intervention:get_turn_last_triggered() end
 
 --- Sets the minimum player advice level setting at which this intervention will be allowed to trigger. By default this value is 0, so the intervention will trigger regardless of advice level. Valid minimum advice levels are:<br />
----0Minimal advice - will trigger when advice level is set to minimal, low or high1Low advice - will trigger when advice level is set to low or high2High advice - will only trigger when the advice level is set to high
+--- 0Minimal advice - will trigger when advice level is set to minimal, low or high1Low advice - will trigger when advice level is set to low or high2High advice - will only trigger when the advice level is set to high
 ---@param min_advice_level number min advice level
 function intervention:set_min_advice_level(min_advice_level) end
 
@@ -112,8 +112,8 @@ function intervention:play_advice_for_intervention(advice_key, infotext, mission
 function intervention:scroll_camera_for_intervention(region_key, x, y, advice_key, infotext, mission, duration, scroll_callback, continuation_callback) end
 
 --- Registers that this intervention cedes priority to another intervention with the supplied name, so that they cannot run at the same time. This is the reverse of intervention:take_priority_over_intervention. If the supplied intervention starts and this intervention is already started, this intervention will be stopped. If this intervention starts and the supplied intervention has already started, this intervention will not start.<br />
----Furthermore, when the supplied intervention stops it will notify this intervention, which will then start.<br />
----Only persistent interventions can take priority over another. Transient interventions do not support this mechanism.
+--- Furthermore, when the supplied intervention stops it will notify this intervention, which will then start.<br />
+--- Only persistent interventions can take priority over another. Transient interventions do not support this mechanism.
 ---@param intervention_name string Name of intervention to give priority to.
 function intervention:give_priority_to_intervention(intervention_name) end
 
@@ -174,7 +174,7 @@ function intervention:new(name, cost, callback, debug_mode, is_transient) end
 function intervention:set_callback(callback) end
 
 --- Sets whether or not this intervention can only happen on the player's turn. By default, interventions can only trigger if it's the player's turn. Use this function to allow interventions to trigger in the end-turn sequence, which is useful for advice triggering over diplomacy or battles.<br />
----If an intervention is set to trigger on just the player's turn and it is trigger during the end-turn sequence, it will cancel itself and then trigger again when the player's turn starts.
+--- If an intervention is set to trigger on just the player's turn and it is trigger during the end-turn sequence, it will cancel itself and then trigger again when the player's turn starts.
 ---@param player_turn_only boolean player turn only
 function intervention:set_player_turn_only(player_turn_only) end
 
@@ -191,11 +191,11 @@ function intervention:add_player_not_faction_precondition(faction_key) end
 function intervention:add_advice_key_precondition(advice_key) end
 
 --- Set this intervention to prevent the player saving the game while it's active.<br />
----By default, interventions do not lock the ui whilst triggering. Use this function to change this behaviour. Interventions set to lock the ui will also prevent the game from being saved.
+--- By default, interventions do not lock the ui whilst triggering. Use this function to change this behaviour. Interventions set to lock the ui will also prevent the game from being saved.
 ---@param diregard_cost boolean diregard cost
 function intervention:set_should_prevent_saving_game(diregard_cost) end
 
 --- Set this intervention to lock the ui whilst triggering, or not. Interventions set to not lock the ui will be sent to the back of the queue when they come to trigger. When the intervention triggers, it will not attempt to lock army movement, army attacking or the end turn button. Should the player move, attack or end the turn while an intervention is active, the queued of interventions queued up behind it will be cleared and any interventions it contained will be restarted. Interventions set to not lock the ui are therefore more liable to be cancelled and restarted than interventions that do lock the ui.<br />
----By default, interventions do not lock the ui whilst triggering. Use this function to change this behaviour.
+--- By default, interventions do not lock the ui whilst triggering. Use this function to change this behaviour.
 ---@param diregard_cost boolean diregard cost
 function intervention:set_should_lock_ui(diregard_cost) end

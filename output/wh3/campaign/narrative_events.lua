@@ -73,7 +73,7 @@ function narrative_events:enact_commandment(unique_name, faction_key, advice_key
 function narrative_events:intervention(unique_name, faction_key, configuration_callback, trigger_callback, trigger_message) end
 
 --- Creates and starts a narrative event that issues a mission to defeat an army belonging to a specified. Advice may optionally be supplied to be issued with the mission.<br />
----As this is a scripted mission a text key for the mission objective must be supplied.
+--- As this is a scripted mission a text key for the mission objective must be supplied.
 ---@param unique_name string Unique name amongst other declared narrative events.
 ---@param faction_key string Key of the faction to which this narrative event applies, from the factions database table.
 ---@param advice_key string Key of advice to issue with this mission, if any, from the advice_threads database table.
@@ -298,7 +298,7 @@ function narrative_events:spread_plagues(unique_name, faction_key, advice_key, m
 function narrative_events:equip_any_daemonic_gift(unique_name, faction_key, advice_key, mission_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to perform one or more rituals. Advice may optionally be supplied to be issued with the mission.<br />
----An optional total number of rituals may be specified, and zero or more ritual keys, ritual categories and target faction keys. As this is a scripted mission, a mission text key must be specified also.
+--- An optional total number of rituals may be specified, and zero or more ritual keys, ritual categories and target faction keys. As this is a scripted mission, a mission text key must be specified also.
 ---@param unique_name string Unique name amongst other declared narrative events.
 ---@param faction_key string Key of the faction to which this narrative event applies, from the factions database table.
 ---@param advice_key string Key of advice to issue with this mission, if any, from the advice_threads database table.
@@ -330,7 +330,7 @@ function narrative_events:perform_ritual_scripted(unique_name, faction_key, advi
 function narrative_events:control_provinces(unique_name, faction_key, advice_key, mission_key, provinces, province_key, scroll_target, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission for the specified faction to gain a specified amount of one or more specified pooled resources. Unlike narrative_events.gain_pooled_resource this sets up a scripted mission, where script is responsible for the completion of the mission. This allows multiple pooled resources to be considered at the same time, either additively or not, allowing mission constructs such as "earn x of pooled resources a, b and c together", or "earn x of pooled resources a, b or c".<br />
----As it is a scripted mission, mission objective text must be supplied. Advice may optionally be supplied to be issued with the mission.
+--- As it is a scripted mission, mission objective text must be supplied. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
 ---@param faction_key string Key of the faction to which this narrative event applies, from the factions database table.
 ---@param advice_key string Key of advice to issue with this mission, if any, from the advice_threads database table.
@@ -348,7 +348,7 @@ function narrative_events:control_provinces(unique_name, faction_key, advice_key
 function narrative_events:gain_pooled_resource_scripted(unique_name, faction_key, advice_key, mission_key, mission_text, pooled_resource_key, lower_threshold, upper_threshold, additive, mission_issuer, mission_rewards, trigger_message, inherit_list, is_regular_income) end
 
 --- Creates and starts a narrative event that calls a supplied callback when triggered. When called, the supplied callback will be passed the narrative event, the key of the faction to which it applies, the triggering message, and the allow_issue_completed_callback as four arguments.<br />
----The allow_issue_completed_callback passed to the callback may be called with false supplied as an argument to prevent the narrative event from completing automatically. It will only later complete when the allow_issue_completed_callback is called again with true supplied as an argument. This mechanism allows the callback to control when the narrative event completes, rather than it completing immediately.
+--- The allow_issue_completed_callback passed to the callback may be called with false supplied as an argument to prevent the narrative event from completing automatically. It will only later complete when the allow_issue_completed_callback is called again with true supplied as an argument. This mechanism allows the callback to control when the narrative event completes, rather than it completing immediately.
 ---@param unique_name string Unique name amongst other declared narrative events.
 ---@param faction_key string Key of the faction to which this narrative event applies, from the factions database table.
 ---@param callback function Callback to call.
@@ -372,7 +372,7 @@ function narrative_events:callback(unique_name, faction_key, callback, trigger_m
 function narrative_events:perform_character_action(unique_name, faction_key, advice_key, mission_key, mission_text, ability_key, target_faction_key, character_subtype, must_be_success, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to defeat an army belonging to a specified culture or list of cultures. Advice may optionally be supplied to be issued with the mission.<br />
----As this is a scripted mission a text key for the mission objective must be supplied.
+--- As this is a scripted mission a text key for the mission objective must be supplied.
 ---@param unique_name string Unique name amongst other declared narrative events.
 ---@param faction_key string Key of the faction to which this narrative event applies, from the factions database table.
 ---@param advice_key string Key of advice to issue with this mission, if any, from the advice_threads database table.
@@ -386,7 +386,7 @@ function narrative_events:perform_character_action(unique_name, faction_key, adv
 function narrative_events:defeat_army_of_culture(unique_name, faction_key, advice_key, mission_key, mission_text_key, culture_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to perform one or more rituals. Advice may optionally be supplied to be issued with the mission.<br />
----An optional total number of rituals may be specified, or a ritual key or a ritual category. If a total number greater than one is specified then the ritual key is disregarded. See narrative_events.perform_ritual_scripted for a version of this function that triggers a scripted mission
+--- An optional total number of rituals may be specified, or a ritual key or a ritual category. If a total number greater than one is specified then the ritual key is disregarded. See narrative_events.perform_ritual_scripted for a version of this function that triggers a scripted mission
 ---@param unique_name string Unique name amongst other declared narrative events.
 ---@param faction_key string Key of the faction to which this narrative event applies, from the factions database table.
 ---@param advice_key string Key of advice to issue with this mission, if any, from the advice_threads database table.
@@ -559,7 +559,7 @@ function narrative_events:event_message(unique_name, faction_key, title_text_key
 function narrative_events:recruit_any_hero(unique_name, faction_key, advice_key, mission_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission that completes when a building is completed by the specified faction, optionally passing a supplied condition function. Advice may optionally be supplied to be issued with the mission.<br />
----If supplied, the condition function will be passed the building provided by the BuildingCompleted event and the narrative event object as separate arguments. It should return a value that evaluates to a boolean to indicate whether the condition has passed. It can also return true as a second returned value to suppress output from this function. This can be useful if the condition function produces its own output.
+--- If supplied, the condition function will be passed the building provided by the BuildingCompleted event and the narrative event object as separate arguments. It should return a value that evaluates to a boolean to indicate whether the condition has passed. It can also return true as a second returned value to suppress output from this function. This can be useful if the condition function produces its own output.
 ---@param unique_name string Unique name amongst other declared narrative events.
 ---@param faction_key string Key of the faction to which this narrative event applies, from the factions database table.
 ---@param advice_key string Key of advice to issue with this mission, if any, from the advice_threads database table.
@@ -605,7 +605,7 @@ function narrative_events:research_technology(unique_name, faction_key, advice_k
 function narrative_events:upgrade_any_settlement(unique_name, faction_key, advice_key, mission_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that fades the camera to black or to picture when triggered.<br />
----If the fade is to black, the narrative system will wait for the fade to finish before continuing. If the fade is to picture, then the narrative system continues immediately without waiting for the fade to complete.
+--- If the fade is to black, the narrative system will wait for the fade to finish before continuing. If the fade is to picture, then the narrative system continues immediately without waiting for the fade to complete.
 ---@param unique_name string Unique name amongst other declared narrative events.
 ---@param faction_key string Key of the faction to which this narrative event applies, from the factions database table.
 ---@param fade_duration number Duration of camera fade in seconds.
@@ -614,7 +614,7 @@ function narrative_events:upgrade_any_settlement(unique_name, faction_key, advic
 function narrative_events:camera_fade(unique_name, faction_key, fade_duration, to_black, trigger_message) end
 
 --- Creates and starts a narrative event that issues a mission that completes when a building that unlocks technologies is completed by the specified faction, optionally passing a supplied condition function. Advice may optionally be supplied to be issued with the mission.<br />
----If supplied, the condition function will be passed the building object provided by the BuildingCompleted event and the narrative event object as separate arguments. It should return a value that evaluates to a boolean to indicate whether the condition has passed. It can also return true as a second returned value to suppress output from this function. This can be useful if the condition function produces its own output.
+--- If supplied, the condition function will be passed the building object provided by the BuildingCompleted event and the narrative event object as separate arguments. It should return a value that evaluates to a boolean to indicate whether the condition has passed. It can also return true as a second returned value to suppress output from this function. This can be useful if the condition function produces its own output.
 ---@param unique_name string Unique name amongst other declared narrative events.
 ---@param faction_key string Key of the faction to which this narrative event applies, from the factions database table.
 ---@param advice_key string Key of advice to issue with this mission, if any, from the advice_threads database table.
@@ -627,7 +627,7 @@ function narrative_events:camera_fade(unique_name, faction_key, fade_duration, t
 function narrative_events:construct_technology_enabling_building(unique_name, faction_key, advice_key, mission_key, condition, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission that completes when a building is completed by the specified faction, optionally passing a supplied condition function. The condition function is run on every building in the faction when a building is completed and if the number passing the test is greater than a supplied threshold then the mission is successfully completed. Advice may optionally be supplied to be issued with the mission.<br />
----If supplied, the condition function will be called for each building in the faction when the BuildingCompleted event is received. When called, it will be passed the building and the narrative event object as separate arguments. It should return a value that evaluates to a boolean to indicate whether the condition has passed. It can also return true as a second returned value to suppress output from this function. This can be useful if the condition function produces its own output.
+--- If supplied, the condition function will be called for each building in the faction when the BuildingCompleted event is received. When called, it will be passed the building and the narrative event object as separate arguments. It should return a value that evaluates to a boolean to indicate whether the condition has passed. It can also return true as a second returned value to suppress output from this function. This can be useful if the condition function produces its own output.
 ---@param unique_name string Unique name amongst other declared narrative events.
 ---@param faction_key string Key of the faction to which this narrative event applies, from the factions database table.
 ---@param advice_key string Key of advice to issue with this mission, if any, from the advice_threads database table.

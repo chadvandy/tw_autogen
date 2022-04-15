@@ -52,7 +52,7 @@ function global:print_all_uicomponent_children(subject_uic, full_output) end
 function global:is_string(value) end
 
 --- An iterator for use with model objects in campaign and battle. When used in a for loop with a model list object, the iterator function returns the index and next item provided by the list object each loop pass.<br />
----In campaign, this iterator supports all model list objects such as region_list, character_list, military_force_list etc. In battle, this iterator supports model list objects such as <a href="../battle/battle_alliances.html#class:battle_alliances">battle_alliances, <a href="../battle/battle_armies.html#class:battle_armies">battle_armies and <a href="../battle/battle_units.html#class:battle_units">battle_units, as well as <a href="../battle/script_unit.html#class:script_units">script_units script collection objects.
+--- In campaign, this iterator supports all model list objects such as region_list, character_list, military_force_list etc. In battle, this iterator supports model list objects such as <a href="../battle/battle_alliances.html#class:battle_alliances">battle_alliances, <a href="../battle/battle_armies.html#class:battle_armies">battle_armies and <a href="../battle/battle_units.html#class:battle_units">battle_units, as well as <a href="../battle/script_unit.html#class:script_units">script_units script collection objects.
 ---@param parent_list_object any parent list object
 function global:model_pairs(parent_list_object) end
 
@@ -217,8 +217,8 @@ function global:distance_to_line(line_position_a, line_position_b, target_positi
 function global:is_building(value) end
 
 --- Sets the supplied object to index from the supplied class in a manner that emulates object-orientation. This will set the class to be the metatable of the object and will set the __index field of the metatable also to the supplied class. This means that if functions or values are looked up on the object and are not present they are then looked up on the class. It is through this kind of mechanism that object-orientation may be emulated in lua. Because the class is also the metatable, it means the metatable is shared between objects of the same type. Use set_object_class_unique if this is not desired.<br />
----set_object_class will also associate the object with any custom type or tostring values that have been previously set up on the class with calls to set_class_custom_type and set_class_tostring.<br />
----Any number of additional classes and objects may be specified, from which the main supplied object will also derive. If a value (such as a function to be called) is looked up on the object and is not provided on the object or the main class table it derives from, it will be looked up in turn on each additional classes or objects supplied. These additional objects/classes may be table or userdata values.
+--- set_object_class will also associate the object with any custom type or tostring values that have been previously set up on the class with calls to set_class_custom_type and set_class_tostring.<br />
+--- Any number of additional classes and objects may be specified, from which the main supplied object will also derive. If a value (such as a function to be called) is looked up on the object and is not provided on the object or the main class table it derives from, it will be looked up in turn on each additional classes or objects supplied. These additional objects/classes may be table or userdata values.
 ---@param object_table table Object table.
 ---@param class_table table Class table.
 ---@vararg any
@@ -233,7 +233,7 @@ function global:set_object_class(object_table, class_table, additional_interface
 function global:get_position_near_target(source_position, min_distance, max_distance, min_bearing, max_bearing) end
 
 --- Casts a component memory address, returned by several functions such as uicomponent:Find, into a valid uicomponent script object so that functions in the uicomponent script interface may be called on it.<br />
----This function is provided by the UI code.
+--- This function is provided by the UI code.
 ---@param component_address UIC_Address component address
 function global:UIComponent(component_address) end
 
@@ -283,7 +283,7 @@ function global:is_helppagemanager(value) end
 function global:is_empty_table(value) end
 
 --- Returns the folder name of the calling file and the shortform of its filename as separate return parameters. The shortform of the filename is the portion of the filename before the first "_", if one is found. If no shortform is found the function returns only the folder name.<br />
----A shortform used to be prepended on battle script files to allow them to be easily differentiated from one another in text editors e.g. "TF_battle_main.lua" vs "PY_battle_main.lua" rather than two "battle_main.lua"'s.
+--- A shortform used to be prepended on battle script files to allow them to be easily differentiated from one another in text editors e.g. "TF_battle_main.lua" vs "PY_battle_main.lua" rather than two "battle_main.lua"'s.
 ---@param stack_offset integer Supply a positive integer here to return a result for a different file on the callstack e.g. supply '1' to return the folder name/shortform of the script file calling the the script file calling this function, for example.
 function global:get_folder_name_and_shortform(stack_offset) end
 
@@ -345,9 +345,9 @@ function global:is_alliance(value) end
 function global:is_textpointer(value) end
 
 --- Sets the tostring value of a supplied class table to the specified value by setting its __tostring value. Once this is set, other object tables that are later set to derive from this class with set_object_class will return this value when passed to tostring().<br />
----The tostring specifier may be supplied as a string or a function. If supplied as a function, that function will be called when the tostring() function is called with an object derived from the supplied class. The object will be supplied as a single argument to the tostring specifier function, which allows the tostring() value to be assembled at runtime and include elements such as the objects name, co-ordinates or other realtime information. The specifier function should return a string.<br />
----The default behaviour is for the generated string to be cached in the object table, at the __cached_tostring field. Further calls to tostring() will then return the cached string rather than regenerating it each time. If this is undesirable - for example if the generated string might change as the object changes state - then the do_not_cache flag may be set on this function.<br />
----The flag to not append the memory address may be set if the memory address of the table is not wanted on the end of the returned tostring value. The default behaviour is to append the memory address.
+--- The tostring specifier may be supplied as a string or a function. If supplied as a function, that function will be called when the tostring() function is called with an object derived from the supplied class. The object will be supplied as a single argument to the tostring specifier function, which allows the tostring() value to be assembled at runtime and include elements such as the objects name, co-ordinates or other realtime information. The specifier function should return a string.<br />
+--- The default behaviour is for the generated string to be cached in the object table, at the __cached_tostring field. Further calls to tostring() will then return the cached string rather than regenerating it each time. If this is undesirable - for example if the generated string might change as the object changes state - then the do_not_cache flag may be set on this function.<br />
+--- The flag to not append the memory address may be set if the memory address of the table is not wanted on the end of the returned tostring value. The default behaviour is to append the memory address.
 ---@param class_table table class table
 ---@param custom_type string custom type
 function global:set_class_tostring(class_table, custom_type) end
@@ -507,18 +507,18 @@ function global:d_to_r(angle) end
 function global:uic_pairs(parent_uicomponent_object) end
 
 --- out is a table that provides multiple methods for outputting text to the various available debug console spools. It may be called as a function to output a string to the main Lua console spool, but the following table elements within it may also be called to output to different output spools:<br />
----grudges<br />
----ui<br />
----chaos<br />
----traits<br />
----help_pages<br />
----interventions<br />
----invasions<br />
----design<br />
---- <br />
----out supplies four additional functions that can be used to show tab characters at the start of lines of output:<br />
----FunctionDescriptionout.inc_tabIncrements the number of tab characters shown at the start of the line by one.out.dec_tabDecrements the number of tab characters shown at the start of the line by one. Decrementing below zero has no effect.out.cache_tabCaches the number of tab characters currently set to be shown at the start of the line.out.restore_tabRestores the number of tab characters shown at the start of the line to that previously cached.
----Tab levels are managed per output spool. To each of these functions a string argument can be supplied which sets the name of the output spool to apply the modification to. Supply no argument or a blank string to modify the tab level of the main output spool.
+--- grudges<br />
+--- ui<br />
+--- chaos<br />
+--- traits<br />
+--- help_pages<br />
+--- interventions<br />
+--- invasions<br />
+--- design<br />
+---  <br />
+--- out supplies four additional functions that can be used to show tab characters at the start of lines of output:<br />
+--- FunctionDescriptionout.inc_tabIncrements the number of tab characters shown at the start of the line by one.out.dec_tabDecrements the number of tab characters shown at the start of the line by one. Decrementing below zero has no effect.out.cache_tabCaches the number of tab characters currently set to be shown at the start of the line.out.restore_tabRestores the number of tab characters shown at the start of the line to that previously cached.
+--- Tab levels are managed per output spool. To each of these functions a string argument can be supplied which sets the name of the output spool to apply the modification to. Supply no argument or a blank string to modify the tab level of the main output spool.
 ---@param output string output
 function global:out(output) end
 
@@ -758,8 +758,8 @@ function global:is_armies(value) end
 function global:is_number(value) end
 
 --- Takes a vector, unit, scriptunit or collection of objects and returns true if any element within it has crossed a line demarked by two supplied vector positions.<br />
----An optional fourth parameter instructs has_crossed_line to only consider the positions of non-routing units, if set to true.<br />
----An object is deemed to have 'crossed' the line if it's on the right-hand side of the line.
+--- An optional fourth parameter instructs has_crossed_line to only consider the positions of non-routing units, if set to true.<br />
+--- An object is deemed to have 'crossed' the line if it's on the right-hand side of the line.
 ---@param position_collection any Collection of position objects to test. Supported collection object types are scriptunits, units, army, armies, alliance or a numerically-indexed table of any supported objects.
 ---@param line_position_a <a href="../battle/battle_vector.html#class:battle_vector">battle_vector line position a
 ---@param line_position_b <a href="../battle/battle_vector.html#class:battle_vector">battle_vector line position b
@@ -798,8 +798,8 @@ function global:pulse_uicomponent(ui_component, should_pulse, brightness, progag
 function global:get_objectives_manager() end
 
 --- Sets the supplied object to index from the supplied class in a manner that emulates object-orientation. This will set up a metatable unique to this object and will set the __index field of this metatable to the supplied class. This means that if functions or values are looked up on the object and are not present they are then looked up on the class. It is through this kind of mechanism that object-orientation may be emulated in lua. In contrast to object-to-class relationships set up with set_object_class the metatable is not shared between objects of the same type, which is less memory-efficient but may be desirable in certain circumstances.<br />
----set_object_class_unique will also associate the object with any custom type or tostring values that have been previously set up on the class with calls to set_class_custom_type and set_class_tostring.<br />
----Any number of additional classes and objects may be specified, from which the main supplied object will also derive. If a value (such as a function to be called) is looked up on the object and is not provided on the object or the main class table it derives from, it will be looked up in turn on each additional classes or objects supplied. These additional objects/classes may be table or userdata values.
+--- set_object_class_unique will also associate the object with any custom type or tostring values that have been previously set up on the class with calls to set_class_custom_type and set_class_tostring.<br />
+--- Any number of additional classes and objects may be specified, from which the main supplied object will also derive. If a value (such as a function to be called) is looked up on the object and is not provided on the object or the main class table it derives from, it will be looked up in turn on each additional classes or objects supplied. These additional objects/classes may be table or userdata values.
 ---@param object_table table Object table.
 ---@param class_table table Class table.
 ---@vararg any

@@ -14,7 +14,7 @@ function payload:ancillary_mission_payload(ancillary_key, faction_key, ancillary
 function payload:skulls(amount) end
 
 --- Adds a payload remapping for a particular faction, for money. Once this remapping is established, payloads for this faction set up with payload.money will instead be replaced with an alternative. The alternative is determined by the callback that is supplied to this function.<br />
----When a money payload is requested, the callback will be called and supplied three arguments - the amount of money to add, the faction key, and a table of arbitrary parameters supplied to payload.money that can be used to determine the equivalent payload. What goes in to this table of arbitrary parameters can be decided by the implementer, but what is added to each mission specification should match what the callback looks for.
+--- When a money payload is requested, the callback will be called and supplied three arguments - the amount of money to add, the faction key, and a table of arbitrary parameters supplied to payload.money that can be used to determine the equivalent payload. What goes in to this table of arbitrary parameters can be decided by the implementer, but what is added to each mission specification should match what the callback looks for.
 ---@param faction_key string faction key
 ---@param remapping_callback function remapping callback
 function payload:add_money_equivalence_mapping(faction_key, remapping_callback) end
@@ -53,7 +53,7 @@ function payload:agent_for_faction(faction_key, agent_type, agent_subtype, actio
 function payload:slaanesh_glory(amount) end
 
 --- Adds a payload remapping for a particular faction, for ancillary payloads. Once this remapping is established, payloads for this faction set up with payload.ancillary_mission_payload will instead be replaced with an alternative. The alternative is determined by the callback that is supplied to this function.<br />
----When an ancillary payload is requested, the callback will be called and supplied three arguments - the faction key, the ancillary category string, and the ancillary rarity string.
+--- When an ancillary payload is requested, the callback will be called and supplied three arguments - the faction key, the ancillary category string, and the ancillary rarity string.
 ---@param faction_key string faction key
 ---@param remapping_callback function remapping callback
 function payload:add_ancillary_equivalence_mapping(faction_key, remapping_callback) end

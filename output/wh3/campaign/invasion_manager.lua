@@ -115,11 +115,11 @@ function invasion:add_character_experience(experience_amount, by_level) end
 function invasion:should_maintain_army(maintain, respawn_count) end
 
 --- Sets the target for an invasion<br />
----Target Types: REGION, CHARACTER, LOCATION, PATROL<br />
----REGION - Requires the target to be set as a region key<br />
----CHARACTER - Requires the target to be set as a character's CQI<br />
----LOCATION - Requires the target to be set as a table containing an x and y variable, e.g. {x = 5, y = 3}<br />
----PATROL - Requires the target to be set as a table containing any number of position tables, e.g. {{x = 5, y = 3}, {x = 9, y = 2}}
+--- Target Types: REGION, CHARACTER, LOCATION, PATROL<br />
+--- REGION - Requires the target to be set as a region key<br />
+--- CHARACTER - Requires the target to be set as a character's CQI<br />
+--- LOCATION - Requires the target to be set as a table containing an x and y variable, e.g. {x = 5, y = 3}<br />
+--- PATROL - Requires the target to be set as a table containing any number of position tables, e.g. {{x = 5, y = 3}, {x = 9, y = 2}}
 ---@param target_type string The type of the target
 ---@param target any The actual target
 ---@param target_faction_key string The faction that is the indended target

@@ -17,7 +17,7 @@ function mission_manager:set_should_whitelist(should_whitelist) end
 function mission_manager:is_active() end
 
 --- Adds a payload (reward) to the objective last added with mission_manager:add_new_objective. Many different payload types exists: faction_pooled_resource_transaction, add_mercenary_to_faction_pool, adjust_loyalty_for_faction, province_slaves_change, faction_slaves_change, money, influence, honour, grant_unit, grant_agent, ancillary, effect_bundle, rebellion, demolish_chain, damage_buildings, damage_character, building_restriction, unit_restriction, issue_mission, and game_victory. Each has a different parameter requirement - see existing examples or a programmer for more information.<br />
----The function will optionally attempt to combine this payload reward with others of the same type if they are found, if the enable combining parameter is set to true.
+--- The function will optionally attempt to combine this payload reward with others of the same type if they are found, if the enable combining parameter is set to true.
 ---@param payload string payload
 ---@param enable_payload_combining boolean enable payload combining
 function mission_manager:add_payload(payload, enable_payload_combining) end
@@ -43,18 +43,18 @@ function mission_manager:set_victory_type(victory_type) end
 function mission_manager:trigger(dismiss_callback, callback_delay) end
 
 --- Updates the displayed objective text of a scripted objective. This can be useful if some counter needs to be updated as progress towards an objective is made. A particular scripted objective may be specified by supplying a script key, otherwise this function will target the first scripted objective in the mission manager.<br />
----This should only be called after the mission manager has been triggered.
+--- This should only be called after the mission manager has been triggered.
 ---@param display_text string Display text for this objective. This should be supplied as a full localisation key, i.e. [table]_[field]_[key].
 ---@param script_name string Script name of the scripted objective to update the key of.
 function mission_manager:update_scripted_objective_text(display_text, script_name) end
 
 --- Immediately forces the success of a scripted objective. A particular scripted objective may be specified by supplying a script key, otherwise this function will target the first scripted objective in the mission manager.<br />
----This should only be called after the mission manager has been triggered.
+--- This should only be called after the mission manager has been triggered.
 ---@param script_name string Script name of the scripted objective to force the success of.
 function mission_manager:force_scripted_objective_success(script_name) end
 
 --- Immediately forces the failure of a scripted objective. A particular scripted objective may be specified by supplying a script key, otherwise this function will target the first scripted objective in the mission manager.<br />
----This should only be called after the mission manager has been triggered.
+--- This should only be called after the mission manager has been triggered.
 ---@param script_name string Script name of the scripted objective to force the failure of.
 function mission_manager:force_scripted_objective_failure(script_name) end
 
@@ -104,12 +104,12 @@ function mission_manager:add_payload_from_mission_manager(mm) end
 function mission_manager:set_turn_limit(turn_limit) end
 
 --- Activates/deactivates the showing of the mission event as it is triggered. By default, the event message is shown - this function may be used to disable this behaviour. When this setting is disabled, the mission manager will use cm:disable_event_feed_events to suppress the mission subcategory prior to triggering, and then again to unsuppress mission event once triggered.<br />
----This setting only takes effect if the mission manager is triggering a mission. It has no effect if the mission manager has been set to trigger an incident or dilemma with mission_manager:set_is_incident_in_db or mission_manager:set_is_dilemma_in_db.
+--- This setting only takes effect if the mission manager is triggering a mission. It has no effect if the mission manager has been set to trigger an incident or dilemma with mission_manager:set_is_incident_in_db or mission_manager:set_is_dilemma_in_db.
 ---@param show_event boolean show event
 function mission_manager:set_show_mission(show_event) end
 
 --- Creates a mission manager object. A faction name for the mission recipient and a mission key must be specified at the very least. The mission key must match a record in the missions table, which must be present in all cases.<br />
----A mission success callback, a mission failure callback, a mission cancellation callback and a mission nearing-expiry callback may optionally also be specified. Setting any of these also sets the mission to be persistent, which creates extra requirements for how the mission manager is declared - see the section above on Persistence.
+--- A mission success callback, a mission failure callback, a mission cancellation callback and a mission nearing-expiry callback may optionally also be specified. Setting any of these also sets the mission to be persistent, which creates extra requirements for how the mission manager is declared - see the section above on Persistence.
 ---@param faction_name string Name of faction that will be receiving this mission.
 ---@param mission_key string Key corresponding to a record in the missions table.
 ---@param success_callback function Callback to call if the mission is successfully completed. Setting this makes the mission manager persistent.
@@ -124,7 +124,7 @@ function mission_manager:get_persistent_value() end
 function mission_manager:reset() end
 
 --- Adds a new objective type to the mission specification, and also sets the mission manager to construct its mission from a string.<br />
----Multiple objectives may be added to a mission with this function. The first shall be the primary objective of the mission, while subsequent additions shall be set up as secondary objectives.
+--- Multiple objectives may be added to a mission with this function. The first shall be the primary objective of the mission, while subsequent additions shall be set up as secondary objectives.
 ---@param objective_type string objective type
 function mission_manager:add_new_objective(objective_type) end
 

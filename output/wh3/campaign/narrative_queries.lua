@@ -121,9 +121,9 @@ function narrative_queries:has_available_technologies(unique_name, faction_key, 
 function narrative_queries:one_settlement_from_completing_province(unique_name, faction_key, trigger_message, positive_message, negative_message, additional_condition) end
 
 --- Creates a narrative query that queries the player's advice history against a supplied set of advice strings and advice keys when triggered.<br />
----Up to four sets of data can be passed to the function, representing any advice strings, all advice strings, any advice keys and all advice keys. When the narrative query is triggered the data collections are checked in this order. Where they are present, their contents are checked and the advice-experienced message may be triggered.<br />
----If all four collections are checked and the advice-experienced message has not been triggered, then the advice-not-experienced message is triggered (if one has been supplied).<br />
----If triggered in multiplayer mode the narrative query always behaves as if the advice has been experienced, as the advice history will be different on different machines in a multiplayer game so it would not be safe to do otherwise.
+--- Up to four sets of data can be passed to the function, representing any advice strings, all advice strings, any advice keys and all advice keys. When the narrative query is triggered the data collections are checked in this order. Where they are present, their contents are checked and the advice-experienced message may be triggered.<br />
+--- If all four collections are checked and the advice-experienced message has not been triggered, then the advice-not-experienced message is triggered (if one has been supplied).<br />
+--- If triggered in multiplayer mode the narrative query always behaves as if the advice has been experienced, as the advice history will be different on different machines in a multiplayer game so it would not be safe to do otherwise.
 ---@param unique_name string Unique name amongst other declared narrative queries.
 ---@param faction_key string Key of the faction to which this narrative query applies, from the factions database table.
 ---@param trigger_message string Message on which this narrative query should trigger. If multiple trigger messages are required a table containing string message names can be supplied here instead.
@@ -161,7 +161,7 @@ function narrative_queries:corruption_in_adjacent_region(unique_name, faction_ke
 function narrative_queries:has_pooled_resource(unique_name, faction_key, trigger_message, positive_message, negative_message, pooled_resource_key, threshold_value, additional_condition) end
 
 --- Creates a narrative query that interrogates the player's advice history for a narrative chain. If all of the supplied set of advice keys or any of the supplied set of advice strings are in the advice history, or it's a multiplayer game, or the campaign difficulty is very hard or above, then the positive target message(s) are triggered. Otherwise, the negative target message(s) are triggered, if any have been supplied.<br />
----If triggered in multiplayer mode the narrative query always behaves as if the advice has been experienced, as the advice history will be different on different machines in a multiplayer game so it would not be safe to do otherwise.
+--- If triggered in multiplayer mode the narrative query always behaves as if the advice has been experienced, as the advice history will be different on different machines in a multiplayer game so it would not be safe to do otherwise.
 ---@param unique_name string Unique name amongst other declared narrative queries.
 ---@param faction_key string Key of the faction to which this narrative query applies, from the factions database table.
 ---@param trigger_message string Message on which this narrative query should trigger. If multiple trigger messages are required a table containing string message names can be supplied here instead.

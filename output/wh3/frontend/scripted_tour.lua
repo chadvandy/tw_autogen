@@ -36,7 +36,7 @@ function scripted_tour:add_fullscreen_highlight(path) end
 function scripted_tour:set_fullscreen_highlight_padding(padding) end
 
 --- Adds a validation callback. The supplied function will be called when the scripted tour is triggered with scripted_tour:start, or validated with scripted_tour:is_currently_valid, and it must return a boolean value that indicates whether the validation rule passes.<br />
----Validation rules are checked in the same order in which they are added.
+--- Validation rules are checked in the same order in which they are added.
 ---@param callback function Validation function.
 ---@param reason any Reason value. This can be a value of any type. It will be returned to scripts that call scripted_tour:is_currently_valid if this validation rule fails.
 function scripted_tour:add_validation_rule(callback, reason) end
@@ -63,7 +63,7 @@ function scripted_tour:set_should_hide_text_pointers_on_completion(should_hide) 
 function scripted_tour:remove_skip_action(name) end
 
 --- Instructs the scripted tour to complete an action sequence. Do this to cancel the sequence and prevent any further actions from that sequence being triggered. If no sequence name is specified then the main action sequence is completed.<br />
----Note that calling this function does not complete the tour as a whole, which must still be terminated with scripted_tour:complete.
+--- Note that calling this function does not complete the tour as a whole, which must still be terminated with scripted_tour:complete.
 ---@param sequence_name string sequence name
 function scripted_tour:complete_sequence(sequence_name) end
 
@@ -75,8 +75,8 @@ function scripted_tour:is_currently_valid() end
 function scripted_tour:set_show_skip_button(should_show) end
 
 --- Moves the skip button to a supplied position on the screen. This position can be specified by numeric x/y screen co-ordinates, or by a string specifying a position. Recognised strings:<br />
----tltop-left cornertrtop-right cornerblbottom-left cornerbrbottom-right corner
----By default the skip button will appear in the bottom-right corner of the screen. This function may be called before the scripted tour starts to set skip button position prior to it being shown, or while the scripted tour is running to move it.
+--- tltop-left cornertrtop-right cornerblbottom-left cornerbrbottom-right corner
+--- By default the skip button will appear in the bottom-right corner of the screen. This function may be called before the scripted tour starts to set skip button position prior to it being shown, or while the scripted tour is running to move it.
 ---@param should_show boolean should show
 function scripted_tour:move_skip_button(should_show) end
 
@@ -93,7 +93,7 @@ function scripted_tour:set_should_dismiss_advice_on_completion(should_dismiss) e
 function scripted_tour:start(sequence_name) end
 
 --- Sets a delay between the scripted tour starting and the fullscreen highlight being activated. If a negative number is set then the fullscreen highlight will not activate automatically - in this case client scripts may activate/deactivate it manually with scripted_tour:show_fullscreen_highlight.<br />
----The delay should be given in seconds in campaign, but ms in battle or the frontend.
+--- The delay should be given in seconds in campaign, but ms in battle or the frontend.
 ---@param delay number delay
 function scripted_tour:set_fullscreen_highlight_delay(delay) end
 

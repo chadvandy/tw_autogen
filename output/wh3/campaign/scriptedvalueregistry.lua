@@ -21,7 +21,7 @@ function scriptedvalueregistry:SaveRegistryString(value_name, value) end
 function scriptedvalueregistry:LoadPersistentBool(value_name) end
 
 --- Looks up a timestamp saved into the registry with the supplied name, and returns the elapsed time in seconds since that timestamp was last made. This includes time when the game was not running. If no timestamp with the supplied name has previously been saved then -1 is returned.<br />
----Timestamps can be saved by calling ScriptedValueRegistry:SaveRegistryTimestamp.
+--- Timestamps can be saved by calling ScriptedValueRegistry:SaveRegistryTimestamp.
 ---@param timestamp_name string timestamp name
 function scriptedvalueregistry:CompareRegistryTimestamp(timestamp_name) end
 

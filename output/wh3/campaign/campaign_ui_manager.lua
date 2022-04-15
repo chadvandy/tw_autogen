@@ -178,23 +178,23 @@ function campaign_ui_manager:highlight_legendary_knight_button(show_highlight, p
 function campaign_ui_manager:highlight_motherland(show_highlight, pulse_strength_override, force_highlight) end
 
 --- Activates or deactivates a suppression on a specified end-turn warning. If an end-turn warning is suppressed it is prevented from appearing. End-turn warnings are specified by a numeric enumerator. Enumerators to use may be looked up in the table below:<br />
----warning iddescription<br />
----0None
----1Low funds
----2Research available
----4Commandment available
----8Character upgrade available
----16Settlement upgrade available
----32Vortex ritual available
----64Siege construction available
----128Low fightiness
----256Damaged building
----512Building available
----1024Office slot available
----2048Army ap available
----4096Hero ap available
----8192Imminent rebellion
----16384Garrison army ap available
+--- warning iddescription<br />
+--- 0None
+--- 1Low funds
+--- 2Research available
+--- 4Commandment available
+--- 8Character upgrade available
+--- 16Settlement upgrade available
+--- 32Vortex ritual available
+--- 64Siege construction available
+--- 128Low fightiness
+--- 256Damaged building
+--- 512Building available
+--- 1024Office slot available
+--- 2048Army ap available
+--- 4096Hero ap available
+--- 8192Imminent rebellion
+--- 16384Garrison army ap available
 ---@param warning number Warning to suppress - should be a number from the table above.
 ---@param suppress boolean Activate suppression.
 function campaign_ui_manager:suppress_end_turn_warning(warning, suppress) end
@@ -656,7 +656,7 @@ function campaign_ui_manager:highlight_offices(show_highlight, pulse_strength_ov
 function campaign_ui_manager:highlight_fleet_office_button(show_highlight, pulse_strength_override, force_highlight) end
 
 --- A shorthand method for highlighting or unhighlighting all settlements currently near the position of the camera. An optional condition may be supplied to filter the settlements to highlight.<br />
----Note that the highlighting won't update if the camera is moved.
+--- Note that the highlighting won't update if the camera is moved.
 ---@param show_highlight boolean Show highlight.
 ---@param radius number Radius in display units.
 ---@param condition function Filter condition. If supplied, this should be a function which accepts a settlement object as a single argument and returns a boolean result. If the boolean result evaluates to true then the settlement is highlighted. The filter is only considered when highlighting - when unhighlighting, all settlements within the radius are unhighlighted regardless of any filter.
@@ -865,8 +865,8 @@ function campaign_ui_manager:highlight_blessed_spawnings_button(show_highlight, 
 function campaign_ui_manager:highlight_garrison_armies(show_highlight, pulse_strength_override, force_highlight) end
 
 --- Places a highlight effect at the position of the supplied settlement. An offset position may optionally be set - sometimes it's better not to highlight a settlement's central position if a character is stood there as it's unclear what's being highlighted.<br />
----A marker type can be supplied - recognised marker types are currently move_to, select, pointer, move_to_vfx, select_vfx (default), look_at_vfx, objective. If one of these is specified then the marker is added with the underlying add_marker command provided by the game interface. If no marker type is specified then a vfx is added with the add_vfx command instead, of type advice_settlement_marker.<br />
----Any highlight added with this function can be removed later with campaign_ui_manager:unhighlight_settlement.
+--- A marker type can be supplied - recognised marker types are currently move_to, select, pointer, move_to_vfx, select_vfx (default), look_at_vfx, objective. If one of these is specified then the marker is added with the underlying add_marker command provided by the game interface. If no marker type is specified then a vfx is added with the add_vfx command instead, of type advice_settlement_marker.<br />
+--- Any highlight added with this function can be removed later with campaign_ui_manager:unhighlight_settlement.
 ---@param settlement_name string Full settlement name. This is generally "settlement:" concatenated with the region key.
 ---@param marker_type string Marker type.
 ---@param x_offset number X offset.
@@ -1064,7 +1064,7 @@ function campaign_ui_manager:highlight_plagues_of_nurgle(show_highlight, pulse_s
 function campaign_ui_manager:highlight_hero_recruitment_panel(show_highlight, pulse_strength_override, force_highlight) end
 
 --- Returns the name of a blocking panel that's open, or false if no panels are open. If more than one blocking panel is open then the name of one is returned at random.<br />
----Blocking panels are panels that block the progress of intervention (unless they are configured to disregard this).
+--- Blocking panels are panels that block the progress of intervention (unless they are configured to disregard this).
 function campaign_ui_manager:get_open_blocking_panel() end
 
 --- Highlights the Supporters Track. Best practise is to use campaign_ui_manager:unhighlight_all_for_tooltips to cancel the highlight later.
@@ -1348,7 +1348,7 @@ function campaign_ui_manager:highlight_devotion(show_highlight, pulse_strength_o
 function campaign_ui_manager:highlight_treasury(show_highlight, pulse_strength_override, force_highlight) end
 
 --- Places a highlight effect at the position of the supplied character. A marker type can be supplied - recognised marker types are currently move_to, select, pointer, move_to_vfx, select_vfx (default), look_at_vfx, objective. If one of these is specified then the marker is added with the underlying add_marker command provided by the game interface. If no marker type is specified then a vfx is added with the add_vfx command instead, of type advice_settlement_marker.<br />
----Any highlight added with this function can be removed later with campaign_ui_manager:unhighlight_character.
+--- Any highlight added with this function can be removed later with campaign_ui_manager:unhighlight_character.
 ---@param character_object CHARACTER_SCRIPT_INTERFACE character object
 ---@param marker_type string marker type
 ---@param height_offset number height offset
@@ -1420,7 +1420,7 @@ function campaign_ui_manager:highlight_hero_deployment_button(show_highlight, pu
 function campaign_ui_manager:highlight_stances(show_highlight, pulse_strength_override, force_highlight, dont_highlight_upstream) end
 
 --- Highlights post battle option buttons for clicking. This function works differently to other functions in this section as it highlights the post-battle options with a square highlight indicating that they should be clicked on. It also waits until the post_battle_panel is in position before activating the highlight.<br />
----Unlike other functions in this section this highlight should be disabled by calling this function again with false as a single argument.
+--- Unlike other functions in this section this highlight should be disabled by calling this function again with false as a single argument.
 ---@param show_highlight boolean show highlight
 function campaign_ui_manager:highlight_post_battle_options_for_click(show_highlight) end
 
@@ -1650,7 +1650,7 @@ function campaign_ui_manager:highlight_army_panel_unit_cards(show_highlight, pul
 function campaign_ui_manager:highlight_faction_summary_statistics_tab(show_highlight, pulse_strength_override, force_highlight, dont_highlight_upstream) end
 
 --- A shorthand method for highlighting or unhighlighting all characters currently near the position of the camera. An optional condition may be supplied to filter the characters to highlight.<br />
----Note that the highlighting won't update if the camera is moved.
+--- Note that the highlighting won't update if the camera is moved.
 ---@param show_highlight boolean Show highlight.
 ---@param radius number Radius in display units.
 ---@param condition function Filter condition. If supplied, this should be a function which accepts a character object as a single argument and returns a boolean result. If the boolean result evaluates to true then the character is highlighted. The filter is only considered when highlighting - when unhighlighting, all characters within the radius are unhighlighted regardless of any filter.
