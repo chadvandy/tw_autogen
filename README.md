@@ -56,5 +56,5 @@ Enjoy!
 If you'd like to help with this project, feel free to make a pull request to fix up any of the standing issues. You can also make an overrides/ file, which are used to "fix" any incorrect definitions from the documentations files. You can see examples therein.
 
 # Credits
-Uses a modified version of (30log)[https://github.com/Yonaba/30log]
-Uses the (LuaFileSystem)[https://keplerproject.github.io/luafilesystem/]
+Uses a modified version of [30log](https://github.com/Yonaba/30log)
+Uses the [LuaFileSystem](https://keplerproject.github.io/luafilesystem/)
