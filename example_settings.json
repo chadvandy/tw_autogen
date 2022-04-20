@@ -1,0 +1,9 @@
+{
+    "Lua.workspace.library": [
+        "S:/modding/tw_autogen/output/wh3/all.lua",
+        "S:/modding/tw_autogen/output/wh3/tw_events_and_interfaces.lua",
+        "S:/modding/tw_autogen/output/wh3/campaign/",
+        "S:/modding/tw_autogen/output/wh3/frontend/",
+        "S:/modding/tw_autogen/output/wh3/battle/"
+    ]
+}
