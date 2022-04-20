@@ -1,18 +1,19 @@
 --- TODO if there's two params with the same name (because CA docs don't provide param names), name them _1 _2 etc.
---- TODO standardize all these internal objects
 
 --- TODO fix the assumption of every file being a full class (ie. global.html just being globby functions)
 --- TODO also fix the assumption of every file being a single class (ie. core.html having custom_context and others)
---- TODO remove the forced newline on everything
---- TODO have the overrides file just be a hard-def of individual things in EmmyLua style; read that file to start, and determine if there's anything we need to override elsewhere.
---- TODO change the overrides files to be .lua's so it reads better
+
 --- TODO change the overrides folder structure so it has /wh3/ etc. folders within
 --- TODO smartly create a single file called "all.lua" or "setup.lua" or something that basiucally defines all the relevant global variables and assigns them to the types
+
+--- NEXT maybe load up all classes created in each docobj, but treat some classes as "invisible" so you just print `method()` instead of `class:method()`. it'll be easier for global.
+---- Decide if I want to just hardcode "global class is invisible" or do something like "read the actual visible text in a function definition, and if there's no class there don't give them a class and link them to the doc obj"
+
+--- TODO hardcode the order of functions to match that of the documentation
 
 --- TODO emmylua-ify LFS
 package.cpath = package.cpath .. ";includes/?.dll"
 require "lfs"
-
 
 override_path = "overrides"
 in_path = "input"
@@ -22,7 +23,7 @@ function printf(t, ...)
     print(string.format(t, ...))
 end
 
-
+--- TODO move to overrides/ file
 local OVERRIDES = require "overrides"
 local __ = require "doc_obj"
 local DocObj = __[1]
@@ -456,12 +457,18 @@ local function parse_all_games()
                 local context_path = game_path .. "/" .. context
 
                 for file in lfs.dir(context_path) do
+                    local invalids = {
+                        "index.html", "lua.html"
+                    }
+
                     --- if not an HTML file, fuck off
                     --- if an index file, fuck off as well
-                    if file:find(".html") and not file:find("index.html") then
+                    if file:find(".html") and not file:find("index.html") and not file:find("lua.html") then
                         printf("Found %s within %s/%s", file, found_game, context)
 
-                        DocObj:new(found_game, context, file)
+                        -- if file:find("core") then
+                            DocObj:new(found_game, context, file)
+                        -- end
                     end
                 end
             end
@@ -517,7 +524,7 @@ end
 
 local function init()
     for override_file in lfs.dir(override_path) do
-        if override_file:find(".txt") then
+        if override_file:find(".lua") then
             --- TODO read the override file, apply the override in the overrides table, and loop through it.
             parse_override_file(override_path .. "/" .. override_file)
         end
