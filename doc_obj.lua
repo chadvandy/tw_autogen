@@ -403,9 +403,14 @@ function ClassObj:print()
         s = s .. "\n" .. sf(str, ...)
     end
 
-    --- TODO plop in description here
-    insf("---@class %s", name)
-    insf("local %s = {}\n", name)
+    if name ~= "global" then
+        --- TODO plop in description here
+        insf("---@class %s", name)
+        insf("local %s = {}\n", name)
+    else
+        insf("--- All the global functions!")
+    end
+
 
     local ordered_methods = {}
     for _,method in pairs(self.methods) do
@@ -446,7 +451,12 @@ function MethodObj:print(c_name)
         ins(ret:print(), false)
     end
 
-    insf("function %s:%s(%s) end\n", c_name, self.name, table.concat(param_names, ", "))
+    local fstr = "function %s:%s(%s) end\n"
+    if c_name == "global" then
+        fstr = "function %s%s(%s) end\n"
+        c_name = ""
+    end
+    insf(fstr, c_name, self.name, table.concat(param_names, ", "))
 
     return s
 end

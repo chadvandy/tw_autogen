@@ -1,3 +1,5 @@
+
+--- All the global functions!
 --- Throws a script error with the supplied message, printing the lua callstack to the Lua console output spool. Useful for debugging.
 ---@param message string Message to print.
 ---@param stack_level_modifier number If the stack level modifier is set to a negative number then no traceback is printed as part of the script error. This can be useful if the error message itself contains a traceback.
