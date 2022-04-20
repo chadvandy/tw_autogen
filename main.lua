@@ -1,15 +1,10 @@
 --- TODO if there's two params with the same name (because CA docs don't provide param names), name them _1 _2 etc.
 
---- TODO fix the assumption of every file being a full class (ie. global.html just being globby functions)
---- TODO also fix the assumption of every file being a single class (ie. core.html having custom_context and others)
+--- TODO move globals.lua to the /game/ folder, instead of in each subfolder
 
 --- TODO change the overrides folder structure so it has /wh3/ etc. folders within
 --- TODO smartly create a single file called "all.lua" or "setup.lua" or something that basiucally defines all the relevant global variables and assigns them to the types
 
---- NEXT maybe load up all classes created in each docobj, but treat some classes as "invisible" so you just print `method()` instead of `class:method()`. it'll be easier for global.
----- Decide if I want to just hardcode "global class is invisible" or do something like "read the actual visible text in a function definition, and if there's no class there don't give them a class and link them to the doc obj"
-
---- TODO hardcode the order of functions to match that of the documentation
 
 --- TODO emmylua-ify LFS
 package.cpath = package.cpath .. ";includes/?.dll"
