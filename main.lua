@@ -415,11 +415,15 @@ function check_dir(path, found_game, context)
         lfs.mkdir(path)
     end
 
+    if not found_game then return path end
+
     local game_path = string.format("%s/%s", path, found_game)
     local game_dir = lfs.attributes(game_path)
     if not game_dir or game_dir.mode ~= "directory" then
         lfs.mkdir(game_path)
     end
+
+    if not context then return game_path end
 
     local context_path = string.format("%s/%s", game_path, context)
     local context_dir = lfs.attributes(context_path)

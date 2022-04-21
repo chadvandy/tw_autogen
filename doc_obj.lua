@@ -124,6 +124,10 @@ function DocObj:init(found_game, context, file_name)
 
     --- TODO output automatic
     local out_dir = check_dir(out_path, found_game, context)
+    if file_name == "global.html" then
+        out_dir = check_dir(out_path, found_game)
+    end
+
     local out_filepath = out_dir .. "/" .. string.gsub(file_name, ".html", ".lua")
     printf("Outputing on file %s", out_filepath)
 
