@@ -438,13 +438,13 @@ function UIC:Opacity() end
 
 --- Sets the opacity of the uicomponent. This should be specified as a number between 0 (transparent) and 255 (fully opaque). An optional flag also applies the opacity setting to all states of the uicomponent, as opposed to just the current state.
 ---@param opacity_value number opacity value
----@param to_all_states apply to all states
-function UIC:SetOpacity(opacity_value, to_all_states) end
+---@param apply_to_all_states boolean to all states
+function UIC:SetOpacity(opacity_value, apply_to_all_states) end
 
 --- Sets the opacity of this uicomponent and propagates the change to all its children. The opacity value should be specified as a number between 0 (transparent) and 255 (fully opaque). An optional flag also applies the opacity setting to all states of each uicomponent, as opposed to just the current state.
 ---@param opacity_value number opacity value
----@param to_all_states apply to all states
-function UIC:PropagateOpacity(opacity_value, to_all_states) end
+---@param apply_to_all_states boolean to all states
+function UIC:PropagateOpacity(opacity_value, apply_to_all_states) end
 
 --- Returns whether this uicomponent is disabled or not. Disabled uicomponents do not respond to mouse clicks but still respond to the mouse cursor being placed over them.
 ---@return boolean  is interactive 

@@ -738,17 +738,7 @@ function battle_manager:stop_camera_movement_tracker() end
 function battle_manager:get_camera_altitude_change() end
 
 --- Gets the total distance the camera has travelled between now and when the tracker was started. This distance is not exact, but gives the calling script an indication of how much the player is moving the camera.
----@return number  distance in m 
----@return ScriptEventBattleArmiesEngaging  
----@return ScriptEventPlayerGeneralWounded  
----@return ScriptEventPlayerGeneralDies  
----@return ScriptEventEnemyGeneralWounded  
----@return ScriptEventEnemyGeneralDies  
----@return ScriptEventPlayerGeneralRouts  
----@return ScriptEventEnemyGeneralRouts  
----@return ScriptEventPlayerUnitRouts  
----@return ScriptEventPlayerUnitRallies  
----@return ScriptEventEnemyUnitRouts  
+---@return number  distance in m
 function battle_manager:get_camera_distance_travelled() end
 
 --- Starts the engagement monitor. This must be called before the "Deployed" phase change occurs (i.e. before the end of deployment).

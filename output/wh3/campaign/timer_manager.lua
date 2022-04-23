@@ -8,9 +8,8 @@ local timer_manager = {}
 ---@return timer_manager  timer manager 
 function timer_manager:new_campaign(game_interface) end
 
---- Creates and returns a timer manager in battle. This function should be supplied a <a href="../battle/battle.html#class:battle">battle game object. The timer manager is automatically created by the <a href="../battle/battle_manager.html#class:battle_manager">battle_manager so there should be no need for game scripts to call this function.
----@param battle_interface <a href="../battle/battle.html#class:battle">battle battle interface
----@return timer_manager  timer manager 
+--- Creates and returns a timer manager in battle. This function should be supplied a battle game object. The timer manager is automatically created by the battle_manager so there should be no need for game scripts to call this function.
+---@param battle_interface battle battle interface
 function timer_manager:new_battle(battle_interface) end
 
 --- Creates and returns a timer manager in frontend.

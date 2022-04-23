@@ -13,7 +13,7 @@ function invasion_manager:new_invasion(key, faction_key, force_list, spawn_locat
 
 --- Adds a new invasion to the invasion manager created from an existing force
 ---@param key string The key of this invasion
----@param force force_interface The existing force to use with this invasion
+---@param force MILITARY_FORCE_SCRIPT_INTERFACE The existing force to use with this invasion
 ---@return invasion  The new invasion object created by this function 
 function invasion_manager:new_invasion_from_existing_force(key, force) end
 
