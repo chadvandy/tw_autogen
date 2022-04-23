@@ -2437,7 +2437,6 @@ end
 
 
 ---@class CHARACTER_LIST_SCRIPT_INTERFACE Description: A list of character interfaces
-
 local CHARACTER_LIST_SCRIPT_INTERFACE = {}
 function CHARACTER_LIST_SCRIPT_INTERFACE:num_items() end
 function CHARACTER_LIST_SCRIPT_INTERFACE:item_at() end
@@ -2445,7 +2444,6 @@ function CHARACTER_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE Description: Character Observation Options Script Interface
-
 local CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE = {}
 function CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE:is_null_interface() end
 function CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE:faction() end
@@ -2458,7 +2456,6 @@ function CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE:set_agents_options() end
 
 
 ---@class POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE Description: Pooled Resource Manager Script Interface
-
 local POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE = {}
 function POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE:is_null_interface() end
 function POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE:can_afford_resource_cost() end
@@ -2480,7 +2477,6 @@ function POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE:resource() end
 
 
 ---@class CHARACTER_SCRIPT_INTERFACE Description: Character interface
-
 local CHARACTER_SCRIPT_INTERFACE = {}
 function CHARACTER_SCRIPT_INTERFACE:is_null_interface() end
 function CHARACTER_SCRIPT_INTERFACE:command_queue_index() end
@@ -2589,7 +2585,6 @@ function CHARACTER_SCRIPT_INTERFACE:bonus_values() end
 
 
 ---@class MILITARY_FORCE_SCRIPT_INTERFACE Description: Military force interface. Armies and navies are military forces.
-
 local MILITARY_FORCE_SCRIPT_INTERFACE = {}
 function MILITARY_FORCE_SCRIPT_INTERFACE:is_null_interface() end
 function MILITARY_FORCE_SCRIPT_INTERFACE:command_queue_index() end
@@ -2627,7 +2622,6 @@ function MILITARY_FORCE_SCRIPT_INTERFACE:lookup_streak_value() end
 
 
 ---@class SETTLEMENT_SCRIPT_INTERFACE Description: Settlement script interface
-
 local SETTLEMENT_SCRIPT_INTERFACE = {}
 function SETTLEMENT_SCRIPT_INTERFACE:is_null_interface() end
 function SETTLEMENT_SCRIPT_INTERFACE:key() end
@@ -2653,7 +2647,6 @@ function SETTLEMENT_SCRIPT_INTERFACE:first_empty_active_secondary_slot() end
 
 
 ---@class DEBUG_DRAWING_SCRIPT_INTERFACE Description: Debug Drawing Script Interface
-
 local DEBUG_DRAWING_SCRIPT_INTERFACE = {}
 function DEBUG_DRAWING_SCRIPT_INTERFACE:is_null_interface() end
 function DEBUG_DRAWING_SCRIPT_INTERFACE:draw_line() end
@@ -2669,13 +2662,11 @@ function DEBUG_DRAWING_SCRIPT_INTERFACE:set_draw_duration() end
 
 
 ---@class SEA_REGION_LIST_SCRIPT_INTERFACE Description: Sea Region List script interface, a list of sea regions
-
 local SEA_REGION_LIST_SCRIPT_INTERFACE = {}
 function SEA_REGION_LIST_SCRIPT_INTERFACE:is_null_interface() end
 
 
 ---@class CARAVANS_SYSTEM_SCRIPT_INTERFACE Description: Caravans System Script Interface
-
 local CARAVANS_SYSTEM_SCRIPT_INTERFACE = {}
 function CARAVANS_SYSTEM_SCRIPT_INTERFACE:is_null_interface() end
 function CARAVANS_SYSTEM_SCRIPT_INTERFACE:faction_caravans() end
@@ -2688,7 +2679,6 @@ function CARAVANS_SYSTEM_SCRIPT_INTERFACE:maximum_banditry() end
 
 
 ---@class RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE Description: Ritual Target Region Status Script Interface
-
 local RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE = {}
 function RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE:is_null_interface() end
 function RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE:valid() end
@@ -2705,7 +2695,6 @@ function RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE:is_not_ruin() end
 
 
 ---@class FAMILY_MEMBER_LIST_SCRIPT_INTERFACE Description: A list of family member interfaces
-
 local FAMILY_MEMBER_LIST_SCRIPT_INTERFACE = {}
 function FAMILY_MEMBER_LIST_SCRIPT_INTERFACE:num_items() end
 function FAMILY_MEMBER_LIST_SCRIPT_INTERFACE:item_at() end
@@ -2713,7 +2702,6 @@ function FAMILY_MEMBER_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class EFFECT_BUNDLE_SCRIPT_INTERFACE Description: An effect bundle, which provides multiple effects to a target game object
-
 local EFFECT_BUNDLE_SCRIPT_INTERFACE = {}
 function EFFECT_BUNDLE_SCRIPT_INTERFACE:is_null_interface() end
 function EFFECT_BUNDLE_SCRIPT_INTERFACE:key() end
@@ -2723,7 +2711,6 @@ function EFFECT_BUNDLE_SCRIPT_INTERFACE:clone_and_create_custom_effect_bundle() 
 
 
 ---@class FACTION_SCRIPT_INTERFACE Description: Faction interface
-
 local FACTION_SCRIPT_INTERFACE = {}
 function FACTION_SCRIPT_INTERFACE:is_null_interface() end
 function FACTION_SCRIPT_INTERFACE:command_queue_index() end
@@ -2838,7 +2825,6 @@ function FACTION_SCRIPT_INTERFACE:complete_provinces() end
 
 
 ---@class POOLED_RESOURCE_LIST_SCRIPT_INTERFACE Description: A list of pooled resource script interfaces
-
 local POOLED_RESOURCE_LIST_SCRIPT_INTERFACE = {}
 function POOLED_RESOURCE_LIST_SCRIPT_INTERFACE:num_items() end
 function POOLED_RESOURCE_LIST_SCRIPT_INTERFACE:item_at() end
@@ -2846,7 +2832,6 @@ function POOLED_RESOURCE_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class ROUTE_POSITION_SCRIPT_INTERFACE Description: Route Position Script Interface
-
 local ROUTE_POSITION_SCRIPT_INTERFACE = {}
 function ROUTE_POSITION_SCRIPT_INTERFACE:is_null_interface() end
 function ROUTE_POSITION_SCRIPT_INTERFACE:network() end
@@ -2857,7 +2842,6 @@ function ROUTE_POSITION_SCRIPT_INTERFACE:valid() end
 
 
 ---@class CARAVAN_RECRUITMENT_ITEM_SCRIPT_INTERFACE Description: Caravan Recruitment Item Script Interface
-
 local CARAVAN_RECRUITMENT_ITEM_SCRIPT_INTERFACE = {}
 function CARAVAN_RECRUITMENT_ITEM_SCRIPT_INTERFACE:is_null_interface() end
 function CARAVAN_RECRUITMENT_ITEM_SCRIPT_INTERFACE:valid() end
@@ -2866,7 +2850,6 @@ function CARAVAN_RECRUITMENT_ITEM_SCRIPT_INTERFACE:cost() end
 
 
 ---@class EFFECT_LIST_SCRIPT_INTERFACE Description: A list of effects
-
 local EFFECT_LIST_SCRIPT_INTERFACE = {}
 function EFFECT_LIST_SCRIPT_INTERFACE:num_items() end
 function EFFECT_LIST_SCRIPT_INTERFACE:item_at() end
@@ -2874,7 +2857,6 @@ function EFFECT_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class WOM_COMPASS_SCRIPT_INTERFACE Description: Winds Of Magic Compass Script Interface
-
 local WOM_COMPASS_SCRIPT_INTERFACE = {}
 function WOM_COMPASS_SCRIPT_INTERFACE:is_null_interface() end
 function WOM_COMPASS_SCRIPT_INTERFACE:get_compass_cooldown() end
@@ -2886,7 +2868,6 @@ function WOM_COMPASS_SCRIPT_INTERFACE:get_direction_power_level() end
 
 
 ---@class TELEPORTATION_NODE_SCRIPT_INTERFACE Description: Teleportation Node Script Interface
-
 local TELEPORTATION_NODE_SCRIPT_INTERFACE = {}
 function TELEPORTATION_NODE_SCRIPT_INTERFACE:is_null_interface() end
 function TELEPORTATION_NODE_SCRIPT_INTERFACE:record_key() end
@@ -2900,7 +2881,6 @@ function TELEPORTATION_NODE_SCRIPT_INTERFACE:position() end
 
 
 ---@class WAR_COORDINATION_SCRIPT_INTERFACE Description: Favour Points Script Interface. Can be accessed from the episodic scripting interface.
-
 local WAR_COORDINATION_SCRIPT_INTERFACE = {}
 function WAR_COORDINATION_SCRIPT_INTERFACE:is_null_interface() end
 function WAR_COORDINATION_SCRIPT_INTERFACE:get_faction_favour_points_toward_faction() end
@@ -2908,7 +2888,6 @@ function WAR_COORDINATION_SCRIPT_INTERFACE:set_faction_favour_points_toward_fact
 
 
 ---@class TELEPORTATION_NETWORK_SCRIPT_INTERFACE Description: Teleportation Network Script Interface
-
 local TELEPORTATION_NETWORK_SCRIPT_INTERFACE = {}
 function TELEPORTATION_NETWORK_SCRIPT_INTERFACE:is_null_interface() end
 function TELEPORTATION_NETWORK_SCRIPT_INTERFACE:record_key() end
@@ -2921,7 +2900,6 @@ function TELEPORTATION_NETWORK_SCRIPT_INTERFACE:closed_nodes_of_template() end
 
 
 ---@class TELEPORTATION_NODE_RECORD_LIST_SCRIPT_INTERFACE Description: A list of teleportation network node record script interfaces
-
 local TELEPORTATION_NODE_RECORD_LIST_SCRIPT_INTERFACE = {}
 function TELEPORTATION_NODE_RECORD_LIST_SCRIPT_INTERFACE:num_items() end
 function TELEPORTATION_NODE_RECORD_LIST_SCRIPT_INTERFACE:item_at() end
@@ -2929,7 +2907,6 @@ function TELEPORTATION_NODE_RECORD_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class UNIT_SCRIPT_INTERFACE Description: Unit script interface. Land units and Naval units are derived from Unit.
-
 local UNIT_SCRIPT_INTERFACE = {}
 function UNIT_SCRIPT_INTERFACE:is_null_interface() end
 function UNIT_SCRIPT_INTERFACE:command_queue_index() end
@@ -2959,14 +2936,12 @@ function UNIT_SCRIPT_INTERFACE:get_unit_purchased_effects() end
 
 
 ---@class UNIT_PURCHASABLE_EFFECT_SCRIPT_INTERFACE Description: Unit purchasable effect script interface.
-
 local UNIT_PURCHASABLE_EFFECT_SCRIPT_INTERFACE = {}
 function UNIT_PURCHASABLE_EFFECT_SCRIPT_INTERFACE:is_null_interface() end
 function UNIT_PURCHASABLE_EFFECT_SCRIPT_INTERFACE:record_key() end
 
 
 ---@class PROVINCE_LIST_SCRIPT_INTERFACE Description: A list of province interfaces
-
 local PROVINCE_LIST_SCRIPT_INTERFACE = {}
 function PROVINCE_LIST_SCRIPT_INTERFACE:num_items() end
 function PROVINCE_LIST_SCRIPT_INTERFACE:item_at() end
@@ -2974,7 +2949,6 @@ function PROVINCE_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class SEA_REGION_MANAGER_SCRIPT_INTERFACE Description: Sea Region Manager script interface, world sea region list, faction sea regions and lookup by key
-
 local SEA_REGION_MANAGER_SCRIPT_INTERFACE = {}
 function SEA_REGION_MANAGER_SCRIPT_INTERFACE:is_null_interface() end
 function SEA_REGION_MANAGER_SCRIPT_INTERFACE:model() end
@@ -2984,7 +2958,6 @@ function SEA_REGION_MANAGER_SCRIPT_INTERFACE:sea_region_by_key() end
 
 
 ---@class CHARACTER_IMPRISONMENT_REJECTION_REASON_MASK_SCRIPTING_INTERFACE Description: Character Imprisonment Rejection Reason Mask Scripting Interface
-
 local CHARACTER_IMPRISONMENT_REJECTION_REASON_MASK_SCRIPTING_INTERFACE = {}
 function CHARACTER_IMPRISONMENT_REJECTION_REASON_MASK_SCRIPTING_INTERFACE:is_null_interface() end
 function CHARACTER_IMPRISONMENT_REJECTION_REASON_MASK_SCRIPTING_INTERFACE:is_member_of_garrison() end
@@ -2996,7 +2969,6 @@ function CHARACTER_IMPRISONMENT_REJECTION_REASON_MASK_SCRIPTING_INTERFACE:any() 
 
 
 ---@class UNIT_LIST_SCRIPT_INTERFACE Description: A list of units
-
 local UNIT_LIST_SCRIPT_INTERFACE = {}
 function UNIT_LIST_SCRIPT_INTERFACE:num_items() end
 function UNIT_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3005,7 +2977,6 @@ function UNIT_LIST_SCRIPT_INTERFACE:has_unit() end
 
 
 ---@class MILITARY_FORCE_LIST_SCRIPT_INTERFACE Description: A list of military forces
-
 local MILITARY_FORCE_LIST_SCRIPT_INTERFACE = {}
 function MILITARY_FORCE_LIST_SCRIPT_INTERFACE:num_items() end
 function MILITARY_FORCE_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3013,7 +2984,6 @@ function MILITARY_FORCE_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class REGION_DATA_SCRIPT_INTERFACE Description: Region Data Script Interface, a region of the campaign map. May or may not be represented by a region or sea region
-
 local REGION_DATA_SCRIPT_INTERFACE = {}
 function REGION_DATA_SCRIPT_INTERFACE:is_null_interface() end
 function REGION_DATA_SCRIPT_INTERFACE:key() end
@@ -3026,7 +2996,6 @@ function REGION_DATA_SCRIPT_INTERFACE:characters_of_faction_in_region() end
 
 
 ---@class CAMPAIGN_MISSION_SCRIPT_INTERFACE Description: Mission script interface.
-
 local CAMPAIGN_MISSION_SCRIPT_INTERFACE = {}
 function CAMPAIGN_MISSION_SCRIPT_INTERFACE:is_null_interface() end
 function CAMPAIGN_MISSION_SCRIPT_INTERFACE:model() end
@@ -3036,7 +3005,6 @@ function CAMPAIGN_MISSION_SCRIPT_INTERFACE:mission_issuer_record_key() end
 
 
 ---@class UNIQUE_AGENT_DETAILS_LIST_SCRIPT_INTERFACE Description: A list of unique agent details
-
 local UNIQUE_AGENT_DETAILS_LIST_SCRIPT_INTERFACE = {}
 function UNIQUE_AGENT_DETAILS_LIST_SCRIPT_INTERFACE:num_items() end
 function UNIQUE_AGENT_DETAILS_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3045,7 +3013,6 @@ function UNIQUE_AGENT_DETAILS_LIST_SCRIPT_INTERFACE:has_unique_agent_details() e
 
 
 ---@class FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE Description: Faction Province manager script interface. Represents the segment of a province owned by a faction
-
 local FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE = {}
 function FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE:is_null_interface() end
 function FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE:province() end
@@ -3057,7 +3024,6 @@ function FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE:gdp() end
 
 
 ---@class EFFECT_SCRIPT_INTERFACE Description: An effect that provides bonus values via a scope
-
 local EFFECT_SCRIPT_INTERFACE = {}
 function EFFECT_SCRIPT_INTERFACE:is_null_interface() end
 function EFFECT_SCRIPT_INTERFACE:key() end
@@ -3066,7 +3032,6 @@ function EFFECT_SCRIPT_INTERFACE:value() end
 
 
 ---@class CARAVAN_LIST_SCRIPT_INTERFACE Description: A list of caravan script interfaces
-
 local CARAVAN_LIST_SCRIPT_INTERFACE = {}
 function CARAVAN_LIST_SCRIPT_INTERFACE:num_items() end
 function CARAVAN_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3074,7 +3039,6 @@ function CARAVAN_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class TELEPORTATION_NETWORK_SYSTEM_SCRIPT_INTERFACE Description: Teleportation Network Script Interface
-
 local TELEPORTATION_NETWORK_SYSTEM_SCRIPT_INTERFACE = {}
 function TELEPORTATION_NETWORK_SYSTEM_SCRIPT_INTERFACE:is_null_interface() end
 function TELEPORTATION_NETWORK_SYSTEM_SCRIPT_INTERFACE:lookup_network() end
@@ -3082,7 +3046,6 @@ function TELEPORTATION_NETWORK_SYSTEM_SCRIPT_INTERFACE:lookup_open_node() end
 
 
 ---@class BUILDING_SCRIPT_INTERFACE Description: Building script interface
-
 local BUILDING_SCRIPT_INTERFACE = {}
 function BUILDING_SCRIPT_INTERFACE:is_null_interface() end
 function BUILDING_SCRIPT_INTERFACE:model() end
@@ -3101,14 +3064,12 @@ function BUILDING_SCRIPT_INTERFACE:building_level() end
 
 
 ---@class COOKING_SYSTEM_SCRIPT_INTERFACE Description: Cook System Script Interface
-
 local COOKING_SYSTEM_SCRIPT_INTERFACE = {}
 function COOKING_SYSTEM_SCRIPT_INTERFACE:is_null_interface() end
 function COOKING_SYSTEM_SCRIPT_INTERFACE:faction_cooking_info() end
 
 
 ---@class FACTION_PROVINCE_MANAGER_LIST_SCRIPT_INTERFACE Description: A list of faction province manager interfaces
-
 local FACTION_PROVINCE_MANAGER_LIST_SCRIPT_INTERFACE = {}
 function FACTION_PROVINCE_MANAGER_LIST_SCRIPT_INTERFACE:num_items() end
 function FACTION_PROVINCE_MANAGER_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3116,7 +3077,6 @@ function FACTION_PROVINCE_MANAGER_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE Description: Ritual Target Military Force Status Script Interface
-
 local RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE = {}
 function RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE:is_null_interface() end
 function RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE:valid() end
@@ -3131,7 +3091,6 @@ function RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE:not_on_land() end
 
 
 ---@class SLOT_SCRIPT_INTERFACE Description: Slot script interface
-
 local SLOT_SCRIPT_INTERFACE = {}
 function SLOT_SCRIPT_INTERFACE:is_null_interface() end
 function SLOT_SCRIPT_INTERFACE:has_building() end
@@ -3147,7 +3106,6 @@ function SLOT_SCRIPT_INTERFACE:active() end
 
 
 ---@class UNIT_PURCHASABLE_EFFECT_LIST_SCRIPT_INTERFACE Description: A list of unit purchasable effects
-
 local UNIT_PURCHASABLE_EFFECT_LIST_SCRIPT_INTERFACE = {}
 function UNIT_PURCHASABLE_EFFECT_LIST_SCRIPT_INTERFACE:num_items() end
 function UNIT_PURCHASABLE_EFFECT_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3155,7 +3113,6 @@ function UNIT_PURCHASABLE_EFFECT_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class BONUS_VALUES_SCRIPT_INTERFACE Description: Bonus values for a campaign object
-
 local BONUS_VALUES_SCRIPT_INTERFACE = {}
 function BONUS_VALUES_SCRIPT_INTERFACE:is_null_interface() end
 function BONUS_VALUES_SCRIPT_INTERFACE:agent_value() end
@@ -3200,7 +3157,6 @@ function BONUS_VALUES_SCRIPT_INTERFACE:scripted_value() end
 
 
 ---@class RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE Description: Ritual Target Faction Status Script Interface
-
 local RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE = {}
 function RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE:is_null_interface() end
 function RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE:valid() end
@@ -3215,7 +3171,6 @@ function RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE:faction_not_permitted() e
 
 
 ---@class PENDING_BATTLE_SCRIPT_INTERFACE Description: Pending battle script interface.
-
 local PENDING_BATTLE_SCRIPT_INTERFACE = {}
 function PENDING_BATTLE_SCRIPT_INTERFACE:is_null_interface() end
 function PENDING_BATTLE_SCRIPT_INTERFACE:has_attacker() end
@@ -3270,7 +3225,6 @@ function PENDING_BATTLE_SCRIPT_INTERFACE:ended_with_withdraw() end
 
 
 ---@class RITUAL_SETUP_SCRIPT_INTERFACE Description: Ritual Setup Script Interface
-
 local RITUAL_SETUP_SCRIPT_INTERFACE = {}
 function RITUAL_SETUP_SCRIPT_INTERFACE:is_null_interface() end
 function RITUAL_SETUP_SCRIPT_INTERFACE:performing_faction() end
@@ -3282,7 +3236,6 @@ function RITUAL_SETUP_SCRIPT_INTERFACE:clone_as_modify_interface() end
 
 
 ---@class POOLED_RESOURCE_SCRIPT_INTERFACE Description: Pooled Resource Script Interface
-
 local POOLED_RESOURCE_SCRIPT_INTERFACE = {}
 function POOLED_RESOURCE_SCRIPT_INTERFACE:is_null_interface() end
 function POOLED_RESOURCE_SCRIPT_INTERFACE:key() end
@@ -3300,7 +3253,6 @@ function POOLED_RESOURCE_SCRIPT_INTERFACE:has_persistent_factors() end
 
 
 ---@class SHARED_STATES_MANAGER_SCRIPT_INTERFACE Description: Shared States Manager Script Interfaces
-
 local SHARED_STATES_MANAGER_SCRIPT_INTERFACE = {}
 function SHARED_STATES_MANAGER_SCRIPT_INTERFACE:is_null_interface() end
 function SHARED_STATES_MANAGER_SCRIPT_INTERFACE:get_state_as_bool_value() end
@@ -3309,7 +3261,6 @@ function SHARED_STATES_MANAGER_SCRIPT_INTERFACE:get_state_as_string_value() end
 
 
 ---@class SEA_REGION_SCRIPT_INTERFACE Description: Sea Region script interface, only basic information as sea regions do not contain settlements
-
 local SEA_REGION_SCRIPT_INTERFACE = {}
 function SEA_REGION_SCRIPT_INTERFACE:is_null_interface() end
 function SEA_REGION_SCRIPT_INTERFACE:model() end
@@ -3318,7 +3269,6 @@ function SEA_REGION_SCRIPT_INTERFACE:region_data_interface() end
 
 
 ---@class FACTION_LIST_SCRIPT_INTERFACE Description: A list of faction interfaces
-
 local FACTION_LIST_SCRIPT_INTERFACE = {}
 function FACTION_LIST_SCRIPT_INTERFACE:num_items() end
 function FACTION_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3326,7 +3276,6 @@ function FACTION_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE Description: Provides an interface for building a campaign payload
-
 local CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE = {}
 function CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE:is_null_interface() end
 function CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE:faction_ancillary_gain() end
@@ -3418,7 +3367,6 @@ function CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE:clear() end
 
 
 ---@class ROUTE_SEGMENT_SCRIPT_INTERFACE Description: Route Segment Script Interface
-
 local ROUTE_SEGMENT_SCRIPT_INTERFACE = {}
 function ROUTE_SEGMENT_SCRIPT_INTERFACE:is_null_interface() end
 function ROUTE_SEGMENT_SCRIPT_INTERFACE:to() end
@@ -3426,7 +3374,6 @@ function ROUTE_SEGMENT_SCRIPT_INTERFACE:regions() end
 
 
 ---@class ROUTE_SEGMENT_LIST_SCRIPT_INTERFACE Description: A list of route segment script interfaces
-
 local ROUTE_SEGMENT_LIST_SCRIPT_INTERFACE = {}
 function ROUTE_SEGMENT_LIST_SCRIPT_INTERFACE:num_items() end
 function ROUTE_SEGMENT_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3434,7 +3381,6 @@ function ROUTE_SEGMENT_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class CHARACTER_INITIATIVE_LIST_SCRIPT_INTERFACE Description: A list of character initiative interfaces
-
 local CHARACTER_INITIATIVE_LIST_SCRIPT_INTERFACE = {}
 function CHARACTER_INITIATIVE_LIST_SCRIPT_INTERFACE:num_items() end
 function CHARACTER_INITIATIVE_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3442,7 +3388,6 @@ function CHARACTER_INITIATIVE_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class REGION_SCRIPT_INTERFACE Description: Region script interface, includes region finance and slot/settlement info
-
 local REGION_SCRIPT_INTERFACE = {}
 function REGION_SCRIPT_INTERFACE:is_null_interface() end
 function REGION_SCRIPT_INTERFACE:cqi() end
@@ -3489,14 +3434,12 @@ function REGION_SCRIPT_INTERFACE:bonus_values() end
 
 
 ---@class PRISON_SYSTEM_SCRIPT_INTERFACE Description: Prison System Script Interface
-
 local PRISON_SYSTEM_SCRIPT_INTERFACE = {}
 function PRISON_SYSTEM_SCRIPT_INTERFACE:is_null_interface() end
 function PRISON_SYSTEM_SCRIPT_INTERFACE:get_faction_prisoners() end
 
 
 ---@class ROUTE_NODE_SCRIPT_INTERFACE Description: Route Node Script Interface
-
 local ROUTE_NODE_SCRIPT_INTERFACE = {}
 function ROUTE_NODE_SCRIPT_INTERFACE:is_null_interface() end
 function ROUTE_NODE_SCRIPT_INTERFACE:route_position() end
@@ -3517,7 +3460,6 @@ function ROUTE_NODE_SCRIPT_INTERFACE:is_exit() end
 
 
 ---@class ACTIVE_RITUAL_SCRIPT_INTERFACE Description: Active Ritual Script Interface
-
 local ACTIVE_RITUAL_SCRIPT_INTERFACE = {}
 function ACTIVE_RITUAL_SCRIPT_INTERFACE:is_null_interface() end
 function ACTIVE_RITUAL_SCRIPT_INTERFACE:ritual_key() end
@@ -3535,7 +3477,6 @@ function ACTIVE_RITUAL_SCRIPT_INTERFACE:characters_who_performed() end
 
 
 ---@class FACTION_RITUALS_SCRIPT_INTERFACE Description: Faction Rituals Script Interface
-
 local FACTION_RITUALS_SCRIPT_INTERFACE = {}
 function FACTION_RITUALS_SCRIPT_INTERFACE:is_null_interface() end
 function FACTION_RITUALS_SCRIPT_INTERFACE:active_rituals() end
@@ -3543,7 +3484,6 @@ function FACTION_RITUALS_SCRIPT_INTERFACE:ritual_status() end
 
 
 ---@class ROUTE_NODE_LIST_SCRIPT_INTERFACE Description: A list of route node script interfaces
-
 local ROUTE_NODE_LIST_SCRIPT_INTERFACE = {}
 function ROUTE_NODE_LIST_SCRIPT_INTERFACE:num_items() end
 function ROUTE_NODE_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3551,7 +3491,6 @@ function ROUTE_NODE_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE Description: Pooled Resource Factor Script Interface
-
 local POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE = {}
 function POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE:is_null_interface() end
 function POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE:key() end
@@ -3562,7 +3501,6 @@ function POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE:maximum_value() end
 
 
 ---@class ROUTE_NETWORK_SCRIPT_INTERFACE Description: Route Network Script Interface
-
 local ROUTE_NETWORK_SCRIPT_INTERFACE = {}
 function ROUTE_NETWORK_SCRIPT_INTERFACE:is_null_interface() end
 function ROUTE_NETWORK_SCRIPT_INTERFACE:network_id() end
@@ -3582,7 +3520,6 @@ function ROUTE_NETWORK_SCRIPT_INTERFACE:exit_nodes() end
 
 
 ---@class MODEL_SCRIPT_INTERFACE Description: Model is the central access point of the campaign. Everything should be reachable from this interface
-
 local MODEL_SCRIPT_INTERFACE = {}
 function MODEL_SCRIPT_INTERFACE:is_null_interface() end
 function MODEL_SCRIPT_INTERFACE:world() end
@@ -3634,7 +3571,6 @@ function MODEL_SCRIPT_INTERFACE:debug_drawing() end
 
 
 ---@class RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE Description: A list of ritual performing character script interfaces
-
 local RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE = {}
 function RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE:num_items() end
 function RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3642,7 +3578,6 @@ function RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class WORLD_SCRIPT_INTERFACE Description: Contains entities that exist in the game world. Examples include the region manager and faction list
-
 local WORLD_SCRIPT_INTERFACE = {}
 function WORLD_SCRIPT_INTERFACE:is_null_interface() end
 function WORLD_SCRIPT_INTERFACE:faction_list() end
@@ -3678,7 +3613,6 @@ function WORLD_SCRIPT_INTERFACE:faction_strength_rank() end
 
 
 ---@class RITUAL_STATUS_SCRIPT_INTERFACE Description: Ritual Status Script Interface
-
 local RITUAL_STATUS_SCRIPT_INTERFACE = {}
 function RITUAL_STATUS_SCRIPT_INTERFACE:is_null_interface() end
 function RITUAL_STATUS_SCRIPT_INTERFACE:available() end
@@ -3702,7 +3636,6 @@ function RITUAL_STATUS_SCRIPT_INTERFACE:blocked_by_pending_action() end
 
 
 ---@class REGION_LIST_SCRIPT_INTERFACE Description: A list of region interfaces
-
 local REGION_LIST_SCRIPT_INTERFACE = {}
 function REGION_LIST_SCRIPT_INTERFACE:num_items() end
 function REGION_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3710,7 +3643,6 @@ function REGION_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class FACTION_COOKING_INFO_SCRIPT_INTERFACE Description: Faction Cooking Info Script Interface
-
 local FACTION_COOKING_INFO_SCRIPT_INTERFACE = {}
 function FACTION_COOKING_INFO_SCRIPT_INTERFACE:is_null_interface() end
 function FACTION_COOKING_INFO_SCRIPT_INTERFACE:is_recipe_available() end
@@ -3723,7 +3655,6 @@ function FACTION_COOKING_INFO_SCRIPT_INTERFACE:max_secondary_ingredients() end
 
 
 ---@class RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE Description: Ritual Performing Character Script Interface
-
 local RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE = {}
 function RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE:is_null_interface() end
 function RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE:performer_record() end
@@ -3737,7 +3668,6 @@ function RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE:recovery_time() end
 
 
 ---@class FACTION_CHARACTER_TAG_ENTRY_SCRIPT_INTERFACE Description: Faction Character Tag Entry Script Interface
-
 local FACTION_CHARACTER_TAG_ENTRY_SCRIPT_INTERFACE = {}
 function FACTION_CHARACTER_TAG_ENTRY_SCRIPT_INTERFACE:is_null_interface() end
 function FACTION_CHARACTER_TAG_ENTRY_SCRIPT_INTERFACE:character() end
@@ -3745,7 +3675,6 @@ function FACTION_CHARACTER_TAG_ENTRY_SCRIPT_INTERFACE:tag_record_key() end
 
 
 ---@class MILITARY_FORCE_TYPE_SCRIPT_INTERFACE Description: A military force type record
-
 local MILITARY_FORCE_TYPE_SCRIPT_INTERFACE = {}
 function MILITARY_FORCE_TYPE_SCRIPT_INTERFACE:is_null_interface() end
 function MILITARY_FORCE_TYPE_SCRIPT_INTERFACE:key() end
@@ -3755,7 +3684,6 @@ function MILITARY_FORCE_TYPE_SCRIPT_INTERFACE:can_automatically_convert_to() end
 
 
 ---@class EFFECT_BUNDLE_LIST_SCRIPT_INTERFACE Description: A list of effects
-
 local EFFECT_BUNDLE_LIST_SCRIPT_INTERFACE = {}
 function EFFECT_BUNDLE_LIST_SCRIPT_INTERFACE:num_items() end
 function EFFECT_BUNDLE_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3763,7 +3691,6 @@ function EFFECT_BUNDLE_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class CAMPAIGN_AI_SCRIPT_INTERFACE Description: Campaign AI script interface.
-
 local CAMPAIGN_AI_SCRIPT_INTERFACE = {}
 function CAMPAIGN_AI_SCRIPT_INTERFACE:is_null_interface() end
 function CAMPAIGN_AI_SCRIPT_INTERFACE:strategic_stance_between_factions() end
@@ -3782,7 +3709,6 @@ function CAMPAIGN_AI_SCRIPT_INTERFACE:funds_available_for_upkeep_for_faction_by_
 
 
 ---@class OBSERVATION_OPTIONS_SCRIPT_INTERFACE Description: Observation Options Script Interface
-
 local OBSERVATION_OPTIONS_SCRIPT_INTERFACE = {}
 function OBSERVATION_OPTIONS_SCRIPT_INTERFACE:is_null_interface() end
 function OBSERVATION_OPTIONS_SCRIPT_INTERFACE:locomotion_speed() end
@@ -3792,7 +3718,6 @@ function OBSERVATION_OPTIONS_SCRIPT_INTERFACE:set_camera_follow_behaviour() end
 
 
 ---@class REGION_MANAGER_SCRIPT_INTERFACE Description: The interface that stores and manages all regions in the game. Useful for looking up region and slot//settlement keys.
-
 local REGION_MANAGER_SCRIPT_INTERFACE = {}
 function REGION_MANAGER_SCRIPT_INTERFACE:is_null_interface() end
 function REGION_MANAGER_SCRIPT_INTERFACE:model() end
@@ -3805,7 +3730,6 @@ function REGION_MANAGER_SCRIPT_INTERFACE:resource_exists_anywhere() end
 
 
 ---@class RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE Description: Ritual Performing Character Status Script Interface
-
 local RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE = {}
 function RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE:is_null_interface() end
 function RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE:valid() end
@@ -3819,7 +3743,6 @@ function RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE:duplicate_performer
 
 
 ---@class MODIFY_RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE Description: A list of mutable ritual performing character script interfaces
-
 local MODIFY_RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE = {}
 function MODIFY_RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE:num_items() end
 function MODIFY_RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3827,7 +3750,6 @@ function MODIFY_RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE Description: Foreign Slot Manager Script Interface
-
 local FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE = {}
 function FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE:is_null_interface() end
 function FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE:faction() end
@@ -3842,7 +3764,6 @@ function FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE:discoverability_threshold() end
 
 
 ---@class CHARACTER_INITIATIVE_SCRIPT_INTERFACE Description: A character initiative. Provides effects over a duration, closer in behaviour to skills than effect bundles. Owned by a character
-
 local CHARACTER_INITIATIVE_SCRIPT_INTERFACE = {}
 function CHARACTER_INITIATIVE_SCRIPT_INTERFACE:is_null_interface() end
 function CHARACTER_INITIATIVE_SCRIPT_INTERFACE:record_key() end
@@ -3852,7 +3773,6 @@ function CHARACTER_INITIATIVE_SCRIPT_INTERFACE:is_script_locked() end
 
 
 ---@class REGION_DATA_LIST_SCRIPT_INTERFACE Description: A list of region datas
-
 local REGION_DATA_LIST_SCRIPT_INTERFACE = {}
 function REGION_DATA_LIST_SCRIPT_INTERFACE:num_items() end
 function REGION_DATA_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3860,7 +3780,6 @@ function REGION_DATA_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class ACTIVE_RITUAL_LIST_SCRIPT_INTERFACE Description: A list of active ritual script interfaces
-
 local ACTIVE_RITUAL_LIST_SCRIPT_INTERFACE = {}
 function ACTIVE_RITUAL_LIST_SCRIPT_INTERFACE:num_items() end
 function ACTIVE_RITUAL_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3868,7 +3787,6 @@ function ACTIVE_RITUAL_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class SLOT_LIST_SCRIPT_INTERFACE Description: A list of slot interfaces
-
 local SLOT_LIST_SCRIPT_INTERFACE = {}
 function SLOT_LIST_SCRIPT_INTERFACE:num_items() end
 function SLOT_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3878,7 +3796,6 @@ function SLOT_LIST_SCRIPT_INTERFACE:buliding_type_exists() end
 
 
 ---@class FACTION_CHARACTER_TAG_ENTRY_LIST_SCRIPT_INTERFACE Description: A list of faction character tag entry interfaces
-
 local FACTION_CHARACTER_TAG_ENTRY_LIST_SCRIPT_INTERFACE = {}
 function FACTION_CHARACTER_TAG_ENTRY_LIST_SCRIPT_INTERFACE:num_items() end
 function FACTION_CHARACTER_TAG_ENTRY_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3886,7 +3803,6 @@ function FACTION_CHARACTER_TAG_ENTRY_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class CHARACTER_INITIATIVE_SET_LIST_SCRIPT_INTERFACE Description: A list of character initiative set interfaces
-
 local CHARACTER_INITIATIVE_SET_LIST_SCRIPT_INTERFACE = {}
 function CHARACTER_INITIATIVE_SET_LIST_SCRIPT_INTERFACE:num_items() end
 function CHARACTER_INITIATIVE_SET_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3894,7 +3810,6 @@ function CHARACTER_INITIATIVE_SET_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class ROUTE_PATH_SCRIPT_INTERFACE Description: Route Path Script Interface
-
 local ROUTE_PATH_SCRIPT_INTERFACE = {}
 function ROUTE_PATH_SCRIPT_INTERFACE:is_null_interface() end
 function ROUTE_PATH_SCRIPT_INTERFACE:network() end
@@ -3911,7 +3826,6 @@ function ROUTE_PATH_SCRIPT_INTERFACE:valid() end
 
 
 ---@class BUILDING_LIST_SCRIPT_INTERFACE Description: A list of building interfaces
-
 local BUILDING_LIST_SCRIPT_INTERFACE = {}
 function BUILDING_LIST_SCRIPT_INTERFACE:num_items() end
 function BUILDING_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3919,7 +3833,6 @@ function BUILDING_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class RITUAL_TARGET_SCRIPT_INTERFACE Description: Ritual Target Script Interface
-
 local RITUAL_TARGET_SCRIPT_INTERFACE = {}
 function RITUAL_TARGET_SCRIPT_INTERFACE:is_null_interface() end
 function RITUAL_TARGET_SCRIPT_INTERFACE:valid() end
@@ -3944,7 +3857,6 @@ function RITUAL_TARGET_SCRIPT_INTERFACE:get_all_valid_target_factions() end
 
 
 ---@class FOREIGN_SLOT_LIST_SCRIPT_INTERFACE Description: A list of foreign slot script interfaces
-
 local FOREIGN_SLOT_LIST_SCRIPT_INTERFACE = {}
 function FOREIGN_SLOT_LIST_SCRIPT_INTERFACE:num_items() end
 function FOREIGN_SLOT_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3952,7 +3864,6 @@ function FOREIGN_SLOT_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class FACTION_CARAVANS_SCRIPT_INTERFACE Description: Faction Caravans Script Interface
-
 local FACTION_CARAVANS_SCRIPT_INTERFACE = {}
 function FACTION_CARAVANS_SCRIPT_INTERFACE:is_null_interface() end
 function FACTION_CARAVANS_SCRIPT_INTERFACE:faction() end
@@ -3968,7 +3879,6 @@ function FACTION_CARAVANS_SCRIPT_INTERFACE:route_network() end
 
 
 ---@class POOLED_RESOURCE_FACTOR_LIST_SCRIPT_INTERFACE Description: A list of pooled resource factor script interfaces
-
 local POOLED_RESOURCE_FACTOR_LIST_SCRIPT_INTERFACE = {}
 function POOLED_RESOURCE_FACTOR_LIST_SCRIPT_INTERFACE:num_items() end
 function POOLED_RESOURCE_FACTOR_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3976,7 +3886,6 @@ function POOLED_RESOURCE_FACTOR_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class PLAGUE_SCRIPT_INTERFACE Description: Plague Script Interface
-
 local PLAGUE_SCRIPT_INTERFACE = {}
 function PLAGUE_SCRIPT_INTERFACE:is_null_interface() end
 function PLAGUE_SCRIPT_INTERFACE:plague_record() end
@@ -3984,7 +3893,6 @@ function PLAGUE_SCRIPT_INTERFACE:component_records() end
 
 
 ---@class TELEPORTATION_NETWORK_LIST_SCRIPT_INTERFACE Description: A list of teleportation network script interfaces
-
 local TELEPORTATION_NETWORK_LIST_SCRIPT_INTERFACE = {}
 function TELEPORTATION_NETWORK_LIST_SCRIPT_INTERFACE:num_items() end
 function TELEPORTATION_NETWORK_LIST_SCRIPT_INTERFACE:item_at() end
@@ -3992,7 +3900,6 @@ function TELEPORTATION_NETWORK_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class GARRISON_RESIDENCE_SCRIPT_INTERFACE Description: Garrison residence interface, a residence that can act as a garrison for military forces. A Settlement is a garrison residence for example.
-
 local GARRISON_RESIDENCE_SCRIPT_INTERFACE = {}
 function GARRISON_RESIDENCE_SCRIPT_INTERFACE:is_null_interface() end
 function GARRISON_RESIDENCE_SCRIPT_INTERFACE:command_queue_index() end
@@ -4016,7 +3923,6 @@ function GARRISON_RESIDENCE_SCRIPT_INTERFACE:slot_interface() end
 
 
 ---@class CARAVAN_SCRIPT_INTERFACE Description: Caravan Script Interface
-
 local CARAVAN_SCRIPT_INTERFACE = {}
 function CARAVAN_SCRIPT_INTERFACE:is_null_interface() end
 function CARAVAN_SCRIPT_INTERFACE:path() end
@@ -4029,7 +3935,6 @@ function CARAVAN_SCRIPT_INTERFACE:rounds_until_return() end
 
 
 ---@class MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE Description: Modify Ritual Setup Script Interface
-
 local MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE = {}
 function MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE:is_null_interface() end
 function MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE:performing_faction() end
@@ -4042,7 +3947,6 @@ function MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE:change_performing_faction() end
 
 
 ---@class CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE Description: A collection of related character initiatives. Owned by a character
-
 local CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE = {}
 function CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE:is_null_interface() end
 function CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE:all_initiatives() end
@@ -4054,7 +3958,6 @@ function CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE:cooldown_remaining() end
 
 
 ---@class FACTION_CHARACTER_TAGGING_SYSTEM_SCRIPT_INTERFACE Description: Faction Character Tagging System Script Interface
-
 local FACTION_CHARACTER_TAGGING_SYSTEM_SCRIPT_INTERFACE = {}
 function FACTION_CHARACTER_TAGGING_SYSTEM_SCRIPT_INTERFACE:is_null_interface() end
 function FACTION_CHARACTER_TAGGING_SYSTEM_SCRIPT_INTERFACE:faction_tags() end
@@ -4066,13 +3969,11 @@ function FACTION_CHARACTER_TAGGING_SYSTEM_SCRIPT_INTERFACE:is_character_tagged_b
 
 
 ---@class NULL_SCRIPT_INTERFACE Description: An empty interface, returned if a requested interface doesn't exist. If function calls are made with this interface, the LUA script will fail
-
 local NULL_SCRIPT_INTERFACE = {}
 function NULL_SCRIPT_INTERFACE:is_null_interface() end
 
 
 ---@class MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE Description: Modify Ritual Target Script Interface
-
 local MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE = {}
 function MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE:is_null_interface() end
 function MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE:valid() end
@@ -4101,7 +4002,6 @@ function MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE:set_target_force() end
 
 
 ---@class CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE Description: A customisable effect bundle, based off of an existing effect bundle defined in the database
-
 local CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE = {}
 function CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE:is_null_interface() end
 function CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE:key() end
@@ -4116,7 +4016,6 @@ function CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE:remove_effect_by_key() end
 
 
 ---@class CHARACTER_DETAILS_SCRIPT_INTERFACE Description: Character details interface
-
 local CHARACTER_DETAILS_SCRIPT_INTERFACE = {}
 function CHARACTER_DETAILS_SCRIPT_INTERFACE:is_null_interface() end
 function CHARACTER_DETAILS_SCRIPT_INTERFACE:model() end
@@ -4153,7 +4052,6 @@ function CHARACTER_DETAILS_SCRIPT_INTERFACE:primary_character() end
 
 
 ---@class MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE Description: Modify Ritual Performing Character Script Interface
-
 local MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE = {}
 function MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE:is_null_interface() end
 function MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE:performer_record() end
@@ -4169,7 +4067,6 @@ function MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE:clear() end
 
 
 ---@class CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE Description: Status of a character initiative. Status is from the time this interface is returned
-
 local CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE = {}
 function CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE:is_null_interface() end
 function CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE:is_active() end
@@ -4180,7 +4077,6 @@ function CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE:is_set_on_cooldown() end
 
 
 ---@class RESOURCE_TRANSACTION_SCRIPT_INTERFACE Description: Resource Transaction Script Interface
-
 local RESOURCE_TRANSACTION_SCRIPT_INTERFACE = {}
 function RESOURCE_TRANSACTION_SCRIPT_INTERFACE:is_null_interface() end
 function RESOURCE_TRANSACTION_SCRIPT_INTERFACE:total_treasury_change() end
@@ -4189,7 +4085,6 @@ function RESOURCE_TRANSACTION_SCRIPT_INTERFACE:precentage_resource_change() end
 
 
 ---@class CHARACTER_DETAILS_LIST_SCRIPT_INTERFACE Description: A list of character details interfaces
-
 local CHARACTER_DETAILS_LIST_SCRIPT_INTERFACE = {}
 function CHARACTER_DETAILS_LIST_SCRIPT_INTERFACE:num_items() end
 function CHARACTER_DETAILS_LIST_SCRIPT_INTERFACE:item_at() end
@@ -4197,7 +4092,6 @@ function CHARACTER_DETAILS_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class MILITARY_FORCE_SLOT_SCRIPT_INTERFACE Description: Military Force Slot Script Interface
-
 local MILITARY_FORCE_SLOT_SCRIPT_INTERFACE = {}
 function MILITARY_FORCE_SLOT_SCRIPT_INTERFACE:is_null_interface() end
 function MILITARY_FORCE_SLOT_SCRIPT_INTERFACE:model() end
@@ -4211,7 +4105,6 @@ function MILITARY_FORCE_SLOT_SCRIPT_INTERFACE:faction() end
 
 
 ---@class PROVINCE_SCRIPT_INTERFACE Description: Province script interface. Represents a geographic province
-
 local PROVINCE_SCRIPT_INTERFACE = {}
 function PROVINCE_SCRIPT_INTERFACE:is_null_interface() end
 function PROVINCE_SCRIPT_INTERFACE:key() end
@@ -4224,7 +4117,6 @@ function PROVINCE_SCRIPT_INTERFACE:pooled_resource_manager() end
 
 
 ---@class CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE Description: Provides an interface for building a campaign dilemma
-
 local CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE = {}
 function CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE:is_null_interface() end
 function CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE:possible_choices() end
@@ -4234,7 +4126,6 @@ function CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE:add_target() end
 
 
 ---@class UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE Description: Unique Agent Details Script Interface.
-
 local UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE = {}
 function UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE:is_null_interface() end
 function UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE:faction() end
@@ -4246,7 +4137,6 @@ function UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE:valid() end
 
 
 ---@class FOREIGN_SLOT_SCRIPT_INTERFACE Description: Foreign Slot Script Interface
-
 local FOREIGN_SLOT_SCRIPT_INTERFACE = {}
 function FOREIGN_SLOT_SCRIPT_INTERFACE:is_null_interface() end
 function FOREIGN_SLOT_SCRIPT_INTERFACE:cqi() end
@@ -4259,7 +4149,6 @@ function FOREIGN_SLOT_SCRIPT_INTERFACE:active() end
 
 
 ---@class ARMORY_SCRIPT_INTERFACE Description: A way to get armory information for a family member. Owned by a family member
-
 local ARMORY_SCRIPT_INTERFACE = {}
 function ARMORY_SCRIPT_INTERFACE:is_null_interface() end
 function ARMORY_SCRIPT_INTERFACE:get_all_active_variant_slot_states() end
@@ -4269,7 +4158,6 @@ function ARMORY_SCRIPT_INTERFACE:number_of_equipped_items_of_ui_type() end
 
 
 ---@class CARAVAN_RECRUITMENT_ITEM_LIST_SCRIPT_INTERFACE Description: A list of caravan recruitment item script interfaces
-
 local CARAVAN_RECRUITMENT_ITEM_LIST_SCRIPT_INTERFACE = {}
 function CARAVAN_RECRUITMENT_ITEM_LIST_SCRIPT_INTERFACE:num_items() end
 function CARAVAN_RECRUITMENT_ITEM_LIST_SCRIPT_INTERFACE:item_at() end
@@ -4277,7 +4165,6 @@ function CARAVAN_RECRUITMENT_ITEM_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE Description: Teleportation Node Record Script Interface
-
 local TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE = {}
 function TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE:is_null_interface() end
 function TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE:key() end
@@ -4289,7 +4176,6 @@ function TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE:position() end
 
 
 ---@class TELEPORTATION_NODE_LIST_SCRIPT_INTERFACE Description: A list of teleportation network node script interfaces
-
 local TELEPORTATION_NODE_LIST_SCRIPT_INTERFACE = {}
 function TELEPORTATION_NODE_LIST_SCRIPT_INTERFACE:num_items() end
 function TELEPORTATION_NODE_LIST_SCRIPT_INTERFACE:item_at() end
@@ -4297,7 +4183,6 @@ function TELEPORTATION_NODE_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class FOREIGN_SLOT_MANAGER_LIST_SCRIPT_INTERFACE Description: A list of foreign slot manager script interfaces
-
 local FOREIGN_SLOT_MANAGER_LIST_SCRIPT_INTERFACE = {}
 function FOREIGN_SLOT_MANAGER_LIST_SCRIPT_INTERFACE:num_items() end
 function FOREIGN_SLOT_MANAGER_LIST_SCRIPT_INTERFACE:item_at() end
@@ -4305,7 +4190,6 @@ function FOREIGN_SLOT_MANAGER_LIST_SCRIPT_INTERFACE:is_empty() end
 
 
 ---@class FAMILY_MEMBER_SCRIPT_INTERFACE Description: Family interface
-
 local FAMILY_MEMBER_SCRIPT_INTERFACE = {}
 function FAMILY_MEMBER_SCRIPT_INTERFACE:is_null_interface() end
 function FAMILY_MEMBER_SCRIPT_INTERFACE:has_father() end
@@ -4321,7 +4205,6 @@ function FAMILY_MEMBER_SCRIPT_INTERFACE:character() end
 
 
 ---@class COOKING_DISH_SCRIPT_INTERFACE Description: Cook Dish Script Interface
-
 local COOKING_DISH_SCRIPT_INTERFACE = {}
 function COOKING_DISH_SCRIPT_INTERFACE:is_null_interface() end
 function COOKING_DISH_SCRIPT_INTERFACE:recipe() end

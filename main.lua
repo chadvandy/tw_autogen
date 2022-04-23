@@ -349,7 +349,7 @@ local function parse_events(game)
     s = s .. "\n\n" ..  endl .. string.format("\n%s\n", string.format(startl, "Interfaces")) .. endl
     for key,interface in pairs(interfaces) do
         insf("\n\n---@class %s%s", key, (" " .. interface.description) or "")
-        ins("\nlocal " .. key .. " = {}")
+        ins("local " .. key .. " = {}")
         for i,fun in ipairs(interface.functions) do
 
             --- TODO params
