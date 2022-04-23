@@ -16,3 +16,15 @@ function episodic_scripting:apply_dilemma_diplomatic_bonus(faction_a_key, factio
 ---@param show_in_unseen_shroud boolean Sets whether this composite scene should be drawn when in thick shroud over unseen terrain.
 ---@param faction FACTION_SCRIPT_INTERFACE Faction this composite scene is visible to. Defaults to all factions if not set.
 function episodic_scripting:add_scripted_composite_scene_to_logical_position(name, composite_scene, x, y, facing_x, facing_y, one_shot, show_in_seen_shroud, show_in_unseen_shroud, faction) end
+
+--- Register a time trigger, in seconds. This will cause a TimeTrigger event to trigger after the specified interval.
+---@param id string ID for this time trigger. This will be supplied with the TimeTrigger event when it is triggered.
+---@param interval number Interval after which to trigger the TimeTrigger event, in seconds.
+---@param do_repeat boolean Repeats the time trigger if set to true.
+function episodic_scripting:add_time_trigger(id, interval, do_repeat) end
+
+---@return PROVINCE_SCRIPT_INTERFACE
+function GovernorAssignedCharacterEvent:province() end
+
+---@return REGION_SCRIPT_INTERFACE
+function GovernorAssignedCharacterEvent:region() end

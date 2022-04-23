@@ -1,16 +1,11 @@
----@diagnostic disable
-
-
 ---============================---
 	--- [[ Events ]] ---
 ---============================---
 do
 	---@class CampaignCoastalAssaultOnGarrison
 	local CampaignCoastalAssaultOnGarrison = {}
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function CampaignCoastalAssaultOnGarrison:garrison_residence() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CampaignCoastalAssaultOnGarrison:character() end
 end
@@ -18,7 +13,6 @@ end
 do
 	---@class UnitTrained
 	local UnitTrained = {}
-
 	---@return UNIT_SCRIPT_INTERFACE
 	function UnitTrained:unit() end
 end
@@ -26,7 +20,6 @@ end
 do
 	---@class CharacterRankUpNeedsAncillary
 	local CharacterRankUpNeedsAncillary = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterRankUpNeedsAncillary:character() end
 end
@@ -40,10 +33,8 @@ do
 	function CharacterPerformsSettlementOccupationDecision:previous_owner() end
 	function CharacterPerformsSettlementOccupationDecision:previous_owner_subculture() end
 	function CharacterPerformsSettlementOccupationDecision:previous_owner_culture() end
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function CharacterPerformsSettlementOccupationDecision:garrison_residence() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterPerformsSettlementOccupationDecision:character() end
 end
@@ -51,7 +42,6 @@ end
 do
 	---@class UnitCreated
 	local UnitCreated = {}
-
 	---@return UNIT_SCRIPT_INTERFACE
 	function UnitCreated:unit() end
 end
@@ -67,10 +57,8 @@ do
 	function CharacterCharacterTargetAction:ability() end
 	function CharacterCharacterTargetAction:attribute() end
 	function CharacterCharacterTargetAction:agent_action_key() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterCharacterTargetAction:target_character() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterCharacterTargetAction:character() end
 end
@@ -78,7 +66,6 @@ end
 do
 	---@class CharacterSelected
 	local CharacterSelected = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterSelected:character() end
 end
@@ -87,13 +74,10 @@ do
 	---@class RitualCompletedEvent
 	local RitualCompletedEvent = {}
 	function RitualCompletedEvent:succeeded() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function RitualCompletedEvent:performing_faction() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function RitualCompletedEvent:ritual_target_faction() end
-
 	---@return ACTIVE_RITUAL_SCRIPT_INTERFACE
 	function RitualCompletedEvent:ritual() end
 end
@@ -101,7 +85,6 @@ end
 do
 	---@class BattleCompleted
 	local BattleCompleted = {}
-
 	---@return MODEL_SCRIPT_INTERFACE
 	function BattleCompleted:model() end
 end
@@ -109,7 +92,6 @@ end
 do
 	---@class ScriptedCharacterUnhiddenFailed
 	local ScriptedCharacterUnhiddenFailed = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function ScriptedCharacterUnhiddenFailed:character() end
 end
@@ -117,7 +99,6 @@ end
 do
 	---@class FactionBecomesIdleHuman
 	local FactionBecomesIdleHuman = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionBecomesIdleHuman:faction() end
 end
@@ -126,7 +107,6 @@ do
 	---@class AreaExited
 	local AreaExited = {}
 	function AreaExited:area_key() end
-
 	---@return FAMILY_MEMBER_SCRIPT_INTERFACE
 	function AreaExited:family_member() end
 end
@@ -134,7 +114,6 @@ end
 do
 	---@class FactionLeaderDeclaresWar
 	local FactionLeaderDeclaresWar = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function FactionLeaderDeclaresWar:character() end
 end
@@ -143,7 +122,6 @@ do
 	---@class ForceAdoptsStance
 	local ForceAdoptsStance = {}
 	function ForceAdoptsStance:stance_adopted() end
-
 	---@return MILITARY_FORCE_SCRIPT_INTERFACE
 	function ForceAdoptsStance:military_force() end
 end
@@ -151,10 +129,8 @@ end
 do
 	---@class CharacterInitiativeEvent
 	local CharacterInitiativeEvent = {}
-
 	---@return CHARACTER_INITIATIVE_SCRIPT_INTERFACE
 	function CharacterInitiativeEvent:initiative() end
-
 	---@return CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE
 	function CharacterInitiativeEvent:initiative_set() end
 end
@@ -163,10 +139,8 @@ do
 	---@class CharacterInitiativeActivationChangedEvent
 	local CharacterInitiativeActivationChangedEvent = {}
 	function CharacterInitiativeActivationChangedEvent:active() end
-
 	---@return CHARACTER_INITIATIVE_SCRIPT_INTERFACE
 	function CharacterInitiativeActivationChangedEvent:initiative() end
-
 	---@return CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE
 	function CharacterInitiativeActivationChangedEvent:initiative_set() end
 end
@@ -174,11 +148,9 @@ end
 do
 	---@class RegionFactionChangeEvent
 	local RegionFactionChangeEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function RegionFactionChangeEvent:previous_faction() end
 	function RegionFactionChangeEvent:reason() end
-
 	---@return REGION_SCRIPT_INTERFACE
 	function RegionFactionChangeEvent:region() end
 end
@@ -192,10 +164,8 @@ end
 do
 	---@class RegionAbandonedWithBuildingEvent
 	local RegionAbandonedWithBuildingEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function RegionAbandonedWithBuildingEvent:abandoning_faction() end
-
 	---@return BUILDING_SCRIPT_INTERFACE
 	function RegionAbandonedWithBuildingEvent:building() end
 end
@@ -203,7 +173,6 @@ end
 do
 	---@class FactionAboutToEndTurn
 	local FactionAboutToEndTurn = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionAboutToEndTurn:faction() end
 end
@@ -211,13 +180,10 @@ end
 do
 	---@class CaravanEvent
 	local CaravanEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function CaravanEvent:faction() end
-
 	---@return FAMILY_MEMBER_SCRIPT_INTERFACE
 	function CaravanEvent:caravan_master() end
-
 	---@return CARAVAN_SCRIPT_INTERFACE
 	function CaravanEvent:caravan() end
 end
@@ -225,7 +191,6 @@ end
 do
 	---@class CharacterPostBattleRelease
 	local CharacterPostBattleRelease = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterPostBattleRelease:character() end
 end
@@ -239,18 +204,14 @@ end
 do
 	---@class StreakEffectLevelsEntered
 	local StreakEffectLevelsEntered = {}
-
 	---@return MILITARY_FORCE_SCRIPT_INTERFACE
 	function StreakEffectLevelsEntered:military_force() end
-
-	---@return none
 	function StreakEffectLevelsEntered:streak_effect_record() end
 end
 ---============================---
 do
 	---@class CharacterRecruited
 	local CharacterRecruited = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterRecruited:character() end
 end
@@ -258,7 +219,6 @@ end
 do
 	---@class ClimatePhaseChange
 	local ClimatePhaseChange = {}
-
 	---@return WORLD_SCRIPT_INTERFACE
 	function ClimatePhaseChange:world() end
 end
@@ -266,10 +226,8 @@ end
 do
 	---@class FactionCivilWarOccured
 	local FactionCivilWarOccured = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionCivilWarOccured:opponent() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionCivilWarOccured:faction() end
 end
@@ -277,7 +235,6 @@ end
 do
 	---@class CampaignEffectsBundleAwarded
 	local CampaignEffectsBundleAwarded = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function CampaignEffectsBundleAwarded:faction() end
 end
@@ -285,7 +242,6 @@ end
 do
 	---@class FirstTickAfterWorldCreated
 	local FirstTickAfterWorldCreated = {}
-
 	---@return WORLD_SCRIPT_INTERFACE
 	function FirstTickAfterWorldCreated:world() end
 end
@@ -293,7 +249,6 @@ end
 do
 	---@class CharacterFactionCompletesResearch
 	local CharacterFactionCompletesResearch = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterFactionCompletesResearch:character() end
 end
@@ -301,7 +256,6 @@ end
 do
 	---@class CharacterDisembarksNavy
 	local CharacterDisembarksNavy = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterDisembarksNavy:character() end
 end
@@ -309,7 +263,6 @@ end
 do
 	---@class CharacterParticipatedAsSecondaryGeneralInBattle
 	local CharacterParticipatedAsSecondaryGeneralInBattle = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterParticipatedAsSecondaryGeneralInBattle:character() end
 end
@@ -317,7 +270,6 @@ end
 do
 	---@class SlotOpens
 	local SlotOpens = {}
-
 	---@return SLOT_SCRIPT_INTERFACE
 	function SlotOpens:region_slot() end
 end
@@ -325,7 +277,6 @@ end
 do
 	---@class RegionRebels
 	local RegionRebels = {}
-
 	---@return REGION_SCRIPT_INTERFACE
 	function RegionRebels:region() end
 end
@@ -333,10 +284,8 @@ end
 do
 	---@class FactionCharacterTagRemovedEvent
 	local FactionCharacterTagRemovedEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionCharacterTagRemovedEvent:tagging_faction() end
-
 	---@return FACTION_CHARACTER_TAG_ENTRY_SCRIPT_INTERFACE
 	function FactionCharacterTagRemovedEvent:tag_entry() end
 end
@@ -344,10 +293,8 @@ end
 do
 	---@class DiplomacyManipulationExecutedEvent
 	local DiplomacyManipulationExecutedEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function DiplomacyManipulationExecutedEvent:performing_faction() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function DiplomacyManipulationExecutedEvent:diplomacy_target_faction() end
 	function DiplomacyManipulationExecutedEvent:diplomacy_manipulation_category() end
@@ -356,7 +303,6 @@ end
 do
 	---@class CharacterDestroyed
 	local CharacterDestroyed = {}
-
 	---@return FAMILY_MEMBER_SCRIPT_INTERFACE
 	function CharacterDestroyed:family_member() end
 end
@@ -364,7 +310,6 @@ end
 do
 	---@class WorldStartRound
 	local WorldStartRound = {}
-
 	---@return WORLD_SCRIPT_INTERFACE
 	function WorldStartRound:world() end
 end
@@ -372,7 +317,6 @@ end
 do
 	---@class FactionTurnEnd
 	local FactionTurnEnd = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionTurnEnd:faction() end
 end
@@ -380,7 +324,6 @@ end
 do
 	---@class CharacterBrokePortBlockade
 	local CharacterBrokePortBlockade = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterBrokePortBlockade:character() end
 end
@@ -394,7 +337,6 @@ end
 do
 	---@class WorldCreated
 	local WorldCreated = {}
-
 	---@return WORLD_SCRIPT_INTERFACE
 	function WorldCreated:world() end
 end
@@ -402,13 +344,10 @@ end
 do
 	---@class ForeignSlotManagerDiscoveredEvent
 	local ForeignSlotManagerDiscoveredEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function ForeignSlotManagerDiscoveredEvent:owner() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function ForeignSlotManagerDiscoveredEvent:discoveree() end
-
 	---@return FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE
 	function ForeignSlotManagerDiscoveredEvent:slot_manager() end
 end
@@ -423,7 +362,6 @@ do
 	---@class WoMCompassUserDirectionSelectedEvent
 	local WoMCompassUserDirectionSelectedEvent = {}
 	function WoMCompassUserDirectionSelectedEvent:direction() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function WoMCompassUserDirectionSelectedEvent:faction() end
 end
@@ -431,7 +369,6 @@ end
 do
 	---@class CharacterPerformsActionAgainstFriendlyTarget
 	local CharacterPerformsActionAgainstFriendlyTarget = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterPerformsActionAgainstFriendlyTarget:character() end
 end
@@ -441,7 +378,6 @@ do
 	local WoMCompassUserActionTriggeredEvent = {}
 	function WoMCompassUserActionTriggeredEvent:direction() end
 	function WoMCompassUserActionTriggeredEvent:action() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function WoMCompassUserActionTriggeredEvent:faction() end
 end
@@ -450,24 +386,19 @@ do
 	---@class WarCoordinationRequestIssued
 	local WarCoordinationRequestIssued = {}
 	function WarCoordinationRequestIssued:has_recipient_faction() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function WarCoordinationRequestIssued:recipient_faction() end
 	function WarCoordinationRequestIssued:has_recipient_military_force() end
-
 	---@return MILITARY_FORCE_SCRIPT_INTERFACE
 	function WarCoordinationRequestIssued:recipient_military_force() end
 	function WarCoordinationRequestIssued:has_target_region() end
-
 	---@return REGION_SCRIPT_INTERFACE
 	function WarCoordinationRequestIssued:target_region() end
 	function WarCoordinationRequestIssued:has_target_military_force() end
-
 	---@return MILITARY_FORCE_SCRIPT_INTERFACE
 	function WarCoordinationRequestIssued:target_military_force() end
 	function WarCoordinationRequestIssued:is_offensive() end
 	function WarCoordinationRequestIssued:favour_cost() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function WarCoordinationRequestIssued:faction() end
 end
@@ -475,10 +406,8 @@ end
 do
 	---@class CharacterBlockadedPort
 	local CharacterBlockadedPort = {}
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function CharacterBlockadedPort:garrison_residence() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterBlockadedPort:character() end
 end
@@ -486,7 +415,6 @@ end
 do
 	---@class UnitTurnEnd
 	local UnitTurnEnd = {}
-
 	---@return UNIT_SCRIPT_INTERFACE
 	function UnitTurnEnd:unit() end
 end
@@ -494,10 +422,8 @@ end
 do
 	---@class GarrisonAttackedEvent
 	local GarrisonAttackedEvent = {}
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function GarrisonAttackedEvent:garrison_residence() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function GarrisonAttackedEvent:character() end
 end
@@ -505,7 +431,6 @@ end
 do
 	---@class UnitSelectedCampaign
 	local UnitSelectedCampaign = {}
-
 	---@return UNIT_SCRIPT_INTERFACE
 	function UnitSelectedCampaign:unit() end
 end
@@ -519,7 +444,6 @@ end
 do
 	---@class UnitEvent
 	local UnitEvent = {}
-
 	---@return UNIT_SCRIPT_INTERFACE
 	function UnitEvent:unit() end
 end
@@ -527,7 +451,6 @@ end
 do
 	---@class UnitEffectUnpurchased
 	local UnitEffectUnpurchased = {}
-
 	---@return UNIT_PURCHASABLE_EFFECT_SCRIPT_INTERFACE
 	function UnitEffectUnpurchased:effect() end
 end
@@ -535,7 +458,6 @@ end
 do
 	---@class BattleCompletedCameraMove
 	local BattleCompletedCameraMove = {}
-
 	---@return MODEL_SCRIPT_INTERFACE
 	function BattleCompletedCameraMove:model() end
 end
@@ -543,7 +465,6 @@ end
 do
 	---@class CharacterSkillPointAvailable
 	local CharacterSkillPointAvailable = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterSkillPointAvailable:character() end
 end
@@ -551,10 +472,8 @@ end
 do
 	---@class UnitEffectPurchased
 	local UnitEffectPurchased = {}
-
 	---@return UNIT_PURCHASABLE_EFFECT_SCRIPT_INTERFACE
 	function UnitEffectPurchased:effect() end
-
 	---@return UNIT_SCRIPT_INTERFACE
 	function UnitEffectPurchased:unit() end
 end
@@ -562,10 +481,8 @@ end
 do
 	---@class CharacterCapturedSettlementUnopposed
 	local CharacterCapturedSettlementUnopposed = {}
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function CharacterCapturedSettlementUnopposed:garrison_residence() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterCapturedSettlementUnopposed:character() end
 end
@@ -573,7 +490,6 @@ end
 do
 	---@class UnitDisbanded
 	local UnitDisbanded = {}
-
 	---@return UNIT_SCRIPT_INTERFACE
 	function UnitDisbanded:unit() end
 end
@@ -581,10 +497,8 @@ end
 do
 	---@class CharacterSackedSettlement
 	local CharacterSackedSettlement = {}
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function CharacterSackedSettlement:garrison_residence() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterSackedSettlement:character() end
 end
@@ -592,10 +506,8 @@ end
 do
 	---@class UnitConverted
 	local UnitConverted = {}
-
 	---@return UNIT_SCRIPT_INTERFACE
 	function UnitConverted:converted_unit() end
-
 	---@return UNIT_SCRIPT_INTERFACE
 	function UnitConverted:unit() end
 end
@@ -603,17 +515,13 @@ end
 do
 	---@class PooledResourceChanged
 	local PooledResourceChanged = {}
-
 	---@return POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE
 	function PooledResourceChanged:factor() end
 	function PooledResourceChanged:amount() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PooledResourceChanged:faction() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PooledResourceChanged:has_faction() end
-
 	---@return POOLED_RESOURCE_SCRIPT_INTERFACE
 	function PooledResourceChanged:resource() end
 end
@@ -636,7 +544,6 @@ end
 do
 	---@class UnitCompletedBattle
 	local UnitCompletedBattle = {}
-
 	---@return UNIT_SCRIPT_INTERFACE
 	function UnitCompletedBattle:unit() end
 end
@@ -644,7 +551,6 @@ end
 do
 	---@class RegionIssuesDemands
 	local RegionIssuesDemands = {}
-
 	---@return REGION_SCRIPT_INTERFACE
 	function RegionIssuesDemands:region() end
 end
@@ -652,7 +558,6 @@ end
 do
 	---@class CharacterMilitaryForceTraditionPointAvailable
 	local CharacterMilitaryForceTraditionPointAvailable = {}
-
 	---@return MILITARY_FORCE_SCRIPT_INTERFACE
 	function CharacterMilitaryForceTraditionPointAvailable:military_force() end
 end
@@ -660,13 +565,10 @@ end
 do
 	---@class ProvinceGovernorMoved
 	local ProvinceGovernorMoved = {}
-
 	---@return PROVINCE_SCRIPT_INTERFACE
 	function ProvinceGovernorMoved:from_province() end
-
 	---@return PROVINCE_SCRIPT_INTERFACE
 	function ProvinceGovernorMoved:to_province() end
-
 	---@return FAMILY_MEMBER_SCRIPT_INTERFACE
 	function ProvinceGovernorMoved:family_member() end
 end
@@ -674,7 +576,6 @@ end
 do
 	---@class UniqueAgentSpawned
 	local UniqueAgentSpawned = {}
-
 	---@return UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE
 	function UniqueAgentSpawned:unique_agent_details() end
 end
@@ -682,7 +583,6 @@ end
 do
 	---@class UniqueAgentEvent
 	local UniqueAgentEvent = {}
-
 	---@return UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE
 	function UniqueAgentEvent:unique_agent_details() end
 end
@@ -690,7 +590,6 @@ end
 do
 	---@class UniqueAgentDespawned
 	local UniqueAgentDespawned = {}
-
 	---@return UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE
 	function UniqueAgentDespawned:unique_agent_details() end
 end
@@ -705,7 +604,6 @@ end
 do
 	---@class TriggerPostBattleAncillaries
 	local TriggerPostBattleAncillaries = {}
-
 	---@return PENDING_BATTLE_SCRIPT_INTERFACE
 	function TriggerPostBattleAncillaries:pending_battle() end
 	function TriggerPostBattleAncillaries:has_stolen_ancillary() end
@@ -714,10 +612,8 @@ end
 do
 	---@class FactionJoinsConfederation
 	local FactionJoinsConfederation = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionJoinsConfederation:confederation() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionJoinsConfederation:faction() end
 end
@@ -725,10 +621,8 @@ end
 do
 	---@class CampaignCoastalAssaultOnCharacter
 	local CampaignCoastalAssaultOnCharacter = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CampaignCoastalAssaultOnCharacter:target_character() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CampaignCoastalAssaultOnCharacter:character() end
 end
@@ -736,7 +630,6 @@ end
 do
 	---@class TradeNodeConnected
 	local TradeNodeConnected = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function TradeNodeConnected:character() end
 end
@@ -746,7 +639,6 @@ do
 	local TeleportationNetworkNodeOpened = {}
 	function TeleportationNetworkNodeOpened:node_key() end
 	function TeleportationNetworkNodeOpened:template_key() end
-
 	---@return TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE
 	function TeleportationNetworkNodeOpened:node_record() end
 end
@@ -754,19 +646,14 @@ end
 do
 	---@class CaravanMoved
 	local CaravanMoved = {}
-
 	---@return ROUTE_POSITION_SCRIPT_INTERFACE
 	function CaravanMoved:from() end
-
 	---@return ROUTE_POSITION_SCRIPT_INTERFACE
 	function CaravanMoved:to() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function CaravanMoved:faction() end
-
 	---@return FAMILY_MEMBER_SCRIPT_INTERFACE
 	function CaravanMoved:caravan_master() end
-
 	---@return CARAVAN_SCRIPT_INTERFACE
 	function CaravanMoved:caravan() end
 end
@@ -776,7 +663,6 @@ do
 	local TeleportationNetworkNodeEvent = {}
 	function TeleportationNetworkNodeEvent:node_key() end
 	function TeleportationNetworkNodeEvent:template_key() end
-
 	---@return TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE
 	function TeleportationNetworkNodeEvent:node_record() end
 end
@@ -785,13 +671,10 @@ do
 	---@class CaravanSpawned
 	local CaravanSpawned = {}
 	function CaravanSpawned:cargo() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function CaravanSpawned:faction() end
-
 	---@return FAMILY_MEMBER_SCRIPT_INTERFACE
 	function CaravanSpawned:caravan_master() end
-
 	---@return CARAVAN_SCRIPT_INTERFACE
 	function CaravanSpawned:caravan() end
 end
@@ -799,12 +682,10 @@ end
 do
 	---@class TeleportationNetworkNodeClosed
 	local TeleportationNetworkNodeClosed = {}
-
 	---@return FAMILY_MEMBER_SCRIPT_INTERFACE
 	function TeleportationNetworkNodeClosed:closing_character() end
 	function TeleportationNetworkNodeClosed:node_key() end
 	function TeleportationNetworkNodeClosed:template_key() end
-
 	---@return TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE
 	function TeleportationNetworkNodeClosed:node_record() end
 end
@@ -813,19 +694,15 @@ do
 	---@class TeleportationNetworkMoveStart
 	local TeleportationNetworkMoveStart = {}
 	function TeleportationNetworkMoveStart:from_key() end
-
 	---@return TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE
 	function TeleportationNetworkMoveStart:from_record() end
 	function TeleportationNetworkMoveStart:to_key() end
-
 	---@return TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE
 	function TeleportationNetworkMoveStart:to_record() end
-
 	---@return FAMILY_MEMBER_SCRIPT_INTERFACE
 	function TeleportationNetworkMoveStart:character() end
 	function TeleportationNetworkMoveStart:node_key() end
 	function TeleportationNetworkMoveStart:template_key() end
-
 	---@return TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE
 	function TeleportationNetworkMoveStart:node_record() end
 end
@@ -834,14 +711,11 @@ do
 	---@class TeleportationNetworkMoveCompleted
 	local TeleportationNetworkMoveCompleted = {}
 	function TeleportationNetworkMoveCompleted:from_key() end
-
 	---@return TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE
 	function TeleportationNetworkMoveCompleted:from_record() end
 	function TeleportationNetworkMoveCompleted:to_key() end
-
 	---@return TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE
 	function TeleportationNetworkMoveCompleted:to_record() end
-
 	---@return FAMILY_MEMBER_SCRIPT_INTERFACE
 	function TeleportationNetworkMoveCompleted:character() end
 	function TeleportationNetworkMoveCompleted:success() end
@@ -850,13 +724,10 @@ end
 do
 	---@class PrisonActionTakenEvent
 	local PrisonActionTakenEvent = {}
-
 	---@return FAMILY_MEMBER_SCRIPT_INTERFACE
 	function PrisonActionTakenEvent:prisoner_family_member() end
-
 	---@return String
 	function PrisonActionTakenEvent:action_key() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PrisonActionTakenEvent:faction() end
 end
@@ -864,7 +735,6 @@ end
 do
 	---@class RitualsCompletedAndDelayedEvent
 	local RitualsCompletedAndDelayedEvent = {}
-
 	---@return ACTIVE_RITUAL_LIST_SCRIPT_INTERFACE
 	function RitualsCompletedAndDelayedEvent:rituals() end
 end
@@ -872,12 +742,10 @@ end
 do
 	---@class TeleportationNetworkCharacterInteractionStarted
 	local TeleportationNetworkCharacterInteractionStarted = {}
-
 	---@return FAMILY_MEMBER_SCRIPT_INTERFACE
 	function TeleportationNetworkCharacterInteractionStarted:interacting_character() end
 	function TeleportationNetworkCharacterInteractionStarted:node_key() end
 	function TeleportationNetworkCharacterInteractionStarted:template_key() end
-
 	---@return TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE
 	function TeleportationNetworkCharacterInteractionStarted:node_record() end
 end
@@ -885,7 +753,6 @@ end
 do
 	---@class CharacterDiscovered
 	local CharacterDiscovered = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterDiscovered:character() end
 end
@@ -893,7 +760,6 @@ end
 do
 	---@class RegionTurnStart
 	local RegionTurnStart = {}
-
 	---@return REGION_SCRIPT_INTERFACE
 	function RegionTurnStart:region() end
 end
@@ -901,7 +767,6 @@ end
 do
 	---@class SlotTurnStart
 	local SlotTurnStart = {}
-
 	---@return SLOT_SCRIPT_INTERFACE
 	function SlotTurnStart:region_slot() end
 end
@@ -909,7 +774,6 @@ end
 do
 	---@class RegionPlagueStateChanged
 	local RegionPlagueStateChanged = {}
-
 	---@return REGION_SCRIPT_INTERFACE
 	function RegionPlagueStateChanged:region() end
 end
@@ -917,7 +781,6 @@ end
 do
 	---@class MultiTurnMove
 	local MultiTurnMove = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function MultiTurnMove:character() end
 end
@@ -925,7 +788,6 @@ end
 do
 	---@class ForeignBuildingCancelled
 	local ForeignBuildingCancelled = {}
-
 	---@return FOREIGN_SLOT_SCRIPT_INTERFACE
 	function ForeignBuildingCancelled:slot() end
 	function ForeignBuildingCancelled:key() end
@@ -939,13 +801,10 @@ do
 	function PooledResourceEffectChangedEvent:old_effect() end
 	function PooledResourceEffectChangedEvent:new_effect() end
 	function PooledResourceEffectChangedEvent:type() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PooledResourceEffectChangedEvent:faction() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PooledResourceEffectChangedEvent:has_faction() end
-
 	---@return POOLED_RESOURCE_SCRIPT_INTERFACE
 	function PooledResourceEffectChangedEvent:resource() end
 end
@@ -953,7 +812,6 @@ end
 do
 	---@class SlotRoundStart
 	local SlotRoundStart = {}
-
 	---@return SLOT_SCRIPT_INTERFACE
 	function SlotRoundStart:region_slot() end
 end
@@ -961,10 +819,8 @@ end
 do
 	---@class IncidentOccuredEvent
 	local IncidentOccuredEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function IncidentOccuredEvent:faction() end
-
 	---@return MODEL_SCRIPT_INTERFACE
 	function IncidentOccuredEvent:campaign_model() end
 	function IncidentOccuredEvent:dilemma() end
@@ -974,7 +830,6 @@ do
 	---@class SharedStateRemoved
 	local SharedStateRemoved = {}
 	function SharedStateRemoved:key() end
-
 	---@return MILITARY_FORCE_SCRIPT_INTERFACE
 	function SharedStateRemoved:entity() end
 end
@@ -982,7 +837,6 @@ end
 do
 	---@class CharacterEvent
 	local CharacterEvent = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterEvent:character() end
 end
@@ -992,7 +846,6 @@ do
 	local SharedStateChanged = {}
 	function SharedStateChanged:key() end
 	function SharedStateChanged:value() end
-
 	---@return MILITARY_FORCE_SCRIPT_INTERFACE
 	function SharedStateChanged:entity() end
 end
@@ -1001,7 +854,6 @@ do
 	---@class CharacterArmoryItemUnlocked
 	local CharacterArmoryItemUnlocked = {}
 	function CharacterArmoryItemUnlocked:armory_item() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterArmoryItemUnlocked:character() end
 end
@@ -1009,13 +861,10 @@ end
 do
 	---@class CaravanReturned
 	local CaravanReturned = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function CaravanReturned:faction() end
-
 	---@return FAMILY_MEMBER_SCRIPT_INTERFACE
 	function CaravanReturned:caravan_master() end
-
 	---@return CARAVAN_SCRIPT_INTERFACE
 	function CaravanReturned:caravan() end
 end
@@ -1029,7 +878,6 @@ end
 do
 	---@class SettlementSelected
 	local SettlementSelected = {}
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function SettlementSelected:garrison_residence() end
 end
@@ -1037,7 +885,6 @@ end
 do
 	---@class SeaTradeRouteRaided
 	local SeaTradeRouteRaided = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function SeaTradeRouteRaided:character() end
 end
@@ -1045,13 +892,10 @@ end
 do
 	---@class PooledResourceEvent
 	local PooledResourceEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PooledResourceEvent:faction() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PooledResourceEvent:has_faction() end
-
 	---@return POOLED_RESOURCE_SCRIPT_INTERFACE
 	function PooledResourceEvent:resource() end
 end
@@ -1059,7 +903,6 @@ end
 do
 	---@class ScriptedCharacterUnhidden
 	local ScriptedCharacterUnhidden = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function ScriptedCharacterUnhidden:character() end
 end
@@ -1067,12 +910,10 @@ end
 do
 	---@class TeleportationNetworkCharacterNodeClosureHandedOver
 	local TeleportationNetworkCharacterNodeClosureHandedOver = {}
-
 	---@return TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE
 	function TeleportationNetworkCharacterNodeClosureHandedOver:character_family_member() end
 	function TeleportationNetworkCharacterNodeClosureHandedOver:node_key() end
 	function TeleportationNetworkCharacterNodeClosureHandedOver:template_key() end
-
 	---@return TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE
 	function TeleportationNetworkCharacterNodeClosureHandedOver:node_record() end
 end
@@ -1080,13 +921,10 @@ end
 do
 	---@class RitualStartedEvent
 	local RitualStartedEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function RitualStartedEvent:performing_faction() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function RitualStartedEvent:ritual_target_faction() end
-
 	---@return ACTIVE_RITUAL_SCRIPT_INTERFACE
 	function RitualStartedEvent:ritual() end
 end
@@ -1094,7 +932,6 @@ end
 do
 	---@class CharacterWithdrewFromBattle
 	local CharacterWithdrewFromBattle = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterWithdrewFromBattle:character() end
 end
@@ -1102,13 +939,10 @@ end
 do
 	---@class RitualEvent
 	local RitualEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function RitualEvent:performing_faction() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function RitualEvent:ritual_target_faction() end
-
 	---@return ACTIVE_RITUAL_SCRIPT_INTERFACE
 	function RitualEvent:ritual() end
 end
@@ -1122,13 +956,10 @@ end
 do
 	---@class RitualCancelledEvent
 	local RitualCancelledEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function RitualCancelledEvent:performing_faction() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function RitualCancelledEvent:ritual_target_faction() end
-
 	---@return ACTIVE_RITUAL_SCRIPT_INTERFACE
 	function RitualCancelledEvent:ritual() end
 end
@@ -1137,7 +968,6 @@ do
 	---@class ResearchStarted
 	local ResearchStarted = {}
 	function ResearchStarted:technology() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function ResearchStarted:faction() end
 end
@@ -1145,7 +975,6 @@ end
 do
 	---@class GarrisonResidenceEvent
 	local GarrisonResidenceEvent = {}
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function GarrisonResidenceEvent:garrison_residence() end
 end
@@ -1153,7 +982,6 @@ end
 do
 	---@class FactionGovernmentTypeChanged
 	local FactionGovernmentTypeChanged = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionGovernmentTypeChanged:faction() end
 end
@@ -1161,7 +989,6 @@ end
 do
 	---@class CharacterPostBattleEnslave
 	local CharacterPostBattleEnslave = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterPostBattleEnslave:character() end
 end
@@ -1169,10 +996,8 @@ end
 do
 	---@class SpawnableForceCreatedEvent
 	local SpawnableForceCreatedEvent = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function SpawnableForceCreatedEvent:parent_character() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function SpawnableForceCreatedEvent:character() end
 end
@@ -1180,10 +1005,8 @@ end
 do
 	---@class CharacterAttacksAlly
 	local CharacterAttacksAlly = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function CharacterAttacksAlly:target_faction() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterAttacksAlly:character() end
 end
@@ -1191,7 +1014,6 @@ end
 do
 	---@class RegionTurnEnd
 	local RegionTurnEnd = {}
-
 	---@return REGION_SCRIPT_INTERFACE
 	function RegionTurnEnd:region() end
 end
@@ -1199,7 +1021,6 @@ end
 do
 	---@class RegionStrikes
 	local RegionStrikes = {}
-
 	---@return REGION_SCRIPT_INTERFACE
 	function RegionStrikes:region() end
 end
@@ -1209,7 +1030,6 @@ do
 	local RecruitmentItemIssuedByPlayer = {}
 	function RecruitmentItemIssuedByPlayer:main_unit_record() end
 	function RecruitmentItemIssuedByPlayer:time_to_build() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function RecruitmentItemIssuedByPlayer:faction() end
 end
@@ -1217,7 +1037,6 @@ end
 do
 	---@class RegionSlotEvent
 	local RegionSlotEvent = {}
-
 	---@return SLOT_SCRIPT_INTERFACE
 	function RegionSlotEvent:region_slot() end
 end
@@ -1225,13 +1044,10 @@ end
 do
 	---@class CaravanRecruited
 	local CaravanRecruited = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function CaravanRecruited:faction() end
-
 	---@return FAMILY_MEMBER_SCRIPT_INTERFACE
 	function CaravanRecruited:caravan_master() end
-
 	---@return CARAVAN_SCRIPT_INTERFACE
 	function CaravanRecruited:caravan() end
 end
@@ -1240,19 +1056,14 @@ do
 	---@class CaravanWaylaid
 	local CaravanWaylaid = {}
 	function CaravanWaylaid:context() end
-
 	---@return ROUTE_POSITION_SCRIPT_INTERFACE
 	function CaravanWaylaid:from() end
-
 	---@return ROUTE_POSITION_SCRIPT_INTERFACE
 	function CaravanWaylaid:to() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function CaravanWaylaid:faction() end
-
 	---@return FAMILY_MEMBER_SCRIPT_INTERFACE
 	function CaravanWaylaid:caravan_master() end
-
 	---@return CARAVAN_SCRIPT_INTERFACE
 	function CaravanWaylaid:caravan() end
 end
@@ -1260,10 +1071,8 @@ end
 do
 	---@class CharacterCompletedBattle
 	local CharacterCompletedBattle = {}
-
 	---@return PENDING_BATTLE_SCRIPT_INTERFACE
 	function CharacterCompletedBattle:pending_battle() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterCompletedBattle:character() end
 end
@@ -1271,7 +1080,6 @@ end
 do
 	---@class RegionRiots
 	local RegionRiots = {}
-
 	---@return REGION_SCRIPT_INTERFACE
 	function RegionRiots:region() end
 end
@@ -1279,7 +1087,6 @@ end
 do
 	---@class SlotSelected
 	local SlotSelected = {}
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function SlotSelected:garrison_residence() end
 end
@@ -1293,10 +1100,8 @@ end
 do
 	---@class CampaignArmiesMerge
 	local CampaignArmiesMerge = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CampaignArmiesMerge:target_character() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CampaignArmiesMerge:character() end
 end
@@ -1304,7 +1109,6 @@ end
 do
 	---@class RegionEvent
 	local RegionEvent = {}
-
 	---@return REGION_SCRIPT_INTERFACE
 	function RegionEvent:region() end
 end
@@ -1314,10 +1118,8 @@ do
 	local DilemmaChoiceMadeEvent = {}
 	function DilemmaChoiceMadeEvent:choice_key() end
 	function DilemmaChoiceMadeEvent:choice() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function DilemmaChoiceMadeEvent:faction() end
-
 	---@return MODEL_SCRIPT_INTERFACE
 	function DilemmaChoiceMadeEvent:campaign_model() end
 	function DilemmaChoiceMadeEvent:dilemma() end
@@ -1326,7 +1128,6 @@ end
 do
 	---@class NominalDifficultyLevelChangedEvent
 	local NominalDifficultyLevelChangedEvent = {}
-
 	---@return MODEL_SCRIPT_INTERFACE
 	function NominalDifficultyLevelChangedEvent:model() end
 end
@@ -1335,19 +1136,14 @@ do
 	---@class QueryShouldWaylayCaravan
 	local QueryShouldWaylayCaravan = {}
 	function QueryShouldWaylayCaravan:flag_for_waylay() end
-
 	---@return ROUTE_POSITION_SCRIPT_INTERFACE
 	function QueryShouldWaylayCaravan:from() end
-
 	---@return ROUTE_POSITION_SCRIPT_INTERFACE
 	function QueryShouldWaylayCaravan:to() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function QueryShouldWaylayCaravan:faction() end
-
 	---@return FAMILY_MEMBER_SCRIPT_INTERFACE
 	function QueryShouldWaylayCaravan:caravan_master() end
-
 	---@return CARAVAN_SCRIPT_INTERFACE
 	function QueryShouldWaylayCaravan:caravan() end
 end
@@ -1361,7 +1157,6 @@ end
 do
 	---@class QueryTeleportationNetworkShouldHandoverCharacterNodeClosure
 	local QueryTeleportationNetworkShouldHandoverCharacterNodeClosure = {}
-
 	---@return TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE
 	function QueryTeleportationNetworkShouldHandoverCharacterNodeClosure:character_family_member() end
 	function QueryTeleportationNetworkShouldHandoverCharacterNodeClosure:flag_for_script_handover() end
@@ -1372,7 +1167,6 @@ do
 	local QueryTeleportationNetworkHandoverNodeClosure = {}
 	function QueryTeleportationNetworkHandoverNodeClosure:node_key() end
 	function QueryTeleportationNetworkHandoverNodeClosure:template_key() end
-
 	---@return TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE
 	function QueryTeleportationNetworkHandoverNodeClosure:node_record() end
 end
@@ -1380,7 +1174,6 @@ end
 do
 	---@class FactionBeginTurnPhaseNormal
 	local FactionBeginTurnPhaseNormal = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionBeginTurnPhaseNormal:faction() end
 end
@@ -1388,7 +1181,6 @@ end
 do
 	---@class CharacterCreated
 	local CharacterCreated = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterCreated:character() end
 end
@@ -1396,10 +1188,8 @@ end
 do
 	---@class CharacterTargetEvent
 	local CharacterTargetEvent = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterTargetEvent:target_character() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterTargetEvent:character() end
 end
@@ -1407,10 +1197,8 @@ end
 do
 	---@class ProvinceGovernorAppointed
 	local ProvinceGovernorAppointed = {}
-
 	---@return PROVINCE_SCRIPT_INTERFACE
 	function ProvinceGovernorAppointed:province() end
-
 	---@return FAMILY_MEMBER_SCRIPT_INTERFACE
 	function ProvinceGovernorAppointed:family_member() end
 end
@@ -1418,43 +1206,30 @@ end
 do
 	---@class PositiveDiplomaticEvent
 	local PositiveDiplomaticEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PositiveDiplomaticEvent:proposer() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PositiveDiplomaticEvent:recipient() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PositiveDiplomaticEvent:is_alliance() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PositiveDiplomaticEvent:is_military_alliance() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PositiveDiplomaticEvent:is_defensive_alliance() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PositiveDiplomaticEvent:is_peace_treaty() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PositiveDiplomaticEvent:is_military_access() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PositiveDiplomaticEvent:is_trade_agreement() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PositiveDiplomaticEvent:is_non_aggression_pact() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PositiveDiplomaticEvent:is_vassalage() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PositiveDiplomaticEvent:proposer_is_vassal() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PositiveDiplomaticEvent:is_state_gift() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PositiveDiplomaticEvent:state_gift_amount() end
 end
@@ -1468,10 +1243,8 @@ end
 do
 	---@class PendingBattle
 	local PendingBattle = {}
-
 	---@return MODEL_SCRIPT_INTERFACE
 	function PendingBattle:model() end
-
 	---@return PENDING_BATTLE_SCRIPT_INTERFACE
 	function PendingBattle:pending_battle() end
 end
@@ -1479,7 +1252,6 @@ end
 do
 	---@class PendingBankruptcy
 	local PendingBankruptcy = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function PendingBankruptcy:faction() end
 end
@@ -1487,7 +1259,6 @@ end
 do
 	---@class RegionBuildingCancelled
 	local RegionBuildingCancelled = {}
-
 	---@return SLOT_SCRIPT_INTERFACE
 	function RegionBuildingCancelled:slot() end
 	function RegionBuildingCancelled:key() end
@@ -1498,7 +1269,6 @@ end
 do
 	---@class NewCharacterEnteredRecruitmentPool
 	local NewCharacterEnteredRecruitmentPool = {}
-
 	---@return CHARACTER_DETAILS_SCRIPT_INTERFACE
 	function NewCharacterEnteredRecruitmentPool:character_details() end
 end
@@ -1506,7 +1276,6 @@ end
 do
 	---@class CharacterPostBattleSlaughter
 	local CharacterPostBattleSlaughter = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterPostBattleSlaughter:character() end
 end
@@ -1514,7 +1283,6 @@ end
 do
 	---@class NewCampaignStarted
 	local NewCampaignStarted = {}
-
 	---@return MODEL_SCRIPT_INTERFACE
 	function NewCampaignStarted:model() end
 end
@@ -1522,13 +1290,10 @@ end
 do
 	---@class MissionSucceeded
 	local MissionSucceeded = {}
-
 	---@return CAMPAIGN_MISSION_SCRIPT_INTERFACE
 	function MissionSucceeded:mission() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function MissionSucceeded:faction() end
-
 	---@return MODEL_SCRIPT_INTERFACE
 	function MissionSucceeded:campaign_model() end
 end
@@ -1536,21 +1301,17 @@ end
 do
 	---@class GovernorAssignedCharacterEvent
 	local GovernorAssignedCharacterEvent = {}
-
-	---@return GOVERNOR_ASSIGNED_CHARACTER_EVENT
+	---@return PROVINCE_SCRIPT_INTERFACE
 	function GovernorAssignedCharacterEvent:province() end
-
-	---@return GOVERNOR_ASSIGNED_CHARACTER_EVENT
+	---@return REGION_SCRIPT_INTERFACE
 	function GovernorAssignedCharacterEvent:region() end
 end
 ---============================---
 do
 	---@class MissionEvent
 	local MissionEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function MissionEvent:faction() end
-
 	---@return MODEL_SCRIPT_INTERFACE
 	function MissionEvent:campaign_model() end
 end
@@ -1558,7 +1319,6 @@ end
 do
 	---@class MilitaryForceCreated
 	local MilitaryForceCreated = {}
-
 	---@return MILITARY_FORCE_SCRIPT_INTERFACE
 	function MilitaryForceCreated:military_force_created() end
 end
@@ -1566,7 +1326,6 @@ end
 do
 	---@class MovementPointsExhausted
 	local MovementPointsExhausted = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function MovementPointsExhausted:character() end
 end
@@ -1574,13 +1333,10 @@ end
 do
 	---@class MissionStatusEvent
 	local MissionStatusEvent = {}
-
 	---@return CAMPAIGN_MISSION_SCRIPT_INTERFACE
 	function MissionStatusEvent:mission() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function MissionStatusEvent:faction() end
-
 	---@return MODEL_SCRIPT_INTERFACE
 	function MissionStatusEvent:campaign_model() end
 end
@@ -1588,13 +1344,10 @@ end
 do
 	---@class MissionNearingExpiry
 	local MissionNearingExpiry = {}
-
 	---@return CAMPAIGN_MISSION_SCRIPT_INTERFACE
 	function MissionNearingExpiry:mission() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function MissionNearingExpiry:faction() end
-
 	---@return MODEL_SCRIPT_INTERFACE
 	function MissionNearingExpiry:campaign_model() end
 end
@@ -1602,13 +1355,10 @@ end
 do
 	---@class MissionIssued
 	local MissionIssued = {}
-
 	---@return CAMPAIGN_MISSION_SCRIPT_INTERFACE
 	function MissionIssued:mission() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function MissionIssued:faction() end
-
 	---@return MODEL_SCRIPT_INTERFACE
 	function MissionIssued:campaign_model() end
 end
@@ -1616,10 +1366,8 @@ end
 do
 	---@class GarrisonOccupiedEvent
 	local GarrisonOccupiedEvent = {}
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function GarrisonOccupiedEvent:garrison_residence() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function GarrisonOccupiedEvent:character() end
 end
@@ -1633,7 +1381,6 @@ end
 do
 	---@class CharacterConvalescedOrKilled
 	local CharacterConvalescedOrKilled = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterConvalescedOrKilled:character() end
 end
@@ -1641,7 +1388,6 @@ end
 do
 	---@class FactionEvent
 	local FactionEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionEvent:faction() end
 end
@@ -1649,40 +1395,28 @@ end
 do
 	---@class NegativeDiplomaticEvent
 	local NegativeDiplomaticEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function NegativeDiplomaticEvent:proposer() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function NegativeDiplomaticEvent:recipient() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function NegativeDiplomaticEvent:was_alliance() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function NegativeDiplomaticEvent:was_military_alliance() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function NegativeDiplomaticEvent:was_defensive_alliance() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function NegativeDiplomaticEvent:is_war() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function NegativeDiplomaticEvent:was_military_access() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function NegativeDiplomaticEvent:was_trade_agreement() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function NegativeDiplomaticEvent:was_non_aggression_pact() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function NegativeDiplomaticEvent:was_vassalage() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function NegativeDiplomaticEvent:proposer_was_vassal() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function NegativeDiplomaticEvent:result_of_confederation() end
 end
@@ -1690,10 +1424,8 @@ end
 do
 	---@class FactionCharacterTagAddedEvent
 	local FactionCharacterTagAddedEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionCharacterTagAddedEvent:tagging_faction() end
-
 	---@return FACTION_CHARACTER_TAG_ENTRY_SCRIPT_INTERFACE
 	function FactionCharacterTagAddedEvent:tag_entry() end
 end
@@ -1701,7 +1433,6 @@ end
 do
 	---@class FactionBecomesActiveHuman
 	local FactionBecomesActiveHuman = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionBecomesActiveHuman:faction() end
 end
@@ -1709,7 +1440,6 @@ end
 do
 	---@class IncidentFailedEvent
 	local IncidentFailedEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function IncidentFailedEvent:faction() end
 	function IncidentFailedEvent:record_key() end
@@ -1718,14 +1448,11 @@ end
 do
 	---@class MilitaryForceInfectionEvent
 	local MilitaryForceInfectionEvent = {}
-
 	---@return MILITARY_FORCE_SCRIPT_INTERFACE
 	function MilitaryForceInfectionEvent:target_force() end
 	function MilitaryForceInfectionEvent:is_creation() end
-
 	---@return PLAGUE_SCRIPT_INTERFACE
 	function MilitaryForceInfectionEvent:plague() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function MilitaryForceInfectionEvent:faction() end
 end
@@ -1733,10 +1460,8 @@ end
 do
 	---@class DilemmaEvent
 	local DilemmaEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function DilemmaEvent:faction() end
-
 	---@return MODEL_SCRIPT_INTERFACE
 	function DilemmaEvent:campaign_model() end
 	function DilemmaEvent:dilemma() end
@@ -1745,10 +1470,8 @@ end
 do
 	---@class IncidentEvent
 	local IncidentEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function IncidentEvent:faction() end
-
 	---@return MODEL_SCRIPT_INTERFACE
 	function IncidentEvent:campaign_model() end
 	function IncidentEvent:dilemma() end
@@ -1757,7 +1480,6 @@ end
 do
 	---@class CharacterMilitaryForceTraditionPointAllocated
 	local CharacterMilitaryForceTraditionPointAllocated = {}
-
 	---@return MILITARY_FORCE_SCRIPT_INTERFACE
 	function CharacterMilitaryForceTraditionPointAllocated:military_force() end
 	function CharacterMilitaryForceTraditionPointAllocated:tradition_point_spent_on() end
@@ -1766,10 +1488,8 @@ end
 do
 	---@class CharacterLeavesGarrison
 	local CharacterLeavesGarrison = {}
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function CharacterLeavesGarrison:garrison_residence() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterLeavesGarrison:character() end
 end
@@ -1777,7 +1497,6 @@ end
 do
 	---@class MilitaryForceDevelopmentPointChange
 	local MilitaryForceDevelopmentPointChange = {}
-
 	---@return MILITARY_FORCE_SCRIPT_INTERFACE
 	function MilitaryForceDevelopmentPointChange:military_force() end
 	function MilitaryForceDevelopmentPointChange:point_change() end
@@ -1789,7 +1508,6 @@ do
 	function HaveCharacterWithinRangeOfPositionMissionEvaluationResultEvent:mission_key() end
 	function HaveCharacterWithinRangeOfPositionMissionEvaluationResultEvent:mission_cqi() end
 	function HaveCharacterWithinRangeOfPositionMissionEvaluationResultEvent:was_successful() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function HaveCharacterWithinRangeOfPositionMissionEvaluationResultEvent:character() end
 end
@@ -1797,7 +1515,6 @@ end
 do
 	---@class MilitaryForceBuildingCancelled
 	local MilitaryForceBuildingCancelled = {}
-
 	---@return MILITARY_FORCE_SLOT_SCRIPT_INTERFACE
 	function MilitaryForceBuildingCancelled:slot() end
 	function MilitaryForceBuildingCancelled:key() end
@@ -1808,10 +1525,8 @@ end
 do
 	---@class BuildingCompleted
 	local BuildingCompleted = {}
-
 	---@return BUILDING_SCRIPT_INTERFACE
 	function BuildingCompleted:building() end
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function BuildingCompleted:garrison_residence() end
 end
@@ -1819,10 +1534,8 @@ end
 do
 	---@class CharacterGarrisonTargetEvent
 	local CharacterGarrisonTargetEvent = {}
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function CharacterGarrisonTargetEvent:garrison_residence() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterGarrisonTargetEvent:character() end
 end
@@ -1830,7 +1543,6 @@ end
 do
 	---@class FactionRoundStart
 	local FactionRoundStart = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionRoundStart:faction() end
 end
@@ -1838,13 +1550,10 @@ end
 do
 	---@class MissionCancelled
 	local MissionCancelled = {}
-
 	---@return CAMPAIGN_MISSION_SCRIPT_INTERFACE
 	function MissionCancelled:mission() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function MissionCancelled:faction() end
-
 	---@return MODEL_SCRIPT_INTERFACE
 	function MissionCancelled:campaign_model() end
 end
@@ -1852,13 +1561,10 @@ end
 do
 	---@class ImprisonmentRejectionEvent
 	local ImprisonmentRejectionEvent = {}
-
 	---@return FAMILY_MEMBER_SCRIPT_INTERFACE
 	function ImprisonmentRejectionEvent:prisoner_family_member() end
-
 	---@return CHARACTER_IMPRISONMENT_REJECTION_REASON_MASK_SCRIPTING_INTERFACE
 	function ImprisonmentRejectionEvent:rejection_reasons() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function ImprisonmentRejectionEvent:faction() end
 end
@@ -1873,10 +1579,8 @@ end
 do
 	---@class ImprisonmentEvent
 	local ImprisonmentEvent = {}
-
 	---@return FAMILY_MEMBER_SCRIPT_INTERFACE
 	function ImprisonmentEvent:prisoner_family_member() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function ImprisonmentEvent:faction() end
 end
@@ -1890,7 +1594,6 @@ end
 do
 	---@class CharacterPromoted
 	local CharacterPromoted = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterPromoted:character() end
 end
@@ -1898,10 +1601,8 @@ end
 do
 	---@class GarrisonResidenceExposedToFaction
 	local GarrisonResidenceExposedToFaction = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function GarrisonResidenceExposedToFaction:encountering_faction() end
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function GarrisonResidenceExposedToFaction:garrison_residence() end
 end
@@ -1909,7 +1610,6 @@ end
 do
 	---@class CharacterEmbarksNavy
 	local CharacterEmbarksNavy = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterEmbarksNavy:character() end
 end
@@ -1918,7 +1618,6 @@ do
 	---@class ResearchCompleted
 	local ResearchCompleted = {}
 	function ResearchCompleted:technology() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function ResearchCompleted:faction() end
 end
@@ -1932,7 +1631,6 @@ end
 do
 	---@class ProvinceGovernorshipNewDecisionAvailable
 	local ProvinceGovernorshipNewDecisionAvailable = {}
-
 	---@return PROVINCE_SCRIPT_INTERFACE
 	function ProvinceGovernorshipNewDecisionAvailable:province() end
 	function ProvinceGovernorshipNewDecisionAvailable:campaign_decision_record() end
@@ -1941,10 +1639,8 @@ end
 do
 	---@class ForeignSlotManagerCreatedEvent
 	local ForeignSlotManagerCreatedEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function ForeignSlotManagerCreatedEvent:requesting_faction() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function ForeignSlotManagerCreatedEvent:slot_owner() end
 	function ForeignSlotManagerCreatedEvent:is_allied() end
@@ -1953,8 +1649,6 @@ end
 do
 	---@class BattleBeingFought
 	local BattleBeingFought = {}
-
-	---@return none
 	function BattleBeingFought:is_autoresolved() end
 end
 ---============================---
@@ -1962,12 +1656,10 @@ do
 	---@class BuildingLifecycleDevelops
 	local BuildingLifecycleDevelops = {}
 	function BuildingLifecycleDevelops:previous() end
-
 	---@return BUILDING_SCRIPT_INTERFACE
 	function BuildingLifecycleDevelops:current() end
 	function BuildingLifecycleDevelops:has_restarted() end
 	function BuildingLifecycleDevelops:has_ended() end
-
 	---@return REGION_SCRIPT_INTERFACE
 	function BuildingLifecycleDevelops:region() end
 end
@@ -1975,10 +1667,8 @@ end
 do
 	---@class CharacterLootedSettlement
 	local CharacterLootedSettlement = {}
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function CharacterLootedSettlement:garrison_residence() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterLootedSettlement:character() end
 end
@@ -1992,7 +1682,6 @@ end
 do
 	---@class FactionTurnStart
 	local FactionTurnStart = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionTurnStart:faction() end
 end
@@ -2000,7 +1689,6 @@ end
 do
 	---@class FactionLeaderSignsPeaceTreaty
 	local FactionLeaderSignsPeaceTreaty = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function FactionLeaderSignsPeaceTreaty:character() end
 end
@@ -2008,7 +1696,6 @@ end
 do
 	---@class FirstTickAfterNewCampaignStarted
 	local FirstTickAfterNewCampaignStarted = {}
-
 	---@return MODEL_SCRIPT_INTERFACE
 	function FirstTickAfterNewCampaignStarted:model() end
 end
@@ -2016,7 +1703,6 @@ end
 do
 	---@class CampaignBuildingDamaged
 	local CampaignBuildingDamaged = {}
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function CampaignBuildingDamaged:garrison_residence() end
 end
@@ -2024,7 +1710,6 @@ end
 do
 	---@class CharacterEntersAttritionalArea
 	local CharacterEntersAttritionalArea = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterEntersAttritionalArea:character() end
 end
@@ -2032,10 +1717,8 @@ end
 do
 	---@class FactionCharacterTagEntryEvent
 	local FactionCharacterTagEntryEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionCharacterTagEntryEvent:tagging_faction() end
-
 	---@return FACTION_CHARACTER_TAG_ENTRY_SCRIPT_INTERFACE
 	function FactionCharacterTagEntryEvent:tag_entry() end
 end
@@ -2043,7 +1726,6 @@ end
 do
 	---@class CharacterComesOfAge
 	local CharacterComesOfAge = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterComesOfAge:character() end
 end
@@ -2051,10 +1733,8 @@ end
 do
 	---@class FactionSubjugatesOtherFaction
 	local FactionSubjugatesOtherFaction = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionSubjugatesOtherFaction:other_faction() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionSubjugatesOtherFaction:faction() end
 end
@@ -2075,13 +1755,10 @@ end
 do
 	---@class ForeignSlotManagerRemovedEvent
 	local ForeignSlotManagerRemovedEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function ForeignSlotManagerRemovedEvent:owner() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function ForeignSlotManagerRemovedEvent:remover() end
-
 	---@return FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE
 	function ForeignSlotManagerRemovedEvent:cause_was_razing() end
 end
@@ -2089,7 +1766,6 @@ end
 do
 	---@class LandTradeRouteRaided
 	local LandTradeRouteRaided = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function LandTradeRouteRaided:character() end
 end
@@ -2097,7 +1773,6 @@ end
 do
 	---@class CharacterBecomesFactionLeader
 	local CharacterBecomesFactionLeader = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterBecomesFactionLeader:character() end
 end
@@ -2105,7 +1780,6 @@ end
 do
 	---@class FactionLiberated
 	local FactionLiberated = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function FactionLiberated:liberating_character() end
 end
@@ -2113,7 +1787,6 @@ end
 do
 	---@class CharacterRelativeKilled
 	local CharacterRelativeKilled = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterRelativeKilled:character() end
 end
@@ -2121,14 +1794,11 @@ end
 do
 	---@class RegionInfectionEvent
 	local RegionInfectionEvent = {}
-
 	---@return REGION_SCRIPT_INTERFACE
 	function RegionInfectionEvent:target_region() end
 	function RegionInfectionEvent:is_creation() end
-
 	---@return PLAGUE_SCRIPT_INTERFACE
 	function RegionInfectionEvent:plague() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function RegionInfectionEvent:faction() end
 end
@@ -2136,10 +1806,8 @@ end
 do
 	---@class DiplomaticOfferRejected
 	local DiplomaticOfferRejected = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function DiplomaticOfferRejected:proposer() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function DiplomaticOfferRejected:recipient() end
 end
@@ -2147,7 +1815,6 @@ end
 do
 	---@class CharacterCandidateBecomesMinister
 	local CharacterCandidateBecomesMinister = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterCandidateBecomesMinister:character() end
 end
@@ -2163,10 +1830,8 @@ do
 	function CharacterGarrisonTargetAction:ability() end
 	function CharacterGarrisonTargetAction:attribute() end
 	function CharacterGarrisonTargetAction:agent_action_key() end
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function CharacterGarrisonTargetAction:garrison_residence() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterGarrisonTargetAction:character() end
 end
@@ -2174,10 +1839,8 @@ end
 do
 	---@class CharacterRazedSettlement
 	local CharacterRazedSettlement = {}
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function CharacterRazedSettlement:garrison_residence() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterRazedSettlement:character() end
 end
@@ -2185,7 +1848,6 @@ end
 do
 	---@class CharacterMarriage
 	local CharacterMarriage = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterMarriage:character() end
 end
@@ -2193,7 +1855,6 @@ end
 do
 	---@class TradeRouteEstablished
 	local TradeRouteEstablished = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function TradeRouteEstablished:faction() end
 end
@@ -2201,10 +1862,8 @@ end
 do
 	---@class UnitMergedAndDestroyed
 	local UnitMergedAndDestroyed = {}
-
 	---@return UNIT_SCRIPT_INTERFACE
 	function UnitMergedAndDestroyed:new_unit() end
-
 	---@return UNIT_SCRIPT_INTERFACE
 	function UnitMergedAndDestroyed:unit() end
 end
@@ -2212,10 +1871,8 @@ end
 do
 	---@class DilemmaGenerationFailedEvent
 	local DilemmaGenerationFailedEvent = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function DilemmaGenerationFailedEvent:faction() end
-
 	---@return MODEL_SCRIPT_INTERFACE
 	function DilemmaGenerationFailedEvent:campaign_model() end
 	function DilemmaGenerationFailedEvent:dilemma() end
@@ -2230,7 +1887,6 @@ end
 do
 	---@class FactionEncountersOtherFaction
 	local FactionEncountersOtherFaction = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionEncountersOtherFaction:other_faction() end
 end
@@ -2238,7 +1894,6 @@ end
 do
 	---@class CharacterBesiegesSettlement
 	local CharacterBesiegesSettlement = {}
-
 	---@return REGION_SCRIPT_INTERFACE
 	function CharacterBesiegesSettlement:region() end
 end
@@ -2249,13 +1904,10 @@ do
 	function CaravanCompleted:cargo() end
 	function CaravanCompleted:cargo_value() end
 	function CaravanCompleted:complete_position() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function CaravanCompleted:faction() end
-
 	---@return FAMILY_MEMBER_SCRIPT_INTERFACE
 	function CaravanCompleted:caravan_master() end
-
 	---@return CARAVAN_SCRIPT_INTERFACE
 	function CaravanCompleted:caravan() end
 end
@@ -2264,7 +1916,6 @@ do
 	---@class AreaEntered
 	local AreaEntered = {}
 	function AreaEntered:area_key() end
-
 	---@return FAMILY_MEMBER_SCRIPT_INTERFACE
 	function AreaEntered:family_member() end
 end
@@ -2278,10 +1929,8 @@ end
 do
 	---@class FactionCookedDish
 	local FactionCookedDish = {}
-
 	---@return COOKING_DISH_SCRIPT_INTERFACE
 	function FactionCookedDish:dish() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionCookedDish:faction() end
 end
@@ -2289,10 +1938,8 @@ end
 do
 	---@class FactionBecomesLiberationVassal
 	local FactionBecomesLiberationVassal = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function FactionBecomesLiberationVassal:liberating_character() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function FactionBecomesLiberationVassal:faction() end
 end
@@ -2300,7 +1947,6 @@ end
 do
 	---@class RegionSelected
 	local RegionSelected = {}
-
 	---@return REGION_SCRIPT_INTERFACE
 	function RegionSelected:region() end
 end
@@ -2308,7 +1954,6 @@ end
 do
 	---@class CharacterTurnStart
 	local CharacterTurnStart = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterTurnStart:character() end
 end
@@ -2322,7 +1967,6 @@ end
 do
 	---@class CharacterCanLiberate
 	local CharacterCanLiberate = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterCanLiberate:character() end
 end
@@ -2330,7 +1974,6 @@ end
 do
 	---@class CharacterInfoPanelOpened
 	local CharacterInfoPanelOpened = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterInfoPanelOpened:character() end
 end
@@ -2338,10 +1981,8 @@ end
 do
 	---@class DilemmaIssued
 	local DilemmaIssued = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function DilemmaIssued:faction() end
-
 	---@return MODEL_SCRIPT_INTERFACE
 	function DilemmaIssued:campaign_model() end
 	function DilemmaIssued:dilemma() end
@@ -2350,7 +1991,6 @@ end
 do
 	---@class CharacterRankUp
 	local CharacterRankUp = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterRankUp:character() end
 end
@@ -2359,7 +1999,6 @@ do
 	---@class ForeignSlotBuildingCompleteEvent
 	local ForeignSlotBuildingCompleteEvent = {}
 	function ForeignSlotBuildingCompleteEvent:building() end
-
 	---@return FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE
 	function ForeignSlotBuildingCompleteEvent:slot_manager() end
 end
@@ -2367,7 +2006,6 @@ end
 do
 	---@class CharacterWaaaghOccurred
 	local CharacterWaaaghOccurred = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterWaaaghOccurred:character() end
 end
@@ -2376,7 +2014,6 @@ do
 	---@class BuildingConstructionIssuedByPlayer
 	local BuildingConstructionIssuedByPlayer = {}
 	function BuildingConstructionIssuedByPlayer:building() end
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function BuildingConstructionIssuedByPlayer:garrison_residence() end
 end
@@ -2384,7 +2021,6 @@ end
 do
 	---@class CharacterTurnEnd
 	local CharacterTurnEnd = {}
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterTurnEnd:character() end
 end
@@ -2392,10 +2028,8 @@ end
 do
 	---@class CharacterEntersGarrison
 	local CharacterEntersGarrison = {}
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function CharacterEntersGarrison:garrison_residence() end
-
 	---@return CHARACTER_SCRIPT_INTERFACE
 	function CharacterEntersGarrison:character() end
 end
@@ -2403,13 +2037,10 @@ end
 do
 	---@class MissionFailed
 	local MissionFailed = {}
-
 	---@return CAMPAIGN_MISSION_SCRIPT_INTERFACE
 	function MissionFailed:mission() end
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function MissionFailed:faction() end
-
 	---@return MODEL_SCRIPT_INTERFACE
 	function MissionFailed:campaign_model() end
 end
@@ -2417,7 +2048,6 @@ end
 do
 	---@class BuildingCancelled
 	local BuildingCancelled = {}
-
 	---@return GARRISON_RESIDENCE_SCRIPT_INTERFACE
 	function BuildingCancelled:garrison_residence() end
 end
@@ -2425,7 +2055,6 @@ end
 do
 	---@class ClanBecomesVassal
 	local ClanBecomesVassal = {}
-
 	---@return FACTION_SCRIPT_INTERFACE
 	function ClanBecomesVassal:faction() end
 end
@@ -2435,13 +2064,11 @@ end
 	--- [[ Interfaces ]] ---
 ---============================---
 
-
 ---@class CHARACTER_LIST_SCRIPT_INTERFACE Description: A list of character interfaces
 local CHARACTER_LIST_SCRIPT_INTERFACE = {}
 function CHARACTER_LIST_SCRIPT_INTERFACE:num_items() end
 function CHARACTER_LIST_SCRIPT_INTERFACE:item_at() end
 function CHARACTER_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE Description: Character Observation Options Script Interface
 local CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE = {}
@@ -2453,7 +2080,6 @@ function CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE:navies_options() end
 function CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE:set_navies_options() end
 function CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE:agents_options() end
 function CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE:set_agents_options() end
-
 
 ---@class POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE Description: Pooled Resource Manager Script Interface
 local POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE = {}
@@ -2474,7 +2100,6 @@ function POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE:has_faction_province() end
 function POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE:faction_province() end
 function POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE:resources() end
 function POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE:resource() end
-
 
 ---@class CHARACTER_SCRIPT_INTERFACE Description: Character interface
 local CHARACTER_SCRIPT_INTERFACE = {}
@@ -2583,7 +2208,6 @@ function CHARACTER_SCRIPT_INTERFACE:has_effect_bundle() end
 function CHARACTER_SCRIPT_INTERFACE:pooled_resource_manager() end
 function CHARACTER_SCRIPT_INTERFACE:bonus_values() end
 
-
 ---@class MILITARY_FORCE_SCRIPT_INTERFACE Description: Military force interface. Armies and navies are military forces.
 local MILITARY_FORCE_SCRIPT_INTERFACE = {}
 function MILITARY_FORCE_SCRIPT_INTERFACE:is_null_interface() end
@@ -2620,7 +2244,6 @@ function MILITARY_FORCE_SCRIPT_INTERFACE:set_piece_battle_army_key() end
 function MILITARY_FORCE_SCRIPT_INTERFACE:has_access_to_military_force_mercenary_pool_of_recruitment_source() end
 function MILITARY_FORCE_SCRIPT_INTERFACE:lookup_streak_value() end
 
-
 ---@class SETTLEMENT_SCRIPT_INTERFACE Description: Settlement script interface
 local SETTLEMENT_SCRIPT_INTERFACE = {}
 function SETTLEMENT_SCRIPT_INTERFACE:is_null_interface() end
@@ -2645,7 +2268,6 @@ function SETTLEMENT_SCRIPT_INTERFACE:port_slot() end
 function SETTLEMENT_SCRIPT_INTERFACE:active_secondary_slots() end
 function SETTLEMENT_SCRIPT_INTERFACE:first_empty_active_secondary_slot() end
 
-
 ---@class DEBUG_DRAWING_SCRIPT_INTERFACE Description: Debug Drawing Script Interface
 local DEBUG_DRAWING_SCRIPT_INTERFACE = {}
 function DEBUG_DRAWING_SCRIPT_INTERFACE:is_null_interface() end
@@ -2660,11 +2282,9 @@ function DEBUG_DRAWING_SCRIPT_INTERFACE:set_end() end
 function DEBUG_DRAWING_SCRIPT_INTERFACE:set_depth_test() end
 function DEBUG_DRAWING_SCRIPT_INTERFACE:set_draw_duration() end
 
-
 ---@class SEA_REGION_LIST_SCRIPT_INTERFACE Description: Sea Region List script interface, a list of sea regions
 local SEA_REGION_LIST_SCRIPT_INTERFACE = {}
 function SEA_REGION_LIST_SCRIPT_INTERFACE:is_null_interface() end
-
 
 ---@class CARAVANS_SYSTEM_SCRIPT_INTERFACE Description: Caravans System Script Interface
 local CARAVANS_SYSTEM_SCRIPT_INTERFACE = {}
@@ -2676,7 +2296,6 @@ function CARAVANS_SYSTEM_SCRIPT_INTERFACE:banditry_for_region_by_key() end
 function CARAVANS_SYSTEM_SCRIPT_INTERFACE:total_banditry_for_regions() end
 function CARAVANS_SYSTEM_SCRIPT_INTERFACE:total_banditry_for_regions_by_key() end
 function CARAVANS_SYSTEM_SCRIPT_INTERFACE:maximum_banditry() end
-
 
 ---@class RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE Description: Ritual Target Region Status Script Interface
 local RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE = {}
@@ -2693,13 +2312,11 @@ function RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE:foreign_slot_set_present()
 function RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE:is_ruin() end
 function RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE:is_not_ruin() end
 
-
 ---@class FAMILY_MEMBER_LIST_SCRIPT_INTERFACE Description: A list of family member interfaces
 local FAMILY_MEMBER_LIST_SCRIPT_INTERFACE = {}
 function FAMILY_MEMBER_LIST_SCRIPT_INTERFACE:num_items() end
 function FAMILY_MEMBER_LIST_SCRIPT_INTERFACE:item_at() end
 function FAMILY_MEMBER_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class EFFECT_BUNDLE_SCRIPT_INTERFACE Description: An effect bundle, which provides multiple effects to a target game object
 local EFFECT_BUNDLE_SCRIPT_INTERFACE = {}
@@ -2708,7 +2325,6 @@ function EFFECT_BUNDLE_SCRIPT_INTERFACE:key() end
 function EFFECT_BUNDLE_SCRIPT_INTERFACE:effects() end
 function EFFECT_BUNDLE_SCRIPT_INTERFACE:duration() end
 function EFFECT_BUNDLE_SCRIPT_INTERFACE:clone_and_create_custom_effect_bundle() end
-
 
 ---@class FACTION_SCRIPT_INTERFACE Description: Faction interface
 local FACTION_SCRIPT_INTERFACE = {}
@@ -2823,13 +2439,11 @@ function FACTION_SCRIPT_INTERFACE:num_complete_provinces() end
 function FACTION_SCRIPT_INTERFACE:provinces() end
 function FACTION_SCRIPT_INTERFACE:complete_provinces() end
 
-
 ---@class POOLED_RESOURCE_LIST_SCRIPT_INTERFACE Description: A list of pooled resource script interfaces
 local POOLED_RESOURCE_LIST_SCRIPT_INTERFACE = {}
 function POOLED_RESOURCE_LIST_SCRIPT_INTERFACE:num_items() end
 function POOLED_RESOURCE_LIST_SCRIPT_INTERFACE:item_at() end
 function POOLED_RESOURCE_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class ROUTE_POSITION_SCRIPT_INTERFACE Description: Route Position Script Interface
 local ROUTE_POSITION_SCRIPT_INTERFACE = {}
@@ -2840,7 +2454,6 @@ function ROUTE_POSITION_SCRIPT_INTERFACE:node() end
 function ROUTE_POSITION_SCRIPT_INTERFACE:node_id() end
 function ROUTE_POSITION_SCRIPT_INTERFACE:valid() end
 
-
 ---@class CARAVAN_RECRUITMENT_ITEM_SCRIPT_INTERFACE Description: Caravan Recruitment Item Script Interface
 local CARAVAN_RECRUITMENT_ITEM_SCRIPT_INTERFACE = {}
 function CARAVAN_RECRUITMENT_ITEM_SCRIPT_INTERFACE:is_null_interface() end
@@ -2848,13 +2461,11 @@ function CARAVAN_RECRUITMENT_ITEM_SCRIPT_INTERFACE:valid() end
 function CARAVAN_RECRUITMENT_ITEM_SCRIPT_INTERFACE:caravan_master() end
 function CARAVAN_RECRUITMENT_ITEM_SCRIPT_INTERFACE:cost() end
 
-
 ---@class EFFECT_LIST_SCRIPT_INTERFACE Description: A list of effects
 local EFFECT_LIST_SCRIPT_INTERFACE = {}
 function EFFECT_LIST_SCRIPT_INTERFACE:num_items() end
 function EFFECT_LIST_SCRIPT_INTERFACE:item_at() end
 function EFFECT_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class WOM_COMPASS_SCRIPT_INTERFACE Description: Winds Of Magic Compass Script Interface
 local WOM_COMPASS_SCRIPT_INTERFACE = {}
@@ -2865,7 +2476,6 @@ function WOM_COMPASS_SCRIPT_INTERFACE:get_faction_cooldown() end
 function WOM_COMPASS_SCRIPT_INTERFACE:get_directions() end
 function WOM_COMPASS_SCRIPT_INTERFACE:get_selected_direction() end
 function WOM_COMPASS_SCRIPT_INTERFACE:get_direction_power_level() end
-
 
 ---@class TELEPORTATION_NODE_SCRIPT_INTERFACE Description: Teleportation Node Script Interface
 local TELEPORTATION_NODE_SCRIPT_INTERFACE = {}
@@ -2879,13 +2489,11 @@ function TELEPORTATION_NODE_SCRIPT_INTERFACE:closable() end
 ---@return number
 function TELEPORTATION_NODE_SCRIPT_INTERFACE:position() end
 
-
 ---@class WAR_COORDINATION_SCRIPT_INTERFACE Description: Favour Points Script Interface. Can be accessed from the episodic scripting interface.
 local WAR_COORDINATION_SCRIPT_INTERFACE = {}
 function WAR_COORDINATION_SCRIPT_INTERFACE:is_null_interface() end
 function WAR_COORDINATION_SCRIPT_INTERFACE:get_faction_favour_points_toward_faction() end
 function WAR_COORDINATION_SCRIPT_INTERFACE:set_faction_favour_points_toward_faction() end
-
 
 ---@class TELEPORTATION_NETWORK_SCRIPT_INTERFACE Description: Teleportation Network Script Interface
 local TELEPORTATION_NETWORK_SCRIPT_INTERFACE = {}
@@ -2898,13 +2506,11 @@ function TELEPORTATION_NETWORK_SCRIPT_INTERFACE:is_node_closed() end
 function TELEPORTATION_NETWORK_SCRIPT_INTERFACE:closed_nodes() end
 function TELEPORTATION_NETWORK_SCRIPT_INTERFACE:closed_nodes_of_template() end
 
-
 ---@class TELEPORTATION_NODE_RECORD_LIST_SCRIPT_INTERFACE Description: A list of teleportation network node record script interfaces
 local TELEPORTATION_NODE_RECORD_LIST_SCRIPT_INTERFACE = {}
 function TELEPORTATION_NODE_RECORD_LIST_SCRIPT_INTERFACE:num_items() end
 function TELEPORTATION_NODE_RECORD_LIST_SCRIPT_INTERFACE:item_at() end
 function TELEPORTATION_NODE_RECORD_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class UNIT_SCRIPT_INTERFACE Description: Unit script interface. Land units and Naval units are derived from Unit.
 local UNIT_SCRIPT_INTERFACE = {}
@@ -2934,19 +2540,16 @@ function UNIT_SCRIPT_INTERFACE:can_unpurchase_effect() end
 function UNIT_SCRIPT_INTERFACE:get_unit_purchasable_effects() end
 function UNIT_SCRIPT_INTERFACE:get_unit_purchased_effects() end
 
-
 ---@class UNIT_PURCHASABLE_EFFECT_SCRIPT_INTERFACE Description: Unit purchasable effect script interface.
 local UNIT_PURCHASABLE_EFFECT_SCRIPT_INTERFACE = {}
 function UNIT_PURCHASABLE_EFFECT_SCRIPT_INTERFACE:is_null_interface() end
 function UNIT_PURCHASABLE_EFFECT_SCRIPT_INTERFACE:record_key() end
-
 
 ---@class PROVINCE_LIST_SCRIPT_INTERFACE Description: A list of province interfaces
 local PROVINCE_LIST_SCRIPT_INTERFACE = {}
 function PROVINCE_LIST_SCRIPT_INTERFACE:num_items() end
 function PROVINCE_LIST_SCRIPT_INTERFACE:item_at() end
 function PROVINCE_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class SEA_REGION_MANAGER_SCRIPT_INTERFACE Description: Sea Region Manager script interface, world sea region list, faction sea regions and lookup by key
 local SEA_REGION_MANAGER_SCRIPT_INTERFACE = {}
@@ -2955,7 +2558,6 @@ function SEA_REGION_MANAGER_SCRIPT_INTERFACE:model() end
 function SEA_REGION_MANAGER_SCRIPT_INTERFACE:sea_region_list() end
 function SEA_REGION_MANAGER_SCRIPT_INTERFACE:faction_sea_region_list() end
 function SEA_REGION_MANAGER_SCRIPT_INTERFACE:sea_region_by_key() end
-
 
 ---@class CHARACTER_IMPRISONMENT_REJECTION_REASON_MASK_SCRIPTING_INTERFACE Description: Character Imprisonment Rejection Reason Mask Scripting Interface
 local CHARACTER_IMPRISONMENT_REJECTION_REASON_MASK_SCRIPTING_INTERFACE = {}
@@ -2967,7 +2569,6 @@ function CHARACTER_IMPRISONMENT_REJECTION_REASON_MASK_SCRIPTING_INTERFACE:is_fro
 function CHARACTER_IMPRISONMENT_REJECTION_REASON_MASK_SCRIPTING_INTERFACE:is_from_dead_faction() end
 function CHARACTER_IMPRISONMENT_REJECTION_REASON_MASK_SCRIPTING_INTERFACE:any() end
 
-
 ---@class UNIT_LIST_SCRIPT_INTERFACE Description: A list of units
 local UNIT_LIST_SCRIPT_INTERFACE = {}
 function UNIT_LIST_SCRIPT_INTERFACE:num_items() end
@@ -2975,13 +2576,11 @@ function UNIT_LIST_SCRIPT_INTERFACE:item_at() end
 function UNIT_LIST_SCRIPT_INTERFACE:is_empty() end
 function UNIT_LIST_SCRIPT_INTERFACE:has_unit() end
 
-
 ---@class MILITARY_FORCE_LIST_SCRIPT_INTERFACE Description: A list of military forces
 local MILITARY_FORCE_LIST_SCRIPT_INTERFACE = {}
 function MILITARY_FORCE_LIST_SCRIPT_INTERFACE:num_items() end
 function MILITARY_FORCE_LIST_SCRIPT_INTERFACE:item_at() end
 function MILITARY_FORCE_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class REGION_DATA_SCRIPT_INTERFACE Description: Region Data Script Interface, a region of the campaign map. May or may not be represented by a region or sea region
 local REGION_DATA_SCRIPT_INTERFACE = {}
@@ -2994,7 +2593,6 @@ function REGION_DATA_SCRIPT_INTERFACE:sea_region() end
 function REGION_DATA_SCRIPT_INTERFACE:winds_of_magic_strength() end
 function REGION_DATA_SCRIPT_INTERFACE:characters_of_faction_in_region() end
 
-
 ---@class CAMPAIGN_MISSION_SCRIPT_INTERFACE Description: Mission script interface.
 local CAMPAIGN_MISSION_SCRIPT_INTERFACE = {}
 function CAMPAIGN_MISSION_SCRIPT_INTERFACE:is_null_interface() end
@@ -3003,14 +2601,12 @@ function CAMPAIGN_MISSION_SCRIPT_INTERFACE:faction() end
 function CAMPAIGN_MISSION_SCRIPT_INTERFACE:mission_record_key() end
 function CAMPAIGN_MISSION_SCRIPT_INTERFACE:mission_issuer_record_key() end
 
-
 ---@class UNIQUE_AGENT_DETAILS_LIST_SCRIPT_INTERFACE Description: A list of unique agent details
 local UNIQUE_AGENT_DETAILS_LIST_SCRIPT_INTERFACE = {}
 function UNIQUE_AGENT_DETAILS_LIST_SCRIPT_INTERFACE:num_items() end
 function UNIQUE_AGENT_DETAILS_LIST_SCRIPT_INTERFACE:item_at() end
 function UNIQUE_AGENT_DETAILS_LIST_SCRIPT_INTERFACE:is_empty() end
 function UNIQUE_AGENT_DETAILS_LIST_SCRIPT_INTERFACE:has_unique_agent_details() end
-
 
 ---@class FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE Description: Faction Province manager script interface. Represents the segment of a province owned by a faction
 local FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE = {}
@@ -3022,7 +2618,6 @@ function FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE:pooled_resource_manager() end
 function FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE:bonus_values() end
 function FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE:gdp() end
 
-
 ---@class EFFECT_SCRIPT_INTERFACE Description: An effect that provides bonus values via a scope
 local EFFECT_SCRIPT_INTERFACE = {}
 function EFFECT_SCRIPT_INTERFACE:is_null_interface() end
@@ -3030,20 +2625,17 @@ function EFFECT_SCRIPT_INTERFACE:key() end
 function EFFECT_SCRIPT_INTERFACE:scope() end
 function EFFECT_SCRIPT_INTERFACE:value() end
 
-
 ---@class CARAVAN_LIST_SCRIPT_INTERFACE Description: A list of caravan script interfaces
 local CARAVAN_LIST_SCRIPT_INTERFACE = {}
 function CARAVAN_LIST_SCRIPT_INTERFACE:num_items() end
 function CARAVAN_LIST_SCRIPT_INTERFACE:item_at() end
 function CARAVAN_LIST_SCRIPT_INTERFACE:is_empty() end
 
-
 ---@class TELEPORTATION_NETWORK_SYSTEM_SCRIPT_INTERFACE Description: Teleportation Network Script Interface
 local TELEPORTATION_NETWORK_SYSTEM_SCRIPT_INTERFACE = {}
 function TELEPORTATION_NETWORK_SYSTEM_SCRIPT_INTERFACE:is_null_interface() end
 function TELEPORTATION_NETWORK_SYSTEM_SCRIPT_INTERFACE:lookup_network() end
 function TELEPORTATION_NETWORK_SYSTEM_SCRIPT_INTERFACE:lookup_open_node() end
-
 
 ---@class BUILDING_SCRIPT_INTERFACE Description: Building script interface
 local BUILDING_SCRIPT_INTERFACE = {}
@@ -3062,19 +2654,16 @@ function BUILDING_SCRIPT_INTERFACE:superchain() end
 function BUILDING_SCRIPT_INTERFACE:percent_health() end
 function BUILDING_SCRIPT_INTERFACE:building_level() end
 
-
 ---@class COOKING_SYSTEM_SCRIPT_INTERFACE Description: Cook System Script Interface
 local COOKING_SYSTEM_SCRIPT_INTERFACE = {}
 function COOKING_SYSTEM_SCRIPT_INTERFACE:is_null_interface() end
 function COOKING_SYSTEM_SCRIPT_INTERFACE:faction_cooking_info() end
-
 
 ---@class FACTION_PROVINCE_MANAGER_LIST_SCRIPT_INTERFACE Description: A list of faction province manager interfaces
 local FACTION_PROVINCE_MANAGER_LIST_SCRIPT_INTERFACE = {}
 function FACTION_PROVINCE_MANAGER_LIST_SCRIPT_INTERFACE:num_items() end
 function FACTION_PROVINCE_MANAGER_LIST_SCRIPT_INTERFACE:item_at() end
 function FACTION_PROVINCE_MANAGER_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE Description: Ritual Target Military Force Status Script Interface
 local RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE = {}
@@ -3088,7 +2677,6 @@ function RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE:invalid_subculture
 function RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE:invalid_for_any_ritual() end
 function RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE:not_on_sea() end
 function RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE:not_on_land() end
-
 
 ---@class SLOT_SCRIPT_INTERFACE Description: Slot script interface
 local SLOT_SCRIPT_INTERFACE = {}
@@ -3104,13 +2692,11 @@ function SLOT_SCRIPT_INTERFACE:template_key() end
 function SLOT_SCRIPT_INTERFACE:resource_key() end
 function SLOT_SCRIPT_INTERFACE:active() end
 
-
 ---@class UNIT_PURCHASABLE_EFFECT_LIST_SCRIPT_INTERFACE Description: A list of unit purchasable effects
 local UNIT_PURCHASABLE_EFFECT_LIST_SCRIPT_INTERFACE = {}
 function UNIT_PURCHASABLE_EFFECT_LIST_SCRIPT_INTERFACE:num_items() end
 function UNIT_PURCHASABLE_EFFECT_LIST_SCRIPT_INTERFACE:item_at() end
 function UNIT_PURCHASABLE_EFFECT_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class BONUS_VALUES_SCRIPT_INTERFACE Description: Bonus values for a campaign object
 local BONUS_VALUES_SCRIPT_INTERFACE = {}
@@ -3155,7 +2741,6 @@ function BONUS_VALUES_SCRIPT_INTERFACE:character_training_group_value() end
 function BONUS_VALUES_SCRIPT_INTERFACE:public_order_provider_value() end
 function BONUS_VALUES_SCRIPT_INTERFACE:scripted_value() end
 
-
 ---@class RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE Description: Ritual Target Faction Status Script Interface
 local RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE = {}
 function RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE:is_null_interface() end
@@ -3168,7 +2753,6 @@ function RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE:invalid_for_any_ritual() 
 function RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE:human() end
 function RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE:not_human() end
 function RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE:faction_not_permitted() end
-
 
 ---@class PENDING_BATTLE_SCRIPT_INTERFACE Description: Pending battle script interface.
 local PENDING_BATTLE_SCRIPT_INTERFACE = {}
@@ -3223,7 +2807,6 @@ function PENDING_BATTLE_SCRIPT_INTERFACE:display_position() end
 function PENDING_BATTLE_SCRIPT_INTERFACE:is_auto_resolved() end
 function PENDING_BATTLE_SCRIPT_INTERFACE:ended_with_withdraw() end
 
-
 ---@class RITUAL_SETUP_SCRIPT_INTERFACE Description: Ritual Setup Script Interface
 local RITUAL_SETUP_SCRIPT_INTERFACE = {}
 function RITUAL_SETUP_SCRIPT_INTERFACE:is_null_interface() end
@@ -3233,7 +2816,6 @@ function RITUAL_SETUP_SCRIPT_INTERFACE:performing_characters_valid() end
 function RITUAL_SETUP_SCRIPT_INTERFACE:performing_characters() end
 function RITUAL_SETUP_SCRIPT_INTERFACE:target() end
 function RITUAL_SETUP_SCRIPT_INTERFACE:clone_as_modify_interface() end
-
 
 ---@class POOLED_RESOURCE_SCRIPT_INTERFACE Description: Pooled Resource Script Interface
 local POOLED_RESOURCE_SCRIPT_INTERFACE = {}
@@ -3251,14 +2833,12 @@ function POOLED_RESOURCE_SCRIPT_INTERFACE:factor_by_key() end
 function POOLED_RESOURCE_SCRIPT_INTERFACE:scope() end
 function POOLED_RESOURCE_SCRIPT_INTERFACE:has_persistent_factors() end
 
-
 ---@class SHARED_STATES_MANAGER_SCRIPT_INTERFACE Description: Shared States Manager Script Interfaces
 local SHARED_STATES_MANAGER_SCRIPT_INTERFACE = {}
 function SHARED_STATES_MANAGER_SCRIPT_INTERFACE:is_null_interface() end
 function SHARED_STATES_MANAGER_SCRIPT_INTERFACE:get_state_as_bool_value() end
 function SHARED_STATES_MANAGER_SCRIPT_INTERFACE:get_state_as_float_value() end
 function SHARED_STATES_MANAGER_SCRIPT_INTERFACE:get_state_as_string_value() end
-
 
 ---@class SEA_REGION_SCRIPT_INTERFACE Description: Sea Region script interface, only basic information as sea regions do not contain settlements
 local SEA_REGION_SCRIPT_INTERFACE = {}
@@ -3267,13 +2847,11 @@ function SEA_REGION_SCRIPT_INTERFACE:model() end
 function SEA_REGION_SCRIPT_INTERFACE:name() end
 function SEA_REGION_SCRIPT_INTERFACE:region_data_interface() end
 
-
 ---@class FACTION_LIST_SCRIPT_INTERFACE Description: A list of faction interfaces
 local FACTION_LIST_SCRIPT_INTERFACE = {}
 function FACTION_LIST_SCRIPT_INTERFACE:num_items() end
 function FACTION_LIST_SCRIPT_INTERFACE:item_at() end
 function FACTION_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE Description: Provides an interface for building a campaign payload
 local CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE = {}
@@ -3365,13 +2943,11 @@ function CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE:remove_unit() end
 function CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE:valid() end
 function CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE:clear() end
 
-
 ---@class ROUTE_SEGMENT_SCRIPT_INTERFACE Description: Route Segment Script Interface
 local ROUTE_SEGMENT_SCRIPT_INTERFACE = {}
 function ROUTE_SEGMENT_SCRIPT_INTERFACE:is_null_interface() end
 function ROUTE_SEGMENT_SCRIPT_INTERFACE:to() end
 function ROUTE_SEGMENT_SCRIPT_INTERFACE:regions() end
-
 
 ---@class ROUTE_SEGMENT_LIST_SCRIPT_INTERFACE Description: A list of route segment script interfaces
 local ROUTE_SEGMENT_LIST_SCRIPT_INTERFACE = {}
@@ -3379,13 +2955,11 @@ function ROUTE_SEGMENT_LIST_SCRIPT_INTERFACE:num_items() end
 function ROUTE_SEGMENT_LIST_SCRIPT_INTERFACE:item_at() end
 function ROUTE_SEGMENT_LIST_SCRIPT_INTERFACE:is_empty() end
 
-
 ---@class CHARACTER_INITIATIVE_LIST_SCRIPT_INTERFACE Description: A list of character initiative interfaces
 local CHARACTER_INITIATIVE_LIST_SCRIPT_INTERFACE = {}
 function CHARACTER_INITIATIVE_LIST_SCRIPT_INTERFACE:num_items() end
 function CHARACTER_INITIATIVE_LIST_SCRIPT_INTERFACE:item_at() end
 function CHARACTER_INITIATIVE_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class REGION_SCRIPT_INTERFACE Description: Region script interface, includes region finance and slot/settlement info
 local REGION_SCRIPT_INTERFACE = {}
@@ -3432,12 +3006,10 @@ function REGION_SCRIPT_INTERFACE:faction_province() end
 function REGION_SCRIPT_INTERFACE:pooled_resource_manager() end
 function REGION_SCRIPT_INTERFACE:bonus_values() end
 
-
 ---@class PRISON_SYSTEM_SCRIPT_INTERFACE Description: Prison System Script Interface
 local PRISON_SYSTEM_SCRIPT_INTERFACE = {}
 function PRISON_SYSTEM_SCRIPT_INTERFACE:is_null_interface() end
 function PRISON_SYSTEM_SCRIPT_INTERFACE:get_faction_prisoners() end
-
 
 ---@class ROUTE_NODE_SCRIPT_INTERFACE Description: Route Node Script Interface
 local ROUTE_NODE_SCRIPT_INTERFACE = {}
@@ -3448,7 +3020,7 @@ function ROUTE_NODE_SCRIPT_INTERFACE:record_key() end
 ---@return number
 function ROUTE_NODE_SCRIPT_INTERFACE:logical_position() end
 ---@return number
----@return numbe
+---@return number
 function ROUTE_NODE_SCRIPT_INTERFACE:world_position() end
 function ROUTE_NODE_SCRIPT_INTERFACE:region_key() end
 function ROUTE_NODE_SCRIPT_INTERFACE:region_data() end
@@ -3457,7 +3029,6 @@ function ROUTE_NODE_SCRIPT_INTERFACE:link_to_node_id() end
 function ROUTE_NODE_SCRIPT_INTERFACE:link_to_node_record() end
 function ROUTE_NODE_SCRIPT_INTERFACE:is_entrance() end
 function ROUTE_NODE_SCRIPT_INTERFACE:is_exit() end
-
 
 ---@class ACTIVE_RITUAL_SCRIPT_INTERFACE Description: Active Ritual Script Interface
 local ACTIVE_RITUAL_SCRIPT_INTERFACE = {}
@@ -3475,20 +3046,17 @@ function ACTIVE_RITUAL_SCRIPT_INTERFACE:ritual_category() end
 function ACTIVE_RITUAL_SCRIPT_INTERFACE:ritual_target() end
 function ACTIVE_RITUAL_SCRIPT_INTERFACE:characters_who_performed() end
 
-
 ---@class FACTION_RITUALS_SCRIPT_INTERFACE Description: Faction Rituals Script Interface
 local FACTION_RITUALS_SCRIPT_INTERFACE = {}
 function FACTION_RITUALS_SCRIPT_INTERFACE:is_null_interface() end
 function FACTION_RITUALS_SCRIPT_INTERFACE:active_rituals() end
 function FACTION_RITUALS_SCRIPT_INTERFACE:ritual_status() end
 
-
 ---@class ROUTE_NODE_LIST_SCRIPT_INTERFACE Description: A list of route node script interfaces
 local ROUTE_NODE_LIST_SCRIPT_INTERFACE = {}
 function ROUTE_NODE_LIST_SCRIPT_INTERFACE:num_items() end
 function ROUTE_NODE_LIST_SCRIPT_INTERFACE:item_at() end
 function ROUTE_NODE_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE Description: Pooled Resource Factor Script Interface
 local POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE = {}
@@ -3498,7 +3066,6 @@ function POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE:value() end
 function POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE:percentage_of_capacity() end
 function POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE:minimum_value() end
 function POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE:maximum_value() end
-
 
 ---@class ROUTE_NETWORK_SCRIPT_INTERFACE Description: Route Network Script Interface
 local ROUTE_NETWORK_SCRIPT_INTERFACE = {}
@@ -3517,7 +3084,6 @@ function ROUTE_NETWORK_SCRIPT_INTERFACE:find_path_by_key() end
 function ROUTE_NETWORK_SCRIPT_INTERFACE:find_nearest_node() end
 function ROUTE_NETWORK_SCRIPT_INTERFACE:entry_nodes() end
 function ROUTE_NETWORK_SCRIPT_INTERFACE:exit_nodes() end
-
 
 ---@class MODEL_SCRIPT_INTERFACE Description: Model is the central access point of the campaign. Everything should be reachable from this interface
 local MODEL_SCRIPT_INTERFACE = {}
@@ -3569,13 +3135,11 @@ function MODEL_SCRIPT_INTERFACE:logical_position_for_display_position() end
 function MODEL_SCRIPT_INTERFACE:display_position_for_logical_position() end
 function MODEL_SCRIPT_INTERFACE:debug_drawing() end
 
-
 ---@class RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE Description: A list of ritual performing character script interfaces
 local RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE = {}
 function RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE:num_items() end
 function RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE:item_at() end
 function RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class WORLD_SCRIPT_INTERFACE Description: Contains entities that exist in the game world. Examples include the region manager and faction list
 local WORLD_SCRIPT_INTERFACE = {}
@@ -3611,7 +3175,6 @@ function WORLD_SCRIPT_INTERFACE:winds_of_magic_compass() end
 function WORLD_SCRIPT_INTERFACE:teleportation_network_system() end
 function WORLD_SCRIPT_INTERFACE:faction_strength_rank() end
 
-
 ---@class RITUAL_STATUS_SCRIPT_INTERFACE Description: Ritual Status Script Interface
 local RITUAL_STATUS_SCRIPT_INTERFACE = {}
 function RITUAL_STATUS_SCRIPT_INTERFACE:is_null_interface() end
@@ -3634,13 +3197,11 @@ function RITUAL_STATUS_SCRIPT_INTERFACE:invalid_target() end
 function RITUAL_STATUS_SCRIPT_INTERFACE:blocked_by_pending_battle() end
 function RITUAL_STATUS_SCRIPT_INTERFACE:blocked_by_pending_action() end
 
-
 ---@class REGION_LIST_SCRIPT_INTERFACE Description: A list of region interfaces
 local REGION_LIST_SCRIPT_INTERFACE = {}
 function REGION_LIST_SCRIPT_INTERFACE:num_items() end
 function REGION_LIST_SCRIPT_INTERFACE:item_at() end
 function REGION_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class FACTION_COOKING_INFO_SCRIPT_INTERFACE Description: Faction Cooking Info Script Interface
 local FACTION_COOKING_INFO_SCRIPT_INTERFACE = {}
@@ -3652,7 +3213,6 @@ function FACTION_COOKING_INFO_SCRIPT_INTERFACE:is_ingredient_unlocked() end
 function FACTION_COOKING_INFO_SCRIPT_INTERFACE:active_dish() end
 function FACTION_COOKING_INFO_SCRIPT_INTERFACE:max_primary_ingredients() end
 function FACTION_COOKING_INFO_SCRIPT_INTERFACE:max_secondary_ingredients() end
-
 
 ---@class RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE Description: Ritual Performing Character Script Interface
 local RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE = {}
@@ -3666,13 +3226,11 @@ function RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE:required_agent_subtype() e
 function RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE:required_level() end
 function RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE:recovery_time() end
 
-
 ---@class FACTION_CHARACTER_TAG_ENTRY_SCRIPT_INTERFACE Description: Faction Character Tag Entry Script Interface
 local FACTION_CHARACTER_TAG_ENTRY_SCRIPT_INTERFACE = {}
 function FACTION_CHARACTER_TAG_ENTRY_SCRIPT_INTERFACE:is_null_interface() end
 function FACTION_CHARACTER_TAG_ENTRY_SCRIPT_INTERFACE:character() end
 function FACTION_CHARACTER_TAG_ENTRY_SCRIPT_INTERFACE:tag_record_key() end
-
 
 ---@class MILITARY_FORCE_TYPE_SCRIPT_INTERFACE Description: A military force type record
 local MILITARY_FORCE_TYPE_SCRIPT_INTERFACE = {}
@@ -3682,13 +3240,11 @@ function MILITARY_FORCE_TYPE_SCRIPT_INTERFACE:has_feature() end
 function MILITARY_FORCE_TYPE_SCRIPT_INTERFACE:can_convert_to() end
 function MILITARY_FORCE_TYPE_SCRIPT_INTERFACE:can_automatically_convert_to() end
 
-
 ---@class EFFECT_BUNDLE_LIST_SCRIPT_INTERFACE Description: A list of effects
 local EFFECT_BUNDLE_LIST_SCRIPT_INTERFACE = {}
 function EFFECT_BUNDLE_LIST_SCRIPT_INTERFACE:num_items() end
 function EFFECT_BUNDLE_LIST_SCRIPT_INTERFACE:item_at() end
 function EFFECT_BUNDLE_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class CAMPAIGN_AI_SCRIPT_INTERFACE Description: Campaign AI script interface.
 local CAMPAIGN_AI_SCRIPT_INTERFACE = {}
@@ -3707,7 +3263,6 @@ function CAMPAIGN_AI_SCRIPT_INTERFACE:strategic_stance_between_factions_is_being
 function CAMPAIGN_AI_SCRIPT_INTERFACE:funds_available_for_immediate_payment_for_faction_by_area() end
 function CAMPAIGN_AI_SCRIPT_INTERFACE:funds_available_for_upkeep_for_faction_by_area() end
 
-
 ---@class OBSERVATION_OPTIONS_SCRIPT_INTERFACE Description: Observation Options Script Interface
 local OBSERVATION_OPTIONS_SCRIPT_INTERFACE = {}
 function OBSERVATION_OPTIONS_SCRIPT_INTERFACE:is_null_interface() end
@@ -3715,7 +3270,6 @@ function OBSERVATION_OPTIONS_SCRIPT_INTERFACE:locomotion_speed() end
 function OBSERVATION_OPTIONS_SCRIPT_INTERFACE:set_locomotion_speeds() end
 function OBSERVATION_OPTIONS_SCRIPT_INTERFACE:camera_follow_behaviour() end
 function OBSERVATION_OPTIONS_SCRIPT_INTERFACE:set_camera_follow_behaviour() end
-
 
 ---@class REGION_MANAGER_SCRIPT_INTERFACE Description: The interface that stores and manages all regions in the game. Useful for looking up region and slot//settlement keys.
 local REGION_MANAGER_SCRIPT_INTERFACE = {}
@@ -3727,7 +3281,6 @@ function REGION_MANAGER_SCRIPT_INTERFACE:region_by_key() end
 function REGION_MANAGER_SCRIPT_INTERFACE:settlement_by_key() end
 function REGION_MANAGER_SCRIPT_INTERFACE:slot_by_key() end
 function REGION_MANAGER_SCRIPT_INTERFACE:resource_exists_anywhere() end
-
 
 ---@class RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE Description: Ritual Performing Character Status Script Interface
 local RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE = {}
@@ -3741,13 +3294,11 @@ function RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE:wrong_agent_subtype
 function RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE:level_too_low() end
 function RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE:duplicate_performer() end
 
-
 ---@class MODIFY_RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE Description: A list of mutable ritual performing character script interfaces
 local MODIFY_RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE = {}
 function MODIFY_RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE:num_items() end
 function MODIFY_RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE:item_at() end
 function MODIFY_RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE Description: Foreign Slot Manager Script Interface
 local FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE = {}
@@ -3762,7 +3313,6 @@ function FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE:has_been_discovered() end
 function FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE:current_discoverability() end
 function FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE:discoverability_threshold() end
 
-
 ---@class CHARACTER_INITIATIVE_SCRIPT_INTERFACE Description: A character initiative. Provides effects over a duration, closer in behaviour to skills than effect bundles. Owned by a character
 local CHARACTER_INITIATIVE_SCRIPT_INTERFACE = {}
 function CHARACTER_INITIATIVE_SCRIPT_INTERFACE:is_null_interface() end
@@ -3771,20 +3321,17 @@ function CHARACTER_INITIATIVE_SCRIPT_INTERFACE:duration() end
 function CHARACTER_INITIATIVE_SCRIPT_INTERFACE:has_infinite_duration() end
 function CHARACTER_INITIATIVE_SCRIPT_INTERFACE:is_script_locked() end
 
-
 ---@class REGION_DATA_LIST_SCRIPT_INTERFACE Description: A list of region datas
 local REGION_DATA_LIST_SCRIPT_INTERFACE = {}
 function REGION_DATA_LIST_SCRIPT_INTERFACE:num_items() end
 function REGION_DATA_LIST_SCRIPT_INTERFACE:item_at() end
 function REGION_DATA_LIST_SCRIPT_INTERFACE:is_empty() end
 
-
 ---@class ACTIVE_RITUAL_LIST_SCRIPT_INTERFACE Description: A list of active ritual script interfaces
 local ACTIVE_RITUAL_LIST_SCRIPT_INTERFACE = {}
 function ACTIVE_RITUAL_LIST_SCRIPT_INTERFACE:num_items() end
 function ACTIVE_RITUAL_LIST_SCRIPT_INTERFACE:item_at() end
 function ACTIVE_RITUAL_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class SLOT_LIST_SCRIPT_INTERFACE Description: A list of slot interfaces
 local SLOT_LIST_SCRIPT_INTERFACE = {}
@@ -3794,20 +3341,17 @@ function SLOT_LIST_SCRIPT_INTERFACE:is_empty() end
 function SLOT_LIST_SCRIPT_INTERFACE:slot_type_exists() end
 function SLOT_LIST_SCRIPT_INTERFACE:buliding_type_exists() end
 
-
 ---@class FACTION_CHARACTER_TAG_ENTRY_LIST_SCRIPT_INTERFACE Description: A list of faction character tag entry interfaces
 local FACTION_CHARACTER_TAG_ENTRY_LIST_SCRIPT_INTERFACE = {}
 function FACTION_CHARACTER_TAG_ENTRY_LIST_SCRIPT_INTERFACE:num_items() end
 function FACTION_CHARACTER_TAG_ENTRY_LIST_SCRIPT_INTERFACE:item_at() end
 function FACTION_CHARACTER_TAG_ENTRY_LIST_SCRIPT_INTERFACE:is_empty() end
 
-
 ---@class CHARACTER_INITIATIVE_SET_LIST_SCRIPT_INTERFACE Description: A list of character initiative set interfaces
 local CHARACTER_INITIATIVE_SET_LIST_SCRIPT_INTERFACE = {}
 function CHARACTER_INITIATIVE_SET_LIST_SCRIPT_INTERFACE:num_items() end
 function CHARACTER_INITIATIVE_SET_LIST_SCRIPT_INTERFACE:item_at() end
 function CHARACTER_INITIATIVE_SET_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class ROUTE_PATH_SCRIPT_INTERFACE Description: Route Path Script Interface
 local ROUTE_PATH_SCRIPT_INTERFACE = {}
@@ -3824,13 +3368,11 @@ function ROUTE_PATH_SCRIPT_INTERFACE:as_node_id_table() end
 function ROUTE_PATH_SCRIPT_INTERFACE:as_node_list() end
 function ROUTE_PATH_SCRIPT_INTERFACE:valid() end
 
-
 ---@class BUILDING_LIST_SCRIPT_INTERFACE Description: A list of building interfaces
 local BUILDING_LIST_SCRIPT_INTERFACE = {}
 function BUILDING_LIST_SCRIPT_INTERFACE:num_items() end
 function BUILDING_LIST_SCRIPT_INTERFACE:item_at() end
 function BUILDING_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class RITUAL_TARGET_SCRIPT_INTERFACE Description: Ritual Target Script Interface
 local RITUAL_TARGET_SCRIPT_INTERFACE = {}
@@ -3855,13 +3397,11 @@ function RITUAL_TARGET_SCRIPT_INTERFACE:get_all_valid_target_forces_in_faction()
 function RITUAL_TARGET_SCRIPT_INTERFACE:get_all_valid_target_regions_in_faction() end
 function RITUAL_TARGET_SCRIPT_INTERFACE:get_all_valid_target_factions() end
 
-
 ---@class FOREIGN_SLOT_LIST_SCRIPT_INTERFACE Description: A list of foreign slot script interfaces
 local FOREIGN_SLOT_LIST_SCRIPT_INTERFACE = {}
 function FOREIGN_SLOT_LIST_SCRIPT_INTERFACE:num_items() end
 function FOREIGN_SLOT_LIST_SCRIPT_INTERFACE:item_at() end
 function FOREIGN_SLOT_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class FACTION_CARAVANS_SCRIPT_INTERFACE Description: Faction Caravans Script Interface
 local FACTION_CARAVANS_SCRIPT_INTERFACE = {}
@@ -3877,13 +3417,11 @@ function FACTION_CARAVANS_SCRIPT_INTERFACE:can_recruit_caravan() end
 function FACTION_CARAVANS_SCRIPT_INTERFACE:can_start_caravan() end
 function FACTION_CARAVANS_SCRIPT_INTERFACE:route_network() end
 
-
 ---@class POOLED_RESOURCE_FACTOR_LIST_SCRIPT_INTERFACE Description: A list of pooled resource factor script interfaces
 local POOLED_RESOURCE_FACTOR_LIST_SCRIPT_INTERFACE = {}
 function POOLED_RESOURCE_FACTOR_LIST_SCRIPT_INTERFACE:num_items() end
 function POOLED_RESOURCE_FACTOR_LIST_SCRIPT_INTERFACE:item_at() end
 function POOLED_RESOURCE_FACTOR_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class PLAGUE_SCRIPT_INTERFACE Description: Plague Script Interface
 local PLAGUE_SCRIPT_INTERFACE = {}
@@ -3891,13 +3429,11 @@ function PLAGUE_SCRIPT_INTERFACE:is_null_interface() end
 function PLAGUE_SCRIPT_INTERFACE:plague_record() end
 function PLAGUE_SCRIPT_INTERFACE:component_records() end
 
-
 ---@class TELEPORTATION_NETWORK_LIST_SCRIPT_INTERFACE Description: A list of teleportation network script interfaces
 local TELEPORTATION_NETWORK_LIST_SCRIPT_INTERFACE = {}
 function TELEPORTATION_NETWORK_LIST_SCRIPT_INTERFACE:num_items() end
 function TELEPORTATION_NETWORK_LIST_SCRIPT_INTERFACE:item_at() end
 function TELEPORTATION_NETWORK_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class GARRISON_RESIDENCE_SCRIPT_INTERFACE Description: Garrison residence interface, a residence that can act as a garrison for military forces. A Settlement is a garrison residence for example.
 local GARRISON_RESIDENCE_SCRIPT_INTERFACE = {}
@@ -3921,7 +3457,6 @@ function GARRISON_RESIDENCE_SCRIPT_INTERFACE:is_slot() end
 function GARRISON_RESIDENCE_SCRIPT_INTERFACE:settlement_interface() end
 function GARRISON_RESIDENCE_SCRIPT_INTERFACE:slot_interface() end
 
-
 ---@class CARAVAN_SCRIPT_INTERFACE Description: Caravan Script Interface
 local CARAVAN_SCRIPT_INTERFACE = {}
 function CARAVAN_SCRIPT_INTERFACE:is_null_interface() end
@@ -3932,7 +3467,6 @@ function CARAVAN_SCRIPT_INTERFACE:caravan_force() end
 function CARAVAN_SCRIPT_INTERFACE:cargo() end
 function CARAVAN_SCRIPT_INTERFACE:is_returning() end
 function CARAVAN_SCRIPT_INTERFACE:rounds_until_return() end
-
 
 ---@class MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE Description: Modify Ritual Setup Script Interface
 local MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE = {}
@@ -3945,7 +3479,6 @@ function MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE:target() end
 function MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE:change_ritual() end
 function MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE:change_performing_faction() end
 
-
 ---@class CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE Description: A collection of related character initiatives. Owned by a character
 local CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE = {}
 function CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE:is_null_interface() end
@@ -3955,7 +3488,6 @@ function CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE:lookup_initiative_by_key() en
 function CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE:initiative_status_by_key() end
 function CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE:initiative_status() end
 function CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE:cooldown_remaining() end
-
 
 ---@class FACTION_CHARACTER_TAGGING_SYSTEM_SCRIPT_INTERFACE Description: Faction Character Tagging System Script Interface
 local FACTION_CHARACTER_TAGGING_SYSTEM_SCRIPT_INTERFACE = {}
@@ -3967,11 +3499,9 @@ function FACTION_CHARACTER_TAGGING_SYSTEM_SCRIPT_INTERFACE:is_character_tagged()
 function FACTION_CHARACTER_TAGGING_SYSTEM_SCRIPT_INTERFACE:is_character_tagged_by_faction() end
 function FACTION_CHARACTER_TAGGING_SYSTEM_SCRIPT_INTERFACE:is_character_tagged_by_one_of_factions() end
 
-
 ---@class NULL_SCRIPT_INTERFACE Description: An empty interface, returned if a requested interface doesn't exist. If function calls are made with this interface, the LUA script will fail
 local NULL_SCRIPT_INTERFACE = {}
 function NULL_SCRIPT_INTERFACE:is_null_interface() end
-
 
 ---@class MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE Description: Modify Ritual Target Script Interface
 local MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE = {}
@@ -4000,7 +3530,6 @@ function MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE:set_target_faction() end
 function MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE:set_target_region() end
 function MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE:set_target_force() end
 
-
 ---@class CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE Description: A customisable effect bundle, based off of an existing effect bundle defined in the database
 local CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE = {}
 function CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE:is_null_interface() end
@@ -4013,7 +3542,6 @@ function CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE:set_effect_value() end
 function CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE:set_effect_value_by_key() end
 function CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE:remove_effect() end
 function CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE:remove_effect_by_key() end
-
 
 ---@class CHARACTER_DETAILS_SCRIPT_INTERFACE Description: Character details interface
 local CHARACTER_DETAILS_SCRIPT_INTERFACE = {}
@@ -4050,7 +3578,6 @@ function CHARACTER_DETAILS_SCRIPT_INTERFACE:lookup_character_initiative_set_by_k
 function CHARACTER_DETAILS_SCRIPT_INTERFACE:pooled_resource_manager() end
 function CHARACTER_DETAILS_SCRIPT_INTERFACE:primary_character() end
 
-
 ---@class MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE Description: Modify Ritual Performing Character Script Interface
 local MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE = {}
 function MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE:is_null_interface() end
@@ -4065,7 +3592,6 @@ function MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE:recovery_time() end
 function MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE:set_performer() end
 function MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE:clear() end
 
-
 ---@class CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE Description: Status of a character initiative. Status is from the time this interface is returned
 local CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE = {}
 function CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE:is_null_interface() end
@@ -4075,7 +3601,6 @@ function CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE:is_set_capacity_reached() 
 function CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE:is_unavailable() end
 function CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE:is_set_on_cooldown() end
 
-
 ---@class RESOURCE_TRANSACTION_SCRIPT_INTERFACE Description: Resource Transaction Script Interface
 local RESOURCE_TRANSACTION_SCRIPT_INTERFACE = {}
 function RESOURCE_TRANSACTION_SCRIPT_INTERFACE:is_null_interface() end
@@ -4083,13 +3608,11 @@ function RESOURCE_TRANSACTION_SCRIPT_INTERFACE:total_treasury_change() end
 function RESOURCE_TRANSACTION_SCRIPT_INTERFACE:absolute_resource_change() end
 function RESOURCE_TRANSACTION_SCRIPT_INTERFACE:precentage_resource_change() end
 
-
 ---@class CHARACTER_DETAILS_LIST_SCRIPT_INTERFACE Description: A list of character details interfaces
 local CHARACTER_DETAILS_LIST_SCRIPT_INTERFACE = {}
 function CHARACTER_DETAILS_LIST_SCRIPT_INTERFACE:num_items() end
 function CHARACTER_DETAILS_LIST_SCRIPT_INTERFACE:item_at() end
 function CHARACTER_DETAILS_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class MILITARY_FORCE_SLOT_SCRIPT_INTERFACE Description: Military Force Slot Script Interface
 local MILITARY_FORCE_SLOT_SCRIPT_INTERFACE = {}
@@ -4103,7 +3626,6 @@ function MILITARY_FORCE_SLOT_SCRIPT_INTERFACE:template_key() end
 function MILITARY_FORCE_SLOT_SCRIPT_INTERFACE:active() end
 function MILITARY_FORCE_SLOT_SCRIPT_INTERFACE:faction() end
 
-
 ---@class PROVINCE_SCRIPT_INTERFACE Description: Province script interface. Represents a geographic province
 local PROVINCE_SCRIPT_INTERFACE = {}
 function PROVINCE_SCRIPT_INTERFACE:is_null_interface() end
@@ -4115,7 +3637,6 @@ function PROVINCE_SCRIPT_INTERFACE:regions() end
 function PROVINCE_SCRIPT_INTERFACE:adjacent_provinces() end
 function PROVINCE_SCRIPT_INTERFACE:pooled_resource_manager() end
 
-
 ---@class CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE Description: Provides an interface for building a campaign dilemma
 local CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE = {}
 function CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE:is_null_interface() end
@@ -4123,7 +3644,6 @@ function CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE:possible_choices() end
 function CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE:add_choice_payload() end
 function CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE:remove_choice_payload() end
 function CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE:add_target() end
-
 
 ---@class UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE Description: Unique Agent Details Script Interface.
 local UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE = {}
@@ -4134,7 +3654,6 @@ function UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE:agent_key() end
 function UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE:charges() end
 function UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE:charges_expended() end
 function UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE:valid() end
-
 
 ---@class FOREIGN_SLOT_SCRIPT_INTERFACE Description: Foreign Slot Script Interface
 local FOREIGN_SLOT_SCRIPT_INTERFACE = {}
@@ -4147,7 +3666,6 @@ function FOREIGN_SLOT_SCRIPT_INTERFACE:type_key() end
 function FOREIGN_SLOT_SCRIPT_INTERFACE:template_key() end
 function FOREIGN_SLOT_SCRIPT_INTERFACE:active() end
 
-
 ---@class ARMORY_SCRIPT_INTERFACE Description: A way to get armory information for a family member. Owned by a family member
 local ARMORY_SCRIPT_INTERFACE = {}
 function ARMORY_SCRIPT_INTERFACE:is_null_interface() end
@@ -4156,13 +3674,11 @@ function ARMORY_SCRIPT_INTERFACE:get_currently_registered_armory_items() end
 function ARMORY_SCRIPT_INTERFACE:number_of_equipped_items_of_category() end
 function ARMORY_SCRIPT_INTERFACE:number_of_equipped_items_of_ui_type() end
 
-
 ---@class CARAVAN_RECRUITMENT_ITEM_LIST_SCRIPT_INTERFACE Description: A list of caravan recruitment item script interfaces
 local CARAVAN_RECRUITMENT_ITEM_LIST_SCRIPT_INTERFACE = {}
 function CARAVAN_RECRUITMENT_ITEM_LIST_SCRIPT_INTERFACE:num_items() end
 function CARAVAN_RECRUITMENT_ITEM_LIST_SCRIPT_INTERFACE:item_at() end
 function CARAVAN_RECRUITMENT_ITEM_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE Description: Teleportation Node Record Script Interface
 local TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE = {}
@@ -4174,20 +3690,17 @@ function TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE:network_key() end
 ---@return number
 function TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE:position() end
 
-
 ---@class TELEPORTATION_NODE_LIST_SCRIPT_INTERFACE Description: A list of teleportation network node script interfaces
 local TELEPORTATION_NODE_LIST_SCRIPT_INTERFACE = {}
 function TELEPORTATION_NODE_LIST_SCRIPT_INTERFACE:num_items() end
 function TELEPORTATION_NODE_LIST_SCRIPT_INTERFACE:item_at() end
 function TELEPORTATION_NODE_LIST_SCRIPT_INTERFACE:is_empty() end
 
-
 ---@class FOREIGN_SLOT_MANAGER_LIST_SCRIPT_INTERFACE Description: A list of foreign slot manager script interfaces
 local FOREIGN_SLOT_MANAGER_LIST_SCRIPT_INTERFACE = {}
 function FOREIGN_SLOT_MANAGER_LIST_SCRIPT_INTERFACE:num_items() end
 function FOREIGN_SLOT_MANAGER_LIST_SCRIPT_INTERFACE:item_at() end
 function FOREIGN_SLOT_MANAGER_LIST_SCRIPT_INTERFACE:is_empty() end
-
 
 ---@class FAMILY_MEMBER_SCRIPT_INTERFACE Description: Family interface
 local FAMILY_MEMBER_SCRIPT_INTERFACE = {}
@@ -4203,7 +3716,6 @@ function FAMILY_MEMBER_SCRIPT_INTERFACE:character_details() end
 function FAMILY_MEMBER_SCRIPT_INTERFACE:armory() end
 function FAMILY_MEMBER_SCRIPT_INTERFACE:character() end
 
-
 ---@class COOKING_DISH_SCRIPT_INTERFACE Description: Cook Dish Script Interface
 local COOKING_DISH_SCRIPT_INTERFACE = {}
 function COOKING_DISH_SCRIPT_INTERFACE:is_null_interface() end
@@ -4212,247 +3724,3 @@ function COOKING_DISH_SCRIPT_INTERFACE:ingredients() end
 function COOKING_DISH_SCRIPT_INTERFACE:faction_effects() end
 function COOKING_DISH_SCRIPT_INTERFACE:faction_leader_effects() end
 function COOKING_DISH_SCRIPT_INTERFACE:remaining_duration() end
-
----============================---
-	--- [[ Listeners ]] ---
----============================---
-
----@class Core
----@field add_listener fun(self:Core, key:string, event: "'CampaignCoastalAssaultOnGarrison'", conditional: fun(context:CampaignCoastalAssaultOnGarrison), callback:fun(context:CampaignCoastalAssaultOnGarrison), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'UnitTrained'", conditional: fun(context:UnitTrained), callback:fun(context:UnitTrained), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterRankUpNeedsAncillary'", conditional: fun(context:CharacterRankUpNeedsAncillary), callback:fun(context:CharacterRankUpNeedsAncillary), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterPerformsSettlementOccupationDecision'", conditional: fun(context:CharacterPerformsSettlementOccupationDecision), callback:fun(context:CharacterPerformsSettlementOccupationDecision), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'UnitCreated'", conditional: fun(context:UnitCreated), callback:fun(context:UnitCreated), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterCharacterTargetAction'", conditional: fun(context:CharacterCharacterTargetAction), callback:fun(context:CharacterCharacterTargetAction), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterSelected'", conditional: fun(context:CharacterSelected), callback:fun(context:CharacterSelected), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RitualCompletedEvent'", conditional: fun(context:RitualCompletedEvent), callback:fun(context:RitualCompletedEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'BattleCompleted'", conditional: fun(context:BattleCompleted), callback:fun(context:BattleCompleted), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'ScriptedCharacterUnhiddenFailed'", conditional: fun(context:ScriptedCharacterUnhiddenFailed), callback:fun(context:ScriptedCharacterUnhiddenFailed), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionBecomesIdleHuman'", conditional: fun(context:FactionBecomesIdleHuman), callback:fun(context:FactionBecomesIdleHuman), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'AreaExited'", conditional: fun(context:AreaExited), callback:fun(context:AreaExited), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionLeaderDeclaresWar'", conditional: fun(context:FactionLeaderDeclaresWar), callback:fun(context:FactionLeaderDeclaresWar), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'ForceAdoptsStance'", conditional: fun(context:ForceAdoptsStance), callback:fun(context:ForceAdoptsStance), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterInitiativeEvent'", conditional: fun(context:CharacterInitiativeEvent), callback:fun(context:CharacterInitiativeEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterInitiativeActivationChangedEvent'", conditional: fun(context:CharacterInitiativeActivationChangedEvent), callback:fun(context:CharacterInitiativeActivationChangedEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RegionFactionChangeEvent'", conditional: fun(context:RegionFactionChangeEvent), callback:fun(context:RegionFactionChangeEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterArmoryItemEvent'", conditional: fun(context:CharacterArmoryItemEvent), callback:fun(context:CharacterArmoryItemEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RegionAbandonedWithBuildingEvent'", conditional: fun(context:RegionAbandonedWithBuildingEvent), callback:fun(context:RegionAbandonedWithBuildingEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionAboutToEndTurn'", conditional: fun(context:FactionAboutToEndTurn), callback:fun(context:FactionAboutToEndTurn), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CaravanEvent'", conditional: fun(context:CaravanEvent), callback:fun(context:CaravanEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterPostBattleRelease'", conditional: fun(context:CharacterPostBattleRelease), callback:fun(context:CharacterPostBattleRelease), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterFamilyRelationDied'", conditional: fun(context:CharacterFamilyRelationDied), callback:fun(context:CharacterFamilyRelationDied), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'StreakEffectLevelsEntered'", conditional: fun(context:StreakEffectLevelsEntered), callback:fun(context:StreakEffectLevelsEntered), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterRecruited'", conditional: fun(context:CharacterRecruited), callback:fun(context:CharacterRecruited), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'ClimatePhaseChange'", conditional: fun(context:ClimatePhaseChange), callback:fun(context:ClimatePhaseChange), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionCivilWarOccured'", conditional: fun(context:FactionCivilWarOccured), callback:fun(context:FactionCivilWarOccured), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CampaignEffectsBundleAwarded'", conditional: fun(context:CampaignEffectsBundleAwarded), callback:fun(context:CampaignEffectsBundleAwarded), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FirstTickAfterWorldCreated'", conditional: fun(context:FirstTickAfterWorldCreated), callback:fun(context:FirstTickAfterWorldCreated), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterFactionCompletesResearch'", conditional: fun(context:CharacterFactionCompletesResearch), callback:fun(context:CharacterFactionCompletesResearch), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterDisembarksNavy'", conditional: fun(context:CharacterDisembarksNavy), callback:fun(context:CharacterDisembarksNavy), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterParticipatedAsSecondaryGeneralInBattle'", conditional: fun(context:CharacterParticipatedAsSecondaryGeneralInBattle), callback:fun(context:CharacterParticipatedAsSecondaryGeneralInBattle), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'SlotOpens'", conditional: fun(context:SlotOpens), callback:fun(context:SlotOpens), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RegionRebels'", conditional: fun(context:RegionRebels), callback:fun(context:RegionRebels), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionCharacterTagRemovedEvent'", conditional: fun(context:FactionCharacterTagRemovedEvent), callback:fun(context:FactionCharacterTagRemovedEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'DiplomacyManipulationExecutedEvent'", conditional: fun(context:DiplomacyManipulationExecutedEvent), callback:fun(context:DiplomacyManipulationExecutedEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterDestroyed'", conditional: fun(context:CharacterDestroyed), callback:fun(context:CharacterDestroyed), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'WorldStartRound'", conditional: fun(context:WorldStartRound), callback:fun(context:WorldStartRound), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionTurnEnd'", conditional: fun(context:FactionTurnEnd), callback:fun(context:FactionTurnEnd), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterBrokePortBlockade'", conditional: fun(context:CharacterBrokePortBlockade), callback:fun(context:CharacterBrokePortBlockade), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterFinishedMovingEvent'", conditional: fun(context:CharacterFinishedMovingEvent), callback:fun(context:CharacterFinishedMovingEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'WorldCreated'", conditional: fun(context:WorldCreated), callback:fun(context:WorldCreated), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'ForeignSlotManagerDiscoveredEvent'", conditional: fun(context:ForeignSlotManagerDiscoveredEvent), callback:fun(context:ForeignSlotManagerDiscoveredEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterSkillPointAllocated'", conditional: fun(context:CharacterSkillPointAllocated), callback:fun(context:CharacterSkillPointAllocated), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'WoMCompassUserDirectionSelectedEvent'", conditional: fun(context:WoMCompassUserDirectionSelectedEvent), callback:fun(context:WoMCompassUserDirectionSelectedEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterPerformsActionAgainstFriendlyTarget'", conditional: fun(context:CharacterPerformsActionAgainstFriendlyTarget), callback:fun(context:CharacterPerformsActionAgainstFriendlyTarget), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'WoMCompassUserActionTriggeredEvent'", conditional: fun(context:WoMCompassUserActionTriggeredEvent), callback:fun(context:WoMCompassUserActionTriggeredEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'WarCoordinationRequestIssued'", conditional: fun(context:WarCoordinationRequestIssued), callback:fun(context:WarCoordinationRequestIssued), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterBlockadedPort'", conditional: fun(context:CharacterBlockadedPort), callback:fun(context:CharacterBlockadedPort), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'UnitTurnEnd'", conditional: fun(context:UnitTurnEnd), callback:fun(context:UnitTurnEnd), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'GarrisonAttackedEvent'", conditional: fun(context:GarrisonAttackedEvent), callback:fun(context:GarrisonAttackedEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'UnitSelectedCampaign'", conditional: fun(context:UnitSelectedCampaign), callback:fun(context:UnitSelectedCampaign), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionGainedAncillary'", conditional: fun(context:FactionGainedAncillary), callback:fun(context:FactionGainedAncillary), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'UnitEvent'", conditional: fun(context:UnitEvent), callback:fun(context:UnitEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'UnitEffectUnpurchased'", conditional: fun(context:UnitEffectUnpurchased), callback:fun(context:UnitEffectUnpurchased), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'BattleCompletedCameraMove'", conditional: fun(context:BattleCompletedCameraMove), callback:fun(context:BattleCompletedCameraMove), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterSkillPointAvailable'", conditional: fun(context:CharacterSkillPointAvailable), callback:fun(context:CharacterSkillPointAvailable), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'UnitEffectPurchased'", conditional: fun(context:UnitEffectPurchased), callback:fun(context:UnitEffectPurchased), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterCapturedSettlementUnopposed'", conditional: fun(context:CharacterCapturedSettlementUnopposed), callback:fun(context:CharacterCapturedSettlementUnopposed), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'UnitDisbanded'", conditional: fun(context:UnitDisbanded), callback:fun(context:UnitDisbanded), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterSackedSettlement'", conditional: fun(context:CharacterSackedSettlement), callback:fun(context:CharacterSackedSettlement), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'UnitConverted'", conditional: fun(context:UnitConverted), callback:fun(context:UnitConverted), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'PooledResourceChanged'", conditional: fun(context:PooledResourceChanged), callback:fun(context:PooledResourceChanged), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterLoanedEvent'", conditional: fun(context:CharacterLoanedEvent), callback:fun(context:CharacterLoanedEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CorruptionCounterIntervalEvent'", conditional: fun(context:CorruptionCounterIntervalEvent), callback:fun(context:CorruptionCounterIntervalEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'UnitCompletedBattle'", conditional: fun(context:UnitCompletedBattle), callback:fun(context:UnitCompletedBattle), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RegionIssuesDemands'", conditional: fun(context:RegionIssuesDemands), callback:fun(context:RegionIssuesDemands), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterMilitaryForceTraditionPointAvailable'", conditional: fun(context:CharacterMilitaryForceTraditionPointAvailable), callback:fun(context:CharacterMilitaryForceTraditionPointAvailable), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'ProvinceGovernorMoved'", conditional: fun(context:ProvinceGovernorMoved), callback:fun(context:ProvinceGovernorMoved), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'UniqueAgentSpawned'", conditional: fun(context:UniqueAgentSpawned), callback:fun(context:UniqueAgentSpawned), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'UniqueAgentEvent'", conditional: fun(context:UniqueAgentEvent), callback:fun(context:UniqueAgentEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'UniqueAgentDespawned'", conditional: fun(context:UniqueAgentDespawned), callback:fun(context:UniqueAgentDespawned), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'UITrigger'", conditional: fun(context:UITrigger), callback:fun(context:UITrigger), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'TriggerPostBattleAncillaries'", conditional: fun(context:TriggerPostBattleAncillaries), callback:fun(context:TriggerPostBattleAncillaries), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionJoinsConfederation'", conditional: fun(context:FactionJoinsConfederation), callback:fun(context:FactionJoinsConfederation), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CampaignCoastalAssaultOnCharacter'", conditional: fun(context:CampaignCoastalAssaultOnCharacter), callback:fun(context:CampaignCoastalAssaultOnCharacter), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'TradeNodeConnected'", conditional: fun(context:TradeNodeConnected), callback:fun(context:TradeNodeConnected), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'TeleportationNetworkNodeOpened'", conditional: fun(context:TeleportationNetworkNodeOpened), callback:fun(context:TeleportationNetworkNodeOpened), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CaravanMoved'", conditional: fun(context:CaravanMoved), callback:fun(context:CaravanMoved), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'TeleportationNetworkNodeEvent'", conditional: fun(context:TeleportationNetworkNodeEvent), callback:fun(context:TeleportationNetworkNodeEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CaravanSpawned'", conditional: fun(context:CaravanSpawned), callback:fun(context:CaravanSpawned), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'TeleportationNetworkNodeClosed'", conditional: fun(context:TeleportationNetworkNodeClosed), callback:fun(context:TeleportationNetworkNodeClosed), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'TeleportationNetworkMoveStart'", conditional: fun(context:TeleportationNetworkMoveStart), callback:fun(context:TeleportationNetworkMoveStart), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'TeleportationNetworkMoveCompleted'", conditional: fun(context:TeleportationNetworkMoveCompleted), callback:fun(context:TeleportationNetworkMoveCompleted), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'PrisonActionTakenEvent'", conditional: fun(context:PrisonActionTakenEvent), callback:fun(context:PrisonActionTakenEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RitualsCompletedAndDelayedEvent'", conditional: fun(context:RitualsCompletedAndDelayedEvent), callback:fun(context:RitualsCompletedAndDelayedEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'TeleportationNetworkCharacterInteractionStarted'", conditional: fun(context:TeleportationNetworkCharacterInteractionStarted), callback:fun(context:TeleportationNetworkCharacterInteractionStarted), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterDiscovered'", conditional: fun(context:CharacterDiscovered), callback:fun(context:CharacterDiscovered), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RegionTurnStart'", conditional: fun(context:RegionTurnStart), callback:fun(context:RegionTurnStart), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'SlotTurnStart'", conditional: fun(context:SlotTurnStart), callback:fun(context:SlotTurnStart), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RegionPlagueStateChanged'", conditional: fun(context:RegionPlagueStateChanged), callback:fun(context:RegionPlagueStateChanged), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'MultiTurnMove'", conditional: fun(context:MultiTurnMove), callback:fun(context:MultiTurnMove), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'ForeignBuildingCancelled'", conditional: fun(context:ForeignBuildingCancelled), callback:fun(context:ForeignBuildingCancelled), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'PooledResourceEffectChangedEvent'", conditional: fun(context:PooledResourceEffectChangedEvent), callback:fun(context:PooledResourceEffectChangedEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'SlotRoundStart'", conditional: fun(context:SlotRoundStart), callback:fun(context:SlotRoundStart), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'IncidentOccuredEvent'", conditional: fun(context:IncidentOccuredEvent), callback:fun(context:IncidentOccuredEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'SharedStateRemoved'", conditional: fun(context:SharedStateRemoved), callback:fun(context:SharedStateRemoved), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterEvent'", conditional: fun(context:CharacterEvent), callback:fun(context:CharacterEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'SharedStateChanged'", conditional: fun(context:SharedStateChanged), callback:fun(context:SharedStateChanged), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterArmoryItemUnlocked'", conditional: fun(context:CharacterArmoryItemUnlocked), callback:fun(context:CharacterArmoryItemUnlocked), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CaravanReturned'", conditional: fun(context:CaravanReturned), callback:fun(context:CaravanReturned), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'DebugCharacterEvent'", conditional: fun(context:DebugCharacterEvent), callback:fun(context:DebugCharacterEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'SettlementSelected'", conditional: fun(context:SettlementSelected), callback:fun(context:SettlementSelected), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'SeaTradeRouteRaided'", conditional: fun(context:SeaTradeRouteRaided), callback:fun(context:SeaTradeRouteRaided), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'PooledResourceEvent'", conditional: fun(context:PooledResourceEvent), callback:fun(context:PooledResourceEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'ScriptedCharacterUnhidden'", conditional: fun(context:ScriptedCharacterUnhidden), callback:fun(context:ScriptedCharacterUnhidden), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'TeleportationNetworkCharacterNodeClosureHandedOver'", conditional: fun(context:TeleportationNetworkCharacterNodeClosureHandedOver), callback:fun(context:TeleportationNetworkCharacterNodeClosureHandedOver), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RitualStartedEvent'", conditional: fun(context:RitualStartedEvent), callback:fun(context:RitualStartedEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterWithdrewFromBattle'", conditional: fun(context:CharacterWithdrewFromBattle), callback:fun(context:CharacterWithdrewFromBattle), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RitualEvent'", conditional: fun(context:RitualEvent), callback:fun(context:RitualEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'DebugFactionEvent'", conditional: fun(context:DebugFactionEvent), callback:fun(context:DebugFactionEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RitualCancelledEvent'", conditional: fun(context:RitualCancelledEvent), callback:fun(context:RitualCancelledEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'ResearchStarted'", conditional: fun(context:ResearchStarted), callback:fun(context:ResearchStarted), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'GarrisonResidenceEvent'", conditional: fun(context:GarrisonResidenceEvent), callback:fun(context:GarrisonResidenceEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionGovernmentTypeChanged'", conditional: fun(context:FactionGovernmentTypeChanged), callback:fun(context:FactionGovernmentTypeChanged), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterPostBattleEnslave'", conditional: fun(context:CharacterPostBattleEnslave), callback:fun(context:CharacterPostBattleEnslave), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'SpawnableForceCreatedEvent'", conditional: fun(context:SpawnableForceCreatedEvent), callback:fun(context:SpawnableForceCreatedEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterAttacksAlly'", conditional: fun(context:CharacterAttacksAlly), callback:fun(context:CharacterAttacksAlly), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RegionTurnEnd'", conditional: fun(context:RegionTurnEnd), callback:fun(context:RegionTurnEnd), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RegionStrikes'", conditional: fun(context:RegionStrikes), callback:fun(context:RegionStrikes), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RecruitmentItemIssuedByPlayer'", conditional: fun(context:RecruitmentItemIssuedByPlayer), callback:fun(context:RecruitmentItemIssuedByPlayer), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RegionSlotEvent'", conditional: fun(context:RegionSlotEvent), callback:fun(context:RegionSlotEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CaravanRecruited'", conditional: fun(context:CaravanRecruited), callback:fun(context:CaravanRecruited), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CaravanWaylaid'", conditional: fun(context:CaravanWaylaid), callback:fun(context:CaravanWaylaid), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterCompletedBattle'", conditional: fun(context:CharacterCompletedBattle), callback:fun(context:CharacterCompletedBattle), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RegionRiots'", conditional: fun(context:RegionRiots), callback:fun(context:RegionRiots), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'SlotSelected'", conditional: fun(context:SlotSelected), callback:fun(context:SlotSelected), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'EventFeedEventRecordedEvent'", conditional: fun(context:EventFeedEventRecordedEvent), callback:fun(context:EventFeedEventRecordedEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CampaignArmiesMerge'", conditional: fun(context:CampaignArmiesMerge), callback:fun(context:CampaignArmiesMerge), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RegionEvent'", conditional: fun(context:RegionEvent), callback:fun(context:RegionEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'DilemmaChoiceMadeEvent'", conditional: fun(context:DilemmaChoiceMadeEvent), callback:fun(context:DilemmaChoiceMadeEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'NominalDifficultyLevelChangedEvent'", conditional: fun(context:NominalDifficultyLevelChangedEvent), callback:fun(context:NominalDifficultyLevelChangedEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'QueryShouldWaylayCaravan'", conditional: fun(context:QueryShouldWaylayCaravan), callback:fun(context:QueryShouldWaylayCaravan), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RecruitmentItemCancelledByPlayer'", conditional: fun(context:RecruitmentItemCancelledByPlayer), callback:fun(context:RecruitmentItemCancelledByPlayer), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'QueryTeleportationNetworkShouldHandoverCharacterNodeClosure'", conditional: fun(context:QueryTeleportationNetworkShouldHandoverCharacterNodeClosure), callback:fun(context:QueryTeleportationNetworkShouldHandoverCharacterNodeClosure), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'QueryTeleportationNetworkHandoverNodeClosure'", conditional: fun(context:QueryTeleportationNetworkHandoverNodeClosure), callback:fun(context:QueryTeleportationNetworkHandoverNodeClosure), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionBeginTurnPhaseNormal'", conditional: fun(context:FactionBeginTurnPhaseNormal), callback:fun(context:FactionBeginTurnPhaseNormal), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterCreated'", conditional: fun(context:CharacterCreated), callback:fun(context:CharacterCreated), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterTargetEvent'", conditional: fun(context:CharacterTargetEvent), callback:fun(context:CharacterTargetEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'ProvinceGovernorAppointed'", conditional: fun(context:ProvinceGovernorAppointed), callback:fun(context:ProvinceGovernorAppointed), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'PositiveDiplomaticEvent'", conditional: fun(context:PositiveDiplomaticEvent), callback:fun(context:PositiveDiplomaticEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'PooledResourceThresholdOperationReached'", conditional: fun(context:PooledResourceThresholdOperationReached), callback:fun(context:PooledResourceThresholdOperationReached), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'PendingBattle'", conditional: fun(context:PendingBattle), callback:fun(context:PendingBattle), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'PendingBankruptcy'", conditional: fun(context:PendingBankruptcy), callback:fun(context:PendingBankruptcy), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RegionBuildingCancelled'", conditional: fun(context:RegionBuildingCancelled), callback:fun(context:RegionBuildingCancelled), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'NewCharacterEnteredRecruitmentPool'", conditional: fun(context:NewCharacterEnteredRecruitmentPool), callback:fun(context:NewCharacterEnteredRecruitmentPool), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterPostBattleSlaughter'", conditional: fun(context:CharacterPostBattleSlaughter), callback:fun(context:CharacterPostBattleSlaughter), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'NewCampaignStarted'", conditional: fun(context:NewCampaignStarted), callback:fun(context:NewCampaignStarted), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'MissionSucceeded'", conditional: fun(context:MissionSucceeded), callback:fun(context:MissionSucceeded), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'GovernorAssignedCharacterEvent'", conditional: fun(context:GovernorAssignedCharacterEvent), callback:fun(context:GovernorAssignedCharacterEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'MissionEvent'", conditional: fun(context:MissionEvent), callback:fun(context:MissionEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'MilitaryForceCreated'", conditional: fun(context:MilitaryForceCreated), callback:fun(context:MilitaryForceCreated), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'MovementPointsExhausted'", conditional: fun(context:MovementPointsExhausted), callback:fun(context:MovementPointsExhausted), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'MissionStatusEvent'", conditional: fun(context:MissionStatusEvent), callback:fun(context:MissionStatusEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'MissionNearingExpiry'", conditional: fun(context:MissionNearingExpiry), callback:fun(context:MissionNearingExpiry), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'MissionIssued'", conditional: fun(context:MissionIssued), callback:fun(context:MissionIssued), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'GarrisonOccupiedEvent'", conditional: fun(context:GarrisonOccupiedEvent), callback:fun(context:GarrisonOccupiedEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'MissionGenerationFailed'", conditional: fun(context:MissionGenerationFailed), callback:fun(context:MissionGenerationFailed), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterConvalescedOrKilled'", conditional: fun(context:CharacterConvalescedOrKilled), callback:fun(context:CharacterConvalescedOrKilled), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionEvent'", conditional: fun(context:FactionEvent), callback:fun(context:FactionEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'NegativeDiplomaticEvent'", conditional: fun(context:NegativeDiplomaticEvent), callback:fun(context:NegativeDiplomaticEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionCharacterTagAddedEvent'", conditional: fun(context:FactionCharacterTagAddedEvent), callback:fun(context:FactionCharacterTagAddedEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionBecomesActiveHuman'", conditional: fun(context:FactionBecomesActiveHuman), callback:fun(context:FactionBecomesActiveHuman), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'IncidentFailedEvent'", conditional: fun(context:IncidentFailedEvent), callback:fun(context:IncidentFailedEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'MilitaryForceInfectionEvent'", conditional: fun(context:MilitaryForceInfectionEvent), callback:fun(context:MilitaryForceInfectionEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'DilemmaEvent'", conditional: fun(context:DilemmaEvent), callback:fun(context:DilemmaEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'IncidentEvent'", conditional: fun(context:IncidentEvent), callback:fun(context:IncidentEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterMilitaryForceTraditionPointAllocated'", conditional: fun(context:CharacterMilitaryForceTraditionPointAllocated), callback:fun(context:CharacterMilitaryForceTraditionPointAllocated), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterLeavesGarrison'", conditional: fun(context:CharacterLeavesGarrison), callback:fun(context:CharacterLeavesGarrison), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'MilitaryForceDevelopmentPointChange'", conditional: fun(context:MilitaryForceDevelopmentPointChange), callback:fun(context:MilitaryForceDevelopmentPointChange), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'HaveCharacterWithinRangeOfPositionMissionEvaluationResultEvent'", conditional: fun(context:HaveCharacterWithinRangeOfPositionMissionEvaluationResultEvent), callback:fun(context:HaveCharacterWithinRangeOfPositionMissionEvaluationResultEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'MilitaryForceBuildingCancelled'", conditional: fun(context:MilitaryForceBuildingCancelled), callback:fun(context:MilitaryForceBuildingCancelled), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'BuildingCompleted'", conditional: fun(context:BuildingCompleted), callback:fun(context:BuildingCompleted), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterGarrisonTargetEvent'", conditional: fun(context:CharacterGarrisonTargetEvent), callback:fun(context:CharacterGarrisonTargetEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionRoundStart'", conditional: fun(context:FactionRoundStart), callback:fun(context:FactionRoundStart), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'MissionCancelled'", conditional: fun(context:MissionCancelled), callback:fun(context:MissionCancelled), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'ImprisonmentRejectionEvent'", conditional: fun(context:ImprisonmentRejectionEvent), callback:fun(context:ImprisonmentRejectionEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionLeaderIssuesEdict'", conditional: fun(context:FactionLeaderIssuesEdict), callback:fun(context:FactionLeaderIssuesEdict), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'ImprisonmentEvent'", conditional: fun(context:ImprisonmentEvent), callback:fun(context:ImprisonmentEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'MilitaryForceBuildingCompleteEvent'", conditional: fun(context:MilitaryForceBuildingCompleteEvent), callback:fun(context:MilitaryForceBuildingCompleteEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterPromoted'", conditional: fun(context:CharacterPromoted), callback:fun(context:CharacterPromoted), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'GarrisonResidenceExposedToFaction'", conditional: fun(context:GarrisonResidenceExposedToFaction), callback:fun(context:GarrisonResidenceExposedToFaction), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterEmbarksNavy'", conditional: fun(context:CharacterEmbarksNavy), callback:fun(context:CharacterEmbarksNavy), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'ResearchCompleted'", conditional: fun(context:ResearchCompleted), callback:fun(context:ResearchCompleted), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterArmoryItemEquipped'", conditional: fun(context:CharacterArmoryItemEquipped), callback:fun(context:CharacterArmoryItemEquipped), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'ProvinceGovernorshipNewDecisionAvailable'", conditional: fun(context:ProvinceGovernorshipNewDecisionAvailable), callback:fun(context:ProvinceGovernorshipNewDecisionAvailable), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'ForeignSlotManagerCreatedEvent'", conditional: fun(context:ForeignSlotManagerCreatedEvent), callback:fun(context:ForeignSlotManagerCreatedEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'BattleBeingFought'", conditional: fun(context:BattleBeingFought), callback:fun(context:BattleBeingFought), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'BuildingLifecycleDevelops'", conditional: fun(context:BuildingLifecycleDevelops), callback:fun(context:BuildingLifecycleDevelops), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterLootedSettlement'", conditional: fun(context:CharacterLootedSettlement), callback:fun(context:CharacterLootedSettlement), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'ForeignSlotBuildingDamagedEvent'", conditional: fun(context:ForeignSlotBuildingDamagedEvent), callback:fun(context:ForeignSlotBuildingDamagedEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionTurnStart'", conditional: fun(context:FactionTurnStart), callback:fun(context:FactionTurnStart), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionLeaderSignsPeaceTreaty'", conditional: fun(context:FactionLeaderSignsPeaceTreaty), callback:fun(context:FactionLeaderSignsPeaceTreaty), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FirstTickAfterNewCampaignStarted'", conditional: fun(context:FirstTickAfterNewCampaignStarted), callback:fun(context:FirstTickAfterNewCampaignStarted), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CampaignBuildingDamaged'", conditional: fun(context:CampaignBuildingDamaged), callback:fun(context:CampaignBuildingDamaged), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterEntersAttritionalArea'", conditional: fun(context:CharacterEntersAttritionalArea), callback:fun(context:CharacterEntersAttritionalArea), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionCharacterTagEntryEvent'", conditional: fun(context:FactionCharacterTagEntryEvent), callback:fun(context:FactionCharacterTagEntryEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterComesOfAge'", conditional: fun(context:CharacterComesOfAge), callback:fun(context:CharacterComesOfAge), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionSubjugatesOtherFaction'", conditional: fun(context:FactionSubjugatesOtherFaction), callback:fun(context:FactionSubjugatesOtherFaction), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterPostBattleCaptureOption'", conditional: fun(context:CharacterPostBattleCaptureOption), callback:fun(context:CharacterPostBattleCaptureOption), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'DebugRegionEvent'", conditional: fun(context:DebugRegionEvent), callback:fun(context:DebugRegionEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'ForeignSlotManagerRemovedEvent'", conditional: fun(context:ForeignSlotManagerRemovedEvent), callback:fun(context:ForeignSlotManagerRemovedEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'LandTradeRouteRaided'", conditional: fun(context:LandTradeRouteRaided), callback:fun(context:LandTradeRouteRaided), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterBecomesFactionLeader'", conditional: fun(context:CharacterBecomesFactionLeader), callback:fun(context:CharacterBecomesFactionLeader), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionLiberated'", conditional: fun(context:FactionLiberated), callback:fun(context:FactionLiberated), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterRelativeKilled'", conditional: fun(context:CharacterRelativeKilled), callback:fun(context:CharacterRelativeKilled), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RegionInfectionEvent'", conditional: fun(context:RegionInfectionEvent), callback:fun(context:RegionInfectionEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'DiplomaticOfferRejected'", conditional: fun(context:DiplomaticOfferRejected), callback:fun(context:DiplomaticOfferRejected), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterCandidateBecomesMinister'", conditional: fun(context:CharacterCandidateBecomesMinister), callback:fun(context:CharacterCandidateBecomesMinister), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterGarrisonTargetAction'", conditional: fun(context:CharacterGarrisonTargetAction), callback:fun(context:CharacterGarrisonTargetAction), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterRazedSettlement'", conditional: fun(context:CharacterRazedSettlement), callback:fun(context:CharacterRazedSettlement), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterMarriage'", conditional: fun(context:CharacterMarriage), callback:fun(context:CharacterMarriage), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'TradeRouteEstablished'", conditional: fun(context:TradeRouteEstablished), callback:fun(context:TradeRouteEstablished), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'UnitMergedAndDestroyed'", conditional: fun(context:UnitMergedAndDestroyed), callback:fun(context:UnitMergedAndDestroyed), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'DilemmaGenerationFailedEvent'", conditional: fun(context:DilemmaGenerationFailedEvent), callback:fun(context:DilemmaGenerationFailedEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterArmoryItemUnequipped'", conditional: fun(context:CharacterArmoryItemUnequipped), callback:fun(context:CharacterArmoryItemUnequipped), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionEncountersOtherFaction'", conditional: fun(context:FactionEncountersOtherFaction), callback:fun(context:FactionEncountersOtherFaction), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterBesiegesSettlement'", conditional: fun(context:CharacterBesiegesSettlement), callback:fun(context:CharacterBesiegesSettlement), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CaravanCompleted'", conditional: fun(context:CaravanCompleted), callback:fun(context:CaravanCompleted), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'AreaEntered'", conditional: fun(context:AreaEntered), callback:fun(context:AreaEntered), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionBribesUnit'", conditional: fun(context:FactionBribesUnit), callback:fun(context:FactionBribesUnit), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionCookedDish'", conditional: fun(context:FactionCookedDish), callback:fun(context:FactionCookedDish), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'FactionBecomesLiberationVassal'", conditional: fun(context:FactionBecomesLiberationVassal), callback:fun(context:FactionBecomesLiberationVassal), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'RegionSelected'", conditional: fun(context:RegionSelected), callback:fun(context:RegionSelected), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterTurnStart'", conditional: fun(context:CharacterTurnStart), callback:fun(context:CharacterTurnStart), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterAncillaryGained'", conditional: fun(context:CharacterAncillaryGained), callback:fun(context:CharacterAncillaryGained), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterCanLiberate'", conditional: fun(context:CharacterCanLiberate), callback:fun(context:CharacterCanLiberate), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterInfoPanelOpened'", conditional: fun(context:CharacterInfoPanelOpened), callback:fun(context:CharacterInfoPanelOpened), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'DilemmaIssued'", conditional: fun(context:DilemmaIssued), callback:fun(context:DilemmaIssued), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterRankUp'", conditional: fun(context:CharacterRankUp), callback:fun(context:CharacterRankUp), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'ForeignSlotBuildingCompleteEvent'", conditional: fun(context:ForeignSlotBuildingCompleteEvent), callback:fun(context:ForeignSlotBuildingCompleteEvent), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterWaaaghOccurred'", conditional: fun(context:CharacterWaaaghOccurred), callback:fun(context:CharacterWaaaghOccurred), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'BuildingConstructionIssuedByPlayer'", conditional: fun(context:BuildingConstructionIssuedByPlayer), callback:fun(context:BuildingConstructionIssuedByPlayer), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterTurnEnd'", conditional: fun(context:CharacterTurnEnd), callback:fun(context:CharacterTurnEnd), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'CharacterEntersGarrison'", conditional: fun(context:CharacterEntersGarrison), callback:fun(context:CharacterEntersGarrison), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'MissionFailed'", conditional: fun(context:MissionFailed), callback:fun(context:MissionFailed), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'BuildingCancelled'", conditional: fun(context:BuildingCancelled), callback:fun(context:BuildingCancelled), persistent:boolean)
----@field add_listener fun(self:Core, key:string, event: "'ClanBecomesVassal'", conditional: fun(context:ClanBecomesVassal), callback:fun(context:ClanBecomesVassal), persistent:boolean)

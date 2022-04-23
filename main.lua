@@ -1,18 +1,29 @@
 --- TODO if there's two params with the same name (because CA docs don't provide param names), name them _1 _2 etc.
 
---- TODO move globals.lua to the /game/ folder, instead of in each subfolder
-
 --- TODO change the overrides folder structure so it has /wh3/ etc. folders within
 --- TODO smartly create a single file called "all.lua" or "setup.lua" or something that basiucally defines all the relevant global variables and assigns them to the types
-
 
 --- TODO emmylua-ify LFS
 package.cpath = package.cpath .. ";includes/?.dll"
 require "lfs"
 
-override_path = "overrides"
+local override_method_path = "override_methods"
+local override_type_path = "override_types"
+
 in_path = "input"
 out_path = "output"
+
+local file = io.open("out.txt", "w+")
+
+local i = 0
+local old_print = print
+function print(t)
+    old_print(t)
+    file:write("\n" .. t)
+
+    i = i + 1
+    if i >= 10000 then file:flush() i = 0 end
+end
 
 function printf(t, ...)
     print(string.format(t, ...))
@@ -25,38 +36,11 @@ local DocObj = __[1]
 local MethodObj = __[2]
 local TypeObj = __[3]
 
-overrides = {}
+---@type table<string, MethodObj[]>
+override_methods = {}
 
-overwrite_types = {
-    ["address"] = "UIC_Address",
-    ["uicomponent"] = "UIC",
-    variable = "any",
-    value = "any",
-    object = "any",
-    card = "number",
-    float32 = "number",
-    data = "string|number|boolean",
-    
-    ["nil"] = "NONE",
-    void = "NONE",
-    
-    --- Interfaces
-    null_interface = "NULL_SCRIPT_INTERFACE",
-    character = "CHARACTER_SCRIPT_INTERFACE",
-    family_member = "FAMILY_MEMBER_SCRIPT_INTERFACE",
-    faction = "FACTION_SCRIPT_INTERFACE",
-    region = "REGION_SCRIPT_INTERFACE",
-    region_data = "REGION_DATA_SCRIPT_INTERFACE",
-    unit = "UNIT_SCRIPT_INTERFACE",
-    province = "PROVINCE_SCRIPT_INTERFACE",
-    garrison_residence = "GARRISON_RESIDENCE_SCRIPT_INTERFACE",
-    military_force = "MILITARY_FORCE_SCRIPT_INTERFACE",
-    military = "MILITARY_FORCE_SCRIPT_INTERFACE",
-    force = "MILITARY_FORCE_SCRIPT_INTERFACE",
-    military_force_list = "MILITARY_FORCE_LIST_SCRIPT_INTERFACE",
-    settlement = "SETTLEMENT_SCRIPT_INTERFACE",
-    ["[MODIFY]RITUAL_SETUP_SCRIPT_INTERFACE"] = "MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE|RITUAL_SETUP_SCRIPT_INTERFACE",
-}
+---@type table<string, string>
+overwrite_types = {}
 
 --- TODO print out scripting_doc info same as anything else (ie. local class = {} function class:method(args) end)
 --- scripting_doc.html
@@ -314,22 +298,23 @@ local function parse_events(game)
     local endl = "---============================---"
     local startl = "\t--- [[ %s ]] ---"
 
-    local s = string.format("%s\n", "---@diagnostic disable\n")
+    -- local s = string.format("%s\n", "---@diagnostic disable\n")
+    local s = ""
 
     local function ins(str)
-        s = s .. "\n" .. str
+        s = s .. str
     end
 
     local function insf(str, ...)
-        s = s .. "\n" .. string.format(str, ...)
+        s = s .. string.format(str, ...)
     end
 
     -- First, write out the events section
     insf("%s\n%s\n%s", endl, string.format(startl, "Events"), endl)
     for key,event in pairs(events) do
-        insf("do")
-        insf("\t---@class %s", key)
-        insf("\tlocal %s = {}", key)
+        insf("\ndo")
+        insf("\n\t---@class %s", key)
+        insf("\n\tlocal %s = {}", key)
         for i,fun in ipairs(event.functions) do
             --- TODO multi-returns?
             if fun.returns and fun.returns ~= "" then
@@ -338,18 +323,18 @@ local function parse_events(game)
                     insf("\n\t---@return %s", retval)
                 end
             end
-            insf("\tfunction %s:%s() end", key, fun.index)
+            insf("\n\tfunction %s:%s() end", key, fun.index)
             -- insf("\n---@field %s fun(self:%s)%s", fun.index, key, type(fun.returns) == "nil" and "" or ":"..fun.returns)
         end
 
-        insf("end\n%s", endl)
+        insf("\nend\n%s", endl)
     end
 
     -- write out the interfaces section!
     s = s .. "\n\n" ..  endl .. string.format("\n%s\n", string.format(startl, "Interfaces")) .. endl
     for key,interface in pairs(interfaces) do
         insf("\n\n---@class %s%s", key, (" " .. interface.description) or "")
-        ins("local " .. key .. " = {}")
+        ins("\nlocal " .. key .. " = {}")
         for i,fun in ipairs(interface.functions) do
 
             --- TODO params
@@ -358,23 +343,27 @@ local function parse_events(game)
                 for j,ret in ipairs(fun.returns) do
                     if ret == "" then ret = "UNKNOWN" end
                     ret = overwrite_types[ret] or ret
-                    insf("---@return %s", ret)
+                    insf("\n---@return %s", ret)
                 end
             end
 
-            insf("function %s:%s(%s) end", key, fun.index, "")
+            insf("\nfunction %s:%s(%s) end", key, fun.index, "")
             -- interface_string = interface_string .. string.format("\n---@field %s fun(self:%s)%s", fun.index, key, (fun.returns and fun.returns ~= "" and ":" .. fun.returns) or "")
         end
     end
 
-    -- add_listener variants!!
-    s = s .. "\n\n" .. endl .. string.format("\n%s\n", string.format(startl, "Listeners")) .. endl .. "\n\n---@class Core"
-    for key,_ in pairs(events) do 
-        s = s .. string.format("\n---@field add_listener fun(self:Core, key:string, event: \"'%s'\", conditional: fun(context:%s), callback:fun(context:%s), persistent:boolean)", key, key, key)
-    end
+    --- TODO temp removed, figure a better way to incorporate this when it's functional again (sumneko-side error)
+    -- -- add_listener variants!!
+    -- s = s .. "\n\n" .. endl .. string.format("\n%s\n", string.format(startl, "Listeners")) .. endl .. "\n\n---@class Core"
+    -- for key,_ in pairs(events) do 
+    --     s = s .. string.format("\n---@overload fun(key:string, event: \"'%s'\", conditional: fun(context:%s), callback:fun(context:%s), persistent:boolean)", key, key, key)
+    -- end
+
+    -- s = s .. string.format("\n---")
 
     new_file:write(s)
 end
+
 
 --- TODO prettify
 local headers = {
@@ -486,7 +475,11 @@ local function parse_override_file(file_path)
         return
     end
 
+    ---@type MethodObj A MethodObj to override on a class.
     local this = nil
+
+    ---@type string The string name of the class to be overriden upon
+    local this_class = ""
 
     for line in file:lines("*a") do
         --- only read lines that start with --- or have `function` to start.
@@ -495,8 +488,22 @@ local function parse_override_file(file_path)
 
             if line:find("^---@") then
                 -- check if it's a param or a return or a vararg
+                if line:find("^---@param") then
+                    local param_name = line:match("^---@param " .. wild_un):gsub("^---@param ", "")
+                    local param_type = line:match("^---@param " .. param_name .. " " .. wild_un):gsub("^---@param " .. param_name .." ", "")
+                    local param_desc = line:match("^---@param " .. param_name .. " " .. param_type .. " " .. wild_sp):gsub("^---@param " .. param_name .. " " .. param_type .. " ", "")
+
+                    local param = TypeObj:new(param_name)
+                    param.is_param = true
+                    param.type = param_type
+                    param.desc = param_desc
+
+                    this.params[#this.params+1] = param
+                end
             elseif line:find("^---") then
                 -- description
+                local desc = line:gsub("^--- ", "")
+                this.desc[#this.desc+1] = desc
             elseif line:find("^function") then
                 -- define the function name!
                 local method_name = line:gsub("^function ", "")
@@ -512,20 +519,53 @@ local function parse_override_file(file_path)
                 method = method:gsub(":", "")
                 printf("Method is %s", method)
 
-                this.parent_class = class
-                this.name = method_name
+                -- this.parent_class = class
+                this_class = class
+                this.name = method
             end
-        else
+        elseif line == "" then
+            --- save our existing stuff!
+            printf("Found an override for %s:%s()", this_class, this.name)
+            if not override_methods[this_class] then override_methods[this_class] = {} end
+
+            override_methods[this_class][#override_methods[this_class]+1] = this
+
+            --- start tracking the next one!
             this = nil
+            this_class = ""
         end
+    end
+
+    --- We need to do this at the end here when we're done looping in case there wasn't an empty line after the last section in the overrides file.
+    if this then
+        --- save our existing stuff!
+        printf("Found an override for %s:%s()", this_class, this.name)
+        if not override_methods[this_class] then override_methods[this_class] = {} end
+    
+        override_methods[this_class][#override_methods[this_class]+1] = this
     end
 end
 
 local function init()
-    for override_file in lfs.dir(override_path) do
+    for override_file in lfs.dir(override_method_path) do
         if override_file:find(".lua") then
             --- TODO read the override file, apply the override in the overrides table, and loop through it.
-            parse_override_file(override_path .. "/" .. override_file)
+            parse_override_file(override_method_path .. "/" .. override_file)
+        end
+    end
+
+    package.path = package.path .. ";override_types/?.lua"
+
+    printf("Checking override_types folder!")
+    for override_file in lfs.dir(override_type_path) do
+        printf("found a file in %s/%s", override_type_path, override_file)
+        if override_file:find(".lua") then
+            override_file = override_file:gsub(".lua", "")
+            local t = require(override_type_path .. "." .. override_file)
+            for k,v in pairs(t) do
+                printf("Setting %s = %s", k, v)
+                overwrite_types[k] = v
+            end
         end
     end
 

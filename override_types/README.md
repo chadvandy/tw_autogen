@@ -1,0 +1,1 @@
+Override individual types, so when the CA docs say one thing we actually read another - ie., "bool" needing to be "bool", "game_interface" needing to be "episodic_scripting"
