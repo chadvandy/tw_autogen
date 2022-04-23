@@ -47,6 +47,17 @@ If the file is already there, add in the lines between the {}'s but don't interr
 
 If you're only doing a battle mod, erase the /campaign/ and /frontend/ folders; if you're doing a campaign mod, erase the /battle/ and /frontend/ folders; and so on.
 
+## Extension Settings
+Finally, go to the Extensions tab, scroll down to "Lua by sumneko", press the cog icon and press "Extension settings". On the page that follows, make sure you have "User" selected instead of "Workspace" on the top bar. I recommend the following settings:
+- Disable "Auto Require".
+- Adding "lowercase-global" in "Lua > Diagnostics: Disable".
+- Setting "Lua > Diagnostics: Workspace Delay" to 500.
+- Settings "Lua > Diagnostics: Workspace Rate" between 20-40.
+- Set all "Lua.Intelli Sense" settings to true.
+- Set "Lua > Runtime: Version" to Lua 5.1
+- Set "Lua > Workspace: Ignore Submodules" to false
+- Set "Lua > Workspace: Preload File Size" to 1500
+
 ## All Set!
 With the output files on your computer, and the Visual Studio Code plugin aware of what folder those files are in, you will now get automatic warnings of various types, the plugin will autocomplete for you, and you can basically access the documentation from directly within VSCode.
 
