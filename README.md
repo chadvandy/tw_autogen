@@ -15,7 +15,6 @@ After opening Visual Studio Code, click the "Extensions" button on the left-hand
 I also recommend the following plugins, while you're at it:
 - [Bookmarks](https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks), so you can quickly return to important spots in your code.
 - [Code Runner](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner), which I use to test non-TW Lua code (for instance, this autogenerator).
-- [Duplicate selection or line](https://marketplace.visualstudio.com/items?itemName=geeebe.duplicate), because it's wild that you can't natively duplicate a line in VSCode.
 - [Lines of Code](https://marketplace.visualstudio.com/items?itemName=lyzerk.linecounter) so you can get some statistics about how much you've written.
 - [TODO Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree) so you can quickly find todo items you have left in your code.
 
@@ -50,7 +49,7 @@ If you're only doing a battle mod, erase the /campaign/ and /frontend/ folders; 
 ## Extension Settings
 Finally, go to the Extensions tab, scroll down to "Lua by sumneko", press the cog icon and press "Extension settings". On the page that follows, make sure you have "User" selected instead of "Workspace" on the top bar. I recommend the following settings:
 - Disable "Auto Require".
-- Adding "lowercase-global" in "Lua > Diagnostics: Disable".
+- Adding "lowercase-global" and "trailing-space" in "Lua > Diagnostics: Disable".
 - Setting "Lua > Diagnostics: Workspace Delay" to 500.
 - Settings "Lua > Diagnostics: Workspace Rate" between 20-40.
 - Set all "Lua.Intelli Sense" settings to true.
