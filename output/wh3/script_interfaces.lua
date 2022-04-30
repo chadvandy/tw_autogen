@@ -1,0 +1,3185 @@
+--- Thanks DF!
+
+--- CLASS DECLARATIONS
+---@class CHARACTER_LIST_SCRIPT_INTERFACE
+---@class CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE
+---@class POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE
+---@class CHARACTER_SCRIPT_INTERFACE
+---@class MILITARY_FORCE_SCRIPT_INTERFACE
+---@class SETTLEMENT_SCRIPT_INTERFACE
+---@class DEBUG_DRAWING_SCRIPT_INTERFACE
+---@class SEA_REGION_LIST_SCRIPT_INTERFACE
+---@class CARAVANS_SYSTEM_SCRIPT_INTERFACE
+---@class RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE
+---@class FAMILY_MEMBER_LIST_SCRIPT_INTERFACE
+---@class EFFECT_BUNDLE_SCRIPT_INTERFACE
+---@class FACTION_SCRIPT_INTERFACE
+---@class POOLED_RESOURCE_LIST_SCRIPT_INTERFACE
+---@class ROUTE_POSITION_SCRIPT_INTERFACE
+---@class CARAVAN_RECRUITMENT_ITEM_SCRIPT_INTERFACE
+---@class EFFECT_LIST_SCRIPT_INTERFACE
+---@class WOM_COMPASS_SCRIPT_INTERFACE
+---@class TELEPORTATION_NODE_SCRIPT_INTERFACE
+---@class WAR_COORDINATION_SCRIPT_INTERFACE
+---@class TELEPORTATION_NETWORK_SCRIPT_INTERFACE
+---@class TELEPORTATION_NODE_RECORD_LIST_SCRIPT_INTERFACE
+---@class UNIT_SCRIPT_INTERFACE
+---@class UNIT_PURCHASABLE_EFFECT_SCRIPT_INTERFACE
+---@class PROVINCE_LIST_SCRIPT_INTERFACE
+---@class SEA_REGION_MANAGER_SCRIPT_INTERFACE
+---@class CHARACTER_IMPRISONMENT_REJECTION_REASON_MASK_SCRIPTING_INTERFACE
+---@class UNIT_LIST_SCRIPT_INTERFACE
+---@class MILITARY_FORCE_LIST_SCRIPT_INTERFACE
+---@class REGION_DATA_SCRIPT_INTERFACE
+---@class CAMPAIGN_MISSION_SCRIPT_INTERFACE
+---@class UNIQUE_AGENT_DETAILS_LIST_SCRIPT_INTERFACE
+---@class FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE
+---@class EFFECT_SCRIPT_INTERFACE
+---@class CARAVAN_LIST_SCRIPT_INTERFACE
+---@class TELEPORTATION_NETWORK_SYSTEM_SCRIPT_INTERFACE
+---@class BUILDING_SCRIPT_INTERFACE
+---@class COOKING_SYSTEM_SCRIPT_INTERFACE
+---@class FACTION_PROVINCE_MANAGER_LIST_SCRIPT_INTERFACE
+---@class RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE
+---@class SLOT_SCRIPT_INTERFACE
+---@class UNIT_PURCHASABLE_EFFECT_LIST_SCRIPT_INTERFACE
+---@class BONUS_VALUES_SCRIPT_INTERFACE
+---@class RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE
+---@class PENDING_BATTLE_SCRIPT_INTERFACE
+---@class RITUAL_SETUP_SCRIPT_INTERFACE
+---@class POOLED_RESOURCE_SCRIPT_INTERFACE
+---@class SHARED_STATES_MANAGER_SCRIPT_INTERFACE
+---@class SEA_REGION_SCRIPT_INTERFACE
+---@class FACTION_LIST_SCRIPT_INTERFACE
+---@class CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE
+---@class ROUTE_SEGMENT_SCRIPT_INTERFACE
+---@class ROUTE_SEGMENT_LIST_SCRIPT_INTERFACE
+---@class CHARACTER_INITIATIVE_LIST_SCRIPT_INTERFACE
+---@class REGION_SCRIPT_INTERFACE
+---@class PRISON_SYSTEM_SCRIPT_INTERFACE
+---@class ROUTE_NODE_SCRIPT_INTERFACE
+---@class ACTIVE_RITUAL_SCRIPT_INTERFACE
+---@class FACTION_RITUALS_SCRIPT_INTERFACE
+---@class ROUTE_NODE_LIST_SCRIPT_INTERFACE
+---@class POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE
+---@class ROUTE_NETWORK_SCRIPT_INTERFACE
+---@class MODEL_SCRIPT_INTERFACE
+---@class RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE
+---@class WORLD_SCRIPT_INTERFACE
+---@class RITUAL_STATUS_SCRIPT_INTERFACE
+---@class REGION_LIST_SCRIPT_INTERFACE
+---@class FACTION_COOKING_INFO_SCRIPT_INTERFACE
+---@class RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE
+---@class FACTION_CHARACTER_TAG_ENTRY_SCRIPT_INTERFACE
+---@class MILITARY_FORCE_TYPE_SCRIPT_INTERFACE
+---@class EFFECT_BUNDLE_LIST_SCRIPT_INTERFACE
+---@class CAMPAIGN_AI_SCRIPT_INTERFACE
+---@class OBSERVATION_OPTIONS_SCRIPT_INTERFACE
+---@class REGION_MANAGER_SCRIPT_INTERFACE
+---@class RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE
+---@class MODIFY_RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE
+---@class FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE
+---@class CHARACTER_INITIATIVE_SCRIPT_INTERFACE
+---@class REGION_DATA_LIST_SCRIPT_INTERFACE
+---@class ACTIVE_RITUAL_LIST_SCRIPT_INTERFACE
+---@class SLOT_LIST_SCRIPT_INTERFACE
+---@class FACTION_CHARACTER_TAG_ENTRY_LIST_SCRIPT_INTERFACE
+---@class CHARACTER_INITIATIVE_SET_LIST_SCRIPT_INTERFACE
+---@class ROUTE_PATH_SCRIPT_INTERFACE
+---@class BUILDING_LIST_SCRIPT_INTERFACE
+---@class RITUAL_TARGET_SCRIPT_INTERFACE
+---@class FOREIGN_SLOT_LIST_SCRIPT_INTERFACE
+---@class FACTION_CARAVANS_SCRIPT_INTERFACE
+---@class POOLED_RESOURCE_FACTOR_LIST_SCRIPT_INTERFACE
+---@class PLAGUE_SCRIPT_INTERFACE
+---@class TELEPORTATION_NETWORK_LIST_SCRIPT_INTERFACE
+---@class GARRISON_RESIDENCE_SCRIPT_INTERFACE
+---@class CARAVAN_SCRIPT_INTERFACE
+---@class MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE
+---@class CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE
+---@class FACTION_CHARACTER_TAGGING_SYSTEM_SCRIPT_INTERFACE
+---@class NULL_SCRIPT_INTERFACE
+---@class MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE
+---@class CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE
+---@class CHARACTER_DETAILS_SCRIPT_INTERFACE
+---@class MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE
+---@class CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE
+---@class RESOURCE_TRANSACTION_SCRIPT_INTERFACE
+---@class CHARACTER_DETAILS_LIST_SCRIPT_INTERFACE
+---@class MILITARY_FORCE_SLOT_SCRIPT_INTERFACE
+---@class PROVINCE_SCRIPT_INTERFACE
+---@class CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE
+---@class UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE
+---@class FOREIGN_SLOT_SCRIPT_INTERFACE
+---@class ARMORY_SCRIPT_INTERFACE
+---@class CARAVAN_RECRUITMENT_ITEM_LIST_SCRIPT_INTERFACE
+---@class TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE
+---@class TELEPORTATION_NODE_LIST_SCRIPT_INTERFACE
+---@class FOREIGN_SLOT_MANAGER_LIST_SCRIPT_INTERFACE
+---@class FAMILY_MEMBER_SCRIPT_INTERFACE
+---@class COOKING_DISH_SCRIPT_INTERFACE
+
+--- A list of character interfaces
+---@class CHARACTER_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:CHARACTER_LIST_SCRIPT_INTERFACE, positive:integer):CHARACTER_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:CHARACTER_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:CHARACTER_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Character Observation Options Script Interface
+---@class CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE
+--- Set the observation options for agents
+---@field set_agents_options fun(self:CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE)
+--- Observation options for armies
+---@field armies_options fun(self:CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE):OBSERVATION_OPTIONS_SCRIPT_INTERFACE
+--- Observation options for agents
+---@field agents_options fun(self:CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE):OBSERVATION_OPTIONS_SCRIPT_INTERFACE
+--- Faction that this observation option set targets. May be null
+---@field faction fun(self:CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+--- Set the observation options for armies
+---@field set_armies_options fun(self:CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE)
+--- Set the observation options for navies
+---@field set_navies_options fun(self:CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE)
+--- Is this the null script interface
+---@field is_null_interface fun(self:CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE):boolean
+--- Observation options for navies
+---@field navies_options fun(self:CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE):OBSERVATION_OPTIONS_SCRIPT_INTERFACE
+
+
+--- Pooled Resource Manager Script Interface
+---@class POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE
+--- Gets the military force associated with this pooled resource manager, if any
+---@field military_force fun(self:POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE):MILITARY_FORCE_SCRIPT_INTERFACE
+--- Is the pooled resource manager associated with a faction province manager?
+---@field has_faction_province fun(self:POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE):boolean
+--- Is the pooled resource manager associated with a military force?
+---@field has_military_force fun(self:POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE):boolean
+--- Gets the character associated with this pooled resource manager, if any
+---@field character fun(self:POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE):CHARACTER_SCRIPT_INTERFACE
+--- List of all resources contained in this manager
+---@field resources fun(self:POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE):POOLED_RESOURCE_LIST_SCRIPT_INTERFACE
+--- Gets the province associated with this pooled resource manager, if any
+---@field province fun(self:POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE):PROVINCE_SCRIPT_INTERFACE
+--- Is the pooled resource manager associated with a province?
+---@field has_province fun(self:POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE):boolean
+--- Gets the region associated with this pooled resource manager, if any
+---@field region fun(self:POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE):REGION_SCRIPT_INTERFACE
+--- Scope of this pooled resource manager
+---@field scope fun(self:POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE):string
+--- Faction that owns this pooled resource manager, if any
+---@field owning_faction fun(self:POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+--- Pooled resource with the specified record key. Null if not present
+---@field resource fun(self:POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE, pooled_resource_key:string):POOLED_RESOURCE_SCRIPT_INTERFACE
+--- Is the pooled resource manager associated with a faction? This is also true if the manager is associated with a character, military force, region etc
+---@field has_owning_faction fun(self:POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE):boolean
+--- Is the pooled resource manager associated with a character?
+---@field has_character fun(self:POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE):boolean
+--- Is the pooled resource manager associated with a region?
+---@field has_region fun(self:POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE):boolean
+--- Gets the faction province associated with this pooled resource manager, if any
+---@field faction_province fun(self:POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE):integer
+--- Is this the null script interface
+---@field is_null_interface fun(self:POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE):boolean
+--- Test whether the resources contained in this manager could afford to pay the specified resource cost
+---@field can_afford_resource_cost fun(self:POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE, can_afford_resource_transactionstring:boolean):POOLED_RESOURCE_FACTOR_LIST_SCRIPT_INTERFACE
+
+
+--- Character interface
+---@class CHARACTER_SCRIPT_INTERFACE
+--- Number of offensive battles fought
+---@field offensive_battles_fought fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Can this character, in the specified stance, reach another character this turn?
+---@field can_reach_character_in_stance fun(self:CHARACTER_SCRIPT_INTERFACE, target_character:CHARACTER_SCRIPT_INTERFACE, stance_key:string):boolean
+--- Test if this character has the specified effect bundle
+---@field has_effect_bundle fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Number of battles won
+---@field battles_won fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Returns the key of the character agent subtype record
+---@field character_subtype_key fun(self:CHARACTER_SCRIPT_INTERFACE):string
+--- Number of defensive naval battles fought
+---@field defensive_naval_battles_fought fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Number of offensive naval battles won
+---@field offensive_naval_battles_won fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Returns the percentage of movement points remaining as an integer value
+---@field action_points_remaining_percent fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Number of defensive sieges won
+---@field defensive_sieges_won fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Is the character transporting an army?
+---@field is_carrying_troops fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- The character's age
+---@field age fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Number of offensive sieges fought
+---@field offensive_sieges_fought fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- The garrison containing the character
+---@field garrison_residence fun(self:CHARACTER_SCRIPT_INTERFACE):GARRISON_RESIDENCE_SCRIPT_INTERFACE
+--- Returns if the character has the specified ancillary
+---@field has_ancillary fun(self:CHARACTER_SCRIPT_INTERFACE, key:string):boolean
+--- Access to the region data area that the character is in
+---@field region_data fun(self:CHARACTER_SCRIPT_INTERFACE):REGION_DATA_SCRIPT_INTERFACE
+--- Does the character have this forename?
+---@field forename fun(self:CHARACTER_SCRIPT_INTERFACE, key:string):boolean
+--- Is the character blockading?
+---@field is_blockading fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Has the character performed any action this turn?
+---@field performed_action_this_turn fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Returns if the character has the specified trait
+---@field has_trait fun(self:CHARACTER_SCRIPT_INTERFACE, key:string):integer
+--- Number of defensive sieges fought
+---@field defensive_sieges_fought fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Is the character contained in a garrison residence?
+---@field has_garrison_residence fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Returns the number of trait points for the specified trait (0 if not present)
+---@field trait_points fun(self:CHARACTER_SCRIPT_INTERFACE, key:string):integer
+--- Returns the number of turns in enemy regions exclusively
+---@field turns_in_enemy_regions fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Logical position on map, x coord
+---@field logical_position_x fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Is the character the faction leader?
+---@field is_faction_leader fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Active bonus values of this character
+---@field bonus_values fun(self:CHARACTER_SCRIPT_INTERFACE):BONUS_VALUES_SCRIPT_INTERFACE
+--- Pooled resource manager of this character
+---@field pooled_resource_manager fun(self:CHARACTER_SCRIPT_INTERFACE):POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE
+--- Can this character, in the specified stance, reach a (logical hex map) position this turn?
+---@field can_reach_position_in_stance fun(self:CHARACTER_SCRIPT_INTERFACE, x:integer, y:integer, stance_key:string):boolean
+--- Logical position on map, y coord
+---@field logical_position_y fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Can this character, in the specified stance, reach a settlement this turn?
+---@field can_reach_settlement_in_stance fun(self:CHARACTER_SCRIPT_INTERFACE, settlement:SETTLEMENT_SCRIPT_INTERFACE, stance_key:string):boolean
+--- Can this character reach a (loigcal hex map) position this turn?
+---@field can_reach_position fun(self:CHARACTER_SCRIPT_INTERFACE, x:integer, y:integer):boolean
+--- Can this character reach a settlement this turn?
+---@field can_reach_settlement fun(self:CHARACTER_SCRIPT_INTERFACE, settlement:SETTLEMENT_SCRIPT_INTERFACE):boolean
+--- Number of offensive ambush battles won
+---@field offensive_ambush_battles_won fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Returns true if the character context is of the agent type specified
+---@field character_type fun(self:CHARACTER_SCRIPT_INTERFACE, key:string):boolean
+--- Is the character in a port?
+---@field in_port fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Access to the character's faction interface
+---@field faction fun(self:CHARACTER_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+--- The military force that the character commands
+---@field military_force fun(self:CHARACTER_SCRIPT_INTERFACE):MILITARY_FORCE_SCRIPT_INTERFACE
+--- How many battles has this character fought in?
+---@field battles_fought fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Number of defensive naval battles won
+---@field defensive_naval_battles_won fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Is the character male?
+---@field is_male fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- returns the characters interfaction loyalty
+---@field interfaction_loyalty fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Is the character in a valid region?
+---@field has_region fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- returns the characters loyalty
+---@field loyalty fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- persistent details of this character
+---@field character_details fun(self:CHARACTER_SCRIPT_INTERFACE):CHARACTER_DETAILS_SCRIPT_INTERFACE
+--- return true if this character is wounded
+---@field is_wounded fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Returns the character forename
+---@field get_forename fun(self:CHARACTER_SCRIPT_INTERFACE):string
+--- Percentage of commanded unit lost in battle
+---@field body_guard_casulties fun(self:CHARACTER_SCRIPT_INTERFACE):number
+--- Number of offensive sieges won
+---@field offensive_sieges_won fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Returns the number of turns in home regions exclusively
+---@field turns_in_own_regions fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Is the charcter hidden from a faction
+---@field is_hidden fun(self:CHARACTER_SCRIPT_INTERFACE, faction_key:string):boolean
+--- returns true if this character is visible to the specified faction
+---@field is_visible_to_faction fun(self:CHARACTER_SCRIPT_INTERFACE, key:string):boolean
+--- Number of offensive battles won
+---@field offensive_battles_won fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- returns whether a character is a politian or not
+---@field is_politician fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- returns true if the character is a caster
+---@field is_caster fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- returns a mod on the drop chance for post battle ancillaries
+---@field post_battle_ancilary_chance fun(self:CHARACTER_SCRIPT_INTERFACE):number
+--- Display/real position on map, y coord
+---@field display_position_y fun(self:CHARACTER_SCRIPT_INTERFACE):number
+--- returns a characters family member script interface
+---@field family_member fun(self:CHARACTER_SCRIPT_INTERFACE):FAMILY_MEMBER_SCRIPT_INTERFACE
+--- Action points per turn
+---@field action_points_per_turn fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- returns a character mother's family member script interface
+---@field mother fun(self:CHARACTER_SCRIPT_INTERFACE):FAMILY_MEMBER_SCRIPT_INTERFACE
+--- Access to the region that the character is in
+---@field region fun(self:CHARACTER_SCRIPT_INTERFACE):REGION_SCRIPT_INTERFACE
+--- returns the characters personal loyalty factor
+---@field personal_loyalty_factor fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- returns whether a character has a mother or not
+---@field has_mother fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Returns the number of turns at sea exclusively
+---@field turns_at_sea fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- returns whether a character has a father or not
+---@field has_father fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Effect bundles currently active on the character
+---@field effect_bundles fun(self:CHARACTER_SCRIPT_INTERFACE):EFFECT_BUNDLE_LIST_SCRIPT_INTERFACE
+--- Rank of character (1-6)
+---@field rank fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- The commander routed
+---@field routed_in_battle fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Access to the model interface
+---@field model fun(self:CHARACTER_SCRIPT_INTERFACE):MODEL_SCRIPT_INTERFACE
+--- The number of traits the chracter has
+---@field number_of_traits fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Has the character recruited mercenaries
+---@field has_recruited_mercenaries fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Is this the null script interface
+---@field is_null_interface fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Command queue index of the Character
+---@field command_queue_index fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Is the character at sea
+---@field is_at_sea fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Is the character deployed
+---@field is_deployed fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Returns the flag path used for this character
+---@field flag_path fun(self:CHARACTER_SCRIPT_INTERFACE):string
+--- Access to the sea region that the character is in
+---@field sea_region fun(self:CHARACTER_SCRIPT_INTERFACE):SEA_REGION_SCRIPT_INTERFACE
+--- Character CQI
+---@field cqi fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- returns true if this character can equip the specified ancillary
+---@field can_equip_ancillary fun(self:CHARACTER_SCRIPT_INTERFACE, key:string):boolean
+--- Is the character besieging?
+---@field is_besieging fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Checks that a character is in a settlement
+---@field in_settlement fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Is the character ambushing?
+---@field is_ambushing fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- The military force that the character is embedded in
+---@field embedded_in_military_force fun(self:CHARACTER_SCRIPT_INTERFACE):MILITARY_FORCE_SCRIPT_INTERFACE
+--- Returns the key of the character agent type record
+---@field character_type_key fun(self:CHARACTER_SCRIPT_INTERFACE):string
+--- Number of defensive battles fought
+---@field defensive_battles_fought fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Returns true if the character context is of the agent subtype specified
+---@field character_subtype fun(self:CHARACTER_SCRIPT_INTERFACE, key:string):boolean
+--- Did the character fight in missile or melee combat in the battle
+---@field fought_in_battle fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Is part of a military force
+---@field is_embedded_in_military_force fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Number of defensive ambush battles fought
+---@field defensive_ambush_battles_fought fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Returns ministerial position of the character
+---@field ministerial_position fun(self:CHARACTER_SCRIPT_INTERFACE):string
+--- Number of defensive ambush battles won
+---@field defensive_ambush_battles_won fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Number of offensive ambush battles fought
+---@field offensive_ambush_battles_fought fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Has the skill passed
+---@field has_skill fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Does the character have this surname?
+---@field surname fun(self:CHARACTER_SCRIPT_INTERFACE, key:string):boolean
+--- Number of defensive battles won
+---@field defensive_battles_won fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Does this character command a military force?
+---@field has_military_force fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Number of offensive naval battles fought
+---@field offensive_naval_battles_fought fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Was the character in the winning alliance in a battle
+---@field won_battle fun(self:CHARACTER_SCRIPT_INTERFACE):boolean
+--- returns a characters father's family member script interface
+---@field father fun(self:CHARACTER_SCRIPT_INTERFACE):FAMILY_MEMBER_SCRIPT_INTERFACE
+--- Display/real position on map, x coord
+---@field display_position_x fun(self:CHARACTER_SCRIPT_INTERFACE):number
+--- Returns the character surname
+---@field get_surname fun(self:CHARACTER_SCRIPT_INTERFACE):string
+--- Can a this character reach another character this turn?
+---@field can_reach_character fun(self:CHARACTER_SCRIPT_INTERFACE, target_character:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Returns whther or not the character is governor.
+---@field is_governor fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- Percentage of men killed in the character's alliance
+---@field percentage_of_own_alliance_killed fun(self:CHARACTER_SCRIPT_INTERFACE):integer
+--- returns the level of the specified trait
+---@field trait_level fun(self:CHARACTER_SCRIPT_INTERFACE, key:string):integer
+
+
+--- Military force interface. Armies and navies are military forces.
+---@class MILITARY_FORCE_SCRIPT_INTERFACE
+--- Returns true if this force can recruit a unit of this type
+---@field can_recruit_unit fun(self:MILITARY_FORCE_SCRIPT_INTERFACE, unit_key:string):boolean
+--- Is this military force an army?
+---@field is_army fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):boolean
+--- Returns the active stance for the military force
+---@field active_stance fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):string
+--- Returns true if this force can recruit a unit of this class
+---@field can_recruit_unit_class fun(self:MILITARY_FORCE_SCRIPT_INTERFACE, unit_class_key:string):boolean
+--- Returns the list of units in the military force
+---@field unit_list fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):UNIT_LIST_SCRIPT_INTERFACE
+--- Returns true if this force can recruit a unit of this category
+---@field can_recruit_unit_category fun(self:MILITARY_FORCE_SCRIPT_INTERFACE, unit_category_key:string):boolean
+--- Does the military force have a commanding general?
+---@field has_general fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):boolean
+--- Returns the garrison residence the force is embedded in
+---@field garrison_residence fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):GARRISON_RESIDENCE_SCRIPT_INTERFACE
+--- Is this military force a navy?
+---@field is_navy fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):boolean
+--- Returns true if you can recruit the specified agent at this force
+---@field can_recruit_agent_at_force fun(self:MILITARY_FORCE_SCRIPT_INTERFACE, agent_key:string):boolean
+--- Access to the campaign model
+---@field model fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):MODEL_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):boolean
+--- Command queue index of the Military Force
+---@field command_queue_index fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):integer
+--- Get the current streak value of this military force. Will return -1 if no streak is present. This is a lookup, please cache the results.
+---@field lookup_streak_value fun(self:MILITARY_FORCE_SCRIPT_INTERFACE, streak_key:string):integer
+--- Is the force in a garrison residence?
+---@field has_garrison_residence fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):boolean
+--- Pooled resource manager of this military force
+---@field pooled_resource_manager fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE
+--- Returns the upkeep costs for the military force
+---@field upkeep fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):integer
+--- Returns if the force contains mercenaries
+---@field contains_mercenaries fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):boolean
+--- Returns the character interface for the military force general (if one exists)
+---@field general_character fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):CHARACTER_SCRIPT_INTERFACE
+--- Test if this military force has access to a mercenary pool of a specific recruitment source type. (recruitment sources table)
+---@field has_access_to_military_force_mercenary_pool_of_recruitment_source fun(self:MILITARY_FORCE_SCRIPT_INTERFACE, recruitment_source_key:string):boolean
+--- battle_set_piece_armies record key for this military force. Will be empty if this is not a quest battle army
+---@field set_piece_battle_army_key fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):string
+--- Has this army been spawned as part of a set piece battle?
+---@field is_set_piece_battle_army fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):boolean
+--- Active bonus values of this military force
+---@field bonus_values fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):BONUS_VALUES_SCRIPT_INTERFACE
+--- Returns the strength of the military force
+---@field strength fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):number
+--- A list of characters embedded in the military force
+---@field character_list fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):CHARACTER_LIST_SCRIPT_INTERFACE
+--- Military force type
+---@field force_type fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):MILITARY_FORCE_TYPE_SCRIPT_INTERFACE
+--- Effect bundles currently active on the military force
+---@field effect_bundles fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):EFFECT_BUNDLE_LIST_SCRIPT_INTERFACE
+--- Can the military force enter this stance
+---@field can_activate_stance fun(self:MILITARY_FORCE_SCRIPT_INTERFACE, key:string):boolean
+--- The faction that the military force belongs to
+---@field faction fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+--- Returns true if the military force has the specified effect bundle active
+---@field has_effect_bundle fun(self:MILITARY_FORCE_SCRIPT_INTERFACE, bundle_key:string):boolean
+--- Get the morale for this army
+---@field morale fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):integer
+--- returns true if the force will suffer attrition
+---@field will_suffer_any_attrition fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):boolean
+--- returns true if the force is armed citizenry
+---@field is_armed_citizenry fun(self:MILITARY_FORCE_SCRIPT_INTERFACE):boolean
+
+
+--- Settlement script interface
+---@class SETTLEMENT_SCRIPT_INTERFACE
+--- Is this settlement a port
+---@field is_port fun(self:SETTLEMENT_SCRIPT_INTERFACE):boolean
+--- Command queue index of this settlement
+---@field cqi fun(self:SETTLEMENT_SCRIPT_INTERFACE):integer
+--- Does the settlement have a commander of a military force
+---@field has_commander fun(self:SETTLEMENT_SCRIPT_INTERFACE):boolean
+--- Get a list of all of the active secondary slots in this settlement. Try not to spam call this
+---@field active_secondary_slots fun(self:SETTLEMENT_SCRIPT_INTERFACE):SLOT_LIST_SCRIPT_INTERFACE
+--- Returns the list of slots in the settlement
+---@field slot_list fun(self:SETTLEMENT_SCRIPT_INTERFACE):SLOT_LIST_SCRIPT_INTERFACE
+--- Primary building chain of this settlement
+---@field primary_building_chain fun(self:SETTLEMENT_SCRIPT_INTERFACE):string
+--- Returns the embedded military force commander
+---@field commander fun(self:SETTLEMENT_SCRIPT_INTERFACE):CHARACTER_SCRIPT_INTERFACE
+--- Returns the string key of this settlement
+---@field key fun(self:SETTLEMENT_SCRIPT_INTERFACE):string
+--- Logical position on map, x coord
+---@field logical_position_x fun(self:SETTLEMENT_SCRIPT_INTERFACE):integer
+--- Display/real position on map, y coord
+---@field display_position_y fun(self:SETTLEMENT_SCRIPT_INTERFACE):number
+--- The region for this settlement
+---@field region fun(self:SETTLEMENT_SCRIPT_INTERFACE):REGION_SCRIPT_INTERFACE
+--- Logical position on map, y coord
+---@field logical_position_y fun(self:SETTLEMENT_SCRIPT_INTERFACE):integer
+--- Access to the faction that owns the settlement
+---@field faction fun(self:SETTLEMENT_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+--- Get the port slot for this settlement if it exists, null if it doesn't
+---@field port_slot fun(self:SETTLEMENT_SCRIPT_INTERFACE):SLOT_SCRIPT_INTERFACE
+--- Display/real position on map, x coord
+---@field display_position_x fun(self:SETTLEMENT_SCRIPT_INTERFACE):number
+--- Get the climate key for a settlement
+---@field get_climate fun(self:SETTLEMENT_SCRIPT_INTERFACE):string
+--- Access to the campaign model
+---@field model fun(self:SETTLEMENT_SCRIPT_INTERFACE):MODEL_SCRIPT_INTERFACE
+--- Building chain used to display this settlement. May not be the same as the logical building chain
+---@field display_primary_building_chain fun(self:SETTLEMENT_SCRIPT_INTERFACE):string
+--- Get the primary slot for this settlement
+---@field primary_slot fun(self:SETTLEMENT_SCRIPT_INTERFACE):SLOT_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:SETTLEMENT_SCRIPT_INTERFACE):boolean
+--- Get the first empty active secondary slot from the settement. May be null if none are available
+---@field first_empty_active_secondary_slot fun(self:SETTLEMENT_SCRIPT_INTERFACE):SLOT_SCRIPT_INTERFACE
+
+
+--- Debug Drawing Script Interface
+---@class DEBUG_DRAWING_SCRIPT_INTERFACE
+--- Draws debug text to the screen at specified screen position, using the current drawing colour
+---@field draw_text_screen_space fun(self:DEBUG_DRAWING_SCRIPT_INTERFACE, text:string, pixel_x:number, pixel_y:number)
+--- Set whether drawing is depth tested (can be overlapped by game objects)
+---@field set_depth_test fun(self:DEBUG_DRAWING_SCRIPT_INTERFACE, depth_test:boolean)
+--- Set the current drawing colour
+---@field set_colour fun(self:DEBUG_DRAWING_SCRIPT_INTERFACE, red:number, green:number, blue:number, alpha:number)
+--- Draws a debug line to the screen from begin to end using the current drawing colour
+---@field draw_line fun(self:DEBUG_DRAWING_SCRIPT_INTERFACE)
+--- Draws a debug AABB (Axis Aligned Bounding Box) to the screen between begin and end using the current drawing colour
+---@field draw_aabb fun(self:DEBUG_DRAWING_SCRIPT_INTERFACE)
+--- Draws debug text to the screen at begin using the current drawing colour
+---@field draw_text fun(self:DEBUG_DRAWING_SCRIPT_INTERFACE, text:string)
+--- Set the end position
+---@field set_end fun(self:DEBUG_DRAWING_SCRIPT_INTERFACE, x:number, y:number, z:number)
+--- Set the time for any debug drawing items to remain on screen. Time is in seconds
+---@field set_draw_duration fun(self:DEBUG_DRAWING_SCRIPT_INTERFACE, duration_in_seconds:number)
+--- Set the begin position
+---@field set_begin fun(self:DEBUG_DRAWING_SCRIPT_INTERFACE, x:number, y:number, z:number)
+--- Is this the null script interface
+---@field is_null_interface fun(self:DEBUG_DRAWING_SCRIPT_INTERFACE):boolean
+--- Draws a debug sphere to the screen at begin using the current drawing colour
+---@field draw_sphere fun(self:DEBUG_DRAWING_SCRIPT_INTERFACE, radius:number)
+
+
+--- Sea Region List script interface, a list of sea regions
+---@class SEA_REGION_LIST_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:SEA_REGION_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Caravans System Script Interface
+---@class CARAVANS_SYSTEM_SCRIPT_INTERFACE
+--- Get the current banditry value of a region
+---@field banditry_for_region fun(self:CARAVANS_SYSTEM_SCRIPT_INTERFACE, region:REGION_DATA_SCRIPT_INTERFACE):integer
+--- Get the maximum banditry value
+---@field maximum_banditry fun(self:CARAVANS_SYSTEM_SCRIPT_INTERFACE):integer
+--- Get the total banditry value of a table of regions, by key
+---@field total_banditry_for_regions_by_key fun(self:CARAVANS_SYSTEM_SCRIPT_INTERFACE, table:string):integer
+--- Get the total banditry value of a table of regions
+---@field total_banditry_for_regions fun(self:CARAVANS_SYSTEM_SCRIPT_INTERFACE, table:REGION_DATA_SCRIPT_INTERFACE):integer
+--- Get the current banditry value of a region, by key
+---@field banditry_for_region_by_key fun(self:CARAVANS_SYSTEM_SCRIPT_INTERFACE, region_key:string):integer
+--- Get caravans data for the specified faction
+---@field faction_caravans fun(self:CARAVANS_SYSTEM_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE):FACTION_CARAVANS_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:CARAVANS_SYSTEM_SCRIPT_INTERFACE):boolean
+--- Get caravans data for the specified faction, by key
+---@field faction_caravans_by_key fun(self:CARAVANS_SYSTEM_SCRIPT_INTERFACE, faction_key:string):FACTION_CARAVANS_SCRIPT_INTERFACE
+
+
+--- Ritual Target Region Status Script Interface
+---@class RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE
+--- No invalid flags are currently set
+---@field valid fun(self:RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE):boolean
+--- This region is not the correct subculture.
+---@field invalid_subculture fun(self:RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE):boolean
+--- This region does not contain a foreign slot with the appropriate foreign slot set record.
+---@field foreign_slot_set_not_present fun(self:RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE):boolean
+--- This is not a region target
+---@field wrong_type fun(self:RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE):boolean
+--- This region does not contain a foreign slot with the appropriate subculture.
+---@field foreign_slot_subculture_not_present fun(self:RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE):boolean
+--- This region is not ruin and this ritual must target only ruins.
+---@field is_not_ruin fun(self:RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE):boolean
+--- This region is owned by you, and it must not be to perform this ritual.
+---@field is_own fun(self:RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE):boolean
+--- There is currently no target set
+---@field no_target fun(self:RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE):boolean
+--- This region is a ruin and this ritual may not target ruins.
+---@field is_ruin fun(self:RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE):boolean
+--- This region already contains a foreign slot with the inappropriate foreign slot set record.
+---@field foreign_slot_set_present fun(self:RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE):boolean
+--- Is this the null script interface
+---@field is_null_interface fun(self:RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE):boolean
+--- This region is not owned by you, and it must be to perform this ritual.
+---@field not_own fun(self:RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE):boolean
+
+
+--- A list of family member interfaces
+---@class FAMILY_MEMBER_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:FAMILY_MEMBER_LIST_SCRIPT_INTERFACE, positive:integer):FAMILY_MEMBER_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:FAMILY_MEMBER_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:FAMILY_MEMBER_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- An effect bundle, which provides multiple effects to a target game object
+---@class EFFECT_BUNDLE_SCRIPT_INTERFACE
+--- Record key for this effect bundle
+---@field key fun(self:EFFECT_BUNDLE_SCRIPT_INTERFACE):string
+--- Copies the effect bundle into a new custom effect bundle interface. A new state is created when called and destroyed when the interface is dropped in lua
+---@field clone_and_create_custom_effect_bundle fun(self:EFFECT_BUNDLE_SCRIPT_INTERFACE, model:MODEL_SCRIPT_INTERFACE):CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE
+--- Record key for this effect bundle
+---@field duration fun(self:EFFECT_BUNDLE_SCRIPT_INTERFACE):integer
+--- Is this the null script interface
+---@field is_null_interface fun(self:EFFECT_BUNDLE_SCRIPT_INTERFACE):boolean
+--- The effects provided by this effect bundle
+---@field effects fun(self:EFFECT_BUNDLE_SCRIPT_INTERFACE):EFFECT_LIST_SCRIPT_INTERFACE
+
+
+--- Faction interface
+---@class FACTION_SCRIPT_INTERFACE
+--- The character that leads the faction
+---@field faction_leader fun(self:FACTION_SCRIPT_INTERFACE):CHARACTER_SCRIPT_INTERFACE
+--- Does this faction have a military alliance with another faction?
+---@field military_allies_with fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Total capacity for agents of the given type in this faction
+---@field agent_cap fun(self:FACTION_SCRIPT_INTERFACE, agent_key:string):integer
+--- Returns total amount of food the faction is consuming, taking into account all factors
+---@field food_consumption fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- return the factions attitude towards the specified faction
+---@field diplomatic_attitude_towards fun(self:FACTION_SCRIPT_INTERFACE, faction_key:string):number
+--- return the factions this faction has a military alliance with
+---@field factions_military_allies_with fun(self:FACTION_SCRIPT_INTERFACE):FACTION_LIST_SCRIPT_INTERFACE
+--- Faction's home region
+---@field home_region fun(self:FACTION_SCRIPT_INTERFACE):REGION_SCRIPT_INTERFACE
+--- Has the faction reached its limit of trade routes?
+---@field trade_route_limit_reached fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Is this faction currently having its turn skipped?
+---@field turn_is_skipped fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Does the faction a team mate of this faction
+---@field is_team_mate fun(self:FACTION_SCRIPT_INTERFACE, other:FACTION_SCRIPT_INTERFACE):boolean
+--- Returns whether the named ancillary exists in the faction somewhere
+---@field ancillary_exists fun(self:FACTION_SCRIPT_INTERFACE, key:string):boolean
+--- Returns the current multiplier of the specified food factor
+---@field get_food_factor_multiplier fun(self:FACTION_SCRIPT_INTERFACE, factor_key:string):integer
+--- How many technologies has this faction completed researching?
+---@field num_completed_technologies fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- Wether this faction has access to rituals or not
+---@field has_rituals fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Returns the subculture for the faction
+---@field subculture fun(self:FACTION_SCRIPT_INTERFACE):string
+--- Returns the percentage value of global trade owned by the faction
+---@field trade_value_percent fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- Returns the factions regular expenditure
+---@field expenditure fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- Returns total amount of food the faction is producing, taking into account all factors
+---@field food_production fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- Does this faction hold the entire specified province? Also may include vassals
+---@field holds_entire_province fun(self:FACTION_SCRIPT_INTERFACE, province:string, include_vassals:boolean):boolean
+--- Remaining capacity for agents of the given type in this faction
+---@field agent_cap_remaining fun(self:FACTION_SCRIPT_INTERFACE, agent_key:string):integer
+--- Is this the rebel faction?
+---@field is_rebel fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Ritual manager interface for this faction
+---@field rituals fun(self:FACTION_SCRIPT_INTERFACE):FACTION_RITUALS_SCRIPT_INTERFACE
+--- Does this faction support Faction Slaves
+---@field has_faction_slaves fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- return the factions this faction has a defensive alliance with
+---@field factions_defensive_allies_with fun(self:FACTION_SCRIPT_INTERFACE):FACTION_LIST_SCRIPT_INTERFACE
+--- Is this faction currently a primary faction for its subculture?
+---@field is_primary_faction fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Return a list of province interfaces for every province that this faction controls completely. Use the num_complete_provinces method instead if you just want the count
+---@field complete_provinces fun(self:FACTION_SCRIPT_INTERFACE):FACTION_PROVINCE_MANAGER_LIST_SCRIPT_INTERFACE
+--- Number of factions allied with this faction
+---@field num_allies fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- return a list of foreign characters visible to this player faction
+---@field get_foreign_visible_characters_for_player fun(self:FACTION_SCRIPT_INTERFACE):CHARACTER_LIST_SCRIPT_INTERFACE
+--- Return a list of province interfaces for every province that this faction controls one or more regions in. Use the num_provinces method instead if you just want the count
+---@field provinces fun(self:FACTION_SCRIPT_INTERFACE):FACTION_PROVINCE_MANAGER_LIST_SCRIPT_INTERFACE
+--- Get the total number of provinces where this faction controls all regions
+---@field num_complete_provinces fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- return the factions this faction has met
+---@field factions_met fun(self:FACTION_SCRIPT_INTERFACE):FACTION_LIST_SCRIPT_INTERFACE
+--- Get the total number of provinces where this faction controls one or more regions
+---@field num_provinces fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- Returns the current production/consumption of the specified food factor
+---@field get_food_factor_value fun(self:FACTION_SCRIPT_INTERFACE, factor_key:string):integer
+--- Is this the same faction as another interface?
+---@field is_faction fun(self:FACTION_SCRIPT_INTERFACE, other:FACTION_SCRIPT_INTERFACE):boolean
+--- Did a war start between this faction and another faction this turn?
+---@field started_war_this_turn fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Returns the factions net income, after expenditure is subtracted
+---@field net_income fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- Returns the factions treasury value
+---@field treasury fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- Total capacity for agents of the given subtype in this faction
+---@field agent_subtype_cap fun(self:FACTION_SCRIPT_INTERFACE, agent_subtype_key:string):integer
+--- Does the faction have a leader?
+---@field has_faction_leader fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Returns the characters factions treasury value as a percentage of the sum of all factions treasury values
+---@field treasury_percent fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- A list of regions owned by the faction
+---@field region_list fun(self:FACTION_SCRIPT_INTERFACE):REGION_LIST_SCRIPT_INTERFACE
+--- Does the characters faction have the specified technology
+---@field has_technology fun(self:FACTION_SCRIPT_INTERFACE, key:string):boolean
+--- Whether this faction has the specified effect bundle currently applied to them
+---@field has_effect_bundle fun(self:FACTION_SCRIPT_INTERFACE, effect_bundle_key:string):boolean
+--- Unit cap remaining for the specified unit. -1 if unlimited.
+---@field unit_cap_remaining fun(self:FACTION_SCRIPT_INTERFACE, unit_record_key:string):integer
+--- Returns total amount of food the faction has, taking into account all factors
+---@field total_food fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- Unit cap for the specified unit. -1 if unlimited.
+---@field unit_cap fun(self:FACTION_SCRIPT_INTERFACE, unit_record_key:string):integer
+--- Effect bundles active on the faction
+---@field effect_bundles fun(self:FACTION_SCRIPT_INTERFACE):EFFECT_BUNDLE_LIST_SCRIPT_INTERFACE
+--- Returns whether the faction can be played by a human player
+---@field can_be_human fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Is this the null script interface
+---@field is_null_interface fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Returns a list of all the foreign slot managers held by this faction
+---@field foreign_slot_managers fun(self:FACTION_SCRIPT_INTERFACE):FOREIGN_SLOT_MANAGER_LIST_SCRIPT_INTERFACE
+--- Returns the climate suitability record key for the specified climate
+---@field get_climate_suitability fun(self:FACTION_SCRIPT_INTERFACE, climate_key:string):string
+--- return the factions with the same culture as this faction
+---@field factions_of_same_culture fun(self:FACTION_SCRIPT_INTERFACE):FACTION_LIST_SCRIPT_INTERFACE
+--- All characters in this faction
+---@field character_list fun(self:FACTION_SCRIPT_INTERFACE):CHARACTER_LIST_SCRIPT_INTERFACE
+--- Is it currently this faction's turn?
+---@field is_factions_turn fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Returns whether or not the factions regular expenditure exceeds their regular income
+---@field losing_money fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- True if the faction has ritual chain otherwise false
+---@field has_ritual_chain fun(self:FACTION_SCRIPT_INTERFACE, key:string):boolean
+--- Manager for pooled resources contained by this faction
+---@field pooled_resource_manager fun(self:FACTION_SCRIPT_INTERFACE):POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE
+--- Is this faction a vassal of another faction?
+---@field is_vassal_of fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Returns the percentage of total expenditure consumed by unit upkeep
+---@field upkeep_expenditure_percent fun(self:FACTION_SCRIPT_INTERFACE):number
+--- returns the current imperium level
+---@field imperium_level fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- Percentage faction slaves of the maximum
+---@field percentage_faction_slaves fun(self:FACTION_SCRIPT_INTERFACE):number
+--- True if the faction has ritual category otherwise false
+---@field has_access_to_ritual_category fun(self:FACTION_SCRIPT_INTERFACE, key:string):boolean
+--- Is this faction allied with another faction?
+---@field allied_with fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Number of slaves in the faction
+---@field num_faction_slaves fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- Does this faction have a defensive alliance with another faction?
+---@field defensive_allies_with fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Active bonus values of this faction
+---@field bonus_values fun(self:FACTION_SCRIPT_INTERFACE):BONUS_VALUES_SCRIPT_INTERFACE
+--- Could the faction establish a new international trade route?
+---@field unused_international_trade_route fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- is this faction a quest battle faction
+---@field is_quest_battle_faction fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Returns a list of unique agent details maintained by this faction
+---@field unique_agents fun(self:FACTION_SCRIPT_INTERFACE):UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE
+--- All military forces in this faction
+---@field military_force_list fun(self:FACTION_SCRIPT_INTERFACE):MILITARY_FORCE_LIST_SCRIPT_INTERFACE
+--- return the factions allied to this faction
+---@field factions_allied_with fun(self:FACTION_SCRIPT_INTERFACE):FACTION_LIST_SCRIPT_INTERFACE
+--- Returns the average tax level for the faction
+---@field tax_level fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- The faction's name
+---@field name fun(self:FACTION_SCRIPT_INTERFACE):string
+--- Access to the campaign model interface
+---@field model fun(self:FACTION_SCRIPT_INTERFACE):MODEL_SCRIPT_INTERFACE
+--- Returns true if the faction is dead
+---@field is_dead fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Is this a human faction?
+---@field is_human fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Returns the proportion of total income consumed by unit upkeep
+---@field upkeep_income_percent fun(self:FACTION_SCRIPT_INTERFACE):number
+--- Command queue index of the Faction
+---@field command_queue_index fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- Faction list - Team mates of given faction
+---@field team_mates fun(self:FACTION_SCRIPT_INTERFACE):FACTION_LIST_SCRIPT_INTERFACE
+--- Is this faction at war?
+---@field at_war fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Is faction not researching any tech even though they could be
+---@field research_queue_idle fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Returns whether the faction has access to the trade resource
+---@field trade_resource_exists fun(self:FACTION_SCRIPT_INTERFACE, key:string):boolean
+--- return a list of regions whose settlements are visible to this faction, if this faction is player-controlled
+---@field get_foreign_visible_regions_for_player fun(self:FACTION_SCRIPT_INTERFACE):REGION_LIST_SCRIPT_INTERFACE
+--- return the factions this faction is at war with
+---@field factions_at_war_with fun(self:FACTION_SCRIPT_INTERFACE):FACTION_LIST_SCRIPT_INTERFACE
+--- How many generals does this faction have?
+---@field num_generals fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- Returns the absolute value of the factions global trade
+---@field trade_value fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- Is this faction at war with another faction?
+---@field at_war_with fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Returns the upkeep cost of all units in the faction
+---@field upkeep fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- Returns the factions regular income. This is the income before expenditure is subtracted
+---@field income fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- return the factions diplomatic standing with the specified faction
+---@field diplomatic_standing_with fun(self:FACTION_SCRIPT_INTERFACE, faction_key:string):integer
+--- return the factions with the same subculture as this faction
+---@field factions_of_same_subculture fun(self:FACTION_SCRIPT_INTERFACE):FACTION_LIST_SCRIPT_INTERFACE
+--- Maximum number of slaves for the faction
+---@field max_faction_slaves fun(self:FACTION_SCRIPT_INTERFACE):integer
+--- Does this faction have a non-aggression pact with another faction?
+---@field non_aggression_pact_with fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- return the factions this faction is trading with
+---@field factions_trading_with fun(self:FACTION_SCRIPT_INTERFACE):FACTION_LIST_SCRIPT_INTERFACE
+--- Is this faction allied, vassal of or client state of another faction?
+---@field is_ally_vassal_or_client_state_of fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Is this faction a vassel
+---@field is_vassal fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Does the faction have any technologies currently available for research
+---@field has_available_technologies fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- returns true of the faction has food shortages
+---@field has_food_shortages fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- return the factions this faction has a non-aggression pact with
+---@field factions_non_aggression_pact_with fun(self:FACTION_SCRIPT_INTERFACE):FACTION_LIST_SCRIPT_INTERFACE
+--- Returns the current production/consumption of the specified food factor, without the multiplier
+---@field get_food_factor_base_value fun(self:FACTION_SCRIPT_INTERFACE, factor_key:string):integer
+--- Is the faction currently researching a technology?
+---@field is_currently_researching fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Was one of this factions sea trade routes has been raided in the last round? DEPRECATED - ALWAYS RETURNS FALSE
+---@field sea_trade_route_raided fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Does this faction have a trade agreement with another faction?
+---@field trade_agreement_with fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Was peace declared between this faction and another faction this turn?
+---@field ended_war_this_turn fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Returns whether the faction is allowed to capture territory
+---@field is_allowed_to_capture_territory fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Returns the culture for the faction
+---@field culture fun(self:FACTION_SCRIPT_INTERFACE):string
+--- Gets the flag folder path used by this faction
+---@field flag_path fun(self:FACTION_SCRIPT_INTERFACE):string
+--- Remaining capacity for agents of the given subtype in this faction
+---@field agent_subtype_cap_remaining fun(self:FACTION_SCRIPT_INTERFACE, agent_subtype_key:string):integer
+--- Is this an idle human faction? An idle human faction started the campaign human-player controlled but they've dropped out at some point and not yet resumed.
+---@field is_idle_human fun(self:FACTION_SCRIPT_INTERFACE):boolean
+--- Does the faction have a home region?
+---@field has_home_region fun(self:FACTION_SCRIPT_INTERFACE):boolean
+
+
+--- A list of pooled resource script interfaces
+---@class POOLED_RESOURCE_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:POOLED_RESOURCE_LIST_SCRIPT_INTERFACE, positive:integer):POOLED_RESOURCE_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:POOLED_RESOURCE_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:POOLED_RESOURCE_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Route Position Script Interface
+---@class ROUTE_POSITION_SCRIPT_INTERFACE
+--- Is this a valid position?
+---@field valid fun(self:ROUTE_POSITION_SCRIPT_INTERFACE):boolean
+--- ID of the Network that this position resides within
+---@field network_id fun(self:ROUTE_POSITION_SCRIPT_INTERFACE):integer
+--- Network that this position resides within
+---@field network fun(self:ROUTE_POSITION_SCRIPT_INTERFACE):ROUTE_NETWORK_SCRIPT_INTERFACE
+--- ID of the node that this position represents
+---@field node_id fun(self:ROUTE_POSITION_SCRIPT_INTERFACE):integer
+--- Is this the null script interface
+---@field is_null_interface fun(self:ROUTE_POSITION_SCRIPT_INTERFACE):boolean
+--- Node that this position represents
+---@field node fun(self:ROUTE_POSITION_SCRIPT_INTERFACE):ROUTE_NODE_SCRIPT_INTERFACE
+
+
+--- Caravan Recruitment Item Script Interface
+---@class CARAVAN_RECRUITMENT_ITEM_SCRIPT_INTERFACE
+--- Is this recruitment item valid for recruitment?
+---@field valid fun(self:CARAVAN_RECRUITMENT_ITEM_SCRIPT_INTERFACE):boolean
+--- Caravan master that would be recruited
+---@field caravan_master fun(self:CARAVAN_RECRUITMENT_ITEM_SCRIPT_INTERFACE):FAMILY_MEMBER_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:CARAVAN_RECRUITMENT_ITEM_SCRIPT_INTERFACE):boolean
+--- Treasury cost of this item
+---@field cost fun(self:CARAVAN_RECRUITMENT_ITEM_SCRIPT_INTERFACE):integer
+
+
+--- A list of effects
+---@class EFFECT_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:EFFECT_LIST_SCRIPT_INTERFACE, positive:integer):EFFECT_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:EFFECT_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:EFFECT_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Winds Of Magic Compass Script Interface
+---@class WOM_COMPASS_SCRIPT_INTERFACE
+--- Returns the cooldown to be able change the direction for a faction
+---@field get_faction_cooldown fun(self:WOM_COMPASS_SCRIPT_INTERFACE, faction_key:string):integer
+--- Returns the cooldown to be able change the direction
+---@field get_compass_cooldown fun(self:WOM_COMPASS_SCRIPT_INTERFACE):integer
+--- Returns the power level for a given direction
+---@field get_direction_power_level fun(self:WOM_COMPASS_SCRIPT_INTERFACE):integer
+--- Returns the selected direction key
+---@field get_selected_direction fun(self:WOM_COMPASS_SCRIPT_INTERFACE):string
+--- Can the faction operate the compass?
+---@field faction_can_make_selection fun(self:WOM_COMPASS_SCRIPT_INTERFACE, faction_key:string):boolean
+--- Is this the null script interface
+---@field is_null_interface fun(self:WOM_COMPASS_SCRIPT_INTERFACE):boolean
+--- Returns all the possible directions
+---@field get_directions fun(self:WOM_COMPASS_SCRIPT_INTERFACE):string
+
+
+--- Teleportation Node Script Interface
+---@class TELEPORTATION_NODE_SCRIPT_INTERFACE
+--- Database record key of this nodes template
+---@field template_key fun(self:TELEPORTATION_NODE_SCRIPT_INTERFACE):string
+--- Can this node be closed by a character?
+---@field closable fun(self:TELEPORTATION_NODE_SCRIPT_INTERFACE):boolean
+--- Logical hex position of this node
+---@field position fun(self:TELEPORTATION_NODE_SCRIPT_INTERFACE):integer,integer
+--- Number of characters travelling through the network to this specific node
+---@field number_of_incoming_travellers fun(self:TELEPORTATION_NODE_SCRIPT_INTERFACE):integer
+--- Database record key of this node
+---@field record_key fun(self:TELEPORTATION_NODE_SCRIPT_INTERFACE):string
+--- Is this the null script interface
+---@field is_null_interface fun(self:TELEPORTATION_NODE_SCRIPT_INTERFACE):boolean
+--- Round this node was opened
+---@field round_opened fun(self:TELEPORTATION_NODE_SCRIPT_INTERFACE):integer
+
+
+--- Favour Points Script Interface. Can be accessed from the episodic scripting interface.
+---@class WAR_COORDINATION_SCRIPT_INTERFACE
+--- Set favour points of a faction toward another faction
+---@field set_faction_favour_points_toward_faction fun(self:WAR_COORDINATION_SCRIPT_INTERFACE, owner_faction:FACTION_SCRIPT_INTERFACE, toward_faction:FACTION_SCRIPT_INTERFACE, amount:number)
+--- Is this the null script interface
+---@field is_null_interface fun(self:WAR_COORDINATION_SCRIPT_INTERFACE):boolean
+--- Get favour points of a faction toward another faction
+---@field get_faction_favour_points_toward_faction fun(self:WAR_COORDINATION_SCRIPT_INTERFACE, owner_faction:integer, toward_faction:FACTION_SCRIPT_INTERFACE):number
+
+
+--- Teleportation Network Script Interface
+---@class TELEPORTATION_NETWORK_SCRIPT_INTERFACE
+--- Return a list of all closed nodes
+---@field closed_nodes fun(self:TELEPORTATION_NETWORK_SCRIPT_INTERFACE):TELEPORTATION_NODE_RECORD_LIST_SCRIPT_INTERFACE
+--- Return a list of all open nodes of the specified template
+---@field open_nodes_of_template fun(self:TELEPORTATION_NETWORK_SCRIPT_INTERFACE, template_key:string):TELEPORTATION_NODE_LIST_SCRIPT_INTERFACE
+--- Return a list of all open nodes
+---@field open_nodes fun(self:TELEPORTATION_NETWORK_SCRIPT_INTERFACE):TELEPORTATION_NODE_LIST_SCRIPT_INTERFACE
+--- Is the node currently closed
+---@field is_node_closed fun(self:TELEPORTATION_NETWORK_SCRIPT_INTERFACE, node_key:string):boolean
+--- Return a list all closed nodes of the specified template
+---@field closed_nodes_of_template fun(self:TELEPORTATION_NETWORK_SCRIPT_INTERFACE, template_key:string):TELEPORTATION_NODE_RECORD_LIST_SCRIPT_INTERFACE
+--- Database record key for this network
+---@field record_key fun(self:TELEPORTATION_NETWORK_SCRIPT_INTERFACE):string
+--- Attempt to lookup the specified open node
+---@field lookup_open_node fun(self:TELEPORTATION_NETWORK_SCRIPT_INTERFACE, node_key:string):TELEPORTATION_NODE_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:TELEPORTATION_NETWORK_SCRIPT_INTERFACE):boolean
+
+
+--- A list of teleportation network node record script interfaces
+---@class TELEPORTATION_NODE_RECORD_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:TELEPORTATION_NODE_RECORD_LIST_SCRIPT_INTERFACE, positive:integer):TELEPORTATION_NODE_RECORD_LIST_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:TELEPORTATION_NODE_RECORD_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:TELEPORTATION_NODE_RECORD_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Unit script interface. Land units and Naval units are derived from Unit.
+---@class UNIT_SCRIPT_INTERFACE
+--- The unit record category
+---@field unit_category fun(self:UNIT_SCRIPT_INTERFACE):string
+--- Returns the military force containing this unit
+---@field military_force fun(self:UNIT_SCRIPT_INTERFACE):MILITARY_FORCE_SCRIPT_INTERFACE
+--- Get the list of unit purchasable effects linked to this unit
+---@field get_unit_purchasable_effects fun(self:UNIT_SCRIPT_INTERFACE):UNIT_PURCHASABLE_EFFECT_LIST_SCRIPT_INTERFACE
+--- Get the list of purchasable effects purchased for the unit
+---@field get_unit_purchased_effects fun(self:UNIT_SCRIPT_INTERFACE):UNIT_PURCHASABLE_EFFECT_LIST_SCRIPT_INTERFACE
+--- Can the specified unpurchase happen
+---@field can_unpurchase_effect fun(self:UNIT_SCRIPT_INTERFACE, effect:UNIT_PURCHASABLE_EFFECT_SCRIPT_INTERFACE):boolean
+--- The unit record class
+---@field unit_class fun(self:UNIT_SCRIPT_INTERFACE):string
+--- Returns the faction that this unit belongs to
+---@field faction fun(self:UNIT_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+--- The % of soldiers in the unit. Returns a value 0.0-100.0
+---@field percentage_proportion_of_full_strength fun(self:UNIT_SCRIPT_INTERFACE):number
+--- The unit record key
+---@field unit_key fun(self:UNIT_SCRIPT_INTERFACE):string
+--- Can this unit be upgraded to another unit
+---@field can_upgrade_unit fun(self:UNIT_SCRIPT_INTERFACE):boolean
+--- Get the experience level of this unit, which is the number of chevrons it has
+---@field experience_level fun(self:UNIT_SCRIPT_INTERFACE):integer
+--- Is this a naval unit?
+---@field is_naval_unit fun(self:UNIT_SCRIPT_INTERFACE):boolean
+--- Does this unit have a character leading it? Not all units have one
+---@field has_unit_commander fun(self:UNIT_SCRIPT_INTERFACE):boolean
+--- Can this unit upgrade it's equipment
+---@field can_upgrade_unit_equipment fun(self:UNIT_SCRIPT_INTERFACE):boolean
+--- Returns the force commander if one exists
+---@field force_commander fun(self:UNIT_SCRIPT_INTERFACE):CHARACTER_SCRIPT_INTERFACE
+--- Returns the ancillary key of the banner equipped by the unit, or an empty string if no banner is equipped
+---@field banner_ancillary fun(self:UNIT_SCRIPT_INTERFACE):string
+--- Is this a land unit?
+---@field is_land_unit fun(self:UNIT_SCRIPT_INTERFACE):boolean
+--- Is the unit in a force with a commander?
+---@field has_force_commander fun(self:UNIT_SCRIPT_INTERFACE):boolean
+--- Returns the unit commander if one exists
+---@field unit_commander fun(self:UNIT_SCRIPT_INTERFACE):CHARACTER_SCRIPT_INTERFACE
+--- Get the cost of the unit in multiplayer or custom battle mode
+---@field get_unit_custom_battle_cost fun(self:UNIT_SCRIPT_INTERFACE):integer
+--- Access to the campaign model interface
+---@field model fun(self:UNIT_SCRIPT_INTERFACE):MODEL_SCRIPT_INTERFACE
+--- Returns whether the unit has a banner equipped
+---@field has_banner_ancillary fun(self:UNIT_SCRIPT_INTERFACE):boolean
+--- Can the specified purchase happen
+---@field can_purchase_effect fun(self:UNIT_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE, effect:UNIT_PURCHASABLE_EFFECT_SCRIPT_INTERFACE):boolean
+--- Is this the null script interface
+---@field is_null_interface fun(self:UNIT_SCRIPT_INTERFACE):boolean
+--- Command queue index of the unit
+---@field command_queue_index fun(self:UNIT_SCRIPT_INTERFACE):integer
+
+
+--- Unit purchasable effect script interface.
+---@class UNIT_PURCHASABLE_EFFECT_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:UNIT_PURCHASABLE_EFFECT_SCRIPT_INTERFACE):boolean
+--- Unit purchasable effect record key
+---@field record_key fun(self:UNIT_PURCHASABLE_EFFECT_SCRIPT_INTERFACE):string
+
+
+--- A list of province interfaces
+---@class PROVINCE_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:PROVINCE_LIST_SCRIPT_INTERFACE, positive:integer):PROVINCE_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:PROVINCE_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:PROVINCE_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Sea Region Manager script interface, world sea region list, faction sea regions and lookup by key
+---@class SEA_REGION_MANAGER_SCRIPT_INTERFACE
+--- Returns the campaign model
+---@field model fun(self:SEA_REGION_MANAGER_SCRIPT_INTERFACE):MODEL_SCRIPT_INTERFACE
+--- Returns a complete list of sea regions for the given faction
+---@field faction_sea_region_list fun(self:SEA_REGION_MANAGER_SCRIPT_INTERFACE, faction:string):SEA_REGION_LIST_SCRIPT_INTERFACE
+--- Attempts to look up a sea region by record key
+---@field sea_region_by_key fun(self:SEA_REGION_MANAGER_SCRIPT_INTERFACE, key:string):SEA_REGION_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:SEA_REGION_MANAGER_SCRIPT_INTERFACE):boolean
+--- Returns a complete list of sea regions in the world
+---@field sea_region_list fun(self:SEA_REGION_MANAGER_SCRIPT_INTERFACE):SEA_REGION_LIST_SCRIPT_INTERFACE
+
+
+--- Character Imprisonment Rejection Reason Mask Scripting Interface
+---@class CHARACTER_IMPRISONMENT_REJECTION_REASON_MASK_SCRIPTING_INTERFACE
+--- Is it because the prisoner is a member of a garrison?
+---@field is_member_of_garrison fun(self:CHARACTER_IMPRISONMENT_REJECTION_REASON_MASK_SCRIPTING_INTERFACE):boolean
+--- Is it because the prisoner is a placeholder character?
+---@field is_placeholder_character fun(self:CHARACTER_IMPRISONMENT_REJECTION_REASON_MASK_SCRIPTING_INTERFACE):boolean
+--- Is it because of any reason?
+---@field any fun(self:CHARACTER_IMPRISONMENT_REJECTION_REASON_MASK_SCRIPTING_INTERFACE):boolean
+--- Is it because the prisoner is from a dead faction?
+---@field is_from_dead_faction fun(self:CHARACTER_IMPRISONMENT_REJECTION_REASON_MASK_SCRIPTING_INTERFACE):boolean
+--- Is it because the prisoner is from a rebel faction?
+---@field is_from_rebel_faction fun(self:CHARACTER_IMPRISONMENT_REJECTION_REASON_MASK_SCRIPTING_INTERFACE):boolean
+--- Is this the null script interface
+---@field is_null_interface fun(self:CHARACTER_IMPRISONMENT_REJECTION_REASON_MASK_SCRIPTING_INTERFACE):boolean
+--- Is it because the prisoner is from a companion faction?
+---@field is_from_companion_faction fun(self:CHARACTER_IMPRISONMENT_REJECTION_REASON_MASK_SCRIPTING_INTERFACE):boolean
+
+
+--- A list of units
+---@class UNIT_LIST_SCRIPT_INTERFACE
+--- Test if a unit exists in the unit list. Input a unit record key.
+---@field has_unit fun(self:UNIT_LIST_SCRIPT_INTERFACE, key:string):boolean
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:UNIT_LIST_SCRIPT_INTERFACE, positive:integer):UNIT_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:UNIT_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:UNIT_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- A list of military forces
+---@class MILITARY_FORCE_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:MILITARY_FORCE_LIST_SCRIPT_INTERFACE, positive:integer):MILITARY_FORCE_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:MILITARY_FORCE_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:MILITARY_FORCE_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Region Data Script Interface, a region of the campaign map. May or may not be represented by a region or sea region
+---@class REGION_DATA_SCRIPT_INTERFACE
+--- True if this region data is an sea type
+---@field is_sea fun(self:REGION_DATA_SCRIPT_INTERFACE):boolean
+--- Returns a list of characters of a specified faction who are currently in the region
+---@field characters_of_faction_in_region fun(self:REGION_DATA_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE):CHARACTER_LIST_SCRIPT_INTERFACE
+--- Database record key of this region data
+---@field key fun(self:REGION_DATA_SCRIPT_INTERFACE):string
+--- Returns the region that this region data maps to. Will be null if this is a sea region
+---@field region fun(self:REGION_DATA_SCRIPT_INTERFACE):REGION_SCRIPT_INTERFACE
+--- Returns the winds of magic level of the region, both as a numeric index and string key from the campaign_map_winds_of_magic_strength table
+---@field winds_of_magic_strength fun(self:REGION_DATA_SCRIPT_INTERFACE):integer,string
+--- Returns the sea region that this region data maps to. Will be null if this is a land region
+---@field sea_region fun(self:REGION_DATA_SCRIPT_INTERFACE):SEA_REGION_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:REGION_DATA_SCRIPT_INTERFACE):boolean
+--- Returns x_min, y_min, x_max, y_max components of the regions bounds
+---@field get_bounds fun(self:REGION_DATA_SCRIPT_INTERFACE):boolean
+
+
+--- Mission script interface.
+---@class CAMPAIGN_MISSION_SCRIPT_INTERFACE
+--- Access to the campaign model interface
+---@field model fun(self:CAMPAIGN_MISSION_SCRIPT_INTERFACE):MODEL_SCRIPT_INTERFACE
+--- Returns the mission issuer record key
+---@field mission_issuer_record_key fun(self:CAMPAIGN_MISSION_SCRIPT_INTERFACE):string
+--- Returns the mission record key
+---@field mission_record_key fun(self:CAMPAIGN_MISSION_SCRIPT_INTERFACE):string
+--- Is this the null script interface
+---@field is_null_interface fun(self:CAMPAIGN_MISSION_SCRIPT_INTERFACE):boolean
+--- Access to the faction interface
+---@field faction fun(self:CAMPAIGN_MISSION_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+
+
+--- A list of unique agent details
+---@class UNIQUE_AGENT_DETAILS_LIST_SCRIPT_INTERFACE
+--- True if a unique agent details object of the same type is present
+---@field has_unique_agent_details fun(self:UNIQUE_AGENT_DETAILS_LIST_SCRIPT_INTERFACE, record_key:string):boolean
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:UNIQUE_AGENT_DETAILS_LIST_SCRIPT_INTERFACE, positive:integer):UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:UNIQUE_AGENT_DETAILS_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:UNIQUE_AGENT_DETAILS_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Faction Province manager script interface. Represents the segment of a province owned by a faction
+---@class FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE
+--- Regions controlled by this faction province manager
+---@field regions fun(self:FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE):REGION_LIST_SCRIPT_INTERFACE
+--- Returns the gross domestic produce of all regions in this faction province
+---@field gdp fun(self:FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE):number
+--- Active bonus values of this faction province
+---@field bonus_values fun(self:FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE):BONUS_VALUES_SCRIPT_INTERFACE
+--- Pooled resource manager of this faction province
+---@field pooled_resource_manager fun(self:FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE):POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE
+--- does the province contain the specified effect bundle?
+---@field has_effect_bundle fun(self:FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE, effect_bundle_key:string):boolean
+--- Is this the null script interface
+---@field is_null_interface fun(self:FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE):boolean
+--- Geographical province that contains this faction province
+---@field province fun(self:FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE):PROVINCE_SCRIPT_INTERFACE
+
+
+--- An effect that provides bonus values via a scope
+---@class EFFECT_SCRIPT_INTERFACE
+--- Record key for the scope of this effect
+---@field scope fun(self:EFFECT_SCRIPT_INTERFACE):string
+--- The value provided to bonus values from this effect
+---@field value fun(self:EFFECT_SCRIPT_INTERFACE):number
+--- Returns the record key for this effect
+---@field key fun(self:EFFECT_SCRIPT_INTERFACE):string
+--- Is this the null script interface
+---@field is_null_interface fun(self:EFFECT_SCRIPT_INTERFACE):boolean
+
+
+--- A list of caravan script interfaces
+---@class CARAVAN_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:CARAVAN_LIST_SCRIPT_INTERFACE, positive:integer):CARAVAN_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:CARAVAN_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:CARAVAN_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Teleportation Network Script Interface
+---@class TELEPORTATION_NETWORK_SYSTEM_SCRIPT_INTERFACE
+--- Lookup an open teleportation node by key. You should favour looking up the network first if looking up many nodes
+---@field lookup_open_node fun(self:TELEPORTATION_NETWORK_SYSTEM_SCRIPT_INTERFACE, node_key:string):TELEPORTATION_NODE_SCRIPT_INTERFACE
+--- Lookup a teleportation network by key
+---@field lookup_network fun(self:TELEPORTATION_NETWORK_SYSTEM_SCRIPT_INTERFACE, network_key:string):TELEPORTATION_NETWORK_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:TELEPORTATION_NETWORK_SYSTEM_SCRIPT_INTERFACE):boolean
+
+
+--- Building script interface
+---@class BUILDING_SCRIPT_INTERFACE
+--- Does this building have a lifecycle
+---@field has_lifecycle fun(self:BUILDING_SCRIPT_INTERFACE):boolean
+--- The shadow building level key, for if this building has a lifecycle. A blank string is returned if the building has no lifecycle.
+---@field shadow_building_level fun(self:BUILDING_SCRIPT_INTERFACE):string
+--- The region the building is in
+---@field region fun(self:BUILDING_SCRIPT_INTERFACE):REGION_SCRIPT_INTERFACE
+--- Level of this building
+---@field building_level fun(self:BUILDING_SCRIPT_INTERFACE):integer
+--- The health of a building as a percentage between 0-100
+---@field percent_health fun(self:BUILDING_SCRIPT_INTERFACE):integer
+--- Get the list of effects this building provides
+---@field effects fun(self:BUILDING_SCRIPT_INTERFACE):EFFECT_LIST_SCRIPT_INTERFACE
+--- Does this building unlock any technologies when constructed?
+---@field unlocks_technologies fun(self:BUILDING_SCRIPT_INTERFACE):boolean
+--- The key for the building superchain (building_superchain_record key)
+---@field superchain fun(self:BUILDING_SCRIPT_INTERFACE):string
+--- The key for the building (building level record)
+---@field name fun(self:BUILDING_SCRIPT_INTERFACE):string
+--- Returns the faction that owns the building
+---@field faction fun(self:BUILDING_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+--- The key for the building chain (building_chain_record key)
+---@field chain fun(self:BUILDING_SCRIPT_INTERFACE):string
+--- The slot containing the building
+---@field slot fun(self:BUILDING_SCRIPT_INTERFACE):SLOT_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:BUILDING_SCRIPT_INTERFACE):boolean
+--- Access to the campaign model
+---@field model fun(self:BUILDING_SCRIPT_INTERFACE):MODEL_SCRIPT_INTERFACE
+
+
+--- Cook System Script Interface
+---@class COOKING_SYSTEM_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:COOKING_SYSTEM_SCRIPT_INTERFACE):boolean
+--- Returns the cooking info for the specified faction. Null if the faction does not cook
+---@field faction_cooking_info fun(self:COOKING_SYSTEM_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE):FACTION_COOKING_INFO_SCRIPT_INTERFACE
+
+
+--- A list of faction province manager interfaces
+---@class FACTION_PROVINCE_MANAGER_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:FACTION_PROVINCE_MANAGER_LIST_SCRIPT_INTERFACE, positive:integer):FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:FACTION_PROVINCE_MANAGER_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:FACTION_PROVINCE_MANAGER_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Ritual Target Military Force Status Script Interface
+---@class RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE
+--- No invalid flags are currently set
+---@field valid fun(self:RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE):boolean
+--- This force will never be valid for any ritual. Ever.
+---@field invalid_for_any_ritual fun(self:RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE):boolean
+--- This force is not owned by you, and it must be to perform this ritual.
+---@field not_own fun(self:RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE):boolean
+--- This force is not on land, and it must be to perform this ritual
+---@field not_on_land fun(self:RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE):boolean
+--- This force is owned by you, and it must not be to perform this ritual.
+---@field is_own fun(self:RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE):boolean
+--- There is currently no target set
+---@field no_target fun(self:RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE):boolean
+--- This force is not on sea, and it must be to perform this ritual
+---@field not_on_sea fun(self:RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE):boolean
+--- This force is not the correct subculture.
+---@field invalid_subculture fun(self:RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE):boolean
+--- Is this the null script interface
+---@field is_null_interface fun(self:RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE):boolean
+--- This is not a military force target
+---@field wrong_type fun(self:RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE):boolean
+
+
+--- Slot script interface
+---@class SLOT_SCRIPT_INTERFACE
+--- The slot type
+---@field type fun(self:SLOT_SCRIPT_INTERFACE):string
+--- The region for this slot
+---@field region fun(self:SLOT_SCRIPT_INTERFACE):REGION_SCRIPT_INTERFACE
+--- Returns the building in this slot (if it exists)
+---@field building fun(self:SLOT_SCRIPT_INTERFACE):BUILDING_SCRIPT_INTERFACE
+--- Is this slot active?
+---@field active fun(self:SLOT_SCRIPT_INTERFACE):boolean
+--- The slot reource key (empty if none)
+---@field resource_key fun(self:SLOT_SCRIPT_INTERFACE):string
+--- Is there a building in this slot?
+---@field has_building fun(self:SLOT_SCRIPT_INTERFACE):boolean
+--- Returns the faction that owns the slot
+---@field faction fun(self:SLOT_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+--- The slot template record key
+---@field template_key fun(self:SLOT_SCRIPT_INTERFACE):string
+--- The slot name
+---@field name fun(self:SLOT_SCRIPT_INTERFACE):string
+--- Is this the null script interface
+---@field is_null_interface fun(self:SLOT_SCRIPT_INTERFACE):boolean
+--- Access to the campaign model
+---@field model fun(self:SLOT_SCRIPT_INTERFACE):MODEL_SCRIPT_INTERFACE
+
+
+--- A list of unit purchasable effects
+---@class UNIT_PURCHASABLE_EFFECT_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:UNIT_PURCHASABLE_EFFECT_LIST_SCRIPT_INTERFACE, positive:integer):UNIT_PURCHASABLE_EFFECT_LIST_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:UNIT_PURCHASABLE_EFFECT_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:UNIT_PURCHASABLE_EFFECT_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Bonus values for a campaign object
+---@class BONUS_VALUES_SCRIPT_INTERFACE
+--- Returns a bonus value parameterised on a public order provider record
+---@field public_order_provider_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a building chain record
+---@field building_chain_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a unit attribute
+---@field unit_attribute_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a deployable record
+---@field deployable_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a building level record
+---@field building_level_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a pooled resource record
+---@field pooled_resource_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a subculture
+---@field subculture_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a projectile shot type record
+---@field projectile_shot_type_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a campaign map attrition record
+---@field campaign_map_attrition_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a unit ability 
+---@field unit_ability_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a faction
+---@field faction_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on an army special ability
+---@field army_special_ability_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a ritual
+---@field ritual_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a province initiative record
+---@field province_initiative_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a unit caste
+---@field unit_caste_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a ritual chain
+---@field ritual_chain_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Is this the null script interface
+---@field is_null_interface fun(self:BONUS_VALUES_SCRIPT_INTERFACE):boolean
+--- Returns a bonus value parameterised on an action result additional outcome record
+---@field action_results_additional_outcome_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a unit category
+---@field unit_category_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a scripted bonus value id record
+---@field scripted_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on an action province initiative record
+---@field province_initiative_effect_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a resource
+---@field resource_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a special ability phase record
+---@field special_ability_phase_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a technology record
+---@field technology_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a projectile record
+---@field projectile_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a character training group record
+---@field character_training_group_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a special ability group record
+---@field special_ability_group_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a pooled resource factor junction record
+---@field pooled_resource_factor_junction_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a loyalty event effect record
+---@field loyalty_event_effect_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a unit set and a special ability phase record
+---@field unit_set_special_ability_phase_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, unit_set_key:string, special_ability_phase_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a main unit record
+---@field main_unit_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on an agent subtype record
+---@field agent_subtype_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a battlefield deployable siege item record
+---@field battlefield_deployable_siege_item_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on an agent action record
+---@field agent_action_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a missile weapon
+---@field missile_weapon_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a technology category record
+---@field technology_category_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a name record
+---@field name_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a bonus value parameterised on a unit class
+---@field unit_class_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+--- Returns a basic bonus value parameterised on no record
+---@field basic_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, bonus_value_id:string):number
+--- Returns a bonus value parameterised on an agent record
+---@field agent_value fun(self:BONUS_VALUES_SCRIPT_INTERFACE, record_key:string, bonus_value_id:string):number
+
+
+--- Ritual Target Faction Status Script Interface
+---@class RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE
+--- No invalid flags are currently set
+---@field valid fun(self:RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE):boolean
+--- This faction will never be valid for any ritual. Ever.
+---@field invalid_for_any_ritual fun(self:RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE):boolean
+--- The target type is not a faction
+---@field wrong_type fun(self:RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE):boolean
+--- This is your own faction, and your own faction is not valid.
+---@field is_own fun(self:RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE):boolean
+--- This faction is excluded from the permitted faction set for this ritual
+---@field faction_not_permitted fun(self:RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE):boolean
+--- There is currently no target set
+---@field no_target fun(self:RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE):boolean
+--- This faction is not human and this ritual may only target humans
+---@field not_human fun(self:RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE):boolean
+--- This faction is human and this ritual may only target non-humans
+---@field human fun(self:RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE):boolean
+--- Is this the null script interface
+---@field is_null_interface fun(self:RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE):boolean
+--- This is not your own faction, and only your own faction is valid.
+---@field not_own fun(self:RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE):boolean
+
+
+--- Pending battle script interface.
+---@class PENDING_BATTLE_SCRIPT_INTERFACE
+--- The battle result for the attacker
+---@field attacker_battle_result fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):string,integer,integer,integer
+--- Has the attacker won the battle
+---@field attacker_won fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+--- Did the commander engage in melee?
+---@field defender_commander_fought_in_melee fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+--- The battle is a naval battle
+---@field naval_battle fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+--- Has the battle resulted in a draw
+---@field is_draw fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+--- Returns the list of secondary attacking characters
+---@field secondary_attackers fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):CHARACTER_LIST_SCRIPT_INTERFACE
+--- Returns the defending character, if one exists
+---@field defender fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):CHARACTER_SCRIPT_INTERFACE
+--- Returns the contested residence, if it exists
+---@field contested_garrison fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):GARRISON_RESIDENCE_SCRIPT_INTERFACE
+--- True if the battle has been fought and ended with an army withdrawing
+---@field ended_with_withdraw fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+--- True if the pending battle has the specified tile upgrade tag.
+---@field has_scripted_tile_upgrade fun(self:PENDING_BATTLE_SCRIPT_INTERFACE, tag:string):boolean
+--- The relative strength of the attacker
+---@field attacker_strength fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):number
+--- Returns the attacking character, if one exists
+---@field attacker fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):CHARACTER_SCRIPT_INTERFACE
+--- Percentage of defenders routed in battle
+---@field percentage_of_defender_routed fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):number
+--- The battle result for the defender
+---@field defender_battle_result fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):string,integer,integer,integer
+--- Region data that the battle is taking place within
+---@field region_data fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):REGION_DATA_SCRIPT_INTERFACE
+--- Access to the campaign model
+---@field model fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):MODEL_SCRIPT_INTERFACE
+--- Returns the list of secondary defending characters
+---@field secondary_defenders fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):CHARACTER_LIST_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+--- Display position of the battle site
+---@field display_position fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):number,number
+--- Percentage of attacker killed in battle
+---@field percentage_of_attacker_killed fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):number
+--- Percentage of defender killed in battle
+---@field percentage_of_defender_killed fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):number
+--- ending CP kill score of the attacker (damage)
+---@field attacker_ending_cp_kill_score fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):integer
+--- Number of men the attacker lost in the battle
+---@field attacker_casulaties fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):integer
+--- ending CP kill score of the defender (damage)
+---@field defender_ending_cp_kill_score fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):integer
+--- True if the pending battle was autoresolved
+---@field is_auto_resolved fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+--- The battle is a night battle
+---@field night_battle fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+--- Percentage of attackers routed in battle
+---@field percentage_of_attacker_routed fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):number
+--- The battle is a failed ambush battle
+---@field failed_ambush_battle fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+--- Logical position of the battle site
+---@field logical_position fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):integer,integer
+--- The battle is a siege battle
+---@field siege_battle fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+--- Expects a faction CQI for and the String tag for the unit ability in question and will return the number of times it was used.
+---@field get_how_many_times_ability_has_been_used_in_battle fun(self:PENDING_BATTLE_SCRIPT_INTERFACE, faction_cqi:number, tag:string):integer
+--- Number of men the defender killed in the battle
+---@field defender_kills fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):integer
+--- True if the battle has been fought
+---@field has_been_fought fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+--- Number of men the defender lost in the battle
+---@field defender_casulaties fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):integer
+--- The relative strength of the defender
+---@field defender_strength fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):number
+--- Is the pending battle at a garrison?
+---@field has_contested_garrison fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+--- The battle type. Asks a programmer for the battle type strings (found in campaign_battle_type_enum_ids, campaignbonusvalues.cpp)
+---@field battle_type fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):string
+--- total amount of hp lost by the attacker's units
+---@field attacker_total_hp_lost fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):integer
+--- The battle is a ambush battle
+---@field ambush_battle fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+--- Returns the set piece battle key. Empty if this isn't a set piece battle
+---@field set_piece_battle_key fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):string
+--- total amount of hp lost by the defender's units
+---@field defender_total_hp_lost fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):integer
+--- Does the pending battle have a defending character?
+---@field has_defender fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+--- Did the commander engage in the battle?
+---@field attacker_commander_fought_in_battle fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+--- Has the defender won the battle
+---@field defender_won fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+--- Is a pending battle active?
+---@field is_active fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+--- Number of men the attacker killed in the battle
+---@field attacker_kills fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):integer
+--- Is the attacking force stronger than the defender?
+---@field attacker_is_stronger fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+--- Did the commander engage in melee?
+---@field attacker_commander_fought_in_melee fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+--- Does the pending battle have an attacking character?
+---@field has_attacker fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+--- Did the commander engage in the battle?
+---@field defender_commander_fought_in_battle fun(self:PENDING_BATTLE_SCRIPT_INTERFACE):boolean
+
+
+--- Ritual Setup Script Interface
+---@class RITUAL_SETUP_SCRIPT_INTERFACE
+--- Are all the performing character slots valid?
+---@field performing_characters_valid fun(self:RITUAL_SETUP_SCRIPT_INTERFACE):boolean
+--- Create a new copy of this ritual setup in a modify interface
+---@field clone_as_modify_interface fun(self:RITUAL_SETUP_SCRIPT_INTERFACE):MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE
+--- A list of the performing character slots
+---@field performing_characters fun(self:RITUAL_SETUP_SCRIPT_INTERFACE):RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE
+--- The target of this ritual
+---@field target fun(self:RITUAL_SETUP_SCRIPT_INTERFACE):RITUAL_TARGET_SCRIPT_INTERFACE
+--- The ritual to be performed
+---@field ritual_record fun(self:RITUAL_SETUP_SCRIPT_INTERFACE):string
+--- Is this the null script interface
+---@field is_null_interface fun(self:RITUAL_SETUP_SCRIPT_INTERFACE):boolean
+--- The faction performing the ritual
+---@field performing_faction fun(self:RITUAL_SETUP_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+
+
+--- Pooled Resource Script Interface
+---@class POOLED_RESOURCE_SCRIPT_INTERFACE
+--- Maximum value of this pool. Including any modifications from effects
+---@field maximum_value fun(self:POOLED_RESOURCE_SCRIPT_INTERFACE):integer
+--- Number of possible effect types. Consistent between all pools.
+---@field number_of_effect_types fun(self:POOLED_RESOURCE_SCRIPT_INTERFACE):integer
+--- Returns the Pooled Resource Manager
+---@field manager fun(self:POOLED_RESOURCE_SCRIPT_INTERFACE):POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE
+--- Active effect bundle key of type for this faction. No effect of type active if it has an empty key
+---@field active_effect fun(self:POOLED_RESOURCE_SCRIPT_INTERFACE, unnamed:number):string
+--- Percentage of the total capacity in the bounds between min and max. For example if the pool had a range of -5,5 and a value of 0 it would have a percentage of 50%.
+---@field percentage_of_capacity fun(self:POOLED_RESOURCE_SCRIPT_INTERFACE):integer
+--- Lookup a pooled resource factor by resource factor key
+---@field factor_by_key fun(self:POOLED_RESOURCE_SCRIPT_INTERFACE):POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE
+--- Minimum value of this pool. Including any modifications from effects
+---@field minimum_value fun(self:POOLED_RESOURCE_SCRIPT_INTERFACE):integer
+--- Record key for this resource pool
+---@field key fun(self:POOLED_RESOURCE_SCRIPT_INTERFACE):string
+--- Does this pooled resource have persistent factors? If true the factor breakdown of this resource is not reset when regular income is applied
+---@field has_persistent_factors fun(self:POOLED_RESOURCE_SCRIPT_INTERFACE):boolean
+--- Total value of this pool
+---@field value fun(self:POOLED_RESOURCE_SCRIPT_INTERFACE):integer
+--- All factors contributing to this pool. Unless the pool has persistent factors, only the factors of transactions for the current turn
+---@field factors fun(self:POOLED_RESOURCE_SCRIPT_INTERFACE):POOLED_RESOURCE_FACTOR_LIST_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:POOLED_RESOURCE_SCRIPT_INTERFACE):boolean
+--- Scope of the pooled resource. Where it resides and gathers income
+---@field scope fun(self:POOLED_RESOURCE_SCRIPT_INTERFACE):string
+
+
+--- Shared States Manager Script Interfaces
+---@class SHARED_STATES_MANAGER_SCRIPT_INTERFACE
+--- returns state as float by key. Returns nil if not present
+---@field get_state_as_float_value fun(self:SHARED_STATES_MANAGER_SCRIPT_INTERFACE, campaign:integer|nil, key:string):number
+--- returns state as string by key. Returns nil if not present
+---@field get_state_as_string_value fun(self:SHARED_STATES_MANAGER_SCRIPT_INTERFACE, key:string):string
+--- Is this the null script interface
+---@field is_null_interface fun(self:SHARED_STATES_MANAGER_SCRIPT_INTERFACE):boolean
+--- returns state as bool by key. Returns nil if not present
+---@field get_state_as_bool_value fun(self:SHARED_STATES_MANAGER_SCRIPT_INTERFACE, campaign:integer|nil, key:string):boolean
+
+
+--- Sea Region script interface, only basic information as sea regions do not contain settlements
+---@class SEA_REGION_SCRIPT_INTERFACE
+--- Gets the REGION_DATA interface of the region
+---@field region_data_interface fun(self:SEA_REGION_SCRIPT_INTERFACE):REGION_DATA_SCRIPT_INTERFACE
+--- Sea Region Record Key
+---@field name fun(self:SEA_REGION_SCRIPT_INTERFACE):string
+--- Is this the null script interface
+---@field is_null_interface fun(self:SEA_REGION_SCRIPT_INTERFACE):boolean
+--- Campaign Model
+---@field model fun(self:SEA_REGION_SCRIPT_INTERFACE):MODEL_SCRIPT_INTERFACE
+
+
+--- A list of faction interfaces
+---@class FACTION_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:FACTION_LIST_SCRIPT_INTERFACE, positive:integer):FACTION_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:FACTION_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:FACTION_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Provides an interface for building a campaign payload
+---@class CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE
+--- Sabotage the gates on a region
+---@field open_gates fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, region:REGION_SCRIPT_INTERFACE, duration:number):boolean
+--- Apply a pooled resource transaction to a region
+---@field region_pooled_resource_transaction fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, region:REGION_SCRIPT_INTERFACE, resource_key:string, factor_key:string, amount:number, required:boolean):boolean
+--- Spawn a storm
+---@field spawn_storm fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, storm_type_key:string, strength:number, max_duration:number, target_region:REGION_SCRIPT_INTERFACE|nil):boolean
+--- Apply an attitude adjustment between two factions
+---@field diplomatic_attitude_adjustment_between fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, faction_a:FACTION_SCRIPT_INTERFACE, faction_b:FACTION_SCRIPT_INTERFACE, attitude:number):boolean
+--- Kill a character
+---@field character_to_kill fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, character:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Apply a db defined loyalty effect to a character
+---@field character_loyalty_effect fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, character:CHARACTER_SCRIPT_INTERFACE, loyalty_effect_key:string):boolean
+--- Transfer a foreign slot to another faction. If no new owner is provided then the payload applicant will receive the foreign slot set
+---@field foreign_slot fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, region:REGION_SCRIPT_INTERFACE, new_owner:FACTION_SCRIPT_INTERFACE|nil):boolean
+--- Grant an ancillary to a faction. If no faction is specified, the applicant faction will be used
+---@field faction_ancillary_gain fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, target:FACTION_SCRIPT_INTERFACE|nil, ancillary_key:string):boolean
+--- Grant favour points between the payload applicant and another faction
+---@field favour_points fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, to_faction:FACTION_SCRIPT_INTERFACE, amount:number):boolean
+--- Ensure the payload is valid. This will return false if an object required has been destroyed or if the payload state is just generally not valid anymore
+---@field valid fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, target_faction:FACTION_SCRIPT_INTERFACE):boolean
+--- Damage a character by a percentage
+---@field damage_character fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, character:CHARACTER_SCRIPT_INTERFACE, percentage_damage:number):boolean
+--- Form a confederation between a faction and the payload applicant
+---@field form_confederation fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, owner_faction:FACTION_SCRIPT_INTERFACE, other_faction:FACTION_SCRIPT_INTERFACE, awake_from_death:boolean):boolean
+--- Apply an effect bundle to a region
+---@field effect_bundle_to_region fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, region:REGION_SCRIPT_INTERFACE, string:string|EFFECT_BUNDLE_SCRIPT_INTERFACE|CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE):boolean
+--- Grant vision of factions regions. Vision will be granted to the payload applicant if no receiving faction is provided
+---@field grant_vision_of_faction_regions fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, target:FACTION_SCRIPT_INTERFACE, duration:number, receiver:FACTION_SCRIPT_INTERFACE|nil):boolean
+--- Spawn a military force. If no owning faction is provided, the payload applicant will receive the force
+---@field spawn_military_force fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, spawnable_force_key:string, owning_faction:FACTION_SCRIPT_INTERFACE|nil):boolean
+--- Remove a random ancillary from a character
+---@field random_ancillary_loss fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, character:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Apply an effect bundle to a character
+---@field effect_bundle_to_character fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, character:CHARACTER_SCRIPT_INTERFACE, string:string|EFFECT_BUNDLE_SCRIPT_INTERFACE|CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE):boolean
+--- Adjust the payload applicant factions influence balance
+---@field influence_adjustment fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, amount:number):boolean
+--- Change target character's action points by a percentage of their amount per turn
+---@field action_points_percentage_change fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, target_character:CHARACTER_SCRIPT_INTERFACE, percentage:number):boolean
+--- Grant vision of factions characters. Vision will be granted to the payload applicant if no receiving faction is provided
+---@field grant_vision_of_faction_characters fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, target:FACTION_SCRIPT_INTERFACE, duration:number, receiver:FACTION_SCRIPT_INTERFACE|nil):boolean
+--- Apply an effect bundle to every single faction in the game
+---@field effect_bundle_to_all_factions fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, string:string|EFFECT_BUNDLE_SCRIPT_INTERFACE|CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE):boolean
+--- Disable movement for a faction. This is for temporary disabling, don't use this to try and disable a faction for good
+---@field disable_faction_characters_movement fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE, duration:number):boolean
+--- Add all components from a campaign payload record. ContextVariant = (CHARACTER_SCRIPT_INTERFACE | FACTION_SCRIPT_INTERFACE | REGION_SCRIPT_INTERFACE | SETTLEMENT_SCRIPT_INTERFACE | MILITARY_FORCE_SCRIPT_INTERFACE | PROVINCE_SCRIPT_INTERFACE | FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE)
+---@field components_from_record fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, payload_key:string, source:integer, target:integer):boolean
+--- Add/Remove a transported military force from every military force owned by the payload applicant
+---@field transported_military_force fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, transported_force_key:string, is_removal:boolean):boolean
+--- Set a war coordination target for a faction
+---@field war_coordination_target fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE, target:REGION_SCRIPT_INTERFACE | MILITARY_FORCE_SCRIPT_INTERFACE, offensive:boolean):boolean
+--- Add a mercenary unit to the faction pool
+---@field add_mercenary_to_faction_pool fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, unit_key:string, amount:number):boolean
+--- Adjust diplomatic attitude between a faction and the payload applicant
+---@field diplomatic_attitude_adjustment fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, other_faction:FACTION_SCRIPT_INTERFACE, adjustment:integer):boolean
+--- Remove all components from the payload
+---@field clear fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE)
+--- Damage buildings in the payload applicants home region, by a semi-random amount
+---@field damage_buildings_home_region fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, min_amount:number, max_amount:number):boolean
+--- Add text display to the payload
+---@field text_display fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, payload_ui_detail_key:string):boolean
+--- Apply a pooled resource transaction from a record. If "required" is true then dilemma options with this payload will only be selectable if the faction has the resources to afford this cost
+---@field faction_pooled_resource_transaction_from_record fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, resource_cost_key:string, required:boolean):boolean
+--- Give a region to the applicant faction
+---@field give_region fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, region:REGION_SCRIPT_INTERFACE):boolean
+--- Wound a character
+---@field character_to_wound fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, character:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Cause a rebellion in a region
+---@field rebellion fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, region:REGION_SCRIPT_INTERFACE):boolean
+--- Spawn a unit into a garrison army
+---@field spawn_unit fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, unit_key:string, region:integer):boolean
+--- Destroy a given unit
+---@field destroy_unit fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, target_unit:UNIT_SCRIPT_INTERFACE):boolean
+--- Spawn an agent
+---@field spawn_agent fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, agent_key:string, agent_subtype_key:string, historical_character_key:string, spawn_to_pool:boolean, target_region:REGION_SCRIPT_INTERFACE|nil, ap_factor:number|nil):boolean
+--- Apply an effect bundle to the payload applicant
+---@field effect_bundle_to_faction fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, string:string|EFFECT_BUNDLE_SCRIPT_INTERFACE|CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE):boolean
+--- Add a subpayload. Please don't add a payload to itself
+---@field subpayload fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, sub_payload:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE):boolean
+--- Remove an ancillary from a character
+---@field ancillary_loss fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, character:CHARACTER_SCRIPT_INTERFACE, ancillary_key:string):boolean
+--- Demolish secondary buildings in a region. If amount is negative, all buildings will be destroyed
+---@field demolish_secondary_buildings fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, region:REGION_SCRIPT_INTERFACE, amount:number):boolean
+--- Apply a resource transaction to an entity
+---@field entity_resource_transaction fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, target_entity:FACTION_SCRIPT_INTERFACE|REGION_SCRIPT_INTERFACE|MILITARY_FORCE_SCRIPT_INTERFACE|CHARACTER_SCRIPT_INTERFACE, resource_cost_key:string, duration:integer, must_be_able_to_afford:boolean, apply_immediately:boolean):boolean
+--- Add a weighted set of subpayload which will be randomly selected from when the payload is applied
+---@field random_subpayload fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, lua:table, campaign_payload_builder_script_interface:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE):boolean
+--- Add a location to the payload. This is for information only
+---@field located fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, object:FACTION_SCRIPT_INTERFACE|CHARACTER_SCRIPT_INTERFACE|REGION_SCRIPT_INTERFACE|PROVINCE_SCRIPT_INTERFACE):boolean
+--- Remove a unit from a given military force based on the unit record
+---@field remove_unit fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, target_force:MILITARY_FORCE_SCRIPT_INTERFACE, main_unit_key:string):boolean
+--- Transfer resources from the payload applicant to another faction
+---@field faction_pooled_resource_transfer fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, resource_cost_key:string, receiving_faction:FACTION_SCRIPT_INTERFACE):boolean
+--- Teleport an army to a region
+---@field teleport_army fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, force:MILITARY_FORCE_SCRIPT_INTERFACE, target_region:REGION_DATA_SCRIPT_INTERFACE):boolean
+--- Spawn a unit into a factions home regions' garrison army
+---@field spawn_unit_home_region fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, unit_key:string):boolean
+--- Apply a pooled resource transaction to a faction province
+---@field faction_province_pooled_resource_transaction fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, province:PROVINCE_SCRIPT_INTERFACE, resource_key:string, factor_key:string, amount:number, required:boolean):boolean
+--- Add units to a military force
+---@field add_unit fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, target_force:MILITARY_FORCE_SCRIPT_INTERFACE, main_unit_key:string, amount:number, xp:number):boolean
+--- Abandon the target regions settlement
+---@field abandon_settlement fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, region:REGION_SCRIPT_INTERFACE):boolean
+--- Adjust the payload applicant factions treasury
+---@field treasury_adjustment fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, amount:number):boolean
+--- Apply a pooled resource transaction to a military force
+---@field military_force_pooled_resource_transaction fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, force:MILITARY_FORCE_SCRIPT_INTERFACE, resource_key:string, factor_key:string, amount:number, required:boolean):boolean
+--- Grant vision of a single object. Vision will be granted to the payload applicant if no receiving faction is provided
+---@field grant_vision fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, object:MILITARY_FORCE_SCRIPT_INTERFACE|REGION_SCRIPT_INTERFACE|SEA_REGION_SCRIPT_INTERFACE|PROVINCE_SCRIPT_INTERFACE, duration:number, receiver:FACTION_SCRIPT_INTERFACE|nil):boolean
+--- Add a development point to a province
+---@field province_development_point_increase fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, province:PROVINCE_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE):boolean
+--- This function is not properly documented by CA, so the parameters are unknown
+---@field show_war_coordinaton_extra_information fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE):boolean
+--- Adjust the payload applicants slave balance
+---@field faction_slaves_adjustment fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, amount:number):boolean
+--- Set the winds of magic strength in an areas
+---@field winds_of_magic_strength_change fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, winds_of_magic_area_key:string, winds_of_magic_strength_key:string):boolean
+--- Add/Remove a percentage of the existing amount of pooled resource from the payload applicant faction. If "required" is true then dilemma options with this payload will only be selectable if the faction has the resources to afford this cost
+---@field faction_pooled_resource_transaction_percentage fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, pooled_resource_key:string, pooled_resource_factor_key:string, amount:number, required:boolean):boolean
+--- Transfer a region to a new faction. If no new owner is provided, the payload applicant will be given the region
+---@field region_transfer fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, region:REGION_SCRIPT_INTERFACE, new_owner:FACTION_SCRIPT_INTERFACE|nil):boolean
+--- Apply a percentage pooled resource transaction to a military force
+---@field military_force_pooled_resource_transaction_percentage fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, force:MILITARY_FORCE_SCRIPT_INTERFACE, resource_key:string, factor_key:string, amount:number, required:boolean):boolean
+--- Apply a percentage pooled resource transaction to a region
+---@field region_pooled_resource_transaction_percentage fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, region:REGION_SCRIPT_INTERFACE, resource_key:string, factor_key:string, amount:number, required:boolean):boolean
+--- Apply a percentage pooled resource transaction to a faction province
+---@field faction_province_pooled_resource_transaction_percentage fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, province:PROVINCE_SCRIPT_INTERFACE, resource_key:string, factor_key:string, amount:number, required:boolean):boolean
+--- Damage the walls in a region
+---@field damage_walls fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, region:REGION_SCRIPT_INTERFACE, breaches_to_add:number):boolean
+--- Apply an effect bundle to a region group
+---@field effect_bundle_to_region_group fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, region_group_key:string, string:string|EFFECT_BUNDLE_SCRIPT_INTERFACE|CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE):boolean
+--- Transfer a foreign slot to another faction. If no new owner is provided then the payload applicant will receive the foreign slot set
+---@field foreign_slot_transfer fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, region:REGION_SCRIPT_INTERFACE, new_owner:FACTION_SCRIPT_INTERFACE|nil):boolean
+--- Reveal the foreign slots present in a region for a time. If no target faction is provided, then the foreign slots will be revealed to the payload applicant
+---@field reveal_foreign_slots fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, region:REGION_SCRIPT_INTERFACE, duration:number, revealed_to:FACTION_SCRIPT_INTERFACE|nil):boolean
+--- Damage an army by a percentage amount
+---@field damage_army fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, force:MILITARY_FORCE_SCRIPT_INTERFACE, percentage:number):boolean
+--- Apply an effect bundle to the home region of the payload applicant
+---@field effect_bundle_to_home_region fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, string:string|EFFECT_BUNDLE_SCRIPT_INTERFACE|CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE):boolean
+--- Apply an effect bundle to a faction province
+---@field effect_bundle_to_faction_province fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, province:integer, string:string|EFFECT_BUNDLE_SCRIPT_INTERFACE|CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE):boolean
+--- Transfer an army to another faction. If no new owner is provided, then the payload applicant will receive the army
+---@field army_transfer fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, force:MILITARY_FORCE_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE):boolean
+--- Add/Remove a character trait
+---@field character_trait_change fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, character:CHARACTER_SCRIPT_INTERFACE, trait_level_key:string, is_removal:boolean):boolean
+--- Grant an amount of experience to a character. (Cannot be negative)
+---@field character_experience_change fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, character:CHARACTER_SCRIPT_INTERFACE, amount:number):boolean
+--- Trigger a scripted mission
+---@field scripted_mission fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, mission_string:string):boolean
+--- Apply an effect bundle to a military force
+---@field effect_bundle_to_force fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, force:MILITARY_FORCE_SCRIPT_INTERFACE, string:string|EFFECT_BUNDLE_SCRIPT_INTERFACE|CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE):boolean
+--- Kill a faction
+---@field destroy_faction fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, victim:FACTION_SCRIPT_INTERFACE):boolean
+--- Grant an ancillary to a character
+---@field character_ancillary_gain fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, target:CHARACTER_SCRIPT_INTERFACE, ancillary_key:string, replace_equipped:boolean):boolean
+--- Apply an additive modifier to a factions agent capacity
+---@field agent_capacity_adjustment fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE, agent_key:string, change:number):boolean
+--- Add/Remove an amount of pooled resource from the payload applicant faction. If "required" is true then dilemma options with this payload will only be selectable if the faction has the resources to afford this cost
+---@field faction_pooled_resource_transaction fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, pooled_resource_key:string, pooled_resource_factor_key:string, amount:number, required:boolean):boolean
+--- Assign a character to a post (ministerial position)
+---@field character_post_assignment fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, character:CHARACTER_SCRIPT_INTERFACE, ministerial_position_key:string):boolean
+--- Damage buildings in a region by a semi-random amount
+---@field damage_buildings fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, region:REGION_SCRIPT_INTERFACE, min_damage:number, max_damage:number):boolean
+--- Demolish every instance of a building chain in the faction the payload is applied to
+---@field building_chain_demolition fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, building_chain_key:string):boolean
+--- Is this the null script interface
+---@field is_null_interface fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE):boolean
+--- Adjust the amount of slaves in a province
+---@field province_slaves_adjustment fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, target_province:PROVINCE_SCRIPT_INTERFACE, amount:number):boolean
+--- Adjust a characters loyalty by the specified amount
+---@field character_loyalty_adjustment fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, character:CHARACTER_SCRIPT_INTERFACE, amount:number):boolean
+--- Spawn a military force at a ritual site. If no owning faction is provided, then the payload applicant faction will own the force
+---@field spawn_military_force_ritual_site fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, spawnable_force_key:string, owning_faction:FACTION_SCRIPT_INTERFACE|nil):boolean
+--- Additive modifier to the capacity of a specific unit available to a faction
+---@field unit_capacity_adjustment fun(self:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE, unit_record_key:string, change:number):boolean
+
+
+--- Route Segment Script Interface
+---@class ROUTE_SEGMENT_SCRIPT_INTERFACE
+--- List of regions that this segment passes through
+---@field regions fun(self:ROUTE_SEGMENT_SCRIPT_INTERFACE):REGION_DATA_LIST_SCRIPT_INTERFACE
+--- Node that this segment links to
+---@field to fun(self:ROUTE_SEGMENT_SCRIPT_INTERFACE):ROUTE_NODE_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:ROUTE_SEGMENT_SCRIPT_INTERFACE):boolean
+
+
+--- A list of route segment script interfaces
+---@class ROUTE_SEGMENT_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:ROUTE_SEGMENT_LIST_SCRIPT_INTERFACE, positive:integer):ROUTE_SEGMENT_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:ROUTE_SEGMENT_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:ROUTE_SEGMENT_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- A list of character initiative interfaces
+---@class CHARACTER_INITIATIVE_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:CHARACTER_INITIATIVE_LIST_SCRIPT_INTERFACE, positive:integer):CHARACTER_INITIATIVE_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:CHARACTER_INITIATIVE_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:CHARACTER_INITIATIVE_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Region script interface, includes region finance and slot/settlement info
+---@class REGION_SCRIPT_INTERFACE
+--- Is any resource, at all, produced in this region?
+---@field any_resource_available fun(self:REGION_SCRIPT_INTERFACE):boolean
+--- Is a resource produced in this region?
+---@field resource_exists fun(self:REGION_SCRIPT_INTERFACE, key:string):boolean
+--- Test if this region has the specified effect bundle
+---@field has_effect_bundle fun(self:REGION_SCRIPT_INTERFACE, effect_bundle_key:string):boolean
+--- Maximum number of slaves for the faction province
+---@field max_faction_province_slaves fun(self:REGION_SCRIPT_INTERFACE):integer
+--- Effect bundles currently active on the faction province
+---@field faction_province_effect_bundles fun(self:REGION_SCRIPT_INTERFACE):EFFECT_BUNDLE_LIST_SCRIPT_INTERFACE
+--- Does a slot with a given key exist in the region?
+---@field slot_type_exists fun(self:REGION_SCRIPT_INTERFACE, key:string):boolean
+--- Active bonus values of this region
+---@field bonus_values fun(self:REGION_SCRIPT_INTERFACE):BONUS_VALUES_SCRIPT_INTERFACE
+--- Returns the amount of growth points added in a province towards the next population point this turn
+---@field faction_province_growth_per_turn fun(self:REGION_SCRIPT_INTERFACE):integer
+--- The regions settlement as a garrison_residence
+---@field garrison_residence fun(self:REGION_SCRIPT_INTERFACE):GARRISON_RESIDENCE_SCRIPT_INTERFACE
+--- Returns the total amount of growth points accumulated in a province towards the next population point
+---@field faction_province_growth fun(self:REGION_SCRIPT_INTERFACE):integer
+--- The region key
+---@field name fun(self:REGION_SCRIPT_INTERFACE):string
+--- Access to the model
+---@field model fun(self:REGION_SCRIPT_INTERFACE):MODEL_SCRIPT_INTERFACE
+--- Gets the key of the currently active edict of the region, returns "" if there is no edict active
+---@field get_active_edict_key fun(self:REGION_SCRIPT_INTERFACE):REGION_DATA_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:REGION_SCRIPT_INTERFACE):boolean
+--- Returns the complete list of foreign slot managers currently active in this region
+---@field foreign_slot_managers fun(self:REGION_SCRIPT_INTERFACE):FOREIGN_SLOT_MANAGER_LIST_SCRIPT_INTERFACE
+--- Faction province that owns this region
+---@field faction_province fun(self:REGION_SCRIPT_INTERFACE):FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE
+--- The region settlement
+---@field settlement fun(self:REGION_SCRIPT_INTERFACE):SETTLEMENT_SCRIPT_INTERFACE
+--- Does this region's owner support Faction Slaves
+---@field has_faction_province_slaves fun(self:REGION_SCRIPT_INTERFACE):boolean
+--- Does this region have enough development points to upgrade?
+---@field has_development_points_to_upgrade fun(self:REGION_SCRIPT_INTERFACE):boolean
+--- A list of slots contained in the region
+---@field slot_list fun(self:REGION_SCRIPT_INTERFACE):SLOT_LIST_SCRIPT_INTERFACE
+--- Returns the list of regions adjacent to this one (including where the connection is not traversable)
+---@field adjacent_region_list fun(self:REGION_SCRIPT_INTERFACE):REGION_LIST_SCRIPT_INTERFACE
+--- The number of buildings in a region
+---@field num_buildings fun(self:REGION_SCRIPT_INTERFACE):integer
+--- Returns the key of the last building constructed this region
+---@field last_building_constructed_key fun(self:REGION_SCRIPT_INTERFACE):string
+--- Gets the key of the currently selected edict of the region, returns "" if there is no edict active
+---@field get_selected_edict_key fun(self:REGION_SCRIPT_INTERFACE):REGION_DATA_SCRIPT_INTERFACE
+--- Pooled resource manager of this region
+---@field pooled_resource_manager fun(self:REGION_SCRIPT_INTERFACE):POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE
+--- Geographical province that contains this region
+---@field province fun(self:REGION_SCRIPT_INTERFACE):PROVINCE_SCRIPT_INTERFACE
+--- Test if this regions faction province has the specified effect bundle
+---@field faction_province_has_effect_bundle fun(self:REGION_SCRIPT_INTERFACE, effect_bundle_key:string):boolean
+--- Region public order
+---@field public_order fun(self:REGION_SCRIPT_INTERFACE):integer
+--- Does a building with a given key exist in the region?
+---@field building_exists fun(self:REGION_SCRIPT_INTERFACE, key:string):boolean
+--- Effect bundles currently active on the region
+---@field effect_bundles fun(self:REGION_SCRIPT_INTERFACE):EFFECT_BUNDLE_LIST_SCRIPT_INTERFACE
+--- Returns the foreign slot manager that belongs to the specified faction. Will be null if they do not have a foreign slot manager in this region
+---@field foreign_slot_manager_for_faction fun(self:REGION_SCRIPT_INTERFACE, faction_key:string):FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE
+--- Key of the province containing the region
+---@field province_name fun(self:REGION_SCRIPT_INTERFACE):string
+--- Returns true if region has an active storm
+---@field has_active_storm fun(self:REGION_SCRIPT_INTERFACE):boolean
+--- Returns true if the region is abandoned
+---@field is_abandoned fun(self:REGION_SCRIPT_INTERFACE):boolean
+--- Access to the faction that owns the region
+---@field owning_faction fun(self:REGION_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+--- Command Queue Index of this region
+---@field cqi fun(self:REGION_SCRIPT_INTERFACE):integer
+--- Returns the current gross domestic produce of this region
+---@field gdp fun(self:REGION_SCRIPT_INTERFACE):integer
+--- Returns true if you can recruite the specified agent type at the regions settlement
+---@field can_recruit_agent_at_settlement fun(self:REGION_SCRIPT_INTERFACE, agent_key:string):boolean
+--- Gets the REGION_DATA interface of the region
+---@field region_data_interface fun(self:REGION_SCRIPT_INTERFACE):REGION_DATA_SCRIPT_INTERFACE
+--- Is this region the province capital?
+---@field is_province_capital fun(self:REGION_SCRIPT_INTERFACE):boolean
+--- Number of slaves in the faction province
+---@field num_faction_province_slaves fun(self:REGION_SCRIPT_INTERFACE):integer
+--- Percentage faction province slaves of the maximum
+---@field percentage_faction_province_slaves fun(self:REGION_SCRIPT_INTERFACE):number
+
+
+--- Prison System Script Interface
+---@class PRISON_SYSTEM_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:PRISON_SYSTEM_SCRIPT_INTERFACE):boolean
+--- Returns the prisoners held by the warden faction. Empty if the faction does not have access to campaign prison
+---@field get_faction_prisoners fun(self:PRISON_SYSTEM_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE):FAMILY_MEMBER_LIST_SCRIPT_INTERFACE
+
+
+--- Route Node Script Interface
+---@class ROUTE_NODE_SCRIPT_INTERFACE
+--- Attempt to find the segment between this node and the specified node
+---@field link_to_node_id fun(self:ROUTE_NODE_SCRIPT_INTERFACE, node_id:integer):ROUTE_SEGMENT_SCRIPT_INTERFACE
+--- True if this node is treated as a network exit point
+---@field is_exit fun(self:ROUTE_NODE_SCRIPT_INTERFACE):boolean
+--- Returns the record key of this node
+---@field record_key fun(self:ROUTE_NODE_SCRIPT_INTERFACE):string
+--- Returns the route position of this node
+---@field route_position fun(self:ROUTE_NODE_SCRIPT_INTERFACE):ROUTE_POSITION_SCRIPT_INTERFACE
+--- Returns the key of the region this node is inside of
+---@field region_key fun(self:ROUTE_NODE_SCRIPT_INTERFACE):string
+--- Returns the world position of this node
+---@field world_position fun(self:ROUTE_NODE_SCRIPT_INTERFACE):integer,integer
+--- Returns the region data this node is inside of
+---@field region_data fun(self:ROUTE_NODE_SCRIPT_INTERFACE):REGION_DATA_SCRIPT_INTERFACE
+--- True if this node is treated as a network entrance point
+---@field is_entrance fun(self:ROUTE_NODE_SCRIPT_INTERFACE):boolean
+--- Returns the a list of route segments that can be used to leave this node
+---@field link_segments fun(self:ROUTE_NODE_SCRIPT_INTERFACE):ROUTE_SEGMENT_LIST_SCRIPT_INTERFACE
+--- Attempt to find the segment between this node and the specified node
+---@field link_to_node_record fun(self:ROUTE_NODE_SCRIPT_INTERFACE, record_key:string):ROUTE_SEGMENT_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:ROUTE_NODE_SCRIPT_INTERFACE):boolean
+--- Returns the logical position of this node
+---@field logical_position fun(self:ROUTE_NODE_SCRIPT_INTERFACE):integer,integer
+
+
+--- Active Ritual Script Interface
+---@class ACTIVE_RITUAL_SCRIPT_INTERFACE
+--- Faction target of this ritual
+---@field target_faction fun(self:ACTIVE_RITUAL_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+--- Returns the ritual chain record key for this active ritual. Empty if it isn't part of a chain
+---@field ritual_chain_key fun(self:ACTIVE_RITUAL_SCRIPT_INTERFACE):string
+--- Total cast time of this ritual
+---@field cast_time fun(self:ACTIVE_RITUAL_SCRIPT_INTERFACE):integer
+--- Returns the ritual record key for this active ritual
+---@field ritual_key fun(self:ACTIVE_RITUAL_SCRIPT_INTERFACE):string
+--- Is this active ritual part of a chain?
+---@field is_part_of_chain fun(self:ACTIVE_RITUAL_SCRIPT_INTERFACE):boolean
+--- The characters that performed this ritual
+---@field characters_who_performed fun(self:ACTIVE_RITUAL_SCRIPT_INTERFACE):FAMILY_MEMBER_LIST_SCRIPT_INTERFACE
+--- The target of this ritual
+---@field ritual_target fun(self:ACTIVE_RITUAL_SCRIPT_INTERFACE):RITUAL_TARGET_SCRIPT_INTERFACE
+--- Total cooldown time of this ritual once cast
+---@field cooldown_time fun(self:ACTIVE_RITUAL_SCRIPT_INTERFACE):integer
+--- Resource cost of this ritual at the time of commencement (not including slaves)
+---@field expended_resources fun(self:ACTIVE_RITUAL_SCRIPT_INTERFACE):integer
+--- Category of this ritual, or the category of its chain if it is part of a chain
+---@field ritual_category fun(self:ACTIVE_RITUAL_SCRIPT_INTERFACE):string
+--- Ritual sites used to perform this ritual
+---@field ritual_sites fun(self:ACTIVE_RITUAL_SCRIPT_INTERFACE):REGION_LIST_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:ACTIVE_RITUAL_SCRIPT_INTERFACE):boolean
+--- Slave cost of this ritual at the time of commencement
+---@field slave_cost fun(self:ACTIVE_RITUAL_SCRIPT_INTERFACE):integer
+
+
+--- Faction Rituals Script Interface
+---@class FACTION_RITUALS_SCRIPT_INTERFACE
+--- all rituals actively being performed by this faction
+---@field active_rituals fun(self:FACTION_RITUALS_SCRIPT_INTERFACE):ACTIVE_RITUAL_LIST_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:FACTION_RITUALS_SCRIPT_INTERFACE):boolean
+--- status of the specified ritual for this faction NOTE: The result of this call is a bit mask and needs to be checked accordingly
+---@field ritual_status fun(self:FACTION_RITUALS_SCRIPT_INTERFACE, ritual_record_key:string):RITUAL_STATUS_SCRIPT_INTERFACE
+
+
+--- A list of route node script interfaces
+---@class ROUTE_NODE_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:ROUTE_NODE_LIST_SCRIPT_INTERFACE, positive:integer):ROUTE_NODE_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:ROUTE_NODE_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:ROUTE_NODE_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Pooled Resource Factor Script Interface
+---@class POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE
+--- Maximum value of this factor, including any modifications from effects.
+---@field maximum_value fun(self:POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE):integer
+--- Minimum value of this factor, including any modifications from effects.
+---@field minimum_value fun(self:POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE):integer
+--- Pooled resource factor record key of this factor
+---@field key fun(self:POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE):string
+--- Total value of this factor at the current time, potentially negative
+---@field value fun(self:POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE):integer
+--- Is this the null script interface
+---@field is_null_interface fun(self:POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE):boolean
+--- Percentage of the total capacity in the bounds between min and max. For exammple if the pool had a range of -5, 5 and a value of 0 it would have a percentage of 50%
+---@field percentage_of_capacity fun(self:POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE):integer
+
+
+--- Route Network Script Interface
+---@class ROUTE_NETWORK_SCRIPT_INTERFACE
+--- Lookup a node in this network by its numeric ID
+---@field node_for_id fun(self:ROUTE_NETWORK_SCRIPT_INTERFACE, node_id:integer):ROUTE_NODE_SCRIPT_INTERFACE
+--- Lookup a segment link between two nodes
+---@field segment_between_nodes fun(self:ROUTE_NETWORK_SCRIPT_INTERFACE, from:ROUTE_NODE_SCRIPT_INTERFACE, to:ROUTE_NODE_SCRIPT_INTERFACE):ROUTE_SEGMENT_SCRIPT_INTERFACE
+--- Lookup a node in this network by its record
+---@field node_for_record_key fun(self:ROUTE_NETWORK_SCRIPT_INTERFACE, node_key:string):ROUTE_NODE_SCRIPT_INTERFACE
+--- Attempt to find a path between the two nodes. Path will be empty if no path could be found
+---@field find_path fun(self:ROUTE_NETWORK_SCRIPT_INTERFACE, from_node:ROUTE_NODE_SCRIPT_INTERFACE, to_node:ROUTE_NODE_SCRIPT_INTERFACE):ROUTE_SEGMENT_SCRIPT_INTERFACE
+--- Record key of this network
+---@field record_key fun(self:ROUTE_NETWORK_SCRIPT_INTERFACE):string
+--- Attempt to find a path between the two nodes, by node record key. Path will be empty if no path could be found
+---@field find_path_by_key fun(self:ROUTE_NETWORK_SCRIPT_INTERFACE, from_node_key:string, to_node_key:string):ROUTE_SEGMENT_SCRIPT_INTERFACE
+--- Get a list of all entry nodes in this network
+---@field entry_nodes fun(self:ROUTE_NETWORK_SCRIPT_INTERFACE):ROUTE_NODE_LIST_SCRIPT_INTERFACE
+--- Find the node on this network closest to the given logical position. May be null if the network is empty or params are incorrect
+---@field find_nearest_node fun(self:ROUTE_NETWORK_SCRIPT_INTERFACE, x:integer, y:integer):ROUTE_NODE_SCRIPT_INTERFACE
+--- Attempt to find a path between the two nodes, by ID. Path will be empty if no path could be found
+---@field find_path_by_id fun(self:ROUTE_NETWORK_SCRIPT_INTERFACE, from_node:integer, to_node:integer):ROUTE_SEGMENT_SCRIPT_INTERFACE
+--- Lookup a segment link between two nodes, by id
+---@field segment_between_nodes_by_id fun(self:ROUTE_NETWORK_SCRIPT_INTERFACE, from:integer, to:integer):ROUTE_SEGMENT_SCRIPT_INTERFACE
+--- Lookup a node in this network by its route position
+---@field node_for_position fun(self:ROUTE_NETWORK_SCRIPT_INTERFACE, position:ROUTE_POSITION_SCRIPT_INTERFACE):ROUTE_NODE_SCRIPT_INTERFACE
+--- Get a list of all exit nodes in this network
+---@field exit_nodes fun(self:ROUTE_NETWORK_SCRIPT_INTERFACE):ROUTE_NODE_LIST_SCRIPT_INTERFACE
+--- Lookup a segment link between two nodes, by key
+---@field segment_between_nodes_by_key fun(self:ROUTE_NETWORK_SCRIPT_INTERFACE, from_node_key:string, to_node_key:string):ROUTE_SEGMENT_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:ROUTE_NETWORK_SCRIPT_INTERFACE):boolean
+--- Numeric ID of this network
+---@field network_id fun(self:ROUTE_NETWORK_SCRIPT_INTERFACE):integer
+
+
+--- Model is the central access point of the campaign. Everything should be reachable from this interface
+---@class MODEL_SCRIPT_INTERFACE
+--- Returns true if the cqi exists
+---@field has_faction_command_queue_index fun(self:MODEL_SCRIPT_INTERFACE, cqi:integer):boolean
+--- Can a character, in the specified stance, reach a settlement this turn?
+---@field character_can_reach_settlement_in_stance fun(self:MODEL_SCRIPT_INTERFACE, character:CHARACTER_SCRIPT_INTERFACE, settlement:SETTLEMENT_SCRIPT_INTERFACE, stance_key:string):boolean
+--- What is the local faction's difficulty level?
+---@field difficulty_level fun(self:MODEL_SCRIPT_INTERFACE):integer
+--- Does the player have an even steam id
+---@field player_steam_id_is_even fun(self:MODEL_SCRIPT_INTERFACE):boolean
+--- Returns the type of the campaign
+---@field campaign_type fun(self:MODEL_SCRIPT_INTERFACE):integer
+--- Can a character reach a settlement this turn?
+---@field character_can_reach_settlement fun(self:MODEL_SCRIPT_INTERFACE, character:CHARACTER_SCRIPT_INTERFACE, settlement:SETTLEMENT_SCRIPT_INTERFACE):boolean
+--- Returns true if the cqi exists
+---@field has_unit_command_queue_index fun(self:MODEL_SCRIPT_INTERFACE, cqi:integer):boolean
+--- Can a character reach another character this turn?
+---@field character_can_reach_character fun(self:MODEL_SCRIPT_INTERFACE, character:CHARACTER_SCRIPT_INTERFACE, target_character:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Access campaign pending battle interface
+---@field pending_battle fun(self:MODEL_SCRIPT_INTERFACE):PENDING_BATTLE_SCRIPT_INTERFACE
+--- Returns the active unit size multiplier as a decimal percentage. e.g 0.75 for 75% base scale.
+---@field unit_size_multiplier fun(self:MODEL_SCRIPT_INTERFACE):number
+--- Access campaign AI script interface
+---@field campaign_ai fun(self:MODEL_SCRIPT_INTERFACE):CAMPAIGN_AI_SCRIPT_INTERFACE
+--- Returns true parameter-value-percent of the time
+---@field random_percent fun(self:MODEL_SCRIPT_INTERFACE, unnamed:number):boolean
+--- Can a character reach a (loigcal hex map) position this turn?
+---@field character_can_reach_position fun(self:MODEL_SCRIPT_INTERFACE, character:CHARACTER_SCRIPT_INTERFACE, x:integer, y:integer):boolean
+--- Debug Drawing Interface. NOT AVAILABLE IN RETAIL
+---@field debug_drawing fun(self:MODEL_SCRIPT_INTERFACE):DEBUG_DRAWING_SCRIPT_INTERFACE
+--- Returns a random integer number
+---@field random_int fun(self:MODEL_SCRIPT_INTERFACE, unnamed:number, other_unnamed:number):integer
+--- Test to see if the current calendar year and week in year is within the years and weeks specified.  Week should be 0 <= week < 48.  start <= current <= end
+---@field date_and_week_in_range fun(self:MODEL_SCRIPT_INTERFACE):boolean
+--- Returns the prison system
+---@field prison_system fun(self:MODEL_SCRIPT_INTERFACE):PRISON_SYSTEM_SCRIPT_INTERFACE
+--- Can a character, reach a settlement in any number of turns?
+---@field character_can_ever_reach_settlement fun(self:MODEL_SCRIPT_INTERFACE, source:CHARACTER_SCRIPT_INTERFACE, target:SETTLEMENT_SCRIPT_INTERFACE):boolean
+--- Is the provided faction the local faction?
+---@field faction_is_local fun(self:MODEL_SCRIPT_INTERFACE, key:string):boolean
+--- Returns the number of the turn currently being taken, starting at 1
+---@field turn_number fun(self:MODEL_SCRIPT_INTERFACE):integer
+--- Is this the null script interface
+---@field is_null_interface fun(self:MODEL_SCRIPT_INTERFACE):boolean
+--- Returns the key of the currenty campaign
+---@field campaign_name_key fun(self:MODEL_SCRIPT_INTERFACE):string
+--- Returns true if the cqi exists
+---@field has_family_member_command_queue_index fun(self:MODEL_SCRIPT_INTERFACE, cqi:integer):boolean
+--- Returns true when in multiplayer campaign
+---@field is_multiplayer fun(self:MODEL_SCRIPT_INTERFACE):boolean
+--- Can a character, in the specified stance, reach another character this turn?
+---@field character_can_reach_character_in_stance fun(self:MODEL_SCRIPT_INTERFACE, character:CHARACTER_SCRIPT_INTERFACE, target_character:CHARACTER_SCRIPT_INTERFACE, stance_key:string):boolean
+--- Can a character, reach a character in any number of turns?
+---@field character_can_ever_reach_character fun(self:MODEL_SCRIPT_INTERFACE, source:CHARACTER_SCRIPT_INTERFACE, target:CHARACTER_SCRIPT_INTERFACE):boolean
+--- Returns the display position( World Space X, Z) for a logical position (hex grid). Will return 0,0 if invalid
+---@field display_position_for_logical_position fun(self:MODEL_SCRIPT_INTERFACE, logical_pos_x:number, logical_pos_y:number):number,number
+--- Returns a CHARACTER_SCRIPT_INTERFACE for the cqi
+---@field character_for_command_queue_index fun(self:MODEL_SCRIPT_INTERFACE, cqi:integer):CHARACTER_SCRIPT_INTERFACE
+--- Returns a MILITARY_FORCE_SCRIPT_INTERFACE for the cqi
+---@field military_force_for_command_queue_index fun(self:MODEL_SCRIPT_INTERFACE, cqi:integer):MILITARY_FORCE_SCRIPT_INTERFACE
+--- Access campaign world interface
+---@field world fun(self:MODEL_SCRIPT_INTERFACE):WORLD_SCRIPT_INTERFACE
+--- Returns a FACTION_SCRIPT_INTERFACE for the cqi
+---@field faction_for_command_queue_index fun(self:MODEL_SCRIPT_INTERFACE, cqi:integer):FACTION_SCRIPT_INTERFACE
+--- Returns the logical (hex grid) position for a display position (world space).
+---@field logical_position_for_display_position fun(self:MODEL_SCRIPT_INTERFACE, display_pos_x:number, display_pos_z:number):integer,integer
+--- Can a character, in the specified stance, reach a (logical hex map) position this turn?
+---@field character_can_reach_position_in_stance fun(self:MODEL_SCRIPT_INTERFACE, character:CHARACTER_SCRIPT_INTERFACE, x:integer, y:integer, stance_key:string):boolean
+--- What is the combined difficulty level of all player factions?
+---@field combined_difficulty_level fun(self:MODEL_SCRIPT_INTERFACE):integer
+--- Returns a FAMILY_MEMBER_SCRIPT_INTERFACE for the cqi
+---@field family_member_for_command_queue_index fun(self:MODEL_SCRIPT_INTERFACE, cqi:integer):FAMILY_MEMBER_SCRIPT_INTERFACE
+--- Returns shared states manager interface
+---@field shared_states_manager fun(self:MODEL_SCRIPT_INTERFACE):SHARED_STATES_MANAGER_SCRIPT_INTERFACE
+--- Returns true if the cqi exists
+---@field has_military_force_command_queue_index fun(self:MODEL_SCRIPT_INTERFACE, cqi:integer):boolean
+--- Returns true if the cqi exists
+---@field has_character_command_queue_index fun(self:MODEL_SCRIPT_INTERFACE, cqi:integer):boolean
+--- Returns a UNIT_SCRIPT_INTERFACE for the cqi
+---@field unit_for_command_queue_index fun(self:MODEL_SCRIPT_INTERFACE, cqi:integer):UNIT_SCRIPT_INTERFACE
+--- Can a character, reach a (logical hex map) position in any number of turns?
+---@field character_can_ever_reach_position fun(self:MODEL_SCRIPT_INTERFACE, character:CHARACTER_SCRIPT_INTERFACE, x:integer, y:integer):boolean
+--- Is this the players turn?
+---@field is_player_turn fun(self:MODEL_SCRIPT_INTERFACE):boolean
+--- Returns whether or not the current campaign name matches the supplied parameter
+---@field campaign_name fun(self:MODEL_SCRIPT_INTERFACE, key:string):boolean
+--- Test to see if the current calendar year is within the years specified.  start <= current <= end
+---@field date_in_range fun(self:MODEL_SCRIPT_INTERFACE):boolean
+
+
+--- A list of ritual performing character script interfaces
+---@class RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE, positive:integer):RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Contains entities that exist in the game world. Examples include the region manager and faction list
+---@class WORLD_SCRIPT_INTERFACE
+--- Get faction strength rank
+---@field faction_strength_rank fun(self:WORLD_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE):integer
+--- Returns if a province with the given key exists on the campaign map
+---@field province_exists fun(self:WORLD_SCRIPT_INTERFACE, key:string):boolean
+--- Returns the sea region manager, which has access to all sea regions
+---@field sea_region_manager fun(self:WORLD_SCRIPT_INTERFACE):SEA_REGION_MANAGER_SCRIPT_INTERFACE
+--- Returns a list of region data for the current campaign map of the land type
+---@field land_region_data fun(self:WORLD_SCRIPT_INTERFACE):REGION_DATA_LIST_SCRIPT_INTERFACE
+--- Access the caravans system
+---@field caravans_system fun(self:WORLD_SCRIPT_INTERFACE):CARAVANS_SYSTEM_SCRIPT_INTERFACE
+--- Access the teleportation network system
+---@field teleportation_network_system fun(self:WORLD_SCRIPT_INTERFACE):TELEPORTATION_NETWORK_SYSTEM_SCRIPT_INTERFACE
+--- Is it the specified factions turn? The faction is specified by key.
+---@field is_factions_turn_by_key fun(self:WORLD_SCRIPT_INTERFACE, key:string):boolean
+--- Returns a list of all provinces
+---@field province_list fun(self:WORLD_SCRIPT_INTERFACE):PROVINCE_LIST_SCRIPT_INTERFACE
+--- Returns the current climate phase index
+---@field climate_phase_index fun(self:WORLD_SCRIPT_INTERFACE):integer
+--- Lookup a route network by its record key
+---@field lookup_route_network fun(self:WORLD_SCRIPT_INTERFACE):ROUTE_NETWORK_SCRIPT_INTERFACE
+--- Returns the observation options that apply to neutral factions
+---@field observation_options_for_neutrals fun(self:WORLD_SCRIPT_INTERFACE):CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE
+--- Returns the observation options that apply to enemy factions
+---@field observation_options_for_enemies fun(self:WORLD_SCRIPT_INTERFACE):CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE
+--- Returns the cooking system interface
+---@field cooking_system fun(self:WORLD_SCRIPT_INTERFACE):COOKING_SYSTEM_SCRIPT_INTERFACE
+--- Returns a list interface of all factions
+---@field faction_list fun(self:WORLD_SCRIPT_INTERFACE):FACTION_LIST_SCRIPT_INTERFACE
+--- Returns the observation options that apply to allied factions
+---@field observation_options_for_allies fun(self:WORLD_SCRIPT_INTERFACE):CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE
+--- Returns the observation options that apply to the specified faction
+---@field observation_options_for_faction fun(self:WORLD_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE, observer:FACTION_SCRIPT_INTERFACE):CHARACTER_OBSERVATION_OPTIONS_SCRIPT_INTERFACE
+--- Returns a list of faction script interfaces for the factions whose turn it currently is
+---@field whose_turn_is_it fun(self:WORLD_SCRIPT_INTERFACE):FACTION_LIST_SCRIPT_INTERFACE
+--- Returns the faction character tagging system interface
+---@field faction_character_tagging_system fun(self:WORLD_SCRIPT_INTERFACE):FACTION_CHARACTER_TAGGING_SYSTEM_SCRIPT_INTERFACE
+--- Returns the region data at the specified logical hex position. Null if the position is off map
+---@field region_data_at_position fun(self:WORLD_SCRIPT_INTERFACE, x:number, y:number):REGION_DATA_SCRIPT_INTERFACE
+--- Returns if a faction exists in the game, by key
+---@field faction_exists fun(self:WORLD_SCRIPT_INTERFACE, key:string):boolean
+--- Returns the region data at the specified logical hex position. Null if the position is off map
+---@field region_data_for_key fun(self:WORLD_SCRIPT_INTERFACE, key:string):REGION_DATA_SCRIPT_INTERFACE
+--- Returns characters list interface for characters owning ancillary
+---@field characters_owning_ancillary fun(self:WORLD_SCRIPT_INTERFACE, characters_owning_ancillarieskey:string):CHARACTER_LIST_SCRIPT_INTERFACE
+--- Returns if a ancillary exists anywhere in the world
+---@field ancillary_exists fun(self:WORLD_SCRIPT_INTERFACE, key:string):boolean
+--- Returns a list of region data for the current campaign map of the sea type
+---@field sea_region_data fun(self:WORLD_SCRIPT_INTERFACE):REGION_DATA_LIST_SCRIPT_INTERFACE
+--- Returns a province script interface, by key
+---@field province_by_key fun(self:WORLD_SCRIPT_INTERFACE, key:string):PROVINCE_SCRIPT_INTERFACE
+--- Returns a complete list of region data for the current campaign map
+---@field region_data fun(self:WORLD_SCRIPT_INTERFACE):REGION_DATA_LIST_SCRIPT_INTERFACE
+--- Returns the campaign model
+---@field model fun(self:WORLD_SCRIPT_INTERFACE):MODEL_SCRIPT_INTERFACE
+--- Returns the region manager, which has access to all regions
+---@field region_manager fun(self:WORLD_SCRIPT_INTERFACE):REGION_MANAGER_SCRIPT_INTERFACE
+--- Returns a faction script interface, by key
+---@field faction_by_key fun(self:WORLD_SCRIPT_INTERFACE, key:string):FACTION_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:WORLD_SCRIPT_INTERFACE):boolean
+--- Access the compass system
+---@field winds_of_magic_compass fun(self:WORLD_SCRIPT_INTERFACE):WOM_COMPASS_SCRIPT_INTERFACE
+
+
+--- Ritual Status Script Interface
+---@class RITUAL_STATUS_SCRIPT_INTERFACE
+--- disabled
+---@field disabled fun(self:RITUAL_STATUS_SCRIPT_INTERFACE):boolean
+--- blocked by pending action
+---@field blocked_by_pending_action fun(self:RITUAL_STATUS_SCRIPT_INTERFACE):boolean
+--- reaction constraints not met
+---@field reaction_constraints_not_met fun(self:RITUAL_STATUS_SCRIPT_INTERFACE):boolean
+--- invalid target
+---@field invalid_target fun(self:RITUAL_STATUS_SCRIPT_INTERFACE):boolean
+--- chain locked
+---@field chain_locked fun(self:RITUAL_STATUS_SCRIPT_INTERFACE):boolean
+--- on cooldown
+---@field on_cooldown fun(self:RITUAL_STATUS_SCRIPT_INTERFACE):boolean
+--- blocked by pending battle
+---@field blocked_by_pending_battle fun(self:RITUAL_STATUS_SCRIPT_INTERFACE):boolean
+--- war declaration required
+---@field war_declaration_required fun(self:RITUAL_STATUS_SCRIPT_INTERFACE):boolean
+--- Invalid performing charcacter
+---@field invalid_performing_characters fun(self:RITUAL_STATUS_SCRIPT_INTERFACE):boolean
+--- chain locked by another faction
+---@field chain_locked_by_another_faction fun(self:RITUAL_STATUS_SCRIPT_INTERFACE):boolean
+--- script locked
+---@field script_locked fun(self:RITUAL_STATUS_SCRIPT_INTERFACE):boolean
+--- unlock mission not completed
+---@field unlock_mission_not_completed fun(self:RITUAL_STATUS_SCRIPT_INTERFACE):boolean
+--- not enough slaves
+---@field not_enough_slaves fun(self:RITUAL_STATUS_SCRIPT_INTERFACE):boolean
+--- no available ritual sites
+---@field no_available_ritual_sites fun(self:RITUAL_STATUS_SCRIPT_INTERFACE):boolean
+--- prior chain stages incomplete
+---@field prior_chain_stages_incomplete fun(self:RITUAL_STATUS_SCRIPT_INTERFACE):boolean
+--- available
+---@field available fun(self:RITUAL_STATUS_SCRIPT_INTERFACE):boolean
+--- already completed in chain
+---@field already_completed_in_chain fun(self:RITUAL_STATUS_SCRIPT_INTERFACE):boolean
+--- Is this the null script interface
+---@field is_null_interface fun(self:RITUAL_STATUS_SCRIPT_INTERFACE):boolean
+--- cannot afford resource cost
+---@field cannot_afford_resource_cost fun(self:RITUAL_STATUS_SCRIPT_INTERFACE):boolean
+
+
+--- A list of region interfaces
+---@class REGION_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:REGION_LIST_SCRIPT_INTERFACE, positive:integer):REGION_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:REGION_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:REGION_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Faction Cooking Info Script Interface
+---@class FACTION_COOKING_INFO_SCRIPT_INTERFACE
+--- Maximum amount of secondary ingredients this faction may cook with
+---@field max_secondary_ingredients fun(self:FACTION_COOKING_INFO_SCRIPT_INTERFACE):integer
+--- Can the faction ever unlock this ingredient?
+---@field is_ingredient_available fun(self:FACTION_COOKING_INFO_SCRIPT_INTERFACE, ingredient_key:string):boolean
+--- Maximum amount of primary ingredients this faction may cook with
+---@field max_primary_ingredients fun(self:FACTION_COOKING_INFO_SCRIPT_INTERFACE):integer
+--- Is this ingredient unlocked?
+---@field is_ingredient_unlocked fun(self:FACTION_COOKING_INFO_SCRIPT_INTERFACE, ingredient_key:string):boolean
+--- Can the faction ever cook this recipe?
+---@field is_recipe_available fun(self:FACTION_COOKING_INFO_SCRIPT_INTERFACE, recipe_key:string):boolean
+--- Is this the null script interface
+---@field is_null_interface fun(self:FACTION_COOKING_INFO_SCRIPT_INTERFACE):boolean
+--- Is this recipe unlocked/known?
+---@field is_recipe_unlocked fun(self:FACTION_COOKING_INFO_SCRIPT_INTERFACE, recipe_key:string):boolean
+--- Key of the currently active dish. Empty if none
+---@field active_dish fun(self:FACTION_COOKING_INFO_SCRIPT_INTERFACE):string
+
+
+--- Ritual Performing Character Script Interface
+---@class RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE
+--- Required agent subtype. Empty if none
+---@field required_agent_subtype fun(self:RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE):string
+--- Required agent type. Empty if none
+---@field required_agent_type fun(self:RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE):string
+--- Status with the specified character
+---@field status_with_performer fun(self:RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE, setup:RITUAL_SETUP_SCRIPT_INTERFACE, performer:FAMILY_MEMBER_SCRIPT_INTERFACE):RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE
+--- Number of rounds the performer will convalesce after performing the ritual
+---@field recovery_time fun(self:RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE):integer
+--- Required level
+---@field required_level fun(self:RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE):integer
+--- Status with the character currently in the slot
+---@field status fun(self:RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE, setup:RITUAL_SETUP_SCRIPT_INTERFACE):RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE):boolean
+--- Ritual performing character record key
+---@field performer_record fun(self:RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE):string
+--- Family member of the character currently in the slot
+---@field performer fun(self:RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE):FAMILY_MEMBER_SCRIPT_INTERFACE
+
+
+--- Faction Character Tag Entry Script Interface
+---@class FACTION_CHARACTER_TAG_ENTRY_SCRIPT_INTERFACE
+--- Character of this tag
+---@field character fun(self:FACTION_CHARACTER_TAG_ENTRY_SCRIPT_INTERFACE):FAMILY_MEMBER_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:FACTION_CHARACTER_TAG_ENTRY_SCRIPT_INTERFACE):boolean
+--- Key of the tag record
+---@field tag_record_key fun(self:FACTION_CHARACTER_TAG_ENTRY_SCRIPT_INTERFACE):string
+
+
+--- A military force type record
+---@class MILITARY_FORCE_TYPE_SCRIPT_INTERFACE
+--- Can this force type convert to the specified other force type?
+---@field can_convert_to fun(self:MILITARY_FORCE_TYPE_SCRIPT_INTERFACE, force_type_key:string):boolean
+--- Returns the record key for this force_type
+---@field key fun(self:MILITARY_FORCE_TYPE_SCRIPT_INTERFACE):string
+--- Does this force type have the specified feature available?
+---@field has_feature fun(self:MILITARY_FORCE_TYPE_SCRIPT_INTERFACE, feature_key:string):boolean
+--- Is this the null script interface
+---@field is_null_interface fun(self:MILITARY_FORCE_TYPE_SCRIPT_INTERFACE):boolean
+--- Can this force type automatically convert to the specified other force type?
+---@field can_automatically_convert_to fun(self:MILITARY_FORCE_TYPE_SCRIPT_INTERFACE, force_type_key:string):boolean
+
+
+--- A list of effects
+---@class EFFECT_BUNDLE_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:EFFECT_BUNDLE_LIST_SCRIPT_INTERFACE, positive:integer):EFFECT_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:EFFECT_BUNDLE_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:EFFECT_BUNDLE_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Campaign AI script interface.
+---@class CAMPAIGN_AI_SCRIPT_INTERFACE
+--- Determine if there is any currently active promotion between factions for a given stance.
+---@field strategic_stance_between_factions_promotion_is_active fun(self:CAMPAIGN_AI_SCRIPT_INTERFACE, faction_being_queries:FACTION_SCRIPT_INTERFACE, faction_that_is_being_considered:FACTION_SCRIPT_INTERFACE, stance_by_number:number)
+--- Determine the start round on promotion between factions for a given stance if set.
+---@field strategic_stance_between_factions_promotion_start_round fun(self:CAMPAIGN_AI_SCRIPT_INTERFACE, faction_being_queries:FACTION_SCRIPT_INTERFACE, faction_that_is_being_considered:FACTION_SCRIPT_INTERFACE, stance_by_number:number)
+--- Determine blocking is enabled between factions for a given stance if set.
+---@field strategic_stance_between_factions_is_being_blocked fun(self:CAMPAIGN_AI_SCRIPT_INTERFACE, faction_being_queries:FACTION_SCRIPT_INTERFACE, faction_that_is_being_considered:FACTION_SCRIPT_INTERFACE, stance_by_number:number)
+--- funds_available_for_immediate_payment_for_faction_by_area
+---@field funds_available_for_immediate_payment_for_faction_by_area fun(self:CAMPAIGN_AI_SCRIPT_INTERFACE, faction_key:string, budget_area:'CONSTRUCTION'|'ARMIES'|'NAVIES'|'DIPLOMACY'|'AGENTS'|'TECHNOLOGIES'|'CHARACTERS')
+--- funds_available_for_immediate_payment_for_faction_by_area
+---@field funds_available_for_upkeep_for_faction_by_area fun(self:CAMPAIGN_AI_SCRIPT_INTERFACE, faction_key:string, budget_area:'CONSTRUCTION'|'ARMIES'|'NAVIES'|'DIPLOMACY'|'AGENTS'|'TECHNOLOGIES'|'CHARACTERS')
+--- Determine when blocking is enabled too between factions for a given stance if set.
+---@field strategic_stance_between_factions_is_being_blocked_until fun(self:CAMPAIGN_AI_SCRIPT_INTERFACE, faction_being_queries:FACTION_SCRIPT_INTERFACE, faction_that_is_being_considered:FACTION_SCRIPT_INTERFACE, stance_by_number:number)
+--- Determine the end level on promotion between factions for a given stance if set.
+---@field strategic_stance_between_factions_promotion_end_level fun(self:CAMPAIGN_AI_SCRIPT_INTERFACE, faction_being_queries:FACTION_SCRIPT_INTERFACE, faction_that_is_being_considered:FACTION_SCRIPT_INTERFACE, stance_by_number:number)
+--- Determine the end round on promotion between factions for a given stance if set.
+---@field strategic_stance_between_factions_promotion_end_round fun(self:CAMPAIGN_AI_SCRIPT_INTERFACE, faction_being_queries:FACTION_SCRIPT_INTERFACE, faction_that_is_being_considered:FACTION_SCRIPT_INTERFACE, stance_by_number:number)
+--- Determine if the strategic stance between two AI factions is available.
+---@field strategic_stance_between_factions_available fun(self:CAMPAIGN_AI_SCRIPT_INTERFACE, faction_being_queries:FACTION_SCRIPT_INTERFACE, faction_that_is_being_considered:FACTION_SCRIPT_INTERFACE)
+--- Determine the start level on promotion between factions for a given stance if set.
+---@field strategic_stance_between_factions_promotion_start_level fun(self:CAMPAIGN_AI_SCRIPT_INTERFACE, faction_being_queries:FACTION_SCRIPT_INTERFACE, faction_that_is_being_considered:FACTION_SCRIPT_INTERFACE, stance_by_number:number)
+--- Determine the current promotion level between factions for a given stance if set.
+---@field strategic_stance_between_factions_promotion_current_level fun(self:CAMPAIGN_AI_SCRIPT_INTERFACE, faction_being_queries:FACTION_SCRIPT_INTERFACE, faction_that_is_being_considered:FACTION_SCRIPT_INTERFACE, stance_by_number:number)
+--- Determine if there is any currently active blocking or promotion set between factions.
+---@field strategic_stance_between_factions_promotion_or_blocking_is_set fun(self:CAMPAIGN_AI_SCRIPT_INTERFACE, faction_being_queries:FACTION_SCRIPT_INTERFACE, faction_that_is_being_considered:FACTION_SCRIPT_INTERFACE)
+--- Is this the null script interface
+---@field is_null_interface fun(self:CAMPAIGN_AI_SCRIPT_INTERFACE):boolean
+--- Determine the strategic stance between two AI factions.
+---@field strategic_stance_between_factions fun(self:CAMPAIGN_AI_SCRIPT_INTERFACE, faction_being_queries:FACTION_SCRIPT_INTERFACE, faction_that_is_being_considered:FACTION_SCRIPT_INTERFACE)
+
+
+--- Observation Options Script Interface
+---@class OBSERVATION_OPTIONS_SCRIPT_INTERFACE
+--- Set the camera follow behaviour for characters in this observation group. OFF, CINEMATIC, LOW, MEDIUM, HIGH or VERYHIGH
+---@field set_camera_follow_behaviour fun(self:OBSERVATION_OPTIONS_SCRIPT_INTERFACE, camera_follow_behaviour:string)
+--- Camera follow behaviour for characters in this observation group. OFF, CINEMATIC, LOW, MEDIUM, HIGH or VERYHIGH
+---@field camera_follow_behaviour fun(self:OBSERVATION_OPTIONS_SCRIPT_INTERFACE):string
+--- Locomotion speed setting for characters in this observation group. NORMAL, FAST or VERYFAST
+---@field locomotion_speed fun(self:OBSERVATION_OPTIONS_SCRIPT_INTERFACE):string
+--- Is this the null script interface
+---@field is_null_interface fun(self:OBSERVATION_OPTIONS_SCRIPT_INTERFACE):boolean
+--- Set the locomotion speed setting for characters in this observation group. NORMAL, FAST or VERYFAST
+---@field set_locomotion_speeds fun(self:OBSERVATION_OPTIONS_SCRIPT_INTERFACE, locomotion_speed_type:string)
+
+
+--- The interface that stores and manages all regions in the game. Useful for looking up region and slot//settlement keys.
+---@class REGION_MANAGER_SCRIPT_INTERFACE
+--- A list of all regions for a faction
+---@field faction_region_list fun(self:REGION_MANAGER_SCRIPT_INTERFACE, key:string):REGION_LIST_SCRIPT_INTERFACE
+--- Are any regions producing this resource?
+---@field resource_exists_anywhere fun(self:REGION_MANAGER_SCRIPT_INTERFACE, key:string):boolean
+--- A list of all regions
+---@field region_list fun(self:REGION_MANAGER_SCRIPT_INTERFACE):REGION_LIST_SCRIPT_INTERFACE
+--- Access to the model
+---@field model fun(self:REGION_MANAGER_SCRIPT_INTERFACE):MODEL_SCRIPT_INTERFACE
+--- Returns the slot interface for a given slot key
+---@field slot_by_key fun(self:REGION_MANAGER_SCRIPT_INTERFACE, key:string):SLOT_SCRIPT_INTERFACE
+--- Returns the settlement interface for a given settlement key
+---@field settlement_by_key fun(self:REGION_MANAGER_SCRIPT_INTERFACE, key:string):SETTLEMENT_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:REGION_MANAGER_SCRIPT_INTERFACE):boolean
+--- Returns the region interface for a given region key
+---@field region_by_key fun(self:REGION_MANAGER_SCRIPT_INTERFACE, key:string):REGION_SCRIPT_INTERFACE
+
+
+--- Ritual Performing Character Status Script Interface
+---@class RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE
+--- Are there no error flags set?
+---@field valid fun(self:RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE):boolean
+--- The performer is the wrong agent subtype
+---@field wrong_agent_subtype fun(self:RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE):boolean
+--- The performer is already present in another slot
+---@field duplicate_performer fun(self:RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE):boolean
+--- The performer is too low level
+---@field level_too_low fun(self:RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE):boolean
+--- There is no performer present in the slot
+---@field no_performer_provided fun(self:RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE):boolean
+--- The performer is the wrong agent type
+---@field wrong_agent_type fun(self:RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE):boolean
+--- The performer is wounded
+---@field wounded fun(self:RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE):boolean
+--- Is this the null script interface
+---@field is_null_interface fun(self:RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE):boolean
+--- The performer is dead
+---@field dead fun(self:RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE):boolean
+
+
+--- A list of mutable ritual performing character script interfaces
+---@class MODIFY_RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:MODIFY_RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE, positive:integer):MODIFY_RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:MODIFY_RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:MODIFY_RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Foreign Slot Manager Script Interface
+---@class FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE
+--- returns the current discoverability value, which is made up of all positive and negative effects, will return 0 in case of invalid faction_cqi or missing parameter
+---@field current_discoverability fun(self:FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE):integer
+--- Wether this slot manager has an upgrade available
+---@field has_upgrade_available fun(self:FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE):boolean
+--- Region where this foreign slot manager is located
+---@field region fun(self:FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE):REGION_SCRIPT_INTERFACE
+--- Slots that the manager contains
+---@field slots fun(self:FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE):SLOT_LIST_SCRIPT_INTERFACE
+--- gdp provided by this slot manager
+---@field gdp fun(self:FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE):integer
+--- Faction that owns this foreign slot
+---@field faction fun(self:FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+--- returns the current threshold discoverability value, the foreign slots will be revealed should the current_discoverability exceed this value
+---@field discoverability_threshold fun(self:FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE):integer
+--- returns whether the foreign slots in this region have already been discovered or not, will return false in case of invalid CQI or missing parameter
+---@field has_been_discovered fun(self:FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE):boolean
+--- Is this the null script interface
+---@field is_null_interface fun(self:FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE):boolean
+--- Number of slots contained in this manager
+---@field num_slots fun(self:FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE):integer
+
+
+--- A character initiative. Provides effects over a duration, closer in behaviour to skills than effect bundles. Owned by a character
+---@class CHARACTER_INITIATIVE_SCRIPT_INTERFACE
+--- Is this initiative script locked?
+---@field is_script_locked fun(self:CHARACTER_INITIATIVE_SCRIPT_INTERFACE):boolean
+--- Does this initiative have an infinite duration?
+---@field has_infinite_duration fun(self:CHARACTER_INITIATIVE_SCRIPT_INTERFACE):boolean
+--- Record key of this initiative
+---@field record_key fun(self:CHARACTER_INITIATIVE_SCRIPT_INTERFACE):string
+--- Is this the null script interface
+---@field is_null_interface fun(self:CHARACTER_INITIATIVE_SCRIPT_INTERFACE):boolean
+--- Duration of this initiative
+---@field duration fun(self:CHARACTER_INITIATIVE_SCRIPT_INTERFACE):integer
+
+
+--- A list of region datas
+---@class REGION_DATA_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:REGION_DATA_LIST_SCRIPT_INTERFACE, positive:integer):REGION_DATA_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:REGION_DATA_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:REGION_DATA_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- A list of active ritual script interfaces
+---@class ACTIVE_RITUAL_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:ACTIVE_RITUAL_LIST_SCRIPT_INTERFACE, positive:integer):ACTIVE_RITUAL_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:ACTIVE_RITUAL_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:ACTIVE_RITUAL_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- A list of slot interfaces
+---@class SLOT_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:SLOT_LIST_SCRIPT_INTERFACE, positive:integer):SLOT_LIST_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:SLOT_LIST_SCRIPT_INTERFACE):integer
+--- Does a building with this key exist in the list? (building_level_record key)
+---@field buliding_type_exists fun(self:SLOT_LIST_SCRIPT_INTERFACE, key:string):boolean
+--- Does a slot with this key exist in the list?
+---@field slot_type_exists fun(self:SLOT_LIST_SCRIPT_INTERFACE, key:string):boolean
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:SLOT_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- A list of faction character tag entry interfaces
+---@class FACTION_CHARACTER_TAG_ENTRY_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:FACTION_CHARACTER_TAG_ENTRY_LIST_SCRIPT_INTERFACE, positive:integer):FACTION_CHARACTER_TAG_ENTRY_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:FACTION_CHARACTER_TAG_ENTRY_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:FACTION_CHARACTER_TAG_ENTRY_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- A list of character initiative set interfaces
+---@class CHARACTER_INITIATIVE_SET_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:CHARACTER_INITIATIVE_SET_LIST_SCRIPT_INTERFACE, positive:integer):CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:CHARACTER_INITIATIVE_SET_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:CHARACTER_INITIATIVE_SET_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Route Path Script Interface
+---@class ROUTE_PATH_SCRIPT_INTERFACE
+--- Removes the end node of the path. Returns true if a node was popped
+---@field pop_back fun(self:ROUTE_PATH_SCRIPT_INTERFACE):boolean
+--- Returns the path as a node ID lua table
+---@field as_node_id_table fun(self:ROUTE_PATH_SCRIPT_INTERFACE):table
+--- Appends a node to the path, by position
+---@field push_node_by_position fun(self:ROUTE_PATH_SCRIPT_INTERFACE, node_position:ROUTE_POSITION_SCRIPT_INTERFACE)
+--- Appends a node to the path
+---@field push_node fun(self:ROUTE_PATH_SCRIPT_INTERFACE, node:ROUTE_NODE_SCRIPT_INTERFACE)
+--- Returns the path as a node list interface
+---@field as_node_list fun(self:ROUTE_PATH_SCRIPT_INTERFACE):ROUTE_NODE_LIST_SCRIPT_INTERFACE
+--- Is this path valid and can it actually be followed?
+---@field valid fun(self:ROUTE_PATH_SCRIPT_INTERFACE):boolean
+--- Appends a node to the path, by node key
+---@field push_node_by_key fun(self:ROUTE_PATH_SCRIPT_INTERFACE, node_key:string)
+--- Removes all nodes from the path
+---@field clear fun(self:ROUTE_PATH_SCRIPT_INTERFACE)
+--- Appends a node to the path, by id
+---@field push_node_by_id fun(self:ROUTE_PATH_SCRIPT_INTERFACE, node_id:integer)
+--- Route network that this path is on
+---@field network fun(self:ROUTE_PATH_SCRIPT_INTERFACE):ROUTE_NETWORK_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:ROUTE_PATH_SCRIPT_INTERFACE):boolean
+--- Set the route network that this path is on
+---@field set_network fun(self:ROUTE_PATH_SCRIPT_INTERFACE, network:ROUTE_NETWORK_SCRIPT_INTERFACE):boolean
+
+
+--- A list of building interfaces
+---@class BUILDING_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:BUILDING_LIST_SCRIPT_INTERFACE, positive:integer):BUILDING_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:BUILDING_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:BUILDING_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Ritual Target Script Interface
+---@class RITUAL_TARGET_SCRIPT_INTERFACE
+--- Is the specified region a valid target?
+---@field is_region_valid_target fun(self:RITUAL_TARGET_SCRIPT_INTERFACE, faction:REGION_SCRIPT_INTERFACE):boolean
+--- Is the specified force a valid target?
+---@field is_force_valid_target fun(self:RITUAL_TARGET_SCRIPT_INTERFACE, faction:integer):boolean
+--- Get the status of the current target region
+---@field target_region_status fun(self:RITUAL_TARGET_SCRIPT_INTERFACE):RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE
+--- Is the performing faction able to target itself?
+---@field can_target_self fun(self:RITUAL_TARGET_SCRIPT_INTERFACE):boolean
+--- Status for the provided force.
+---@field status_for_force_target fun(self:RITUAL_TARGET_SCRIPT_INTERFACE, force:MILITARY_FORCE_SCRIPT_INTERFACE):RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE
+--- Status for the provided faction.
+---@field status_for_faction_target fun(self:RITUAL_TARGET_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE):RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE
+--- Is the specified faction a valid target?
+---@field is_faction_valid_target fun(self:RITUAL_TARGET_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE):boolean
+--- Get the key of the target record
+---@field target_record_key fun(self:RITUAL_TARGET_SCRIPT_INTERFACE):string
+--- Get the status of the current target faction
+---@field target_faction_status fun(self:RITUAL_TARGET_SCRIPT_INTERFACE):RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE
+--- Attempt to get the target force. May be null
+---@field get_target_force fun(self:RITUAL_TARGET_SCRIPT_INTERFACE):MILITARY_FORCE_SCRIPT_INTERFACE
+--- Get the target type
+---@field target_type fun(self:RITUAL_TARGET_SCRIPT_INTERFACE):string
+--- Get the status of the current target force
+---@field target_force_status fun(self:RITUAL_TARGET_SCRIPT_INTERFACE):RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE
+--- Get a list of all of the factions that can be targeted by this ritual.
+---@field get_all_valid_target_factions fun(self:RITUAL_TARGET_SCRIPT_INTERFACE):FACTION_LIST_SCRIPT_INTERFACE
+--- Get a list of all of the regions that can be targeted by this ritual, in the specified faction.
+---@field get_all_valid_target_regions_in_faction fun(self:RITUAL_TARGET_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE):REGION_LIST_SCRIPT_INTERFACE
+--- Get a list of all of the forces that can be targeted by this ritual, in the specified faction.
+---@field get_all_valid_target_forces_in_faction fun(self:RITUAL_TARGET_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE):MILITARY_FORCE_LIST_SCRIPT_INTERFACE
+--- Attempt to get the target faction. May be null
+---@field get_target_faction fun(self:RITUAL_TARGET_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+--- Is the target currently valid?
+---@field valid fun(self:RITUAL_TARGET_SCRIPT_INTERFACE):boolean
+--- Status for the provided region.
+---@field status_for_region_target fun(self:RITUAL_TARGET_SCRIPT_INTERFACE, region:REGION_SCRIPT_INTERFACE):RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:RITUAL_TARGET_SCRIPT_INTERFACE):boolean
+--- Attempt to get the target region. May be null
+---@field get_target_region fun(self:RITUAL_TARGET_SCRIPT_INTERFACE):REGION_SCRIPT_INTERFACE
+
+
+--- A list of foreign slot script interfaces
+---@class FOREIGN_SLOT_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:FOREIGN_SLOT_LIST_SCRIPT_INTERFACE, positive:integer):FOREIGN_SLOT_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:FOREIGN_SLOT_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:FOREIGN_SLOT_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Faction Caravans Script Interface
+---@class FACTION_CARAVANS_SCRIPT_INTERFACE
+--- Number of caravans this faction currently has active
+---@field number_of_active_caravans fun(self:FACTION_CARAVANS_SCRIPT_INTERFACE):integer
+--- Maximum caravans this faction can have active at any time
+---@field maximum_active_caravans fun(self:FACTION_CARAVANS_SCRIPT_INTERFACE):integer
+--- Can the given caravan be started?
+---@field can_start_caravan fun(self:FACTION_CARAVANS_SCRIPT_INTERFACE, caravan_master:FAMILY_MEMBER_SCRIPT_INTERFACE):boolean
+--- Idle caravans owned by this faction
+---@field idle_caravans fun(self:FACTION_CARAVANS_SCRIPT_INTERFACE):CARAVAN_LIST_SCRIPT_INTERFACE
+--- Route network that this faction uses for its caravans
+---@field route_network fun(self:FACTION_CARAVANS_SCRIPT_INTERFACE):ROUTE_NETWORK_SCRIPT_INTERFACE
+--- Can the given caravan be recruited?
+---@field can_recruit_caravan fun(self:FACTION_CARAVANS_SCRIPT_INTERFACE, caravan_master:FAMILY_MEMBER_SCRIPT_INTERFACE):boolean
+--- Owning faction
+---@field faction fun(self:FACTION_CARAVANS_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+--- Exhaustive list of route nodes this faction may start a caravan from
+---@field valid_caravan_start_points fun(self:FACTION_CARAVANS_SCRIPT_INTERFACE):ROUTE_NODE_LIST_SCRIPT_INTERFACE
+--- List of all caravans that may be recruited
+---@field available_caravan_recruitment_items fun(self:FACTION_CARAVANS_SCRIPT_INTERFACE):CARAVAN_RECRUITMENT_ITEM_LIST_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:FACTION_CARAVANS_SCRIPT_INTERFACE):boolean
+--- Active caravans owned by this faction
+---@field active_caravans fun(self:FACTION_CARAVANS_SCRIPT_INTERFACE):CARAVAN_LIST_SCRIPT_INTERFACE
+
+
+--- A list of pooled resource factor script interfaces
+---@class POOLED_RESOURCE_FACTOR_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:POOLED_RESOURCE_FACTOR_LIST_SCRIPT_INTERFACE, positive:integer):POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:POOLED_RESOURCE_FACTOR_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:POOLED_RESOURCE_FACTOR_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Plague Script Interface
+---@class PLAGUE_SCRIPT_INTERFACE
+--- Returns the plague's components' records
+---@field component_records fun(self:PLAGUE_SCRIPT_INTERFACE):string
+--- Is this the null script interface
+---@field is_null_interface fun(self:PLAGUE_SCRIPT_INTERFACE):boolean
+--- Returns the plague's record
+---@field plague_record fun(self:PLAGUE_SCRIPT_INTERFACE):string
+
+
+--- A list of teleportation network script interfaces
+---@class TELEPORTATION_NETWORK_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:TELEPORTATION_NETWORK_LIST_SCRIPT_INTERFACE, positive:integer):TELEPORTATION_NETWORK_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:TELEPORTATION_NETWORK_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:TELEPORTATION_NETWORK_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Garrison residence interface, a residence that can act as a garrison for military forces. A Settlement is a garrison residence for example.
+---@class GARRISON_RESIDENCE_SCRIPT_INTERFACE
+--- Is there a garrisoned navy?
+---@field has_navy fun(self:GARRISON_RESIDENCE_SCRIPT_INTERFACE):boolean
+--- Is there a garrisoned army?
+---@field has_army fun(self:GARRISON_RESIDENCE_SCRIPT_INTERFACE):boolean
+--- Returns a list of buildings in the garrison
+---@field buildings fun(self:GARRISON_RESIDENCE_SCRIPT_INTERFACE):BUILDING_LIST_SCRIPT_INTERFACE
+--- Is the garrison under siege?
+---@field is_under_siege fun(self:GARRISON_RESIDENCE_SCRIPT_INTERFACE):boolean
+--- Get the character besieging this garrison
+---@field besieging_character fun(self:GARRISON_RESIDENCE_SCRIPT_INTERFACE):CHARACTER_SCRIPT_INTERFACE
+--- If this garrison is a slot type, returns a slot interface
+---@field slot_interface fun(self:GARRISON_RESIDENCE_SCRIPT_INTERFACE):SLOT_SCRIPT_INTERFACE
+--- The region for the garrison residence
+---@field region fun(self:GARRISON_RESIDENCE_SCRIPT_INTERFACE):REGION_SCRIPT_INTERFACE
+--- Number of units in a garrison
+---@field unit_count fun(self:GARRISON_RESIDENCE_SCRIPT_INTERFACE):integer
+--- Can the specified faction occupy this residence?
+---@field can_be_occupied_by_faction fun(self:GARRISON_RESIDENCE_SCRIPT_INTERFACE, faction:string):boolean
+--- Returns the army in the garrison residence, if it has one
+---@field army fun(self:GARRISON_RESIDENCE_SCRIPT_INTERFACE):MILITARY_FORCE_SCRIPT_INTERFACE
+--- If this garrison is a settlement type, returns a settlement interface
+---@field settlement_interface fun(self:GARRISON_RESIDENCE_SCRIPT_INTERFACE):SETTLEMENT_SCRIPT_INTERFACE
+--- Returns the army in the garrison residence, if it has one
+---@field navy fun(self:GARRISON_RESIDENCE_SCRIPT_INTERFACE):MILITARY_FORCE_SCRIPT_INTERFACE
+--- Is this garrison a settlement type?
+---@field is_settlement fun(self:GARRISON_RESIDENCE_SCRIPT_INTERFACE):boolean
+--- Is this garrison a slot type?
+---@field is_slot fun(self:GARRISON_RESIDENCE_SCRIPT_INTERFACE):boolean
+--- The faction that owns the garrison
+---@field faction fun(self:GARRISON_RESIDENCE_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+--- Access to the campaign model
+---@field model fun(self:GARRISON_RESIDENCE_SCRIPT_INTERFACE):MODEL_SCRIPT_INTERFACE
+--- Can the attacking army launch a seige
+---@field can_assault fun(self:GARRISON_RESIDENCE_SCRIPT_INTERFACE):boolean
+--- Is this the null script interface
+---@field is_null_interface fun(self:GARRISON_RESIDENCE_SCRIPT_INTERFACE):boolean
+--- Access the CQI of the garrison
+---@field command_queue_index fun(self:GARRISON_RESIDENCE_SCRIPT_INTERFACE):integer
+
+
+--- Caravan Script Interface
+---@class CARAVAN_SCRIPT_INTERFACE
+--- Rounds until this caravan will become available, after a successful journey
+---@field rounds_until_return fun(self:CARAVAN_SCRIPT_INTERFACE):integer
+--- The path this caravan is currently set to follow. This will be null if the caravan has an invalid position
+---@field path fun(self:CARAVAN_SCRIPT_INTERFACE):ROUTE_PATH_SCRIPT_INTERFACE
+--- Military force of this caravan
+---@field caravan_force fun(self:CARAVAN_SCRIPT_INTERFACE):MILITARY_FORCE_SCRIPT_INTERFACE
+--- The current route position of this caravan. This may be invalid
+---@field position fun(self:CARAVAN_SCRIPT_INTERFACE):ROUTE_POSITION_SCRIPT_INTERFACE
+--- Is this caravan returning from a successful journey?
+---@field is_returning fun(self:CARAVAN_SCRIPT_INTERFACE):boolean
+--- Cargo amount that this caravan is currently carrying
+---@field cargo fun(self:CARAVAN_SCRIPT_INTERFACE):integer
+--- Is this the null script interface
+---@field is_null_interface fun(self:CARAVAN_SCRIPT_INTERFACE):boolean
+--- Character that commands this caravan
+---@field caravan_master fun(self:CARAVAN_SCRIPT_INTERFACE):FAMILY_MEMBER_SCRIPT_INTERFACE
+
+
+--- Modify Ritual Setup Script Interface
+---@class MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE
+--- Are all the performing character slots valid?
+---@field performing_characters_valid fun(self:MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE):boolean
+--- Change the performing faction to a different faction. This will clear performing characters
+---@field change_performing_faction fun(self:MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE)
+--- Change the ritual setup to a different ritual. This will clear performing characters
+---@field change_ritual fun(self:MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE)
+--- A list of the performing character slots
+---@field performing_characters fun(self:MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE):MODIFY_RITUAL_PERFORMING_CHARACTER_LIST_SCRIPT_INTERFACE
+--- The target of this ritual
+---@field target fun(self:MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE):MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE
+--- The ritual to be performed
+---@field ritual_record fun(self:MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE):string
+--- Is this the null script interface
+---@field is_null_interface fun(self:MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE):boolean
+--- The faction performing the ritual
+---@field performing_faction fun(self:MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+
+
+--- A collection of related character initiatives. Owned by a character
+---@class CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE
+--- Returns a list of all active initiatives in this set
+---@field active_initiatives fun(self:CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE):CHARACTER_INITIATIVE_LIST_SCRIPT_INTERFACE
+--- Returns a list of every initiative in this set
+---@field all_initiatives fun(self:CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE):CHARACTER_INITIATIVE_LIST_SCRIPT_INTERFACE
+--- Number of rounds that the initiative set is on cooldown for. Zero if it's not on cooldown
+---@field cooldown_remaining fun(self:CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE):integer
+--- Attempts ot find the character initiative in this set with the specified record key. *MAY BE NULL*
+---@field lookup_initiative_by_key fun(self:CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE, record_key:string):CHARACTER_INITIATIVE_SCRIPT_INTERFACE
+--- Attempts ot find the character initiative in this set with the specified record key and give you back a valid status interface
+---@field initiative_status_by_key fun(self:CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE, record_key:string):CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE):boolean
+--- Returns a status interface for the specified initiative
+---@field initiative_status fun(self:CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE, initiative:CHARACTER_INITIATIVE_SCRIPT_INTERFACE):CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE
+
+
+--- Faction Character Tagging System Script Interface
+---@class FACTION_CHARACTER_TAGGING_SYSTEM_SCRIPT_INTERFACE
+--- Is the specified character tagged by one of the specified factions?
+---@field is_character_tagged_by_one_of_factions fun(self:FACTION_CHARACTER_TAGGING_SYSTEM_SCRIPT_INTERFACE, character:FAMILY_MEMBER_SCRIPT_INTERFACE, factions:integer):boolean
+--- Returns the character tag entry for this character. Null if the character is not tagged
+---@field character_tag fun(self:FACTION_CHARACTER_TAGGING_SYSTEM_SCRIPT_INTERFACE, character:FAMILY_MEMBER_SCRIPT_INTERFACE):FACTION_CHARACTER_TAG_ENTRY_SCRIPT_INTERFACE
+--- Is the specified character tagged by the specified faction?
+---@field is_character_tagged_by_faction fun(self:FACTION_CHARACTER_TAGGING_SYSTEM_SCRIPT_INTERFACE, character:FAMILY_MEMBER_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE):boolean
+--- Returns the faction that has tagged the specified character. Null if the character is not tagged
+---@field faction_that_has_tagged_character fun(self:FACTION_CHARACTER_TAGGING_SYSTEM_SCRIPT_INTERFACE, character:FAMILY_MEMBER_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+--- Is the specified character tagged by any faction?
+---@field is_character_tagged fun(self:FACTION_CHARACTER_TAGGING_SYSTEM_SCRIPT_INTERFACE, character:FAMILY_MEMBER_SCRIPT_INTERFACE):boolean
+--- Is this the null script interface
+---@field is_null_interface fun(self:FACTION_CHARACTER_TAGGING_SYSTEM_SCRIPT_INTERFACE):boolean
+--- Returns a list of character tags owned by the faction. Null if faction isn't present in the system
+---@field faction_tags fun(self:FACTION_CHARACTER_TAGGING_SYSTEM_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE):FACTION_CHARACTER_TAG_ENTRY_LIST_SCRIPT_INTERFACE
+
+
+--- An empty interface, returned if a requested interface doesn't exist. If function calls are made with this interface, the LUA script will fail
+---@class NULL_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:NULL_SCRIPT_INTERFACE):boolean
+
+
+--- Modify Ritual Target Script Interface
+---@class MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE
+--- Is the specified region a valid target?
+---@field is_region_valid_target fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE, faction:REGION_SCRIPT_INTERFACE):boolean
+--- Is the specified force a valid target?
+---@field is_force_valid_target fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE, faction:integer):boolean
+--- Get the status of the current target region
+---@field target_region_status fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE):RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE
+--- Is the performing faction able to target itself?
+---@field can_target_self fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE):boolean
+--- Attempt to set the target region
+---@field set_target_region fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE, target:REGION_SCRIPT_INTERFACE):boolean
+--- Status for the provided force.
+---@field status_for_force_target fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE, force:MILITARY_FORCE_SCRIPT_INTERFACE):RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE
+--- Status for the provided faction.
+---@field status_for_faction_target fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE):RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE
+--- Is the specified faction a valid target?
+---@field is_faction_valid_target fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE):boolean
+--- Get the key of the target record
+---@field target_record_key fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE):string
+--- Get the status of the current target faction
+---@field target_faction_status fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE):RITUAL_TARGET_FACTION_STATUS_SCRIPT_INTERFACE
+--- Attempt to get the target force. May be null
+---@field get_target_force fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE):MILITARY_FORCE_SCRIPT_INTERFACE
+--- Attempt to set the target force
+---@field set_target_force fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE, target:MILITARY_FORCE_SCRIPT_INTERFACE):boolean
+--- Attempt to set the target faction
+---@field set_target_faction fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE, target:FACTION_SCRIPT_INTERFACE):boolean
+--- Get the target type
+---@field target_type fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE):string
+--- Clear the current target
+---@field clear fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE)
+--- Get the status of the current target force
+---@field target_force_status fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE):RITUAL_TARGET_MILITARY_FORCE_STATUS_SCRIPT_INTERFACE
+--- Get a list of all of the factions that can be targeted by this ritual.
+---@field get_all_valid_target_factions fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE):FACTION_LIST_SCRIPT_INTERFACE
+--- Get a list of all of the regions that can be targeted by this ritual, in the specified faction.
+---@field get_all_valid_target_regions_in_faction fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE):REGION_LIST_SCRIPT_INTERFACE
+--- Get a list of all of the forces that can be targeted by this ritual, in the specified faction.
+---@field get_all_valid_target_forces_in_faction fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE):MILITARY_FORCE_LIST_SCRIPT_INTERFACE
+--- Attempt to get the target faction. May be null
+---@field get_target_faction fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+--- Is the target currently valid?
+---@field valid fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE):boolean
+--- Status for the provided region.
+---@field status_for_region_target fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE, region:REGION_SCRIPT_INTERFACE):RITUAL_TARGET_REGION_STATUS_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE):boolean
+--- Attempt to get the target region. May be null
+---@field get_target_region fun(self:MODIFY_RITUAL_TARGET_SCRIPT_INTERFACE):REGION_SCRIPT_INTERFACE
+
+
+--- A customisable effect bundle, based off of an existing effect bundle defined in the database
+---@class CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE
+--- Set the number of rounds this effect bundle will persist for
+---@field set_duration fun(self:CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE, num_rounds:number)
+--- Number of rounds this effect bundle will persist for. Zero means infinite duration
+---@field duration fun(self:CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE):integer
+--- Effects currently provided by this effect bundle
+---@field effects fun(self:CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE):EFFECT_LIST_SCRIPT_INTERFACE
+--- Remove the specified effect, by key
+---@field remove_effect_by_key fun(self:CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE, effect_key:string):boolean
+--- Key of the effect bundle record
+---@field key fun(self:CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE):string
+--- Add a new effect to the effect bundle
+---@field add_effect fun(self:CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE, effect_key:string, scope_key:string, value:number):boolean
+--- Remove the specified effect
+---@field remove_effect fun(self:CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE, effect:EFFECT_SCRIPT_INTERFACE):boolean
+--- Change the value of the specified effect, bby key
+---@field set_effect_value_by_key fun(self:CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE, effect_key:string, new_value:number):boolean
+--- Is this the null script interface
+---@field is_null_interface fun(self:CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE):boolean
+--- Change the value of the specified effect
+---@field set_effect_value fun(self:CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE, effect:EFFECT_SCRIPT_INTERFACE, new_value:number):boolean
+
+
+--- Character details interface
+---@class CHARACTER_DETAILS_SCRIPT_INTERFACE
+--- Returns if the character has the specified trait
+---@field has_trait fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE, key:string):integer
+--- returns a character mother's family member script interface
+---@field mother fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):FAMILY_MEMBER_SCRIPT_INTERFACE
+--- Primary character of these details. May be null if dead
+---@field primary_character fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):CHARACTER_SCRIPT_INTERFACE
+--- Attempt to get a character initiative set (owned by this character), by key. *MAY BE NULL*
+---@field lookup_character_initiative_set_by_key fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE, record_key:string):CHARACTER_INITIATIVE_SET_SCRIPT_INTERFACE
+--- Pooled resource manager of this character
+---@field pooled_resource_manager fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE
+--- Returns the character forename
+---@field get_forename fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):string
+--- Returns whether the agent subtype record associated with the character has a female name
+---@field character_subtype_has_female_name fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):boolean
+--- Returns the number of trait points for the specified trait (0 if not present)
+---@field trait_points fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE, key:string):integer
+--- Returns if the character has the specified ancillary
+---@field has_ancillary fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE, key:string):boolean
+--- returns a characters family member script interface
+---@field family_member fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):FAMILY_MEMBER_SCRIPT_INTERFACE
+--- Returns the character's type key, from the agents table
+---@field character_type_key fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):string
+--- Returns the key of the character's agent subtype record
+---@field character_subtype_key fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):string
+--- Returns true if the character context is of the agent subtype specified
+---@field character_subtype fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE, key:string):boolean
+--- returns a characters father's family member script interface
+---@field father fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):FAMILY_MEMBER_SCRIPT_INTERFACE
+--- returns whether a character has a mother or not
+---@field has_mother fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):boolean
+--- returns whether a character has a father or not
+---@field has_father fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):boolean
+--- The number of traits the chracter has
+---@field number_of_traits fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):integer
+--- returns the level of the specified trait
+---@field trait_level fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE, key:string):integer
+--- returns the characters loyalty
+---@field loyalty fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):integer
+--- Has the skill passed
+---@field has_skill fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):boolean
+--- returns the characters personal loyalty factor
+---@field personal_loyalty_factor fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):integer
+--- Returns whether this character is immortal
+---@field is_immortal fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):boolean
+--- The character's age
+---@field age fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):integer
+--- Is the character male?
+---@field is_male fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):boolean
+--- Initiative sets that this character has access to
+---@field character_initiative_sets fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):CHARACTER_INITIATIVE_SET_LIST_SCRIPT_INTERFACE
+--- Returns true if the character context is of the agent type specified
+---@field character_type fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE, key:string):boolean
+--- Does the character have this forename?
+---@field forename fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE, key:string):boolean
+--- Access to the model interface
+---@field model fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):MODEL_SCRIPT_INTERFACE
+--- Returns the character surname
+---@field get_surname fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):string
+--- Access to the character's faction interface
+---@field faction fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE):boolean
+--- Does the character have this surname?
+---@field surname fun(self:CHARACTER_DETAILS_SCRIPT_INTERFACE, key:string):boolean
+
+
+--- Modify Ritual Performing Character Script Interface
+---@class MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE
+--- Required agent subtype. Empty if none
+---@field required_agent_subtype fun(self:MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE):string
+--- Required agent type. Empty if none
+---@field required_agent_type fun(self:MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE):string
+--- Status with the specified character
+---@field status_with_performer fun(self:MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE, setup:RITUAL_SETUP_SCRIPT_INTERFACE, performer:FAMILY_MEMBER_SCRIPT_INTERFACE):RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE
+--- Attempt to set the character in the performer slot
+---@field set_performer fun(self:MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE, setup:RITUAL_SETUP_SCRIPT_INTERFACE, performer:FAMILY_MEMBER_SCRIPT_INTERFACE):boolean
+--- Clear the slot
+---@field clear fun(self:MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE)
+--- Number of rounds the performer will convalesce after performing the ritual
+---@field recovery_time fun(self:MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE):integer
+--- Required level
+---@field required_level fun(self:MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE):integer
+--- Status with the character currently in the slot
+---@field status fun(self:MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE, setup:RITUAL_SETUP_SCRIPT_INTERFACE):RITUAL_PERFORMING_CHARACTER_STATUS_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE):boolean
+--- Ritual performing character record key
+---@field performer_record fun(self:MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE):string
+--- Family member of the character currently in the slot
+---@field performer fun(self:MODIFY_RITUAL_PERFORMING_CHARACTER_SCRIPT_INTERFACE):FAMILY_MEMBER_SCRIPT_INTERFACE
+
+
+--- Status of a character initiative. Status is from the time this interface is returned
+---@class CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE
+--- Is this initiative active?
+---@field is_active fun(self:CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE):boolean
+--- Is this initiative script locked?
+---@field is_script_locked fun(self:CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE):boolean
+--- Is the set that this initiative is a part of, on cooldown?
+---@field is_set_on_cooldown fun(self:CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE):boolean
+--- Is this initiative unavailable from the queried set?
+---@field is_unavailable fun(self:CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE):boolean
+--- Is this initiative in a set that has reached its capacity (and not active)?
+---@field is_set_capacity_reached fun(self:CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE):boolean
+--- Is this the null script interface
+---@field is_null_interface fun(self:CHARACTER_INITIATIVE_STATUS_SCRIPT_INTERFACE):boolean
+
+
+--- Resource Transaction Script Interface
+---@class RESOURCE_TRANSACTION_SCRIPT_INTERFACE
+--- Total percentage value change applied to the specified resource by this resource transaction
+---@field precentage_resource_change fun(self:RESOURCE_TRANSACTION_SCRIPT_INTERFACE, resource_key:string):integer
+--- Total absolute value change applied to the specified resource by this resource transaction
+---@field absolute_resource_change fun(self:RESOURCE_TRANSACTION_SCRIPT_INTERFACE, resource_key:string):integer
+--- Is this the null script interface
+---@field is_null_interface fun(self:RESOURCE_TRANSACTION_SCRIPT_INTERFACE):boolean
+--- Total net treasury change applied by this resource transaction
+---@field total_treasury_change fun(self:RESOURCE_TRANSACTION_SCRIPT_INTERFACE):RESOURCE_TRANSACTION_SCRIPT_INTERFACE
+
+
+--- A list of character details interfaces
+---@class CHARACTER_DETAILS_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:CHARACTER_DETAILS_LIST_SCRIPT_INTERFACE, positive:integer):CHARACTER_DETAILS_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:CHARACTER_DETAILS_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:CHARACTER_DETAILS_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Military Force Slot Script Interface
+---@class MILITARY_FORCE_SLOT_SCRIPT_INTERFACE
+--- key of the slot template
+---@field template_key fun(self:MILITARY_FORCE_SLOT_SCRIPT_INTERFACE):string
+--- is this slot active?
+---@field active fun(self:MILITARY_FORCE_SLOT_SCRIPT_INTERFACE):boolean
+--- key of the building in this slot
+---@field building fun(self:MILITARY_FORCE_SLOT_SCRIPT_INTERFACE):string
+--- Wether this slot contains a building
+---@field has_building fun(self:MILITARY_FORCE_SLOT_SCRIPT_INTERFACE):boolean
+--- key of the slot type
+---@field type_key fun(self:MILITARY_FORCE_SLOT_SCRIPT_INTERFACE):string
+--- Faction of the containing slot
+---@field faction fun(self:MILITARY_FORCE_SLOT_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+--- Military Force containing the slot
+---@field military_force fun(self:MILITARY_FORCE_SLOT_SCRIPT_INTERFACE):MILITARY_FORCE_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:MILITARY_FORCE_SLOT_SCRIPT_INTERFACE):boolean
+--- Campaign Modle
+---@field model fun(self:MILITARY_FORCE_SLOT_SCRIPT_INTERFACE):MODEL_SCRIPT_INTERFACE
+
+
+--- Province script interface. Represents a geographic province
+---@class PROVINCE_SCRIPT_INTERFACE
+--- All regions contained within this province
+---@field regions fun(self:PROVINCE_SCRIPT_INTERFACE):REGION_LIST_SCRIPT_INTERFACE
+--- Lookup the faction province manager of the provided faction
+---@field faction_province_for_faction fun(self:PROVINCE_SCRIPT_INTERFACE, faction:FACTION_SCRIPT_INTERFACE):FACTION_PROVINCE_MANAGER_SCRIPT_INTERFACE
+--- Province record key
+---@field key fun(self:PROVINCE_SCRIPT_INTERFACE):string
+--- Returns all adjacent provinces to this province
+---@field adjacent_provinces fun(self:PROVINCE_SCRIPT_INTERFACE):PROVINCE_LIST_SCRIPT_INTERFACE
+--- All faction provinces present in this province
+---@field faction_provinces fun(self:PROVINCE_SCRIPT_INTERFACE):FACTION_PROVINCE_MANAGER_LIST_SCRIPT_INTERFACE
+--- Returns the region containing the province capital settlement
+---@field capital_region fun(self:PROVINCE_SCRIPT_INTERFACE):REGION_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:PROVINCE_SCRIPT_INTERFACE):boolean
+--- Pooled resource manager of this province
+---@field pooled_resource_manager fun(self:PROVINCE_SCRIPT_INTERFACE):POOLED_RESOURCE_MANAGER_SCRIPT_INTERFACE
+
+
+--- Provides an interface for building a campaign dilemma
+---@class CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE
+--- Remove a choice payload from this dilemma
+---@field remove_choice_payload fun(self:CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE, choice_key:string):boolean
+--- Get a list of all choices that are defined for this dilemma in the database
+---@field possible_choices fun(self:CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE):string
+--- Set an event target. Not required for payloads but can still provide information to the UI.
+---@field add_target fun(self:CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE, cdir_events_target_key:string, interface_object:FACTION_SCRIPT_INTERFACE|REGION_SCRIPT_INTERFACE|MILITARY_FORCE_SCRIPT_INTERFACE|FAMILY_MEMBER_SCRIPT_INTERFACE):boolean
+--- Is this the null script interface
+---@field is_null_interface fun(self:CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE):boolean
+--- Add a choice payload to the dilemma. This copies the payload, so you may reuse the payload builder after this call. Will fail if a payload already exists for the choice. The choice *must* be defined in the database
+---@field add_choice_payload fun(self:CAMPAIGN_DILEMMA_BUILDER_SCRIPT_INTERFACE, choice_key:string, payload:CAMPAIGN_PAYLOAD_BUILDER_SCRIPT_INTERFACE):boolean
+
+
+--- Unique Agent Details Script Interface.
+---@class UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE
+--- True if this unique agent is valid to spawn.
+---@field valid fun(self:UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE):boolean
+--- Returns the active character for this unique agent. Null if not spawned
+---@field character fun(self:UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE):CHARACTER_SCRIPT_INTERFACE
+--- Returns the database record key for this unique agent.
+---@field agent_key fun(self:UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE):string
+--- Returns the owning faction
+---@field faction fun(self:UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE):FACTION_SCRIPT_INTERFACE
+--- Returns the number of charges expended.
+---@field charges_expended fun(self:UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE):integer
+--- Is this the null script interface
+---@field is_null_interface fun(self:UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE):boolean
+--- Returns the number of available charges.
+---@field charges fun(self:UNIQUE_AGENT_DETAILS_SCRIPT_INTERFACE):integer
+
+
+--- Foreign Slot Script Interface
+---@class FOREIGN_SLOT_SCRIPT_INTERFACE
+--- is this slot active?
+---@field active fun(self:FOREIGN_SLOT_SCRIPT_INTERFACE):boolean
+--- key of the slot template
+---@field template_key fun(self:FOREIGN_SLOT_SCRIPT_INTERFACE):string
+--- Wether this slot contains a building
+---@field has_building fun(self:FOREIGN_SLOT_SCRIPT_INTERFACE):boolean
+--- key of the slot type
+---@field type_key fun(self:FOREIGN_SLOT_SCRIPT_INTERFACE):string
+--- Command Queue Index of this slot
+---@field cqi fun(self:FOREIGN_SLOT_SCRIPT_INTERFACE):integer
+--- key of the building in this slot
+---@field building fun(self:FOREIGN_SLOT_SCRIPT_INTERFACE):string
+--- Is this the null script interface
+---@field is_null_interface fun(self:FOREIGN_SLOT_SCRIPT_INTERFACE):boolean
+--- Slot manager that contains this slot
+---@field slot_manager fun(self:FOREIGN_SLOT_SCRIPT_INTERFACE):FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE
+
+
+--- A way to get armory information for a family member. Owned by a family member
+---@class ARMORY_SCRIPT_INTERFACE
+--- Get the currently registered armory items of the family member.
+---@field get_currently_registered_armory_items fun(self:ARMORY_SCRIPT_INTERFACE):string
+--- Get the current equipment state of the family member, please refer to the armory_slot_types table for their names and to ARMORY_SLOT_TYPE which position in your result will contain which your slot. slot entries can be null signifying an empty slot. 
+---@field get_all_active_variant_slot_states fun(self:ARMORY_SCRIPT_INTERFACE):string
+--- Get the number of equipped items belonging to a given ui type.
+---@field number_of_equipped_items_of_ui_type fun(self:ARMORY_SCRIPT_INTERFACE, ui_type_key:string):integer
+--- Get the number of equipped items belonging to a given category.
+---@field number_of_equipped_items_of_category fun(self:ARMORY_SCRIPT_INTERFACE, category_key:string):integer
+--- Is this the null script interface
+---@field is_null_interface fun(self:ARMORY_SCRIPT_INTERFACE):boolean
+
+
+--- A list of caravan recruitment item script interfaces
+---@class CARAVAN_RECRUITMENT_ITEM_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:CARAVAN_RECRUITMENT_ITEM_LIST_SCRIPT_INTERFACE, positive:integer):CARAVAN_RECRUITMENT_ITEM_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:CARAVAN_RECRUITMENT_ITEM_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:CARAVAN_RECRUITMENT_ITEM_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Teleportation Node Record Script Interface
+---@class TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE
+--- Fixed template record key for this node. Empty if the node can accept any template
+---@field template_key fun(self:TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE):string
+--- Record key
+---@field key fun(self:TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE):string
+--- Logical position of this node
+---@field position fun(self:TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE):integer,integer
+--- Database record key of the network this node belongs to
+---@field network_key fun(self:TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE):string
+--- Is this the null script interface
+---@field is_null_interface fun(self:TELEPORTATION_NODE_RECORD_SCRIPT_INTERFACE):boolean
+
+
+--- A list of teleportation network node script interfaces
+---@class TELEPORTATION_NODE_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:TELEPORTATION_NODE_LIST_SCRIPT_INTERFACE, positive:integer):TELEPORTATION_NODE_LIST_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:TELEPORTATION_NODE_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:TELEPORTATION_NODE_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- A list of foreign slot manager script interfaces
+---@class FOREIGN_SLOT_MANAGER_LIST_SCRIPT_INTERFACE
+--- Returns the item at the index. Make sure the index is between 0 and (max items - 1)
+---@field item_at fun(self:FOREIGN_SLOT_MANAGER_LIST_SCRIPT_INTERFACE, positive:integer):FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE
+--- Returns the number of items in the list
+---@field num_items fun(self:FOREIGN_SLOT_MANAGER_LIST_SCRIPT_INTERFACE):integer
+--- Returns a true if there are 0 items in the list
+---@field is_empty fun(self:FOREIGN_SLOT_MANAGER_LIST_SCRIPT_INTERFACE):boolean
+
+
+--- Family interface
+---@class FAMILY_MEMBER_SCRIPT_INTERFACE
+--- return true if the character has the trait
+---@field has_trait fun(self:FAMILY_MEMBER_SCRIPT_INTERFACE, key:string):boolean
+--- returns if this family member has a mother
+---@field mother fun(self:FAMILY_MEMBER_SCRIPT_INTERFACE):FAMILY_MEMBER_SCRIPT_INTERFACE
+--- return if the character has come of age
+---@field come_of_age fun(self:FAMILY_MEMBER_SCRIPT_INTERFACE):boolean
+--- return the armory interface for the current family member
+---@field armory fun(self:FAMILY_MEMBER_SCRIPT_INTERFACE):ARMORY_SCRIPT_INTERFACE
+--- returns if this family member has a father
+---@field has_father fun(self:FAMILY_MEMBER_SCRIPT_INTERFACE):boolean
+--- return persistent character details assosciated with this family member/character
+---@field character_details fun(self:FAMILY_MEMBER_SCRIPT_INTERFACE):CHARACTER_DETAILS_SCRIPT_INTERFACE
+--- returns if this family members father
+---@field father fun(self:FAMILY_MEMBER_SCRIPT_INTERFACE):FAMILY_MEMBER_SCRIPT_INTERFACE
+--- return the character attached to this family member. May be null if the character is dead
+---@field character fun(self:FAMILY_MEMBER_SCRIPT_INTERFACE):CHARACTER_SCRIPT_INTERFACE
+--- return family member cqi of the character
+---@field command_queue_index fun(self:FAMILY_MEMBER_SCRIPT_INTERFACE):integer
+--- Is this the null script interface
+---@field is_null_interface fun(self:FAMILY_MEMBER_SCRIPT_INTERFACE):boolean
+--- returns if this family member has a mother
+---@field has_mother fun(self:FAMILY_MEMBER_SCRIPT_INTERFACE):boolean
+
+
+--- Cook Dish Script Interface
+---@class COOKING_DISH_SCRIPT_INTERFACE
+--- Recipe of the dish
+---@field recipe fun(self:COOKING_DISH_SCRIPT_INTERFACE):string
+--- Number of rounds remaining for this dish
+---@field remaining_duration fun(self:COOKING_DISH_SCRIPT_INTERFACE):integer
+--- Effects provided to the faction
+---@field faction_effects fun(self:COOKING_DISH_SCRIPT_INTERFACE):EFFECT_LIST_SCRIPT_INTERFACE
+--- Is this the null script interface
+---@field is_null_interface fun(self:COOKING_DISH_SCRIPT_INTERFACE):boolean
+--- Ingredients used in the dish
+---@field ingredients fun(self:COOKING_DISH_SCRIPT_INTERFACE):string
+--- Effects provided to the faction leader
+---@field faction_leader_effects fun(self:COOKING_DISH_SCRIPT_INTERFACE):EFFECT_LIST_SCRIPT_INTERFACE
+
+

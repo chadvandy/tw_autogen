@@ -103,7 +103,7 @@ function UIC:IsMoveable() end
 --- Resizes the uicomponent. The uicomponent may be need to set to be resizeable before calling this - this can be done with uicomponent:SetCanResizeHeight and uicomponent:SetCanResizeWidth.
 ---@param width number New width of uicomponent in pixels.
 ---@param height number New height of uicomponent in pixels.
----@param resize_children boolean Also resize children.
+---@param resize_children boolean? Also resize children.
 function UIC:Resize(width, height, resize_children) end
 
 --- Allows or disallows the height of this uicomponent to be changed by code or script.
