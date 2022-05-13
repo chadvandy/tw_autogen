@@ -1,0 +1,96 @@
+-------------------------------------------
+--- WARNING: THIS ONLY ALLOWS ONE HANDLER, OVERWRITING ANY PREVIOUS ONE!!! This is horrible for compatibility unless special care is taken.
+--- Use battle_manager:register_input_handler_callback instead if possible.
+-------------------------------------------
+--- Registers a function (by string name) as a handler for input events. Input events are triggered when the player makes certain inputs. Valid input events are:<br />
+--- "move forward"<br />
+--- "move forward fast"<br />
+--- "move backward"<br />
+--- "move left"<br />
+--- "move right"<br />
+--- "rotate right"<br />
+--- "rotate left"<br />
+--- "move up"<br />
+--- "move down"<br />
+--- "rotate up"<br />
+--- "rotate down"<br />
+--- "edge rotate right"<br />
+--- "edge rotate left"<br />
+--- "edge move left"<br />
+--- "edge move right"<br />
+--- "edge move forward"<br />
+--- "edge move backward"<br />
+--- When an input event occurs, the registered function is called with the relevant input event string as a single argument. Note that the function being registered must have already been declared when register_input_handler is called.<br />
+--- Once registered, an input handler may be unregistered with battle:unregister_input_handler.
+---@param input_handler_function string input handler function
+function battle:register_input_handler(input_handler_function) end
+
+-------------------------------------------
+--- WARNING: THIS ONLY ALLOWS ONE HANDLER, OVERWRITING ANY PREVIOUS ONE!!! This is horrible for compatibility unless special care is taken.
+--- Use battle_manager:register_unit_selection_callback instead if you are listening for the selection of specific units.
+--- If you need a more generic listener that fires whenever *any* unit is selected, you can ping paperpancake for ideas.
+-------------------------------------------
+--- Registers a function (by string name) as a handler for user selection events. These events are triggered when the player selects or deselects units. When such an event occurs, the registered function is called with two arguments - the first being a battle_unit object representing the unit concerned, the second being a boolean flag indicating whether the unit is being selected or deselected. Note that the function being registered must have already been declared when register_unit_selection_handler is called.
+---@param unit_selection_handler_function string input handler function
+function battle:register_unit_selection_handler(unit_selection_handler_function) end
+
+-------------------------------------------
+--- WARNING: THIS ONLY ALLOWS ONE HANDLER, OVERWRITING ANY PREVIOUS ONE!!! This is horrible for compatibility unless special care is taken.
+--- Use battle_manager:register_command_handler_callback instead if possible.
+-------------------------------------------
+--- Registers a function (by string name) as a handler for command events. Command events are triggered when the player (or script) issues certain commands. When such an event occurs, the registered function is called and passed an event object as a single argument. This object provides several methods which can be used to determine information about the issued command. These methods are listed below:<br />
+--- MethodDescription<br />
+--- event:get_name()Returns the string name of the issued command. This is provided for every event type.
+--- event:get_bool1()Returns a boolean value related to the issued command, if any.
+--- event:get_string1()Returns a string value related to the issued command, if any.
+--- event:get_position()Returns a battle_vector related to the issued command, if any.
+--- event:get_unit()Returns a battle_unit related to the issued command, if any.
+--- event:get_building()Returns a battle_building related to the issued command, if any.
+--- Note that each event type only provides methods that are relevant. The list of valid event types, and what methods they provide, are listed here:<br />
+--- Event TypeEvent DescriptionMethod ProvidedMethod Return TypeMethod Description<br />
+--- Group CreatedA group has been createdevent:get_name()stringName of event
+--- Group DestroyedA group has been disbandedevent:get_name()stringName of event
+--- Repair ModeA command to repair a ship has been issuedevent:get_name()stringName of event
+--- <td rowspan=2>Move<td rowspan=2>A movement command has been issuedevent:get_name()stringName of eventevent:get_bool1()booleanIndicates whether the unit is now moving fast/running
+--- Move Orientation WidthA movement command with orientation and width has been issuedevent:get_name()stringName of event
+--- Move Rotation AngleA rotation command has been issuedevent:get_name()stringName of event
+--- <td rowspan=2>Change Speed<td rowspan=2>The speed of a unit has been toggledevent:get_name()stringName of eventevent:get_bool1()booleanIndicates whether the unit is now moving fast/running
+--- <td rowspan=3>Attack Unit<td rowspan=3>A command to attack a unit has been issuedevent:get_name()stringName of eventevent:get_bool1()booleanIndicates whether the unit is now moving fast/runningevent:get_unit()battle_unitReturns the target unit
+--- <td rowspan=2>Change Skirmish<td rowspan=2>Skirmish mode has been toggled on a unitevent:get_name()stringName of eventevent:get_bool1()booleanIndicates whether skirmish mode is now enabled
+--- <td rowspan=2>Change Melee<td rowspan=2>Melee mode has been toggled on a unitevent:get_name()stringName of eventevent:get_bool1()booleanIndicates whether melee mode is now enabled
+--- <td rowspan=2>Change Formation<td rowspan=2>A command to change formation has been issuedevent:get_name()stringName of eventevent:get_string1()stringReturns the name of the formation
+--- <td rowspan=3>Attack Building<td rowspan=3>A command to attack a building has been issuedevent:get_name()stringName of eventevent:get_bool1()booleanIndicates whether the unit is now moving fast/runningevent:get_building()battle_buildingReturns the target building
+--- <td rowspan=3>Climb/Dock Building<td rowspan=3>A command to climb a building has been issuedevent:get_name()stringName of eventevent:get_bool1()booleanIndicates whether the unit is now moving fast/runningevent:get_building()battle_buildingReturns the target building
+--- <td rowspan=2>Special Ability<td rowspan=2>A command to use a special ability has been issuedevent:get_name()stringName of eventevent:get_string1()stringReturns the name of the special ability
+--- <td rowspan=2>Shot Type<td rowspan=2>A command to change shot type has been issuedevent:get_name()stringName of eventevent:get_string1()stringReturns the name of the shot type
+--- Fire At WillFire-at-will mode has been toggled on a unitevent:get_name()stringName of event
+--- <td rowspan=2>Broadside Attack<td rowspan=2>A broadside attack command has been issuedevent:get_name()stringName of eventevent:get_bool1()booleanReturns true if the broadside is on the left side of the ship, false otherwise
+--- <td rowspan=2>Naval Shot Type<td rowspan=2>A command to change the shot type of a ship has been issuedevent:get_name()stringName of eventevent:get_string1()stringReturns the name of the shot type
+--- RamA command to ram a ship has been issuedevent:get_name()stringName of event
+--- <td rowspan=2>Withdraw<td rowspan=2>A command to withdraw a unit has been issuedevent:get_name()stringName of eventevent:get_bool1()booleanIndicates whether the unit is now moving fast/running
+--- HaltA command to halt a unit has been issuedevent:get_name()stringName of event
+--- Double ClickThe double-click UI gesture has been issued for the selected unitsevent:get_name()stringName of event
+--- <td rowspan=3>Entity Hit<td rowspan=3>A unit has been hit by a projectileevent:get_name()stringName of eventevent:get_bool1()booleanIndicates whether artillery fired the projectileevent:get_unit()battle_unitReturns the unit that was hit
+--- <td rowspan=2>Double Click Unit Card<td rowspan=2>A unit card has been double-clicked uponevent:get_name()stringName of eventevent:get_unit()battle_unitReturns the subject unit
+--- <td rowspan=2>Unit Left Battlefield<td rowspan=2>A unit has left the battlefieldevent:get_name()stringName of eventevent:get_unit()battle_unitReturns the subject unit
+--- <td rowspan=2>Battle Results<td rowspan=2>The battle has finished and the results have been issuedevent:get_name()stringName of eventevent:get_bool1()booleanIndicates whether the local alliance won the battle
+--- Note that the function being registered must have already been declared when register_command_handler is called.
+---@param command_handler_function string command handler function
+function battle:register_command_handler(command_handler_function) end
+
+-------------------------------------------
+--- WARNING: THIS ONLY ALLOWS ONE HANDLER, OVERWRITING ANY PREVIOUS ONE!!! This is horrible for compatibility unless special care is taken.
+--- Use battle_manager:register_phase_change_callback instead if possible.
+-------------------------------------------
+--- Registers a function (by string name) as a handler for battle phase changes. Battle phase changes are triggered when the battle moves into various distinct phases, the most important being the deployment and deployment (combat) phases. When a battle phase occurs, the registered function is called and passed the string name of the new battle phase as a single argument. Valid phases are listed below:<br />
+--- Phase NameDescription<br />
+--- StartupThis phase change is triggered after the scripts are loaded.
+--- PrebattleWeatherTriggered after Startup phase.
+--- PrebattleCinematicTriggered after PrebattleWeather phase.
+--- DeploymentDeployment phase, when both alliances get to position their troops prior to combat.
+--- DeployedCombat phase, in which the battle is fought.
+--- VictoryCountdownA victor for the battle has been determined, and the battle is counting down to completion.
+--- CompleteThe battle is completed.
+--- Note that the function being registered must have already been declared when register_unit_selection_handler is called. Furthermore, it is recommended that battle_manager:register_phase_change_callback is used in place of this function.
+---@param function_name string Function name to call when phase change event occurs.
+function battle:register_battle_phase_handler(function_name) end

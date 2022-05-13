@@ -9,9 +9,6 @@ cm = {}
 ---@class campaignui
 CampaignUI = {}
 
----@class battle_manager
-bm = {}
-
 ---@class core
 core = {}
 
@@ -90,3 +87,49 @@ end
 ---@param level integer
 ---@return BUILDING_SCRIPT_INTERFACE
 function episodic_scripting:instantly_set_settlement_primary_slot_level(settlement, level) end
+
+--------Campaign, Battle, and Frontend-------
+
+---@type number
+VOLUME_TYPE_VO = 0
+
+---@type string
+path = ""
+
+-----------------Battle Only-----------------
+
+---@class battle
+local battle = {}
+
+---@class battle_manager : battle
+---@alias bm battle_manager
+battle_manager = {}
+
+---@class battle_manager : battle
+---@field all_scriptunits table<number, script_unit> Indexed by the unique_ui_id. The indexes are not all consecutive. See also battle_manager:get_scriptunit_for_unit
+---@field unit_selection_callback_list table[] This is meant to be used internally by battle_manager:register_unit_selection_callback. But there are circumstances where paperpancake has needed to access this list directly. You can ping paperpancake if you have questions.
+battle_manager = {}
+
+---@class battle_manager
+bm = {}
+
+---@class script_unit
+---@field unit battle_unit
+---@field uc battle_unitcontroller
+script_unit = {}
+
+---@class script_ai_planner
+script_ai_planner = {}
+
+--- @param obj battle_unit|script_unit|script_units|battle_units|battle_army|battle_armies|battle_alliance|table
+--- @param shattered_only? boolean [opt=false]
+--- @param permit_rampaging? boolean [opt=false]
+--- @return boolean
+function is_routing_or_dead(obj, shattered_only, permit_rampaging) end
+
+--- @param obj battle_unit|script_unit|script_units|battle_units|battle_army|battle_armies|battle_alliance|table
+--- @param permit_rampaging? boolean [opt=false]
+--- @return boolean
+function is_shattered_or_dead(obj, permit_rampaging) end
+
+---------------------------------
