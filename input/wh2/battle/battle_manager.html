@@ -1,0 +1,3926 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+	<title>Battle Manager script class</title>
+	<link rel="stylesheet" href="../stylesheet.css" type="text/css" />
+</head>
+
+<body>
+
+	<a name="top"></a>
+
+	<div id="container">
+
+		<div style="background-color:#e2edff" id="main">
+
+			<div style="background-color:#e2edff" id="navigation_left">
+				<br/>
+				<h1 class="navigation_header"><i>Battle Documentation</i></h1>
+				<a href="../index.html">Scripting Homepage</a>
+				<h2 style="background-color:#c1e6ff">Search</h2>
+				<ul>
+				<form id="search_env_checkbox" class="search_env_checkbox">
+					<label for="search_current_env_only">Search battle only</label>
+					<input type="checkbox" name="search_current_env_only" checked /><br />
+				</form>
+				<form id="search" class="search_form" onsubmit="return false">
+					<input class="search_input" type="text" placeholder="Search.."/><br />
+					<div id="search_dropdown" class="search_dropdown"></div>
+				</form>				<h2 style="background-color:#c1e6ff">Game Areas</h2>
+				<ul>
+					<li><a href="../campaign/campaign_index.html">Campaign Index</a></li>
+					<li><strong> > Battle Index</strong></li>
+					<li><a href="../frontend/frontend_index.html">Frontend Index</a></li>
+				</ul>
+
+				<h2 style="background-color:#c1e6ff">On this page</h2>
+				<ul>
+				<div class="key">
+					<strong>Key</strong>
+					<table class="key">
+						<tr>
+							<td width="75%">Loaded in Battle</td>
+							<td><img alt="loaded in battle" style="float:right;" src="../images/loaded_in_battle.png" height="10" width="10" /></td>
+						</tr>
+						<tr>
+							<td width="75%">Loaded in Campaign</td>
+							<td><img alt="loaded in campaign" style="float:right;" src="../images/loaded_in_campaign.png" height="10" width="10" /></td>
+						</tr>
+						<tr>
+							<td width="75%">Loaded in Frontend</td>
+							<td><img alt="loaded in frontend" style="float:right;" src="../images/loaded_in_frontend.png" height="10" width="10" /></td>
+						</tr>
+					</table>
+				</div>
+					<li><a href="#class:battle_manager">Battle Manager</a><img alt="loaded in battle" style="float:right; margin-right:1em;" src="../images/loaded_in_battle.png" height="10" width="10" /></li>
+					<ul>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Creation">Creation</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:new">new</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Debug Output">Debug Output</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:out">out</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Miscellaneous Querying">Miscellaneous Querying</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_tm">get_tm</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_battle_ui_manager">get_battle_ui_manager</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_battle_folder">get_battle_folder</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_origin">get_origin</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:ui_component">ui_component</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:is_any_cutscene_running">is_any_cutscene_running</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:is_any_unit_selected">is_any_unit_selected</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:are_all_units_selected">are_all_units_selected</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_player_alliance_num">get_player_alliance_num</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_non_player_alliance_num">get_non_player_alliance_num</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_player_alliance">get_player_alliance</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_non_player_alliance">get_non_player_alliance</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:player_is_attacker">player_is_attacker</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_player_army">get_player_army</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_first_non_player_army">get_first_non_player_army</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Random Numbers">Random Numbers</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:random_number">random_number</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:random_sort">random_sort</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:random_sort_copy">random_sort_copy</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Battle Startup and Phases">Battle Startup and Phases</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:setup_battle">setup_battle</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:register_phase_change_callback">register_phase_change_callback</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Unit Selection Callbacks">Unit Selection Callbacks</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:register_unit_selection_callback">register_unit_selection_callback</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:unregister_unit_selection_callback">unregister_unit_selection_callback</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Command Handler Callbacks">Command Handler Callbacks</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:register_command_handler_callback">register_command_handler_callback</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:unregister_command_handler_callback">unregister_command_handler_callback</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Input Handler Callbacks">Input Handler Callbacks</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:register_input_handler_callback">register_input_handler_callback</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:unregister_input_handler_callback">unregister_input_handler_callback</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:ESC Key Callback Queue">ESC Key Callback Queue</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:steal_escape_key_with_callback">steal_escape_key_with_callback</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:release_escape_key_with_callback">release_escape_key_with_callback</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Victory Callbacks">Victory Callbacks</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:setup_victory_callback">setup_victory_callback</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:end_battle">end_battle</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:register_results_callbacks">register_results_callbacks</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Time Manipulation">Time Manipulation</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:slow_game_over_time">slow_game_over_time</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:pause">pause</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Timer Manager">Timer Manager</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:callback">callback</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:repeat_callback">repeat_callback</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:register_singleshot_timer">register_singleshot_timer</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:register_repeating_timer">register_repeating_timer</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:unregister_timer">unregister_timer</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Watches">Watches</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:watch">watch</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:remove_process">remove_process</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:remove_process_from_watch_list">remove_process_from_watch_list</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:print_watch_list">print_watch_list</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:clear_watches_and_callbacks">clear_watches_and_callbacks</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:set_load_balancing">set_load_balancing</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Advisor Queue">Advisor Queue</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:queue_advisor">queue_advisor</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:stop_advisor_queue">stop_advisor_queue</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:advice_cease">advice_cease</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:advice_resume">advice_resume</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:stop_advice_on_battle_end">stop_advice_on_battle_end</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:set_close_queue_advice">set_close_queue_advice</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:has_advice_played_this_battle">has_advice_played_this_battle</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:modify_advice">modify_advice</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Progress on Advice Actions">Progress on Advice Actions</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:progress_on_advice_dismissed">progress_on_advice_dismissed</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:cancel_progress_on_advice_dismissed">cancel_progress_on_advice_dismissed</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:progress_on_advice_dismissed_immediate_highlight">progress_on_advice_dismissed_immediate_highlight</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:progress_on_advice_finished">progress_on_advice_finished</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:cancel_progress_on_advice_finished">cancel_progress_on_advice_finished</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Objectives">Objectives</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:set_objective">set_objective</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:complete_objective">complete_objective</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:fail_objective">fail_objective</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:remove_objective">remove_objective</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:activate_objective_chain">activate_objective_chain</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:update_objective_chain">update_objective_chain</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:end_objective_chain">end_objective_chain</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:reset_objective_chain">reset_objective_chain</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:set_locatable_objective">set_locatable_objective</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:set_locatable_objective_callback">set_locatable_objective_callback</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Infotext">Infotext</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:add_infotext">add_infotext</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:remove_infotext">remove_infotext</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:clear_infotext">clear_infotext</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Subtitles">Subtitles</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:show_subtitle">show_subtitle</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:hide_subtitles">hide_subtitles</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Help Message Queue">Help Message Queue</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:queue_help_message">queue_help_message</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Camera">Camera</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:enable_camera_movement">enable_camera_movement</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:cache_camera">cache_camera</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_cached_camera_pos">get_cached_camera_pos</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_cached_camera_targ">get_cached_camera_targ</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Camera Movement Tracker">Camera Movement Tracker</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:start_camera_movement_tracker">start_camera_movement_tracker</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:stop_camera_movement_tracker">stop_camera_movement_tracker</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_camera_altitude_change">get_camera_altitude_change</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_camera_distance_travelled">get_camera_distance_travelled</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Showing/Hiding UI">Showing/Hiding UI</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:show_ui">show_ui</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:show_army">show_army</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:show_winds_of_magic_panel">show_winds_of_magic_panel</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:show_portrait_panel">show_portrait_panel</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:show_top_bar">show_top_bar</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:show_radar_frame">show_radar_frame</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:show_start_battle_button">show_start_battle_button</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:show_ui_options_panel">show_ui_options_panel</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:enable_spell_browser_button">enable_spell_browser_button</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:enable_ui_hiding">enable_ui_hiding</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:is_ui_hiding_enabled">is_ui_hiding_enabled</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Engagement Monitor">Engagement Monitor</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:start_engagement_monitor">start_engagement_monitor</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_distance_between_forces">get_distance_between_forces</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_num_units_engaged">get_num_units_engaged</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_proportion_engaged">get_proportion_engaged</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_num_units_under_fire">get_num_units_under_fire</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_proportion_under_fire">get_proportion_under_fire</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_player_army_altitude">get_player_army_altitude</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:get_enemy_army_altitude">get_enemy_army_altitude</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:stop_engagement_monitor">stop_engagement_monitor</a></li>
+						<li>&emsp;&emsp;<a href="#section:battle_manager:Composite Scenes">Composite Scenes</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:start_terrain_composite_scene">start_terrain_composite_scene</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:battle_manager:stop_terrain_composite_scene">stop_terrain_composite_scene</a></li>
+					</ul>
+
+				</ul>
+			</div>
+
+			<div style="background-color:#e2edff" id="navigation_right">				<h2 style="background-color:#c1e6ff">Battle Topics</h2>
+				<ul>
+					<li><a href="battle_index.html">Battle Index</a></li>
+					<li><a href="battle_hierarchy.html">Battle Hierarchy</a></li>
+					<li><a href="lua.html">Lua Language</a></li>
+					<li><a href="scripted_events.html">Scripted Events</a></li>
+
+				</ul>
+
+				<h2 style="background-color:#c1e6ff">Game Code Pages</h2>
+				<ul>
+					<li><a href="battle.html">Battle</a></li>
+					<li><a href="battle_alliances.html">Alliances</a></li>
+					<li><a href="battle_alliance.html">Alliance</a></li>
+					<li><a href="battle_armies.html">Armies</a></li>
+					<li><a href="battle_army.html">Army</a></li>
+					<li><a href="battle_units.html">Units</a></li>
+					<li><a href="battle_unit.html">Unit</a></li>
+					<li><a href="battle_unitcontroller.html">Unitcontroller</a></li>
+					<li><a href="ai_planner.html">AI Planners</a></li>
+					<li><a href="battle_assault_equipment.html">Assault Equipment</a></li>
+					<li><a href="battle_building.html">Building</a></li>
+					<li><a href="battle_buildings.html">Buildings</a></li>
+					<li><a href="battle_camera.html">Camera</a></li>
+					<li><a href="battle_debug_drawing.html">Debug Drawing</a></li>
+					<li><a href="battle_sound_effect.html">Sound Effects</a></li>
+					<li><a href="battle_subtitles.html">Subtitles</a></li>
+					<li><a href="battle_vector.html">Vector</a></li>
+					<li><a href="effect.html">Effect</a></li>
+					<li><a href="scriptedvalueregistry.html">ScriptedValueRegistry</a></li>
+					<li><a href="uicomponent.html">UIComponents</a></li>
+
+				</ul>
+
+				<h2 style="background-color:#c1e6ff">Script Pages</h2>
+				<ul>
+					<li><strong> > Battle Manager</strong></li>
+					<li><a href="core.html">Core</a></li>
+					<li><a href="advice_manager.html">Advice Manager</a></li>
+					<li><a href="battle_ui_manager.html">Battle UI Manager</a></li>
+					<li><a href="convex_area.html">Convex Areas</a></li>
+					<li><a href="cutscene.html">Battle Cutscenes</a></li>
+					<li><a href="generated_battle.html">Generated Battle</a></li>
+					<li><a href="global.html">Global</a></li>
+					<li><a href="infotext_manager.html">Infotext Manager</a></li>
+					<li><a href="objectives_manager.html">Objectives Manager</a></li>
+					<li><a href="script_ai_planner.html">Script AI Planner</a></li>
+					<li><a href="script_messager.html">Script Messager</a></li>
+					<li><a href="script_unit.html">Script Unit</a></li>
+					<li><a href="text_pointer.html">Text Pointers</a></li>
+					<li><a href="timer_manager.html">Timer Manager</a></li>
+
+				</ul>
+			</div>
+
+			<div id="content">
+				<a name="class:battle_manager"><h1 class="content_header">Battle Manager</h1></a>
+				<p>The <code>battle_manager</code> object is a lua wrapper for the <code>battle</code> object provided by the game code. The <code>battle_manager</code> provides access to all functionality provided by <code>battle</code> as well as numerous enhancements and extensions.</p>
+				<p>Any calls made to a <code>battle_manager</code> which aren't recognised as functions are passed to the underlying <code>battle</code> object. In this way, the <code>battle_manager</code> object automatically provides the full interface of a <code>battle</code> object.</p>
+							<table class="loaded_in" style="margin-top: 1em;">
+								<tr>
+									<td>
+										Loaded in Battle
+									</td>
+									<td>
+										<img alt="loaded in battle" style="float:right;" src="../images/loaded_in_battle.png" height="18" width="18" />
+									</td>
+								</tr>
+							</table>
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Creation"><h2 class="section_header">Creation</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:new"><h3 class="function_name"><strong><code>battle_manager:new()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Creates a battle_manager object. The single parameter should be an <code>battle</code> code object, which can be created with <code>empire_battle:new()</code>. Only one battle_manager object may be created in a session - attempting to create a second just returns the first.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>battle_manager</code> </li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 124</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Debug Output"><h2 class="section_header">Debug Output</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:out"><h3 class="function_name"><strong><code>battle_manager:out(string </strong></code><i class="parameter">output</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Prints a string to the debug output spool. The string is prepended with a timestamp.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>output</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 258</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Miscellaneous Querying"><h2 class="section_header">Miscellaneous Querying</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_tm"><h3 class="function_name"><strong><code>battle_manager:get_tm()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Directly access the timer_manager object the battle manager creates and stores internally. It shouldn't be necessary to do this too often, as the battle manager exposes its most useful functions.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>timer_manager</code> </li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 276</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_battle_ui_manager"><h3 class="function_name"><strong><code>battle_manager:get_battle_ui_manager()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Retrieves a handle to a <code><a href="battle_ui_manager.html#class:battle_ui_manager">battle_ui_manager</a></code> object from the battle manager. One is created if it hasn't been created before.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>battle_ui_manager</code> </li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 284</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_battle_folder"><h3 class="function_name"><strong><code>battle_manager:get_battle_folder()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the path to the battle script folder.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>string</code> path</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 297</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_origin"><h3 class="function_name"><strong><code>battle_manager:get_origin()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns a vector position at the world origin.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>vector</code> origin</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 305</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:ui_component"><h3 class="function_name"><strong><code>battle_manager:ui_component()</code></strong></h3></a>
+						</dt>
+						<dd>
+							A wrapper for ui_component. Searches the UI heirarchy and returns a uicomponent object with the supplied name. This overrides the base ui_component function provided by the underlying <code>battle</code> object, which returns a component object (which must be converted to be a UIComponent before use).
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>uicomponent</code> ui component, or false if not found</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 313</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:is_any_cutscene_running"><h3 class="function_name"><strong><code>battle_manager:is_any_cutscene_running()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns true if any cutscene object is currently showing a cutscene.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>boolean</code> is cutscene running</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 351</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:is_any_unit_selected"><h3 class="function_name"><strong><code>battle_manager:is_any_unit_selected()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Queries the UI and returns true if any unit cards are selected.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>boolean</code> any unit selected</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 369</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:are_all_units_selected"><h3 class="function_name"><strong><code>battle_manager:are_all_units_selected()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Queries the UI and returns true if all unit cards are selected.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>boolean</code> all units selected</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 398</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_player_alliance_num"><h3 class="function_name"><strong><code>battle_manager:get_player_alliance_num()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the alliance number of the player's alliance.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>integer</code> alliance number</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 424</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_non_player_alliance_num"><h3 class="function_name"><strong><code>battle_manager:get_non_player_alliance_num()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the alliance number of the non-player alliance.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>integer</code> alliance number</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 432</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_player_alliance"><h3 class="function_name"><strong><code>battle_manager:get_player_alliance()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the local player's alliance object.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>alliance</code> player alliance</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 444</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_non_player_alliance"><h3 class="function_name"><strong><code>battle_manager:get_non_player_alliance()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the alliance object of the local player's enemy.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>alliance</code> enemy alliance</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 452</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:player_is_attacker"><h3 class="function_name"><strong><code>battle_manager:player_is_attacker()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns true if the local player is the attacker in the battle.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>boolean</code> player is attacker</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 460</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_player_army"><h3 class="function_name"><strong><code>battle_manager:get_player_army()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the local player's army object.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>army</code> player's army</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 468</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_first_non_player_army"><h3 class="function_name"><strong><code>battle_manager:get_first_non_player_army()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the first army of the enemy alliance to the local player.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>army</code> enemy army</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 476</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Random Numbers"><h2 class="section_header">Random Numbers</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:random_number"><h3 class="function_name"><strong><code>battle_manager:random_number([number </strong></code><i class="parameter">max value</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns a random number. If no max value is supplied then the value returned is a float between 0 and 1. If a max value is supplied, then the value returned is an integer value from 1 to the max value. This is safe to use in multiplayer.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=nil</i></p>
+										<p>max value</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>random</code> number</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 498</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:random_sort"><h3 class="function_name"><strong><code>battle_manager:random_sort(<code><a href="lua.html#class:table">table</a></code> </strong></code><i class="parameter">numerically-indexed table</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Randomly sorts a numerically-indexed table. This is safe to use in multiplayer, but will destroy the supplied table. It is faster than <code><a href="#function:battle_manager:random_sort_copy">battle_manager:random_sort_copy</a></code>.<br />
+							Note that records in this table that are not arranged in an ascending numerical index will be lost.<br />
+							Note also that the supplied table is overwritten with the randomly-sorted table, which is also returned as a return value.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:table">table</a></code></code></p>
+									</td>
+									<td>
+										<p>Numerically-indexed table. This will be overwritten by the returned, randomly-sorted table.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:table">table</a></code></code> randomly-sorted table</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 512</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:random_sort_copy"><h3 class="function_name"><strong><code>battle_manager:random_sort_copy(<code><a href="lua.html#class:table">table</a></code> </strong></code><i class="parameter">numerically-indexed table</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Randomly sorts a numerically-indexed table. This is safe to use in multiplayer, and will preserve the original table, but it is marginally slower than <code><a href="#function:battle_manager:random_sort">battle_manager:random_sort</a></code>.<br />
+							Note that records in the source table that are not arranged in an ascending numerical index will not be copied (they will not be deleted, however).
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:table">table</a></code></code></p>
+									</td>
+									<td>
+										<p>Numerically-indexed table.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:table">table</a></code></code> randomly-sorted table</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 541</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Battle Startup and Phases"><h2 class="section_header">Battle Startup and Phases</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:setup_battle"><h3 class="function_name"><strong><code>battle_manager:setup_battle(function </strong></code><i class="parameter">deployment end callback</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Packaged function to set up a scripted battle on startup, and register a function to be called when the deployment phase ends (i.e. when battle starts). <code>setup_battle</code> will suppress a variety of unit sounds and steal input focus until the combat phase begins.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>function</code></p>
+									</td>
+									<td>
+										<p>deployment end callback</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 576</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:register_phase_change_callback"><h3 class="function_name"><strong><code>battle_manager:register_phase_change_callback(string </strong></code><i class="parameter">phase change name</i><code><strong>, function </strong></code><i class="parameter">callback</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Registers a function to be called when a specified phase change occurs. Phase change notifications are sent to the script by the game when the battle changes phases, from 'Deployment' to 'Deployed' and on to 'VictoryCountdown' and 'Complete'. The battle manager writes debug output whenever a phase change occurs, regardless of whether any callback has been registered for it.<br />
+							This wraps the underlying functionality provided by <code><a href="battle.html#function:battle:register_battle_phase_handler">battle:register_battle_phase_handler</a></code>. See that function's documentation for a list of phase change events that may be listened for.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>phase change name</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>function</code></p>
+									</td>
+									<td>
+										<p>callback</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 607</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Unit Selection Callbacks"><h2 class="section_header">Unit Selection Callbacks</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:register_unit_selection_callback"><h3 class="function_name"><strong><code>battle_manager:register_unit_selection_callback(unit </strong></code><i class="parameter">subject unit</i><code><strong>, function </strong></code><i class="parameter">callback</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Registers a function to be called when a specified unit is selected by the player.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>unit</code></p>
+									</td>
+									<td>
+										<p>subject unit</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>function</code></p>
+									</td>
+									<td>
+										<p>callback</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 662</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:unregister_unit_selection_callback"><h3 class="function_name"><strong><code>battle_manager:unregister_unit_selection_callback(unit </strong></code><i class="parameter">subject unit</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Unregisters a function registered with <code><a href="#function:battle_manager:register_unit_selection_callback">battle_manager:register_unit_selection_callback</a></code>.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>unit</code></p>
+									</td>
+									<td>
+										<p>subject unit</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 690</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Command Handler Callbacks"><h2 class="section_header">Command Handler Callbacks</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:register_command_handler_callback"><h3 class="function_name"><strong><code>battle_manager:register_command_handler_callback(string </strong></code><i class="parameter">command</i><code><strong>, function </strong></code><i class="parameter">callback</i><code><strong>, [string </strong></code><i class="parameter">callback name</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Registers a function to be called when a command event is issued by the game. The function will be called with the command handler context supplied as a single argument, which can be queried for further information depending upon the command.<br />
+							This wraps the underlying functionality provided by <code><a href="battle.html#function:battle:register_command_handler">battle:register_command_handler</a></code>. See the documentation of that function for more information about what command events can be listened for, and what contextual information those events provide.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Command name to listen for.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>function</code></p>
+									</td>
+									<td>
+										<p>Callback to call when the command is triggered by the game.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=nil</i></p>
+										<p>Optional name by which this callback handler can be removed.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 730</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:unregister_command_handler_callback"><h3 class="function_name"><strong><code>battle_manager:unregister_command_handler_callback(string </strong></code><i class="parameter">command name</i><code><strong>, string </strong></code><i class="parameter">callback name</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Unregisters a callback function registered with <code><a href="#function:battle_manager:register_command_handler_callback">battle_manager:register_command_handler_callback</a></code>. The callback function is specified by the command name and callback name specified when setting the callback up.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>command name</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>callback name</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 784</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Input Handler Callbacks"><h2 class="section_header">Input Handler Callbacks</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:register_input_handler_callback"><h3 class="function_name"><strong><code>battle_manager:register_input_handler_callback(string </strong></code><i class="parameter">input</i><code><strong>, function </strong></code><i class="parameter">callback</i><code><strong>, [string </strong></code><i class="parameter">callback name</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Registers a function to be called when an input event is issued by the game. This wraps the underlying functionality provided by <code><a href="battle.html#function:battle:register_input_handler">battle:register_input_handler</a></code>. See the documentation of that function for more information about what input events can be listened for.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Input name to listen for.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>function</code></p>
+									</td>
+									<td>
+										<p>Callback to call when the input is triggered by the game.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=nil</i></p>
+										<p>Optional name by which this input handler can be removed.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 847</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:unregister_input_handler_callback"><h3 class="function_name"><strong><code>battle_manager:unregister_input_handler_callback(string </strong></code><i class="parameter">command name</i><code><strong>, string </strong></code><i class="parameter">callback name</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Unregisters a callback function registered with <code><a href="#function:battle_manager:register_input_handler_callback">battle_manager:register_input_handler_callback</a></code>. The callback function is specified by the input name and callback name specified when setting the callback up.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>command name</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>callback name</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 900</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:ESC Key Callback Queue"><h2 class="section_header">ESC Key Callback Queue</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:steal_escape_key_with_callback"><h3 class="function_name"><strong><code>battle_manager:steal_escape_key_with_callback(string </strong></code><i class="parameter">callback name</i><code><strong>, function </strong></code><i class="parameter">callback</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Steals the escape key if it wasn't stolen before, and registers a callback to be called if the player presses it. The callback entry must be registered with a unique string name, by which it may be cancelled later if desired.<br />
+							Multiple escape key callbacks may be registered at one time, although only the most recently-registered callback is notified when the ESC key is pressed. Once an ESC key callback is called it is removed from the list, and the next ESC key press causes the next most recent callback to be notified, and so-on.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>callback name</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>function</code></p>
+									</td>
+									<td>
+										<p>callback</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 964</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:release_escape_key_with_callback"><h3 class="function_name"><strong><code>battle_manager:release_escape_key_with_callback(string </strong></code><i class="parameter">callback name to cancel</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Cancels an escape key callback registered with <code><a href="#function:battle_manager:steal_escape_key_with_callback">battle_manager:steal_escape_key_with_callback</a></code> by name.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>callback name to cancel</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1008</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Victory Callbacks"><h2 class="section_header">Victory Callbacks</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:setup_victory_callback"><h3 class="function_name"><strong><code>battle_manager:setup_victory_callback(function </strong></code><i class="parameter">callback to call</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Establishes a function to be called when the battle enters VictoryCountdown phase i.e. someone has won. This function also sets the duration of the victory countdown to infinite, meaning the battle will never end until <code><a href="#function:battle_manager:end_battle">battle_manager:end_battle</a></code> is called. This allows calling scripts to do things like set up an outro cutscene or play some advice that wouldn't fit into the standard victory countdown duration (10 seconds).
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>function</code></p>
+									</td>
+									<td>
+										<p>callback to call</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1069</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:end_battle"><h3 class="function_name"><strong><code>battle_manager:end_battle()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Causes a battle to immediately end when it enters the VictoryCountdown phase, or to immediately end if it is already in that phase. This function is most commonly used to end a battle that has entered the VictoryCountdown phase after <code><a href="#function:battle_manager:setup_victory_callback">battle_manager:setup_victory_callback</a></code> has been called.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1083</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:register_results_callbacks"><h3 class="function_name"><strong><code>battle_manager:register_results_callbacks(<br />&emsp;&emsp;function </strong></code><i class="parameter">player victory callback</i><code><strong>, <br />&emsp;&emsp;function </strong></code><i class="parameter">player defeat callback</i><code><strong><br />)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Old-style battle-ending handlers. These can still be used but won't get called until the battle results screen is shown. Registers player victory and player defeat callbacks to be called at the end of the battle.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>function</code></p>
+									</td>
+									<td>
+										<p>player victory callback</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>function</code></p>
+									</td>
+									<td>
+										<p>player defeat callback</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1090</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Time Manipulation"><h2 class="section_header">Time Manipulation</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:slow_game_over_time"><h3 class="function_name"><strong><code>battle_manager:slow_game_over_time(<br />&emsp;&emsp;number </strong></code><i class="parameter">start game speed</i><code><strong>, <br />&emsp;&emsp;number </strong></code><i class="parameter">target game speed</i><code><strong>, <br />&emsp;&emsp;number </strong></code><i class="parameter">duration in ms</i><code><strong>, <br />&emsp;&emsp;number </strong></code><i class="parameter">steps</i><code><strong><br />)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Changes game speed from one value to another over a total time (note that this will be elongated by the slowing action) over a given number of steps. Note that the script engine only updates once every 1/10th of a second so specifying steps of less than this will have weird results. Speeds are specified as multiples of normal game speed, so a value of 2 would be twice normal speed, 0.5 would be half, and so on.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>start game speed</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>target game speed</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>duration in ms</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>4</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>steps</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1143</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:pause"><h3 class="function_name"><strong><code>battle_manager:pause()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Pauses the battle.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1187</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Timer Manager"><h2 class="section_header">Timer Manager</h2></a>
+				</div>
+				<p>These wrapper functions expose functionality provided by the <code><a href="timer_manager.html#class:timer_manager">timer_manager</a></code>. It is highly recommended to use <code><a href="#function:battle_manager:callback">battle_manager:callback</a></code> or <code><a href="#function:battle_manager:repeat_callback">battle_manager:repeat_callback</a></code> in place of <code>register_singleshot_timer</code> and <code>register_repeating_timer</code>, the latter are mainly provided for legacy support.</p>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:callback"><h3 class="function_name"><strong><code>battle_manager:callback(function </strong></code><i class="parameter">callback to call</i><code><strong>, number </strong></code><i class="parameter">delay in ms</i><code><strong>, [string </strong></code><i class="parameter">callback name</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Exposes the callback function from the <code><a href="timer_manager.html#class:timer_manager">timer_manager</a></code> object. Instructs the timer manager to call a supplied function after a supplied delay. A string name for the callback may also be supplied with which the callback may be later cancelled using <code><a href="#function:battle_manager:remove_process">battle_manager:remove_process</a></code>.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>function</code></p>
+									</td>
+									<td>
+										<p>callback to call</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>delay in ms</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=nil</i></p>
+										<p>callback name</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1241</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:repeat_callback"><h3 class="function_name"><strong><code>battle_manager:repeat_callback(function </strong></code><i class="parameter">callback to call</i><code><strong>, number </strong></code><i class="parameter">delay in ms</i><code><strong>, [string </strong></code><i class="parameter">callback name</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Exposes the repeat_callback function from the <code><a href="timer_manager.html#class:timer_manager">timer_manager</a></code> object. Instructs the timer manager to call a supplied function after a supplied delay, and then repeatedly after the same delay. A string name for the callback may also be supplied with which the callback may be later cancelled using <code><a href="#function:battle_manager:remove_process">battle_manager:remove_process</a></code>.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>function</code></p>
+									</td>
+									<td>
+										<p>callback to call</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>delay in ms</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=nil</i></p>
+										<p>callback name</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1251</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:register_singleshot_timer"><h3 class="function_name"><strong><code>battle_manager:register_singleshot_timer(string </strong></code><i class="parameter">function name</i><code><strong>, number </strong></code><i class="parameter">time in ms</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Exposes the register_singleshot_timer function from the <code><a href="timer_manager.html#class:timer_manager">timer_manager</a></code> object.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>function name</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>time in ms</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1261</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:register_repeating_timer"><h3 class="function_name"><strong><code>battle_manager:register_repeating_timer(string </strong></code><i class="parameter">function name</i><code><strong>, number </strong></code><i class="parameter">time in ms</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Exposes the register_repeating_timer function from the <code><a href="timer_manager.html#class:timer_manager">timer_manager</a></code> object.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>function name</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>time in ms</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1270</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:unregister_timer"><h3 class="function_name"><strong><code>battle_manager:unregister_timer(string </strong></code><i class="parameter">function name</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Exposes the unregister_timer function from the <code><a href="timer_manager.html#class:timer_manager">timer_manager</a></code> object.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>function name</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1279</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Watches"><h2 class="section_header">Watches</h2></a>
+				</div>
+				<p>A watch is a process that continually polls a supplied condition. When it is true, the watch process waits for a supplied period, and then calls a supplied target function. Watches provide battle scripts with a fire-and-forget method of polling the state of the battle, and of being notified when that state changes in some crucial way.</p>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:watch"><h3 class="function_name"><strong><code>battle_manager:watch(<br />&emsp;&emsp;function </strong></code><i class="parameter">condition</i><code><strong>, <br />&emsp;&emsp;function </strong></code><i class="parameter">condition</i><code><strong>, <br />&emsp;&emsp;number </strong></code><i class="parameter">wait time</i><code><strong>, <br />&emsp;&emsp;function </strong></code><i class="parameter">target callback</i><code><strong>, <br />&emsp;&emsp;[string </strong></code><i class="parameter">watch name</i><code><strong>]<br />)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Establishes a new watch. A supplied condition function is repeated tested and, when it returns true, a supplied target function is called. A wait period between the condition being met and the target being called must also be specified. A name for the watch may optionally be specified to allow other scripts to cancel it.<br />
+							The condition must be a function that returns a value - when that value is true (or evaluates to true) then the watch condition is met. The watch then waits the supplied time offset, which is specified in ms as the second parameter, before calling the callback supplied in the third parameter.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>function</code></p>
+									</td>
+									<td>
+										<p>condition</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>function</code></p>
+									</td>
+									<td>
+										<p>Condition. Must be a function that returns a value. When the returned value is true, or evaluates to true, then the watch condition is met.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>Time in ms that the watch waits once the condition is met before triggering the target callback</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>4</strong></p>
+									</td>
+									<td>
+										<p><code>function</code></p>
+									</td>
+									<td>
+										<p>Target callback</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>5</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=nil</i></p>
+										<p>Name for this watch process. Giving a watch a name allows it to be stopped/cancelled with <code><a href="#function:battle_manager:remove_process">battle_manager:remove_process</a></code>.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1300</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:remove_process"><h3 class="function_name"><strong><code>battle_manager:remove_process(string </strong></code><i class="parameter">name</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Stops and removes any watch OR callback with the supplied name. Returns true if any were found, false otherwise.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>name</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>boolean</code> any removed</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1475</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:remove_process_from_watch_list"><h3 class="function_name"><strong><code>battle_manager:remove_process_from_watch_list(string </strong></code><i class="parameter">name</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Stops and removes any watch with the supplied name. Returns true if any were found, false otherwise. Best practice is to use remove_process instead of this.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>name</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>boolean</code> any removed</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1487</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:print_watch_list"><h3 class="function_name"><strong><code>battle_manager:print_watch_list()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Debug command to dump the watch list to the console output spool.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1515</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:clear_watches_and_callbacks"><h3 class="function_name"><strong><code>battle_manager:clear_watches_and_callbacks()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Cancels all running watches and callbacks. It's highly recommend to not call this except for debug purposes (and rarely, even then).
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1530</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:set_load_balancing"><h3 class="function_name"><strong><code>battle_manager:set_load_balancing()</code></strong></h3></a>
+						</dt>
+						<dd>
+							By default the watch system performs load balancing, where it tries to stagger its running watches so they don't all process on the same tick. If this is causes problems for any reason it can be disabled with <code>set_load_balancing</code>. Supply a boolean parameter to enable or disable load balancing.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1545</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Advisor Queue"><h2 class="section_header">Advisor Queue</h2></a>
+				</div>
+				<p>The advisor queueing functionality allows the calling script to queue advisor messages so they don't clumsily collide with each other during playback.</p>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:queue_advisor"><h3 class="function_name"><strong><code>battle_manager:queue_advisor(<br />&emsp;&emsp;string </strong></code><i class="parameter">advice key</i><code><strong>, <br />&emsp;&emsp;[number </strong></code><i class="parameter">forced duration</i><code><strong>], <br />&emsp;&emsp;[boolean </strong></code><i class="parameter">debug</i><code><strong>], <br />&emsp;&emsp;[function </strong></code><i class="parameter">start callback</i><code><strong>], <br />&emsp;&emsp;[number </strong></code><i class="parameter">start callback wait</i><code><strong>], <br />&emsp;&emsp;[playback </strong></code><i class="parameter">condition</i><code><strong>]<br />)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Enqueues a line of advice for delivery to the player. If there is no other advice playing, or nothing is blocking the advisor system, then the advice gets delivered immediately. Otherwise, the supplied advice will be queued and shown at an appropriate time.<br />
+							The function must be supplied an advice key from the advice_levels/advice_threads tables as its first parameter, unless the advisor entry is set to be debug (see below).
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Advice key from the advice_levels/advice_threads table.</p>
+										<p>If the advice entry is set to be debug (see third parameter) the text supplied here will instead be shown directly in the advisor window (debug only)</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=0</i></p>
+										<p>Forced duration in ms. This is a period that this advice must play for before another item of advice is allowed to start. By default, items of advice will only remain queued while the active advice is actually audibly playing, but by setting a duration the active advice can be held on-screen for longer than the length of its associated soundfile (unless it is closed by the player). This is useful during development to hold advice on-screen when no soundfile yet exists, and also for tutorial scripts which often wish to ensure that an item of advice is shown on-screen for a certain duration.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=false</i></p>
+										<p>Sets whether the advice line is debug. If set to true, the text supplied as the first parameter is displayed in the advisor window as-is, without using it as a lookup key in the advice_levels table.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>4</strong></p>
+									</td>
+									<td>
+										<p><code>function</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=nil</i></p>
+										<p>Start callback. If a function is supplied here it is called when the advice is actually played.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>5</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=0</i></p>
+										<p>Start callback wait period in ms. If a duration is specified it causes a delay between the advice being played and the start callback being called.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>6</strong></p>
+									</td>
+									<td>
+										<p><code>playback</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=nil</i></p>
+										<p>Playback condition. If specified, it compels the advisor system to check this condition immediately before playing the advisor entry to decide whether to actually proceed. This must be supplied as a function block that returns a result. If this result evaluates to true, the advice is played.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1569</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:stop_advisor_queue"><h3 class="function_name"><strong><code>battle_manager:stop_advisor_queue([boolean </strong></code><i class="parameter">close advisor</i><code><strong>], [boolean </strong></code><i class="parameter">force immediate stop</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Cancels any running advice, and clears any subsequent advice that may be queued.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=false</i></p>
+										<p>Closes the advisor if it's open</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=false</i></p>
+										<p>Forces immediate stop. By default the stopping action takes a short amount of time - the game seems happier with this. If set to true, this flag bypasses this behaviour. User beware.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1733</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:advice_cease"><h3 class="function_name"><strong><code>battle_manager:advice_cease()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Stops the advisor queue and prevents any more advice from being queued. The advice system will only subsequently restart if <code><a href="#function:battle_manager:advice_resume">battle_manager:advice_resume</a></code> is called.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1758</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:advice_resume"><h3 class="function_name"><strong><code>battle_manager:advice_resume()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Allows advice to resume after <code><a href="#function:battle_manager:advice_cease">battle_manager:advice_cease</a></code> has been called.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1767</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:stop_advice_on_battle_end"><h3 class="function_name"><strong><code>battle_manager:stop_advice_on_battle_end()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Establishes a listener which stops the advice system as soon as the battle results panel appears.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1774</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:set_close_queue_advice"><h3 class="function_name"><strong><code>battle_manager:set_close_queue_advice([boolean </strong></code><i class="parameter">value</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Sets whether the advisor system should close the advisor panel once an item of advice has finished playing. By default this is set to false, so use this function to turn this behaviour on.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=true</i></p>
+										<p>value</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1796</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:has_advice_played_this_battle"><h3 class="function_name"><strong><code>battle_manager:has_advice_played_this_battle()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns true if any advice has played in this battle session
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>boolean</code> advice has played</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1808</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:modify_advice"><h3 class="function_name"><strong><code>battle_manager:modify_advice([boolean </strong></code><i class="parameter">show button</i><code><strong>], [boolean </strong></code><i class="parameter">show highlight</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Modifies the advisor panel to show the progress/close button in the bottom right, and also to highlight this button with an animated ring around it. This setting will persist across subsequent items of advice in a battle session until modified again.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=false</i></p>
+										<p>Show progress/close button.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=false</i></p>
+										<p>Show highlight on close button.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1816</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Progress on Advice Actions"><h2 class="section_header">Progress on Advice Actions</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:progress_on_advice_dismissed"><h3 class="function_name"><strong><code>battle_manager:progress_on_advice_dismissed(<br />&emsp;&emsp;function </strong></code><i class="parameter">callback to call</i><code><strong>, <br />&emsp;&emsp;[number </strong></code><i class="parameter">delay</i><code><strong>], <br />&emsp;&emsp;[boolean </strong></code><i class="parameter">highlight on finish</i><code><strong>]<br />)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Calls a supplied callback when the advisor panel is closed for any reason.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>function</code></p>
+									</td>
+									<td>
+										<p>Callback to call.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=0</i></p>
+										<p>Delay in ms after the adisor closes before calling the callback.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=false</i></p>
+										<p>Highlight the advisor close button upon finishing the currently-playing advice. This is useful for script that knows the advisor is playing, wants to highlight the close button when it finishes and be notified of when the player closes the advisor in any case.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1871</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:cancel_progress_on_advice_dismissed"><h3 class="function_name"><strong><code>battle_manager:cancel_progress_on_advice_dismissed()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Cancels a running <code><a href="#function:battle_manager:progress_on_advice_dismissed">battle_manager:progress_on_advice_dismissed</a></code> process.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1988</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:progress_on_advice_dismissed_immediate_highlight"><h3 class="function_name"><strong><code>battle_manager:progress_on_advice_dismissed_immediate_highlight()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Causes a <code><a href="#function:battle_manager:progress_on_advice_dismissed">battle_manager:progress_on_advice_dismissed</a></code> process that is listening for the advice to finish so that it can highlight the close button (i.e. the third parameter was set to true) to cancel this listener.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 1997</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:progress_on_advice_finished"><h3 class="function_name"><strong><code>battle_manager:progress_on_advice_finished(function </strong></code><i class="parameter">callback to call</i><code><strong>, [number </strong></code><i class="parameter">delay</i><code><strong>], [number </strong></code><i class="parameter">playtime</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Calls a supplied callback when the advisor has stopped playing an audible sound.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>function</code></p>
+									</td>
+									<td>
+										<p>Callback to call.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=0</i></p>
+										<p>Delay in ms after the adisor stops before calling the callback.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=5000</i></p>
+										<p>Playing time for the advice item. This sets a time after which <code><a href="#function:battle_manager:progress_on_advice_finished">battle_manager:progress_on_advice_finished</a></code> will begin to actively poll whether the advice is still playing, as well as listening for the finish event. This is useful as it ensure this function works even during development when the advisor sound files have not yet been recorded.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2004</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:cancel_progress_on_advice_finished"><h3 class="function_name"><strong><code>battle_manager:cancel_progress_on_advice_finished()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Cancels a running <code><a href="#function:battle_manager:progress_on_advice_finished">battle_manager:progress_on_advice_finished</a></code> process.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2070</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Objectives"><h2 class="section_header">Objectives</h2></a>
+				</div>
+				<p>Upon creation, the battle manager automatically creates an objectives manager object which it stores internally. Most of these functions provide a passthrough interface to the most commonly-used functions on the objectives manager. See the documentation on the <code><a href="objectives_manager.html#class:objectives_manager">objectives_manager</a></code> page for more details.</p>
+				<p>Note that <code><a href="#function:battle_manager:set_locatable_objective">battle_manager:set_locatable_objective</a></code> is native to the battle manager and is not related to the objectives manager.</p>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:set_objective"><h3 class="function_name"><strong><code>battle_manager:set_objective(string </strong></code><i class="parameter">objective key</i><code><strong>, [number </strong></code><i class="parameter">param a</i><code><strong>], [number </strong></code><i class="parameter">param b</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Pass-through function for <code><a href="objectives_manager.html#function:objectives_manager:set_objective">objectives_manager:set_objective</a></code> on the objectives manager. Sets up a scripted objective for the player, which appears in the scripted objectives panel. This objective can then be updated, removed, or marked as completed or failed by the script at a later time.<br />
+							A key to the scripted_objectives table must be supplied with set_objective, and optionally one or two numeric parameters to show some running count related to the objective. To update these parameter values later, <code>set_objective</code> may be re-called with the same objective key and updated values.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Objective key, from the scripted_objectives table.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=nil] number param a, First numeric objective parameter. If set, the objective will be presented to the player in the form [objective text]: [param a</i></p>
+										<p>First numeric objective parameter. If set, the objective will be presented to the player in the form [objective text]: [param a]. Useful for showing a running count of something related to the objective.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=nil] number param b, Second numeric objective parameter. A value for the first must be set if this is used. If set, the objective will be presented to the player in the form [objective text]: [param a] / [param b</i></p>
+										<p>Second numeric objective parameter. A value for the first must be set if this is used. If set, the objective will be presented to the player in the form [objective text]: [param a] / [param b]. Useful for showing a running count of something related to the objective.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2094</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:complete_objective"><h3 class="function_name"><strong><code>battle_manager:complete_objective(string </strong></code><i class="parameter">objective key</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Pass-through function for <code><a href="objectives_manager.html#function:objectives_manager:complete_objective">objectives_manager:complete_objective</a></code> on the objectives manager. Marks a scripted objective as completed for the player to see. Note that it will remain on the scripted objectives panel until removed with <code><a href="#function:battle_manager:remove_objective">battle_manager:remove_objective</a></code>.<br />
+							Note also that is possible to mark an objective as complete before it has been registered with <code><a href="#function:battle_manager:set_objective">battle_manager:set_objective</a></code> - in this case, it is marked as complete as soon as <code><a href="#function:battle_manager:set_objective">battle_manager:set_objective</a></code> is called.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Objective key, from the scripted_objectives table.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2105</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:fail_objective"><h3 class="function_name"><strong><code>battle_manager:fail_objective(string </strong></code><i class="parameter">objective key</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Pass-through function for <code><a href="objectives_manager.html#function:objectives_manager:fail_objective">objectives_manager:fail_objective</a></code> on the objectives manager. Marks a scripted objective as failed for the player to see. Note that it will remain on the scripted objectives panel until removed with <code><a href="#function:battle_manager:remove_objective">battle_manager:remove_objective</a></code>.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Objective key, from the scripted_objectives table.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2114</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:remove_objective"><h3 class="function_name"><strong><code>battle_manager:remove_objective(string </strong></code><i class="parameter">objective key</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Pass-through function for <code><a href="objectives_manager.html#function:objectives_manager:remove_objective">objectives_manager:remove_objective</a></code> on the objectives manager. Removes a scripted objective from the scripted objectives panel.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Objective key, from the scripted_objectives table.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2122</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:activate_objective_chain"><h3 class="function_name"><strong><code>battle_manager:activate_objective_chain(<br />&emsp;&emsp;string </strong></code><i class="parameter">chain name</i><code><strong>, <br />&emsp;&emsp;string </strong></code><i class="parameter">objective key</i><code><strong>, <br />&emsp;&emsp;[number </strong></code><i class="parameter">number param a</i><code><strong>], <br />&emsp;&emsp;[number </strong></code><i class="parameter">number param b</i><code><strong>]<br />)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Pass-through function for <code><a href="objectives_manager.html#function:objectives_manager:activate_objective_chain">objectives_manager:activate_objective_chain</a></code>. Starts a new objective chain - see the documentation on the <code><a href="objectives_manager.html#class:objectives_manager">objectives_manager</a></code> page for more details.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Objective chain name.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Key of initial objective, from the scripted_objectives table.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=nil</i></p>
+										<p>First numeric parameter - see the documentation for <code><a href="#function:battle_manager:set_objective">battle_manager:set_objective</a></code> for more details</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>4</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=nil</i></p>
+										<p>Second numeric parameter - see the documentation for <code><a href="#function:battle_manager:set_objective">battle_manager:set_objective</a></code> for more details</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2130</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:update_objective_chain"><h3 class="function_name"><strong><code>battle_manager:update_objective_chain(<br />&emsp;&emsp;string </strong></code><i class="parameter">chain name</i><code><strong>, <br />&emsp;&emsp;string </strong></code><i class="parameter">objective key</i><code><strong>, <br />&emsp;&emsp;[number </strong></code><i class="parameter">number param a</i><code><strong>], <br />&emsp;&emsp;[number </strong></code><i class="parameter">number param b</i><code><strong>]<br />)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Pass-through function for <code><a href="objectives_manager.html#function:objectives_manager:update_objective_chain">objectives_manager:update_objective_chain</a></code>. Updates an existing objective chain - see the documentation on the <code><a href="objectives_manager.html#class:objectives_manager">objectives_manager</a></code> page for more details.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Objective chain name.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Key of initial objective, from the scripted_objectives table.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=nil</i></p>
+										<p>First numeric parameter - see the documentation for <code><a href="#function:battle_manager:set_objective">battle_manager:set_objective</a></code> for more details</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>4</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=nil</i></p>
+										<p>Second numeric parameter - see the documentation for <code><a href="#function:battle_manager:set_objective">battle_manager:set_objective</a></code> for more details</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2141</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:end_objective_chain"><h3 class="function_name"><strong><code>battle_manager:end_objective_chain(string </strong></code><i class="parameter">chain name</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Pass-through function for <code><a href="objectives_manager.html#function:objectives_manager:end_objective_chain">objectives_manager:end_objective_chain</a></code>. Ends an existing objective chain - see the documentation on the <code><a href="objectives_manager.html#class:objectives_manager">objectives_manager</a></code> page for more details.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Objective chain name.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2152</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:reset_objective_chain"><h3 class="function_name"><strong><code>battle_manager:reset_objective_chain(string </strong></code><i class="parameter">chain name</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Pass-through function for <code><a href="objectives_manager.html#function:objectives_manager:reset_objective_chain">objectives_manager:reset_objective_chain</a></code>. Resets an objective chain so that it may be called again - see the documentation on the <code><a href="objectives_manager.html#class:objectives_manager">objectives_manager</a></code> page for more details.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Objective chain name.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2160</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:set_locatable_objective"><h3 class="function_name"><strong><code>battle_manager:set_locatable_objective(<br />&emsp;&emsp;string </strong></code><i class="parameter">objective key</i><code><strong>, <br />&emsp;&emsp;vector </strong></code><i class="parameter">camera position</i><code><strong>, <br />&emsp;&emsp;vector </strong></code><i class="parameter">camera target</i><code><strong>, <br />&emsp;&emsp;number </strong></code><i class="parameter">zoom duration</i><code><strong><br />)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Sets up a locatable objective in battle. This will appear in the scripted objectives list alongside a zoom-to button which, when clicked, will zoom the camera to a location on the battlefield. The key of the objective text, as well as the camera position/target and zoom duration must all be supplied. The button visibility, on-click listener, and camera movements are all handled in script (which means the camera movement doesn't work when paused..)
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Objective key, from the scripted_objectives table.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>vector</code></p>
+									</td>
+									<td>
+										<p>Final camera position.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code>vector</code></p>
+									</td>
+									<td>
+										<p>Final camera target.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>4</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p>Duration of camera movement in seconds.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2210</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:set_locatable_objective_callback"><h3 class="function_name"><strong><code>battle_manager:set_locatable_objective_callback(<br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">objective key</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:function">function</a></code> </strong></code><i class="parameter">camera position generator</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:number">number</a></code> </strong></code><i class="parameter">zoom duration</i><code><strong><br />)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Sets up a locatable objective in battle. This will appear in the scripted objectives list alongside a zoom-to button which, when clicked, will zoom the camera to a location on the battlefield. Whereas <code><a href="#function:battle_manager:set_locatable_objective">battle_manager:set_locatable_objective</a></code> requires static camera position/targets to be supplied, this function takes a function argument which, when called, should return a <code><a href="battle_vector.html#class:battle_vector">battle_vector</a></code> camera position and a <code><a href="battle_vector.html#class:battle_vector">battle_vector</a></code> camera target. This allows the camera position to be generated at runtime, to follow a unit for example.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Objective key, from the scripted_objectives table.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:function">function</a></code></code></p>
+									</td>
+									<td>
+										<p>Camera position generator function. When called, this should return two <code><a href="battle_vector.html#class:battle_vector">battle_vector</a></code> values that specify the camera position and target to move to.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:number">number</a></code></code></p>
+									</td>
+									<td>
+										<p>Duration of camera movement in seconds.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2247</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Infotext"><h2 class="section_header">Infotext</h2></a>
+				</div>
+				<p>These functions provide a passthrough interface to the most commonly-used functions on the infotext manager, which the battle manager creates automatically.</p>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:add_infotext"><h3 class="function_name"><strong><code>battle_manager:add_infotext(object </strong></code><i class="parameter">first param</i><code><strong>, ... </strong></code><i class="parameter">additional infotext strings</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Pass-through function for <code><a href="infotext_manager.html#function:infotext_manager:add_infotext">infotext_manager:add_infotext</a></code>. Adds one or more lines of infotext to the infotext panel - see the documentation on the <code><a href="infotext_manager.html#class:infotext_manager">infotext_manager</a></code> page for more details.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>object</code></p>
+									</td>
+									<td>
+										<p>Can be a string key from the advice_info_texts table, or a number specifying an initial delay in ms after the panel animates onscreen and the first infotext item is shown.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>...</code></p>
+									</td>
+									<td>
+										<p>Additional infotext strings to be shown. <code>add_infotext</code> fades each of them on to the infotext panel in a visually-pleasing sequence.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2288</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:remove_infotext"><h3 class="function_name"><strong><code>battle_manager:remove_infotext(string </strong></code><i class="parameter">infotext key</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Pass-through function for <code><a href="infotext_manager.html#function:infotext_manager:remove_infotext">infotext_manager:remove_infotext</a></code>. Removes a line of infotext from the infotext panel.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>infotext key</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2297</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:clear_infotext"><h3 class="function_name"><strong><code>battle_manager:clear_infotext()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Pass-through function for <code><a href="infotext_manager.html#function:infotext_manager:clear_infotext">infotext_manager:clear_infotext</a></code>. Clears the infotext panel.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2305</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Subtitles"><h2 class="section_header">Subtitles</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:show_subtitle"><h3 class="function_name"><strong><code>battle_manager:show_subtitle(string </strong></code><i class="parameter">subtitle key</i><code><strong>, [boolean </strong></code><i class="parameter">full key supplied</i><code><strong>], [boolean </strong></code><i class="parameter">force subtitle on</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Shows a cutscene subtitle on-screen.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>subtitle key</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=false</i></p>
+										<p>Full localised key supplied. If false, or if no value supplied, the script assumes that the key is from the scripted_subtitles table and pads the supplied key out accordingly.</p>
+										<p>If the key has been supplied in the full localisation format (i.e. <code>[table]_[field_of_text]_[key_from_table]</code>), set this to true.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=false</i></p>
+										<p>Forces the subtitle to display, overriding the user's preferences.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2323</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:hide_subtitles"><h3 class="function_name"><strong><code>battle_manager:hide_subtitles()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Hides any currently-shown subtitle.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2386</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Help Message Queue"><h2 class="section_header">Help Message Queue</h2></a>
+				</div>
+				<p>Help messages are used primarily in quest battles. They are text messages faded onto the HUD above the army panel, that persist for a time and then fade off. The battle manager queues them so they don't overwrite one another.</p>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:queue_help_message"><h3 class="function_name"><strong><code>battle_manager:queue_help_message(<br />&emsp;&emsp;string </strong></code><i class="parameter">key</i><code><strong>, <br />&emsp;&emsp;[number </strong></code><i class="parameter">duration</i><code><strong>], <br />&emsp;&emsp;[number </strong></code><i class="parameter">fade time</i><code><strong>], <br />&emsp;&emsp;[boolean </strong></code><i class="parameter">high priority</i><code><strong>], <br />&emsp;&emsp;[boolean </strong></code><i class="parameter">play after battle victory</i><code><strong>], <br />&emsp;&emsp;[function </strong></code><i class="parameter">callback</i><code><strong>]<br />)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Enqueues a help message for showing on-screen.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Help message key, from the scripted_objectives table.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=5000</i></p>
+										<p>Duration that the message will persist on-screen for in ms. If this is specified then a fade time must also be set.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=2000</i></p>
+										<p>Time that the message will take to fade on/fade off in ms. If this is specified then a duration must also be set.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>4</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=false</i></p>
+										<p>Set this to true to set this message to high priority. High priority messages are bumped to the top of the queue.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>5</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=false</i></p>
+										<p>By default, help messages won't play after the battle has been won. Set this to true to allow this message to play after this point.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>6</strong></p>
+									</td>
+									<td>
+										<p><code>function</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=nil</i></p>
+										<p>Callback to call when the message actually starts to show on-screen.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2417</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Camera"><h2 class="section_header">Camera</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:enable_camera_movement"><h3 class="function_name"><strong><code>battle_manager:enable_camera_movement([boolean </strong></code><i class="parameter">enable movement</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Allows script to prevents player movement of the camera without stealing input - other game interactions are still permitted. Supply false as an argument to disable camera movement.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=true</i></p>
+										<p>enable movement</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2549</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:cache_camera"><h3 class="function_name"><strong><code>battle_manager:cache_camera()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Caches the current position/target of the camera for later retrieval.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2563</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_cached_camera_pos"><h3 class="function_name"><strong><code>battle_manager:get_cached_camera_pos()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Gets the cached position of the camera. This must be called after the position has been cached with <code><a href="#function:battle_manager:cache_camera">battle_manager:cache_camera</a></code> (else it will return false).
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2572</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_cached_camera_targ"><h3 class="function_name"><strong><code>battle_manager:get_cached_camera_targ()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Gets the cached target of the camera. This must be called after the position has been cached with <code><a href="#function:battle_manager:cache_camera">battle_manager:cache_camera</a></code> (else it will return false).
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2579</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Camera Movement Tracker"><h2 class="section_header">Camera Movement Tracker</h2></a>
+				</div>
+				<p>The camera movement tracker is used by some tutorial scripts to track how the player is moving the camera.</p>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:start_camera_movement_tracker"><h3 class="function_name"><strong><code>battle_manager:start_camera_movement_tracker()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Starts the camera movement tracker. Only tutorial scripts which need to query camera tracker information need to do this.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2600</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:stop_camera_movement_tracker"><h3 class="function_name"><strong><code>battle_manager:stop_camera_movement_tracker()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Stops the camera movement tracker.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2612</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_camera_altitude_change"><h3 class="function_name"><strong><code>battle_manager:get_camera_altitude_change()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Gets the difference in camera altitude between now and when the tracker was started. The returned value is absolute (always positive).
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>number</code> difference in m</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2629</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_camera_distance_travelled"><h3 class="function_name"><strong><code>battle_manager:get_camera_distance_travelled()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Gets the total distance the camera has travelled between now and when the tracker was started. This distance is not exact, but gives the calling script an indication of how much the player is moving the camera.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>number</code> distance in m</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2644</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Showing/Hiding UI"><h2 class="section_header">Showing/Hiding UI</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:show_ui"><h3 class="function_name"><strong><code>battle_manager:show_ui([boolean </strong></code><i class="parameter">should show</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Shows/hides the battle UI from script.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=true</i></p>
+										<p>should show</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2692</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:show_army"><h3 class="function_name"><strong><code>battle_manager:show_army([boolean </strong></code><i class="parameter">should show</i><code><strong>], [boolean </strong></code><i class="parameter">immediate</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Shows/hides the army panel.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=true</i></p>
+										<p>Should show.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=false</i></p>
+										<p>Hide immediately. If the first parameter is false and this is true, the panel will not animate offscreen but will instead immediately disappear.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2711</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:show_winds_of_magic_panel"><h3 class="function_name"><strong><code>battle_manager:show_winds_of_magic_panel([boolean </strong></code><i class="parameter">should show</i><code><strong>], [boolean </strong></code><i class="parameter">immediate</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Shows/hides the winds of magic panel
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=true</i></p>
+										<p>Should show.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=false</i></p>
+										<p>Hide immediately. If the first parameter is false and this is true, the panel will not animate offscreen but will instead immediately disappear.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2735</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:show_portrait_panel"><h3 class="function_name"><strong><code>battle_manager:show_portrait_panel([boolean </strong></code><i class="parameter">should show</i><code><strong>], [boolean </strong></code><i class="parameter">immediate</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Shows/hides the unit portrait panel.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=true</i></p>
+										<p>Should show.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=false</i></p>
+										<p>Hide immediately. If the first parameter is false and this is true, the panel will not animate offscreen but will instead immediately disappear.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2759</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:show_top_bar"><h3 class="function_name"><strong><code>battle_manager:show_top_bar([boolean </strong></code><i class="parameter">should show</i><code><strong>], [boolean </strong></code><i class="parameter">immediate</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Shows/hides the top bar on the battle interface.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=true</i></p>
+										<p>Should show.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=false</i></p>
+										<p>Hide immediately. If the first parameter is false and this is true, the panel will not animate offscreen but will instead immediately disappear.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2783</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:show_radar_frame"><h3 class="function_name"><strong><code>battle_manager:show_radar_frame([boolean </strong></code><i class="parameter">should show</i><code><strong>], [boolean </strong></code><i class="parameter">immediate</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Shows/hides the radar.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=true</i></p>
+										<p>Should show.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=false</i></p>
+										<p>Hide immediately. If the first parameter is false and this is true, the panel will not animate offscreen but will instead immediately disappear.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2807</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:show_start_battle_button"><h3 class="function_name"><strong><code>battle_manager:show_start_battle_button([boolean </strong></code><i class="parameter">should show</i><code><strong>], [boolean </strong></code><i class="parameter">is multiplayer</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Shows/hides the start battle button.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=true</i></p>
+										<p>Should show.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=false</i></p>
+										<p>Set this to true if this is a multiplayer battle.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2831</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:show_ui_options_panel"><h3 class="function_name"><strong><code>battle_manager:show_ui_options_panel([boolean </strong></code><i class="parameter">should show</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Shows/hides the ui options rollout panel.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=true</i></p>
+										<p>should show</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2860</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:enable_spell_browser_button"><h3 class="function_name"><strong><code>battle_manager:enable_spell_browser_button([boolean </strong></code><i class="parameter">should enable</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Enables/disables the spell browser button on the battle interface. A disabled button will still be visible, but greyed-out.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=true</i></p>
+										<p>should enable</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2886</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:enable_ui_hiding"><h3 class="function_name"><strong><code>battle_manager:enable_ui_hiding([boolean </strong></code><i class="parameter">should enable</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Enables/disables UI hiding. With UI hiding disabled the player will not be able to hide the UI by pressing K or alt-K. This function does not prevent the script from being able to hide or show the UI.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>boolean</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=true</i></p>
+										<p>should enable</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2911</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:is_ui_hiding_enabled"><h3 class="function_name"><strong><code>battle_manager:is_ui_hiding_enabled()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns false if UI hiding has been disabled with <code><a href="#function:battle_manager:enable_ui_hiding">battle_manager:enable_ui_hiding</a></code>, otherwise true.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2926</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Engagement Monitor"><h2 class="section_header">Engagement Monitor</h2></a>
+				</div>
+				<p>The Engagement monitor is a set of processes that continually query the battle state and either store information for other scripts to look up or trigger events for other scripts to listen to. The engagement monitor doesn't start automatically, but must be started by scripts that need the processing and information that it requires, mostly advice/tutorial scripts.</p>
+				<p>The Engagement monitor tracks the following information:</p>
+				<p><ul><li>the distance between the two alliances on the battlefield, which other scripts can query instead of continually working it out themselves which is potentially expensive.</li></p>
+				<p><li>the number/proportion of the player's alliance that is engaged in melee/under fire.</li></p>
+				<p><li>the average altitude of both the player and enemy alliance.</li></ul></p>
+				<p>The Engagement monitor also triggers the following events:</p>
+				<p><ul><li>tScriptEventBattleArmiesEngaging, when the two sides close to within 100m or once more than 40% of the player's army is under fire.</li></p>
+				<p><li>ScriptEventPlayerGeneralWounded, if the player's general is wounded (they must be invincible).</li></p>
+				<p><li>ScriptEventPlayerGeneralDies, if the player's general dies (not invincible).</li></p>
+				<p><li>ScriptEventEnemyGeneralWounded, if the enemy general is wounded (they must be invincible).</li></p>
+				<p><li>ScriptEventEnemyGeneralDies, if the enemy general dies (not invincible).</li></p>
+				<p><li>ScriptEventPlayerGeneralRouts, if the player's general routs.</li></p>
+				<p><li>ScriptEventEnemyGeneralRouts, if the enemy general routs.</li></p>
+				<p><li>ScriptEventPlayerUnitRouts, if one of the player's units routs.</li></p>
+				<p><li>ScriptEventPlayerUnitRallies, if one of the player's units rallies.</li></p>
+				<p><li>ScriptEventEnemyUnitRouts, if one of the enemy units routs.</li></ul></p>
+				<p>It also triggers ScriptEventPlayerApproachingVictoryPoint as an approximation of the player approaching a victory point. The implementation for this can charitably be described as a best guess - it happens two minutes after the player docks to the walls or the gate.</p>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:start_engagement_monitor"><h3 class="function_name"><strong><code>battle_manager:start_engagement_monitor()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Starts the engagement monitor. This must be called before the "Deployed" phase change occurs (i.e. before the end of deployment).
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 2962</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_distance_between_forces"><h3 class="function_name"><strong><code>battle_manager:get_distance_between_forces()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the cached distance between the two alliances. <code><a href="#function:battle_manager:start_engagement_monitor">battle_manager:start_engagement_monitor</a></code> must have been called before the battle started for this to work.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>number</code> distance</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 3318</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_num_units_engaged"><h3 class="function_name"><strong><code>battle_manager:get_num_units_engaged()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the number of units in the player's alliance engaged in melee. <code><a href="#function:battle_manager:start_engagement_monitor">battle_manager:start_engagement_monitor</a></code> must have been called before the battle started for this to work.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>number</code> engaged</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 3330</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_proportion_engaged"><h3 class="function_name"><strong><code>battle_manager:get_proportion_engaged()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the proportion of units in the player's alliance engaged in melee. This proportion will be a unary value (0 - 1). <code><a href="#function:battle_manager:start_engagement_monitor">battle_manager:start_engagement_monitor</a></code> must have been called before the battle started for this to work.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>number</code> proportion engaged</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 3342</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_num_units_under_fire"><h3 class="function_name"><strong><code>battle_manager:get_num_units_under_fire()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the number of units in the player's alliance under missile fire. <code><a href="#function:battle_manager:start_engagement_monitor">battle_manager:start_engagement_monitor</a></code> must have been called before the battle started for this to work.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>number</code> under fire</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 3354</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_proportion_under_fire"><h3 class="function_name"><strong><code>battle_manager:get_proportion_under_fire()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the proportion of units in the player's alliance engaged in melee. This proportion will be a unary value (0 - 1). <code><a href="#function:battle_manager:start_engagement_monitor">battle_manager:start_engagement_monitor</a></code> must have been called before the battle started for this to work.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>number</code> proportion engaged</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 3366</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_player_army_altitude"><h3 class="function_name"><strong><code>battle_manager:get_player_army_altitude()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the average altitude of the player's army in m.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>number</code> average altitude</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 3378</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:get_enemy_army_altitude"><h3 class="function_name"><strong><code>battle_manager:get_enemy_army_altitude()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the average altitude of the enemy army in m.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>number</code> average altitude</li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 3390</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:stop_engagement_monitor"><h3 class="function_name"><strong><code>battle_manager:stop_engagement_monitor()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Stops the engagement monitor.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 3402</p>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:battle_manager:Composite Scenes"><h2 class="section_header">Composite Scenes</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:start_terrain_composite_scene"><h3 class="function_name"><strong><code>battle_manager:start_terrain_composite_scene(string </strong></code><i class="parameter">key</i><code><strong>, [string </strong></code><i class="parameter">group name</i><code><strong>], [number </strong></code><i class="parameter">delay</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Starts a composite scene with the supplied key. If an optional group name is set then this composite scene will not play if another from the same group is active, but will instead be enqueued. When a composite scene in a group stops and a second in the same group is enqueued, then that second scene will begin to play automatically.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Composite scene key.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=false</i></p>
+										<p>Composite group name.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code>number</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=false</i></p>
+										<p>Delay in milliseconds to wait before starting if this composite scene becomes enqueued behind another (allowing a minimum time separation between composite scenes of the same group to be specified). This has no effect if no group name is specified.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 3422</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:battle_manager:stop_terrain_composite_scene"><h3 class="function_name"><strong><code>battle_manager:stop_terrain_composite_scene(string </strong></code><i class="parameter">key</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Stops a composite scene with the supplied key. If this composite scene was specified as belonging to a group when it was started, and other composite scenes in that group are enquened, then the next one will begin to play automatically (after an optional delay).
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>string</code></p>
+									</td>
+									<td>
+										<p>Composite scene key.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../working_data/script/_lib/lib_battle_manager.lua, line 3495</p>
+						</dd>
+					</dl>
+				</div>
+
+
+			</div>
+
+		</div>
+
+		<div id="about">Last updated 10/01/21 08:52:07</div>
+
+	</div>
+
+	<script src="../searchdata.js"></script>
+	<script src="../search.js"></script>
+	<script>const page_env = "Battle"; const path_to_document_root = "../";</script>
+
+</body>
+</html>

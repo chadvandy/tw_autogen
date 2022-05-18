@@ -1,0 +1,1892 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+	<title>Effect</title>
+	<link rel="stylesheet" href="../stylesheet.css" type="text/css" />
+</head>
+
+<body>
+
+	<a name="top"></a>
+
+	<div id="container">
+
+		<div style="background-color:#fff7cc" id="main">
+
+			<div style="background-color:#fff7cc" id="navigation_left">
+				<br/>
+				<h1 class="navigation_header"><i>Campaign Documentation</i></h1>
+				<a href="../index.html">Scripting Homepage</a>
+				<h2 style="background-color:#ffed8c">Search</h2>
+				<ul>
+				<form id="search_env_checkbox" class="search_env_checkbox">
+					<label for="search_current_env_only">Search campaign only</label>
+					<input type="checkbox" name="search_current_env_only" checked /><br />
+				</form>
+				<form id="search" class="search_form" onsubmit="return false">
+					<input class="search_input" type="text" placeholder="Search.."/><br />
+					<div id="search_dropdown" class="search_dropdown"></div>
+				</form>				<h2 style="background-color:#ffed8c">Game Areas</h2>
+				<ul>
+					<li><strong> > Campaign Index</strong></li>
+					<li><a href="../battle/battle_index.html">Battle Index</a></li>
+					<li><a href="../frontend/frontend_index.html">Frontend Index</a></li>
+				</ul>
+
+				<h2 style="background-color:#ffed8c">On this page</h2>
+				<ul>
+				<div class="key">
+					<strong>Key</strong>
+					<table class="key">
+						<tr>
+							<td width="75%">Loaded in Battle</td>
+							<td><img alt="loaded in battle" style="float:right;" src="../images/loaded_in_battle.png" height="10" width="10" /></td>
+						</tr>
+						<tr>
+							<td width="75%">Loaded in Campaign</td>
+							<td><img alt="loaded in campaign" style="float:right;" src="../images/loaded_in_campaign.png" height="10" width="10" /></td>
+						</tr>
+						<tr>
+							<td width="75%">Loaded in Frontend</td>
+							<td><img alt="loaded in frontend" style="float:right;" src="../images/loaded_in_frontend.png" height="10" width="10" /></td>
+						</tr>
+					</table>
+				</div>
+					<li><a href="#class:effect">Effect</a><img alt="loaded in campaign" style="float:right; margin-right:1em;" src="../images/loaded_in_campaign.png" height="10" width="10" /><img alt="loaded in battle" style="float:right;" src="../images/loaded_in_battle.png" height="10" width="10" /><img alt="loaded in frontend" style="float:right;" src="../images/loaded_in_frontend.png" height="10" width="10" /></li>
+					<ul>
+						<li>&emsp;&emsp;<a href="#section:effect:Campaign">Campaign</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:ancillary">ancillary</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:trait">trait</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:OpenBrowser">OpenBrowser</a></li>
+						<li>&emsp;&emsp;<a href="#section:effect:Advice">Advice</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:suspend_contextual_advice">suspend_contextual_advice</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:advice">advice</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:advance_scripted_advice_thread">advance_scripted_advice_thread</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:advance_scripted_advice_thread_located">advance_scripted_advice_thread_located</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:get_advice_thread_score">get_advice_thread_score</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:increment_advice_thread_score">increment_advice_thread_score</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:set_advice_history_string_seen">set_advice_history_string_seen</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:get_advice_history_string_seen">get_advice_history_string_seen</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:get_advice_level">get_advice_level</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:clear_advice_session_history">clear_advice_session_history</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:advance_contextual_advice_thread">advance_contextual_advice_thread</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:is_advice_audio_playing">is_advice_audio_playing</a></li>
+						<li>&emsp;&emsp;<a href="#section:effect:UI Events">UI Events</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:trigger_shortcut">trigger_shortcut</a></li>
+						<li>&emsp;&emsp;<a href="#section:effect:UI Event Simulation">UI Event Simulation</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:key_press">key_press</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:key_down">key_down</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:key_up">key_up</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:mouse_event">mouse_event</a></li>
+						<li>&emsp;&emsp;<a href="#section:effect:Preferences and Tweakers">Preferences and Tweakers</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:pref_as_bool">pref_as_bool</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:pref_as_float">pref_as_float</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:pref_as_integer">pref_as_integer</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:tweaker_value">tweaker_value</a></li>
+						<li>&emsp;&emsp;<a href="#section:effect:Game Version">Game Version</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:game_version">game_version</a></li>
+						<li>&emsp;&emsp;<a href="#section:effect:Filesystem">Filesystem</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:filesystem_lookup">filesystem_lookup</a></li>
+						<li>&emsp;&emsp;<a href="#section:effect:Screenshots">Screenshots</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:take_screenshot">take_screenshot</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:get_appdata_screenshots_path">get_appdata_screenshots_path</a></li>
+						<li>&emsp;&emsp;<a href="#section:effect:Battle Ping Icons">Battle Ping Icons</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:PingIconPath">PingIconPath</a></li>
+						<li>&emsp;&emsp;<a href="#section:effect:UI Skins">UI Skins</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:get_skinned_image_path">get_skinned_image_path</a></li>
+						<li>&emsp;&emsp;<a href="#section:effect:Localised Strings">Localised Strings</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:get_localised_string">get_localised_string</a></li>
+						<li>&emsp;&emsp;<a href="#section:effect:Subtitles">Subtitles</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:subtitles_enabled">subtitles_enabled</a></li>
+						<li>&emsp;&emsp;<a href="#section:effect:Movies">Movies</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:is_any_movie_playing">is_any_movie_playing</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:stop_all_movies">stop_all_movies</a></li>
+						<li>&emsp;&emsp;<a href="#section:effect:Custom Loading Screen">Custom Loading Screen</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:set_custom_loading_screen_key">set_custom_loading_screen_key</a></li>
+						<li>&emsp;&emsp;<a href="#section:effect:UI Context System">UI Context System</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:set_context_value">set_context_value</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:get_context_bool_value">get_context_bool_value</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:get_context_numeric_value">get_context_numeric_value</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:get_context_string_value">get_context_string_value</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:get_context_vector4_value">get_context_vector4_value</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:get_context_object_id">get_context_object_id</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:effect:call_context_command">call_context_command</a></li>
+					</ul>
+
+				</ul>
+			</div>
+
+			<div style="background-color:#fff7cc" id="navigation_right">				<h2 style="background-color:#ffed8c">Campaign Topics</h2>
+				<ul>
+					<li><a href="campaign_index.html">Campaign Index</a></li>
+					<li><a href="campaign_script_structure.html">Campaign Script Structure</a></li>
+					<li><a href="lua.html">Lua Language</a></li>
+					<li><a href="scripted_events.html">Scripted Events</a></li>
+
+				</ul>
+
+				<h2 style="background-color:#ffed8c">Game Code Pages</h2>
+				<ul>
+					<li><a href="campaignui.html">CampaignUI</a></li>
+					<li><a href="cinematics.html">Cinematics</a></li>
+					<li><strong> > Effect</strong></li>
+					<li><a href="episodic_scripting.html">Episodic Scripting</a></li>
+					<li><a href="scriptedvalueregistry.html">ScriptedValueRegistry</a></li>
+					<li><a href="uicomponent.html">UIComponents</a></li>
+
+				</ul>
+
+				<h2 style="background-color:#ffed8c">Script Pages</h2>
+				<ul>
+					<li><a href="campaign_manager.html">Campaign Manager</a></li>
+					<li><a href="core.html">Core</a></li>
+					<li><a href="campaign_cutscene.html">Campaign Cutscenes</a></li>
+					<li><a href="campaign_ui_manager.html">Campaign UI Manager</a></li>
+					<li><a href="chapter_mission.html">Chapter Missions</a></li>
+					<li><a href="convex_area.html">Convex Areas</a></li>
+					<li><a href="global.html">Global</a></li>
+					<li><a href="infotext_manager.html">Infotext Manager</a></li>
+					<li><a href="intervention.html">Interventions</a></li>
+					<li><a href="invasion_manager.html">Invasion Manager</a></li>
+					<li><a href="mission_manager.html">Mission Managers</a></li>
+					<li><a href="objectives_manager.html">Objectives Manager</a></li>
+					<li><a href="random_army_manager.html">Random Army Manager</a></li>
+					<li><a href="script_messager.html">Script Messager</a></li>
+					<li><a href="text_pointer.html">Text Pointers</a></li>
+					<li><a href="unique_table.html">Unique Table</a></li>
+					<li><a href="weighted_list.html">Weighted List</a></li>
+
+				</ul>
+			</div>
+
+			<div id="content">
+				<a name="class:effect"><h1 class="content_header">Effect</h1></a>
+				<p>The effect object is created automatically by code whenever a script environment is set up. It is mostly used to provide functionality that can be useful in all environments (campaign, battle and frontend). It does not need to be created by script, and the functions it provides may be called directly on the object in the following form.</p>
+
+				<h4>Example:</h4>
+				<div id="example_code"><code>
+					 effect.<i>&lt;function_name&gt;</i>(<i>&lt;args&gt;</i>)<br />
+				</code></div>
+							<table class="loaded_in" style="margin-top: 1em;">
+								<tr>
+									<td>
+										Loaded in Battle
+									</td>
+									<td>
+										<img alt="loaded in battle" style="float:right;" src="../images/loaded_in_battle.png" height="18" width="18" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Loaded in Campaign
+									</td>
+									<td>
+										<img alt="loaded in campaign" style="float:right;" src="../images/loaded_in_campaign.png" height="18" width="18" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Loaded in Frontend
+									</td>
+									<td>
+										<img alt="loaded in frontend" style="float:right;" src="../images/loaded_in_frontend.png" height="18" width="18" />
+									</td>
+								</tr>
+							</table>
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:effect:Campaign"><h2 class="section_header">Campaign</h2></a>
+				</div>
+				<p>The following function calls are available in a campaign script environment. <strong>They will not work in other environments</strong>. </p>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:effect:ancillary"><h3 class="function_name"><strong><code>effect.ancillary(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">ancillary key</i><code><strong>, <code><a href="lua.html#class:number">number</a></code> </strong></code><i class="parameter">chance</i><code><strong>, <code><a href="lua.html#class:userdata">userdata</a></code> </strong></code><i class="parameter">context</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Potentially adds the supplied ancillary to the character in the supplied context. When called, the function generates a random number between 0-100, and if this number is less than or equal to the supplied chance value, then the ancillary is added. The character to add the ancillary to is specified in the supplied context object, which must be a context object created by a character event (e.g. CharacterCompletedBattle, CharacterCreated).<br />
+							This function is somewhat archaic and should only be used in exported ancillary scripts. For general script usage <code>force_add_ancillary</code> is greatly preferred.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Ancillary key, from the <code>ancillaries</code> table.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:number">number</a></code></code></p>
+									</td>
+									<td>
+										<p>Percentage chance that the ancillary will actually be added.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:userdata">userdata</a></code></code></p>
+									</td>
+									<td>
+										<p>Context object, provided by a character event.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:trait"><h3 class="function_name"><strong><code>effect.trait(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">trait key</i><code><strong>, <code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">applicable to</i><code><strong>, <code><a href="lua.html#class:number">number</a></code> </strong></code><i class="parameter">points</i><code><strong>, <code><a href="lua.html#class:number">number</a></code> </strong></code><i class="parameter">chance</i><code><strong>, <code><a href="lua.html#class:userdata">userdata</a></code> </strong></code><i class="parameter">context</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Potentially adds the supplied trait points to the trait-recipient in the supplied context. When called, the function generates a random number between 0-100, and if this number is less than or equal to the supplied chance value then the trait points are added. The trait recipient is specified in the supplied context object, and the type of recipient must also be specified by a supplied string.<br />
+							This function is somewhat archaic and should only be used in exported trait scripts. For adding traits to characters in general scripts <code>force_add_trait</code> is greatly preferred.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Trait key, from the <code>traits</code> table.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Specifies the type of object to apply the trait to. Valid strings here are <code>agent</code> (for all characters), <code>region</code> and <code>unit</code>. Not all recipient types may currently be supported.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:number">number</a></code></code></p>
+									</td>
+									<td>
+										<p>Number of trait points to add, if successful.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>4</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:number">number</a></code></code></p>
+									</td>
+									<td>
+										<p>Percentage chance that the trait will actually be added.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>5</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:userdata">userdata</a></code></code></p>
+									</td>
+									<td>
+										<p>Context object, provided by an event.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:OpenBrowser"><h3 class="function_name"><strong><code>effect.OpenBrowser(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">encyclopedia url</i><code><strong>, <code><a href="lua.html#class:userdata">userdata</a></code> </strong></code><i class="parameter">context</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Opens the in-game web browser with the supplied encyclopedia url.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>encyclopedia url</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:userdata">userdata</a></code></code></p>
+									</td>
+									<td>
+										<p>Context object, provided by an event.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+
+							<h4>Example:</h4>
+							<div id="example_code"><code>
+								 effect.OpenBrowser("how_to_play/045b_enc_manual_ui_character.html", context)<br />
+							</code></div>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:effect:Advice"><h2 class="section_header">Advice</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:effect:suspend_contextual_advice"><h3 class="function_name"><strong><code>effect.suspend_contextual_advice(<code><a href="lua.html#class:boolean">boolean</a></code> </strong></code><i class="parameter">should suspend</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Prevents advice from being triggered with <code><a href="#function:effect:advance_contextual_advice_thread">effect.advance_contextual_advice_thread</a></code>. This can be useful for tutorials, but is not used by modern advice systems.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:boolean">boolean</a></code></code></p>
+									</td>
+									<td>
+										<p>should suspend</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:advice"><h3 class="function_name"><strong><code>effect.advice(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">text</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Directs the advisor to display the supplied advice string. This should only be used for debugging since localisation is bypassed.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>text</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:advance_scripted_advice_thread"><h3 class="function_name"><strong><code>effect.advance_scripted_advice_thread(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">advice key</i><code><strong>, <code><a href="lua.html#class:number">number</a></code> </strong></code><i class="parameter">score increase</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Directs the advisor to advance the specified thread by the supplied score increase. If any advice on that thread subsequently becomes eligible to be issued, then that advice is issued.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Advice key, from the <code>advice_threads</code> table.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:number">number</a></code></code></p>
+									</td>
+									<td>
+										<p>Score to increase the advice thread by.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:advance_scripted_advice_thread_located"><h3 class="function_name"><strong><code>effect.advance_scripted_advice_thread_located(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">advice key</i><code><strong>, <code><a href="lua.html#class:number">number</a></code> </strong></code><i class="parameter">score increase</i><code><strong>, <code><a href="lua.html#class:number">number</a></code> </strong></code><i class="parameter">x</i><code><strong>, <code><a href="lua.html#class:number">number</a></code> </strong></code><i class="parameter">y</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Advice key, from the <code>advice_threads</code> table.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:number">number</a></code></code></p>
+									</td>
+									<td>
+										<p>Score to increase the advice thread by.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:number">number</a></code></code></p>
+									</td>
+									<td>
+										<p>X display co-ordinate to associate the advice with.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>4</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:number">number</a></code></code></p>
+									</td>
+									<td>
+										<p>Y display co-ordinate to associate the advice with.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:get_advice_thread_score"><h3 class="function_name"><strong><code>effect.get_advice_thread_score(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">thread key</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the advice thread score. This can indicate whether advice on this thread has already been played.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Advice thread key, from the <code>advice_threads</code> table.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:number">number</a></code></code> score</li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:increment_advice_thread_score"><h3 class="function_name"><strong><code>effect.increment_advice_thread_score(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">thread key</i><code><strong>, <code><a href="lua.html#class:number">number</a></code> </strong></code><i class="parameter">score</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Increments the advice thread score by the supplied amount, without playing any advice.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Advice thread key, from the <code>advice_threads</code> table.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:number">number</a></code></code></p>
+									</td>
+									<td>
+										<p>score</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:set_advice_history_string_seen"><h3 class="function_name"><strong><code>effect.set_advice_history_string_seen(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">key</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Stores a key in the advice history, which can subsequently be tested with <code><a href="#function:effect:get_advice_history_string_seen">effect.get_advice_history_string_seen</a></code>. This allows scripts to test whether the player has ever encountered certain conditions in their playing history (e.g. "has ever started game"). The flag will be reset if the player resets their advice history.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>key</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:get_advice_history_string_seen"><h3 class="function_name"><strong><code>effect.get_advice_history_string_seen(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">key</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns whether a key has ever been set in the advice history with <code><a href="#function:effect:set_advice_history_string_seen">effect.set_advice_history_string_seen</a></code>.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>key</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> has been set</li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:get_advice_level"><h3 class="function_name"><strong><code>effect.get_advice_level()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the current advice level setting. The following table indicates potential returned values:<br />
+							<table id="simple"><tr><th>Returned Value</th><th>Advice Level</th></tr><br />
+							<tr><td><code>0</code></td><td>Minimal</td></tr>
+
+							<tr><td><code>1</code></td><td>Low</td></tr>
+
+							<tr><td><code>2</code></td><td>High</td></tr></table>
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:number">number</a></code></code> advice level</li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:clear_advice_session_history"><h3 class="function_name"><strong><code>effect.clear_advice_session_history()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Clears out the advice session history. This is the list of advice shown in this particular game session, accessed by the next/previous buttons on the advisor panel.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:advance_contextual_advice_thread"><h3 class="function_name"><strong><code>effect.advance_contextual_advice_thread(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">advice thread</i><code><strong>, <code><a href="lua.html#class:number">number</a></code> </strong></code><i class="parameter">points</i><code><strong>, <code><a href="lua.html#class:userdata">userdata</a></code> </strong></code><i class="parameter">context</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Directs the advisor to consider issuing advice on the supplied advice thread. The supplied number of points are added to the thread - if a record from the <code>advice_levels</code> table subsequently becomes eligible to be issued, then that advice is issued.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Advice thread key.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:number">number</a></code></code></p>
+									</td>
+									<td>
+										<p>Points to add to thread.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:userdata">userdata</a></code></code></p>
+									</td>
+									<td>
+										<p>context object supplied by game event.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:is_advice_audio_playing"><h3 class="function_name"><strong><code>effect.is_advice_audio_playing()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns whether audio for any advice is currently playing.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> advice is playing</li>
+							</ol>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:effect:UI Events"><h2 class="section_header">UI Events</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:effect:trigger_shortcut"><h3 class="function_name"><strong><code>effect.trigger_shortcut(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">shortcut name</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Triggers a keyboard shortcut event. Valid shortcut events are defined in <code>data\text\default_keys.xml</code>.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>shortcut name</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:effect:UI Event Simulation"><h2 class="section_header">UI Event Simulation</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:effect:key_press"><h3 class="function_name"><strong><code>effect.key_press(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">event</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Simulates a key down followed by a key up key event. Valid key events are listed here: <code><a href="uicomponent.html#section:uicomponent:Simulating Keyboard Events">Simulating Keyboard Events</a></code>
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>event</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:key_down"><h3 class="function_name"><strong><code>effect.key_down(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">event</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Triggers a key down key event. Note that the game will think the key is held down until a key up event is received. Valid key events are listed here: <code><a href="uicomponent.html#section:uicomponent:Simulating Keyboard Events">Simulating Keyboard Events</a></code>
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>event</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:key_up"><h3 class="function_name"><strong><code>effect.key_up(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">event</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Triggers a key up event. Valid key events are listed here: <code><a href="uicomponent.html#section:uicomponent:Simulating Keyboard Events">Simulating Keyboard Events</a></code>.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>event</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:mouse_event"><h3 class="function_name"><strong><code>effect.mouse_event(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">event</i><code><strong>, <code><a href="lua.html#class:number">number</a></code> </strong></code><i class="parameter">screen pos x</i><code><strong>, <code><a href="lua.html#class:number">number</a></code> </strong></code><i class="parameter">screen pos y</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Triggers a mouse event at a specified position. Valid mouse events are listed in the <code>cursor_mouse_events</code> table.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>event</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:number">number</a></code></code></p>
+									</td>
+									<td>
+										<p>screen pos x</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:number">number</a></code></code></p>
+									</td>
+									<td>
+										<p>screen pos y</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:effect:Preferences and Tweakers"><h2 class="section_header">Preferences and Tweakers</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:effect:pref_as_bool"><h3 class="function_name"><strong><code>effect.pref_as_bool(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">preference key</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns whether the specified boolean user preference setting is true or not.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>preference key</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> preference value</li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:pref_as_float"><h3 class="function_name"><strong><code>effect.pref_as_float(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">preference key</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the numeric value of the specified floating point user preference. Floating point number values will be marked with &lt;float&gt; in the preferences file.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>preference key</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:number">number</a></code></code> preference value</li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:pref_as_integer"><h3 class="function_name"><strong><code>effect.pref_as_integer(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">preference key</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the numeric value of the specified integer user preference. Integer values will be marked with &lt;int&gt; in the preferences file.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>preference key</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:number">number</a></code></code> preference value</li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:tweaker_value"><h3 class="function_name"><strong><code>effect.tweaker_value(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">tweaker name</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the value of the specified tweaker as a string. Tweakers are game settings that may be easily set and changed during development, through methods such as startup scripts or the game console.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>tweaker name</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:string">string</a></code></code> tweaker value</li>
+							</ol>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:effect:Game Version"><h2 class="section_header">Game Version</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:effect:game_version"><h3 class="function_name"><strong><code>effect.game_version()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the game version string.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:string">string</a></code></code> game version</li>
+							</ol>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:effect:Filesystem"><h2 class="section_header">Filesystem</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:effect:filesystem_lookup"><h3 class="function_name"><strong><code>effect.filesystem_lookup(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">path</i><code><strong>, <code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">pattern</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Performs a VFS lookup in the specified relative path (root is data/) for files matching the supplied pattern. Returns a comma-delimited list of files found.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Path from data/ in which to look.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Search pattern.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:string">string</a></code></code> file list</li>
+							</ol>
+
+							<h4>Example:</h4>
+							<div id="example_code"><code>
+								 effect.filesystem_lookup("/script/_lib/", "*.lua")<br />
+							</code></div>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:effect:Screenshots"><h2 class="section_header">Screenshots</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:effect:take_screenshot"><h3 class="function_name"><strong><code>effect.take_screenshot(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">filename</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Triggers a screenshot
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>filename</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:get_appdata_screenshots_path"><h3 class="function_name"><strong><code>effect.get_appdata_screenshots_path()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the full path to the screenshots directory in appdata.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:string">string</a></code></code> screenshots path</li>
+							</ol>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:effect:Battle Ping Icons"><h2 class="section_header">Battle Ping Icons</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:effect:PingIconPath"><h3 class="function_name"><strong><code>effect.PingIconPath(<code><a href="lua.html#class:number">number</a></code> </strong></code><i class="parameter">ping type</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the icon path for the supplied ping icon type, specified by a numeric index. This allows script to create its own pings that don't go through the ping system (like ping icons attached to units - see <code><a href="../battle/script_unit.html#function:script_unit:add_ping_icon">script_unit:add_ping_icon</a></code>). This function works in battle only.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:number">number</a></code></code></p>
+									</td>
+									<td>
+										<p>ping type</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:string">string</a></code></code> icon path</li>
+							</ol>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:effect:UI Skins"><h2 class="section_header">UI Skins</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:effect:get_skinned_image_path"><h3 class="function_name"><strong><code>effect.get_skinned_image_path(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">image name</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Retrieves a full image path from the working data folder for a supplied image name that obeys the currently loaded skins. For each loaded skin, the existence of the image is queried and, should it exist, the path to that image is returned. If the image is not found then a path to the image in the default skin folder is returned, although in this case the existence of the image is not checked for. The returned image path can subsequently be supplied to <code><a href="uicomponent.html#function:uicomponent:SetImagePath">uicomponent:SetImagePath</a></code>.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Image name, excluding path but including file extension.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:string">string</a></code></code> image path</li>
+							</ol>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:effect:Localised Strings"><h2 class="section_header">Localised Strings</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:effect:get_localised_string"><h3 class="function_name"><strong><code>effect.get_localised_string(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">localisation key</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Retrieves a localised string from the database by its full localisation key. This is in the form [table]_[field]_[record_key]. If the lookup fails, an empty string is returned.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>localisation key</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:string">string</a></code></code> localised string</li>
+							</ol>
+
+							<h4>Example:</h4>
+							<div id="example_code"><code>
+								 out(effect.get_localised_string("random_localisation_strings_string_shakespeare_quote"))<br />
+							</code></div>
+							<div id="example_result"><code>
+								Alas, Poor Yoric..<br />
+							</code></div>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:effect:Subtitles"><h2 class="section_header">Subtitles</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:effect:subtitles_enabled"><h3 class="function_name"><strong><code>effect.subtitles_enabled()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns whether subtitles are enabled or not in the player's preferences.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> subtitles enabled</li>
+							</ol>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:effect:Movies"><h2 class="section_header">Movies</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:effect:is_any_movie_playing"><h3 class="function_name"><strong><code>effect.is_any_movie_playing()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns whether any movie is currently playing.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> is movie playing</li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:stop_all_movies"><h3 class="function_name"><strong><code>effect.stop_all_movies()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Stops any currently playing movies.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:effect:Custom Loading Screen"><h2 class="section_header">Custom Loading Screen</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:effect:set_custom_loading_screen_key"><h3 class="function_name"><strong><code>effect.set_custom_loading_screen_key(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">key</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Sets a record from the <code>custom_loading_screens</code> table to use for the next loading screen. The record is specified by string key.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>key</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+						</dd>
+					</dl>
+				</div>
+
+
+				<div>
+					<a style="float:right;" href="#top">Back to top</a>
+					<a name="section:effect:UI Context System"><h2 class="section_header">UI Context System</h2></a>
+				</div>
+				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:effect:set_context_value"><h3 class="function_name"><strong><code>effect.set_context_value(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">id</i><code><strong>, <code><a href="lua.html#class:number">number</a></code>/<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">value</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Creates or updates a CcoScriptObject data record within the UI context system with a specified value. UI components and layouts can be separately set up to query these values by name. This allows script to set up and modify values which are then reflected in the UI, giving script great power to set up custom gameplay structures which are visible to the player on the UI. Examples might include health bars, counters, progress meters etc which are tied to arbitrary scripted values.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Context value id.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:number">number</a></code>/<code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Value to set - this can be a <code><a href="lua.html#class:number">number</a></code> or a <code><a href="lua.html#class:string">string</a></code>.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:get_context_bool_value"><h3 class="function_name"><strong><code>effect.get_context_bool_value(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">object id</i><code><strong>, <code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">function id</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Calls a specified function on a specified context object. The value returned by the function is passed back to script as a <code><a href="lua.html#class:boolean">boolean</a></code>. This allows script to query values on objects within the UI context system.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Context object id on which to call the function.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Function id on the context object to call. This can also be an expression.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> returned value</li>
+							</ol>
+
+							<h4>Example - Query CcoBattleRoot to see if battle is in deployment phase:</h4>
+							<div id="example_code"><code>
+								 local is_deployment_phase = effect.get_context_bool_value("CcoBattleRoot", "IsDeploymentPhase")<br />
+							</code></div>
+
+							<h4>Example - Query whether campaign character with cqi 51 is on the campaign map:</h4>
+							<div id="example_code"><code>
+								 local char_is_on_map = effect.get_context_bool_value("CcoCampaignCharacter51", "IsOnMap")<br />
+							</code></div>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:get_context_numeric_value"><h3 class="function_name"><strong><code>effect.get_context_numeric_value(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">object id</i><code><strong>, <code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">function id</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Calls a specified function on a specified context object. The value returned by the function is passed back to script as a <code><a href="lua.html#class:number">number</a></code>. This allows script to query number values on objects within the UI context system.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Context object id on which to call the function.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Function id on the context object to call. This can also be an expression.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:number">number</a></code></code> returned value</li>
+							</ol>
+
+							<h4>Example - Query CcoBattleRoot to see which alliance wins on timeout:</h4>
+							<div id="example_code"><code>
+								 local winning_alliance_index = effect.get_context_bool_value("CcoBattleRoot", "TimeoutWinningAllianceIndex")<br />
+							</code></div>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:get_context_string_value"><h3 class="function_name"><strong><code>effect.get_context_string_value(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">object id</i><code><strong>, <code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">function id</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Calls a specified function on a specified context object. The value returned by the function is passed back to script as a <code><a href="lua.html#class:string">string</a></code>. This allows script to query string values on objects within the UI context system.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Context object id on which to call the function.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Function id on the context object to call. This can also be an expression, but the result must return a context id.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:string">string</a></code></code> context object id</li>
+							</ol>
+
+							<h4>Example - Query battle unit 1004 for their morale state as a string:</h4>
+							<div id="example_code"><code>
+								 local morale_state = effect.get_context_string_value("CcoBattleUnit1004", "MoraleName")<br />
+							</code></div>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:get_context_vector4_value"><h3 class="function_name"><strong><code>effect.get_context_vector4_value(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">object id</i><code><strong>, <code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">function id</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Calls a specified function on a specified context object. The value returned by the function is passed back to script as a vector4, which is expressed in lua as 4 number values. This allows script to query position values on objects within the UI context system.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Context object id on which to call the function.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Function id on the context object to call. This can also be an expression.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:number">number</a></code></code> x position value</li>
+								<li><code><code><a href="lua.html#class:number">number</a></code></code> y position value</li>
+								<li><code><code><a href="lua.html#class:number">number</a></code></code> z position value</li>
+								<li><code><code><a href="lua.html#class:number">number</a></code></code> w position value (meaning varies per function)</li>
+							</ol>
+
+							<h4>Example - Get the position of the Victory Point in battle:</h4>
+							<div id="example_code"><code>
+								 local x, y, z, w = effect.get_context_vector4_value("CcoBattleRoot", "VictoryCapturePointContext.Position")<br />
+							</code></div>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:get_context_object_id"><h3 class="function_name"><strong><code>effect.get_context_object_id(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">object id</i><code><strong>, <code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">function id</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Calls a specified function on a specified context object that returns a <code><a href="lua.html#class:string">string</a></code> name of another context object. This allows script to get a handle to a context object related to the subject context object, such as an army related to a unit.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Context object id on which to call the function.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Function id on the context object to call. This can also be an expression, but the result must return a context id.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:string">string</a></code></code> context object id</li>
+							</ol>
+
+							<h4>Example - Query campaign character with cqi 123 for the context id of the associated military force:</h4>
+							<div id="example_code"><code>
+								 local cco_military_force = effect.get_context_string_value("CcoCharacter123", "MilitaryForceContext")<br />
+							</code></div>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:effect:call_context_command"><h3 class="function_name"><strong><code>effect.call_context_command(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">object id</i><code><strong>, <code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">function id</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Calls a specified function on a specified context object that makes changes to the game. This allows script to use the context system to modify the state of the game.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Context object id on which to call the function.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Function id on the context object to call. This can be expression.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+
+							<h4>Example - Toggles cinematics mode through the context system:</h4>
+							<div id="example_code"><code>
+								 effect.call_context_command("CcoBattleRoot", "ToggleCinematicMode")<br />
+							</code></div>
+						</dd>
+					</dl>
+				</div>
+
+
+			</div>
+
+		</div>
+
+		<div id="about">Last updated 10/01/21 08:52:07</div>
+
+	</div>
+
+	<script src="../searchdata.js"></script>
+	<script src="../search.js"></script>
+	<script>const page_env = "Campaign"; const path_to_document_root = "../";</script>
+
+</body>
+</html>

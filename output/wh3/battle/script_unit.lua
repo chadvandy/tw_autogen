@@ -85,11 +85,11 @@ function script_unit:goto_location_offset_when_deployed(x_offset, z_offset, shou
 function script_unit:stop_goto_location_offset_when_deployed() end
 
 --- Instructs the scriptunit to turn to face a position vector.
----@param position vector position
+---@param position battle_vector position
 function script_unit:turn_to_face(position) end
 
 --- Instructs the scriptunit to teleport to a location.
----@param position vector Position to teleport to.
+---@param position battle_vector Position to teleport to.
 ---@param bearing number Bearing to face at the target position in degrees.
 ---@param width number Width in m of formation at target position.
 function script_unit:teleport_to_location(position, bearing, width) end
@@ -98,7 +98,7 @@ function script_unit:teleport_to_location(position, bearing, width) end
 function script_unit:cache_location() end
 
 --- Returns the vector position of the unit last time it was cached with script_unit:cache_location.
----@return vector  
+---@return battle_vector  
 function script_unit:get_cached_position() end
 
 --- Returns the bearing of the unit in degrees last time it was cached with script_unit:cache_location.
@@ -117,7 +117,7 @@ function script_unit:goto_cached_location(should_run) end
 function script_unit:teleport_to_cached_location() end
 
 --- Returns true if the scriptunit has moved from the last cached position, or an optional supplied position. The movement threshold can also be overriden (by default it's 1m).
----@param position_override vector position override
+---@param position_override battle_vector position override
 ---@param threshold_distance number threshold distance
 ---@return boolean  has moved 
 function script_unit:has_moved(position_override, threshold_distance) end
@@ -129,7 +129,7 @@ function script_unit:cache_destination() end
 function script_unit:cache_destination_and_halt() end
 
 --- Returns the vector destination last cached by script_unit:cache_destination.
----@return vector  
+---@return battle_vector  
 function script_unit:get_cached_destination_position() end
 
 --- Returns the ordered bearing in degrees that was last cached by script_unit:cache_destination.
@@ -563,19 +563,19 @@ function script_units:num_deployed() end
 function script_units:are_any_active_on_battlefield() end
 
 --- Returns true if script_unit:has_moved returns true for any unit in this collection. Call script_unit:cache_location() first to set a position from which each unit's distance is tested.
----@param position vector Position to test against. May be of limited usefulness when testing multiple units like this.
+---@param position battle_vector Position to test against. May be of limited usefulness when testing multiple units like this.
 ---@param threshold_distance distance Threshold distance in m.
 ---@return boolean  have any moved 
 function script_units:have_any_moved(position, threshold_distance) end
 
 --- Returns the number of units in this collection that have moved when tested with script_unit:has_moved. Call script_unit:cache_location() first to set a position from which each unit's distance is tested.
----@param position vector Position to test against. May be of limited usefulness when testing multiple units like this.
+---@param position battle_vector Position to test against. May be of limited usefulness when testing multiple units like this.
 ---@param threshold_distance distance Threshold distance in m.
 ---@return number  Number that have moved 
 function script_units:num_moved(position, threshold_distance) end
 
 --- Returns true if script_unit:has_moved returns true for all units in this collection. Call script_unit:cache_location() first to set a position from which each unit's distance is tested.
----@param position vector Position to test against. May be of limited usefulness when testing multiple units like this.
+---@param position battle_vector Position to test against. May be of limited usefulness when testing multiple units like this.
 ---@param threshold_distance distance Threshold distance in m.
 ---@return boolean  have all moved 
 function script_units:have_all_moved(position, threshold_distance) end

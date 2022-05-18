@@ -88,14 +88,14 @@ function cutscene:is_active() end
 function cutscene:set_skippable(skippable, skip_callback) end
 
 --- Sets a position/target to immediately reposition the camera at if the cutscene is skipped. This supercedes any Restore Camera if set.
----@param camera_position vector camera position
----@param camera_target vector camera target
+---@param camera_position battle_vector camera position
+---@param camera_target battle_vector camera target
 function cutscene:set_skip_camera(camera_position, camera_target) end
 
 --- Instructs the cutscene to restore the camera to either the position it occupied when the cutscene started, or a different position/target entirely. Note that if a skip camera/target has been set with cutscene:set_skip_camera and the cutscene is skipped, those positions will supercede these.
 ---@param move_time number Time over which to restore the camera in ms. Setting 0 would result in the camera cutting, setting 1000 would result in the camera panning over 1 second, and so on.
----@param override_position vector Override camera position. Supply a position here to set a specific restore camera position, or leave blank to use the position of the camera at the start of the cutscene.
----@param override_target vector Override camera target. Must be specified if a camera position is specified.
+---@param override_position battle_vector Override camera position. Supply a position here to set a specific restore camera position, or leave blank to use the position of the camera at the start of the cutscene.
+---@param override_target battle_vector Override camera target. Must be specified if a camera position is specified.
 function cutscene:set_restore_cam(move_time, override_position, override_target) end
 
 --- Sets a duration for the post-cutscene fade time, in seconds.<br />

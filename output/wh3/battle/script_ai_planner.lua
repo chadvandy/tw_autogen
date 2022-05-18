@@ -34,11 +34,11 @@ function script_ai_planner:release() end
 function script_ai_planner:any_controlled_sunit_standing() end
 
 --- Returns a vector position of the mean centre of all units this script_ai_planner controls.
----@return vector  centre position 
+---@return battle_vector  centre position 
 function script_ai_planner:get_centre_point() end
 
 --- Instructs the script_ai_planner to move its units to a position. This will supercede any previously-issued order.
----@param position vector position
+---@param position battle_vector position
 function script_ai_planner:move_to_position(position) end
 
 --- Instructs the script_ai_planner to move its units to the position of a supplied script_unit, tracking the target as it moves. The supplied script_unit may be allied with or enemies of the units controlled by this script_ai_planner.
@@ -51,7 +51,7 @@ function script_ai_planner:move_to_position_of_sunit(target_sunit, rout_callback
 function script_ai_planner:move_to_force(target_force) end
 
 --- Instructs the script_ai_planner to defend a position on the battlefield. Alongside a vector position a radius must be supplied, which sets how tightly bound to the position the controlled units are.
----@param position_to_defend vector position to defend
+---@param position_to_defend battle_vector position to defend
 ---@param radius_in_m radius radius in m
 function script_ai_planner:defend_position(position_to_defend, radius_in_m) end
 

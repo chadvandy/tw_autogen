@@ -10,7 +10,7 @@ function convex_area:new(positions) end
 
 --- Retrieves the nth vector in the convex area. Returns false if no vector exists at this index.
 ---@param index integer index
----@return vector   
+---@return battle_vector   
 function convex_area:item(index) end
 
 --- Returns the number of vector positions that make up this convex area shape

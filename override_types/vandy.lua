@@ -11,6 +11,8 @@ return {
     data = "string|number|boolean",
 
     bool = "boolean",
+
+    vector = "battle_vector",
     
     ["nil"] = "NONE",
     void = "NONE",

@@ -267,26 +267,30 @@ local function parse_events(game)
         end
     end
 
-    --- TODO read through overrides.
-    for event,override_data in pairs(OVERRIDES.Events) do
-        printf("Overriding details for %s", event)
-    end
+    local this_overrides = OVERRIDES[game]
 
-    for interface_key,override_data in pairs(OVERRIDES.Interfaces) do
-        printf("Overriding details for interface %s", interface_key)
-
-        local interface = interfaces[interface_key]
-
-        if override_data.functions then
-            for func_name,func_overrides in pairs(override_data.functions) do
-                for i,f in ipairs(interface.functions) do
-                    if f.index == func_name then
-                        for k,v in pairs(func_overrides) do
-                            f[k] = v
-                        end
-                    end 
+    if this_overrides then
+        for event,override_data in pairs(this_overrides.Events) do
+            --- TODO
+            printf("Overriding details for %s", event)
+        end
+    
+        for interface_key,override_data in pairs(this_overrides.Interfaces) do
+            printf("Overriding details for interface %s", interface_key)
+    
+            local interface = interfaces[interface_key]
+    
+            if override_data.functions then
+                for func_name,func_overrides in pairs(override_data.functions) do
+                    for i,f in ipairs(interface.functions) do
+                        if f.index == func_name then
+                            for k,v in pairs(func_overrides) do
+                                f[k] = v
+                            end
+                        end 
+                    end
+                    
                 end
-                
             end
         end
     end
