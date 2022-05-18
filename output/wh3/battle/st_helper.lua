@@ -8,100 +8,100 @@ local st_helper = {}
 ---@param building_list table List of buildings to test. This should be an indexed table of battle_building objects, such as (but not restricted to) those returned by functions documented in the Building Lists section of this documentation.
 ---@param filter_function function Filter function. This should take a battle_building object as a single argument and return a boolean result.
 ---@return battle_building  if no match 
-function st_helper:get_building_from_list(building_list, filter_function) end
+function st_helper.get_building_from_list(building_list, filter_function) end
 
 --- Returns the closest building from a supplied list of buildings. An optional filter function may also be supplied, which should take a battle_building as a single argument and return a boolean result - true if the filter passes, or false otherwise.
 ---@param position battle_vector Position to test against.
 ---@param building_list table List of buildings to test. This should be an indexed table of battle_building objects, such as (but not restricted to) those returned by functions documented in the Building Lists section of this documentation.
 ---@param filter_function function Filter function. This should take a battle_building object as a single argument and return a boolean result. If no filter function is supplied then all buildings pass.
 ---@return battle_building  closest building 
-function st_helper:get_closest_building_from_list(position, building_list, filter_function) end
+function st_helper.get_closest_building_from_list(position, building_list, filter_function) end
 
 --- Returns whether the supplied building is a fort wall but not a gate or a tower.
 ---@param building battle_building building
 ---@return boolean  building is standard fort wall 
-function st_helper:building_is_standard_fort_wall(building) end
+function st_helper.building_is_standard_fort_wall(building) end
 
 --- Returns whether the supplied building is a standard fort wall connected a supplied number of times on either side. Wall pieces are connected to adjacent pieces in the wall, so a wall piece that is connected n times would have n buildings to the left and to the right of it in the wall, meaning that it's not at or near the end of the wall.
 ---@param building battle_building Building.
 ---@param connections number Number of connections to test.
 ---@return boolean  building is connected 
-function st_helper:building_is_standard_fort_wall_connected_n_times(building, connections) end
+function st_helper.building_is_standard_fort_wall_connected_n_times(building, connections) end
 
 --- Returns the closest fort wall building to the supplied position that is connected n times to other buildings. The connection test is performed by st_helper.building_is_standard_fort_wall_connected_n_times
 ---@param position battle_vector Position to test against.
 ---@param connections number Number of connections to test for each building.
 ---@return battle_building  closest building 
-function st_helper:get_closest_connected_wall_building(position, connections) end
+function st_helper.get_closest_connected_wall_building(position, connections) end
 
 --- Returns whether a minor key building capture location exists on the battlefield.
 ---@return boolean  capture location of type exists 
-function st_helper:minor_supply_capture_location_exists() end
+function st_helper.minor_supply_capture_location_exists() end
 
 --- Returns whether any minor key building capture locations with attached toggleable slots exist on the battlefield.
 ---@return boolean  capture location of type exists 
-function st_helper:minor_supply_capture_location_with_toggleable_slot_exists() end
+function st_helper.minor_supply_capture_location_with_toggleable_slot_exists() end
 
 --- Returns whether a victory point capture location exists on the battlefield.
 ---@return boolean  capture location of type exists 
-function st_helper:victory_point_plaza_capture_location_exists() end
+function st_helper.victory_point_plaza_capture_location_exists() end
 
 --- Returns whether a major key building capture location exists on the battlefield.
 ---@return boolean  capture location of type exists 
-function st_helper:major_key_building_capture_location_exists() end
+function st_helper.major_key_building_capture_location_exists() end
 
 --- Returns whether any fort wall buildings exist on the battlefield.
 ---@return boolean  fort walls exist 
-function st_helper:fort_wall_building_exists() end
+function st_helper.fort_wall_building_exists() end
 
 --- Returns whether any fort gate buildings exist on the battlefield.
 ---@return boolean  fort gates exist 
-function st_helper:fort_gate_building_exists() end
+function st_helper.fort_gate_building_exists() end
 
 --- Returns whether any selectable tower buildings exist on the battlefield.
 ---@return boolean  selectable towers exist 
-function st_helper:selectable_tower_exists() end
+function st_helper.selectable_tower_exists() end
 
 --- Returns whether any capture locations exist on the battlefield.
 ---@return boolean  capture location exists 
-function st_helper:capture_location_exists() end
+function st_helper.capture_location_exists() end
 
 --- Returns whether any capture location with a gate exists on the battlefield.
 ---@return boolean  selectable towers exist 
-function st_helper:capture_location_with_gate_exists() end
+function st_helper.capture_location_with_gate_exists() end
 
 --- Returns whether a capture location of the specified type exists on the battlefield.
 ---@param capture_location_type string Capture location type, from the capture_point_types database table.
 ---@param partial_match boolean Perform a partial string match. This would allow a supplied capture location search string "major_key_building" to match capture locations with types such as "major_key_building_magic" or "major_key_building_missile".
 ---@return boolean  capture location of type exists 
-function st_helper:capture_location_of_type_exists(capture_location_type, partial_match) end
+function st_helper.capture_location_of_type_exists(capture_location_type, partial_match) end
 
 --- Returns whether a capture location of the specified type exists on the battlefield with associated toggleable slots.
 ---@param capture_location_type string Capture location type, from the capture_point_types database table. If no type is specified then any type is matched.
 ---@param partial_match boolean Perform a partial string match. This would allow a supplied capture location search string "major_key_building" to match capture locations with types such as "major_key_building_magic" or "major_key_building_missile".
 ---@return boolean  capture location of type exists 
-function st_helper:capture_location_of_type_with_toggleable_slot_exists(capture_location_type, partial_match) end
+function st_helper.capture_location_of_type_with_toggleable_slot_exists(capture_location_type, partial_match) end
 
 --- Returns the closest capture location of the specified type to the supplied position. The capture location is returned as a context string identifier. If the type is left blank then any capture location matches.
 ---@param position battle_vector Position.
 ---@param capture_location_type string Capture location type, from the capture_location_types<\code> database table.
 ---@param partial_match boolean Perform a partial string match. This would allow a supplied capture location search string "major_key_building" to match capture locations with types such as "major_key_building_magic" or "major_key_building_missile".
 ---@return string  capture location as context string 
-function st_helper:get_closest_capture_location_of_type(position, capture_location_type, partial_match) end
+function st_helper.get_closest_capture_location_of_type(position, capture_location_type, partial_match) end
 
 --- Returns the closest toggleable slot from any capture location of the specified type, to the supplied position. The toggleable slot is returned as a context string identifier. If the capture location type is left blank then any capture location matches.
 ---@param position battle_vector Position.
 ---@param capture_location_type string Capture location type, from the capture_location_types<\code> database table.
 ---@param partial_match boolean Perform a partial string match. This would allow a supplied capture location search string "major_key_building" to match capture locations with types such as "major_key_building_magic" or "major_key_building_missile".
 ---@return string  capture location as context string 
-function st_helper:get_closest_toggleable_slot_from_capture_location_of_type(position, capture_location_type, partial_match) end
+function st_helper.get_closest_toggleable_slot_from_capture_location_of_type(position, capture_location_type, partial_match) end
 
 --- Returns a second camera position from a supplied vector target and an initial camera position. The initial position and the second returned position defines a pair of camera co-ordinates that can be used to effect a camera rotation around the supplied target.<br />
 --- The returned position will be rotated around the camera target from the initial position by the horizontal delta.
 ---@param camera_target battle_vector Camera target.
 ---@param initial_camera_position battle_vector Initial camera position.
 ---@param delta number horizontal bearing delta in radians. The default value is equivalent to 10 degrees.
-function st_helper:get_second_offset_camera_position(camera_target, initial_camera_position, delta) end
+function st_helper.get_second_offset_camera_position(camera_target, initial_camera_position, delta) end
 
 --- Returns a pair of vectors that define camera positions around a supplied vector target. These camera positions can be used by scripted tour scripts to position and animate the camera as it rotates around the camera target. The positions are computed from the target vector, a distance, and horizontal/vertical bearings supplied from the target vector to the initial camera position.<br />
 --- A horizontal bearing delta, which defines how separated the two returned positions are, may also be supplied. If the supplied horizontal bearing is 0 then only one position vector is returned.
@@ -112,7 +112,7 @@ function st_helper:get_second_offset_camera_position(camera_target, initial_came
 ---@param delta number Horizontal bearing delta in radians. The default value is equivalent to 10 degrees.
 ---@return battle_vector  start camera position 
 ---@return battle_vector  
-function st_helper:get_offset_camera_positions_by_bearing(target, distance, horizontal_bearing, vertical_bearing, delta) end
+function st_helper.get_offset_camera_positions_by_bearing(target, distance, horizontal_bearing, vertical_bearing, delta) end
 
 --- Returns a pair of vectors that define camera positions around a supplied vector target. The co-ordinates of the first camera position are determined by a supplied x/z offset from the camera target, the facing of which is determined by a supplied horizontal bearing, and a vertical bearing from the camera target to determine the height. The second returned camera position is offset from the first by an optional horizontal bearing delta. If this is set to 0 then only one camera position is returned.
 ---@param camera_target battle_vector Camera target.
@@ -123,7 +123,7 @@ function st_helper:get_offset_camera_positions_by_bearing(target, distance, hori
 ---@param delta number Horizontal bearing delta in radians. The default value is equivalent to 10 degrees.
 ---@return battle_vector  start camera position 
 ---@return battle_vector  
-function st_helper:get_offset_camera_positions_by_offset_and_bearing(camera_target, x_offset, z_offset, horizontal_bearing, vertical_bearing, delta) end
+function st_helper.get_offset_camera_positions_by_offset_and_bearing(camera_target, x_offset, z_offset, horizontal_bearing, vertical_bearing, delta) end
 
 --- Returns a pair of vectors that define camera positions around a supplied vector target. The co-ordinates of the first camera position are determined by a supplied bearing vector, which defines a horizontal bearing along which the first camera position lies, and is further fixed by a supplied distance and optional vertical bearing. The second returned camera position is offset from the first by an optional horizontal bearing delta. If this is set to 0 then only one camera position is returned.
 ---@param camera_target battle_vector Camera target.
@@ -133,7 +133,7 @@ function st_helper:get_offset_camera_positions_by_offset_and_bearing(camera_targ
 ---@param delta number Horizontal bearing delta in radians. The default value is equivalent to 10 degrees.
 ---@return battle_vector  start camera position 
 ---@return battle_vector  
-function st_helper:get_offset_camera_positions_by_bearing_vector(camera_target, bearing_vector, distance, v_bearing, delta) end
+function st_helper.get_offset_camera_positions_by_bearing_vector(camera_target, bearing_vector, distance, v_bearing, delta) end
 
 --- Returns camera offset positions for a supplied script unit. The first camera position is specified by an x and z offset from the supplied script unit, based on that unit's facing. The position height is determined by a vertical bearing (i.e. looking from the side) from the unit.<br />
 --- The second returned camera is rotated around the unit from the first by the horizontal delta. If the delta is 0 then only one camera position is returned.
@@ -143,7 +143,7 @@ function st_helper:get_offset_camera_positions_by_bearing_vector(camera_target, 
 ---@return battle_vector  camera target 
 ---@return battle_vector  start camera position 
 ---@return battle_vector  
-function st_helper:get_offset_camera_positions_from_sunit(script_unit, vertical_bearing, delta) end
+function st_helper.get_offset_camera_positions_from_sunit(script_unit, vertical_bearing, delta) end
 
 --- Returns camera offset positions for a supplied scriptunits collection. The first camera position is specified by an x and z offset from the centre-point of the scriptunits collection, based on their average bearing (or a bearing override). The position height is determined by a vertical bearing (i.e. looking from the side) from that central point.<br />
 --- The second returned camera is rotated around the unit from the first by the horizontal delta. If the delta is 0 then only one camera position is returned.
@@ -155,80 +155,80 @@ function st_helper:get_offset_camera_positions_from_sunit(script_unit, vertical_
 ---@return battle_vector  camera target 
 ---@return battle_vector  start camera position 
 ---@return battle_vector  
-function st_helper:get_offset_camera_positions_from_sunits(script_units, vertical_bearing, horizontal_bearing_override, delta, relaxed_pose) end
+function st_helper.get_offset_camera_positions_from_sunits(script_units, vertical_bearing, horizontal_bearing_override, delta, relaxed_pose) end
 
 --- Returns camera offset positions for fortified walls as the siege attacker. The subject wall piece is chosen automatically.
 ---@return battle_vector  camera target 
 ---@return battle_vector  first camera position 
 ---@return battle_vector  second camera position 
-function st_helper:get_offset_camera_positions_from_walls_as_attacker() end
+function st_helper.get_offset_camera_positions_from_walls_as_attacker() end
 
 --- Returns camera offset positions for fortified walls as the siege defender. The subject wall piece is chosen automatically.
 ---@return battle_vector  camera target 
 ---@return battle_vector  first camera position 
 ---@return battle_vector  second camera position 
-function st_helper:get_offset_camera_positions_from_walls_as_defender() end
+function st_helper.get_offset_camera_positions_from_walls_as_defender() end
 
 --- Returns camera offset positions for a fortified gate. The subject gate is chosen automatically.
 ---@param is_attacker boolean Return offset positions as the attacker i.e. from outside the fort.
 ---@return battle_vector  camera target 
 ---@return battle_vector  first camera position 
 ---@return battle_vector  second camera position 
-function st_helper:get_offset_camera_positions_from_gate(is_attacker) end
+function st_helper.get_offset_camera_positions_from_gate(is_attacker) end
 
 --- Returns camera offset positions for a tower building. The subject tower is chosen automatically.
 ---@return battle_vector  camera target 
 ---@return battle_vector  first camera position 
 ---@return battle_vector  second camera position 
-function st_helper:get_offset_camera_positions_from_tower() end
+function st_helper.get_offset_camera_positions_from_tower() end
 
 --- Returns camera offset positions for a capture location of any type. The subject capture location is chosen automatically.
 ---@return battle_vector  camera target 
 ---@return battle_vector  first camera position 
 ---@return battle_vector  second camera position 
-function st_helper:get_offset_camera_positions_from_capture_location() end
+function st_helper.get_offset_camera_positions_from_capture_location() end
 
 --- Returns camera offset positions for a capture location for a gate. The subject capture location is chosen automatically.
 ---@return battle_vector  camera target 
 ---@return battle_vector  first camera position 
 ---@return battle_vector  second camera position 
-function st_helper:get_offset_camera_positions_from_gate_capture_location() end
+function st_helper.get_offset_camera_positions_from_gate_capture_location() end
 
 --- Returns camera offset positions for a siege weapon. The subject siege weapon is chosen automatically.
 ---@return battle_vector  camera target 
 ---@return battle_vector  first camera position 
 ---@return battle_vector  second camera position 
-function st_helper:get_offset_camera_positions_from_siege_weapons() end
+function st_helper.get_offset_camera_positions_from_siege_weapons() end
 
 --- Returns camera offset positions for a minor-key-building toggleable slot location. The subject slot location is chosen automatically.
 ---@return battle_vector  camera target 
 ---@return battle_vector  first camera position 
 ---@return battle_vector  second camera position 
-function st_helper:get_offset_camera_positions_from_minor_point_supplies_toggleable_slot_location() end
+function st_helper.get_offset_camera_positions_from_minor_point_supplies_toggleable_slot_location() end
 
 --- Returns camera offset positions for a minor-key-building capture location. The subject capture location is chosen automatically.
 ---@return battle_vector  camera target 
 ---@return battle_vector  first camera position 
 ---@return battle_vector  second camera position 
-function st_helper:get_offset_camera_positions_from_minor_point_supplies_capture_location() end
+function st_helper.get_offset_camera_positions_from_minor_point_supplies_capture_location() end
 
 --- Returns camera offset positions for a major victory point. The subject victory point is chosen automatically.
 ---@return battle_vector  camera target 
 ---@return battle_vector  first camera position 
 ---@return battle_vector  second camera position 
-function st_helper:get_offset_camera_positions_from_major_victory_point() end
+function st_helper.get_offset_camera_positions_from_major_victory_point() end
 
 --- Returns camera offset positions for a minor victory point. The subject victory point is chosen automatically.
 ---@return battle_vector  camera target 
 ---@return battle_vector  first camera position 
 ---@return battle_vector  second camera position 
-function st_helper:get_offset_camera_positions_from_minor_victory_point() end
+function st_helper.get_offset_camera_positions_from_minor_victory_point() end
 
 --- Returns camera offset positions suitable for the opening shot of a siege defence. A camera position over the top of the controlled unit closest to the enemy army is chosen.
 ---@return battle_vector  camera target 
 ---@return battle_vector  first camera position 
 ---@return battle_vector  second camera position 
-function st_helper:get_offset_camera_positions_for_siege_defence_start() end
+function st_helper.get_offset_camera_positions_for_siege_defence_start() end
 
 --- Builds and returns a navigable_tour_section with certain standardised behaviours.
 ---@param section_name string Section name for the navigable tour section being created.
@@ -240,13 +240,13 @@ function st_helper:get_offset_camera_positions_for_siege_defence_start() end
 ---@param objective_test function Objective completion test function. If supplied, a battle_manager:watch is set up with this function as the condition. When the condition passes, the supplied objective is marked as completed.
 ---@param leave_objective boolean Leave section objective on-screen after it has been completed. By default the section objective is removed from the screen once it's completed - set this value to true to suppress this behaviour.
 ---@param windowed_movie_path string Path of movie to play in window, if one is required for this navigable tour section.
-function st_helper:navigable_tour_section_battle_factory(section_name, camera_positions_generator, advice_key, infotext, advice_delay, objective, objective_test, leave_objective, windowed_movie_path) end
+function st_helper.navigable_tour_section_battle_factory(section_name, camera_positions_generator, advice_key, infotext, advice_delay, objective, objective_test, leave_objective, windowed_movie_path) end
 
 --- A generic function for setting up aspects of the UI at the start of a navigable tour in battle.
 ---@param navigable_tour navigable_tour Host navigable tour.
 ---@param suppress_record_camera_position boolean If set to true, the current camera position is not recorded on the scripted tour. This is useful if the scripted tour has already done this.
-function st_helper:setup_tour_start(navigable_tour, suppress_record_camera_position) end
+function st_helper.setup_tour_start(navigable_tour, suppress_record_camera_position) end
 
 --- A generic function for setting up aspects of the UI at the end of a navigable tour in battle.
 ---@param navigable_tour navigable_tour navigable tour
-function st_helper:setup_tour_end(navigable_tour) end
+function st_helper.setup_tour_end(navigable_tour) end

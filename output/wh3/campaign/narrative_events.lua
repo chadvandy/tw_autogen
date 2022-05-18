@@ -7,7 +7,7 @@ local narrative_events = {}
 ---@param unique_name string Unique name amongst other declared narrative events.
 ---@param faction_key string Key of the faction to which this narrative event applies, from the factions database table.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
-function narrative_events:how_they_play(unique_name, faction_key, trigger_message) end
+function narrative_events.how_they_play(unique_name, faction_key, trigger_message) end
 
 --- Creates and starts an event message narrative event. An event message with the specified title, primary and secondary text will be shown.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -18,7 +18,7 @@ function narrative_events:how_they_play(unique_name, faction_key, trigger_messag
 ---@param persistent boolean Persistence flag to pass to campaign_manager:show_message_event.
 ---@param index number Index value to pass to campaign_manager:show_message_event. This determines the header image shown.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
-function narrative_events:event_message(unique_name, faction_key, title_text_key, primary_text_key, secondary_text_key, persistent, index, trigger_message) end
+function narrative_events.event_message(unique_name, faction_key, title_text_key, primary_text_key, secondary_text_key, persistent, index, trigger_message) end
 
 --- Creates and starts an event message narrative event. An event message with the specified title, primary and secondary text will be shown. It will be shown as it is triggered, regardless of which faction is taking their turn.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -29,7 +29,7 @@ function narrative_events:event_message(unique_name, faction_key, title_text_key
 ---@param persistent boolean Persistence flag to pass to campaign_manager:show_message_event.
 ---@param index number Index value to pass to campaign_manager:show_message_event. This determines the header image shown.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
-function narrative_events:event_message_not_player_turn_only(unique_name, faction_key, title_text_key, primary_text_key, secondary_text_key, persistent, index, trigger_message) end
+function narrative_events.event_message_not_player_turn_only(unique_name, faction_key, title_text_key, primary_text_key, secondary_text_key, persistent, index, trigger_message) end
 
 --- Creates and starts a narrative event that starts an intervention with the supplied configuration and trigger callbacks. This allows the calling script to customise what happens within the intervention. It can also be used to trigger an intervention with a customised setup (e.g. must-trigger) which can be useful for starting a series of narrative events that would otherwise wait behind an event panel.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -37,7 +37,7 @@ function narrative_events:event_message_not_player_turn_only(unique_name, factio
 ---@param configuration_callback function Intervention configuration callback. If supplied, this is passed to narrative_event:add_intervention_configuration_callback to pre-configure the intervention associated with the narrative event prior to it being triggered. The callback will be passed the intervention object as a single argument when called.
 ---@param trigger_callback function Trigger callback to call when the intervention is triggered. If supplied, this is passed to narrative_event:set_trigger_callback. The callback will be passed the string triggering message, and a callback which can be used to prevent the narrative event completing immediately. Call the callback with false as an argument to stop it completing, then later with true as an argument to complete.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
-function narrative_events:intervention(unique_name, faction_key, configuration_callback, trigger_callback, trigger_message) end
+function narrative_events.intervention(unique_name, faction_key, configuration_callback, trigger_callback, trigger_message) end
 
 --- Creates and starts a narrative event that calls a supplied callback when triggered. When called, the supplied callback will be passed the narrative event, the key of the faction to which it applies, the triggering message, and the allow_issue_completed_callback as four arguments.<br />
 --- The allow_issue_completed_callback passed to the callback may be called with false supplied as an argument to prevent the narrative event from completing automatically. It will only later complete when the allow_issue_completed_callback is called again with true supplied as an argument. This mechanism allows the callback to control when the narrative event completes, rather than it completing immediately.
@@ -45,14 +45,14 @@ function narrative_events:intervention(unique_name, faction_key, configuration_c
 ---@param faction_key string Key of the faction to which this narrative event applies, from the factions database table.
 ---@param callback function Callback to call.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
-function narrative_events:callback(unique_name, faction_key, callback, trigger_message) end
+function narrative_events.callback(unique_name, faction_key, callback, trigger_message) end
 
 --- Creates and starts a narrative event that waits a supplied interval in seconds when triggered.
 ---@param unique_name string Unique name amongst other declared narrative events.
 ---@param faction_key string Key of the faction to which this narrative event applies, from the factions database table.
 ---@param interval number Interval in seconds to wait.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
-function narrative_events:interval(unique_name, faction_key, interval, trigger_message) end
+function narrative_events.interval(unique_name, faction_key, interval, trigger_message) end
 
 --- Creates and starts a narrative event that saves a value to the savegame with campaign_manager:set_saved_value when triggered.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -60,14 +60,14 @@ function narrative_events:interval(unique_name, faction_key, interval, trigger_m
 ---@param value_key string Key of value to save.
 ---@param value any Value to save. Supported data types are boolean, number, string and table.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
-function narrative_events:set_saved_value(unique_name, faction_key, value_key, value, trigger_message) end
+function narrative_events.set_saved_value(unique_name, faction_key, value_key, value, trigger_message) end
 
 --- Creates and starts a narrative event that marks an advice string as 'seen' in the advice history. This is useful for marking that a particular stage has been reached in the narrative flow of events, and it can be later tested with narrative_queries.advice_history. The string is reset if the player resets the advice history.
 ---@param unique_name string Unique name amongst other declared narrative events.
 ---@param faction_key string Key of the faction to which this narrative event applies, from the factions database table.
 ---@param value_key string Key of value to mark as seen.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
-function narrative_events:set_advice_string_seen(unique_name, faction_key, value_key, trigger_message) end
+function narrative_events.set_advice_string_seen(unique_name, faction_key, value_key, trigger_message) end
 
 --- Creates and starts a fullscreen movie narrative event.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -76,7 +76,7 @@ function narrative_events:set_advice_string_seen(unique_name, faction_key, value
 ---@param start_fade_duration number Duration in seconds over which to fade the picture to black before playing the movie.
 ---@param end_fade_duration number Duration in seconds over which to fade back to picture after playing the movie.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
-function narrative_events:fullscreen_movie(unique_name, faction_key, movie_path, start_fade_duration, end_fade_duration, trigger_message) end
+function narrative_events.fullscreen_movie(unique_name, faction_key, movie_path, start_fade_duration, end_fade_duration, trigger_message) end
 
 --- Creates and starts a scripted cutscene narrative event. The cutscene constructor function campaign_cutscene:new is used.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -84,7 +84,7 @@ function narrative_events:fullscreen_movie(unique_name, faction_key, movie_path,
 ---@param cutscene_duration number Duration of scripted cutscene in seconds.
 ---@param cutscene_config function This function will be called after the cutscene is created and before it is played. It can be used by client scripts to configure the cutscene object and populate it with actions. The function will be passed the cutscene object as a single argument.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
-function narrative_events:scripted_cutscene(unique_name, faction_key, cutscene_duration, cutscene_config, trigger_message) end
+function narrative_events.scripted_cutscene(unique_name, faction_key, cutscene_duration, cutscene_config, trigger_message) end
 
 --- Creates and starts a scripted cutscene narrative event with a cindyscene. The cutscene constructor function campaign_cutscene:new_from_cindyscene is used.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -94,7 +94,7 @@ function narrative_events:scripted_cutscene(unique_name, faction_key, cutscene_d
 ---@param blend_out number Cindyscene blend out duration in seconds.
 ---@param cutscene_config function This function will be called after the cutscene is created and before it is played. It can be used by client scripts to configure the cutscene object and populate it with actions, if required. The function will be passed the cutscene object as a single argument.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
-function narrative_events:cindy_cutscene(unique_name, faction_key, cindyscene_path, blend_in, blend_out, cutscene_config, trigger_message) end
+function narrative_events.cindy_cutscene(unique_name, faction_key, cindyscene_path, blend_in, blend_out, cutscene_config, trigger_message) end
 
 --- Creates and starts a narrative event that fades the camera to black or to picture when triggered.<br />
 --- If the fade is to black, the narrative system will wait for the fade to finish before continuing. If the fade is to picture, then the narrative system continues immediately without waiting for the fade to complete.
@@ -103,14 +103,14 @@ function narrative_events:cindy_cutscene(unique_name, faction_key, cindyscene_pa
 ---@param fade_duration number Duration of camera fade in seconds.
 ---@param to_black boolean Sets whether the camera should fade to black. Supply false to fade to picture instead.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
-function narrative_events:camera_fade(unique_name, faction_key, fade_duration, to_black, trigger_message) end
+function narrative_events.camera_fade(unique_name, faction_key, fade_duration, to_black, trigger_message) end
 
 --- Creates and starts a narrative event that cancels a custom mission when triggered.
 ---@param unique_name string Unique name amongst other declared narrative events.
 ---@param faction_key string Key of the faction to which this narrative event applies, from the factions database table.
 ---@param mission_key string Key of the mission to cancel, from the missions database table. The mission will be cancelled for the specified faction.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
-function narrative_events:cancel_mission(unique_name, faction_key, mission_key, trigger_message) end
+function narrative_events.cancel_mission(unique_name, faction_key, mission_key, trigger_message) end
 
 --- Creates and starts a narrative event that issues a generic scripted mission. One or more event/condition pairs to pass to the underlying mission_manager must be supplied in a table. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -123,7 +123,7 @@ function narrative_events:cancel_mission(unique_name, faction_key, mission_key, 
 ---@param mission_rewards string Key of mission issuer, from the mission_issuers database table.
 ---@param trigger_message table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param inherit_list string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
-function narrative_events:generic(unique_name, faction_key, advice_key, mission_key, mission_text, camera_scroll_callback, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.generic(unique_name, faction_key, advice_key, mission_key, mission_text, camera_scroll_callback, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to defeat an army belonging to a specific enemy faction. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -136,7 +136,7 @@ function narrative_events:generic(unique_name, faction_key, advice_key, mission_
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:defeat_enemy_army(unique_name, faction_key, advice_key, mission_key, enemy_faction_key, target_cqi, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.defeat_enemy_army(unique_name, faction_key, advice_key, mission_key, enemy_faction_key, target_cqi, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to defeat an army belonging to a specific enemy faction. Advice may optionally be supplied to be issued with the mission. narrative_event:set_category is used to give this narrative event a higher priority than one created with narrative_events.defeat_enemy_army.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -149,7 +149,7 @@ function narrative_events:defeat_enemy_army(unique_name, faction_key, advice_key
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:defeat_initial_enemy_army(unique_name, faction_key, advice_key, mission_key, enemy_faction_key, target_cqi, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.defeat_initial_enemy_army(unique_name, faction_key, advice_key, mission_key, enemy_faction_key, target_cqi, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to defeat an army belonging to a specified culture or list of cultures. Advice may optionally be supplied to be issued with the mission.<br />
 --- As this is a scripted mission a text key for the mission objective must be supplied.
@@ -163,7 +163,7 @@ function narrative_events:defeat_initial_enemy_army(unique_name, faction_key, ad
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:defeat_army_of_culture(unique_name, faction_key, advice_key, mission_key, mission_text_key, culture_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.defeat_army_of_culture(unique_name, faction_key, advice_key, mission_key, mission_text_key, culture_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to defeat an army belonging to a specified. Advice may optionally be supplied to be issued with the mission.<br />
 --- As this is a scripted mission a text key for the mission objective must be supplied.
@@ -175,7 +175,7 @@ function narrative_events:defeat_army_of_culture(unique_name, faction_key, advic
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:defeat_chaos_army(unique_name, faction_key, advice_key, mission_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.defeat_chaos_army(unique_name, faction_key, advice_key, mission_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to gain a specified amount of a specified pooled resource. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -188,7 +188,7 @@ function narrative_events:defeat_chaos_army(unique_name, faction_key, advice_key
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:gain_pooled_resource(unique_name, faction_key, advice_key, mission_key, resource_key, resource_quantity, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.gain_pooled_resource(unique_name, faction_key, advice_key, mission_key, resource_key, resource_quantity, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to gain a specified amount of the Kislev Devotion pooled resource. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -200,7 +200,7 @@ function narrative_events:gain_pooled_resource(unique_name, faction_key, advice_
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:gain_devotion(unique_name, faction_key, advice_key, mission_key, resource_quantity, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.gain_devotion(unique_name, faction_key, advice_key, mission_key, resource_quantity, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to gain a specified amount of the Kislev Supporters pooled resource. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -212,7 +212,7 @@ function narrative_events:gain_devotion(unique_name, faction_key, advice_key, mi
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:gain_supporters(unique_name, faction_key, advice_key, mission_key, resource_quantity, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.gain_supporters(unique_name, faction_key, advice_key, mission_key, resource_quantity, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission for the specified faction to gain a specified amount of one or more specified pooled resources. Unlike narrative_events.gain_pooled_resource this sets up a scripted mission, where script is responsible for the completion of the mission. This allows multiple pooled resources to be considered at the same time, either additively or not, allowing mission constructs such as "earn x of pooled resources a, b and c together", or "earn x of pooled resources a, b or c".<br />
 --- As it is a scripted mission, mission objective text must be supplied. Advice may optionally be supplied to be issued with the mission.
@@ -230,7 +230,7 @@ function narrative_events:gain_supporters(unique_name, faction_key, advice_key, 
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
 ---@param is_regular_income string Message to trigger when the mission has completed. This can be a table of strings if multiple on-completed messages are desired.
-function narrative_events:gain_pooled_resource_scripted(unique_name, faction_key, advice_key, mission_key, mission_text, pooled_resource_key, lower_threshold, upper_threshold, additive, mission_issuer, mission_rewards, trigger_message, inherit_list, is_regular_income) end
+function narrative_events.gain_pooled_resource_scripted(unique_name, faction_key, advice_key, mission_key, mission_text, pooled_resource_key, lower_threshold, upper_threshold, additive, mission_issuer, mission_rewards, trigger_message, inherit_list, is_regular_income) end
 
 --- Creates and starts a narrative event that issues a mission to capture a settlement, optionally belonging to a specific enemy faction. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -243,7 +243,7 @@ function narrative_events:gain_pooled_resource_scripted(unique_name, faction_key
 ---@param mission_rewards string Key of mission issuer, from the mission_issuers database table.
 ---@param trigger_message table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param inherit_list string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
-function narrative_events:capture_settlement(unique_name, faction_key, advice_key, mission_key, enemy_faction_key, scroll_target, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.capture_settlement(unique_name, faction_key, advice_key, mission_key, enemy_faction_key, scroll_target, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to raze or own all specified settlements. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -255,7 +255,7 @@ function narrative_events:capture_settlement(unique_name, faction_key, advice_ke
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:raze_or_own_settlements(unique_name, faction_key, advice_key, mission_key, region_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.raze_or_own_settlements(unique_name, faction_key, advice_key, mission_key, region_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to control a number of provinces. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -269,7 +269,7 @@ function narrative_events:raze_or_own_settlements(unique_name, faction_key, advi
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:control_provinces(unique_name, faction_key, advice_key, mission_key, provinces, province_key, scroll_target, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.control_provinces(unique_name, faction_key, advice_key, mission_key, provinces, province_key, scroll_target, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to enact one or more commandments. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -282,7 +282,7 @@ function narrative_events:control_provinces(unique_name, faction_key, advice_key
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:enact_commandment(unique_name, faction_key, advice_key, mission_key, enactments, commandment_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.enact_commandment(unique_name, faction_key, advice_key, mission_key, enactments, commandment_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to destroy one or more factions. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -294,7 +294,7 @@ function narrative_events:enact_commandment(unique_name, faction_key, advice_key
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:destroy_faction(unique_name, faction_key, advice_key, mission_key, target_faction_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.destroy_faction(unique_name, faction_key, advice_key, mission_key, target_faction_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to recruit a number of units across all armies. Unit keys may optionally be supplied . Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -308,7 +308,7 @@ function narrative_events:destroy_faction(unique_name, faction_key, advice_key, 
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:recruit_units(unique_name, faction_key, advice_key, mission_key, units, unit_key, exclude_existing, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.recruit_units(unique_name, faction_key, advice_key, mission_key, units, unit_key, exclude_existing, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to construct a number of buildings of zero or more building chains. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -323,7 +323,7 @@ function narrative_events:recruit_units(unique_name, faction_key, advice_key, mi
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:construct_n_of_building_chain(unique_name, faction_key, advice_key, mission_key, buildings, building_chain, exclude_existing, scroll_target, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.construct_n_of_building_chain(unique_name, faction_key, advice_key, mission_key, buildings, building_chain, exclude_existing, scroll_target, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission that completes when a building is completed by the specified faction, optionally passing a supplied condition function. Advice may optionally be supplied to be issued with the mission.<br />
 --- If supplied, the condition function will be passed the building provided by the BuildingCompleted event and the narrative event object as separate arguments. It should return a value that evaluates to a boolean to indicate whether the condition has passed. It can also return true as a second returned value to suppress output from this function. This can be useful if the condition function produces its own output.
@@ -337,7 +337,7 @@ function narrative_events:construct_n_of_building_chain(unique_name, faction_key
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:construct_building_with_condition(unique_name, faction_key, advice_key, mission_key, mission_text, condition, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.construct_building_with_condition(unique_name, faction_key, advice_key, mission_key, mission_text, condition, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission that completes when a building is completed by the specified faction, optionally passing a supplied condition function. The condition function is run on every building in the faction when a building is completed and if the number passing the test is greater than a supplied threshold then the mission is successfully completed. Advice may optionally be supplied to be issued with the mission.<br />
 --- If supplied, the condition function will be called for each building in the faction when the BuildingCompleted event is received. When called, it will be passed the building and the narrative event object as separate arguments. It should return a value that evaluates to a boolean to indicate whether the condition has passed. It can also return true as a second returned value to suppress output from this function. This can be useful if the condition function produces its own output.
@@ -351,7 +351,7 @@ function narrative_events:construct_building_with_condition(unique_name, faction
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:construct_buildings_with_condition(unique_name, faction_key, advice_key, mission_key, mission_text, condition, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.construct_buildings_with_condition(unique_name, faction_key, advice_key, mission_key, mission_text, condition, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission that completes when a building that unlocks technologies is completed by the specified faction, optionally passing a supplied condition function. Advice may optionally be supplied to be issued with the mission.<br />
 --- If supplied, the condition function will be passed the building object provided by the BuildingCompleted event and the narrative event object as separate arguments. It should return a value that evaluates to a boolean to indicate whether the condition has passed. It can also return true as a second returned value to suppress output from this function. This can be useful if the condition function produces its own output.
@@ -364,7 +364,7 @@ function narrative_events:construct_buildings_with_condition(unique_name, factio
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:construct_technology_enabling_building(unique_name, faction_key, advice_key, mission_key, condition, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.construct_technology_enabling_building(unique_name, faction_key, advice_key, mission_key, condition, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to upgrade any settlement. An optional building level that the settlement building must reach may be supplied. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -375,7 +375,7 @@ function narrative_events:construct_technology_enabling_building(unique_name, fa
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:upgrade_any_settlement(unique_name, faction_key, advice_key, mission_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.upgrade_any_settlement(unique_name, faction_key, advice_key, mission_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to research one or more technologies. An optional list of technologies that must be included may be supplied. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -389,7 +389,7 @@ function narrative_events:upgrade_any_settlement(unique_name, faction_key, advic
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:research_technology(unique_name, faction_key, advice_key, mission_key, technologies, mandatory_tech, additive, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.research_technology(unique_name, faction_key, advice_key, mission_key, technologies, mandatory_tech, additive, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to gain a certain level of income. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -401,7 +401,7 @@ function narrative_events:research_technology(unique_name, faction_key, advice_k
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:gain_income(unique_name, faction_key, advice_key, mission_key, income, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.gain_income(unique_name, faction_key, advice_key, mission_key, income, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to reduce upkeep. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -414,7 +414,7 @@ function narrative_events:gain_income(unique_name, faction_key, advice_key, miss
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:reduce_upkeep(unique_name, faction_key, advice_key, mission_key, mission_text_key, threshold, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.reduce_upkeep(unique_name, faction_key, advice_key, mission_key, mission_text_key, threshold, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to recruit any hero. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -425,7 +425,7 @@ function narrative_events:reduce_upkeep(unique_name, faction_key, advice_key, mi
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:recruit_any_hero(unique_name, faction_key, advice_key, mission_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.recruit_any_hero(unique_name, faction_key, advice_key, mission_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to use any hero against the enemy. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -436,7 +436,7 @@ function narrative_events:recruit_any_hero(unique_name, faction_key, advice_key,
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:use_hero(unique_name, faction_key, advice_key, mission_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.use_hero(unique_name, faction_key, advice_key, mission_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to win a supplied number of battles with any hero. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -448,7 +448,7 @@ function narrative_events:use_hero(unique_name, faction_key, advice_key, mission
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:win_battles_with_hero(unique_name, faction_key, advice_key, mission_key, win_threshold, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.win_battles_with_hero(unique_name, faction_key, advice_key, mission_key, win_threshold, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to win a set piece/quest battle. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -460,7 +460,7 @@ function narrative_events:win_battles_with_hero(unique_name, faction_key, advice
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:win_set_piece_battle(unique_name, faction_key, advice_key, mission_key, battle_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.win_set_piece_battle(unique_name, faction_key, advice_key, mission_key, battle_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to perform one or more rituals. Advice may optionally be supplied to be issued with the mission.<br />
 --- An optional total number of rituals may be specified, or a ritual key or a ritual category. If a total number greater than one is specified then the ritual key is disregarded. See narrative_events.perform_ritual_scripted for a version of this function that triggers a scripted mission
@@ -475,7 +475,7 @@ function narrative_events:win_set_piece_battle(unique_name, faction_key, advice_
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:perform_ritual(unique_name, faction_key, advice_key, mission_key, num_rituals, ritual_key, ritual_category_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.perform_ritual(unique_name, faction_key, advice_key, mission_key, num_rituals, ritual_key, ritual_category_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to perform one or more rituals. Advice may optionally be supplied to be issued with the mission.<br />
 --- An optional total number of rituals may be specified, and zero or more ritual keys, ritual categories and target faction keys. As this is a scripted mission, a mission text key must be specified also.
@@ -493,7 +493,7 @@ function narrative_events:perform_ritual(unique_name, faction_key, advice_key, m
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:perform_ritual_scripted(unique_name, faction_key, advice_key, mission_key, mission_text, num_rituals, ritual_keys, ritual_categories, target_faction_keys, listen_for_completion, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.perform_ritual_scripted(unique_name, faction_key, advice_key, mission_key, mission_text, num_rituals, ritual_keys, ritual_categories, target_faction_keys, listen_for_completion, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to perform a kislev motherland ritual. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -504,7 +504,7 @@ function narrative_events:perform_ritual_scripted(unique_name, faction_key, advi
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:perform_motherland_ritual(unique_name, faction_key, advice_key, mission_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.perform_motherland_ritual(unique_name, faction_key, advice_key, mission_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to perform a daemon prince ascension. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -515,7 +515,7 @@ function narrative_events:perform_motherland_ritual(unique_name, faction_key, ad
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:perform_ascension(unique_name, faction_key, advice_key, mission_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.perform_ascension(unique_name, faction_key, advice_key, mission_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to concoct a Nurgle plague. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -527,7 +527,7 @@ function narrative_events:perform_ascension(unique_name, faction_key, advice_key
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:concoct_plague(unique_name, faction_key, advice_key, mission_key, quantity, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.concoct_plague(unique_name, faction_key, advice_key, mission_key, quantity, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to construct a foreign slot. It must be specified whether foreign slot is allied to the settlement owner or not. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -542,7 +542,7 @@ function narrative_events:concoct_plague(unique_name, faction_key, advice_key, m
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:spread_corruption_to_adjacent_region(unique_name, faction_key, advice_key, mission_key, corruption_type, threshold_value, culture_key, mission_text, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.spread_corruption_to_adjacent_region(unique_name, faction_key, advice_key, mission_key, corruption_type, threshold_value, culture_key, mission_text, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to construct a foreign slot. It must be specified whether foreign slot is allied to the settlement owner or not. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -555,7 +555,7 @@ function narrative_events:spread_corruption_to_adjacent_region(unique_name, fact
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:construct_foreign_slot(unique_name, faction_key, advice_key, mission_key, mission_text, should_be_allied, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.construct_foreign_slot(unique_name, faction_key, advice_key, mission_key, mission_text, should_be_allied, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to construct any building in any foreign slot. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -568,7 +568,7 @@ function narrative_events:construct_foreign_slot(unique_name, faction_key, advic
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:construct_foreign_slot_building(unique_name, faction_key, advice_key, mission_key, mission_text, should_be_allied, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.construct_foreign_slot_building(unique_name, faction_key, advice_key, mission_key, mission_text, should_be_allied, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to equip an armory item. An optional armory item (or list of armory items) may be supplied, which the equipped armory item must match for the mission to succeed. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -581,7 +581,7 @@ function narrative_events:construct_foreign_slot_building(unique_name, faction_k
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:equip_armory_item(unique_name, faction_key, advice_key, mission_key, mission_text, item_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.equip_armory_item(unique_name, faction_key, advice_key, mission_key, mission_text, item_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to equip any daemonic gift armory item. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -592,7 +592,7 @@ function narrative_events:equip_armory_item(unique_name, faction_key, advice_key
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:equip_any_daemonic_gift(unique_name, faction_key, advice_key, mission_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.equip_any_daemonic_gift(unique_name, faction_key, advice_key, mission_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission for a character in the specified faction to perform a character/hero action. Optional lists of qualifying abilities, target factions and/or performing character subtypes may be supplied which the ability performed must match. It may also be specified that the action must have been successful. As with other narrative events, advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -608,7 +608,7 @@ function narrative_events:equip_any_daemonic_gift(unique_name, faction_key, advi
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:perform_character_action(unique_name, faction_key, advice_key, mission_key, mission_text, ability_key, target_faction_key, character_subtype, must_be_success, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.perform_character_action(unique_name, faction_key, advice_key, mission_key, mission_text, ability_key, target_faction_key, character_subtype, must_be_success, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission for a character in the specified faction to embed a hero in an army. An optional list of hero character subtypes may be supplied, which specify eligible hero types to embed. It may also be specified that the action must have been successful. As with other narrative events, advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -621,7 +621,7 @@ function narrative_events:perform_character_action(unique_name, faction_key, adv
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:embed_agent(unique_name, faction_key, advice_key, mission_key, mission_text, character_subtype, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.embed_agent(unique_name, faction_key, advice_key, mission_key, mission_text, character_subtype, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to spread a number of Nurgle plagues. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -634,7 +634,7 @@ function narrative_events:embed_agent(unique_name, faction_key, advice_key, miss
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:spread_plagues(unique_name, faction_key, advice_key, mission_key, mission_text, item_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.spread_plagues(unique_name, faction_key, advice_key, mission_key, mission_text, item_key, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to unlock a number of Nurgle plague symptoms. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -647,7 +647,7 @@ function narrative_events:spread_plagues(unique_name, faction_key, advice_key, m
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:unlock_symptoms(unique_name, faction_key, advice_key, mission_key, mission_text, num_symptoms, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.unlock_symptoms(unique_name, faction_key, advice_key, mission_key, mission_text, num_symptoms, mission_issuer, mission_rewards, trigger_message, inherit_list) end
 
 --- Creates and starts a narrative event that issues a mission to enter a particular military force stance. Advice may optionally be supplied to be issued with the mission.
 ---@param unique_name string Unique name amongst other declared narrative events.
@@ -660,4 +660,4 @@ function narrative_events:unlock_symptoms(unique_name, faction_key, advice_key, 
 ---@param mission_rewards table Rewards to add to the mission. This should be a table of strings. See the documentation for mission_manager:add_payload for more information on the string formatting and available options.
 ---@param trigger_message string Script message on which the narrative event should trigger. This can also be a table of strings if multiple trigger messages are desired.
 ---@param inherit_list string Message to trigger when the narrative event has finished issuing. This can be a table of strings if multiple on-issued messages are desired.
-function narrative_events:enter_stance(unique_name, faction_key, advice_key, mission_key, mission_text, stance_number, mission_issuer, mission_rewards, trigger_message, inherit_list) end
+function narrative_events.enter_stance(unique_name, faction_key, advice_key, mission_key, mission_text, stance_number, mission_issuer, mission_rewards, trigger_message, inherit_list) end

@@ -150,8 +150,8 @@ function battle_manager:get_closest_vehicle(position) end
 function battle_manager:get_closest_capture_location(position) end
 
 --- Returns the first commanding battle_unit found in the supplied units collection. Supported collection types are battle_units, battle_army and script_units. If no commanding unit is found then false is returned.
----@param unit_collection collection Unit collection object.
----@return battle_unit  commanding unit 
+---@param unit_collection battle_units|battle_army|script_units Unit collection object.
+---@return battle_unit  commanding_unit
 function battle_manager:get_general(unit_collection) end
 
 --- Returns whether the local player army is of the supplied subculture.
@@ -326,12 +326,11 @@ function battle_manager:remove_real_callback(name) end
 
 --- Establishes a new watch. A supplied condition function is repeated tested and, when it returns true, a supplied target function is called. A wait period between the condition being met and the target being called must also be specified. A name for the watch may optionally be specified to allow other scripts to cancel it.<br />
 --- The condition must be a function that returns a value - when that value is true (or evaluates to true) then the watch condition is met. The watch then waits the supplied time offset, which is specified in ms as the second parameter, before calling the callback supplied in the third parameter.
----@param condition function condition
 ---@param condition function Condition. Must be a function that returns a value. When the returned value is true, or evaluates to true, then the watch condition is met.
 ---@param wait_time number Time in ms that the watch waits once the condition is met before triggering the target callback
 ---@param target_callback function Target callback
 ---@param watch_name string Name for this watch process. Giving a watch a name allows it to be stopped/cancelled with battle_manager:remove_process.
-function battle_manager:watch(condition, condition, wait_time, target_callback, watch_name) end
+function battle_manager:watch(condition, wait_time, target_callback, watch_name) end
 
 --- Stops and removes any watch OR callback with the supplied name. Returns true if any were found, false otherwise.
 ---@param name string name
@@ -359,7 +358,7 @@ function battle_manager:set_load_balancing() end
 ---@param debug boolean Sets whether the advice line is debug. If set to true, the text supplied as the first parameter is displayed in the advisor window as-is, without using it as a lookup key in the advice_levels table.
 ---@param start_callback function Start callback. If a function is supplied here it is called when the advice is actually played.
 ---@param start_callback_wait number Start callback wait period in ms. If a duration is specified it causes a delay between the advice being played and the start callback being called.
----@param condition playback Playback condition. If specified, it compels the advisor system to check this condition immediately before playing the advisor entry to decide whether to actually proceed. This must be supplied as a function block that returns a result. If this result evaluates to true, the advice is played.
+---@param condition function Playback condition. If specified, it compels the advisor system to check this condition immediately before playing the advisor entry to decide whether to actually proceed. This must be supplied as a function block that returns a result. If this result evaluates to true, the advice is played.
 function battle_manager:queue_advisor(advice_key, forced_duration, debug, start_callback, start_callback_wait, condition) end
 
 --- Cancels any running advice, and clears any subsequent advice that may be queued.
@@ -738,7 +737,17 @@ function battle_manager:stop_camera_movement_tracker() end
 function battle_manager:get_camera_altitude_change() end
 
 --- Gets the total distance the camera has travelled between now and when the tracker was started. This distance is not exact, but gives the calling script an indication of how much the player is moving the camera.
----@return number  distance in m
+---@return number  distance in m 
+---@return ScriptEventBattleArmiesEngaging  
+---@return ScriptEventPlayerGeneralWounded  
+---@return ScriptEventPlayerGeneralDies  
+---@return ScriptEventEnemyGeneralWounded  
+---@return ScriptEventEnemyGeneralDies  
+---@return ScriptEventPlayerGeneralRouts  
+---@return ScriptEventEnemyGeneralRouts  
+---@return ScriptEventPlayerUnitRouts  
+---@return ScriptEventPlayerUnitRallies  
+---@return ScriptEventEnemyUnitRouts  
 function battle_manager:get_camera_distance_travelled() end
 
 --- Starts the engagement monitor. This must be called before the "Deployed" phase change occurs (i.e. before the end of deployment).
@@ -794,9 +803,8 @@ function battle_manager:add_survival_battle_wave(index, script_units, is_final_w
 
 --- Returns a table containing all spawn zones on the battlefield where the script id of the contained reinforcement line partially match any of the supplied names. The script_id of each spawn zone/reinforcement line pair is checked - should it contain any of the supplied string arguments then that spawn zone is added to the collection to be returned. Partial matches are possible, so a spawn zone with a reinforcement line called something like sz_section_3_rear will match against the argument section_3.<br />
 --- The returned spawn zone collection is a table containing subtables, each of which contains a spawn zone and a count of how many time that spawn zone has had a reinforcement army assigned to it by script. The spawn zone collection can be passed to battle_manager:get_random_spawn_zone_from_collection to get a semi-random spawn zone from the collection.
----@param names vararg Spawn zone names to match, each of which should be a string.
----@return table  spawn zone collection 
-function battle_manager:get_spawn_zone_collection_by_name(names) end
+---@return battle_spawn_zone[]  collection List of spawn_zones 
+function battle_manager:get_spawn_zone_collection_by_name() end
 
 --- Returns a random spawn zone from the supplied spawn zone collection, preferentially choosing a spawn zone that hasn't been used as much as the others.
 ---@param collection table collection

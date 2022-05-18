@@ -63,6 +63,10 @@ function battle:toggle_system() end
 ---@return battle_composite_scenes_system  composite scenes system 
 function battle:composite_scenes_system() end
 
+--- -------------------------------------------
+--- WARNING: THIS ONLY ALLOWS ONE HANDLER, OVERWRITING ANY PREVIOUS ONE!!! This is horrible for compatibility unless special care is taken.
+--- Use battle_manager:register_input_handler_callback instead if possible.
+--- -------------------------------------------
 --- Registers a function (by string name) as a handler for input events. Input events are triggered when the player makes certain inputs. Valid input events are:<br />
 --- "move forward"<br />
 --- "move forward fast"<br />
@@ -89,13 +93,22 @@ function battle:register_input_handler(input_handler_function) end
 --- Unregisters the currently-registered input handler function. An input handler may be registered with battle:register_input_handler.
 function battle:unregister_input_handler() end
 
+--- -------------------------------------------
+--- WARNING: THIS ONLY ALLOWS ONE HANDLER, OVERWRITING ANY PREVIOUS ONE!!! This is horrible for compatibility unless special care is taken.
+--- Use battle_manager:register_unit_selection_callback instead if you are listening for the selection of specific units.
+--- If you need a more generic listener that fires whenever *any* unit is selected, you can ping paperpancake for ideas.
+--- -------------------------------------------
 --- Registers a function (by string name) as a handler for user selection events. These events are triggered when the player selects or deselects units. When such an event occurs, the registered function is called with two arguments - the first being a battle_unit object representing the unit concerned, the second being a boolean flag indicating whether the unit is being selected or deselected. Note that the function being registered must have already been declared when register_unit_selection_handler is called.
----@param input_handler_function string input handler function
-function battle:register_unit_selection_handler(input_handler_function) end
+---@param unit_selection_handler_function string input handler function
+function battle:register_unit_selection_handler(unit_selection_handler_function) end
 
 --- Unregisters the currently-registered unit selection handler function. A unit selection handler may be registered with battle:register_unit_selection_handler.
 function battle:unregister_unit_selection_handler() end
 
+--- -------------------------------------------
+--- WARNING: THIS ONLY ALLOWS ONE HANDLER, OVERWRITING ANY PREVIOUS ONE!!! This is horrible for compatibility unless special care is taken.
+--- Use battle_manager:register_command_handler_callback instead if possible.
+--- -------------------------------------------
 --- Registers a function (by string name) as a handler for command events. Command events are triggered when the player (or script) issues certain commands. When such an event occurs, the registered function is called and passed an event object as a single argument. This object provides several methods which can be used to determine information about the issued command. These methods are listed below:<br />
 --- MethodDescription<br />
 --- event:get_name()Returns the string name of the issued command. This is provided for every event type.
@@ -139,6 +152,10 @@ function battle:register_command_handler(command_handler_function) end
 --- Unregisters the currently-registered command handler function. A command handler may be registered with battle:register_command_handler.
 function battle:unregister_command_handler() end
 
+--- -------------------------------------------
+--- WARNING: THIS ONLY ALLOWS ONE HANDLER, OVERWRITING ANY PREVIOUS ONE!!! This is horrible for compatibility unless special care is taken.
+--- Use battle_manager:register_phase_change_callback instead if possible.
+--- -------------------------------------------
 --- Registers a function (by string name) as a handler for battle phase changes. Battle phase changes are triggered when the battle moves into various distinct phases, the most important being the deployment and deployment (combat) phases. When a battle phase occurs, the registered function is called and passed the string name of the new battle phase as a single argument. Valid phases are listed below:<br />
 --- Phase NameDescription<br />
 --- StartupThis phase change is triggered after the scripts are loaded.
@@ -354,11 +371,11 @@ function battle:set_music_vm_variable(variable_name) end
 --- The waypoint flag can be used to link models together. The rotation flag can be used to specify a rotation for the model - the default is to just fade the camera.
 ---@param x number X co-ordinate in metres.
 ---@param y number Y co-ordinate (altitude) in metres. This parameter specifies the height above the water plane, so if mis-set the marker can appear under the ground.
----@param x number X co-ordinate in metres.
+---@param z number Z co-ordinate in metres.
 ---@param type number Marker type - see list of valid marker types above.
 ---@param is_waypoint boolean Is waypoint.
 ---@param rotation number Rotation.
-function battle:add_ping_icon(x, y, x, type, is_waypoint, rotation) end
+function battle:add_ping_icon(x, y, z, type, is_waypoint, rotation) end
 
 --- Removes the ping marker that was previously added with battle:add_ping_icon at a specified [x/y/z] position.
 ---@param x number X co-ordinate in metres.

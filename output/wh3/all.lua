@@ -4,6 +4,7 @@
 ---@class UIC_Address : userdata
 
 ---@class campaign_manager : episodic_scripting
+---@field game_interface episodic_scripting
 cm = {}
 
 ---@class campaignui
@@ -18,6 +19,8 @@ function UIComponent(address) end
 
 ---@class common
 common = {}
+
+function common.get_localised_string(loc_key) end
 
 ---@class ComponentContextObject
 ---@field Call fun(self: ComponentContextObject, expression: string):any

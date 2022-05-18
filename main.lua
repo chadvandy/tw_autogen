@@ -13,16 +13,16 @@ local override_type_path = "override_types"
 in_path = "input"
 out_path = "output"
 
-local file = io.open("out.txt", "w+")
+local out_file = io.open("out.txt", "w+")
 
 local i = 0
 local old_print = print
 function print(t)
     old_print(t)
-    file:write("\n" .. t)
+    out_file:write("\n" .. t)
 
     i = i + 1
-    if i >= 10000 then file:flush() i = 0 end
+    if i >= 10000 then out_file:flush() i = 0 end
 end
 
 function printf(t, ...)
@@ -387,7 +387,7 @@ function kill_html(txt, remove_line_breaks_and_tabs)
         t = t:gsub(tag, "", 1)
     end
 
-    if remove_line_breaks_and_tabs then 
+    if remove_line_breaks_and_tabs then
         t = t:gsub("[\t\n]", "")
     end
 
@@ -468,6 +468,7 @@ local function parse_all_games()
     end
 end
 
+--- TODO overrides currently don't support returns lmao
 local function parse_override_file(file_path)
     local file = io.open(file_path, "r+")
     if not file then
@@ -481,6 +482,7 @@ local function parse_override_file(file_path)
     ---@type string The string name of the class to be overriden upon
     local this_class = ""
 
+
     for line in file:lines("*a") do
         --- only read lines that start with --- or have `function` to start.
         if line:find("^---") or line:find("^function") then
@@ -488,10 +490,36 @@ local function parse_override_file(file_path)
 
             if line:find("^---@") then
                 -- check if it's a param or a return or a vararg
+                local wild_un_bar = "[%a_|]+"
                 if line:find("^---@param") then
-                    local param_name = line:match("^---@param " .. wild_un):gsub("^---@param ", "")
-                    local param_type = line:match("^---@param " .. param_name .. " " .. wild_un):gsub("^---@param " .. param_name .." ", "")
-                    local param_desc = line:match("^---@param " .. param_name .. " " .. param_type .. " " .. wild_sp):gsub("^---@param " .. param_name .. " " .. param_type .. " ", "")
+                    printf("Line is %s", line)
+
+                    local param_name, param_type, param_desc
+                    
+                    do
+                        local pn_s,pn_e = line:find("^---@param " .. wild_un)
+                        line = line:gsub("^---@param ", "")
+                        param_name = line:sub(1, pn_e-10)
+                        -- param_name = 
+                        -- param_name = line:sub( )
+                        line = line:sub(pn_e+1-10)
+                        printf("Param name is %s", param_name)
+
+                        local pt_s,pt_e = line:find(wild_un_bar)
+                        param_type = line:match(wild_un_bar)
+                        line = line:sub(pt_e+1)
+                        printf("Param type is %s", param_type)
+
+                        -- remove any leading spaces!
+                        line = line:gsub("^[%s]+", "")
+                        param_desc = line
+                        printf("Param desc is %s", param_desc)
+                    end
+
+                    -- local param_type = line:match("^---@param " .. param_name .. " " .. wild_un_bar):gsub("^---@param " .. param_name .." ", "")
+                    -- printf("Param type is %s", param_type)
+                    -- local param_desc = line:match("^---@param " .. param_name .. " " .. param_type .. " " .. wild_sp):gsub("^---@param " .. param_name .. " " .. param_type .. " ", "")
+
 
                     local param = TypeObj:new(param_name)
                     param.is_param = true
@@ -499,6 +527,25 @@ local function parse_override_file(file_path)
                     param.desc = param_desc
 
                     this.params[#this.params+1] = param
+                elseif line:find("^---@return") then
+                    --- first it's the type, then it's the description - no name.
+                    line = line:gsub("^---@return[%s]", "")
+                    printf("Return line without lead&spaces is %s", line)
+
+                    --- TODO type should be everything connected that ISN'T a space or a #
+                    local type = line:match("[^%s#]+")
+                    local t_s,t_e = line:find("[^%s#]+")
+                    printf("Everything that connects that isn't a space or # is %s", type)
+
+                    local comment = line:sub(t_e+1)
+                    --- Remove trailing spaces
+                    comment = comment:gsub("^[%s]+", "")
+
+                    local ret = TypeObj:new("")
+                    ret.type = type
+                    ret.desc = comment
+
+                    this.returns[#this.returns+1] = ret
                 end
             elseif line:find("^---") then
                 -- description

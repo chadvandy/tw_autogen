@@ -914,6 +914,7 @@ function campaign_manager:num_mobile_forces_in_force_list(military_force_list) e
 --- Returns the unary proportion (0-1) of units in the supplied military force which are of the supplied unit class.
 ---@param military_force MILITARY_FORCE_SCRIPT_INTERFACE military force
 ---@param unit_class string unit class
+---@return number  units of unit class 
 function campaign_manager:proportion_of_unit_class_in_military_force(military_force, unit_class) end
 
 --- Returns true if the supplied military force contains any units of a type contained in the supplied unit type list, false otherwise.
@@ -967,6 +968,7 @@ function campaign_manager:get_owner_of_province(province) end
 --- Returns whether the supplied region object is adjacent to regions owned by the supplied faction. If the region is owned by the faction then false is returned.
 ---@param region REGION_SCRIPT_INTERFACE region
 ---@param faction FACTION_SCRIPT_INTERFACE region
+---@return boolean  region adjacent to faction 
 function campaign_manager:region_adjacent_to_faction(region, faction) end
 
 --- Instantly upgrades the building in the supplied slot to the supplied building key.
@@ -1009,8 +1011,9 @@ function campaign_manager:get_closest_region_for_faction(faction, x, y, conditio
 
 --- Returns an indexed table of all regions or region keys adjacent to those regions held by the supplied faction. The faction may be specified by string faction key or as a FACTION_SCRIPT_INTERFACE object.<br />
 --- If an optional condition function is supplied then it is called for each region with the region supplied as a single argument. In this case, the condition function must return true for the region to be included in the results.
----@param faction_specifier FACTION_SCRIPT_INTERFACE Faction specifier 
----@param regions_as_keys boolean Populate the returned table with region keys
+---@param faction_specifier FACTION_SCRIPT_INTERFACE Faction specifier - this can be a faction script interface object, or a string faction key from the factions database table.
+---@param regions_as_keys boolean Populate the returned table with region keys, rather than REGION_SCRIPT_INTERFACE objects.
+---@return table  table of all adjacent regions 
 function campaign_manager:get_regions_adjacent_to_faction(faction_specifier, regions_as_keys) end
 
 --- Returns the value of the key specified corruption in the specified region object. It may also be supplied a region key in place of a region object.
@@ -1733,22 +1736,23 @@ function campaign_manager:create_agent(faction_key, character_type, character_su
 
 --- Repositions a specified character (the target) for a faction at start of a campaign, but only if another character (the subject) exists in that faction and is in command of an army. Like campaign_manager:teleport_to which underpins this function it is for use at the start of a campaign in a game-created callback (see campaign_manager:add_pre_first_tick_callback). It is intended for use in very specific circumstances.<br />
 --- The characters involved are specified by forename key.
----@param faction_key string Faction key of the subject and target characters
----@param subject_forename_key string Forename key of the subject character from the names table using the full localisation format i
----@param forename_key string Forename key of the target character from the names table using the full localisation format i
----@param x number x logical target co
----@param y number y logical target co
+---@param faction_key string Faction key of the subject and target characters.
+---@param subject_forename_key string Forename key of the subject character from the names table using the full localisation format i.e. names_name_[key].
+---@param forename_key string Forename key of the target character from the names table using the full localisation format i.e. names_name_[key].
+---@param x number x logical target co-ordinate.
+---@param y number y logical target co-ordinate.
+---@return boolean  
 function campaign_manager:reposition_starting_character_for_faction(faction_key, subject_forename_key, forename_key, x, y) end
 
 --- Spawns a specified force if a character (the subject) exists within a faction with an army. It is intended for use at the start of a campaign in a game-created callback (see campaign_manager:add_pre_first_tick_callback), in very specific circumstances.
----@param subject_faction_key string Faction key of the subject character
----@param subject_forename_key string Forename key of the subject character from the names table using the full localisation format i
----@param faction_key string Faction key of the force to create
----@param units string list of units to create force with 
----@param region_key string Home region key for the created force
----@param x number x logical target co
----@param y number y logical target co
----@param make_immortal boolean Set to true to make the created character immortal
+---@param subject_faction_key string Faction key of the subject character.
+---@param subject_forename_key string Forename key of the subject character from the names table using the full localisation format i.e. names_name_[key].
+---@param faction_key string Faction key of the force to create.
+---@param units string list of units to create force with (see documentation for campaign_manager:create_force for more information).
+---@param region_key string Home region key for the created force.
+---@param x number x logical target co-ordinate.
+---@param y number y logical target co-ordinate.
+---@param make_immortal boolean Set to true to make the created character immortal.
 function campaign_manager:spawn_army_starting_character_for_faction(subject_faction_key, subject_forename_key, faction_key, units, region_key, x, y, make_immortal) end
 
 --- Helper function to move a character.
@@ -1984,13 +1988,13 @@ function campaign_manager:lift_all_shroud() end
 
 --- Restricts or unrestricts certain types of diplomacy between factions or groups of factions. Groups of factions may be specified with the strings "all", "faction:faction_key", "subculture:subculture_key" or "culture:culture_key". A source and target faction/group of factions must be specified.<br />
 --- Note that this wraps the function cm:force_diplomacy_new on the underlying episodic scripting interface.
----@param source string Source faction
----@param target string Target faction
----@param type string Type of diplomacy to restrict
----@param can_offer boolean Can offer 
----@param can_accept boolean Can accept 
----@param both_directions boolean Causes this function to apply the same restriction from target to source as from source to target
----@param do_not_enable_payments boolean The AI code assumes that the 
+---@param source string Source faction/factions identifier.
+---@param target string Target faction/factions identifier.
+---@param type string Type of diplomacy to restrict. See the documentation for the Diplomacy section for available diplomacy types.
+---@param can_offer boolean Can offer - set to false to prevent the source faction(s) from being able to offer this diplomacy type to the target faction(s).
+---@param can_accept boolean Can accept - set to false to prevent the target faction(s) from being able to accept this diplomacy type from the source faction(s).
+---@param both_directions boolean Causes this function to apply the same restriction from target to source as from source to target.
+---@param do_not_enable_payments boolean The AI code assumes that the "payments" diplomatic option is always available, and by default this function keeps payments available, even if told to restrict it. Set this flag to true to forceably restrict payments, but this may cause crashes.
 function campaign_manager:force_diplomacy(source, target, type, can_offer, can_accept, both_directions, do_not_enable_payments) end
 
 --- Enables or disables all diplomatic options between all factions.
@@ -2000,8 +2004,8 @@ function campaign_manager:enable_all_diplomacy(enable_diplomacy) end
 --- Forces war between two factions. This wraps the cm:force_declare_war function of the same name on the underlying episodic scripting interface, but adds validation and output. This output will be shown in the Lua - Design console spool.
 ---@param faction_a_key string Faction A key
 ---@param faction_b_key string Faction B key
----@param invite_faction_a_allies boolean Invite faction A
----@param invite_faction_b_allies boolean Invite faction B
+---@param invite_faction_a_allies boolean Invite faction A's allies to the war
+---@param invite_faction_b_allies boolean Invite faction B's allies to the war
 function campaign_manager:force_declare_war(faction_a_key, faction_b_key, invite_faction_a_allies, invite_faction_b_allies) end
 
 --- Sets up a scripted objective for the player, which appears in the scripted objectives panel. This objective can then be updated, removed, or marked as completed or failed by the script at a later time.<br />

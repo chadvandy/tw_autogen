@@ -3,7 +3,7 @@
 
 local new_class = require "includes.30-log"
 
-wild = "[%a%s_]+"
+wild = "[%a%s_%[%]]+"
 wild_un = "[%a_]+"
 wild_sp = "[%a%s]+"
 
@@ -228,6 +228,7 @@ end
 --- TODO a different system for reading scripting.txt (needed?)
 --- TODO a different system for reading Events & Interfaces
 --- TODO get Class description by the top!
+---@param line string
 function DocObj:read(line)
     self:class_check(line)
     if self.current_class then
@@ -265,7 +266,7 @@ function DocObj:read(line)
                 if line:find(fn_name) then
                     --- TODO this MUST read from <code>function()</code> instead of a name/href (for things like global:out() actually just being out())
                     local rep = line:match(fn_name)
-                    printf(rep)
+                    printf("Line is %s", line)
                     local class_name = rep:match("<a name=\"function:"..wild_un)
                     class_name = class_name:gsub("<a name=\"function:", "")
                     printf(class_name)
@@ -273,13 +274,41 @@ function DocObj:read(line)
                     rep = rep:gsub("<a name=\"function:"..class_name..":", "")
                     rep = rep:gsub("\">", "")
 
+                --    [[ <a name="function:global:script_error"><h3 class="function_name"><strong><code>script_error(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">message</i><code><strong>, [<code><a href="lua.html#class:number">number</a></code> </strong></code><i class="parameter">stack level modifier</i><code><strong>], [<code><a href="lua.html#class:boolean">boolean</a></code> </strong></code><i class="parameter">suppress assert</i><code><strong>])</code></strong></h3></a>
+                --         global ]]
+
+                    --- TODO handle if it's a method, OR if the class is invisible (ie. global)
+                    local in_str = line:match("<code>"..wild_un.."[%.:]")
+                    local is_method = false
+                    if not in_str then
+                        -- is_method = false
+                        printf("%s.%s is not a method!", class_name, rep)
+                    else
+                        in_str = kill_html(in_str, true)
+                        printf("Testing if %s is a method or static", in_str)
+                        is_method = in_str:match(":$") ~= nil
+                        -- is_method = in_str:match(string.format("%s:", class_name)) ~= nil
+
+                        if is_method then
+                            printf("It's %s.%s()", class_name, rep)
+                        else
+                            printf("It's %s:%s()", class_name, rep)
+                        end
+                        -- printf("%s.%s() has a colon: ")
+
+                        printf("%s:%s() is a method: " .. tostring(is_method), class_name, rep)
+                    end
+
                     self.this_function = {
                         name = rep,
                         next = 0,
-                        class = class
+                        class = class,
+                        -- is_method = is_method
                     }
 
                     printf("In %s:%s()", class_name, self.this_function.name)
+
+                    class.methods[self.this_function.name].is_method = is_method
 
                     --- TODO we have to get the param names from here!
                     -- find each <i class="parameter">param_name</i>
@@ -471,12 +500,20 @@ function MethodObj:print(c_name)
         ins(ret:print(), false)
     end
 
-    local fstr = "function %s:%s(%s) end\n"
-    if c_name == "global" then
-        fstr = "function %s%s(%s) end\n"
-        c_name = ""
+    local delim = ":"
+    if not self.is_method then
+        delim = "."
+        printf("%s.%s is a method!", c_name, self.name)
     end
-    insf(fstr, c_name, self.name, table.concat(param_names, ", "))
+
+    local fstr = "function %s%s%s(%s) end\n"
+    if c_name == "global" then
+        -- fstr = "function %s%s%s(%s) end\n"
+        c_name = ""
+        delim = ""
+    end
+
+    insf(fstr, c_name, delim, self.name, table.concat(param_names, ", "))
 
     return s
 end
