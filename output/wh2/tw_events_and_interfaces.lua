@@ -2021,6 +2021,7 @@ function POOLED_RESOURCE_FACTOR_SCRIPT_INTERFACE:maximum_value() end
 ---@class MODEL_SCRIPT_INTERFACE Description: Model is the central access point of the campaign. Everything should be reachable from this interface
 local MODEL_SCRIPT_INTERFACE = {}
 function MODEL_SCRIPT_INTERFACE:is_null_interface() end
+---@return WORLD_SCRIPT_INTERFACE
 function MODEL_SCRIPT_INTERFACE:world() end
 function MODEL_SCRIPT_INTERFACE:pending_battle() end
 function MODEL_SCRIPT_INTERFACE:date_in_range() end

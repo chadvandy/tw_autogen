@@ -12,7 +12,7 @@ function episodic_scripting:is_new_game() end
 function episodic_scripting:is_benchmark_mode() end
 
 --- Returns a handle to the campaign model object.
----@return userdata  campaign model 
+---@return MODEL_SCRIPT_INTERFACE  campaign model 
 function episodic_scripting:model() end
 
 --- Perform a VFS lookup in the specified path (root is the data folder) for files matching the pattern. Returns a comma-delimited list of files found.

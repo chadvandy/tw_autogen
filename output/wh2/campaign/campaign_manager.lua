@@ -233,7 +233,7 @@ function campaign_manager:get_game_interface() end
 function campaign_manager:get_difficulty(return_as_string) end
 
 --- Returns a numerically-indexed table containing the string keys of all human factions within the game.
----@return table  human factions 
+---@return string[]  human factions 
 function campaign_manager:get_human_factions() end
 
 --- Returns whether any factions in the supplied list are human. The faction list should be supplied as a numerically-indexed table of either faction keys or faction script objects.

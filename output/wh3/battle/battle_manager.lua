@@ -738,16 +738,6 @@ function battle_manager:get_camera_altitude_change() end
 
 --- Gets the total distance the camera has travelled between now and when the tracker was started. This distance is not exact, but gives the calling script an indication of how much the player is moving the camera.
 ---@return number  distance in m 
----@return ScriptEventBattleArmiesEngaging  
----@return ScriptEventPlayerGeneralWounded  
----@return ScriptEventPlayerGeneralDies  
----@return ScriptEventEnemyGeneralWounded  
----@return ScriptEventEnemyGeneralDies  
----@return ScriptEventPlayerGeneralRouts  
----@return ScriptEventEnemyGeneralRouts  
----@return ScriptEventPlayerUnitRouts  
----@return ScriptEventPlayerUnitRallies  
----@return ScriptEventEnemyUnitRouts  
 function battle_manager:get_camera_distance_travelled() end
 
 --- Starts the engagement monitor. This must be called before the "Deployed" phase change occurs (i.e. before the end of deployment).
@@ -803,8 +793,9 @@ function battle_manager:add_survival_battle_wave(index, script_units, is_final_w
 
 --- Returns a table containing all spawn zones on the battlefield where the script id of the contained reinforcement line partially match any of the supplied names. The script_id of each spawn zone/reinforcement line pair is checked - should it contain any of the supplied string arguments then that spawn zone is added to the collection to be returned. Partial matches are possible, so a spawn zone with a reinforcement line called something like sz_section_3_rear will match against the argument section_3.<br />
 --- The returned spawn zone collection is a table containing subtables, each of which contains a spawn zone and a count of how many time that spawn zone has had a reinforcement army assigned to it by script. The spawn zone collection can be passed to battle_manager:get_random_spawn_zone_from_collection to get a semi-random spawn zone from the collection.
----@return battle_spawn_zone[]  collection List of spawn_zones 
-function battle_manager:get_spawn_zone_collection_by_name() end
+---@vararg string Spawn zone names to match, each of which should be a string.
+---@return battle_spawn_zone[] collection List of spawn_zones 
+function battle_manager:get_spawn_zone_collection_by_name(...) end
 
 --- Returns a random spawn zone from the supplied spawn zone collection, preferentially choosing a spawn zone that hasn't been used as much as the others.
 ---@param collection table collection
