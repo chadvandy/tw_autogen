@@ -195,7 +195,7 @@ function UIC:GetDockOffset() end
 --- Finds and returns a child of this uicomponent by string name or by numeric index. If a numeric index is supplied, the immediate child uicomponent corresponding to this number is returned. If a string name is supplied, a recursive search is made through all children/descendants of this uicomponent. The first that is found with a matching name is returned.<br />
 --- If the search target was not found then nil is returned. If it was found then it is returned as a component address, which must be cast to a uicomponent script object using the UIComponent function. The find_uicomponent function provided by the script libraries does this automatically, so it's recommended to use that function in place of this function.
 ---@param identifier any Search target, identified by index number or string name.
----@param assert_on_fail boolean Assert if no matching uicomponent could be found.
+---@param assert_on_fail boolean? Assert if no matching uicomponent could be found.
 function UIC:Find(identifier, assert_on_fail) end
 
 --- Finds and returns a child of this uicomponent by a series of string names and numeric indexes. The function will step through each argument, attempting to find the uicomponent specified, and using that as the parent from which to find the next. A numeric index argument finds an immediate child of the current search subject, whereas a string name initiates a recursive search through all children/descendants of this uicomponent.
@@ -251,8 +251,7 @@ function UIC:DestroyChildren() end
 
 --- Sets the text on the current state of the uicomponent to the supplied text. Localised text must be specified - common.get_localised_string can be used to look this up from anywhere in the database.
 ---@param localised_text string Localised text.
----@param text_source string source of text in format of a stringtable key (tablename_recordname_key)
-function UIC:SetStateText(localised_text, text_source) end
+function UIC:SetStateText(localised_text) end
 
 --- Returns the text on the current state of the uicomponent along with its dimensions. This text will be localised.
 ---@return string  localised uicomponent text 
@@ -261,9 +260,8 @@ function UIC:GetStateText() end
 
 --- Sets the tooltip text of the current state of this uicomponent. An optional flag directs the function to apply this tooltip text to all states of the uicomponent. The text specified must already be localised - effect:get_localised_string can be used to retrieve localised text from anywhere in the database.
 ---@param text string Localised tooltip text.
----@param text_source string source of text in format of a stringtable key (tablename_recordname_key)
 ---@param set_all_states boolean Set all states.
-function UIC:SetTooltipText(text, text_source, set_all_states) end
+function UIC:SetTooltipText(text, set_all_states) end
 
 --- Returns the tooltip text of the current state of the uicomponent as a localised string.
 ---@return string  tooltip text 
@@ -280,8 +278,8 @@ function UIC:SetImageRotation(image_index, rotation, pivot_x, pivot_y) end
 --- Sets a new image path for an image associated with the uicomponent, replacing the original image with something new. Multiple images can be associated with a uicomponent - the index of the image to overwrite can be set with the second parameter or by setting a "script_icon_index" user property on the uicomponent with uicomponent:SetProperty. If an index value is not set with either of these methods then the first image, image 0, is swapped.<br />
 --- The uicomponent:GetImagePath and uicomponent:NumImages functions can be used to query images related to a uicomponent.
 ---@param image_path string Path of image to load, from the working data folder.
----@param image_index number Index of image associated with this uicomponent to overwrite the path of. This takes precedence over any set "script_icon_index" property.
----@param resize boolean Resize the image metric to the size of the image being specified. If this is not set, the incoming image will take the size of the old.
+---@param image_index number? Index of image associated with this uicomponent to overwrite the path of. This takes precedence over any set "script_icon_index" property.
+---@param resize boolean? Resize the image metric to the size of the image being specified. If this is not set, the incoming image will take the size of the old.
 function UIC:SetImagePath(image_path, image_index, resize) end
 
 --- Returns the path of an image associated with the subject uicomponent. The image is specified by a 0-based index.
@@ -516,7 +514,7 @@ function UIC:SetProperty(property_name, property_value) end
 
 --- Activates a priority lock on the uicomponent. This disables all uicomponents with a priority value less than the priority of the lock. A priority may optionally be specified - if not, the uicomponent's own priority is used.<br />
 --- uicomponent:UnLockPriority must be called after calling this function to restore normal ui functionality.
----@param priority number priority
+---@param priority number? priority
 function UIC:LockPriority(priority) end
 
 --- Deactivates a priority lock on the uicomponent.
