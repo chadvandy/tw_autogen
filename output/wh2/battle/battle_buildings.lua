@@ -4,10 +4,10 @@
 local battle_buildings = {}
 
 --- Returns the number of buildings in the list.
----@return number  count 
+---@return number #count 
 function battle_buildings:count() end
 
 --- Returns a building from the list by its numeric index.
----@param index number index
----@return battle_building  building 
+---@param index number #index
+---@return battle_building #building 
 function battle_buildings:item(index) end

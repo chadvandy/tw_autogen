@@ -4,29 +4,29 @@
 local infotext_manager = {}
 
 --- Creates an infotext manager. It should never be necessary for client scripts to call this directly, for an infotext manager is automatically set up whenever a <a href="../battle/battle_manager.html#class:battle_manager">battle_manager or campaign_manager is created.
----@return infotext_manager   
+---@return infotext_manager
 function infotext_manager:new() end
 
 --- Gets a uicomponent handle to the infotext panel
----@return UIC   
+---@return UIC
 function infotext_manager:get_uicomponent() end
 
 --- Sets the speed of time. To be called when modifying the speed of time in battle.
----@param time_speed number Time speed, accepts the same values as modify_battle_speed or <a href="../battle/battle_manager.html#function:battle_manager:slow_game_over_time">battle_manager:slow_game_over_time (1 = normal speed, 0.5 = half speed etc)
+---@param time_speed number #Time speed, accepts the same values as modify_battle_speed or <a href="../battle/battle_manager.html#function:battle_manager:slow_game_over_time">battle_manager:slow_game_over_time (1 = normal speed, 0.5 = half speed etc)
 function infotext_manager:set_time_speed(time_speed) end
 
 --- Maps a state override to a infotext key. When an infotext entry with this key is shown, the state of the infotext line component is overriden to that supplied here. This is generally called somewhere at the start of the calling script, with the actual infotext line being shown later.
----@param infotext_key string Infotext key
----@param component_state_override string Component state override. This much match the name of a state on the infotext line component (editable in UIEd)
+---@param infotext_key string #Infotext key
+---@param component_state_override string #Component state override. This much match the name of a state on the infotext line component (editable in UIEd)
 function infotext_manager:set_state_override(infotext_key, component_state_override) end
 
 --- Adds one or more lines of infotext to the infotext panel. Supply one or more string infotext keys. Upon calling add_infotext, the infotext box expands to the final required size, and then individual infotext lines are faded on sequentially. The first argument may optionally be an initial delay - this is useful when triggering infotext at the same time as advice, as it gives the advisor an amount of time to animate on-screen before infotext begins to display, which looks more refined.
----@param first_param any Can be a string key from the advice_info_texts table, or a number specifying an initial delay (ms in battle, s in campaign) after the panel animates onscreen and the first infotext item is shown.
----@vararg any
+---@param first_param any #Can be a string key from the advice_info_texts table, or a number specifying an initial delay (ms in battle, s in campaign) after the panel animates onscreen and the first infotext item is shown.
+---@param ... any #Additional infotext strings to be shown. add_infotext fades each of them on to the infotext panel in a visually-pleasing sequence.
 function infotext_manager:add_infotext(first_param, ...) end
 
 --- Removes a line of infotext from the infotext panel, by key.
----@param infotext_key string infotext key
+---@param infotext_key string #infotext key
 function infotext_manager:remove_infotext(infotext_key) end
 
 --- Clears all infotext from the infotext panel.

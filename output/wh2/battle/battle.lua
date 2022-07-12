@@ -4,44 +4,44 @@
 local battle = {}
 
 --- Prints some output to the console. If this function is called on a battle_manager object then it is overridden by battle_manager:out, which prepends a timestamp to the output before printing it.
----@param output string output
+---@param output string #output
 function battle:out(output) end
 
 --- Shows an assert dialog with the supplied message.
----@param message string message
+---@param message string #message
 function battle:error(message) end
 
 --- Creates and returns a battle_alliances object listing all alliances on the battlefield.
----@return battle_alliances  alliances list 
+---@return battle_alliances #alliances list 
 function battle:alliances() end
 
 --- Returns the index number of the battle_alliance that corresponds to the player on the local machine. This can be used to look up the player's battle_alliance from within the battle_alliances collection that may be retrieved with battle:alliances. In any singleplayer battle this should return 1.
----@return number  local alliance number 
+---@return number #local alliance number 
 function battle:local_alliance() end
 
 --- Returns the index number of the battle_army (within the relevant battle_armies collection object) that corresponds to the player on the local machine. This can be used to look up the player's battle_army
----@return number  local army number 
+---@return number #local army number 
 function battle:local_army() end
 
 --- Creates and returns a battle_buildings object listing all buildings on the battlefield.<br />
 --- WARNING: at time of writing this battle_buildings object is broken. This functionality should not be used.
----@return battle_buildings  buildings list 
+---@return battle_buildings #buildings list 
 function battle:buildings() end
 
 --- Creates and returns a battle_assault_equipment object listing all vehicles (such as siege towers and battering rams) on the battlefield.
----@return battle_assault_equipment  assault equipment list 
+---@return battle_assault_equipment #assault equipment list 
 function battle:assault_equipment() end
 
 --- Creates and returns a battle_debug_drawing object, allowing the script to draw debug lines on the battlefield.
----@return battle_debug_drawing  debug drawing object 
+---@return battle_debug_drawing #debug drawing object 
 function battle:debug_drawing() end
 
 --- Creates and returns a battle_camera object.
----@return battle_camera  battle camera 
+---@return battle_camera #battle camera 
 function battle:camera() end
 
 --- Creates and returns a battle_subtitles object.
----@return battle_subtitles  subtitles 
+---@return battle_subtitles #subtitles 
 function battle:subtitles() end
 
 --- -------------------------------------------
@@ -68,7 +68,7 @@ function battle:subtitles() end
 --- "edge move backward"<br />
 --- When an input event occurs, the registered function is called with the relevant input event string as a single argument. Note that the function being registered must have already been declared when register_input_handler is called.<br />
 --- Once registered, an input handler may be unregistered with battle:unregister_input_handler.
----@param input_handler_function string input handler function
+---@param input_handler_function string #input handler function
 function battle:register_input_handler(input_handler_function) end
 
 --- Unregisters the currently-registered input handler function. An input handler may be registered with battle:register_input_handler.
@@ -80,7 +80,7 @@ function battle:unregister_input_handler() end
 --- If you need a more generic listener that fires whenever *any* unit is selected, you can ping paperpancake for ideas.
 --- -------------------------------------------
 --- Registers a function (by string name) as a handler for user selection events. These events are triggered when the player selects or deselects units. When such an event occurs, the registered function is called with two arguments - the first being a battle_unit object representing the unit concerned, the second being a boolean flag indicating whether the unit is being selected or deselected. Note that the function being registered must have already been declared when register_unit_selection_handler is called.
----@param unit_selection_handler_function string input handler function
+---@param unit_selection_handler_function string #input handler function
 function battle:register_unit_selection_handler(unit_selection_handler_function) end
 
 --- Unregisters the currently-registered unit selection handler function. A unit selection handler may be registered with battle:register_unit_selection_handler.
@@ -127,7 +127,7 @@ function battle:unregister_unit_selection_handler() end
 --- <td rowspan=2>Unit Left Battlefield<td rowspan=2>A unit has left the battlefieldevent:get_name()stringName of eventevent:get_unit()battle_unitReturns the subject unit
 --- <td rowspan=2>Battle Results<td rowspan=2>The battle has finished and the results have been issuedevent:get_name()stringName of eventevent:get_bool1()booleanIndicates whether the local alliance won the battle
 --- Note that the function being registered must have already been declared when register_command_handler is called.
----@param command_handler_function string command handler function
+---@param command_handler_function string #command handler function
 function battle:register_command_handler(command_handler_function) end
 
 --- Unregisters the currently-registered command handler function. A command handler may be registered with battle:register_command_handler.
@@ -147,7 +147,7 @@ function battle:unregister_command_handler() end
 --- VictoryCountdownA victor for the battle has been determined, and the battle is counting down to completion.
 --- CompleteThe battle is completed.
 --- Note that the function being registered must have already been declared when register_unit_selection_handler is called. Furthermore, it is recommended that battle_manager:register_phase_change_callback is used in place of this function.
----@param function_name string Function name to call when phase change event occurs.
+---@param function_name string #Function name to call when phase change event occurs.
 function battle:register_battle_phase_handler(function_name) end
 
 --- Unregisters the currently-registered phase change handler function. A phase change handler may be registered with battle:register_battle_phase_handler.
@@ -157,38 +157,38 @@ function battle:unregister_battle_phase_handler() end
 function battle:end_current_battle_phase() end
 
 --- Returns whether a timer exists for the specified function name. If a timer does exist, the amount of model time remaining before it triggers in ms is also returned as a second return parameter.
----@param function_name string function name
----@return boolean  timer exists 
----@return number  model time before timer triggers 
+---@param function_name string #function name
+---@return boolean #timer exists 
+---@return number #model time before timer triggers 
 function battle:timer_exists(function_name) end
 
 --- Registers a singleshot timer. A function name must be specified as a string, along with an interval. The battle model then calls the function with the given name after the specified interval. No arguments may be specified for the function. Only one timer instance can be registered for a given function - repeated calls to battle:register_singleshot_timer or battle:register_repeating_timer will overwrite any previous timers.<br />
 --- It is strongly recommended that client scripts do not call this directly but instead use the battle_manager:callback function, which allows arguments to be passed, multiple instances of timers for the same callback, and more flexible cancellation of the callback.
----@param function_name string Function name.
----@param interval number Interval in ms.
+---@param function_name string #Function name.
+---@param interval number #Interval in ms.
 function battle:register_singleshot_timer(function_name, interval) end
 
 --- Registers a repeating timer. A function name must be specified as a string, along with an interval. The battle model then calls the function with the given name each time the specified interval elapses. No arguments may be specified for the function. Only one timer instance can be registered for a given function. Only one timer instance can be registered for a given function - repeated calls to battle:register_singleshot_timer or battle:register_repeating_timer will overwrite any previous timers.<br />
 --- It is strongly recommended that client scripts do not call this directly but instead use the battle_manager:repeat_callback function, which allows arguments to be passed, multiple instances of timers for the same callback, and more flexible cancellation of the callback.
----@param function_name string Function name.
----@param interval number Interval in ms.
+---@param function_name string #Function name.
+---@param interval number #Interval in ms.
 function battle:register_repeating_timer(function_name, interval) end
 
 --- Unegisters a timer (whether registered with battle:register_singleshot_timer or battle:register_repeating_timer), by it's string function name. In the case of a singleshot function this must be called before the function is triggered. <br />
 --- It is strongly recommended that client scripts use battle_manager:callback, battle_manager:repeat_callback and then battle_manager:remove_process due to ease-of-use.
----@param function_name string Function name to unregister.
+---@param function_name string #Function name to unregister.
 function battle:unregister_timer(function_name) end
 
 --- Returns the amount of model time that's elapsed since the start of the battle, in milliseconds.
----@return number  time elapsed 
+---@return number #time elapsed 
 function battle:time_elapsed_ms() end
 
 --- Returns the model tick time in milliseconds. This is the target interval over which the battle model repeatedly updates - 100ms or 200ms.
----@return number  tick time 
+---@return number #tick time 
 function battle:model_tick_time_ms() end
 
 --- Returns the duration remaining before the battle time limit expires, in seconds. If no time limit is set then -1 is returned.
----@return number  remaining time 
+---@return number #remaining time 
 function battle:remaining_conflict_time() end
 
 --- Adjusts the game speed. The value supplied should be a unary proportion of normal speed, for example:<br />
@@ -198,7 +198,7 @@ function battle:remaining_conflict_time() end
 --- Set a speed of 0 to pause the battle.<br />
 --- Beware that pausing the battle will prevent model time from advancing, which will also affect script.<br />
 --- The battle speed may be restored to the value previously set by the player by calling battle:restore_battle_speed.
----@param battle_speed number battle speed
+---@param battle_speed number #battle speed
 function battle:modify_battle_speed(battle_speed) end
 
 --- Restores the game speed to the value that was previously set when battle:modify_battle_speed was last called.
@@ -209,110 +209,110 @@ function battle:change_conflict_time_update_overridden() end
 
 --- Change the victory countdown limit. This is the grace period that begins counting down once a victor in the battle has been determined but before the battle actually ends, and is usually ten seconds. Battle scripts can use this function to adjust the duration of this countdown in order to display outro advice or cutscene content without having it cut off.<br />
 --- Supply a limit of less than 0 to make the victory countdown period infinite. If the battle enters the victory countdown phase with an infinite period set, and then a limit of 0 is set with a subsequent call to this function, the battle complete phase will trigger immediately.
----@param time_limit number Time limit in seconds.
+---@param time_limit number #Time limit in seconds.
 function battle:change_victory_countdown_limit(time_limit) end
 
 --- Preloads a cindy scene. Calling this prior to a cindy scene being played can help prevent a noticeable stall at the start of playback.
----@param scene_path string Path to the cindy scene manager file, from the working data folder.
+---@param scene_path string #Path to the cindy scene manager file, from the working data folder.
 function battle:cindy_preload(scene_path) end
 
 --- Starts a cindy scene. This plays a cindy cinematic, taking control of the camera. battle:cindy_preload can be called prior to calling this function to preload the scene data.
----@param scene_path string Path to the cindy scene manager file, from the working data folder.
----@param blend_in number Blend in duration in seconds.
----@param blend_out number Blend out duration in seconds.
+---@param scene_path string #Path to the cindy scene manager file, from the working data folder.
+---@param blend_in number? #optional, default value=0 Blend in duration in seconds.
+---@param blend_out number? #optional, default value=10 Blend out duration in seconds.
 function battle:cindy_playback(scene_path, blend_in, blend_out) end
 
 --- Starts a cindy scene without a camera track. This can be run in parallel with a scene initiated with battle:cindy_playback. battle:cindy_preload can be called prior to calling this function to preload the scene data.
----@param scene_path string Path to the cindy scene manager file, from the working data folder.
----@param clear_scene boolean Clear animated scenes on completion.
----@param save_to_replay boolean Saves the cindy scene into the battle replay, so if the replay is loaded the cindy scene plays again.
+---@param scene_path string #Path to the cindy scene manager file, from the working data folder.
+---@param clear_scene boolean #Clear animated scenes on completion.
+---@param save_to_replay boolean? #optional, default value=true Saves the cindy scene into the battle replay, so if the replay is loaded the cindy scene plays again.
 function battle:cindy_playback_no_camera(scene_path, clear_scene, save_to_replay) end
 
 --- Stops a cindy scene that was started with battle:cindy_playback.
----@param clear_animated_scenes boolean clear animated scenes
+---@param clear_animated_scenes boolean? #optional, default value=false clear animated scenes
 function battle:stop_cindy_playback(clear_animated_scenes) end
 
 --- Stops a cindy scene that was started with battle:cindy_playback_no_camera.
----@param clear_animated_scenes boolean clear animated scenes
+---@param clear_animated_scenes boolean? #optional, default value=false clear animated scenes
 function battle:stop_cindy_playback_no_camera(clear_animated_scenes) end
 
 --- Starts a composite scene. The composite scene should be specified by its path from the working data folder.
----@param scene_key string Composite scene key.
+---@param scene_key string #Composite scene key.
 function battle:start_terrain_composite_scene(scene_key) end
 
 --- Stops a composite scene. The composite scene should be specified by its path from the working data folder.
----@param scene_key string Composite scene key.
+---@param scene_key string #Composite scene key.
 function battle:stop_terrain_composite_scene(scene_key) end
 
 --- Manually triggers an aide-de-camp message at a specified location on the battlefield.
----@param adc_key string Aide-de-camp key, from the aide_de_camp_speeches database table.
----@param x number X co-ordinate of message, in m.
----@param y number Y co-ordinate (altitude) of message, in m.
----@param z number Z co-ordinate of message, in m.
----@param for_player boolean Aide-de-camp message is for the player's alliance.
+---@param adc_key string #Aide-de-camp key, from the aide_de_camp_speeches database table.
+---@param x number #X co-ordinate of message, in m.
+---@param y number #Y co-ordinate (altitude) of message, in m.
+---@param z number #Z co-ordinate of message, in m.
+---@param for_player boolean #Aide-de-camp message is for the player's alliance.
 function battle:play_adc(adc_key, x, y, z, for_player) end
 
 --- Prevents advice from being triggered with effect.advance_contextual_advice_thread, which has the effect of suspending advice not triggered deliberately by battle scripts. This has been made largely redundant by changes in the way scripts trigger advice, but can still be called.
----@param should_suspend boolean should suspend
+---@param should_suspend boolean #should suspend
 function battle:suspend_contextual_advice(should_suspend) end
 
 --- Dismisses the advisor, if currently shown.
 function battle:close_advisor() end
 
 --- Returns whether or not any advice is currently playing. A value of true is returned if no advice is playing, false if it is.
----@return boolean  advice finished 
+---@return boolean #advice finished 
 function battle:advice_finished() end
 
 --- Returns whether or not any voiceover sounds are currently playing. A value of true is returned if no voiceover sounds are playing, false otherwise.
----@return boolean  vo finished 
+---@return boolean #vo finished 
 function battle:vo_finished() end
 
 --- Disables or re-enables unit voices in battle. If unit voices are suppressed, ambient voiceover related to units will not be played.
----@param should_suppress boolean should suppress
+---@param should_suppress boolean #should suppress
 function battle:suppress_unit_voices(should_suppress) end
 
 --- Disables or re-enables unit musicians in battle.
----@param should_suppress boolean should suppress
+---@param should_suppress boolean #should suppress
 function battle:suppress_unit_musicians(should_suppress) end
 
 --- Enables or disables the automatic management of music by the game. Music-auto-playback should be disabled using this function if music is to be scripted.
----@param auto_playback boolean Automatic music playback enabled.
+---@param auto_playback boolean #Automatic music playback enabled.
 function battle:set_music_auto_playback(auto_playback) end
 
 --- Sets whether scripted music should loop.
----@param should_loop boolean should loop
+---@param should_loop boolean #should loop
 function battle:set_music_loop(should_loop) end
 
 --- Plays a specified piece of music. The music to play is specified by its sound event name.
----@param music_name string music name
+---@param music_name string #music name
 function battle:play_music(music_name) end
 
 --- Plays a specified piece of music with a custom fade-in duration. The music to play is specified by its sound event name.
----@param music_name string Music sound event.
----@param fade_time number Fade time in seconds.
+---@param music_name string #Music sound event.
+---@param fade_time number #Fade time in seconds.
 function battle:play_music_custom_fade(music_name, fade_time) end
 
 --- Stops the currently-playing music.
 function battle:stop_music() end
 
 --- Stops the currently-playing music with a custom fade time.
----@param fade_time number Fade time in seconds.
+---@param fade_time number #Fade time in seconds.
 function battle:stop_music_custom_fade(fade_time) end
 
 --- Gets the volume level of a specific volume type. Valid volume types are given in the Volume Types section of this documentation. The volume level will be returned as a number between 0 (inaudible) and 100 (full volume).
----@param volume_type number volume type
----@return number  volume level 
+---@param volume_type number #volume type
+---@return number #volume level 
 function battle:get_volume(volume_type) end
 
 --- Sets the volume level of a specific volume type. Valid volume types are given in the Volume Types section of this documentation. The volume level should be set as a number between 0 (inaudible) and 100 (full volume).
----@param volume_type number volume type
----@param volume_level number volume level
+---@param volume_type number #volume type
+---@param volume_level number #volume level
 function battle:set_volume(volume_type, volume_level) end
 
 --- Gradually fades the volume level of a specified volume type to a specified value over a specified interval. Valid volume types are given in the Volume Types section of this documentation. The volume level should be set as a number between 0 (inaudible) and 100 (full volume).
----@param volume_type number Volume type.
----@param target_level number Target volume level.
----@param fade_time number Fade time in seconds.
+---@param volume_type number #Volume type.
+---@param target_level number #Target volume level.
+---@param fade_time number #Fade time in seconds.
 function battle:fade_volume(volume_type, target_level, fade_time) end
 
 --- Adds a 3d ping marker model at a specified [x/y/z] position. It is sufficient just to supply the position, but a type can be used to change the model displayed - see the table below for a list of ping types.<br />
@@ -336,75 +336,75 @@ function battle:fade_volume(volume_type, target_level, fade_time) end
 --- 15MPT_SCRIPT_OBJECTIVE
 --- 16MPT_SCRIPT_BATTLE_TRAP
 --- The waypoint flag can be used to link models together. The rotation flag can be used to specify a rotation for the model - the default is to just fade the camera.
----@param x number X co-ordinate in metres.
----@param y number Y co-ordinate (altitude) in metres. This parameter specifies the height above the water plane, so if mis-set the marker can appear under the ground.
----@param z number Z co-ordinate in metres.
----@param type number Marker type - see list of valid marker types above.
----@param is_waypoint boolean Is waypoint.
----@param rotation number Rotation.
+---@param x number #X co-ordinate in metres.
+---@param y number #Y co-ordinate (altitude) in metres. This parameter specifies the height above the water plane, so if mis-set the marker can appear under the ground.
+---@param z number #Z co-ordinate in metres.
+---@param type number #Marker type - see list of valid marker types above.
+---@param is_waypoint boolean #Is waypoint.
+---@param rotation number #Rotation.
 function battle:add_ping_icon(x, y, z, type, is_waypoint, rotation) end
 
 --- Removes the ping marker that was previously added with battle:add_ping_icon at a specified [x/y/z] position.
----@param x number X co-ordinate in metres.
----@param y number Y co-ordinate (altitude) in metres.
----@param x number X co-ordinate in metres.
+---@param x number #X co-ordinate in metres.
+---@param y number #Y co-ordinate (altitude) in metres.
+---@param x number #X co-ordinate in metres.
 function battle:remove_ping_icon(x, y, x) end
 
 --- Shows an objective message on-screen. This is an old method of showing an objective-style message, which will fade in at the bottom-centre of the screen, remain on-screen for a specified period and then fade out.
----@param objective_key string Objective key, from the scripted_objectives table.
----@param duration number Duration that the objective should remain on-screen in ms.
----@param fade_duration number Duration over which the objective should fade to transparent once its display duration has elapsed.
+---@param objective_key string #Objective key, from the scripted_objectives table.
+---@param duration number #Duration that the objective should remain on-screen in ms.
+---@param fade_duration number #Duration over which the objective should fade to transparent once its display duration has elapsed.
 function battle:show_objective(objective_key, duration, fade_duration) end
 
 --- Plays a fullscreen movie during a battle. The movie should be specified by a file path from the Movies folder in working data (see the videos table for examples of valid paths).
----@param movie_path string Path to movie file. The file extension may be omitted.
----@param play_movie_audio boolean Play movie audio - if false is supplied then game audio is heard instead.
+---@param movie_path string #Path to movie file. The file extension may be omitted.
+---@param play_movie_audio boolean #Play movie audio - if false is supplied then game audio is heard instead.
 function battle:play_movie(movie_path, play_movie_audio) end
 
 --- Returns whether or not a fullscreen movie is currently playing.
----@return boolean  is movie playing 
+---@return boolean #is movie playing 
 function battle:is_movie_playing() end
 
 --- Searches from the root uicomponent for a uicomponent with the specified name, returning the first that matches. It is encouraged that find_uicomponent is used in place of this function.
----@param uicomponent_name string uicomponent name
----@return UIC  if no component found 
+---@param uicomponent_name string #uicomponent name
+---@return UIC #if no component found 
 function battle:ui_component(uicomponent_name) end
 
 --- Enables or disables a script lock on the state of the cinematic UI. Additional parameters may be used to enable/disable the mouse cursor and cinematic bars respectively.<br />
 --- Note that it is rare for clients scripts to need to call this directly - consider using the cutscene functionality provided by the script libraries.
----@param enable_cinematic_ui boolean Enable or disables the script lock on the cinematic UI. By setting this, the script will lock the state of the cinematic UI (whether the cursor is shown, or the cinematic bars are visible). If this is set the wider UI will not be able to show/unshow the cursor or cinematic bars until the lock is disabled again.
----@param show_cursor boolean Shows or hides the cursor. If this flag is not supplied then the state of the cursor will remain unchanged.
----@param enable_cinematic_bars boolean Enables the cinematic bars. If this flag is not supplied then the state of the cinematic bars will remain unchanged.
+---@param enable_cinematic_ui boolean #Enable or disables the script lock on the cinematic UI. By setting this, the script will lock the state of the cinematic UI (whether the cursor is shown, or the cinematic bars are visible). If this is set the wider UI will not be able to show/unshow the cursor or cinematic bars until the lock is disabled again.
+---@param show_cursor boolean? #optional, default value=nil Shows or hides the cursor. If this flag is not supplied then the state of the cursor will remain unchanged.
+---@param enable_cinematic_bars boolean? #optional, default value=nil Enables the cinematic bars. If this flag is not supplied then the state of the cinematic bars will remain unchanged.
 function battle:enable_cinematic_ui(enable_cinematic_ui, show_cursor, enable_cinematic_bars) end
 
 --- Enables or disables the unit IDs - the flags or icons floating above each unit in battle. This provides exactly the same functionality as battle:set_banners_enabled, except the removal/reinstatement of banners in this case will be preserved in replays.<br />
 --- Note that the cutscene functionality provided by the script libraries automatically disables unit ids while the cutscene is playing - use cutscene:set_should_disable_unit_ids to disable this for a given cutscene rather than calling this function directly.
----@param show_ids boolean show ids
+---@param show_ids boolean #show ids
 function battle:enable_unit_ids(show_ids) end
 
 --- Enables or disables the cinematic camera. The cinematic camera is not limited by altitude or proximity to the player's army - it can be positioned anywhere on the battlefield, including below the ground. This can be enabled for cutscenes but should be disabled for live gameplay.<br />
 --- Note that it is rare for clients scripts to need to call this directly - consider using the cutscene functionality provided by the script libraries. A cutscene can be prevented from enabling the cinematic camera with cutscene:set_should_enable_cinematic_camera.
----@param enable_cinematic_camera boolean enable cinematic camera
+---@param enable_cinematic_camera boolean #enable cinematic camera
 function battle:enable_cinematic_camera(enable_cinematic_camera) end
 
 --- Enables or disables tooltips.
----@param enable_tooltips boolean enable tooltips
+---@param enable_tooltips boolean #enable tooltips
 function battle:enable_tooltips(enable_tooltips) end
 
 --- Forces tooltips into minimised mode.
----@param set_minimised_tooltips boolean set minimised tooltips
+---@param set_minimised_tooltips boolean #set minimised tooltips
 function battle:force_minimised_tooltips(set_minimised_tooltips) end
 
 --- Disables or enables grouping functionality.
----@param disable_grouping boolean disable grouping
+---@param disable_grouping boolean #disable grouping
 function battle:disable_groups(disable_grouping) end
 
 --- Disables or enables formations functionality.
----@param disable_formations boolean disable formations
+---@param disable_formations boolean #disable formations
 function battle:disable_formations(disable_formations) end
 
 --- Disables or enables the giving of any orders at all.
----@param disable_orders boolean disable orders
+---@param disable_orders boolean #disable orders
 function battle:disable_orders(disable_orders) end
 
 --- Steals the escape key from the UI. This prevents the UI from intercepting ESC key presses and allows script to detect and process them instead. When the escape key is stolen, a script function called Esc_Key_Pressed will be called when the escape key is pressed by the player.<br />
@@ -421,51 +421,51 @@ function battle:steal_input_focus() end
 function battle:release_input_focus() end
 
 --- Disables or re-enables a keyboard shortcut by name. A list of keyboard shortcuts is available from the UI team.
----@param shortcut_name string shortcut name
----@param should_disable boolean should disable
+---@param shortcut_name string #shortcut name
+---@param should_disable boolean #should disable
 function battle:disable_shortcut(shortcut_name, should_disable) end
 
 --- Enables or disables the unit IDs - the flags or icons floating above each unit in battle. This provides exactly the same functionality as battle:enable_unit_ids, except the removal/reinstatement of banners in this case will be not preserved in replays.<br />
 --- Note that the cutscene functionality provided by the script libraries automatically disables unit ids while the cutscene is playing - use cutscene:set_should_disable_unit_ids to disable this for a given cutscene rather than calling this function directly.
----@param show_ids boolean show ids
+---@param show_ids boolean #show ids
 function battle:set_banners_enabled(show_ids) end
 
 --- Returns the value of the is_tutorial flag. This can be set in the battle setup to activate certain behaviours.
----@return boolean  
+---@return boolean
 function battle:is_tutorial() end
 
 --- Returns the value of the prepare_for_fade_in flag. This can be set in the battle setup to show a black screen when the battle starts up.
----@return boolean  
+---@return boolean
 function battle:prepare_for_fade_in() end
 
 --- Returns whether the battle is completely finished.
----@return boolean  battle is over 
+---@return boolean #battle is over 
 function battle:is_battle_over() end
 
 --- Returns whether or not the battle is a siege battle.
----@return boolean  is siege battle 
+---@return boolean #is siege battle 
 function battle:is_siege_battle() end
 
 --- Returns the unit scale factor as a multiplier. The value returned is a multiplier of the unit size if the scale is set to ultra, so the multiplier should be greater than 0 and less than or equal to 1.
----@return number  unit scale factor 
+---@return number #unit scale factor 
 function battle:unit_scale_factor() end
 
 --- Returns the unit scale factor index. This is 0 for small unit sizes, 1 for normal unit sizes, 2 for large unit sizes and 3 for ultra unit sizes.
----@return number  unit scale factor index 
+---@return number #unit scale factor index 
 function battle:unit_scale_factor_index() end
 
 --- Returns the height of the terrain at the specified x/y co-ordinates. This is intended for use to calculate camera and ping marker positions.
----@param x number X co-ordinate in m.
----@param y number Y co-ordinate in m.
----@return number  
+---@param x number #X co-ordinate in m.
+---@param y number #Y co-ordinate in m.
+---@return number
 function battle:get_terrain_height(x, y) end
 
 --- Generate a battle-synchronised random number between 0 and 1.
----@return number  random number 
+---@return number #random number 
 function battle:random_number() end
 
 --- Returns whether this battle has been loaded in benchmarking mode or not. This should only return true if the battle was loaded through the benchmark menu on the frontend.
----@return boolean  is benchmarking mode 
+---@return boolean #is benchmarking mode 
 function battle:is_benchmarking_mode() end
 
 --- Ends a currently-running benchmark, showing benchmarking statistics and ending the battle.
@@ -475,24 +475,24 @@ function battle:end_benchmark() end
 function battle:quit_to_windows_from_script() end
 
 --- Returns a path to the screenshots directory. This is used by the autotest system.
----@return string  screenshot directory 
+---@return string #screenshot directory 
 function battle:appdata_screenshots() end
 
 --- Enables or disables a unit attribute for all units on the battlefield. Attribute keys are listed in the Unit Attributes section of this documentation.
----@param attribute_key string attribute key
+---@param attribute_key string #attribute key
 function battle:set_stat_attribute(attribute_key) end
 
 --- Trigger a projectile launch from one position to another. Be careful to shoot downwards if you have artillery projectiles, as they are designed to be lobbed.
----@param projectile_key string Projectile key from the projectiles table.
----@param launch_position battle_vector Launch position.
----@param target_position battle_vector Target position.
+---@param projectile_key string #Projectile key from the projectiles table.
+---@param launch_position battle_vector #Launch position.
+---@param target_position battle_vector #Target position.
 function battle:trigger_projectile_launch(projectile_key, launch_position, target_position) end
 
 --- Unlocks a steam achievement by string key. Achievements have to be set up elsewhere to be unlockable with this function.
----@param achievement_key string achievement key
+---@param achievement_key string #achievement key
 function battle:unlock_achievement(achievement_key) end
 
 --- Writes out a battle xml file with the supplied filename containing the current battle setup. This can be useful for creating scripted battles.
----@param filename string filename
----@return boolean  operation succeeded 
+---@param filename string #filename
+---@return boolean #operation succeeded 
 function battle:output_battle_xml(filename) end

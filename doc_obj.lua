@@ -24,6 +24,13 @@ local doc_obj_defaults = {
 
     ---@type table<string, MethodObj> A table of all orphaned functions in this DocObj.
     funcs = {},
+
+    ---@type table The contexts this doc object is available within.
+    contexts = {
+        battle = false,
+        campaign = false,
+        frontend = false,
+    }
 }
 
 ---@class ClassObj : Class The Class object; once built for each in-game class (ie. episodic_scripting, BuildingCompletedEvent, etc etc)
@@ -48,7 +55,7 @@ local method_obj_defaults = {
     ---@type string The name of this method.
     name = "",
 
-    ---@type string The description of this method. TODO multi-line.
+    ---@type string[] The description of this method.
     desc = {},
 
     ---@type TypeObj[] All of the available parameters for this function, in order of usage.
@@ -63,14 +70,20 @@ local type_obj_defaults = {
     ---@type string The name of this type
     name = "",
 
-    ---@type string The description of this type.
-    desc = "",
+    ---@type string[] The description of this type.
+    desc = {},
 
     ---@type string The, uh, type of this type.
     type = nil,
 
-    ---@type boolean False for return, true for boolean.
+    ---@type boolean False for return, true for parameter.
     is_param = false,
+
+    ---@type boolean Whether this type is optional.
+    is_optional = false,
+
+    ---@type string The default value of this type, if it's optional.
+    default_value = nil,
 }
 
 ---@class DocObj
@@ -101,6 +114,22 @@ function DocObj:new(found_game, context, file_name)
     return o
 end
 
+local function get_dirs(contexts)
+    local dirs = {}
+
+    for k,v in pairs(contexts) do
+        if v == true then
+            dirs[#dirs+1] = k
+        end
+    end
+
+    if #dirs == 3 then
+        dirs = {"global"}
+    end
+
+    return dirs
+end
+
 function DocObj:init(found_game, context, file_name)
     local file_path = string.format("%s/%s/%s/%s", in_path, found_game, context, file_name)
     local file = io.open(file_path, "r")
@@ -122,17 +151,36 @@ function DocObj:init(found_game, context, file_name)
         self:read(line)
     end
 
-    --- TODO output automatic
+    
     local out_dir = check_dir(out_path, found_game, context)
     if file_name == "global.html" then
         out_dir = check_dir(out_path, found_game)
     end
-
     local out_filepath = out_dir .. "/" .. string.gsub(file_name, ".html", ".lua")
     printf("Outputing on file %s", out_filepath)
-
     local out_file = io.open(out_filepath, "w+")
-    out_file:write(self:print())
+    if out_file then
+        out_file:write(self:print())
+    end
+    
+    --- TODO output to specific folders automatically
+    -- printf("Getting out directories for docobj %s", file_name)
+    -- local out_dirs = get_dirs(self.contexts)
+
+    -- for i,out_dir in ipairs(out_dirs) do
+    --     printf("In %s", out_dir)
+    --     local this_path = check_dir(out_path, found_game, out_dir)
+    --     local out_filepath = this_path .. "/" .. string.gsub(file_name, ".html", ".lua")
+    --     printf("Outputing on file %s", out_filepath)
+    
+    --     local out_file = io.open(out_filepath, "w+")
+    --     if out_file then
+    --         out_file:write(self:print())
+    --     end
+    -- end
+
+
+
 end
 
 function ClassObj:new(name)
@@ -167,6 +215,20 @@ end
 
 function TypeObj:init(name)
     self.name = name
+end
+
+
+function DocObj:context_check(line)
+    if line:find("<td width=\"75%%\">Loaded in") then
+        printf("Found context!")
+        if line:find("Campaign") then
+            self.contexts.campaign = true
+        elseif line:find("Battle") then
+            self.contexts.battle = true
+        elseif line:find("Frontend") then
+            self.contexts.frontend = true
+        end
+    end
 end
 
 --- Check if a new ClassObj is defined on this line.
@@ -231,7 +293,9 @@ end
 ---@param line string
 function DocObj:read(line)
     self:class_check(line)
-    if self.current_class then
+    if not self.current_class then
+        self:context_check(line)
+    elseif self.current_class then
         if self.section == 0 then
             if line:find("<div id=\"content\">") then
                 self.section = 1
@@ -310,7 +374,7 @@ function DocObj:read(line)
 
                     class.methods[self.this_function.name].is_method = is_method
 
-                    --- TODO we have to get the param names from here!
+                    --- we have to get the param names from here!
                     -- find each <i class="parameter">param_name</i>
                     -- <i class="parameter">width</i>
                     for str in string.gmatch(line, "<i class=\"parameter\">"..wild.."</i>") do
@@ -358,6 +422,7 @@ function DocObj:read(line)
                         local current_order = 0
                         if line:find("<strong>") then 
                             current_order = tonumber(kill_html(line, true))
+                            ---@type TypeObj
                             self.current_param = self.this_function.class.methods[self.this_function.name].params[current_order]
 
                             if self.current_param then
@@ -374,7 +439,15 @@ function DocObj:read(line)
                             
                             else -- try to get the description
                                 if line:find("<p>") then
-                                    self.current_param.desc = kill_html(line, true)
+                                    if line:find("optional, default value=") then
+                                        printf("We have an optional parameter line: " .. line)
+                                        local default = line:match("default value=.*<"):gsub("default value=", "")
+                                        -- local default = line:match("default value="..wild_un):gsub("default value=", "")
+                                        self.current_param.is_optional = true
+                                        self.current_param.default = default
+                                    end
+
+                                    self.current_param.desc[#self.current_param.desc+1] = kill_html(line, true)
                                 end
                             end
                         end
@@ -532,20 +605,31 @@ function TypeObj:print(is_param)
     end
 
     local corrected_type = overwrite_types[self.type] or self.type
-    local name,desc = self.name,self.desc or ""
+    local name,desc = self.name,self.desc or {""}
+    local is_optional, default_value = self.is_optional, self.default_value
+
+    --- check if name or desc start with a space[s] and then remove it
+    name = name:gsub("^%s*", "")
+    desc = table.concat(desc, " ")
+    desc = desc:gsub("^%s*", "")
 
     if is_param then
-        if corrected_type == "..." then
-            --- TODO fix vararg
-            ins("---@vararg any")
-        else
-            printf("param name is %s, type is %s", tostring(name), tostring(corrected_type))
-            insf("---@param %s %s %s", name, tostring(corrected_type), tostring(desc))
+        if corrected_type == "..." or corrected_type == "vararg" then
+            name = "..."
+            corrected_type = "any" --- TODO proper type-checking for varargs later, the docs are very fucked up.
         end
+        -- else
+        printf("param name is %s, type is %s, optional is %s and default value is %s", tostring(name), tostring(corrected_type), tostring(is_optional), tostring(default_value))
+        insf("---@param %s %s%s %s", name, tostring(corrected_type), is_optional and "?" or "", desc == "" and desc or "#"..desc)
+        -- end
     else
         if corrected_type ~= "nil" and corrected_type ~= "NONE" then
             if corrected_type == "vararg" then corrected_type = "..." end
-            insf("---@return %s %s %s", corrected_type, name, desc)
+            if name == "" and desc == "" then
+                insf("---@return %s", corrected_type)
+            else
+                insf("---@return %s #%s %s", corrected_type, name, desc)
+            end
         end
     end
 

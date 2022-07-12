@@ -1301,9 +1301,9 @@ end
 do
 	---@class GovernorAssignedCharacterEvent
 	local GovernorAssignedCharacterEvent = {}
-	---@return GOVERNOR_ASSIGNED_CHARACTER_EVENT
+	---@return GovernorAssignedCharacterEvent
 	function GovernorAssignedCharacterEvent:province() end
-	---@return GOVERNOR_ASSIGNED_CHARACTER_EVENT
+	---@return GovernorAssignedCharacterEvent
 	function GovernorAssignedCharacterEvent:region() end
 end
 ---============================---

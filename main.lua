@@ -450,17 +450,25 @@ local function parse_all_games()
 
                 for file in lfs.dir(context_path) do
                     local invalids = {
-                        "index.html", "lua.html"
+                        "index.html",
+
+                        --- TODO adjust lua.html
+                        "lua.html"
                     }
 
                     --- if not an HTML file, fuck off
-                    --- if an index file, fuck off as well
-                    if file:find(".html") and not file:find("index.html") and not file:find("lua.html") then
-                        printf("Found %s within %s/%s", file, found_game, context)
+                    if file:find(".html") then
+                        local valid = true
+                        for j,invalid_file in ipairs(invalids) do 
+                            if file:find(invalid_file) then
+                                valid = false
+                            end
+                        end
 
-                        -- if file:find("core") then
+                        if valid then
+                            printf("Found %s within %s/%s", file, found_game, context)
                             DocObj:new(found_game, context, file)
-                        -- end
+                        end
                     end
                 end
             end
@@ -528,7 +536,7 @@ local function parse_override_file(file_path)
                     local param = TypeObj:new(param_name)
                     param.is_param = true
                     param.type = param_type
-                    param.desc = param_desc
+                    param.desc = {param_desc}
 
                     this.params[#this.params+1] = param
                 elseif line:find("^---@return") then
@@ -547,7 +555,7 @@ local function parse_override_file(file_path)
 
                     local ret = TypeObj:new("")
                     ret.type = type
-                    ret.desc = comment
+                    ret.desc = {comment}
 
                     this.returns[#this.returns+1] = ret
                 end

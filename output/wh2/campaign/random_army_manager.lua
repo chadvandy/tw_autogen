@@ -4,38 +4,38 @@
 local random_army_manager = {}
 
 --- Adds a new force to the random army manager
----@param force_key string a unique key for this new force
----@return boolean  Returns true if the force was created successfully 
+---@param force_key string #a unique key for this new force
+---@return boolean #Returns true if the force was created successfully 
 function random_army_manager:new_force(force_key) end
 
 --- Adds a unit to a force, making it available for random selection if this force is generated. The weight value is an arbitrary figure that should be relative to other units in the force
----@param key_of_the_force string key of the force
----@param key_of_the_unit string key of the unit
----@param weight_value number weight value
+---@param key_of_the_force string #key of the force
+---@param key_of_the_unit string #key of the unit
+---@param weight_value number #weight value
 function random_army_manager:add_unit(key_of_the_force, key_of_the_unit, weight_value) end
 
 --- Adds a mandatory unit to a force composition, making it so that if this force is generated this unit will always be part of it
----@param key_of_the_force string key of the force
----@param key_of_the_unit string key of the unit
----@param amount_of_these_units number amount of these units
+---@param key_of_the_force string #key of the force
+---@param key_of_the_unit string #key of the unit
+---@param amount_of_these_units number #amount of these units
 function random_army_manager:add_mandatory_unit(key_of_the_force, key_of_the_unit, amount_of_these_units) end
 
 --- Sets the faction key associated with this force - Allows you to store the faction key used to spawn the army from the force
----@param key_of_the_force string key of the force
----@param key_of_the_faction string key of the faction
+---@param key_of_the_force string #key of the force
+---@param key_of_the_faction string #key of the faction
 function random_army_manager:set_faction(key_of_the_force, key_of_the_faction) end
 
 --- This generates a force randomly, first taking into account the mandatory unit and then making random selection of units based on weighting. Returns an array of unit keys or a comma separated string for use in the create_force function if the last boolean value is passed as true
----@param key_of_the_force string key of the force
----@param amount_of_units number amount of units
----@param pass_true_to_return_the_force_as_a_table boolean false to get a comma separated string
----@return any  
+---@param key_of_the_force string #key of the force
+---@param amount_of_units number #amount of units
+---@param pass_true_to_return_the_force_as_a_table boolean #false to get a comma separated string
+---@return any
 function random_army_manager:generate_force(key_of_the_force, amount_of_units, pass_true_to_return_the_force_as_a_table) end
 
 --- Remove an existing force from the force list
----@param key_of_the_force string key of the force
+---@param key_of_the_force string #key of the force
 function random_army_manager:remove_force(key_of_the_force) end
 
 --- Returns the amount of mandatory units specified in this force
----@param key_of_the_force string key of the force
+---@param key_of_the_force string #key of the force
 function random_army_manager:mandatory_unit_count(key_of_the_force) end

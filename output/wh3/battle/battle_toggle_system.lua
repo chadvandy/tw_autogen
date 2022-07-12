@@ -4,31 +4,31 @@
 local battle_toggle_system = {}
 
 --- Returns the toggle slot at the specified index value in the collection. The list is 1-based, the toggle slot at index 1 is the first toggle slot in the list.
----@param index number index
----@return battle_toggle_slot  
+---@param index number #index
+---@return battle_toggle_slot
 function battle_toggle_system:toggle_slot(index) end
 
 --- Returns the toggle slot with the specified script_id.
----@param index number index
----@return battle_toggle_slot  
+---@param index number #index
+---@return battle_toggle_slot
 function battle_toggle_system:toggle_slot_script_id(index) end
 
 --- Returns the size of the toggle slot list.
----@return number  count 
+---@return number #count 
 function battle_toggle_system:toggle_slot_count() end
 
 --- Returns the map barrier at the specified index value in the collection. The list is 1-based, the map barrier at index 1 is the first map barrier in the list.
----@param index number index
----@return battle_map_barrier  
+---@param index number #index
+---@return battle_map_barrier
 function battle_toggle_system:map_barrier(index) end
 
 --- Returns the map barrier with the specified script id.
----@param script_id string script id
----@return battle_map_barrier  toggle slot 
+---@param script_id string #script id
+---@return battle_map_barrier #toggle slot 
 function battle_toggle_system:map_barrier_script_id(script_id) end
 
 --- Returns the size of the map barrier list.
----@return number  count 
+---@return number #count 
 function battle_toggle_system:map_barrier_count() end
 
 --- Allows/Stops all armies to interact with toggleables
@@ -41,80 +41,80 @@ function battle_toggle_system:disable_and_refund_all_buildings() end
 local battle_map_barrier = {}
 
 --- Returns if the map barrier is enabled
----@return boolean  
+---@return boolean
 function battle_map_barrier:enabled() end
 
 --- Activates or deactivates a map barrier highlight.
----@param show_highlight boolean show highlight
+---@param show_highlight boolean? #optional, default value=true show highlight
 function battle_map_barrier:highlight(show_highlight) end
 
 --- Enables the map barrier. The army that is enabling the barrier must be specified.
----@param army battle_army army
+---@param army battle_army #army
 function battle_map_barrier:enable(army) end
 
 --- Disables the map barrier. The army that is disabling the barrier must be specified.
----@param army battle_army army
+---@param army battle_army #army
 function battle_map_barrier:disable(army) end
 
 --- Returns the position of the map barrier.
----@param position battle_vector position
+---@param position battle_vector #position
 function battle_map_barrier:position(position) end
 
 --- Returns the record key of the map barrier.
----@return string  
+---@return string
 function battle_map_barrier:record_key() end
 
 --- Returns the composite_scenes of the map barrier.
----@return battle_composite_scenes_list  
+---@return battle_composite_scenes_list
 function battle_map_barrier:composite_scenes() end
 
 --- Returns whether the map barrier is linked to a toggle slot.
----@return boolean  is linked to toggle slot 
+---@return boolean #is linked to toggle slot 
 function battle_map_barrier:has_toggle_slot() end
 
 --- Returns the toggle slot linked with the barrier. If no toggleable is linked then nothing is returned.
----@return battle_toggle_slot  toggle slot 
+---@return battle_toggle_slot #toggle slot 
 function battle_map_barrier:toggle_slot() end
 
 ---@class battle_toggle_slot
 local battle_toggle_slot = {}
 
 --- Returns whether the toggle slot is currently held by an alliance.
----@return boolean  is held by alliance 
+---@return boolean #is held by alliance 
 function battle_toggle_slot:is_held_by_alliance() end
 
 --- Returns a handle to the holding alliance. If no alliance holds the toggleable slot then nothing is returned.
----@return battle_alliance  holding alliance 
+---@return battle_alliance #holding alliance 
 function battle_toggle_slot:holding_alliance() end
 
 --- Returns whether the toggle slot is linked to a map barrier.
----@return boolean  is linked to map barrier 
+---@return boolean #is linked to map barrier 
 function battle_toggle_slot:has_map_barrier() end
 
 --- Returns the map barrier linked with the toggle slot. If no map barrier is linked then nothing is returned.
----@return battle_map_barrier  map barrier 
+---@return battle_map_barrier #map barrier 
 function battle_toggle_slot:map_barrier() end
 
 --- Returns the unique id for this toggle slot that the UI system uses.
----@return number  ui id 
+---@return number #ui id 
 function battle_toggle_slot:unique_ui_id() end
 
 --- Returns the unique id for this toggle slot.
----@return number  id 
+---@return number #id 
 function battle_toggle_slot:unique_id() end
 
 --- Returns the script id of the toggle slot. If no script id has been set in the map data then a blank string is returned.
----@return string  script id 
+---@return string #script id 
 function battle_toggle_slot:script_id() end
 
 --- Activates or deactivates a highlight on a slot building place.
----@param show_highlight boolean show highlight
+---@param show_highlight boolean? #optional, default value=true show highlight
 function battle_toggle_slot:highlight(show_highlight) end
 
 --- Returns the position
----@return battle_vector  position 
+---@return battle_vector #position 
 function battle_toggle_slot:position() end
 
 --- Returns the slot type of the toggle slot as a string. Slot types are listed in the toggle_system_types database table.
----@return string  slot type 
+---@return string #slot type 
 function battle_toggle_slot:slot_type() end

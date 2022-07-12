@@ -49,9 +49,3 @@ function battle_manager:watch(condition, wait_time, target_callback, watch_name)
 ---@param start_callback_wait number Start callback wait period in ms. If a duration is specified it causes a delay between the advice being played and the start callback being called.
 ---@param condition function Playback condition. If specified, it compels the advisor system to check this condition immediately before playing the advisor entry to decide whether to actually proceed. This must be supplied as a function block that returns a result. If this result evaluates to true, the advice is played.
 function battle_manager:queue_advisor(advice_key, forced_duration, debug, start_callback, start_callback_wait, condition) end
-
---- Returns a table containing all spawn zones on the battlefield where the script id of the contained reinforcement line partially match any of the supplied names. The script_id of each spawn zone/reinforcement line pair is checked - should it contain any of the supplied string arguments then that spawn zone is added to the collection to be returned. Partial matches are possible, so a spawn zone with a reinforcement line called something like sz_section_3_rear will match against the argument section_3.<br />
---- The returned spawn zone collection is a table containing subtables, each of which contains a spawn zone and a count of how many time that spawn zone has had a reinforcement army assigned to it by script. The spawn zone collection can be passed to battle_manager:get_random_spawn_zone_from_collection to get a semi-random spawn zone from the collection.
----@vararg string Spawn zone names to match, each of which should be a string.
----@return battle_spawn_zone[] collection List of spawn_zones 
-function battle_manager:get_spawn_zone_collection_by_name(...) end

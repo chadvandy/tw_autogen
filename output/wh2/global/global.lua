@@ -2,7 +2,7 @@
 
 --- All the global functions!
 --- Throws a script error with the supplied message, printing the lua callstack to the Lua console output spool. Useful for debugging.
----@param message string message
+---@param message string #message
 function script_error(message) end
 
 --- out is a table that provides multiple methods for outputting text to the various available debug console spools. It may be called as a function to output a string to the main Lua console spool, but the following table elements within it may also be called to output to different output spools:<br />
@@ -18,11 +18,11 @@ function script_error(message) end
 --- out supplies four additional functions that can be used to show tab characters at the start of lines of output:<br />
 --- FunctionDescriptionout.inc_tabIncrements the number of tab characters shown at the start of the line by one.out.dec_tabDecrements the number of tab characters shown at the start of the line by one. Decrementing below zero has no effect.out.cache_tabCaches the number of tab characters currently set to be shown at the start of the line.out.restore_tabRestores the number of tab characters shown at the start of the line to that previously cached.
 --- Tab levels are managed per output spool. To each of these functions a string argument can be supplied which sets the name of the output spool to apply the modification to. Supply no argument or a blank string to modify the tab level of the main output spool.
----@param output string output
+---@param output string #output
 function out(output) end
 
 --- Forceably unloads and requires a file by name.
----@param filename string filename
+---@param filename string #filename
 function force_require(filename) end
 
 --- One-shot function to load the script libraries.
@@ -167,529 +167,529 @@ function has_deployed() end
 function scriptunits_from_army() end
 
 --- Converts a supplied angle in radians to degrees.
----@param angle number Angle in radians
----@return number  angle in degrees 
+---@param angle number #Angle in radians
+---@return number #angle in degrees 
 function r_to_d(angle) end
 
 --- Converts a supplied angle in degrees to radians.
----@param angle number Angle in degrees
----@return number  angle in radians 
+---@param angle number #Angle in degrees
+---@return number #angle in radians 
 function d_to_r(angle) end
 
 --- Returns the file and path of the calling script as a table of strings.
----@param stack_offset integer Supply a positive integer here to return a result for a different file on the callstack e.g. supply '1' to return the file and folder path of the script file calling the the script file calling this function, for example.
----@return table  table of strings 
+---@param stack_offset integer? #optional, default value=0 Supply a positive integer here to return a result for a different file on the callstack e.g. supply '1' to return the file and folder path of the script file calling the the script file calling this function, for example.
+---@return table #table of strings 
 function get_file_and_folder_path_as_table(stack_offset) end
 
 --- Returns the folder name of the calling file and the shortform of its filename as separate return parameters. The shortform of the filename is the portion of the filename before the first "_", if one is found. If no shortform is found the function returns only the folder name.<br />
 --- A shortform used to be prepended on battle script files to allow them to be easily differentiated from one another in text editors e.g. "TF_battle_main.lua" vs "PY_battle_main.lua" rather than two "battle_main.lua"'s.
----@param stack_offset integer Supply a positive integer here to return a result for a different file on the callstack e.g. supply '1' to return the folder name/shortform of the script file calling the the script file calling this function, for example.
----@return string  name of folder containing calling file 
----@return string  
+---@param stack_offset integer? #optional, default value=0 Supply a positive integer here to return a result for a different file on the callstack e.g. supply '1' to return the folder name/shortform of the script file calling the the script file calling this function, for example.
+---@return string #name of folder containing calling file 
+---@return string
 function get_folder_name_and_shortform(stack_offset) end
 
 --- Gets the full filepath and name of the calling file.
----@param stack_offset integer Supply a positive integer here to return a result for a different file on the callstack e.g. supply '1' to return the file path of the script file calling the the script file calling this function, for example.
----@return string  file path 
+---@param stack_offset integer? #optional, default value=0 Supply a positive integer here to return a result for a different file on the callstack e.g. supply '1' to return the file path of the script file calling the the script file calling this function, for example.
+---@return string #file path 
 function get_full_file_path(stack_offset) end
 
 --- Returns the filename and the filepath of the calling file as separate return parameters.
----@param stack_offset integer Supply a positive integer here to return a result for a different file on the callstack e.g. supply '1' to return the file name and path of the script file calling the the script file calling this function, for example.
----@return string  file name 
----@return string  file path 
+---@param stack_offset integer? #optional, default value=0 Supply a positive integer here to return a result for a different file on the callstack e.g. supply '1' to return the file name and path of the script file calling the the script file calling this function, for example.
+---@return string #file name 
+---@return string #file path 
 function get_file_name_and_path(stack_offset) end
 
 --- Returns true if the supplied object is nil, false otherwise.
----@param object any object
----@return boolean  is nil 
+---@param object any #object
+---@return boolean #is nil 
 function is_nil(object) end
 
 --- Returns true if the supplied object is a number, false otherwise.
----@param object any object
----@return boolean  is number 
+---@param object any #object
+---@return boolean #is number 
 function is_number(object) end
 
 --- Returns true if the supplied object is a function, false otherwise.
----@param object any object
----@return boolean  is function 
+---@param object any #object
+---@return boolean #is function 
 function is_function(object) end
 
 --- Returns true if the supplied object is a string, false otherwise.
----@param object any object
----@return boolean  is string 
+---@param object any #object
+---@return boolean #is string 
 function is_string(object) end
 
 --- Returns true if the supplied object is a boolean, false otherwise.
----@param object any object
----@return boolean  is boolean 
+---@param object any #object
+---@return boolean #is boolean 
 function is_boolean(object) end
 
 --- Returns true if the supplied object is a table, false otherwise.
----@param object any object
----@return boolean  is table 
+---@param object any #object
+---@return boolean #is table 
 function is_table(object) end
 
 --- Returns true if the supplied object is an event context, false otherwise.
----@param object any object
----@return boolean  is event context 
+---@param object any #object
+---@return boolean #is event context 
 function is_eventcontext(object) end
 
 --- Returns true if the supplied object is a battle sound effect, false otherwise.
----@param object any object
----@return boolean  is battle sound effect 
+---@param object any #object
+---@return boolean #is battle sound effect 
 function is_battlesoundeffect(object) end
 
 --- Returns true if the supplied object is an empire battle object, false otherwise.
----@param object any object
----@return boolean  is battle 
+---@param object any #object
+---@return boolean #is battle 
 function is_battle(object) end
 
 --- Returns true if the supplied object is an alliances object, false otherwise.
----@param object any object
----@return boolean  is alliances 
+---@param object any #object
+---@return boolean #is alliances 
 function is_alliances(object) end
 
 --- Returns true if the supplied object is an alliance, false otherwise.
----@param object any object
----@return boolean  is alliance 
+---@param object any #object
+---@return boolean #is alliance 
 function is_alliance(object) end
 
 --- Returns true if the supplied object is an armies object, false otherwise.
----@param object any object
----@return boolean  is armies 
+---@param object any #object
+---@return boolean #is armies 
 function is_armies(object) end
 
 --- Returns true if the supplied object is an army object, false otherwise.
----@param object any object
----@return boolean  is army 
+---@param object any #object
+---@return boolean #is army 
 function is_army(object) end
 
 --- Returns true if the supplied object is a units object, false otherwise.
----@param object any object
----@return boolean  is units 
+---@param object any #object
+---@return boolean #is units 
 function is_units(object) end
 
 --- Returns true if the supplied object is a unit object, false otherwise.
----@param object any object
----@return boolean  is unit 
+---@param object any #object
+---@return boolean #is unit 
 function is_unit(object) end
 
 --- Returns true if the supplied object is a unitcontroller, false otherwise.
----@param object any object
----@return boolean  is unitcontroller 
+---@param object any #object
+---@return boolean #is unitcontroller 
 function is_unitcontroller(object) end
 
 --- Returns true if the supplied object is a core object, false otherwise.
----@param object any object
----@return boolean  is core 
+---@param object any #object
+---@return boolean #is core 
 function is_core(object) end
 
 --- Returns true if the supplied object is a <a href="../battle/battle_manager.html#class:battle_manager">battle_manager, false otherwise.
----@param object any object
----@return boolean  is battle manager 
+---@param object any #object
+---@return boolean #is battle manager 
 function is_battlemanager(object) end
 
 --- Returns true if the supplied object is a campaign manager, false otherwise.
----@param object any object
----@return boolean  is campaign manager 
+---@param object any #object
+---@return boolean #is campaign manager 
 function is_campaignmanager(object) end
 
 --- Returns true if the supplied object is a faction start object, false otherwise.
----@param object any object
----@return boolean  is faction start 
+---@param object any #object
+---@return boolean #is faction start 
 function is_factionstart(object) end
 
 --- Returns true if the supplied object is a campaign cutscene, false otherwise.
----@param object any object
----@return boolean  is campaign cutscene 
+---@param object any #object
+---@return boolean #is campaign cutscene 
 function is_campaigncutscene(object) end
 
 --- Returns true if the supplied object is a battle cutscene, false otherwise.
----@param object any object
----@return boolean  is cutscene 
+---@param object any #object
+---@return boolean #is cutscene 
 function is_cutscene(object) end
 
 --- Returns true if the supplied object is a vector object, false otherwise.
----@param object any object
----@return boolean  is vector 
+---@param object any #object
+---@return boolean #is vector 
 function is_vector(object) end
 
 --- Returns true if the supplied object is a building object, false otherwise.
----@param object any object
----@return boolean  is building 
+---@param object any #object
+---@return boolean #is building 
 function is_building(object) end
 
 --- Returns true if the supplied object is a buildings object, false otherwise.
----@param object any object
----@return boolean  is buildings 
+---@param object any #object
+---@return boolean #is buildings 
 function is_buildings(object) end
 
 --- Returns true if the supplied object is a building list object, false otherwise.
----@param object any object
----@return boolean  is building list 
+---@param object any #object
+---@return boolean #is building list 
 function is_buildinglist(object) end
 
 --- Returns true if the supplied object is a <a href="../campaign/convex_area.html#class:convex_area">convex_area, false otherwise.
----@param object any object
----@return boolean  is convex area 
+---@param object any #object
+---@return boolean #is convex area 
 function is_convexarea(object) end
 
 --- Returns true if the supplied object is a <a href="../battle/script_unit.html#class:script_unit">script_unit, false otherwise.
----@param object any object
----@return boolean  is scriptunit 
+---@param object any #object
+---@return boolean #is scriptunit 
 function is_scriptunit(object) end
 
 --- Returns true if the supplied object is a <a href="../battle/script_unit.html#class:script_units">script_units object, false otherwise.
----@param object any object
----@return boolean  is scriptunits 
+---@param object any #object
+---@return boolean #is scriptunits 
 function is_scriptunits(object) end
 
 --- Returns true if the supplied object is a battle subtitles object, false otherwise.
----@param object any object
----@return boolean  is subtitles 
+---@param object any #object
+---@return boolean #is subtitles 
 function is_subtitles(object) end
 
 --- Returns true if the supplied object is a patrol manager, false otherwise.
----@param object any object
----@return boolean  is patrol manager 
+---@param object any #object
+---@return boolean #is patrol manager 
 function is_patrolmanager(object) end
 
 --- Returns true if the supplied object is a patrol manager waypoint, false otherwise.
----@param object any object
----@return boolean  is waypoint 
+---@param object any #object
+---@return boolean #is waypoint 
 function is_waypoint(object) end
 
 --- Returns true if the supplied object is an event handler, false otherwise.
----@param object any object
----@return boolean  is event handler 
+---@param object any #object
+---@return boolean #is event handler 
 function is_eventhandler(object) end
 
 --- Returns true if the supplied object is a script ai planner, false otherwise.
----@param object any object
----@return boolean  is script ai planner 
+---@param object any #object
+---@return boolean #is script ai planner 
 function is_scriptaiplanner(object) end
 
 --- Returns true if the supplied object is a timer manager, false otherwise.
----@param object any object
----@return boolean  is timer manager 
+---@param object any #object
+---@return boolean #is timer manager 
 function is_timermanager(object) end
 
 --- Returns true if the supplied object is a ui override, false otherwise.
----@param object any object
----@return boolean  is ui override 
+---@param object any #object
+---@return boolean #is ui override 
 function is_uioverride(object) end
 
 --- Returns true if the supplied object is a uicomponent, false otherwise.
----@param object any object
----@return boolean  is uicomponent 
+---@param object any #object
+---@return boolean #is uicomponent 
 function is_uicomponent(object) end
 
 --- Returns true if the supplied object is a component, false otherwise.
----@param object any object
----@return boolean  is component 
+---@param object any #object
+---@return boolean #is component 
 function is_component(object) end
 
 --- Returns true if the supplied object is a script messager, false otherwise.
----@param object any object
----@return boolean  is script messager 
+---@param object any #object
+---@return boolean #is script messager 
 function is_scriptmessager(object) end
 
 --- Returns true if the supplied object is a generated battle, false otherwise.
----@param object any object
----@return boolean  is generated battle 
+---@param object any #object
+---@return boolean #is generated battle 
 function is_generatedbattle(object) end
 
 --- Returns true if the supplied object is a generated army, false otherwise.
----@param object any object
----@return boolean  is generated army 
+---@param object any #object
+---@return boolean #is generated army 
 function is_generatedarmy(object) end
 
 --- Returns true if the supplied object is a generated cutscene, false otherwise.
----@param object any object
----@return boolean  is generated cutscene 
+---@param object any #object
+---@return boolean #is generated cutscene 
 function is_generatedcutscene(object) end
 
 --- Returns true if the supplied object is a campaign null script interface, false otherwise.
----@param object any object
----@return boolean  is null 
+---@param object any #object
+---@return boolean #is null 
 function is_null(object) end
 
 --- Returns true if the supplied object is a campaign model interface, false otherwise.
----@param object any object
----@return boolean  is model 
+---@param object any #object
+---@return boolean #is model 
 function is_model(object) end
 
 --- Returns true if the supplied object is a campaign world interface, false otherwise.
----@param object any object
----@return boolean  is world 
+---@param object any #object
+---@return boolean #is world 
 function is_world(object) end
 
 --- Returns true if the supplied object is a campaign faction interface, false otherwise.
----@param object any object
----@return boolean  is faction 
+---@param object any #object
+---@return boolean #is faction 
 function is_faction(object) end
 
 --- Returns true if the supplied object is a campaign faction list interface, false otherwise.
----@param object any object
----@return boolean  is faction list 
+---@param object any #object
+---@return boolean #is faction list 
 function is_factionlist(object) end
 
 --- Returns true if the supplied object is a campaign character interface, false otherwise.
----@param object any object
----@return boolean  is character 
+---@param object any #object
+---@return boolean #is character 
 function is_character(object) end
 
 --- Returns true if the supplied object is a campaign character list interface, false otherwise.
----@param object any object
----@return boolean  is character list 
+---@param object any #object
+---@return boolean #is character list 
 function is_characterlist(object) end
 
 --- Returns true if the supplied object is a campaign region manager interface, false otherwise.
----@param object any object
----@return boolean  is region manager 
+---@param object any #object
+---@return boolean #is region manager 
 function is_regionmanager(object) end
 
 --- Returns true if the supplied object is a campaign region interface, false otherwise.
----@param object any object
----@return boolean  is region 
+---@param object any #object
+---@return boolean #is region 
 function is_region(object) end
 
 --- Returns true if the supplied object is a campaign region list interface, false otherwise.
----@param object any object
----@return boolean  is region list 
+---@param object any #object
+---@return boolean #is region list 
 function is_regionlist(object) end
 
 --- Returns true if the supplied object is a campaign garrison residence interface, false otherwise.
----@param object any object
----@return boolean  is garrison residence 
+---@param object any #object
+---@return boolean #is garrison residence 
 function is_garrisonresidence(object) end
 
 --- Returns true if the supplied object is a campaign settlement interface, false otherwise.
----@param object any object
----@return boolean  is settlement 
+---@param object any #object
+---@return boolean #is settlement 
 function is_settlement(object) end
 
 --- Returns true if the supplied object is a campaign slot interface, false otherwise.
----@param object any object
----@return boolean  is slot 
+---@param object any #object
+---@return boolean #is slot 
 function is_slot(object) end
 
 --- Returns true if the supplied object is a campaign slot list interface, false otherwise.
----@param object any object
----@return boolean  is slot list 
+---@param object any #object
+---@return boolean #is slot list 
 function is_slotlist(object) end
 
 --- Returns true if the supplied object is a campaign military force interface, false otherwise.
----@param object any object
----@return boolean  is military force 
+---@param object any #object
+---@return boolean #is military force 
 function is_militaryforce(object) end
 
 --- Returns true if the supplied object is a campaign military force list interface, false otherwise.
----@param object any object
----@return boolean  is military force list 
+---@param object any #object
+---@return boolean #is military force list 
 function is_militaryforcelist(object) end
 
 --- Returns true if the supplied object is a campaign unit list interface, false otherwise.
----@param object any object
----@return boolean  is unit list 
+---@param object any #object
+---@return boolean #is unit list 
 function is_unitlist(object) end
 
 --- Returns true if the supplied object is a campaign pending battle interface, false otherwise.
----@param object any object
----@return boolean  is pending battle 
+---@param object any #object
+---@return boolean #is pending battle 
 function is_pendingbattle(object) end
 
 --- Returns true if the supplied object is a campaign mission interface, false otherwise.
----@param object any object
----@return boolean  is campaign mission 
+---@param object any #object
+---@return boolean #is campaign mission 
 function is_campaignmission(object) end
 
 --- Returns true if the supplied object is a campaign ai interface, false otherwise.
----@param object any object
----@return boolean  is campaign ai 
+---@param object any #object
+---@return boolean #is campaign ai 
 function is_campaignai(object) end
 
 --- Returns true if the supplied object is a campaign ui manager, false otherwise.
----@param object any object
----@return boolean  is campaign ui manager 
+---@param object any #object
+---@return boolean #is campaign ui manager 
 function is_campaignuimanager(object) end
 
 --- Returns true if the supplied object is an <a href="../campaign/objectives_manager.html#class:objectives_manager">objectives_manager, false otherwise.
----@param object any object
----@return boolean  is objectives manager 
+---@param object any #object
+---@return boolean #is objectives manager 
 function is_objectivesmanager(object) end
 
 --- Returns true if the supplied object is an <a href="../campaign/infotext_manager.html#class:infotext_manager">infotext_manager, false otherwise.
----@param object any object
----@return boolean  is infotext manager 
+---@param object any #object
+---@return boolean #is infotext manager 
 function is_infotextmanager(object) end
 
 --- Returns true if the supplied object is a mission manager, false otherwise.
----@param object any object
----@return boolean  is text pointer 
+---@param object any #object
+---@return boolean #is text pointer 
 function is_missionmanager(object) end
 
 --- Returns true if the supplied object is an intervention, false otherwise.
----@param object any object
----@return boolean  is intervention 
+---@param object any #object
+---@return boolean #is intervention 
 function is_intervention(object) end
 
 --- Returns true if the supplied object is an intervention manager, false otherwise.
----@param object any object
----@return boolean  is intervention manager 
+---@param object any #object
+---@return boolean #is intervention manager 
 function is_interventionmanager(object) end
 
 --- Returns true if the supplied object is a link parser, false otherwise.
----@param object any object
----@return boolean  is link parser 
+---@param object any #object
+---@return boolean #is link parser 
 function is_linkparser(object) end
 
 --- Returns true if the supplied object is an advice manager, false otherwise.
----@param object any object
----@return boolean  is advice manager 
+---@param object any #object
+---@return boolean #is advice manager 
 function is_advicemanager(object) end
 
 --- Returns true if the supplied object is an advice monitor, false otherwise.
----@param object any object
----@return boolean  is advice monitor 
+---@param object any #object
+---@return boolean #is advice monitor 
 function is_advicemonitor(object) end
 
 --- Returns true if the supplied object is a text pointer, false otherwise.
----@param object any object
----@return boolean  is text pointer 
+---@param object any #object
+---@return boolean #is text pointer 
 function is_textpointer(object) end
 
 --- Returns true if the supplied indexed table contains the supplied object.
----@param subject_table table subject table
----@param object any object
----@return boolean  table contains object 
+---@param subject_table table #subject table
+---@param object any #object
+---@return boolean #table contains object 
 function table_contains(subject_table, object) end
 
 --- Takes a uicomponent and a string name. Searches the direct children (and no further - not grandchildren etc) of the supplied uicomponent for another uicomponent with the supplied name. If a uicomponent with the matching name is found then it is returned, otherwise false is returned.
----@param parent_ui_component UIC parent ui component
----@param name string name
----@return UIC  
+---@param parent_ui_component UIC #parent ui component
+---@param name string #name
+---@return UIC
 function find_child_uicomponent(parent_ui_component, name) end
 
 --- Finds and returns a uicomponent based on a set of strings that define its path in the ui hierarchy. This parent uicomponent can be supplied as the first argument - if omitted, the root uicomponent is used. Starting from the parent or root, the function searches through all descendants for a uicomponent with the next supplied uicomponent name in the sequence. If a uicomponent is found, its descendants are then searched for a uicomponent with the next name in the list, and so on until the list is finished or no uicomponent with the supplied name is found. A fragmentary path may be supplied if it still unambiguously specifies the intended uicomponent.
----@param parent_ui_component UIC parent ui component
----@vararg any
----@return UIC  
+---@param parent_ui_component UIC? #optional, default value=nil parent ui component
+---@param ... any #list of string names
+---@return UIC
 function find_uicomponent(parent_ui_component, ...) end
 
 --- Takes a start uicomponent and a numerically-indexed table of string uicomponent names. Starting from the supplied start uicomponent, the function searches through all descendants for a uicomponent with the next supplied uicomponent name in the table. If a uicomponent is found, its descendants are then searched for a uicomponent with the next name in the list, and so on until the list is finished or no uicomponent with the supplied name is found. This allows a uicomponent to be searched for by matching its name and part of or all of its path.
----@param parent_ui_component UIC Parent uicomponent.
----@param table_of_string_names table Table of string names, indexed by number.
----@param on_failure boolean Fire a script error if the search fails.
----@return UIC  
+---@param parent_ui_component UIC #Parent uicomponent.
+---@param table_of_string_names table #Table of string names, indexed by number.
+---@param on_failure assert? #optional, default value=false Fire a script error if the search fails.
+---@return UIC
 function find_uicomponent_from_table(parent_ui_component, table_of_string_names, on_failure) end
 
 --- Takes a uicomponent and a string name. Returns true if any parent ancestor component all the way up to the ui root has the supplied name (i.e. the supplied component is descended from it), false otherwise.
----@param subject_uic UIC subject uic
----@param parent_name string parent name
----@return boolean  
+---@param subject_uic UIC #subject uic
+---@param parent_name string #parent name
+---@return boolean
 function uicomponent_descended_from(subject_uic, parent_name) end
 
 --- Converts a uicomponent to a string showing its path, for output purposes.
----@param subject_uic UIC subject uic
----@return string  output 
+---@param subject_uic UIC #subject uic
+---@return string #output 
 function uicomponent_to_str(subject_uic) end
 
 --- Outputs extensive debug information about a supplied uicomponent to the Lua - UI console spool.
----@param subject_uic UIC Subject uicomponent.
----@param omit_children boolean Do not show information about the uicomponent's children.
+---@param subject_uic UIC #Subject uicomponent.
+---@param omit_children boolean? #optional, default value=false Do not show information about the uicomponent's children.
 function output_uicomponent(subject_uic, omit_children) end
 
 --- Starts a listener which outputs debug information to the Lua - UI console spool about every uicomponent that's clicked on.
 function output_uicomponent_on_click() end
 
 --- Prints the name and path of the supplied uicomponent and all its descendents. Very verbose, and can take a number of seconds to complete.
----@param subject_uic UIC Subject uicomponent.
+---@param subject_uic UIC #Subject uicomponent.
 function print_all_uicomponent_children(subject_uic) end
 
 --- Activates or deactivates a pulsing highlight effect on the supplied uicomponent. This is primarily used for scripts which activate when the player moves the mouse cursor over certain words in the help pages, to indicate to the player what UI feature is being talked about on the page.
----@param ui_component UIC Subject ui component.
----@param should_pulse boolean Set to true to activate the pulsing effect, false to deactivate it.
----@param brightness number Pulse brightness. Set a higher number for a more pronounced pulsing effect.
----@param progagate boolean Propagate the effect through the component's children. Use this with care, as the visual effect can stack and often it's better to activate the effect on specific uicomponents instead of activating this.
----@param state_name string Optional state name to affect. If a string name is supplied, the pulsing effect is only applied to the specified state instead of to all states on the component.
+---@param ui_component UIC #Subject ui component.
+---@param should_pulse boolean? #optional, default value=true Set to true to activate the pulsing effect, false to deactivate it.
+---@param brightness number? #optional, default value=0 Pulse brightness. Set a higher number for a more pronounced pulsing effect.
+---@param progagate boolean? #optional, default value=false Propagate the effect through the component's children. Use this with care, as the visual effect can stack and often it's better to activate the effect on specific uicomponents instead of activating this.
+---@param state_name string? #optional, default value=nil Optional state name to affect. If a string name is supplied, the pulsing effect is only applied to the specified state instead of to all states on the component.
 function pulse_uicomponent(ui_component, should_pulse, brightness, progagate, state_name) end
 
 --- Returns true if the uicomponent is fully on-screen, false otherwise.
----@param uicomponent UIC uicomponent
----@return boolean  is onscreen 
+---@param uicomponent UIC #uicomponent
+---@return boolean #is onscreen 
 function is_fully_onscreen(uicomponent) end
 
 --- Returns true if the uicomponent is partially on-screen, false otherwise.
----@param uicomponent UIC uicomponent
----@return boolean  is onscreen 
+---@param uicomponent UIC #uicomponent
+---@return boolean #is onscreen 
 function is_partially_onscreen(uicomponent) end
 
 --- Sets a uicomponent visible or invisible by its path. The path should be one or more strings which when sequentially searched for from the ui root lead to the target uicomponent (see documentation for find_uicomponent_from_table, which performs the search).
----@param set_visible boolean set visible
----@vararg any
+---@param set_visible boolean #set visible
+---@param ... any #list of string names
 function set_component_visible(set_visible, ...) end
 
 --- Sets a uicomponent visible or invisible by its path. The path should be one or more strings which when sequentially searched for from a supplied uicomponent parent lead to the target uicomponent (see documentation for find_uicomponent_from_table, which performs the search).
----@param set_visible boolean set visible
----@param parent_uicomponent UIC parent uicomponent
----@vararg any
+---@param set_visible boolean #set visible
+---@param parent_uicomponent UIC #parent uicomponent
+---@param ... any #list of string names
 function set_component_visible_with_parent(set_visible, parent_uicomponent, ...) end
 
 --- Sets a uicomponent to be active or inactive by its path. The path should be one or more strings which when sequentially searched for from the ui root lead to the target uicomponent (see documentation for find_uicomponent_from_table, which performs the search).
----@param set_active boolean set active
----@vararg any
+---@param set_active boolean #set active
+---@param ... any #list of string names
 function set_component_active(set_active, ...) end
 
 --- Sets a uicomponent to be active or inactive by its path. The path should be one or more strings which when sequentially searched for from a supplied uicomponent parent lead to the target uicomponent (see documentation for find_uicomponent_from_table, which performs the search).
----@param set_active boolean set active
----@param parent_uicomponent UIC parent uicomponent
----@vararg any
+---@param set_active boolean #set active
+---@param parent_uicomponent UIC #parent uicomponent
+---@param ... any #list of string names
 function set_component_active_with_parent(set_active, parent_uicomponent, ...) end
 
 --- Highlights or unhighlights a uicomponent by its path. The path should be one or more strings which when sequentially searched for from the ui root lead to the target uicomponent (see documentation for find_uicomponent_from_table, which performs the search).
----@param activate_highlight boolean Set true to activate the highlight, false to deactivate.
----@param is_square boolean Set to true if the target uicomponent is square, false if it's circular.
----@vararg any
+---@param activate_highlight boolean #Set true to activate the highlight, false to deactivate.
+---@param is_square boolean #Set to true if the target uicomponent is square, false if it's circular.
+---@param ... any #list of string names
 function highlight_component(activate_highlight, is_square, ...) end
 
 --- Highlights or unhighlights a uicomponent by its path, but only if it's visible. The path should be one or more strings which when sequentially searched for from the ui root lead to the target uicomponent (see documentation for find_uicomponent_from_table, which performs the search).
----@param activate_highlight boolean Set true to activate the highlight, false to deactivate.
----@param is_square boolean Set to true if the target uicomponent is square, false if it's circular.
----@vararg any
+---@param activate_highlight boolean #Set true to activate the highlight, false to deactivate.
+---@param is_square boolean #Set to true if the target uicomponent is square, false if it's circular.
+---@param ... any #list of string names
 function highlight_visible_component(activate_highlight, is_square, ...) end
 
 --- Draws a box highlight around all visible children of the supplied uicomponent. A padding value in pixels may also be supplied to increase the visual space between the highlight and the components being highlighted.
----@param parent UIC parent
----@param visual_padding number visual padding
+---@param parent UIC #parent
+---@param visual_padding number? #optional, default value=0 visual padding
 function highlight_all_visible_children(parent, visual_padding) end
 
 --- Cancels any and all highlights created with highlight_all_visible_children.
 function unhighlight_all_visible_children() end
 
 --- Draws a box highlight stretching around the supplied list of components. A padding value in pixels may also be supplied to increase the visual space between the highlight and the components being highlighted.
----@param visual_padding number Visual padding in pixels.
----@vararg any
+---@param visual_padding number #Visual padding in pixels.
+---@param ... any #Variable number of uicomponents to draw highlight over.
 function highlight_component_table(visual_padding, ...) end
 
 --- Cancels any and all highlights created with highlight_component_table.
 function unhighlight_component_table() end
 
 --- Plays a specified component animation on a uicomponent by its path. The path should be one or more strings which when sequentially searched for from the ui root lead to the target uicomponent (see documentation for find_uicomponent_from_table, which performs the search).
----@param animation_name string animation name
----@vararg any
+---@param animation_name string #animation name
+---@param ... any #list of string names
 function play_component_animation(animation_name, ...) end
 
 --- Returns the advisor progress/close button uicomponent.
----@return UIC   
+---@return UIC
 function get_advisor_progress_button() end
 
 --- Shows or hides the advisor progress/close button.
----@param show_button boolean show button
+---@param show_button boolean? #optional, default value=true show button
 function show_advisor_progress_button(show_button) end
 
 --- Activates or deactivates a highlight on the advisor progress/close button.
----@param show_button boolean show button
+---@param show_button boolean? #optional, default value=true show button
 function highlight_advisor_progress_button(show_button) end
 
 --- 
@@ -699,19 +699,19 @@ function get_infotext_manager() end
 function get_objectives_manager() end
 
 --- Gets or creates a script_messager object.
----@return script_messager   
+---@return script_messager
 function get_messager() end
 
 --- Gets or creates a timer_manager.
----@return timer_manager 
+---@return timer #manager 
 function get_tm() end
 
 --- Writes output to the lua_mod_log.txt text file, and also to the game console.
----@param output_text string output text
+---@param output_text string #output text
 function ModLog(output_text) end
 
 --- Casts a component memory address, returned by several functions such as uicomponent:Find, into a valid uicomponent script object so that functions in the uicomponent script interface may be called on it.<br />
 --- This function is provided by the UI code.
----@param component_address UIC_Address component address
----@return UIC   
+---@param component_address UIC_Address #component address
+---@return UIC
 function UIComponent(component_address) end

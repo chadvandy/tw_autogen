@@ -4,17 +4,17 @@
 local campaignui = {}
 
 --- Creates or destroys a black screen cover (when not eyefinity).
----@param enable_cover boolean enable cover
+---@param enable_cover boolean #enable cover
 function campaignui.ToggleScreenCover(enable_cover) end
 
 --- Creates or destroys top and bottom cinematic borders.
----@param enable_borders boolean enable borders
+---@param enable_borders boolean #enable borders
 function campaignui.ToggleCinematicBorders(enable_borders) end
 
 --- Shows the campaign victory screen, optionally corresponding to a specified mission. All three arguments must be specified, or none can be specified.
----@param is_victory boolean is victory
----@param can_continue boolean can continue
----@param mission_key string mission key
+---@param is_victory boolean? #optional, default value=nil is victory
+---@param can_continue boolean? #optional, default value=nil can continue
+---@param mission_key string? #optional, default value=nil mission key
 function campaignui.ShowVictoryScreen(is_victory, can_continue, mission_key) end
 
 --- Clears the current ui selection, ensuring that no settlements or characters are selected by the player.
@@ -33,7 +33,7 @@ function campaignui.OverrideLoadingScreenText() end
 function campaignui.QuitToWindows() end
 
 --- Sets the campaign overlay to be visible or not. The campaign overlay colourises regions on the campaign map display for various purposes (it is used by the tactical map, for example). The overlay mode to display, and what regions to display it on, should be set with CampaignUI.SetOverlayMode before activating the overlay with this function.
----@param activate_overlay boolean activate overlay
+---@param activate_overlay boolean #activate overlay
 function campaignui.SetOverlayVisible(activate_overlay) end
 
 --- Sets the overlay mode to display by numeric id, and one or more regions to display it across by region key. Multiple region keys may be specified with separate arguments. Calling this function has no effect until the overlay is subsequently enabled with CampaignUI.SetOverlayVisible.<br />
@@ -60,34 +60,34 @@ function campaignui.SetOverlayVisible(activate_overlay) end
 --- 18CLIMATE_SUITABILITY
 --- 19GEOMATIC_WEB
 --- 20TUTORIAL_REGION_HIGHLIGHT
----@param overlay_mode number Overlay mode (see lookup table above).
+---@param overlay_mode number #Overlay mode (see lookup table above).
 function campaignui.SetOverlayMode(overlay_mode) end
 
 --- Enables or disables a suppression lock that prevents any event messages being shown on the UI. Once the lock is enabled, individual event types may be whitelisted for display with CampaignUI.WhiteListEventTypeInUI, at which point they will bypass the suppression.
----@param enable_suppression boolean enable suppression
+---@param enable_suppression boolean #enable suppression
 function campaignui.SuppressAllEventTypesInUI(enable_suppression) end
 
 --- Whitelists an event type to bypass suppression activated by CampaignUI.SuppressAllEventTypesInUI. Event types to be whitelisted are specified by a compound key from the event_feed_targeted_events table - the key must be specified by concatenating the event and target> field values for a given record from that table. Currently valid examples might include "faction_event_mission_issuedevent_feed_target_mission_faction" or "scripted_persistent_located_eventevent_feed_target_faction". Whitelisting an event type has no effect if suppression has not been enabled.
----@param event_type string event type
+---@param event_type string #event type
 function campaignui.WhiteListEventTypeInUI(event_type) end
 
 --- Returns whether or not an event of the specified type exists in the display queue (i.e. is being displayed or is pending to be displayed). Event types are specified by a compound key from the event_feed_targeted_events table - the key must be specified by concatenating the event and target> field values for a given record from that table.
----@param event_type string event type
----@return boolean  event type exists 
+---@param event_type string #event type
+---@return boolean #event type exists 
 function campaignui.DoesEventTypeExist(event_type) end
 
 --- Returns whether or not an event of the specified type exists in the display queue (i.e. is being displayed or is pending to be displayed) and requires a response. Event types are specified by a compound key from the event_feed_targeted_events table - the key must be specified by concatenating the event and target> field values for a given record from that table.<br />
 --- This is of most use for testing if a dilemma is currently active.
----@param event_type string event type
----@return boolean  event type requires response 
+---@param event_type string #event type
+---@return boolean #event type requires response 
 function campaignui.DoesEventTypeRequireResponse(event_type) end
 
 --- Triggers an incident for the local player, specified by incident key. If called on one machine in a multiplayer game this will trigger the incident on all machines - as such, it can be called in script that is triggered from a UI event in a multiplayer game.
----@param incident_key string incident key
+---@param incident_key string #incident key
 function campaignui.TriggerIncident(incident_key) end
 
 --- Allows the script running on one machine in a multiplayer game to cause a scripted event, UITrigger, to be triggered on all machines in that game. By listening for this event, scripts on all machines in a multiplayer game can therefore respond to a UI event occuring on just one of those machines.<br />
 --- An optional string event id and number faction cqi may be specified. If specified, these values are passed from the triggering script through to all listening scripts, using the context objects supplied with the events. The event id may be accessed by listening scripts by calling &lt;context&gt;:trigger() on the supplied context object, and can be used to identify the script event being triggered. The faction cqi may be accessed by calling &lt;context&gt;:faction_cqi() on the context object, and can be used to identify a faction associated with the event. Both must be specified, or neither. 
----@param faction_cqi number faction cqi
----@param event_id string event id
+---@param faction_cqi number? #optional, default value=nil faction cqi
+---@param event_id string? #optional, default value=nil event id
 function campaignui.TriggerCampaignScriptEvent(faction_cqi, event_id) end

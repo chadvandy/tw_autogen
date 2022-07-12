@@ -4,20 +4,20 @@
 local campaign_manager = {}
 
 --- Creates and returns a campaign manager. If one has already been created it returns the existing campaign manager. Client scripts should not need to call this as it's already called, and a campaign manager set up, within the script libraries. However the script libraries cannot know the name of the campaign, so client scripts will need to set this using campaign_manager:set_campaign_name.
----@param campaign_name string campaign name
----@return campaign_manager  campaign manager 
+---@param campaign_name string? #optional, default value="" campaign name
+---@return campaign_manager #campaign manager 
 function campaign_manager:new(campaign_name) end
 
 --- Sets the name of the campaign. This is used for some output, but is mostly used to determine the file path to the campaign script folder which is partially based on the campaign name. If the intention is to use campaign_manager:require_path_to_campaign_folder or campaign_manager:require_path_to_campaign_faction_folder to load in script files from a path based on the campaign name, then a name must be set first. The name may also be supplied to campaign_manager:new when creating the campaign manager.
----@param campaign_name string campaign name
+---@param campaign_name string #campaign name
 function campaign_manager:set_campaign_name(campaign_name) end
 
 --- Returns the name of the campaign.
----@return string  campaign name 
+---@return string #campaign name 
 function campaign_manager:get_campaign_name() end
 
 --- Returns a static path to the campaign script folder (currently "data/script/campaign")
----@return string  campaign folder path 
+---@return string #campaign folder path 
 function campaign_manager:get_campaign_folder() end
 
 --- Adds the current campaign's folder to the path, so that the lua files related to this campaign can be loaded with the require command. This function adds the root folder for this campaign based on the campaign name i.e. script/campaign/%campaign_name%/, and also the factions subfolder within this. A name for this campaign must have been set with campaign_manager:new or campaign_manager:set_campaign_name prior to calling this function.
@@ -29,912 +29,912 @@ function campaign_manager:require_path_to_campaign_faction_folder() end
 --- This function attempts to load a lua script from all folders currently on the path, and, when loaded, sets the environment of the loaded file to match the global environment. This is used when loading scripts within a block (within if statement that is testing for the file's existence, for example) - loading the file with require would not give it access to the global environment.<br />
 --- Call campaign_manager:require_path_to_campaign_folder and/or campaign_manager:require_path_to_campaign_faction_folder if required to include these folders on the path before loading files with this function, if required. Alternatively, use campaign_manager:load_local_faction_script for a more automated method of loading local faction scripts.<br />
 --- If the script file fails to load cleanly, a script error will be thrown.
----@param script_name string script name
----@param single_player_only boolean single player only
+---@param script_name string #script name
+---@param single_player_only boolean? #optional, default value=false single player only
 function campaign_manager:load_global_script(script_name, single_player_only) end
 
 --- Loads a script file in the factions subfolder that corresponds to the name of the local player faction, with the supplied string appellation attached to the end of the script filename. This function is the preferred method for loading in local faction-specific script files. It calls campaign_manager:require_path_to_campaign_faction_folder internally to set up the path, and uses campaign_manager:load_global_script to perform the loading. It must not be called before the game is created.
----@param script_name_appellation string script name appellation
+---@param script_name_appellation string #script name appellation
 function campaign_manager:load_local_faction_script(script_name_appellation) end
 
 --- Loads all lua script files with filenames that contain the supplied string from the target directory. This is used to load in exported files e.g. export_ancillaries.lua, as the asset graph system may create additional files with an extension of this name for each DLC, where needed (e.g. export_ancillaries_dlcxx.lua). The target directory is "script" by default.
----@param filename string Filename subset of script file(s) to load.
----@param path string Path of directory to load script files from, from working data. This should be supplied without leading or trailing "/" separators.
+---@param filename string #Filename subset of script file(s) to load.
+---@param path string? #optional, default value="script" Path of directory to load script files from, from working data. This should be supplied without leading or trailing "/" separators.
 function campaign_manager:load_exported_files(filename, path) end
 
 --- Adds a callback to be called when the LoadingGame event is received from the game. This callback will be able to load information from the savegame with campaign_manager:load_named_value. See also campaign_manager:add_saving_game_callback and campaign_manager:save_named_value to save the values that will be loaded here.<br />
 --- Note that it is preferable for client scripts to use this function rather than listen for the LoadingGame event themselves as it preserves the ordering of certain setup procedures.
----@param callback function Callback to call. When calling this function the campaign manager passes it a single context argument, which can then be passed through in turn to campaign_manager:load_named_value.
+---@param callback function #Callback to call. When calling this function the campaign manager passes it a single context argument, which can then be passed through in turn to campaign_manager:load_named_value.
 function campaign_manager:add_loading_game_callback(callback) end
 
 --- Loads a named value from the savegame. This may only be called as the game is being loaded, and must be passed the context object supplied by the LoadingGame event. Values are saved and loaded from the savegame with a string name, and the values themselves can be a boolean, a number, a string, or a table containing booleans, numbers or strings.
----@param value_name string Value name. This must be unique within the savegame, and should match the name the value was saved with, with campaign_manager:save_named_value.
----@param default_value any Default value, in case the value could not be loaded from the savegame. The default value supplied here is used to determine/must match the type of the value being loaded.
----@param context userdata Context object supplied by the LoadingGame event.
+---@param value_name string #Value name. This must be unique within the savegame, and should match the name the value was saved with, with campaign_manager:save_named_value.
+---@param default_value any #Default value, in case the value could not be loaded from the savegame. The default value supplied here is used to determine/must match the type of the value being loaded.
+---@param context userdata #Context object supplied by the LoadingGame event.
 function campaign_manager:load_named_value(value_name, default_value, context) end
 
 --- Retrieves a value saved using the saved value system. Values saved using campaign_manager:set_saved_value are added to an internal register within the campaign manager, and are automatically saved and loaded with the game, so there is no need to register callbacks with campaign_manager:add_loading_game_callback or campaign_manager:add_saving_game_callback. Once saved with campaign_manager:set_saved_value, values can be accessed with this function.<br />
 --- Values are stored and accessed by a string name. Values can be booleans, numbers or strings.
----@param value_name string value name
----@return any  value 
+---@param value_name string #value name
+---@return any #value 
 function campaign_manager:get_saved_value(value_name) end
 
 --- Retrieves or generates a value saved using the saved value system. When called, the function looks up a value by supplied name using campaign_manager:get_saved_value. If it exists it is returned, but if it doesn't exist a supplied function is called which generates the cached value. This value is saved with the supplied name, and also returned. A value is generated the first time this function is called, therefore, and is retrieved from the savegame on subsequent calls with the same arguments. If the supplied function doesn't return a value, a script error is triggered.
----@param value_name string value name
----@param generator_callback function generator callback
----@return any  value 
+---@param value_name string #value name
+---@param generator_callback function #generator callback
+---@return any #value 
 function campaign_manager:get_cached_value(value_name, generator_callback) end
 
 --- Registers a callback to be called when the game is being saved. The callback can then save individual values with campaign_manager:save_named_value.
----@param callback function Callback to call. When calling this function the campaign manager passes it a single context argument, which can then be passed through in turn to campaign_manager:save_named_value.
+---@param callback function #Callback to call. When calling this function the campaign manager passes it a single context argument, which can then be passed through in turn to campaign_manager:save_named_value.
 function campaign_manager:add_saving_game_callback(callback) end
 
 --- Add a callback to be called after the game has been saved. These callbacks are called last in the saving sequence, and only the first time the game is saved after they have been added.
----@param callback function Callback to call. When calling this function the campaign manager passes it a single context argument.
+---@param callback function #Callback to call. When calling this function the campaign manager passes it a single context argument.
 function campaign_manager:add_post_saving_game_callback(callback) end
 
 --- Saves a named value from the savegame. This may only be called as the game is being saved, and must be passed the context object supplied by the SavingGame event. Values are saved (and loaded) from the savegame with a string name, and the values themselves can be a boolean, a number, a string, or a table containing booleans, numbers or strings.
----@param value_name string Value name. This must be unique within the savegame, and will be used by campaign_manager:load_named_value later to load the value.
----@param value any Value to save.
----@param context userdata Context object supplied by the SavingGame event.
+---@param value_name string #Value name. This must be unique within the savegame, and will be used by campaign_manager:load_named_value later to load the value.
+---@param value any #Value to save.
+---@param context userdata #Context object supplied by the SavingGame event.
 function campaign_manager:save_named_value(value_name, value, context) end
 
 --- Sets a value to be saved using the saved value system. Values saved using this function are added to an internal register within the campaign manager, and are automatically saved and loaded with the game, so there is no need to register callbacks with campaign_manager:add_loading_game_callback or campaign_manager:add_saving_game_callback. Once saved with this function, the value can be accessed at any time with campaign_manager:get_saved_value.<br />
 --- Values are stored and accessed by a string name. Values can be booleans, numbers or strings. Repeated calls to set_saved_value with the same name are legal, and will just overwrite the value of the value stored with the supplied name.
----@param value_name string Value name.
----@param value any Value. Can be a boolean, number or string.
+---@param value_name string #Value name.
+---@param value any #Value. Can be a boolean, number or string.
 function campaign_manager:set_saved_value(value_name, value) end
 
 --- Instructs the campaign game to save at the next opportunity. An optional completion callback may be supplied.
----@param callback function Completion callback. If supplied, this is called when the save procedure is completed.
----@param lock_afterwards boolean Lock saving functionality after saving is completed.
+---@param callback function? #optional, default value=nil Completion callback. If supplied, this is called when the save procedure is completed.
+---@param lock_afterwards boolean? #optional, default value=false Lock saving functionality after saving is completed.
 function campaign_manager:save(callback, lock_afterwards) end
 
 --- Registers a function to be called when the campaign is shut down or unloaded for any reason (including loading into battle). It is seldom necessary to do this.
----@param callback function callback
+---@param callback function #callback
 function campaign_manager:add_game_destroyed_callback(callback) end
 
 --- Registers a function to be called before any other first tick callbacks. Callbacks registered with this function will be called regardless of what mode the campaign is being loaded in.
----@param callback function callback
+---@param callback function #callback
 function campaign_manager:add_pre_first_tick_callback(callback) end
 
 --- Registers a function to be called when the first tick occurs. Callbacks registered with this function will be called regardless of what mode the campaign is being loaded in.
----@param callback function callback
+---@param callback function #callback
 function campaign_manager:add_first_tick_callback(callback) end
 
 --- Registers a function to be called when the first tick occurs in a new singleplayer game.
----@param callback function callback
+---@param callback function #callback
 function campaign_manager:add_first_tick_callback_sp_new(callback) end
 
 --- Registers a function to be called when the first tick occurs in a singleplayer game, whether new or loaded from a savegame.
----@param callback function callback
+---@param callback function #callback
 function campaign_manager:add_first_tick_callback_sp_each(callback) end
 
 --- Registers a function to be called when the first tick occurs in a new multiplayer game.
----@param callback function callback
+---@param callback function #callback
 function campaign_manager:add_first_tick_callback_mp_new(callback) end
 
 --- Registers a function to be called when the first tick occurs in a multiplayer game, whether new or loaded from a savegame.
----@param callback function callback
+---@param callback function #callback
 function campaign_manager:add_first_tick_callback_mp_each(callback) end
 
 --- Registers a function to be called when the first tick occurs in a new game, whether singleplayer or multiplayer.
----@param callback function callback
+---@param callback function #callback
 function campaign_manager:add_first_tick_callback_new(callback) end
 
 --- Adds a listener for the FactionTurnStart event which triggers if a faction with the supplied faction name starts a turn.
----@param listener_name string Name by which this listener can be later cancelled using campaign_manager:remove_faction_turn_start_listener_by_name if necessary. It is valid to have multiple listeners with the same name.
----@param faction_name string Faction name to watch for, from the factions database table.
----@param callback function Callback to call if a faction with the specified name starts a turn.
----@param persistent boolean Is this a persistent listener. If this value is false the listener will stop the first time the callback is triggered. If true, the listener will continue until cancelled with campaign_manager:remove_faction_turn_start_listener_by_name.
+---@param listener_name string #Name by which this listener can be later cancelled using campaign_manager:remove_faction_turn_start_listener_by_name if necessary. It is valid to have multiple listeners with the same name.
+---@param faction_name string #Faction name to watch for, from the factions database table.
+---@param callback function #Callback to call if a faction with the specified name starts a turn.
+---@param persistent boolean #Is this a persistent listener. If this value is false the listener will stop the first time the callback is triggered. If true, the listener will continue until cancelled with campaign_manager:remove_faction_turn_start_listener_by_name.
 function campaign_manager:add_faction_turn_start_listener_by_name(listener_name, faction_name, callback, persistent) end
 
 --- Removes a listener that was previously added with campaign_manager:add_faction_turn_start_listener_by_name. Calling this won't affect other faction turn start listeners.
----@param listener_name string listener name
+---@param listener_name string #listener name
 function campaign_manager:remove_faction_turn_start_listener_by_name(listener_name) end
 
 --- Adds a listener for the FactionTurnStart event which triggers if a faction with the supplied culture key starts a turn.
----@param listener_name string Name by which this listener can be later cancelled using campaign_manager:remove_faction_turn_start_listener_by_culture if necessary. It is valid to have multiple listeners with the same name.
----@param culture_key string Culture key to watch for, from the cultures database table.
----@param callback function Callback to call if a faction of the specified culture starts a turn.
----@param persistent boolean Is this a persistent listener. If this value is false the listener will stop the first time the callback is triggered. If true, the listener will continue until cancelled with campaign_manager:remove_faction_turn_start_listener_by_culture.
+---@param listener_name string #Name by which this listener can be later cancelled using campaign_manager:remove_faction_turn_start_listener_by_culture if necessary. It is valid to have multiple listeners with the same name.
+---@param culture_key string #Culture key to watch for, from the cultures database table.
+---@param callback function #Callback to call if a faction of the specified culture starts a turn.
+---@param persistent boolean #Is this a persistent listener. If this value is false the listener will stop the first time the callback is triggered. If true, the listener will continue until cancelled with campaign_manager:remove_faction_turn_start_listener_by_culture.
 function campaign_manager:add_faction_turn_start_listener_by_culture(listener_name, culture_key, callback, persistent) end
 
 --- Removes a listener that was previously added with campaign_manager:add_faction_turn_start_listener_by_culture. Calling this won't affect other faction turn start listeners.
----@param listener_name string listener name
+---@param listener_name string #listener name
 function campaign_manager:remove_faction_turn_start_listener_by_culture(listener_name) end
 
 --- Adds a listener for the FactionTurnStart event which triggers if a faction with the supplied subculture key starts a turn.
----@param listener_name string Name by which this listener can be later cancelled using campaign_manager:remove_faction_turn_start_listener_by_subculture if necessary. It is valid to have multiple listeners with the same name.
----@param subculture_key string Subculture key to watch for, from the subcultures database table.
----@param callback function Callback to call if a faction of the specified subculture starts a turn.
----@param persistent boolean Is this a persistent listener. If this value is false the listener will stop the first time the callback is triggered. If true, the listener will continue until cancelled with campaign_manager:remove_faction_turn_start_listener_by_culture.
+---@param listener_name string #Name by which this listener can be later cancelled using campaign_manager:remove_faction_turn_start_listener_by_subculture if necessary. It is valid to have multiple listeners with the same name.
+---@param subculture_key string #Subculture key to watch for, from the subcultures database table.
+---@param callback function #Callback to call if a faction of the specified subculture starts a turn.
+---@param persistent boolean #Is this a persistent listener. If this value is false the listener will stop the first time the callback is triggered. If true, the listener will continue until cancelled with campaign_manager:remove_faction_turn_start_listener_by_culture.
 function campaign_manager:add_faction_turn_start_listener_by_subculture(listener_name, subculture_key, callback, persistent) end
 
 --- Removes a listener that was previously added with campaign_manager:add_faction_turn_start_listener_by_subculture. Calling this won't affect other faction turn start listeners.
----@param listener_name string listener name
+---@param listener_name string #listener name
 function campaign_manager:remove_faction_turn_start_listener_by_subculture(listener_name) end
 
 --- Prints information about certain campaign objects (characters, regions, factions or military force) to the debug console spool. Preferably don't call this - just call out(object) insead.
----@param campaign_object any campaign object
+---@param campaign_object any #campaign object
 function campaign_manager:output_campaign_obj(campaign_object) end
 
 --- Returns a string summary description when passed certain campaign objects. Supported object types are character, region, faction, military force, and unit.
----@param campaign_object any campaign object
----@return string  summary of object 
+---@param campaign_object any #campaign object
+---@return string #summary of object 
 function campaign_manager:campaign_obj_to_string(campaign_object) end
 
 --- Calls the supplied function after the supplied period in seconds. A string name for the callback may optionally be provided to allow the callback to be cancelled later.<br />
 --- If part or all of the interval is likely to elapse during the end turn sequence, consider using campaign_manager:os_clock_callback as time does not behave as expected during the end turn sequence.
----@param callback_to_call function callback to call
----@param time number Time in seconds after to which to call the callback. The model ticks ten times a second so it doesn't have an effective resolution greater than this.
----@param name string Callback name. If supplied, this callback can be cancelled at a later time (before it triggers) with campaign_manager:remove_callback.
+---@param callback_to_call function #callback to call
+---@param time number #Time in seconds after to which to call the callback. The model ticks ten times a second so it doesn't have an effective resolution greater than this.
+---@param name string? #optional, default value=nil Callback name. If supplied, this callback can be cancelled at a later time (before it triggers) with campaign_manager:remove_callback.
 function campaign_manager:callback(callback_to_call, time, name) end
 
 --- Calls the supplied function repeatedly after the supplied period in seconds. A string name for the callback may optionally be provided to allow the callback to be cancelled. Cancelling the callback is the only method to stop a repeat callback, once started.
----@param callback_to_call function callback to call
----@param time number Time in seconds after to which to call the callback, repeatedly. The callback will be called each time this interval elapses. The model ticks ten times a second so it doesn't have an effective resolution greater than this.
----@param name string Callback name. If supplied, this callback can be cancelled at a later time with campaign_manager:remove_callback.
+---@param callback_to_call function #callback to call
+---@param time number #Time in seconds after to which to call the callback, repeatedly. The callback will be called each time this interval elapses. The model ticks ten times a second so it doesn't have an effective resolution greater than this.
+---@param name string? #optional, default value=nil Callback name. If supplied, this callback can be cancelled at a later time with campaign_manager:remove_callback.
 function campaign_manager:repeat_callback(callback_to_call, time, name) end
 
 --- Time in campaign behaves strangely during the end-turn sequence, and callbacks registered with campaign_manager:callback will tend to be called immediately rather than after the desired interval. This function works around the problem by polling the operating system clock to check that the desired duration has indeed elapsed before calling the supplied callback. It is less accurate and more expensive than campaign_manager:callback, but will produce somewhat sensible results during the end-turn sequence.
----@param callback_to_call function callback to call
----@param time number Time in seconds after to which to call the callback.
----@param name string Callback name. If supplied, this callback can be cancelled at a later time with campaign_manager:remove_callback.
+---@param callback_to_call function #callback to call
+---@param time number #Time in seconds after to which to call the callback.
+---@param name string? #optional, default value=nil Callback name. If supplied, this callback can be cancelled at a later time with campaign_manager:remove_callback.
 function campaign_manager:os_clock_callback(callback_to_call, time, name) end
 
 --- Removes all pending callbacks that matches the supplied name.
----@param name string Callback name to remove.
+---@param name string? #optional, default value=nil Callback name to remove.
 function campaign_manager:remove_callback(name) end
 
 --- Prints information about all timers to the console debug spool.
 function campaign_manager:dump_timers() end
 
 --- Returns the local player faction name.
----@param force_result boolean Force the result to be returned instead of erroring in multiplayer.
----@return string  local faction name 
+---@param force_result boolean? #optional, default value=false Force the result to be returned instead of erroring in multiplayer.
+---@return string #local faction name 
 function campaign_manager:get_local_faction_name(force_result) end
 
 --- Returns the local player faction object.
----@param force_result boolean Force the result to be returned instead of erroring in multiplayer.
----@return FACTION_SCRIPT_INTERFACE  faction 
+---@param force_result boolean? #optional, default value=false Force the result to be returned instead of erroring in multiplayer.
+---@return FACTION_SCRIPT_INTERFACE #faction 
 function campaign_manager:get_local_faction(force_result) end
 
 --- Returns true if it's the local player's turn.
----@return boolean  
+---@return boolean
 function campaign_manager:is_local_players_turn() end
 
 --- Returns true if the campaign is multiplayer.
----@return boolean  is multiplayer campaign 
+---@return boolean #is multiplayer campaign 
 function campaign_manager:is_multiplayer() end
 
 --- Returns true if the campaign is new. A campaign is "new" if it has been saved only once before - this save occurs during startpos processing.<br />
 --- Note that if the script fails during startpos processing, the counter will not have been saved and it's value will be 0 - in this case, the game may report that it's not new when it is. If you experience a campaign that behaves as if it's loading into a savegame when starting from fresh, it's probably because the script failed during startpos processing.
----@return boolean  is new game 
+---@return boolean #is new game 
 function campaign_manager:is_new_game() end
 
 --- Returns whether or not the game is loaded and time is ticking.
----@return boolean  is game started 
+---@return boolean #is game started 
 function campaign_manager:is_game_running() end
 
 --- Returns a handle to the game model at any time (after the game has been created). See the Model Hierarchy pages for more information about the game model interface.
----@return any  model 
+---@return any #model 
 function campaign_manager:model() end
 
 --- Returns a handle to the raw episodic scripting interface. Generally it's not necessary to call this function, as calls made on the campaign manager which the campaign manager doesn't itself provide are passed through to the episodic scripting interface, but a direct handle to the episodic scripting interface may be sought with this function if speed of repeated access.
----@return any  
+---@return any
 function campaign_manager:get_game_interface() end
 
 --- Returns the current combined campaign difficulty. This is returned as an integer value by default, or a string if a single true argument is passed in.<br />
 --- stringnumbereasy1normal2hard3very hard4legendary5
 --- Note that the numbers returned above are different from those returned by the combined_difficulty_level() function on the campaign model.
----@param return_as_string boolean return as string
----@return any  difficulty integer or string 
+---@param return_as_string boolean? #optional, default value=false return as string
+---@return any #difficulty integer or string 
 function campaign_manager:get_difficulty(return_as_string) end
 
 --- Returns a numerically-indexed table containing the string keys of all human factions within the game.
----@return string[]  human factions 
+---@return table #human factions 
 function campaign_manager:get_human_factions() end
 
 --- Returns whether any factions in the supplied list are human. The faction list should be supplied as a numerically-indexed table of either faction keys or faction script objects.
----@param faction_list table Numerically-indexed table of string faction keys or faction script objects.
----@param tolerate_errors boolean Sets the function to tolerate errors, where it won't throw a script error and return if any of the supplied data is incorrectly formatted.
+---@param faction_list table #Numerically-indexed table of string faction keys or faction script objects.
+---@param tolerate_errors boolean #Sets the function to tolerate errors, where it won't throw a script error and return if any of the supplied data is incorrectly formatted.
 function campaign_manager:are_any_factions_human(faction_list, tolerate_errors) end
 
 --- Returns the faction key of the faction whose turn it is currently.
----@return string  faction key 
+---@return string #faction key 
 function campaign_manager:whose_turn_is_it() end
 
 --- Returns true if a battle is currently happening on-screen. This is set to true when the pre-battle panel opens, and is set to false when the battle sequence is over and any related camera animations have finished playing.
----@return boolean  battle is happening 
+---@return boolean #battle is happening 
 function campaign_manager:is_processing_battle() end
 
 --- Returns the turn number, including any modifier set with campaign_manager:set_turn_number_modifier
----@return number  turn number 
+---@return number #turn number 
 function campaign_manager:turn_number() end
 
 --- Sets a turn number modifier. This offsets the result returned by campaign_manager:turn_number by the supplied modifier. This is useful for campaign setups which include optional additional turns (e.g. one or two turns at the start of a campaign to teach players how to play the game), but still wish to trigger events on certain absolute turns. For example, some script may wish to trigger an event on turn five of a standard campaign, but this would be turn six if a one-turn optional tutorial at the start of the campaign was played through - in this case a turn number modifier of 1 could be set if not playing through the tutorial.
----@param modifier number modifier
+---@param modifier number #modifier
 function campaign_manager:set_turn_number_modifier(modifier) end
 
 --- Returns a scripted-generated object that emulates a campaign null interface.
----@return NULL_SCRIPT_INTERFACE   
+---@return NULL_SCRIPT_INTERFACE
 function campaign_manager:null_interface() end
 
 --- Returns whether the advice history indicates that a specific help page has been viewed by the player.
----@param help_page_name string help page name
----@return boolean  help page viewed  
+---@param help_page_name string #help page name
+---@return boolean #help page viewed  
 function campaign_manager:help_page_seen(help_page_name) end
 
 --- Returns whether the supplied building exists in the supplied province.
----@param building_key string building key
----@param province_key string province key
----@return boolean  building exist 
+---@param building_key string #building key
+---@param province_key string #province key
+---@return boolean #building exist 
 function campaign_manager:building_exists_in_province(building_key, province_key) end
 
 --- Returns the garrison commander character of the settlement in the supplied region.
----@param region_object REGION_SCRIPT_INTERFACE region object
----@return CHARACTER_SCRIPT_INTERFACE  garrison commander 
+---@param region_object REGION_SCRIPT_INTERFACE #region object
+---@return CHARACTER_SCRIPT_INTERFACE #garrison commander 
 function campaign_manager:get_garrison_commander_of_region(region_object) end
 
 --- Returns the general within the supplied faction that's closest to the supplied logical co-ordinates.
----@param faction any Faction specifier. This can be a faction object or a string faction name.
----@param x number Logical x co-ordinate.
----@param y number Logical y co-ordinate.
----@param include_garrison_commanders boolean Includes garrison commanders in the search results if set to true.
----@return CHARACTER_SCRIPT_INTERFACE  closest character 
+---@param faction any #Faction specifier. This can be a faction object or a string faction name.
+---@param x number #Logical x co-ordinate.
+---@param y number #Logical y co-ordinate.
+---@param include_garrison_commanders boolean? #optional, default value=false Includes garrison commanders in the search results if set to true.
+---@return CHARACTER_SCRIPT_INTERFACE #closest character 
 function campaign_manager:get_closest_general_to_position_from_faction(faction, x, y, include_garrison_commanders) end
 
 --- Returns the character within the supplied faction that's closest to the supplied logical co-ordinates.
----@param faction any Faction specifier. This can be a faction object or a string faction name.
----@param x number Logical x co-ordinate.
----@param y number Logical y co-ordinate.
----@param general_characters_only boolean Restrict search results to generals.
----@param include_garrison_commanders boolean Includes garrison commanders in the search results if set to true.
----@return CHARACTER_SCRIPT_INTERFACE  closest character 
+---@param faction any #Faction specifier. This can be a faction object or a string faction name.
+---@param x number #Logical x co-ordinate.
+---@param y number #Logical y co-ordinate.
+---@param general_characters_only boolean? #optional, default value=false Restrict search results to generals.
+---@param include_garrison_commanders boolean? #optional, default value=false Includes garrison commanders in the search results if set to true.
+---@return CHARACTER_SCRIPT_INTERFACE #closest character 
 function campaign_manager:get_closest_character_to_position_from_faction(faction, x, y, general_characters_only, include_garrison_commanders) end
 
 --- Returns the general character stood at the supplied position, regardless of faction. Garrison commanders are not returned.
----@param x number Logical x co-ordinate.
----@param y number Logical y co-ordinate.
----@return CHARACTER_SCRIPT_INTERFACE  general character 
+---@param x number #Logical x co-ordinate.
+---@param y number #Logical y co-ordinate.
+---@return CHARACTER_SCRIPT_INTERFACE #general character 
 function campaign_manager:get_general_at_position_all_factions(x, y) end
 
 --- Returns a character by it's command queue index. If no character with the supplied cqi is found then false is returned.
----@param cqi number cqi
----@return CHARACTER_SCRIPT_INTERFACE  character 
+---@param cqi number #cqi
+---@return CHARACTER_SCRIPT_INTERFACE #character 
 function campaign_manager:get_character_by_cqi(cqi) end
 
 --- Returns a military force by it's command queue index. If no military force with the supplied cqi is found then false is returned.
----@param cqi number cqi
----@return MILITARY_FORCE_SCRIPT_INTERFACE  military force 
+---@param cqi number #cqi
+---@return MILITARY_FORCE_SCRIPT_INTERFACE #military force 
 function campaign_manager:get_military_force_by_cqi(cqi) end
 
 --- Returns the commander of a military force by the military force's command queue index. If no military force with the supplied cqi is found or it has no commander then false is returned.
----@param military_force_cqi number military force cqi
----@return CHARACTER_SCRIPT_INTERFACE  general character 
+---@param military_force_cqi number #military force cqi
+---@return CHARACTER_SCRIPT_INTERFACE #general character 
 function campaign_manager:get_character_by_mf_cqi(military_force_cqi) end
 
 --- Returns the x/y display position of the supplied character.
----@param character CHARACTER_SCRIPT_INTERFACE character
----@return number  
----@return number  
+---@param character CHARACTER_SCRIPT_INTERFACE #character
+---@return number
+---@return number
 function campaign_manager:char_display_pos(character) end
 
 --- Returns the x/y logical position of the supplied character.
----@param character CHARACTER_SCRIPT_INTERFACE character
----@return number  
----@return number  
+---@param character CHARACTER_SCRIPT_INTERFACE #character
+---@return number
+---@return number
 function campaign_manager:char_logical_pos(character) end
 
 --- Returns true if the character is a general at the head of a moveable army (not a garrison), false otherwise.
----@param character CHARACTER_SCRIPT_INTERFACE character
----@return boolean  is army commander 
+---@param character CHARACTER_SCRIPT_INTERFACE #character
+---@return boolean #is army commander 
 function campaign_manager:character_is_army_commander(character) end
 
 --- Various game interface functions lookup characters using a lookup string. This function converts a character into a lookup string that can be used by code functions to find that same character. It may also be supplied a character cqi in place of a character object.
----@param character_or_character_cqi any character or character cqi
----@return string  lookup string 
+---@param character_or_character_cqi any #character or character cqi
+---@return string #lookup string 
 function campaign_manager:char_lookup_str(character_or_character_cqi) end
 
 --- Returns true if the supplied character is in a region their faction controls, false otherwise.
----@param character CHARACTER_SCRIPT_INTERFACE character
----@return boolean  stood in owned region 
+---@param character CHARACTER_SCRIPT_INTERFACE #character
+---@return boolean #stood in owned region 
 function campaign_manager:char_in_owned_region(character) end
 
 --- Returns true if the supplied character has a land army military force, false otherwise.
----@param character CHARACTER_SCRIPT_INTERFACE character
----@return boolean  has army 
+---@param character CHARACTER_SCRIPT_INTERFACE #character
+---@return boolean #has army 
 function campaign_manager:char_has_army(character) end
 
 --- Returns true if the supplied character has a navy military force, false otherwise.
----@param character CHARACTER_SCRIPT_INTERFACE character
----@return boolean  has navy 
+---@param character CHARACTER_SCRIPT_INTERFACE #character
+---@return boolean #has navy 
 function campaign_manager:char_has_navy(character) end
 
 --- Returns true if the supplied character is not a general, a colonel or a minister, false otherwise.
----@param character CHARACTER_SCRIPT_INTERFACE character
----@return boolean  is agent 
+---@param character CHARACTER_SCRIPT_INTERFACE #character
+---@return boolean #is agent 
 function campaign_manager:char_is_agent(character) end
 
 --- Returns true if the supplied character is of type 'general', false otherwise.
----@param character CHARACTER_SCRIPT_INTERFACE character
----@return boolean  is general 
+---@param character CHARACTER_SCRIPT_INTERFACE #character
+---@return boolean #is general 
 function campaign_manager:char_is_general(character) end
 
 --- Returns true if the supplied character is a general that has been victorious (when?), false otherwise.
----@param character CHARACTER_SCRIPT_INTERFACE character
----@return boolean  is victorious general 
+---@param character CHARACTER_SCRIPT_INTERFACE #character
+---@return boolean #is victorious general 
 function campaign_manager:char_is_victorious_general(character) end
 
 --- Returns true if the supplied character is a general that has been defeated (when?), false otherwise.
----@param character CHARACTER_SCRIPT_INTERFACE character
----@return boolean  is defeated general 
+---@param character CHARACTER_SCRIPT_INTERFACE #character
+---@return boolean #is defeated general 
 function campaign_manager:char_is_defeated_general(character) end
 
 --- Returns true if the supplied character is a general and has an army, false otherwise. This includes garrison commanders - to only return true if the army is mobile use campaign_manager:char_is_mobile_general_with_army.
----@param character CHARACTER_SCRIPT_INTERFACE character
----@return boolean  is general with army 
+---@param character CHARACTER_SCRIPT_INTERFACE #character
+---@return boolean #is general with army 
 function campaign_manager:char_is_general_with_army(character) end
 
 --- Returns true if the supplied character is a general, has an army, and can move around the campaign map, false otherwise.
----@param character CHARACTER_SCRIPT_INTERFACE character
----@return boolean  is general with army 
+---@param character CHARACTER_SCRIPT_INTERFACE #character
+---@return boolean #is general with army 
 function campaign_manager:char_is_mobile_general_with_army(character) end
 
 --- Returns true if the supplied character is a general with a military force that is a navy, false otherwise.
----@param character CHARACTER_SCRIPT_INTERFACE character
----@return boolean  is general with navy 
+---@param character CHARACTER_SCRIPT_INTERFACE #character
+---@return boolean #is general with navy 
 function campaign_manager:char_is_general_with_navy(character) end
 
 --- Returns true if the supplied character is the governor of a region, false otherwise.
----@param character CHARACTER_SCRIPT_INTERFACE character
----@return boolean  is governor 
+---@param character CHARACTER_SCRIPT_INTERFACE #character
+---@return boolean #is governor 
 function campaign_manager:char_is_governor(character) end
 
 --- Returns true if the supplied character is currently in any region from a supplied list, false otherwise.
----@param character CHARACTER_SCRIPT_INTERFACE character
----@param table_of_region_keys table table of region keys
----@return boolean  is in region list 
+---@param character CHARACTER_SCRIPT_INTERFACE #character
+---@param table_of_region_keys table #table of region keys
+---@return boolean #is in region list 
 function campaign_manager:char_is_in_region_list(character, table_of_region_keys) end
 
 --- Returns the closest character of the supplied subculture to the supplied faction. The subculture and faction are both specified by string key.<br />
 --- Use this function sparingly, as it is quite expensive.
----@param faction_key string faction key
----@param subculture_key string subculture key
----@return CHARACTER_SCRIPT_INTERFACE  closest visible character 
+---@param faction_key string #faction key
+---@param subculture_key string #subculture key
+---@return CHARACTER_SCRIPT_INTERFACE #closest visible character 
 function campaign_manager:get_closest_visible_character_of_subculture(faction_key, subculture_key) end
 
 --- Returns the closest character from the supplied faction to the supplied position. This includes characters such as politicians and garrison commanders that are not extant on the map.
----@param faction FACTION_SCRIPT_INTERFACE faction
----@param x number x
----@param y number y
----@return CHARACTER_SCRIPT_INTERFACE  closest character 
+---@param faction FACTION_SCRIPT_INTERFACE #faction
+---@param x number #x
+---@param y number #y
+---@return CHARACTER_SCRIPT_INTERFACE #closest character 
 function campaign_manager:get_closest_character_from_faction(faction, x, y) end
 
 --- Returns true if the supplied source character can reach the supplied target character this turn, false otherwise. The underlying test on the model interface returns false-positives if the source character has no action points - this wrapper function works around this problem by testing the source character's action points too.
----@param source_character CHARACTER_SCRIPT_INTERFACE source character
----@param target_character CHARACTER_SCRIPT_INTERFACE target character
----@return boolean  can reach 
+---@param source_character CHARACTER_SCRIPT_INTERFACE #source character
+---@param target_character CHARACTER_SCRIPT_INTERFACE #target character
+---@return boolean #can reach 
 function campaign_manager:character_can_reach_character(source_character, target_character) end
 
 --- Returns true if the supplied source character can reach the supplied target settlement this turn, false otherwise. The underlying test on the model interface returns false-positives if the source character has no action points - this wrapper function works around this problem by testing the source character's action points too.
----@param source_character CHARACTER_SCRIPT_INTERFACE source character
----@param target_settlement SETTLEMENT_SCRIPT_INTERFACE target settlement
----@return boolean  can reach 
+---@param source_character CHARACTER_SCRIPT_INTERFACE #source character
+---@param target_settlement SETTLEMENT_SCRIPT_INTERFACE #target settlement
+---@return boolean #can reach 
 function campaign_manager:character_can_reach_settlement(source_character, target_settlement) end
 
 --- Returns true if a general with a mobile military force exists in the supplied faction with the supplied forename. Faction and forename are specified by string key.
----@param faction_key string Faction key.
----@param forename_key string Forename key in the full localisation lookup format i.e. [table]_[column]_[record_key].
----@return boolean  general exists 
+---@param faction_key string #Faction key.
+---@param forename_key string #Forename key in the full localisation lookup format i.e. [table]_[column]_[record_key].
+---@return boolean #general exists 
 function campaign_manager:general_with_forename_exists_in_faction_with_force(faction_key, forename_key) end
 
 --- Returns the general character in the supplied faction of the highest rank. The faction may be supplied as a faction object or may be specified by key.
----@param faction any Faction, either by faction object or by string key.
----@return CHARACTER_SCRIPT_INTERFACE  highest ranked character 
+---@param faction any #Faction, either by faction object or by string key.
+---@return CHARACTER_SCRIPT_INTERFACE #highest ranked character 
 function campaign_manager:get_highest_ranked_general_for_faction(faction) end
 
 --- Removes all units from the military force the supplied general character commands.
----@param general_character CHARACTER_SCRIPT_INTERFACE general character
----@return number  number of units removed 
+---@param general_character CHARACTER_SCRIPT_INTERFACE #general character
+---@return number #number of units removed 
 function campaign_manager:remove_all_units_from_general(general_character) end
 
 --- Returns a table of regions within the specified distance of a character
----@param character_interface CHARACTER_SCRIPT_INTERFACE character interface
----@param distance number distance
----@param not_razed boolean not razed
----@param return_unique_list boolean return_unique_list
----@return table  Table of regions 
+---@param character_interface CHARACTER_SCRIPT_INTERFACE #character interface
+---@param distance number #distance
+---@param not_razed boolean #not razed
+---@param return_unique_list boolean? #optional, default value=false return_unique_list
+---@return table #Table of regions 
 function campaign_manager:get_regions_within_distance_of_character(character_interface, distance, not_razed, return_unique_list) end
 
 --- Gets a faction object by its string key. If no faction with the supplied key could be found then false is returned.
----@param faction_key string faction key
----@return FACTION_SCRIPT_INTERFACE  faction 
+---@param faction_key string #faction key
+---@return FACTION_SCRIPT_INTERFACE #faction 
 function campaign_manager:get_faction(faction_key) end
 
 --- Returns true if territories controlled by the supplied faction contain the supplied building. This won't work for horde buildings.
----@param faction_object FACTION_SCRIPT_INTERFACE faction object
----@param building_key string building key
----@return FACTION_SCRIPT_INTERFACE  contains building 
+---@param faction_object FACTION_SCRIPT_INTERFACE #faction object
+---@param building_key string #building key
+---@return FACTION_SCRIPT_INTERFACE #contains building 
 function campaign_manager:faction_contains_building(faction_object, building_key) end
 
 --- Returns the number of characters of the supplied type in the supplied faction.
----@param faction_object FACTION_SCRIPT_INTERFACE faction object
----@param character_type string character type
----@return number  number of characters 
+---@param faction_object FACTION_SCRIPT_INTERFACE #faction object
+---@param character_type string #character type
+---@return number #number of characters 
 function campaign_manager:num_characters_of_type_in_faction(faction_object, character_type) end
 
 --- Kills all armies in the supplied faction.
----@param faction_object FACTION_SCRIPT_INTERFACE faction object
----@return number  number of armies killed 
+---@param faction_object FACTION_SCRIPT_INTERFACE #faction object
+---@return number #number of armies killed 
 function campaign_manager:kill_all_armies_for_faction(faction_object) end
 
 --- Returns a table of cqis of characters that are both at war with the specified faction and also trespassing on its territory.
----@param faction_object FACTION_SCRIPT_INTERFACE faction object
----@return table  of character command queue indexes 
+---@param faction_object FACTION_SCRIPT_INTERFACE #faction object
+---@return table #of character command queue indexes 
 function campaign_manager:get_trespasser_list_for_faction(faction_object) end
 
 --- Returns the number of units in all military forces in the supplied faction. The optional second parameter, if true, specifies that units in armed citizenry armies should not be considered in the calculation.
----@param faction_object FACTION_SCRIPT_INTERFACE faction object
----@param exclude_armed_citizenry boolean exclude armed citizenry
----@return number  number of units 
+---@param faction_object FACTION_SCRIPT_INTERFACE #faction object
+---@param exclude_armed_citizenry boolean? #optional, default value=false exclude armed citizenry
+---@return number #number of units 
 function campaign_manager:number_of_units_in_faction(faction_object, exclude_armed_citizenry) end
 
 --- Returns true if the supplied faction has a home region or any military forces. Note that what constitutes as "alive" for a faction changes between different projects so use with care.
----@param faction_object FACTION_SCRIPT_INTERFACE faction object
----@return boolean  faction is alive 
+---@param faction_object FACTION_SCRIPT_INTERFACE #faction object
+---@return boolean #faction is alive 
 function campaign_manager:faction_is_alive(faction_object) end
 
 --- Returns true if any faction with a culture corresponding to the supplied key is alive (uses campaign_manager:faction_is_alive).
----@param culture_key string culture key
----@return boolean  any faction is alive 
+---@param culture_key string #culture key
+---@return boolean #any faction is alive 
 function campaign_manager:faction_of_culture_is_alive(culture_key) end
 
 --- Returns true if any faction with a subculture corresponding to the supplied key is alive (uses campaign_manager:faction_is_alive).
----@param subculture_key string subculture key
----@return boolean  any faction is alive 
+---@param subculture_key string #subculture key
+---@return boolean #any faction is alive 
 function campaign_manager:faction_of_subculture_is_alive(subculture_key) end
 
 --- Returns true if the supplied faction has any armies in the territory of factions it's at war with, false otherwise.
----@param faction FACTION_SCRIPT_INTERFACE faction
----@return boolean  has armies in enemy territory 
+---@param faction FACTION_SCRIPT_INTERFACE #faction
+---@return boolean #has armies in enemy territory 
 function campaign_manager:faction_has_armies_in_enemy_territory(faction) end
 
 --- Returns true if the supplied faction has any armies in the supplied region, false otherwise.
----@param faction FACTION_SCRIPT_INTERFACE faction
----@param region REGION_SCRIPT_INTERFACE region
----@return boolean  armies in region 
+---@param faction FACTION_SCRIPT_INTERFACE #faction
+---@param region REGION_SCRIPT_INTERFACE #region
+---@return boolean #armies in region 
 function campaign_manager:faction_has_armies_in_region(faction, region) end
 
 --- Returns true if the supplied faction has any armies in the supplied region, false otherwise.
----@param faction FACTION_SCRIPT_INTERFACE faction
----@param region REGION_SCRIPT_INTERFACE region
----@return boolean  armies in region 
+---@param faction FACTION_SCRIPT_INTERFACE #faction
+---@param region REGION_SCRIPT_INTERFACE #region
+---@return boolean #armies in region 
 function campaign_manager:faction_has_nap_with_faction(faction, region) end
 
 --- Returns true if the supplied faction has any armies in the supplied region, false otherwise.
----@param faction FACTION_SCRIPT_INTERFACE faction
----@param region REGION_SCRIPT_INTERFACE region
----@return boolean  armies in region 
+---@param faction FACTION_SCRIPT_INTERFACE #faction
+---@param region REGION_SCRIPT_INTERFACE #region
+---@return boolean #armies in region 
 function campaign_manager:faction_has_trade_agreement_with_faction(faction, region) end
 
 --- Returns a table of regions at the border of the supplied faction
----@param faction FACTION_SCRIPT_INTERFACE faction
----@param outside_border_True_returns_regions_bordering_the_faction_that_do_not_belong_to_the_faction boolean False returns a list of the factions regions at their border
----@param return_unique_list boolean return_unique_list
----@return table  Table of regions 
+---@param faction FACTION_SCRIPT_INTERFACE #faction
+---@param outside_border_True_returns_regions_bordering_the_faction_that_do_not_belong_to_the_faction boolean #False returns a list of the factions regions at their border
+---@param return_unique_list boolean? #optional, default value=false return_unique_list
+---@return table #Table of regions 
 function campaign_manager:get_border_regions_of_faction(faction, outside_border_True_returns_regions_bordering_the_faction_that_do_not_belong_to_the_faction, return_unique_list) end
 
 --- Returns a table of factions that border the supplied faction
----@param faction FACTION_SCRIPT_INTERFACE faction
----@param return_unique_list boolean return_unique_list
----@return table  Table of factions 
+---@param faction FACTION_SCRIPT_INTERFACE #faction
+---@param return_unique_list boolean? #optional, default value=false return_unique_list
+---@return table #Table of factions 
 function campaign_manager:get_factions_that_border_faction(faction, return_unique_list) end
 
 --- Heals all units in military forces owned by the supplied faction to the specified health. The health may be supplied as a unary value i.e. 0 - 1.
----@param faction FACTION_SCRIPT_INTERFACE faction
----@param unary_health number unary health
+---@param faction FACTION_SCRIPT_INTERFACE #faction
+---@param unary_health number? #optional, default value=1 unary health
 function campaign_manager:heal_all_units_for_faction(faction, unary_health) end
 
 --- Returns true if the supplied garrison residence contains a building with the supplied key, false otherwise.
----@param garrison_residence GARRISON_RESIDENCE_SCRIPT_INTERFACE garrison residence
----@param building_key string building key
----@return boolean  garrison contains building 
+---@param garrison_residence GARRISON_RESIDENCE_SCRIPT_INTERFACE #garrison residence
+---@param building_key string #building key
+---@return boolean #garrison contains building 
 function campaign_manager:garrison_contains_building(garrison_residence, building_key) end
 
 --- Returns true if the supplied garrison residence contains a building with the supplied chain key, false otherwise.
----@param garrison_residence GARRISON_RESIDENCE_SCRIPT_INTERFACE garrison residence
----@param building_chain_key string building chain key
----@return boolean  garrison contains building 
+---@param garrison_residence GARRISON_RESIDENCE_SCRIPT_INTERFACE #garrison residence
+---@param building_chain_key string #building chain key
+---@return boolean #garrison contains building 
 function campaign_manager:garrison_contains_building_chain(garrison_residence, building_chain_key) end
 
 --- Returns true if the supplied garrison residence contains a building with the supplied superchain key, false otherwise.
----@param garrison_residence GARRISON_RESIDENCE_SCRIPT_INTERFACE garrison residence
----@param building_superchain_key string building superchain key
----@return boolean  garrison contains building 
+---@param garrison_residence GARRISON_RESIDENCE_SCRIPT_INTERFACE #garrison residence
+---@param building_superchain_key string #building superchain key
+---@return boolean #garrison contains building 
 function campaign_manager:garrison_contains_building_superchain(garrison_residence, building_superchain_key) end
 
 --- Returns the garrison army from a garrison residence. By default this returns the land army armed citizenry - an optional flag instructs the function to return the naval armed citizenry instead.
----@param garrison_residence GARRISON_RESIDENCE_SCRIPT_INTERFACE Garrison residence.
----@param get_naval boolean Returns the naval armed citizenry army, if set to true.
----@return boolean  armed citizenry army 
+---@param garrison_residence GARRISON_RESIDENCE_SCRIPT_INTERFACE #Garrison residence.
+---@param get_naval boolean? #optional, default value=false Returns the naval armed citizenry army, if set to true.
+---@return boolean #armed citizenry army 
 function campaign_manager:get_armed_citizenry_from_garrison(garrison_residence, get_naval) end
 
 --- Returns the average strength of all units in the military force. This is expressed as a percentage (0-100), so a returned value of 75 would indicate that the military force had lost 25% of its strength through casualties.
----@param military_force MILITARY_FORCE_SCRIPT_INTERFACE military force
----@return number  average strength percentage 
+---@param military_force MILITARY_FORCE_SCRIPT_INTERFACE #military force
+---@return number #average strength percentage 
 function campaign_manager:military_force_average_strength(military_force) end
 
 --- Returns the number of military forces that are not armed-citizenry in the supplied military force list. 
----@param military_force_list MILITARY_FORCE_LIST_SCRIPT_INTERFACE military force list
----@return number  number of mobile forces 
+---@param military_force_list MILITARY_FORCE_LIST_SCRIPT_INTERFACE #military force list
+---@return number #number of mobile forces 
 function campaign_manager:num_mobile_forces_in_force_list(military_force_list) end
 
 --- Returns the unary proportion (0-1) of units in the supplied military force which are of the supplied unit class.
----@param military_force MILITARY_FORCE_SCRIPT_INTERFACE military force
----@param unit_class string unit class
----@return number  units of unit class 
+---@param military_force MILITARY_FORCE_SCRIPT_INTERFACE #military force
+---@param unit_class string #unit class
+---@return number # units of unit class 
 function campaign_manager:proportion_of_unit_class_in_military_force(military_force, unit_class) end
 
 --- Returns true if the supplied military force contains any units of a type contained in the supplied unit type list, false otherwise.
----@param military_force MILITARY_FORCE_SCRIPT_INTERFACE Military force.
----@param unit_type_list table Unit type list. This must be supplied as a numerically indexed table of strings.
----@return MILITARY_FORCE_SCRIPT_INTERFACE  contains unit from type list 
+---@param military_force MILITARY_FORCE_SCRIPT_INTERFACE #Military force.
+---@param unit_type_list table #Unit type list. This must be supplied as a numerically indexed table of strings.
+---@return MILITARY_FORCE_SCRIPT_INTERFACE #contains unit from type list 
 function campaign_manager:military_force_contains_unit_type_from_list(military_force, unit_type_list) end
 
 --- Returns true if the supplied military force contains any units of a class contained in the supplied unit class list, false otherwise.
----@param military_force MILITARY_FORCE_SCRIPT_INTERFACE Military force.
----@param unit_class_list table Unit class list. This must be supplied as a numerically indexed table of strings.
----@return MILITARY_FORCE_SCRIPT_INTERFACE  contains unit from class list 
+---@param military_force MILITARY_FORCE_SCRIPT_INTERFACE #Military force.
+---@param unit_class_list table #Unit class list. This must be supplied as a numerically indexed table of strings.
+---@return MILITARY_FORCE_SCRIPT_INTERFACE #contains unit from class list 
 function campaign_manager:military_force_contains_unit_class_from_list(military_force, unit_class_list) end
 
 --- Returns the force whose commanding general has the passed cqi. If no force is found then false is returned.
----@param general_cqi number general cqi
----@return MILITARY_FORCE_SCRIPT_INTERFACE  force force 
+---@param general_cqi number #general cqi
+---@return MILITARY_FORCE_SCRIPT_INTERFACE #force force 
 function campaign_manager:force_from_general_cqi(general_cqi) end
 
 --- Returns the gold value of all of the units in the force.
----@param force_cqi number force cqi
----@return number  value 
+---@param force_cqi number #force cqi
+---@return number #value 
 function campaign_manager:force_gold_value(force_cqi) end
 
 --- Returns a region object with the supplied region name. If no such region is found then false is returned.
----@param region_name string region name
----@return REGION_SCRIPT_INTERFACE  region 
+---@param region_name string #region name
+---@return REGION_SCRIPT_INTERFACE #region 
 function campaign_manager:get_region(region_name) end
 
 --- Returns true if the specified region is owned by the specified faction.
----@param region_name string region name
----@param faction_name string faction name
----@return boolean  region is owned by faction 
+---@param region_name string #region name
+---@param faction_name string #faction name
+---@return boolean #region is owned by faction 
 function campaign_manager:is_region_owned_by_faction(region_name, faction_name) end
 
 --- Returns true if a specified region has any neighbouring regions with a different religion, false otherwise.
----@param subject_region REGION_SCRIPT_INTERFACE subject region
----@return boolean  region has neighbour of different religion 
+---@param subject_region REGION_SCRIPT_INTERFACE #subject region
+---@return boolean #region has neighbour of different religion 
 function campaign_manager:region_has_neighbours_of_other_religion(subject_region) end
 
 --- Instantly upgrades the building in the supplied slot to the supplied building key.
----@param slot SLOT_SCRIPT_INTERFACE slot
----@param target_building_key string target building key
+---@param slot SLOT_SCRIPT_INTERFACE #slot
+---@param target_building_key string #target building key
 function campaign_manager:instantly_upgrade_building_in_region(slot, target_building_key) end
 
 --- Instantly dismantles the building in the supplied slot number of the supplied region.
----@param slot SLOT_SCRIPT_INTERFACE slot
+---@param slot SLOT_SCRIPT_INTERFACE #slot
 function campaign_manager:instantly_dismantle_building_in_region(slot) end
 
 --- Returns the region held by a specified faction that has the highest proportion of a specified religion. The numeric religion proportion is also returned.
----@param subject_faction FACTION_SCRIPT_INTERFACE subject faction
----@param religion_key string religion key
----@return REGION_SCRIPT_INTERFACE  most pious region 
----@return number  religion proportion 
+---@param subject_faction FACTION_SCRIPT_INTERFACE #subject faction
+---@param religion_key string #religion key
+---@return REGION_SCRIPT_INTERFACE #most pious region 
+---@return number #religion proportion 
 function campaign_manager:get_most_pious_region_for_faction_for_religion(subject_faction, religion_key) end
 
 --- Creates a storm of a given type in a given region. This calls the cm:create_storm_for_region function of the same name on the underlying episodic scripting interface, but adds validation and output.
----@param region_key string region key
----@param storm_strength number storm strength
----@param duration number duration
----@param storm_type string storm type
+---@param region_key string #region key
+---@param storm_strength number #storm strength
+---@param duration number #duration
+---@param storm_type string #storm type
 function campaign_manager:create_storm_for_region(region_key, storm_strength, duration, storm_type) end
 
 --- Returns the display position of a supplied settlement by string name.
----@param settlement_name string settlement name
----@return number  x display position 
----@return number  y display position 
+---@param settlement_name string #settlement name
+---@return number #x display position 
+---@return number #y display position 
 function campaign_manager:settlement_display_pos(settlement_name) end
 
 --- Returns the logical position of a supplied settlement by string name.
----@param settlement_name string settlement name
----@return number  x logical position 
----@return number  y logical position 
+---@param settlement_name string #settlement name
+---@return number #x logical position 
+---@return number #y logical position 
 function campaign_manager:settlement_logical_pos(settlement_name) end
 
 --- Returns the number of attacking armies in the cached pending battle.
----@return number  number of attacking armies 
+---@return number #number of attacking armies 
 function campaign_manager:pending_battle_cache_num_attackers() end
 
 --- Returns records relating to a particular attacker in the cached pending battle. The attacker is specified by numerical index, with the first being accessible at record 1. This function returns the cqi of the commanding character, the cqi of the military force, and the faction name.
----@param index_of_attacker number index of attacker
----@return number  character cqi 
----@return number  military force cqi 
----@return string  faction name 
+---@param index_of_attacker number #index of attacker
+---@return number #character cqi 
+---@return number #military force cqi 
+---@return string #faction name 
 function campaign_manager:pending_battle_cache_get_attacker(index_of_attacker) end
 
 --- Returns just the faction name of a particular attacker in the cached pending battle. The attacker is specified by numerical index, with the first being accessible at record 1.
----@param index_of_attacker number index of attacker
----@return string  faction name 
+---@param index_of_attacker number #index of attacker
+---@return string #faction name 
 function campaign_manager:pending_battle_cache_get_attacker_faction_name(index_of_attacker) end
 
 --- Returns just the subtype of a particular attacker in the cached pending battle. The attacker is specified by numerical index, with the first being accessible at record 1.
----@param index_of_attacker number index of attacker
----@return string  subtype 
+---@param index_of_attacker number #index of attacker
+---@return string #subtype 
 function campaign_manager:pending_battle_cache_get_attacker_subtype(index_of_attacker) end
 
 --- Returns the number of defending armies in the cached pending battle.
----@return number  number of defending armies 
+---@return number #number of defending armies 
 function campaign_manager:pending_battle_cache_num_defenders() end
 
 --- Returns records relating to a particular defender in the cached pending battle. The defender is specified by numerical index, with the first being accessible at record 1. This function returns the cqi of the commanding character, the cqi of the military force, and the faction name.
----@param index_of_defender number index of defender
----@return number  character cqi 
----@return number  military force cqi 
----@return string  faction name 
+---@param index_of_defender number #index of defender
+---@return number #character cqi 
+---@return number #military force cqi 
+---@return string #faction name 
 function campaign_manager:pending_battle_cache_get_defender(index_of_defender) end
 
 --- Returns just the faction name of a particular defender in the cached pending battle. The defender is specified by numerical index, with the first being accessible at record 1.
----@param index_of_defender number index of defender
----@return string  faction name 
+---@param index_of_defender number #index of defender
+---@return string #faction name 
 function campaign_manager:pending_battle_cache_get_defender_faction_name(index_of_defender) end
 
 --- Returns just the subtype of a particular defender in the cached pending battle. The defender is specified by numerical index, with the first being accessible at record 1.
----@param index_of_defender number index of defender
----@return string  subtype 
+---@param index_of_defender number #index of defender
+---@return string #subtype 
 function campaign_manager:pending_battle_cache_get_defender_subtype(index_of_defender) end
 
 --- Returns true if the faction was an attacker (primary or reinforcing) in the cached pending battle.
----@param faction_key string faction key
----@return boolean  faction was attacker 
+---@param faction_key string #faction key
+---@return boolean #faction was attacker 
 function campaign_manager:pending_battle_cache_faction_is_attacker(faction_key) end
 
 --- Returns true if the faction was a defender (primary or reinforcing) in the cached pending battle.
----@param faction_key string faction key
----@return boolean  faction was defender 
+---@param faction_key string #faction key
+---@return boolean #faction was defender 
 function campaign_manager:pending_battle_cache_faction_is_defender(faction_key) end
 
 --- Returns true if the faction was involved in the cached pending battle as either attacker or defender.
----@param faction_key string faction key
----@return boolean  faction was involved 
+---@param faction_key string #faction key
+---@return boolean #faction was involved 
 function campaign_manager:pending_battle_cache_faction_is_involved(faction_key) end
 
 --- Returns true if any of the attacking factions involved in the cached pending battle were human controlled (whether local or not).
----@return boolean  human was attacking 
+---@return boolean #human was attacking 
 function campaign_manager:pending_battle_cache_human_is_attacker() end
 
 --- Returns true if any of the defending factions involved in the cached pending battle were human controlled (whether local or not).
----@return boolean  human was defending 
+---@return boolean #human was defending 
 function campaign_manager:pending_battle_cache_human_is_defender() end
 
 --- Returns true if any of the factions involved in the cached pending battle on either side were human controlled (whether local or not).
----@return boolean  human was involved 
+---@return boolean #human was involved 
 function campaign_manager:pending_battle_cache_human_is_involved() end
 
 --- Returns true if any of the attacking factions in the cached pending battle are of the supplied culture.
----@param culture_key string culture key
----@return boolean  any attacker was culture 
+---@param culture_key string #culture key
+---@return boolean #any attacker was culture 
 function campaign_manager:pending_battle_cache_culture_is_attacker(culture_key) end
 
 --- Returns true if any of the defending factions in the cached pending battle are of the supplied culture.
----@param culture_key string culture key
----@return boolean  any defender was culture 
+---@param culture_key string #culture key
+---@return boolean #any defender was culture 
 function campaign_manager:pending_battle_cache_culture_is_defender(culture_key) end
 
 --- Returns true if any of the factions involved in the cached pending battle on either side match the supplied culture.
----@param culture_key string culture key
----@return boolean  culture was involved 
+---@param culture_key string #culture key
+---@return boolean #culture was involved 
 function campaign_manager:pending_battle_cache_culture_is_involved(culture_key) end
 
 --- Returns true if any of the attacking factions in the cached pending battle are of the supplied subculture.
----@param subculture_key string subculture key
----@return boolean  any attacker was subculture 
+---@param subculture_key string #subculture key
+---@return boolean #any attacker was subculture 
 function campaign_manager:pending_battle_cache_subculture_is_attacker(subculture_key) end
 
 --- Returns true if any of the defending factions in the cached pending battle are of the supplied subculture.
----@param subculture_key string subculture key
----@return boolean  any defender was subculture 
+---@param subculture_key string #subculture key
+---@return boolean #any defender was subculture 
 function campaign_manager:pending_battle_cache_subculture_is_defender(subculture_key) end
 
 --- Returns true if any of the factions involved in the cached pending battle on either side match the supplied subculture.
----@param subculture_key string subculture key
----@return boolean  subculture was involved 
+---@param subculture_key string #subculture key
+---@return boolean #subculture was involved 
 function campaign_manager:pending_battle_cache_subculture_is_involved(subculture_key) end
 
 --- Returns true if the supplied character was an attacker in the cached pending battle.
----@param character any Character to query. May be supplied as a character object or as a cqi number.
----@return boolean  character was attacker 
+---@param character any #Character to query. May be supplied as a character object or as a cqi number.
+---@return boolean #character was attacker 
 function campaign_manager:pending_battle_cache_char_is_attacker(character) end
 
 --- Returns true if the supplied character was a defender in the cached pending battle.
----@param character any Character to query. May be supplied as a character object or as a cqi number.
----@return boolean  character was defender 
+---@param character any #Character to query. May be supplied as a character object or as a cqi number.
+---@return boolean #character was defender 
 function campaign_manager:pending_battle_cache_char_is_defender(character) end
 
 --- Returns true if the supplied character was an attacker or defender in the cached pending battle.
----@param character any Character to query. May be supplied as a character object or as a cqi number.
----@return boolean  character was involved 
+---@param character any #Character to query. May be supplied as a character object or as a cqi number.
+---@return boolean #character was involved 
 function campaign_manager:pending_battle_cache_char_is_involved(character) end
 
 --- Returns true if the supplied military force was an attacker in the cached pending battle.
----@param cqi number Command-queue-index of the military force to query.
----@return boolean  force was attacker 
+---@param cqi number #Command-queue-index of the military force to query.
+---@return boolean #force was attacker 
 function campaign_manager:pending_battle_cache_mf_is_attacker(cqi) end
 
 --- Returns true if the supplied military force was a defender in the cached pending battle.
----@param cqi number Command-queue-index of the military force to query.
----@return boolean  force was defender 
+---@param cqi number #Command-queue-index of the military force to query.
+---@return boolean #force was defender 
 function campaign_manager:pending_battle_cache_mf_is_defender(cqi) end
 
 --- Returns true if the supplied military force was an attacker or defender in the cached pending battle.
----@param cqi number Command-queue-index of the military force to query.
----@return boolean  force was involved 
+---@param cqi number #Command-queue-index of the military force to query.
+---@return boolean #force was involved 
 function campaign_manager:pending_battle_cache_mf_is_involved(cqi) end
 
 --- Returns a numerically indexed table of character objects, each representing an enemy character of the supplied character in the cached pending battle. If the supplied character was not present in the pending battle then the returned table will be empty.
----@param character_to_query CHARACTER_SCRIPT_INTERFACE character to query
----@return table  table of enemy characters 
+---@param character_to_query CHARACTER_SCRIPT_INTERFACE #character to query
+---@return table #table of enemy characters 
 function campaign_manager:pending_battle_cache_get_enemies_of_char(character_to_query) end
 
 --- Returns true if any of the participating factions in the pending battle are quest battle factions, false otherwise.
----@return boolean  is quest battle 
+---@return boolean #is quest battle 
 function campaign_manager:pending_battle_cache_is_quest_battle() end
 
 --- Returns true if the pending battle has been won by the attacker, false otherwise.
----@return boolean  attacker has won 
+---@return boolean #attacker has won 
 function campaign_manager:pending_battle_cache_attacker_victory() end
 
 --- Returns true if the pending battle has been won by the defender, false otherwise.
----@return boolean  defender has won 
+---@return boolean #defender has won 
 function campaign_manager:pending_battle_cache_defender_victory() end
 
 --- Returns the gold value of attacking forces in the cached pending battle.
----@return number  gold value of attacking forces 
+---@return number #gold value of attacking forces 
 function campaign_manager:pending_battle_cache_attacker_value() end
 
 --- Returns the gold value of defending forces in the cached pending battle.
----@return number  gold value of defending forces 
+---@return number #gold value of defending forces 
 function campaign_manager:pending_battle_cache_defender_value() end
 
 --- Assembles and returns a random integer between 1 and 100, or other supplied values. The result returned is inclusive of the supplied max/min. This is safe to use in multiplayer scripts.
----@param max integer Maximum value of returned random number.
----@param min integer Minimum value of returned random number.
----@return number  random number 
+---@param max integer? #optional, default value=100 Maximum value of returned random number.
+---@param min integer? #optional, default value=1 Minimum value of returned random number.
+---@return number #random number 
 function campaign_manager:random_number(max, min) end
 
 --- Randomly sorts a numerically-indexed table. This is safe to use in multiplayer, but will destroy the supplied table. It is faster than campaign_manager:random_sort_copy.<br />
 --- Note that records in this table that are not arranged in an ascending numerical index will be lost.<br />
 --- Note also that the supplied table is overwritten with the randomly-sorted table, which is also returned as a return value.
----@return table  
+---@return table
 function campaign_manager:random_sort() end
 
 --- Randomly sorts a numerically-indexed table. This is safe to use in multiplayer, and will preserve the original table, but it is slower than campaign_manager:random_sort as it copies the table first.<br />
 --- Note that records in the source table that are not arranged in an ascending numerical index will not be copied (they will not be deleted, however).
----@return table  
+---@return table
 function campaign_manager:random_sort_copy() end
 
 --- Randomly shuffles a table with an implementation of the Fisher-Yates shuffle.<br />
 --- Note that unlike the random_sort function this modifies the existing table and doesn't create a new one.
----@param table table table
+---@param table table #table
 function campaign_manager:shuffle_table(table) end
 
 --- Gets a handle to the campaign_ui_manager (or creates it).
----@return campaign_ui_manager   
+---@return campaign_ui_manager
 function campaign_manager:get_campaign_ui_manager() end
 
 --- Activates or deactivates a highlight on the event panel dismiss button. This may not work in all circumstances.
----@param should_highlight boolean should highlight
+---@param should_highlight boolean? #optional, default value=true should highlight
 function campaign_manager:highlight_event_dismiss_button(should_highlight) end
 
 --- Immediately exits to the frontend. Mainly used in benchmark scripts.
 function campaign_manager:quit() end
 
 --- Enables or disables the ability of the player to hide the UI.
----@param enable_hiding boolean enable hiding
+---@param enable_hiding boolean? #optional, default value=true enable hiding
 function campaign_manager:enable_ui_hiding(enable_hiding) end
 
 --- Returns false if ui hiding has been disabled with campaign_manager:enable_ui_hiding, true otherwise.
----@return boolean  is ui hiding enabled 
+---@return boolean #is ui hiding enabled 
 function campaign_manager:is_ui_hiding_enabled() end
 
 --- Override function for scroll_camera_wiht_direction that provides output.
----@param correct_endpoint boolean Correct endpoint. If true, the game will adjust the final position of the camera so that it's a valid camera position for the game. Set to true if control is being released back to the player after this camera movement finishes.
----@param time number Time in seconds over which to scroll.
----@vararg any
+---@param correct_endpoint boolean #Correct endpoint. If true, the game will adjust the final position of the camera so that it's a valid camera position for the game. Set to true if control is being released back to the player after this camera movement finishes.
+---@param time number #Time in seconds over which to scroll.
+---@param ... any #Two or more camera positions must be supplied. Each position should be a table with five number components, as described in the description of the Camera Movement section.
 function campaign_manager:scroll_camera_with_direction(correct_endpoint, time, ...) end
 
 --- Scrolls the camera from the current camera position. This is the same as callling campaign_manager:scroll_camera_with_direction with the current camera position as the first set of co-ordinates.
----@param correct_endpoint boolean Correct endpoint. If true, the game will adjust the final position of the camera so that it's a valid camera position for the game. Set to true if control is being released back to the player after this camera movement finishes.
----@param time number Time in seconds over which to scroll.
----@vararg any
+---@param correct_endpoint boolean #Correct endpoint. If true, the game will adjust the final position of the camera so that it's a valid camera position for the game. Set to true if control is being released back to the player after this camera movement finishes.
+---@param time number #Time in seconds over which to scroll.
+---@param ... any #One or more camera positions must be supplied. Each position should be a table with five number components, as described in the description of the Camera Movement section.
 function campaign_manager:scroll_camera_from_current(correct_endpoint, time, ...) end
 
 --- Scrolls the camera from the current camera position in a cutscene. Cinematic borders will be shown (unless disabled with campaign_manager:set_use_cinematic_borders_for_automated_cutscenes), the UI hidden, and interaction with the game disabled while the camera is scrolling. The player will be able to skip the cutscene with the ESC key, in which case the camera will jump to the end position.
----@param time number Time in seconds over which to scroll.
----@param callback function Optional callback to call when the cutscene ends.
----@vararg any
+---@param time number #Time in seconds over which to scroll.
+---@param callback function? #optional, default value=nil Optional callback to call when the cutscene ends.
+---@param ... any #One or more camera positions must be supplied. Each position should be a table with five number components, as described in the description of the Camera Movement section.
 function campaign_manager:scroll_camera_with_cutscene(time, callback, ...) end
 
 --- Scrolls the camera through the supplied list of camera points in a cutscene. Cinematic borders will be shown (unless disabled with campaign_manager:set_use_cinematic_borders_for_automated_cutscenes), the UI hidden, and interaction with the game disabled while the camera is scrolling. The player will be able to skip the cutscene with the ESC key, in which case the camera will jump to the end position.
----@param time number Time in seconds over which to scroll.
----@param callback function Optional callback to call when the cutscene ends.
+---@param time number #Time in seconds over which to scroll.
+---@param callback function? #optional, default value=nil Optional callback to call when the cutscene ends.
 function campaign_manager:cut_and_scroll_camera_with_cutscene(time, callback) end
 
 --- Scrolls the camera in a cutscene to the specified settlement in a cutscene. The settlement is specified by region key. Cinematic borders will be shown (unless disabled with campaign_manager:set_use_cinematic_borders_for_automated_cutscenes), the UI hidden, and interaction with the game disabled while the camera is scrolling. The player will be able to skip the cutscene with the ESC key, in which case the camera will jump to the target.
----@param time number Time in seconds over which to scroll.
----@param callback function Optional callback to call when the cutscene ends.
----@param region_key string Key of region containing target settlement.
+---@param time number #Time in seconds over which to scroll.
+---@param callback function? #optional, default value=nil Optional callback to call when the cutscene ends.
+---@param region_key string #Key of region containing target settlement.
 function campaign_manager:scroll_camera_with_cutscene_to_settlement(time, callback, region_key) end
 
 --- Scrolls the camera in a cutscene to the specified character in a cutscene. The character is specified by its command queue index (cqi). Cinematic borders will be shown (unless disabled with campaign_manager:set_use_cinematic_borders_for_automated_cutscenes), the UI hidden, and interaction with the game disabled while the camera is scrolling. The player will be able to skip the cutscene with the ESC key, in which case the camera will jump to the target.
----@param time number Time in seconds over which to scroll.
----@param callback function Optional callback to call when the cutscene ends.
----@param cqi number CQI of target character.
+---@param time number #Time in seconds over which to scroll.
+---@param callback function? #optional, default value=nil Optional callback to call when the cutscene ends.
+---@param cqi number #CQI of target character.
 function campaign_manager:scroll_camera_with_cutscene_to_character(time, callback, cqi) end
 
 --- Sets whether or not to show cinematic borders when scrolling the camera in an automated cutscene (for example with campaign_manager:scroll_camera_with_cutscene). By default, cinematic borders are displayed.
----@param show_borders boolean show borders
+---@param show_borders boolean? #optional, default value=true show borders
 function campaign_manager:set_use_cinematic_borders_for_automated_cutscenes(show_borders) end
 
 --- Immediately positions the camera at a position looking at the primary military force for the supplied faction. The faction is specified by key.
----@param faction_key string faction key
+---@param faction_key string #faction key
 function campaign_manager:position_camera_at_primary_military_force(faction_key) end
 
 --- Starts playback of a cindy scene. This is a wrapper for the cinematics:cindy_playback function, adding debug output.
----@param filepath string File path to cindy scene, from the working data folder.
----@param blend_in_duration number Time in seconds over which the camera will blend into the cindy scene when started.
----@param blend_out_duration number Time in seconds over which the camera will blend out of the cindy scene when it ends.
+---@param filepath string #File path to cindy scene, from the working data folder.
+---@param blend_in_duration number? #optional, default value=nil Time in seconds over which the camera will blend into the cindy scene when started.
+---@param blend_out_duration number? #optional, default value=nil Time in seconds over which the camera will blend out of the cindy scene when it ends.
 function campaign_manager:cindy_playback(filepath, blend_in_duration, blend_out_duration) end
 
 --- Stops playback of any currently-playing cindy scene. This is a wrapper for the function of the same name on the cinematic interface, but adds debug output.
----@param clear_animation_scenes boolean clear animation scenes
+---@param clear_animation_scenes boolean #clear animation scenes
 function campaign_manager:stop_cindy_playback(clear_animation_scenes) end
 
 --- Caches the current camera position, so that the camera position may be compared to it later to determine if it has moved. An optional name may be specified for this cache entry so that multiple cache entries may be created. If the camera position was previously cached with the supplied cache name then that cache will be overwritten.
----@param cache_name string cache name
+---@param cache_name string? #optional, default value="default" cache name
 function campaign_manager:cache_camera_position(cache_name) end
 
 --- Returns whether a camera position is currently cached for the (optional) supplied cache name.
----@param cache_name string cache name
----@return boolean  camera position is cached 
+---@param cache_name string? #optional, default value="default" cache name
+---@return boolean #camera position is cached 
 function campaign_manager:cached_camera_position_exists(cache_name) end
 
 --- Returns the camera position which was last cached with the optional cache name (the default cache name is "default"). If no camera cache has been set with the specified name then a script error is generated.
----@param cache_name string cache name
----@return number  x 
----@return number  y 
----@return number  d 
----@return number  b 
----@return number  h 
+---@param cache_name string? #optional, default value="default" cache name
+---@return number #x 
+---@return number #y 
+---@return number #d 
+---@return number #b 
+---@return number #h 
 function campaign_manager:get_cached_camera_position(cache_name) end
 
 --- Compares the current position of the camera to that last cached with the (optional) specified cache name, and returns true if any of the camera co-ordinates have changed by the (optional) supplied distance, or false otherwise. If no camera cache has been set with the specified name then a script error is generated.
----@param cache_name string cache name
+---@param cache_name string? #optional, default value="default" cache name
 function campaign_manager:camera_has_moved_from_cached(cache_name) end
 
 --- Removes the cache for the supplied cache name. If no cache name is specified the default cache (cache name "default") is deleted.
----@param cache_name string cache name
+---@param cache_name string? #optional, default value="default" cache name
 function campaign_manager:delete_cached_camera_position(cache_name) end
 
 --- Shows subtitled text during a cutscene. The text is displayed until campaign_manager:hide_subtitles is called.
----@param text_key string Text key. By default, this is supplied as a record key from the scripted_subtitles table. Text from anywhere in the database may be shown, however, by supplying the full localisation key and true for the second argument.
----@param full_text_key_supplied boolean Set to true if the fll localised text key was supplied for the first argument in the form [table]_[field]_[key].
----@param force_diplay boolean Forces subtitle display. Setting this to true overrides the player's preferences on subtitle display.
+---@param text_key string #Text key. By default, this is supplied as a record key from the scripted_subtitles table. Text from anywhere in the database may be shown, however, by supplying the full localisation key and true for the second argument.
+---@param full_text_key_supplied boolean? #optional, default value=false] boolean full text key supplied, Set to true if the fll localised text key was supplied for the first argument in the form [table]_[field]_[key Set to true if the fll localised text key was supplied for the first argument in the form [table]_[field]_[key].
+---@param force_diplay boolean? #optional, default value=false Forces subtitle display. Setting this to true overrides the player's preferences on subtitle display.
 function campaign_manager:show_subtitle(text_key, full_text_key_supplied, force_diplay) end
 
 --- Hides any subtitles currently displayed with campaign_manager:show_subtitle.
 function campaign_manager:hide_subtitles() end
 
 --- Returns true if any campaign_cutscene is running, false otherwise.
----@return boolean  is any cutscene running 
+---@return boolean #is any cutscene running 
 function campaign_manager:is_any_cutscene_running() end
 
 --- Skips any campaign cutscene currently running. 
@@ -942,83 +942,83 @@ function campaign_manager:skip_all_campaign_cutscenes() end
 
 --- Steals or releases the escape key. This wraps the function cm:steal_escape_key function of the same name on the underlying episodic scripting interface. While the ESC key is stolen by script, presses of the key will cause OnKeyPressed() to be called which goes on to call campaign_manager:on_key_press_up.<br />
 --- To register a function to call when the escape key is pressed use campaign_manager:steal_escape_key_with_callback or campaign_manager:steal_escape_key_and_space_bar_with_callback instead of this function.
----@param steal boolean steal
+---@param steal boolean #steal
 function campaign_manager:steal_escape_key(steal) end
 
 --- Steals or releases user input. This wraps the cm:steal_user_input function of the same name on the underlying episodic scripting interface. Stealing user input prevents any player interaction with the game (asides from pressing the ESC key).
----@param steal boolean steal
+---@param steal boolean #steal
 function campaign_manager:steal_user_input(steal) end
 
 --- Called by the campaign model when a key stolen by steal_user_input or steal_escape_key is pressed. Client scripts should not call this!
----@param key_pressed string key pressed
+---@param key_pressed string #key pressed
 function campaign_manager:on_key_press_up(key_pressed) end
 
 --- Debug output of all current stolen key records.
 function campaign_manager:print_key_steal_entries() end
 
 --- Steal a key, and register a callback to be called when it's pressed. It will be un-stolen when this occurs. campaign_manager:steal_user_input will need to be called separately for this mechanism to work, unless it's the escape key that being stolen, where campaign_manager:steal_escape_key should be used instead. In this latter case campaign_manager:steal_escape_key_with_callback can be used instead.
----@param name string Unique name for this key-steal entry. This can be used later to release the key with campaign_manager:release_key_with_callback.
----@param key string Key name.
----@param callback function Function to call when the key is pressed.
+---@param name string #Unique name for this key-steal entry. This can be used later to release the key with campaign_manager:release_key_with_callback.
+---@param key string #Key name.
+---@param callback function #Function to call when the key is pressed.
 function campaign_manager:steal_key_with_callback(name, key, callback) end
 
 --- Releases a key stolen with campaign_manager:steal_key_with_callback.
----@param name string Unique name for this key-steal entry.
----@param key string Key name.
+---@param name string #Unique name for this key-steal entry.
+---@param key string #Key name.
 function campaign_manager:release_key_with_callback(name, key) end
 
 --- Steals the escape key and registers a function to call when it is pressed. Unlike campaign_manager:steal_key_with_callback this automatically calls campaign_manager:steal_escape_key if the key is not already stolen.
----@param name string Unique name for this key-steal entry.
----@param callback function Function to call when the key is pressed.
+---@param name string #Unique name for this key-steal entry.
+---@param callback function #Function to call when the key is pressed.
 function campaign_manager:steal_escape_key_with_callback(name, callback) end
 
 --- Releases the escape key after it's been stolen with campaign_manager:steal_escape_key_with_callback.
----@param name string Unique name for this key-steal entry.
+---@param name string #Unique name for this key-steal entry.
 function campaign_manager:release_escape_key_with_callback(name) end
 
 --- Steals the escape key and spacebar and registers a function to call when they are pressed.
----@param name string Unique name for this key-steal entry.
----@param callback function Function to call when one of the keys are pressed.
+---@param name string #Unique name for this key-steal entry.
+---@param callback function #Function to call when one of the keys are pressed.
 function campaign_manager:steal_escape_key_and_space_bar_with_callback(name, callback) end
 
 --- Releases the escape key and spacebar after they've been stolen with campaign_manager:steal_escape_key_and_space_bar_with_callback.
----@param name string Unique name for this key-steal entry
----@param callback function Function to call when one of the keys are pressed.
+---@param name string #Unique name for this key-steal entry
+---@param callback function #Function to call when one of the keys are pressed.
 function campaign_manager:release_escape_key_and_space_bar_with_callback(name, callback) end
 
 --- Displays some advice. The advice to display is specified by advice_thread key.
----@param advice_key string Advice thread key.
----@param show_progress_button boolean Show progress/close button on the advisor panel.
----@param highlight_progress_button boolean Highlight the progress/close button on the advisor panel.
----@param callback function End callback to call once the advice VO has finished playing.
----@param playtime number Minimum playtime for the advice VO in seconds. If this is longer than the length of the VO audio, the end callback is not called until after this duration has elapsed. If an end callback is set this has no effect. This is useful during development before recorded VO is ready for simulating the advice being played for a certain duration - with no audio, the advice would complete immediately, or not complete at all.
----@param delay number Delay in seconds to wait after the advice has finished before calling the supplied end callback. If no end callback is supplied this has no effect.
+---@param advice_key string #Advice thread key.
+---@param show_progress_button boolean? #optional, default value=false Show progress/close button on the advisor panel.
+---@param highlight_progress_button boolean? #optional, default value=false Highlight the progress/close button on the advisor panel.
+---@param callback function? #optional, default value=nil End callback to call once the advice VO has finished playing.
+---@param playtime number? #optional, default value=0 Minimum playtime for the advice VO in seconds. If this is longer than the length of the VO audio, the end callback is not called until after this duration has elapsed. If an end callback is set this has no effect. This is useful during development before recorded VO is ready for simulating the advice being played for a certain duration - with no audio, the advice would complete immediately, or not complete at all.
+---@param delay number? #optional, default value=0 Delay in seconds to wait after the advice has finished before calling the supplied end callback. If no end callback is supplied this has no effect.
 function campaign_manager:show_advice(advice_key, show_progress_button, highlight_progress_button, callback, playtime, delay) end
 
 --- Enables or disables the advice system.
----@param enable_advice boolean enable advice
+---@param enable_advice boolean? #optional, default value=true enable advice
 function campaign_manager:set_advice_enabled(enable_advice) end
 
 --- Returns true if the advice system is enabled, or false if it's been disabled with campaign_manager:set_advice_enabled.
----@return boolean  advice is enabled 
+---@return boolean #advice is enabled 
 function campaign_manager:is_advice_enabled() end
 
 --- Immediately enables or disables the close button that appears on the advisor panel, or causes it to be highlighted.
----@param show_progress_button boolean show progress button
----@param highlight_progress_button boolean highlight progress button
+---@param show_progress_button boolean? #optional, default value=false show progress button
+---@param highlight_progress_button boolean? #optional, default value=false highlight progress button
 function campaign_manager:modify_advice(show_progress_button, highlight_progress_button) end
 
 --- Registers a callback to be called when/immediately before the advice gets dismissed.
----@param callback function callback
+---@param callback function #callback
 function campaign_manager:add_pre_dismiss_advice_callback(callback) end
 
 --- Dismisses the advice. Prior to performing the dismissal, this function calls any pre-dismiss callbacks registered with campaign_manager:add_pre_dismiss_advice_callback. This function gets called internally when the player clicks the script-controlled advice progression button that appears on the advisor panel.
 function campaign_manager:dismiss_advice() end
 
 --- Registers a function to be called when the advisor is dismissed. Only one such function can be registered at a time.
----@param callback function Callback to call.
----@param delay number Delay in seconds after the advisor is dismissed before calling the callback.
----@param highlight_on_finish boolean Highlight on advice finish. If set to true, this also establishes a listener for the advice VO finishing. When it does finish, this function then highlights the advisor close button.
+---@param callback function #Callback to call.
+---@param delay number? #optional, default value=0 Delay in seconds after the advisor is dismissed before calling the callback.
+---@param highlight_on_finish boolean? #optional, default value=false Highlight on advice finish. If set to true, this also establishes a listener for the advice VO finishing. When it does finish, this function then highlights the advisor close button.
 function campaign_manager:progress_on_advice_dismissed(callback, delay, highlight_on_finish) end
 
 --- Cancels any running campaign_manager:progress_on_advice_dismissed process.
@@ -1026,65 +1026,65 @@ function campaign_manager:cancel_progress_on_advice_dismissed() end
 
 --- Registers a function to be called when the advisor VO has finished playing and the AdviceFinishedTrigger event is sent from the game to script. If this event is not received after a duration (default 5 seconds) the function starts actively polling whether the advice audio is still playing, and calls the callback when it finds that it isn't.<br />
 --- Only one process invoked by this function may be active at a time.
----@param callback function Callback to call.
----@param delay number Delay in seconds after the advisor finishes before calling the callback. By default, the function does not delay.
----@param playtime number Time in seconds to wait before actively polling whether the advice is still playing. The default value is 5 seconds unless overridden with this parameter. This is useful during development as if no audio has yet been recorded, or if no advice is playing for whatever reason, the function would otherwise continue to monitor until the next time advice is triggered, which is probably not desired.
----@param use_os_clock boolean Use OS clock. Set this to true if the process is going to be running during the end-turn sequence, where the normal flow of model time completely breaks down.
+---@param callback function #Callback to call.
+---@param delay number? #optional, default value=0 Delay in seconds after the advisor finishes before calling the callback. By default, the function does not delay.
+---@param playtime number? #optional, default value=nil Time in seconds to wait before actively polling whether the advice is still playing. The default value is 5 seconds unless overridden with this parameter. This is useful during development as if no audio has yet been recorded, or if no advice is playing for whatever reason, the function would otherwise continue to monitor until the next time advice is triggered, which is probably not desired.
+---@param use_os_clock boolean? #optional, default value=false Use OS clock. Set this to true if the process is going to be running during the end-turn sequence, where the normal flow of model time completely breaks down.
 function campaign_manager:progress_on_advice_finished(callback, delay, playtime, use_os_clock) end
 
 --- Cancels any running campaign_manager:progress_on_advice_finished process.
 function campaign_manager:cancel_progress_on_advice_finished() end
 
 --- Calls a supplied callback when a panel with the supplied name is closed.
----@param unique_name string Unique descriptive string name for this process. Multiple progress_on_panel_dismissed monitors may be active at any one time.
----@param panel_name string Name of the panel.
----@param callback function Callback to call.
----@param callback_delay number Time in seconds to wait after the panel dismissal before calling the supplied callback.
+---@param unique_name string #Unique descriptive string name for this process. Multiple progress_on_panel_dismissed monitors may be active at any one time.
+---@param panel_name string #Name of the panel.
+---@param callback function #Callback to call.
+---@param callback_delay number? #optional, default value=0 Time in seconds to wait after the panel dismissal before calling the supplied callback.
 function campaign_manager:progress_on_panel_dismissed(unique_name, panel_name, callback, callback_delay) end
 
 --- Cancels a monitor started with campaign_manager:progress_on_panel_dismissed by name.
----@param unique_name string Unique descriptive string name for this process.
+---@param unique_name string #Unique descriptive string name for this process.
 function campaign_manager:cancel_progress_on_panel_dismissed(unique_name) end
 
 --- Calls a supplied callback when all events panels are closed. Analagous to calling campaign_manager:progress_on_panel_dismissed with the panel name "events".
----@param unique_name string Unique descriptive string name for this process. Multiple progress_on_panel_dismissed monitors may be active at any one time.
----@param callback function Callback to call.
----@param callback_delay number Time in seconds to wait after the panel dismissal before calling the supplied callback.
+---@param unique_name string #Unique descriptive string name for this process. Multiple progress_on_panel_dismissed monitors may be active at any one time.
+---@param callback function #Callback to call.
+---@param callback_delay number? #optional, default value=0 Time in seconds to wait after the panel dismissal before calling the supplied callback.
 function campaign_manager:progress_on_events_dismissed(unique_name, callback, callback_delay) end
 
 --- Cancels a monitor started with campaign_manager:progress_on_events_dismissed (or campaign_manager:progress_on_panel_dismissed) by name.
----@param unique_name string Unique descriptive string name for this process.
+---@param unique_name string #Unique descriptive string name for this process.
 function campaign_manager:cancel_progress_on_events_dismissed(unique_name) end
 
 --- Calls the supplied callback when all fullscreen campaign panels are dismissed. Only one such monitor may be active at once - starting a second will cancel the first.
----@param callback function Callback to call.
----@param callback_delay number Time in seconds to wait after the panel dismissal before calling the supplied callback.
+---@param callback function #Callback to call.
+---@param callback_delay number? #optional, default value=0 Time in seconds to wait after the panel dismissal before calling the supplied callback.
 function campaign_manager:progress_on_fullscreen_panel_dismissed(callback, callback_delay) end
 
 --- Cancels any running monitor started with campaign_manager:progress_on_fullscreen_panel_dismissed.
----@param callback function Callback to call.
----@param callback_delay number Time in seconds to wait after the panel dismissal before calling the supplied callback.
+---@param callback function #Callback to call.
+---@param callback_delay number? #optional, default value=0 Time in seconds to wait after the panel dismissal before calling the supplied callback.
 function campaign_manager:cancel_progress_on_fullscreen_panel_dismissed(callback, callback_delay) end
 
 --- This function provides an easy one-shot method of starting an intro flyby cutscene from a loading screen with a fade effect. Call this function on the first tick (or before), and pass to it a function which starts an intro cutscene.
----@param callback function Callback to call.
----@param fade_in_time number Time in seconds over which to fade in the camera from black.
+---@param callback function #Callback to call.
+---@param fade_in_time number? #optional, default value=0 Time in seconds over which to fade in the camera from black.
 function campaign_manager:start_intro_cutscene_on_loading_screen_dismissed(callback, fade_in_time) end
 
 --- Calls the supplied callback when a battle sequence is fully completed. A battle sequence is completed once the pre or post-battle panel has been dismissed and any subsequent camera animations have finished.
----@param name string Unique name for this monitor. Multiple such monitors may be active at once.
----@param callback function Callback to call.
----@param delay number Delay in ms after the battle sequence is completed before calling the callback.
+---@param name string #Unique name for this monitor. Multiple such monitors may be active at once.
+---@param callback function #Callback to call.
+---@param delay number? #optional, default value=0 Delay in ms after the battle sequence is completed before calling the callback.
 function campaign_manager:progress_on_battle_completed(name, callback, delay) end
 
 --- Cancels a running monitor started with campaign_manager:progress_on_battle_completed by name.
----@param name string Name of monitor to cancel.
+---@param name string #Name of monitor to cancel.
 function campaign_manager:cancel_progress_on_battle_completed(name) end
 
 --- Calls the supplied callback when the campaign camera is seen to have finished moving. The function has to poll the camera position repeatedly, so the supplied callback will not be called the moment the camera comes to rest due to the model tick resolution.<br />
 --- Only one such monitor may be active at once.
----@param callback function Callback to call.
----@param delay number Delay in ms after the camera finishes moving before calling the callback.
+---@param callback function #Callback to call.
+---@param delay number? #optional, default value=0 Delay in ms after the camera finishes moving before calling the callback.
 function campaign_manager:progress_on_camera_movement_finished(callback, delay) end
 
 --- Cancels a running monitor started with campaign_manager:progress_on_camera_movement_finished.
@@ -1092,259 +1092,259 @@ function campaign_manager:cancel_progress_on_camera_movement_finished() end
 
 --- Calls the supplied callback when the post-battle panel has finished animating on-screen. The function has to poll the panel state repeatedly, so the supplied callback will not be called the exact moment the panel comes to rest. Don't call this unless you know that the panel is about to animate on, otherwise it will be repeatedly polling in the background!<br />
 --- Only one such monitor may be active at once.
----@param callback function Callback to call.
----@param delay number Delay in ms after the panel finishes moving before calling the callback.
+---@param callback function #Callback to call.
+---@param delay number? #optional, default value=0 Delay in ms after the panel finishes moving before calling the callback.
 function campaign_manager:progress_on_post_battle_panel_visible(callback, delay) end
 
 --- Cancels a running monitor started with campaign_manager:progress_on_post_battle_panel_visible.
 function campaign_manager:cancel_progress_on_post_battle_panel_visible() end
 
 --- Instantly spawn an army with a general on the campaign map. This function is a wrapper for the cm:create_force function provided by the episodic scripting interface, adding debug output and success callback functionality.
----@param faction_key string Faction key of the faction to which the force is to belong.
----@param unit_list string Comma-separated list of keys from the land_units table. The force will be created with these units.
----@param region_key string Region key of home region for this force.
----@param x number x logical co-ordinate of force.
----@param y number y logical co-ordinate of force.
----@param exclude_named_characters boolean Don't spawn a named character at the head of this force.
----@param success_callback function Callback to call once the force is created. The callback will be passed the created military force leader's cqi as a single argument.
----@param command_queue boolean Use command queue.
+---@param faction_key string #Faction key of the faction to which the force is to belong.
+---@param unit_list string #Comma-separated list of keys from the land_units table. The force will be created with these units.
+---@param region_key string #Region key of home region for this force.
+---@param x number #x logical co-ordinate of force.
+---@param y number #y logical co-ordinate of force.
+---@param exclude_named_characters boolean #Don't spawn a named character at the head of this force.
+---@param success_callback function? #optional, default value=nil Callback to call once the force is created. The callback will be passed the created military force leader's cqi as a single argument.
+---@param command_queue boolean? #optional, default value=false Use command queue.
 function campaign_manager:create_force(faction_key, unit_list, region_key, x, y, exclude_named_characters, success_callback, command_queue) end
 
 --- Instantly spawns an army with a specific general on the campaign map. This function is a wrapper for the cm:create_force_with_general function provided by the underlying episodic scripting interface, adding debug output and success callback functionality.
----@param faction_key string Faction key of the faction to which the force is to belong.
----@param unit_list string Comma-separated list of keys from the land_units table. The force will be created with these units. This can be a blank string, or nil, if an empty force is desired.
----@param region_key string Region key of home region for this force.
----@param x number x logical co-ordinate of force.
----@param y number y logical co-ordinate of force.
----@param agent_type string Character type of character at the head of the army (should always be "general"?).
----@param agent_subtype string Character subtype of character at the head of the army.
----@param forename string Localised string key of the created character's forename. This should be given in the localised text lookup format i.e. a key from the names table with "names_name_" prepended.
----@param clan_name string Localised string key of the created character's clan name. This should be given in the localised text lookup format i.e. a key from the names table with "names_name_" prepended.
----@param family_name string Localised string key of the created character's family name. This should be given in the localised text lookup format i.e. a key from the names table with "names_name_" prepended.
----@param other_name string Localised string key of the created character's other name. This should be given in the localised text lookup format i.e. a key from the names table with "names_name_" prepended.
----@param make_faction_leader boolean Make the spawned character the faction leader.
----@param success_callback function Callback to call once the force is created. The callback will be passed the created military force leader's cqi as a single argument.
+---@param faction_key string #Faction key of the faction to which the force is to belong.
+---@param unit_list string #Comma-separated list of keys from the land_units table. The force will be created with these units. This can be a blank string, or nil, if an empty force is desired.
+---@param region_key string #Region key of home region for this force.
+---@param x number #x logical co-ordinate of force.
+---@param y number #y logical co-ordinate of force.
+---@param agent_type string #Character type of character at the head of the army (should always be "general"?).
+---@param agent_subtype string #Character subtype of character at the head of the army.
+---@param forename string #Localised string key of the created character's forename. This should be given in the localised text lookup format i.e. a key from the names table with "names_name_" prepended.
+---@param clan_name string #Localised string key of the created character's clan name. This should be given in the localised text lookup format i.e. a key from the names table with "names_name_" prepended.
+---@param family_name string #Localised string key of the created character's family name. This should be given in the localised text lookup format i.e. a key from the names table with "names_name_" prepended.
+---@param other_name string #Localised string key of the created character's other name. This should be given in the localised text lookup format i.e. a key from the names table with "names_name_" prepended.
+---@param make_faction_leader boolean #Make the spawned character the faction leader.
+---@param success_callback function? #optional, default value=nil Callback to call once the force is created. The callback will be passed the created military force leader's cqi as a single argument.
 function campaign_manager:create_force_with_general(faction_key, unit_list, region_key, x, y, agent_type, agent_subtype, forename, clan_name, family_name, other_name, make_faction_leader, success_callback) end
 
 --- Instantly spawn an army with a specific existing general on the campaign map. This function is a wrapper for the cm:create_force_with_existing_general function provided by the underlying episodic scripting interface, adding debug output and success callback functionality. The general character is specified by character string lookup.
----@param character_lookup string Character lookup string for the general character.
----@param faction_key string Faction key of the faction to which the force is to belong.
----@param unit_list string Comma-separated list of keys from the land_units table. The force will be created with these units.
----@param region_key string Region key of home region for this force.
----@param x number x logical co-ordinate of force.
----@param y number y logical co-ordinate of force.
----@param success_callback function Callback to call once the force is created. The callback will be passed the created military force leader's cqi as a single argument.
+---@param character_lookup string #Character lookup string for the general character.
+---@param faction_key string #Faction key of the faction to which the force is to belong.
+---@param unit_list string #Comma-separated list of keys from the land_units table. The force will be created with these units.
+---@param region_key string #Region key of home region for this force.
+---@param x number #x logical co-ordinate of force.
+---@param y number #y logical co-ordinate of force.
+---@param success_callback function? #optional, default value=nil Callback to call once the force is created. The callback will be passed the created military force leader's cqi as a single argument.
 function campaign_manager:create_force_with_existing_general(character_lookup, faction_key, unit_list, region_key, x, y, success_callback) end
 
 --- Kills the specified character, with the ability to also destroy their whole force if they are commanding one.
----@param character_lookup_string string Character string of character to kill. This uses the standard character string lookup system.
----@param destroy_force boolean Will also destroy the characters whole force if true.
----@param use_command_queue boolean Send the create command through the command queue.
+---@param character_lookup_string string #Character string of character to kill. This uses the standard character string lookup system.
+---@param destroy_force boolean? #optional, default value=false Will also destroy the characters whole force if true.
+---@param use_command_queue boolean? #optional, default value=true Send the create command through the command queue.
 function campaign_manager:kill_character(character_lookup_string, destroy_force, use_command_queue) end
 
 --- Adds one or more buildings to a horde army. The army is specified by the command queue index of the military force. A single building may be specified by a string key, or multiple buildings in a table.
----@param military_force_cqi number Command queue index of the military force to add the building(s) to.
+---@param military_force_cqi number #Command queue index of the military force to add the building(s) to.
 function campaign_manager:add_building_to_force(military_force_cqi) end
 
 --- Creates an agent of a specified type on the campaign map. This function is a wrapper for the cm:create_agent function provided by the underlying episodic scripting interface. This wrapper function adds validation and success callback functionality.
----@param faction_key string Faction key of the faction to which the agent is to belong.
----@param character_type string Character type of the agent.
----@param character_subtype string Character subtype of the agent.
----@param x number x logical co-ordinate of agent.
----@param y number y logical co-ordinate of agent.
----@param id string Unique string for agent.
----@param use_command_queue boolean Send the create command through the command queue.
----@param success_callback function Callback to call once the character is created. The callback will be passed the created character's cqi as a single argument.
+---@param faction_key string #Faction key of the faction to which the agent is to belong.
+---@param character_type string #Character type of the agent.
+---@param character_subtype string #Character subtype of the agent.
+---@param x number #x logical co-ordinate of agent.
+---@param y number #y logical co-ordinate of agent.
+---@param id string #Unique string for agent.
+---@param use_command_queue boolean #Send the create command through the command queue.
+---@param success_callback function? #optional, default value=nil Callback to call once the character is created. The callback will be passed the created character's cqi as a single argument.
 function campaign_manager:create_agent(faction_key, character_type, character_subtype, x, y, id, use_command_queue, success_callback) end
 
 --- Repositions a specified character (the target) for a faction at start of a campaign, but only if another character (the subject) exists in that faction and is in command of an army. Like campaign_manager:teleport_to which underpins this function it is for use at the start of a campaign in a game-created callback (see campaign_manager:add_pre_first_tick_callback). It is intended for use in very specific circumstances.<br />
 --- The characters involved are specified by forename key.
----@param faction_key string Faction key of the subject and target characters.
----@param subject_forename_key string Forename key of the subject character from the names table using the full localisation format i.e. names_name_[key].
----@param forename_key string Forename key of the target character from the names table using the full localisation format i.e. names_name_[key].
----@param x number x logical target co-ordinate.
----@param y number y logical target co-ordinate.
----@return boolean  
+---@param faction_key string #Faction key of the subject and target characters.
+---@param subject_forename_key string #Forename key of the subject character from the names table using the full localisation format i.e. names_name_[key].
+---@param forename_key string #Forename key of the target character from the names table using the full localisation format i.e. names_name_[key].
+---@param x number #x logical target co-ordinate.
+---@param y number #y logical target co-ordinate.
+---@return boolean
 function campaign_manager:reposition_starting_character_for_faction(faction_key, subject_forename_key, forename_key, x, y) end
 
 --- Spawns a specified force if a character (the subject) exists within a faction with an army. It is intended for use at the start of a campaign in a game-created callback (see campaign_manager:add_pre_first_tick_callback), in very specific circumstances.
----@param subject_faction_key string Faction key of the subject character.
----@param subject_forename_key string Forename key of the subject character from the names table using the full localisation format i.e. names_name_[key].
----@param faction_key string Faction key of the force to create.
----@param units string list of units to create force with (see documentation for campaign_manager:create_force for more information).
----@param region_key string Home region key for the created force.
----@param x number x logical target co-ordinate.
----@param y number y logical target co-ordinate.
----@param make_immortal boolean Set to true to make the created character immortal.
+---@param subject_faction_key string #Faction key of the subject character.
+---@param subject_forename_key string #Forename key of the subject character from the names table using the full localisation format i.e. names_name_[key].
+---@param faction_key string #Faction key of the force to create.
+---@param units string #list of units to create force with (see documentation for campaign_manager:create_force for more information).
+---@param region_key string #Home region key for the created force.
+---@param x number #x logical target co-ordinate.
+---@param y number #y logical target co-ordinate.
+---@param make_immortal boolean #Set to true to make the created character immortal.
 function campaign_manager:spawn_army_starting_character_for_faction(subject_faction_key, subject_forename_key, faction_key, units, region_key, x, y, make_immortal) end
 
 --- Helper function to move a character.
----@param cqi number Command-queue-index of the character to move.
----@param x number x co-ordinate of the intended destination.
----@param y number y co-ordinate of the intended destination.
----@param should_replenish boolean Automatically replenish the character's action points in script should they run out whilst moving. This ensures the character will reach their intended destination in one turn (unless they fail for another reason).
----@param allow_post_movement boolean Allow the army to move after the order is successfully completed. Setting this to false disables character movement with campaign_manager:disable_movement_for_character should the character successfully reach their destination.
----@param success_callback function Callback to call if the character successfully reaches the intended destination this turn.
----@param fail_callback function Callback to call if the character fails to reach the intended destination this turn.
+---@param cqi number #Command-queue-index of the character to move.
+---@param x number #x co-ordinate of the intended destination.
+---@param y number #y co-ordinate of the intended destination.
+---@param should_replenish boolean? #optional, default value=false Automatically replenish the character's action points in script should they run out whilst moving. This ensures the character will reach their intended destination in one turn (unless they fail for another reason).
+---@param allow_post_movement boolean? #optional, default value=true Allow the army to move after the order is successfully completed. Setting this to false disables character movement with campaign_manager:disable_movement_for_character should the character successfully reach their destination.
+---@param success_callback function? #optional, default value=nil Callback to call if the character successfully reaches the intended destination this turn.
+---@param fail_callback function? #optional, default value=nil Callback to call if the character fails to reach the intended destination this turn.
 function campaign_manager:move_character(cqi, x, y, should_replenish, allow_post_movement, success_callback, fail_callback) end
 
 --- Cancels any running monitors started by campaign_manager:move_character. This won't actually stop any characters currently moving.
 function campaign_manager:cancel_all_move_character() end
 
 --- Calls one callback if a specified character is currently moving, and another if it's not. It does this by recording the character's position, waiting half a second and then comparing the current position with that just recorded.
----@param cqi number Command-queue-index of the subject character.
----@param moving_callback function Function to call if the character is determined to be moving.
----@param not_moving_callback function Function to call if the character is determined to be stationary.
+---@param cqi number #Command-queue-index of the subject character.
+---@param moving_callback function #Function to call if the character is determined to be moving.
+---@param not_moving_callback function #Function to call if the character is determined to be stationary.
 function campaign_manager:is_character_moving(cqi, moving_callback, not_moving_callback) end
 
 --- Stops any running monitor started with campaign_manager:is_character_moving, by character. Note that once the monitor completes (half a second after it was started) it will automatically shut itself down.
----@param cqi number Command-queue-index of the subject character.
+---@param cqi number #Command-queue-index of the subject character.
 function campaign_manager:stop_is_character_moving(cqi) end
 
 --- Calls the supplied callback as soon as a character is determined to be stationary. This uses campaign_manager:is_character_moving to determine if the character moving so the callback will not be called the instant the character halts.
----@param cqi number Command-queue-index of the subject character.
----@param callback function Callback to call.
----@param must_move_first boolean If true, the character must be seen to be moving before this monitor will begin. In this case, it will only call the callback once the character has stopped again.
+---@param cqi number #Command-queue-index of the subject character.
+---@param callback function #Callback to call.
+---@param must_move_first boolean? #optional, default value=false If true, the character must be seen to be moving before this monitor will begin. In this case, it will only call the callback once the character has stopped again.
 function campaign_manager:notify_on_character_halt(cqi, callback, must_move_first) end
 
 --- Stops any monitor started by campaign_manager:notify_on_character_halt, by character cqi.
----@param cqi number Command-queue-index of the subject character.
+---@param cqi number #Command-queue-index of the subject character.
 function campaign_manager:stop_notify_on_character_halt(cqi) end
 
 --- Calls the supplied callback as soon as a character is determined to be moving.
----@param cqi number Command-queue-index of the subject character.
----@param callback function Callback to call.
----@param land_only boolean Only movement over land should be considered.
+---@param cqi number #Command-queue-index of the subject character.
+---@param callback function #Callback to call.
+---@param land_only boolean? #optional, default value=false Only movement over land should be considered.
 function campaign_manager:notify_on_character_movement(cqi, callback, land_only) end
 
 --- Stops any monitor started by campaign_manager:notify_on_character_movement, by character cqi.
----@param cqi number Command-queue-index of the subject character.
+---@param cqi number #Command-queue-index of the subject character.
 function campaign_manager:stop_notify_on_character_movement(cqi) end
 
 --- Instruct a character at the head of a military force to attack another. This function is a wrapper for the cm:attack function on the underlying episodic scripting interface. The wrapper also enables movement for the character and prints debug output.
----@param attacker string Attacker character string, uses standard character lookup string system.
----@param defender string Defender character string, uses standard character lookup string system.
----@param command_queue boolean Order goes via command queue.
+---@param attacker string #Attacker character string, uses standard character lookup string system.
+---@param defender string #Defender character string, uses standard character lookup string system.
+---@param command_queue boolean #Order goes via command queue.
 function campaign_manager:attack(attacker, defender, command_queue) end
 
 --- Teleports a character to a logical position on the campaign map. This function is a wrapper for the cm:teleport_to function on the underlying episodic scripting interface. This wrapper adds debug output and argument validation.<br />
 --- This function can also reposition the camera, so it's best used on game creation to move characters around at the start of the campaign, rather than on the first tick or later.
----@param character_string string Character string of character to teleport. This uses the standard character string lookup system.
----@param x number Logical x co-ordinate to teleport to.
----@param y number Logical y co-ordinate to teleport to.
----@param command_queue boolean Order goes via command queue.
+---@param character_string string #Character string of character to teleport. This uses the standard character string lookup system.
+---@param x number #Logical x co-ordinate to teleport to.
+---@param y number #Logical y co-ordinate to teleport to.
+---@param command_queue boolean? #optional, default value=false Order goes via command queue.
 function campaign_manager:teleport_to(character_string, x, y, command_queue) end
 
 --- Enables movement for the supplied character. Characters are specified by lookup string. This wraps the cm:enable_movement_for_character function on the underlying episodic scripting interface, but adds validation and output.
----@param char_lookup_string string char lookup string
+---@param char_lookup_string string #char lookup string
 function campaign_manager:enable_movement_for_character(char_lookup_string) end
 
 --- Disables movement for the supplied character. Characters are specified by lookup string. This wraps the cm:disable_movement_for_character function on the underlying episodic scripting interface, but adds validation and output.
----@param char_lookup_string string char lookup string
+---@param char_lookup_string string #char lookup string
 function campaign_manager:disable_movement_for_character(char_lookup_string) end
 
 --- Enables movement for the supplied faction. This wraps the cm:enable_movement_for_faction function on the underlying episodic scripting interface, but adds validation and output.
----@param faction_key string faction key
+---@param faction_key string #faction key
 function campaign_manager:enable_movement_for_faction(faction_key) end
 
 --- Disables movement for the supplied faction. This wraps the cm:disable_movement_for_faction function on the underlying episodic scripting interface, but adds validation and output.
----@param faction_key string faction key
+---@param faction_key string #faction key
 function campaign_manager:disable_movement_for_faction(faction_key) end
 
 --- Forceably adds an trait to a character. This wraps the cm:force_add_trait function on the underlying episodic scripting interface, but adds validation and output. This output will be shown in the Lua - Traits debug console spool.
----@param character_string string Character string of the target character, using the standard character string lookup system.
----@param trait_key string Trait key to add.
----@param show_message boolean Show message.
----@param points number Trait points to add. The underlying force_add_trait function is called for each point added.
----@param if_this_command_goes_to_the_queue boolean if this command goes to the queue
+---@param character_string string #Character string of the target character, using the standard character string lookup system.
+---@param trait_key string #Trait key to add.
+---@param show_message boolean? #optional, default value=false Show message.
+---@param points number? #optional, default value=1 Trait points to add. The underlying force_add_trait function is called for each point added.
+---@param if_this_command_goes_to_the_queue command_queue,? #optional, default value=true if this command goes to the queue
 function campaign_manager:force_add_trait(character_string, trait_key, show_message, points, if_this_command_goes_to_the_queue) end
 
 --- Forceably adds a skill to a character. This wraps the cm:force_add_skill function on the underlying episodic scripting interface, but adds validation and output. This output will be shown in the Lua - Traits debug console spool.
----@param character_string string Character string of the target character, using the standard character string lookup system.
----@param skill_key string Skill key to add.
+---@param character_string string #Character string of the target character, using the standard character string lookup system.
+---@param skill_key string #Skill key to add.
 function campaign_manager:force_add_skill(character_string, skill_key) end
 
 --- Forceably adds experience to a character. This wraps the cm:add_agent_experience function on the underlying episodic scripting interface, but adds validation and output.
----@param character_string string Character string of the target character, using the standard character string lookup system.
----@param experience number Experience to add.
----@param by_level boolean If set to true, the level/rank can be supplied instead of an exact amount of experience which is looked up from a table in the campaign manager
+---@param character_string string #Character string of the target character, using the standard character string lookup system.
+---@param experience number #Experience to add.
+---@param by_level boolean? #optional, default value=false If set to true, the level/rank can be supplied instead of an exact amount of experience which is looked up from a table in the campaign manager
 function campaign_manager:add_agent_experience(character_string, experience, by_level) end
 
 --- Converts a set of logical co-ordinates into display co-ordinates.
----@param x number Logical x co-ordinate.
----@param y number Logical y co-ordinate.
----@return number  
----@return number  
+---@param x number #Logical x co-ordinate.
+---@param y number #Logical y co-ordinate.
+---@return number
+---@return number
 function campaign_manager:log_to_dis(x, y) end
 
 --- Returns the distance squared between two positions. The positions can be logical or display, as long as they are both in the same co-ordinate space. The squared distance is returned as it's faster to compare squared distances rather than taking the square-root.
----@param first_x number x co-ordinate of the first position.
----@param first_y number y co-ordinate of the first position.
----@param second_x number x co-ordinate of the second position.
----@param second_y number y co-ordinate of the second position.
----@return number  
+---@param first_x number #x co-ordinate of the first position.
+---@param first_y number #y co-ordinate of the first position.
+---@param second_x number #x co-ordinate of the second position.
+---@param second_y number #y co-ordinate of the second position.
+---@return number
 function campaign_manager:distance_squared(first_x, first_y, second_x, second_y) end
 
 --- Applies a restriction to or removes a restriction from a faction recruiting one or more unit types.
----@param faction_name string Faction name.
----@param unit_list table Numerically-indexed table of string unit keys.
----@param should_restrict boolean Set this to true to apply the restriction, false to remove it.
+---@param faction_name string #Faction name.
+---@param unit_list table #Numerically-indexed table of string unit keys.
+---@param should_restrict boolean? #optional, default value=true Set this to true to apply the restriction, false to remove it.
 function campaign_manager:restrict_units_for_faction(faction_name, unit_list, should_restrict) end
 
 --- Restricts or unrestricts a faction from constructing one or more building types. 
----@param faction_name string Faction name.
----@param building_list table Numerically-indexed table of string building keys.
----@param should_restrict boolean Set this to true to apply the restriction, false to remove it.
+---@param faction_name string #Faction name.
+---@param building_list table #Numerically-indexed table of string building keys.
+---@param should_restrict boolean? #optional, default value=true Set this to true to apply the restriction, false to remove it.
 function campaign_manager:restrict_buildings_for_faction(faction_name, building_list, should_restrict) end
 
 --- Restricts or unrestricts a faction from researching one or more technologies. 
----@param faction_name string Faction name.
----@param building_list table Numerically-indexed table of string technology keys.
----@param should_restrict boolean Set this to true to apply the restriction, false to remove it.
+---@param faction_name string #Faction name.
+---@param building_list table #Numerically-indexed table of string technology keys.
+---@param should_restrict boolean? #optional, default value=true Set this to true to apply the restriction, false to remove it.
 function campaign_manager:restrict_technologies_for_faction(faction_name, building_list, should_restrict) end
 
 --- Applies an effect bundle to a faction for a number of turns (can be infinite).
----@param effect_bundle_key string Effect bundle key from the effect bundles table.
----@param faction_key string Faction key of the faction to apply the effect to.
----@param turns number Number of turns to apply the effect bundle for. Supply 0 here to apply the effect bundle indefinitely (it can be removed later with campaign_manager:remove_effect_bundle if required).
+---@param effect_bundle_key string #Effect bundle key from the effect bundles table.
+---@param faction_key string #Faction key of the faction to apply the effect to.
+---@param turns number #Number of turns to apply the effect bundle for. Supply 0 here to apply the effect bundle indefinitely (it can be removed later with campaign_manager:remove_effect_bundle if required).
 function campaign_manager:apply_effect_bundle(effect_bundle_key, faction_key, turns) end
 
 --- Removes an effect bundle from a faction.
----@param effect_bundle_key string Effect bundle key from the effect bundles table.
----@param faction_key string Faction key of the faction to remove the effect from.
+---@param effect_bundle_key string #Effect bundle key from the effect bundles table.
+---@param faction_key string #Faction key of the faction to remove the effect from.
 function campaign_manager:remove_effect_bundle(effect_bundle_key, faction_key) end
 
 --- Applies an effect bundle to a military force by cqi for a number of turns (can be infinite).
----@param effect_bundle_key string Effect bundle key from the effect bundles table.
----@param number_cqi string Command queue index of the military force to apply the effect bundle to.
----@param turns number Number of turns to apply the effect bundle for. Supply 0 here to apply the effect bundle indefinitely (it can be removed later with campaign_manager:remove_effect_bundle_from_force if required).
+---@param effect_bundle_key string #Effect bundle key from the effect bundles table.
+---@param number_cqi string #Command queue index of the military force to apply the effect bundle to.
+---@param turns number #Number of turns to apply the effect bundle for. Supply 0 here to apply the effect bundle indefinitely (it can be removed later with campaign_manager:remove_effect_bundle_from_force if required).
 function campaign_manager:apply_effect_bundle_to_force(effect_bundle_key, number_cqi, turns) end
 
 --- Removes an effect bundle from a military force by cqi.
----@param effect_bundle_key string Effect bundle key from the effect bundles table.
----@param number_cqi string Command queue index of the military force to remove the effect from.
+---@param effect_bundle_key string #Effect bundle key from the effect bundles table.
+---@param number_cqi string #Command queue index of the military force to remove the effect from.
 function campaign_manager:remove_effect_bundle_from_force(effect_bundle_key, number_cqi) end
 
 --- This function applies an effect bundle to a military force for a number of turns (can be infinite). It differs from campaign_manager:apply_effect_bundle_to_force by referring to the force by its commanding character's cqi.
----@param effect_bundle_key string Effect bundle key from the effect bundles table.
----@param number_cqi string Command queue index of the military force's commanding character to apply the effect bundle to.
----@param turns number Number of turns to apply the effect bundle for. Supply 0 here to apply the effect bundle indefinitely (it can be removed later with campaign_manager:remove_effect_bundle_from_characters_force if required).
+---@param effect_bundle_key string #Effect bundle key from the effect bundles table.
+---@param number_cqi string #Command queue index of the military force's commanding character to apply the effect bundle to.
+---@param turns number #Number of turns to apply the effect bundle for. Supply 0 here to apply the effect bundle indefinitely (it can be removed later with campaign_manager:remove_effect_bundle_from_characters_force if required).
 function campaign_manager:apply_effect_bundle_to_characters_force(effect_bundle_key, number_cqi, turns) end
 
 --- Removes an effect bundle from a military force by its commanding character's cqi.
----@param effect_bundle_key string Effect bundle key from the effect bundles table.
----@param number_cqi string Command queue index of the character commander of the military force to remove the effect from.
+---@param effect_bundle_key string #Effect bundle key from the effect bundles table.
+---@param number_cqi string #Command queue index of the character commander of the military force to remove the effect from.
 function campaign_manager:remove_effect_bundle_from_characters_force(effect_bundle_key, number_cqi) end
 
 --- Applies an effect bundle to a region for a number of turns (can be infinite).
----@param effect_bundle_key string Effect bundle key from the effect bundles table.
----@param region_key string Key of the region to add the effect bundle to.
----@param turns number Number of turns to apply the effect bundle for. Supply 0 here to apply the effect bundle indefinitely (it can be removed later with campaign_manager:remove_effect_bundle_from_region if required).
+---@param effect_bundle_key string #Effect bundle key from the effect bundles table.
+---@param region_key string #Key of the region to add the effect bundle to.
+---@param turns number #Number of turns to apply the effect bundle for. Supply 0 here to apply the effect bundle indefinitely (it can be removed later with campaign_manager:remove_effect_bundle_from_region if required).
 function campaign_manager:apply_effect_bundle_to_region(effect_bundle_key, region_key, turns) end
 
 --- Removes an effect bundle from a region.
----@param effect_bundle_key string Effect bundle key from the effect bundles table.
----@param number_cqi string Command queue index of the character commander of the military force to remove the effect from.
+---@param effect_bundle_key string #Effect bundle key from the effect bundles table.
+---@param number_cqi string #Command queue index of the character commander of the military force to remove the effect from.
 function campaign_manager:remove_effect_bundle_from_region(effect_bundle_key, number_cqi) end
 
 --- Lifts the shroud on all regions. This may be useful for cutscenes in general and benchmarks in-particular.
@@ -1352,252 +1352,252 @@ function campaign_manager:lift_all_shroud() end
 
 --- Restricts or unrestricts certain types of diplomacy between factions or groups of factions. Groups of factions may be specified with the strings "all", "faction:faction_key", "subculture:subculture_key" or "culture:culture_key". A source and target faction/group of factions must be specified.<br />
 --- Note that this wraps the function cm:force_diplomacy_new on the underlying episodic scripting interface.
----@param source string Source faction/factions identifier.
----@param target string Target faction/factions identifier.
----@param type string Type of diplomacy to restrict. See the documentation for the Diplomacy section for available diplomacy types.
----@param can_offer boolean Can offer - set to false to prevent the source faction(s) from being able to offer this diplomacy type to the target faction(s).
----@param can_accept boolean Can accept - set to false to prevent the target faction(s) from being able to accept this diplomacy type from the source faction(s).
----@param both_directions boolean Causes this function to apply the same restriction from target to source as from source to target.
----@param do_not_enable_payments boolean The AI code assumes that the "payments" diplomatic option is always available, and by default this function keeps payments available, even if told to restrict it. Set this flag to true to forceably restrict payments, but this may cause crashes.
+---@param source string #Source faction/factions identifier.
+---@param target string #Target faction/factions identifier.
+---@param type string #Type of diplomacy to restrict. See the documentation for the Diplomacy section for available diplomacy types.
+---@param can_offer boolean #Can offer - set to false to prevent the source faction(s) from being able to offer this diplomacy type to the target faction(s).
+---@param can_accept boolean #Can accept - set to false to prevent the target faction(s) from being able to accept this diplomacy type from the source faction(s).
+---@param both_directions boolean #Causes this function to apply the same restriction from target to source as from source to target.
+---@param do_not_enable_payments boolean #The AI code assumes that the "payments" diplomatic option is always available, and by default this function keeps payments available, even if told to restrict it. Set this flag to true to forceably restrict payments, but this may cause crashes.
 function campaign_manager:force_diplomacy(source, target, type, can_offer, can_accept, both_directions, do_not_enable_payments) end
 
 --- Enables or disables all diplomatic options between all factions.
----@param enable_diplomacy boolean enable diplomacy
+---@param enable_diplomacy boolean #enable diplomacy
 function campaign_manager:enable_all_diplomacy(enable_diplomacy) end
 
 --- Forces war between two factions. This wraps the cm:force_declare_war function of the same name on the underlying episodic scripting interface, but adds validation and output. This output will be shown in the Lua - Design console spool.
----@param faction_a_key string Faction A key
----@param faction_b_key string Faction B key
----@param invite_faction_a_allies boolean Invite faction A's allies to the war
----@param invite_faction_b_allies boolean Invite faction B's allies to the war
+---@param faction_a_key string #Faction A key
+---@param faction_b_key string #Faction B key
+---@param invite_faction_a_allies boolean #Invite faction A's allies to the war
+---@param invite_faction_b_allies boolean #Invite faction B's allies to the war
 function campaign_manager:force_declare_war(faction_a_key, faction_b_key, invite_faction_a_allies, invite_faction_b_allies) end
 
 --- Pass-through function for objectives_manager:set_objective on the objectives manager. Sets up a scripted objective for the player, which appears in the scripted objectives panel. This objective can then be updated, removed, or marked as completed or failed by the script at a later time.<br />
 --- A key to the scripted_objectives table must be supplied with set_objective, and optionally one or two numeric parameters to show some running count related to the objective. To update these parameter values later, set_objective may be re-called with the same objective key and updated values.
----@param objective_key string Objective key, from the scripted_objectives table.
----@param param_a number First numeric objective parameter. If set, the objective will be presented to the player in the form [objective text]: [param a]. Useful for showing a running count of something related to the objective.
----@param param_b number Second numeric objective parameter. A value for the first must be set if this is used. If set, the objective will be presented to the player in the form [objective text]: [param a] / [param b]. Useful for showing a running count of something related to the objective.
+---@param objective_key string #Objective key, from the scripted_objectives table.
+---@param param_a number? #optional, default value=nil] number param a, First numeric objective parameter. If set, the objective will be presented to the player in the form [objective text]: [param a First numeric objective parameter. If set, the objective will be presented to the player in the form [objective text]: [param a]. Useful for showing a running count of something related to the objective.
+---@param param_b number? #optional, default value=nil] number param b, Second numeric objective parameter. A value for the first must be set if this is used. If set, the objective will be presented to the player in the form [objective text]: [param a] / [param b Second numeric objective parameter. A value for the first must be set if this is used. If set, the objective will be presented to the player in the form [objective text]: [param a] / [param b]. Useful for showing a running count of something related to the objective.
 function campaign_manager:set_objective(objective_key, param_a, param_b) end
 
 --- Pass-through function for objectives_manager:complete_objective on the objectives manager. Marks a scripted objective as completed for the player to see. Note that it will remain on the scripted objectives panel until removed with campaign_manager:remove_objective.<br />
 --- Note also that is possible to mark an objective as complete before it has been registered with campaign_manager:set_objective - in this case, it is marked as complete as soon as campaign_manager:set_objective is called.
----@param objective_key string Objective key, from the scripted_objectives table.
+---@param objective_key string #Objective key, from the scripted_objectives table.
 function campaign_manager:complete_objective(objective_key) end
 
 --- Pass-through function for objectives_manager:fail_objective on the objectives manager. Marks a scripted objective as failed for the player to see. Note that it will remain on the scripted objectives panel until removed with campaign_manager:remove_objective.
----@param objective_key string Objective key, from the scripted_objectives table.
+---@param objective_key string #Objective key, from the scripted_objectives table.
 function campaign_manager:fail_objective(objective_key) end
 
 --- Pass-through function for objectives_manager:remove_objective on the objectives manager. Removes a scripted objective from the scripted objectives panel.
----@param objective_key string Objective key, from the scripted_objectives table.
+---@param objective_key string #Objective key, from the scripted_objectives table.
 function campaign_manager:remove_objective(objective_key) end
 
 --- Pass-through function for objectives_manager:activate_objective_chain. Starts a new objective chain - see the documentation on the objectives_manager page for more details.
----@param chain_name string Objective chain name.
----@param objective_key string Key of initial objective, from the scripted_objectives table.
----@param number_param_a number First numeric parameter - see the documentation for campaign_manager:set_objective for more details
----@param number_param_b number Second numeric parameter - see the documentation for campaign_manager:set_objective for more details
+---@param chain_name string #Objective chain name.
+---@param objective_key string #Key of initial objective, from the scripted_objectives table.
+---@param number_param_a number? #optional, default value=nil First numeric parameter - see the documentation for campaign_manager:set_objective for more details
+---@param number_param_b number? #optional, default value=nil Second numeric parameter - see the documentation for campaign_manager:set_objective for more details
 function campaign_manager:activate_objective_chain(chain_name, objective_key, number_param_a, number_param_b) end
 
 --- Pass-through function for objectives_manager:update_objective_chain. Updates an existing objective chain - see the documentation on the objectives_manager page for more details.
----@param chain_name string Objective chain name.
----@param objective_key string Key of initial objective, from the scripted_objectives table.
----@param number_param_a number First numeric parameter - see the documentation for campaign_manager:set_objective for more details
----@param number_param_b number Second numeric parameter - see the documentation for campaign_manager:set_objective for more details
+---@param chain_name string #Objective chain name.
+---@param objective_key string #Key of initial objective, from the scripted_objectives table.
+---@param number_param_a number? #optional, default value=nil First numeric parameter - see the documentation for campaign_manager:set_objective for more details
+---@param number_param_b number? #optional, default value=nil Second numeric parameter - see the documentation for campaign_manager:set_objective for more details
 function campaign_manager:update_objective_chain(chain_name, objective_key, number_param_a, number_param_b) end
 
 --- Pass-through function for objectives_manager:end_objective_chain. Ends an existing objective chain - see the documentation on the objectives_manager page for more details.
----@param chain_name string Objective chain name.
+---@param chain_name string #Objective chain name.
 function campaign_manager:end_objective_chain(chain_name) end
 
 --- Pass-through function for objectives_manager:reset_objective_chain. Resets an objective chain so that it may be called again - see the documentation on the objectives_manager page for more details.
----@param chain_name string Objective chain name.
+---@param chain_name string #Objective chain name.
 function campaign_manager:reset_objective_chain(chain_name) end
 
 --- Pass-through function for infotext_manager:add_infotext. Adds one or more lines of infotext to the infotext panel - see the documentation on the infotext_manager page for more details.
----@param first_param any Can be a string key from the advice_info_texts table, or a number specifying an initial delay in ms after the panel animates onscreen and the first infotext item is shown.
----@vararg any
+---@param first_param any #Can be a string key from the advice_info_texts table, or a number specifying an initial delay in ms after the panel animates onscreen and the first infotext item is shown.
+---@param ... any #Additional infotext strings to be shown. add_infotext fades each of them on to the infotext panel in a visually-pleasing sequence.
 function campaign_manager:add_infotext(first_param, ...) end
 
 --- Pass-through function for infotext_manager:remove_infotext. Removes a line of infotext from the infotext panel.
----@param infotext_key string infotext key
+---@param infotext_key string #infotext key
 function campaign_manager:remove_infotext(infotext_key) end
 
 --- Pass-through function for infotext_manager:clear_infotext. Clears the infotext panel.
 function campaign_manager:clear_infotext() end
 
 --- Triggers a specific custom mission from its database record key. This mission must be defined in the missions.txt file that accompanies each campaign. This function wraps the cm:trigger_custom_mission function on the game interface, adding debug output and event type whitelisting.
----@param faction_key string Faction key.
----@param mission_key string Mission key, from missions.txt file.
----@param use_command_queue boolean Trigger the mission via the command queue or not.
----@param do_not_cancel boolean By default this function cancels this custom mission before issuing it, to avoid multiple copies of the mission existing at once. Supply true here to prevent this behaviour.
----@param whitelist boolean Supply true here to also whitelist the mission event type, so that it displays even if event feed restrictions are in place (see campaign_manager:suppress_all_event_feed_messages and campaign_manager:whitelist_event_feed_event_type).
+---@param faction_key string #Faction key.
+---@param mission_key string #Mission key, from missions.txt file.
+---@param use_command_queue boolean? #optional, default value=false Trigger the mission via the command queue or not.
+---@param do_not_cancel boolean? #optional, default value=false By default this function cancels this custom mission before issuing it, to avoid multiple copies of the mission existing at once. Supply true here to prevent this behaviour.
+---@param whitelist boolean? #optional, default value=false Supply true here to also whitelist the mission event type, so that it displays even if event feed restrictions are in place (see campaign_manager:suppress_all_event_feed_messages and campaign_manager:whitelist_event_feed_event_type).
 function campaign_manager:trigger_custom_mission(faction_key, mission_key, use_command_queue, do_not_cancel, whitelist) end
 
 --- Triggers a custom mission from a string passed into the function. The mission string must be supplied in a custom format - see the missions.txt that commonly accompanies a campaign for examples. Alternatively, use a mission_manager which is able to construct such strings internally.<br />
 --- This wraps the cm:trigger_custom_mission_from_string function on the underlying episodic scripting interface, adding output and the optional whitelisting functionality.
----@param faction_key string faction key
----@param mission string Mission definition string.
----@param use_command_queue boolean Trigger the mission via the command queue or not.
----@param whitelist boolean Supply true here to also whitelist the mission event type, so that it displays even if event feed restrictions are in place (see campaign_manager:suppress_all_event_feed_messages and campaign_manager:whitelist_event_feed_event_type).
+---@param faction_key string #faction key
+---@param mission string #Mission definition string.
+---@param use_command_queue boolean? #optional, default value=false Trigger the mission via the command queue or not.
+---@param whitelist boolean? #optional, default value=false Supply true here to also whitelist the mission event type, so that it displays even if event feed restrictions are in place (see campaign_manager:suppress_all_event_feed_messages and campaign_manager:whitelist_event_feed_event_type).
 function campaign_manager:trigger_custom_mission_from_string(faction_key, mission, use_command_queue, whitelist) end
 
 --- Instructs the campaign director to attempt to trigger a mission of a particular type, based on a mission record from the database. The mission will be triggered if its conditions, defined in the cdir_events_mission_option_junctions, pass successfully. The function returns whether the mission was successfully triggered or not. Note that if the command is sent via the command queue then true will always be returned, regardless of whether the mission successfully triggers.<br />
 --- This function wraps the cm:trigger_mission function on the game interface, adding debug output and event type whitelisting.
----@param faction_key string Faction key.
----@param mission_key string Mission key, from the missions table.
----@param fire_immediately boolean Fire immediately - if this is set, then any turn delay for the mission set in the cdir_event_mission_option_junctions table will be disregarded.
----@param use_command_queue boolean Trigger the mission via the command queue or not.
----@param whitelist boolean Supply true here to also whitelist the mission event type, so that it displays even if event feed restrictions are in place (see campaign_manager:suppress_all_event_feed_messages and campaign_manager:whitelist_event_feed_event_type).
----@return boolean  mission triggered successfully 
+---@param faction_key string #Faction key.
+---@param mission_key string #Mission key, from the missions table.
+---@param fire_immediately boolean? #optional, default value=false Fire immediately - if this is set, then any turn delay for the mission set in the cdir_event_mission_option_junctions table will be disregarded.
+---@param use_command_queue boolean? #optional, default value=false Trigger the mission via the command queue or not.
+---@param whitelist boolean? #optional, default value=false Supply true here to also whitelist the mission event type, so that it displays even if event feed restrictions are in place (see campaign_manager:suppress_all_event_feed_messages and campaign_manager:whitelist_event_feed_event_type).
+---@return boolean #mission triggered successfully 
 function campaign_manager:trigger_mission(faction_key, mission_key, fire_immediately, use_command_queue, whitelist) end
 
 --- Triggers dilemma with a specified key, based on a record from the database, preferentially wrapped in an intervention. The delivery of the dilemma will be wrapped in an intervention in singleplayer mode, whereas in multiplayer mode the dilemma is triggered directly. It is preferred to use this function to trigger a dilemma, unless the calling script is running from within an intervention in which case campaign_manager:trigger_dilemma_raw should be used.
----@param faction_key string Faction key, from the factions table.
----@param dilemma_key string Dilemma key, from the dilemmas table.
----@param trigger_callback function Callback to call when the intervention actually gets triggered.
----@return boolean  
+---@param faction_key string #Faction key, from the factions table.
+---@param dilemma_key string #Dilemma key, from the dilemmas table.
+---@param trigger_callback function? #optional, default value=nil Callback to call when the intervention actually gets triggered.
+---@return boolean
 function campaign_manager:trigger_dilemma(faction_key, dilemma_key, trigger_callback) end
 
 --- Compels the campaign director to trigger a dilemma of a particular type, based on a record from the database. This function is a raw wrapper for the cm:trigger_dilemma function on the game interface, adding debug output and event type whitelisting, but not featuring the intervention-wrapping behaviour of campaign_manager:trigger_dilemma. Use this function if triggering the dilemma from within an intervention, but campaign_manager:trigger_dilemma for all other instances.
----@param faction_key string Faction key, from the factions table.
----@param dilemma_key string Dilemma key, from the dilemmas table.
----@param fire_immediately boolean Fire immediately. If set, the dilemma will fire immediately, otherwise the dilemma will obey any wait period set in the cdir_events_dilemma_options table.
----@param whitelist boolean Supply true here to also whitelist the dilemma event type, so that it displays even if event feed restrictions are in place (see campaign_manager:suppress_all_event_feed_messages and campaign_manager:whitelist_event_feed_event_type).
----@return boolean  
+---@param faction_key string #Faction key, from the factions table.
+---@param dilemma_key string #Dilemma key, from the dilemmas table.
+---@param fire_immediately boolean? #optional, default value=false Fire immediately. If set, the dilemma will fire immediately, otherwise the dilemma will obey any wait period set in the cdir_events_dilemma_options table.
+---@param whitelist boolean? #optional, default value=false Supply true here to also whitelist the dilemma event type, so that it displays even if event feed restrictions are in place (see campaign_manager:suppress_all_event_feed_messages and campaign_manager:whitelist_event_feed_event_type).
+---@return boolean
 function campaign_manager:trigger_dilemma_raw(faction_key, dilemma_key, fire_immediately, whitelist) end
 
 --- Triggers a dilemma with a specified key and one or more target game objects, preferentially wrapped in an intervention. The delivery of the dilemma will be wrapped in an intervention in singleplayer mode, whereas in multiplayer mode the dilemma is triggered directly. It is preferred to use this function to trigger a dilemma with targets, unless the calling script is running from within an intervention in which case campaign_manager:trigger_dilemma_with_targets_raw should be used.<br />
 --- The game object or objects to associate the dilemma with are specified by command-queue index. The dilemma will need to pass any conditions set up in the cdir_events_dilemma_option_junctions table in order to trigger.
----@param faction_cqi number Command-queue index of the faction to which the dilemma is issued. This must be supplied.
----@param dilemma_key string Dilemma key, from the dilemmas table.
----@param target_faction_cqi number Command-queue index of a target faction.
----@param secondary_faction_cqi number Command-queue index of a second target faction.
----@param character_cqi number Command-queue index of a target character.
----@param military_force_cqi number Command-queue index of a target military force.
----@param region_cqi number Command-queue index of a target region.
----@param settlement_cqi number Command-queue index of a target settlement.
----@param trigger_callback function Callback to call when the intervention actually gets triggered.
----@return boolean  
+---@param faction_cqi number #Command-queue index of the faction to which the dilemma is issued. This must be supplied.
+---@param dilemma_key string #Dilemma key, from the dilemmas table.
+---@param target_faction_cqi number? #optional, default value=0 Command-queue index of a target faction.
+---@param secondary_faction_cqi number? #optional, default value=0 Command-queue index of a second target faction.
+---@param character_cqi number? #optional, default value=0 Command-queue index of a target character.
+---@param military_force_cqi number? #optional, default value=0 Command-queue index of a target military force.
+---@param region_cqi number? #optional, default value=0 Command-queue index of a target region.
+---@param settlement_cqi number? #optional, default value=0 Command-queue index of a target settlement.
+---@param trigger_callback function #Callback to call when the intervention actually gets triggered.
+---@return boolean
 function campaign_manager:trigger_dilemma_with_targets(faction_cqi, dilemma_key, target_faction_cqi, secondary_faction_cqi, character_cqi, military_force_cqi, region_cqi, settlement_cqi, trigger_callback) end
 
 --- Directly triggers a dilemma with a specified key and one or more target game objects. This function is a raw wrapper for the cm:trigger_dilemma_with_targets function on the game interface, adding debug output and event type whitelisting, but not featuring the intervention-wrapping behaviour of campaign_manager:trigger_dilemma_with_targets. Use this function if triggering the dilemma from within an intervention, but campaign_manager:trigger_dilemma_with_targets (or campaign_manager:trigger_dilemma) in all other instances.<br />
 --- The game object or objects to associate the dilemma with are specified by command-queue index. The dilemma will need to pass any conditions set up in the cdir_events_dilemma_option_junctions table in order to trigger.
----@param faction_cqi number Command-queue index of the faction to which the dilemma is issued. This must be supplied.
----@param dilemma_key string Dilemma key, from the dilemmas table.
----@param target_faction_cqi number Command-queue index of a target faction.
----@param secondary_faction_cqi number Command-queue index of a second target faction.
----@param character_cqi number Command-queue index of a target character.
----@param military_force_cqi number Command-queue index of a target military force.
----@param region_cqi number Command-queue index of a target region.
----@param settlement_cqi number Command-queue index of a target settlement.
----@param trigger_callback function Callback to call when the intervention actually gets triggered.
----@return boolean  
+---@param faction_cqi number #Command-queue index of the faction to which the dilemma is issued. This must be supplied.
+---@param dilemma_key string #Dilemma key, from the dilemmas table.
+---@param target_faction_cqi number? #optional, default value=0 Command-queue index of a target faction.
+---@param secondary_faction_cqi number? #optional, default value=0 Command-queue index of a second target faction.
+---@param character_cqi number? #optional, default value=0 Command-queue index of a target character.
+---@param military_force_cqi number? #optional, default value=0 Command-queue index of a target military force.
+---@param region_cqi number? #optional, default value=0 Command-queue index of a target region.
+---@param settlement_cqi number? #optional, default value=0 Command-queue index of a target settlement.
+---@param trigger_callback function #Callback to call when the intervention actually gets triggered.
+---@return boolean
 function campaign_manager:trigger_dilemma_with_targets_raw(faction_cqi, dilemma_key, target_faction_cqi, secondary_faction_cqi, character_cqi, military_force_cqi, region_cqi, settlement_cqi, trigger_callback) end
 
 --- Instructs the campaign director to attempt to trigger a specified incident, based on record from the database. The incident will be triggered if its conditions, defined in the cdir_events_incident_option_junctions, pass successfully. The function returns whether the incident was successfully triggered or not.<br />
 --- This function wraps the cm:trigger_incident function on the game interface, adding debug output and event type whitelisting.
----@param faction_key string Faction key.
----@param incident_key string Incident key, from the incidents table.
----@param fire_immediately boolean Fire immediately - if this is set, then any turn delay for the incident set in the cdir_event_incident_option_junctions table will be disregarded.
----@param whitelist boolean Supply true here to also whitelist the dilemma event type, so that it displays even if event feed restrictions are in place (see campaign_manager:suppress_all_event_feed_messages and campaign_manager:whitelist_event_feed_event_type).
----@return boolean  incident was triggered 
+---@param faction_key string #Faction key.
+---@param incident_key string #Incident key, from the incidents table.
+---@param fire_immediately boolean? #optional, default value=false Fire immediately - if this is set, then any turn delay for the incident set in the cdir_event_incident_option_junctions table will be disregarded.
+---@param whitelist boolean? #optional, default value=false Supply true here to also whitelist the dilemma event type, so that it displays even if event feed restrictions are in place (see campaign_manager:suppress_all_event_feed_messages and campaign_manager:whitelist_event_feed_event_type).
+---@return boolean #incident was triggered 
 function campaign_manager:trigger_incident(faction_key, incident_key, fire_immediately, whitelist) end
 
 --- Suppresses or unsuppresses all event feed message from being displayed. With this suppression in place, event panels won't be shown on the UI at all but will be queued and then shown when the suppression is removed. The suppression must not be kept on during the end-turn sequence.<br />
 --- When suppressing, we whitelist dilemmas as they lock the model, and also mission succeeded event types as the game tends to flow better this way.
----@param activate_suppression boolean activate suppression
+---@param activate_suppression boolean? #optional, default value=true activate suppression
 function campaign_manager:suppress_all_event_feed_messages(activate_suppression) end
 
 --- While suppression has been activated with campaign_manager:suppress_all_event_feed_messages an event type may be whitelisted and allowed to be shown with this function. This allows scripts to hold all event messages from being displayed except those of a certain type. This is useful for advice scripts which may want to talk about those messages, for example.<br />
 --- If event feed suppression is not active then calling this function will have no effect.
----@param event_type string Event type to whitelist. This is compound key from the event_feed_targeted_events table, which is the event field and the target field of a record from this table, concatenated together.
+---@param event_type string #Event type to whitelist. This is compound key from the event_feed_targeted_events table, which is the event field and the target field of a record from this table, concatenated together.
 function campaign_manager:whitelist_event_feed_event_type(event_type) end
 
 --- Disables event feed events by category, subcategory or individual event type. Unlike campaign_manager:suppress_all_event_feed_messages the events this call blocks are discarded. Use this function to prevent certain events from appearing.<br />
 --- The function wraps the cm:disable_event_feed_events function on the underlying episodic scripting interface.
----@param should_disable boolean Should disable event type(s).
----@param event_categories string Event categories to disable. Supply "" or false/nil to not disable/enable events by categories in this function call. Supply "all" to disable all event types.
----@param event_subcategories string Event subcategories to disable. Supply "" or false/nil to not disable/enable events by subcategories in this function call.
----@param event string Event to disable. Supply "" or false/nil to not disable/enable an individual event in this function call.
+---@param should_disable boolean #Should disable event type(s).
+---@param event_categories string? #optional, default value="" Event categories to disable. Supply "" or false/nil to not disable/enable events by categories in this function call. Supply "all" to disable all event types.
+---@param event_subcategories string? #optional, default value="" Event subcategories to disable. Supply "" or false/nil to not disable/enable events by subcategories in this function call.
+---@param event string? #optional, default value="" Event to disable. Supply "" or false/nil to not disable/enable an individual event in this function call.
 function campaign_manager:disable_event_feed_events(should_disable, event_categories, event_subcategories, event) end
 
 --- Constructs and displays an event. This wraps a the cm:show_message_event function of the same name on the underlying episodic_scripting, although it provides input validation, output, whitelisting and a progression callback.
----@param faction_key string Faction key to who the event is targeted.
----@param title_loc_key string Localisation key for the event title. This should be supplied in the full [table]_[field]_[key] localisation format, or can be a blank string.
----@param primary_loc_key string Localisation key for the primary detail of the event. This should be supplied in the full [table]_[field]_[key] localisation format, or can be a blank string.
----@param secondary_loc_key string Localisation key for the secondary detail of the event. This should be supplied in the full [table]_[field]_[key] localisation format, or can be a blank string.
----@param persistent boolean Sets this event to be persistent instead of transient.
----@param index number Index indicating the type of event.
----@param end_callback function Specifies a callback to call when this event is dismissed. Note that if another event message shows first for some reason, this callback will be called early.
----@param callback_delay number Delay in seconds before calling the end callback, if supplied.
----@param dont_whitelist boolean By default this function will whitelist the scripted event message type with campaign_manager:whitelist_event_feed_event_type. Set this flag to true to prevent this.
+---@param faction_key string #Faction key to who the event is targeted.
+---@param title_loc_key string #Localisation key for the event title. This should be supplied in the full [table]_[field]_[key] localisation format, or can be a blank string.
+---@param primary_loc_key string #Localisation key for the primary detail of the event. This should be supplied in the full [table]_[field]_[key] localisation format, or can be a blank string.
+---@param secondary_loc_key string #Localisation key for the secondary detail of the event. This should be supplied in the full [table]_[field]_[key] localisation format, or can be a blank string.
+---@param persistent boolean #Sets this event to be persistent instead of transient.
+---@param index number #Index indicating the type of event.
+---@param end_callback function? #optional, default value=false Specifies a callback to call when this event is dismissed. Note that if another event message shows first for some reason, this callback will be called early.
+---@param callback_delay number? #optional, default value=0 Delay in seconds before calling the end callback, if supplied.
+---@param dont_whitelist boolean? #optional, default value=false By default this function will whitelist the scripted event message type with campaign_manager:whitelist_event_feed_event_type. Set this flag to true to prevent this.
 function campaign_manager:show_message_event(faction_key, title_loc_key, primary_loc_key, secondary_loc_key, persistent, index, end_callback, callback_delay, dont_whitelist) end
 
 --- Constructs and displays a located event. This wraps the cm:show_message_event_located function of the same name on the underlying episodic scripting interface, although it also provides input validation, output, whitelisting and a progression callback.
----@param faction_key string Faction key to who the event is targeted.
----@param title_loc_key string Localisation key for the event title. This should be supplied in the full [table]_[field]_[key] localisation format, or can be a blank string.
----@param primary_loc_key string Localisation key for the primary detail of the event. This should be supplied in the full [table]_[field]_[key] localisation format, or can be a blank string.
----@param secondary_loc_key string Localisation key for the secondary detail of the event. This should be supplied in the full [table]_[field]_[key] localisation format, or can be a blank string.
----@param x number Logical x co-ordinate of event target.
----@param y number Logical y co-ordinate of event target.
----@param persistent boolean Sets this event to be persistent instead of transient.
----@param index number Index indicating the type of event.
----@param end_callback function Specifies a callback to call when this event is dismissed. Note that if another event message shows first for some reason, this callback will be called early.
----@param callback_delay number Delay in seconds before calling the end callback, if supplied.
+---@param faction_key string #Faction key to who the event is targeted.
+---@param title_loc_key string #Localisation key for the event title. This should be supplied in the full [table]_[field]_[key] localisation format, or can be a blank string.
+---@param primary_loc_key string #Localisation key for the primary detail of the event. This should be supplied in the full [table]_[field]_[key] localisation format, or can be a blank string.
+---@param secondary_loc_key string #Localisation key for the secondary detail of the event. This should be supplied in the full [table]_[field]_[key] localisation format, or can be a blank string.
+---@param x number #Logical x co-ordinate of event target.
+---@param y number #Logical y co-ordinate of event target.
+---@param persistent boolean #Sets this event to be persistent instead of transient.
+---@param index number #Index indicating the type of event.
+---@param end_callback function? #optional, default value=false Specifies a callback to call when this event is dismissed. Note that if another event message shows first for some reason, this callback will be called early.
+---@param callback_delay number? #optional, default value=0 Delay in seconds before calling the end callback, if supplied.
 function campaign_manager:show_message_event_located(faction_key, title_loc_key, primary_loc_key, secondary_loc_key, x, y, persistent, index, end_callback, callback_delay) end
 
 --- Creates, starts, and immediately triggers a transient intervention with the supplied paramters. This should trigger immediately unless another intervention is running, in which case it should trigger afterwards.<br />
 --- The trigger callback that is supplied to this function will be passed the intervention object when it is called. This callback must call intervention:complete on this object, or cause it to be called, as the UI will be softlocked until the intervention is completed. See intervention documentation for more information.
----@param name string Name for intervention. This should be unique amongst interventions.
----@param callback function Trigger callback to call.
----@param debug boolean Sets the intervention into debug mode, in which it will produce more output. Supply false to suppress this behaviour.
----@param configuration_callback function If supplied, this function will be called with the created intervention supplied as a single argument before the intervention is started. This allows calling script to configure the intervention before being started.
+---@param name string #Name for intervention. This should be unique amongst interventions.
+---@param callback function #Trigger callback to call.
+---@param debug boolean? #optional, default value=true Sets the intervention into debug mode, in which it will produce more output. Supply false to suppress this behaviour.
+---@param configuration_callback function? #optional, default value=nil If supplied, this function will be called with the created intervention supplied as a single argument before the intervention is started. This allows calling script to configure the intervention before being started.
 function campaign_manager:trigger_transient_intervention(name, callback, debug, configuration_callback) end
 
 --- Registers a turn countdown event.
----@param faction_key string Key of the faction on whose turn start the event will be triggered.
----@param turns integer Number of turns from now to trigger the event.
----@param event string Event to trigger. By convention, script event names begin with "ScriptEvent"
----@param context_string string Optional context string to trigger with the event.
+---@param faction_key string #Key of the faction on whose turn start the event will be triggered.
+---@param turns integer #Number of turns from now to trigger the event.
+---@param event string #Event to trigger. By convention, script event names begin with "ScriptEvent"
+---@param context_string string? #optional, default value="" Optional context string to trigger with the event.
 function campaign_manager:add_turn_countdown_event(faction_key, turns, event, context_string) end
 
 --- Starts a region change monitor for a faction.
----@param faction_key string faction key
+---@param faction_key string #faction key
 function campaign_manager:start_faction_region_change_monitor(faction_key) end
 
 --- Stops a running region change monitor for a faction.
----@param faction_key string faction key
+---@param faction_key string #faction key
 function campaign_manager:stop_faction_region_change_monitor(faction_key) end
 
 --- Starts a monitor for a faction which, on turn start for that faction, triggers a event with the faction and the region they control with the lowest public order attached. This is useful for advice scripts that may wish to know where the biggest public order problems for a faction are. This function will need to be called by client scripts each time the script starts.<br />
 --- The event triggered is ScriptEventFactionTurnStartLowestPublicOrder, and the faction and region may be returned by calling faction() and region() on the context object supplied with it.
----@param faction_key string faction key
+---@param faction_key string #faction key
 function campaign_manager:find_lowest_public_order_region_on_turn_start(faction_key) end
 
 --- RegionRebels events are sent as a faction ends their turn but before the FactionTurnEnd event is received. If called, this function listens for RegionRebels events for the specified faction, then waits for the FactionTurnEnd event to be received and sends a separate event. This flow of events works better for advice scripts.<br />
 --- The event triggered is ScriptEventRegionRebels, and the faction and region may be returned by calling faction() and region() on the context object supplied with it.
----@param faction_key string faction key
+---@param faction_key string #faction key
 function campaign_manager:generate_region_rebels_event_for_faction(faction_key) end
 
 --- This fuction starts a listener for hero actions committed against a specified faction and sends out further events based on the outcome of those actions. It is of most use for listening for hero actions committed against a player faction.<br />
 --- This function called each time the script starts for the monitors to continue running. Once started, the function triggers the following events:<br />
 --- Event NameContext FunctionsDescriptionScriptEventAgentActionSuccessAgainstCharactercharactertarget_characterA foreign agent (character) committed a successful action against a character (target_character) of the subject faction.ScriptEventAgentActionFailureAgainstCharactercharactertarget_characterA foreign agent (character) failed when attempting an action against a character (target_character) of the subject faction.ScriptEventAgentActionSuccessAgainstCharactercharactergarrison_residenceA foreign agent (character) committed a successful action against a garrison residence (garrison_residence) of the subject faction.ScriptEventAgentActionFailureAgainstCharactercharactergarrison_residenceA foreign agent (character) failed when attempting an action against a garrison residence (garrison_residence) of the subject faction.
----@param faction_key string faction key
+---@param faction_key string #faction key
 function campaign_manager:start_hero_action_listener(faction_key) end
 
 --- This fuction attempts to trigger campaign vo for the given character, the event name to play is passed as a string<br />
 --- which is then given to the sound engine, along with the character, to trigger and call the correct dialogue path.
----@param vo_event_name string looked up in code against wwise IDs
----@param character CHARACTER_SCRIPT_INTERFACE character
+---@param vo_event_name string #looked up in code against wwise IDs
+---@param character CHARACTER_SCRIPT_INTERFACE #character
 function campaign_manager:trigger_campaign_vo(vo_event_name, character) end
 
 --- Shows a benchmark constructed from supplied parameters if the campaign loaded in benchmark mode, otherwise calls a supplied callback. The intention is for this to be called on or around the first tick of the script that's loaded when playing as the benchmark faction (the benchmark loads with the player as a certain faction). If benchmark mode is set, this function plays the supplied cindy scene for the supplied duration, then quits the campaign.
----@param cindy_file function Function to call if this campaign has not been loaded in benchmarking mode.
----@param benchmark_duration string Cindy file to show for the benchmark.
----@param cam_x number Benchmark duration in seconds.
----@param cam_y number Start x position of camera.
----@param cam_d number Start y position of camera.
----@param cam_b number Start distance of camera.
----@param cam_h number Start bearing of camera (in radians).
+---@param cindy_file function #Function to call if this campaign has not been loaded in benchmarking mode.
+---@param benchmark_duration string #Cindy file to show for the benchmark.
+---@param cam_x number #Benchmark duration in seconds.
+---@param cam_y number #Start x position of camera.
+---@param cam_d number #Start y position of camera.
+---@param cam_b number #Start distance of camera.
+---@param cam_h number #Start bearing of camera (in radians).
 function campaign_manager:show_benchmark_if_required(cindy_file, benchmark_duration, cam_x, cam_y, cam_d, cam_b, cam_h) end

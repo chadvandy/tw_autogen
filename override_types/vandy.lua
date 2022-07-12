@@ -9,6 +9,7 @@ return {
     float32 = "number",
     numbe = "number",
     data = "string|number|boolean",
+    ["vararg"] = "...",
 
     bool = "boolean",
 
@@ -42,4 +43,12 @@ return {
     character_details = "CHARACTER_DETAILS_SCRIPT_INTERFACE",
     pending_battle = "PENDING_BATTLE_SCRIPT_INTERFACE",
     building = "BUILDING_SCRIPT_INTERFACE",
+
+    ["GOVERNOR_ASSIGNED_CHARACTER_EVENT"] = "GovernorAssignedCharacterEvent",
+
+    ["scripted_value_registry"] = "scriptedvalueregistry",
+
+    ["alliance"] = "battle_alliance",
+    ["army"] = "battle_army",
+    ["unitcontroller"] = "battle_unitcontroller",
 }
