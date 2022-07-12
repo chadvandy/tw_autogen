@@ -33,8 +33,7 @@ Within your opened folder, either create or open up the .vscode/ folder, and eit
 ```
 {
     "Lua.workspace.library": [
-        "S:/modding/tw_autogen/output/wh3/all.lua",
-        "S:/modding/tw_autogen/output/wh3/tw_events_and_interfaces.lua",
+        "S:/modding/tw_autogen/output/wh3/global/",
         "S:/modding/tw_autogen/output/wh3/campaign/",
         "S:/modding/tw_autogen/output/wh3/frontend/",
         "S:/modding/tw_autogen/output/wh3/battle/"
