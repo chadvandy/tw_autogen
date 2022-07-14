@@ -251,7 +251,7 @@ function UIC:DestroyChildren() end
 
 --- Sets the text on the current state of the uicomponent to the supplied text. Localised text must be specified - common.get_localised_string can be used to look this up from anywhere in the database.
 ---@param localised_text string #Localised text.
----@param text_source string #source of text in format of a stringtable key (tablename_recordname_key)
+---@param text_source string? #source of text in format of a stringtable key (tablename_recordname_key)
 function UIC:SetStateText(localised_text, text_source) end
 
 --- Returns the text on the current state of the uicomponent along with its dimensions. This text will be localised.
@@ -261,9 +261,8 @@ function UIC:GetStateText() end
 
 --- Sets the tooltip text of the current state of this uicomponent. An optional flag directs the function to apply this tooltip text to all states of the uicomponent. The text specified must already be localised - effect:get_localised_string can be used to retrieve localised text from anywhere in the database.
 ---@param text string #Localised tooltip text.
----@param text_source string #source of text in format of a stringtable key (tablename_recordname_key)
 ---@param set_all_states boolean #Set all states.
-function UIC:SetTooltipText(text, text_source, set_all_states) end
+function UIC:SetTooltipText(text, set_all_states) end
 
 --- Returns the tooltip text of the current state of the uicomponent as a localised string.
 ---@return string #tooltip text 

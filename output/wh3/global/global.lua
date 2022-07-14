@@ -698,7 +698,7 @@ function find_uicomponent(parent_ui_component, ...) end
 --- Takes a start uicomponent and a numerically-indexed table of string uicomponent names. Starting from the supplied start uicomponent, the function searches through all descendants for a uicomponent with the next supplied uicomponent name in the table. If a uicomponent is found, its descendants are then searched for a uicomponent with the next name in the list, and so on until the list is finished or no uicomponent with the supplied name is found. This allows a uicomponent to be searched for by matching its name and part of or all of its path.
 ---@param parent_ui_component UIC #Parent uicomponent.
 ---@param table_of_string_names table #Table of string names, indexed by number.
----@param assert_on_failure bool? #optional, default value=false Fire a script error if the search fails.
+---@param assert_on_failure boolean? #optional, default value=false Fire a script error if the search fails.
 ---@return UIC
 function find_uicomponent_from_table(parent_ui_component, table_of_string_names, assert_on_failure) end
 

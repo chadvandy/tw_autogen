@@ -22,8 +22,6 @@ function UIComponent(address) end
 ---@class common
 common = {}
 
-function common.get_localised_string(loc_key) end
-
 ---@class ComponentContextObject
 ---@field Call fun(self: ComponentContextObject, expression: string):any
 

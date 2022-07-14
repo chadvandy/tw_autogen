@@ -422,7 +422,7 @@ function campaign_manager:turn_number() end
 function campaign_manager:set_turn_number_modifier(modifier) end
 
 --- Returns a scripted-generated object that emulates a campaign null interface.
----@return NULL_SCRIPT_INTERFACE
+---@return any   
 function campaign_manager:null_interface() end
 
 --- Returns whether the advice history indicates that a specific help page has been viewed by the player.
