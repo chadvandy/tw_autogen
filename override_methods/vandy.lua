@@ -105,3 +105,35 @@ function GovernorAssignedCharacterEvent:province() end
 
 ---@return REGION_SCRIPT_INTERFACE
 function GovernorAssignedCharacterEvent:region() end
+
+--- Finds and returns a child of this uicomponent by string name or by numeric index. If a numeric index is supplied, the immediate child uicomponent corresponding to this number is returned. If a string name is supplied, a recursive search is made through all children/descendants of this uicomponent. The first that is found with a matching name is returned.<br />
+--- If the search target was not found then nil is returned. If it was found then it is returned as a component address, which must be cast to a uicomponent script object using the UIComponent function. The find_uicomponent function provided by the script libraries does this automatically, so it's recommended to use that function in place of this function.
+---@param identifier any #Search target, identified by index number or string name.
+---@param assert_on_fail boolean? #optional, default value=true Assert if no matching uicomponent could be found.
+---@return UIC_Address
+function UIC:Find(identifier, assert_on_fail) end
+
+--- Returns the cqi of the selected character.
+---@return number #the CQI of selected character.
+function campaign_ui_manager:get_char_selected_cqi() end
+
+--- Gets the context object id for the supplied type that is stored on the component, to allow you to perform queries/commands on the context with (get_context_value/call_context_command).
+---@param context_type_id string #context type id
+---@return string #The Context ID.
+function UIC:GetContextObjectId(context_type_id) end
+
+--- Sets the state of the uicomponent to the specified state name.
+---@param state_name string|number #state name
+---@return boolean #State was successfully set 
+function UIC:SetState(state_name) end
+
+--- Adds a listener for an event. When the code triggers this event, and should the optional supplied conditional test pass, the core object will call the supplied target callback with the event context as a single argument.<br />
+--- A name must be specified for the listener which may be used to cancel it at any time. Names do not have to be unique between listeners.<br />
+--- The conditional test should be a function that returns a boolean value. This conditional test callback is called when the event is triggered, and the listener only goes on to trigger the supplied target callback if the conditional test returns true. Alternatively, a boolean true value may be given in place of a conditional callback, in which case the listener will always go on to call the target callback if the event is triggered.<br />
+--- Once a listener has called its callback it then shuts down unless the persistent flag is set to true, in which case it may only be stopped by being cancelled by name.
+---@param listener_name string #listener name
+---@param event_name string #event name
+---@param conditional_test function|true #Conditional test, or true to always pass
+---@param target_callback function #target callback
+---@param listener_persists_after_target_callback_called boolean #listener persists after target callback called
+function core:add_listener(listener_name, event_name, conditional_test, target_callback, listener_persists_after_target_callback_called) end

@@ -40,7 +40,7 @@ function campaign_ui_manager:get_open_blocking_or_event_panel() end
 function campaign_ui_manager:is_char_selected(character) end
 
 --- Returns the cqi of the selected character.
----@return boolean #is character selected 
+---@return number # #the CQI of selected character.
 function campaign_ui_manager:get_char_selected_cqi() end
 
 --- Returns whether a character from the supplied faction is selected.

@@ -10,7 +10,7 @@ function timer_manager:new_campaign(game_interface) end
 
 --- Creates and returns a timer manager in battle. This function should be supplied a battle game object. The timer manager is automatically created by the battle_manager so there should be no need for game scripts to call this function.
 ---@param battle_interface battle #battle interface
----@return timer_manager # timer manager 
+---@return timer_manager # #timer manager 
 function timer_manager:new_battle(battle_interface) end
 
 --- Creates and returns a timer manager in frontend.

@@ -35,7 +35,8 @@ function UIC:IsMouseOverChildren() end
 function UIC:SetContextObject(Takes_a_cco_to_set_on_the_component) end
 
 --- Gets the context object id for the supplied type that is stored on the component, to allow you to perform queries/commands on the context with (get_context_value/call_context_command).
----@param context_type_id string #context type id
+---@param context_type_id string ##context type id
+---@return string # #The Context ID.
 function UIC:GetContextObjectId(context_type_id) end
 
 --- Gets the context object (cco lua type) for the supplied type that is stored on the component
@@ -51,8 +52,8 @@ function UIC:AddScriptEventReporter() end
 function UIC:CurrentState() end
 
 --- Sets the state of the uicomponent to the specified state name.
----@param state_name string #state name
----@return boolean #State was successfully set 
+---@param state_name string|number ##state name
+---@return boolean # #State was successfully set 
 function UIC:SetState(state_name) end
 
 --- Returns the number of states this uicomponent contains.
@@ -194,8 +195,9 @@ function UIC:GetDockOffset() end
 
 --- Finds and returns a child of this uicomponent by string name or by numeric index. If a numeric index is supplied, the immediate child uicomponent corresponding to this number is returned. If a string name is supplied, a recursive search is made through all children/descendants of this uicomponent. The first that is found with a matching name is returned.<br />
 --- If the search target was not found then nil is returned. If it was found then it is returned as a component address, which must be cast to a uicomponent script object using the UIComponent function. The find_uicomponent function provided by the script libraries does this automatically, so it's recommended to use that function in place of this function.
----@param identifier any #Search target, identified by index number or string name.
----@param assert_on_fail boolean? #optional, default value=true Assert if no matching uicomponent could be found.
+---@param identifier any ##Search target, identified by index number or string name.
+---@param assert_on_fail boolean #? #optional, default value=true Assert if no matching uicomponent could be found.
+---@return UIC_Address
 function UIC:Find(identifier, assert_on_fail) end
 
 --- Finds and returns a child of this uicomponent by a series of string names and numeric indexes. The function will step through each argument, attempting to find the uicomponent specified, and using that as the parent from which to find the next. A numeric index argument finds an immediate child of the current search subject, whereas a string name initiates a recursive search through all children/descendants of this uicomponent.
@@ -251,7 +253,7 @@ function UIC:DestroyChildren() end
 
 --- Sets the text on the current state of the uicomponent to the supplied text. Localised text must be specified - common.get_localised_string can be used to look this up from anywhere in the database.
 ---@param localised_text string #Localised text.
----@param text_source string? #source of text in format of a stringtable key (tablename_recordname_key)
+---@param text_source string #source of text in format of a stringtable key (tablename_recordname_key)
 function UIC:SetStateText(localised_text, text_source) end
 
 --- Returns the text on the current state of the uicomponent along with its dimensions. This text will be localised.
@@ -261,8 +263,9 @@ function UIC:GetStateText() end
 
 --- Sets the tooltip text of the current state of this uicomponent. An optional flag directs the function to apply this tooltip text to all states of the uicomponent. The text specified must already be localised - effect:get_localised_string can be used to retrieve localised text from anywhere in the database.
 ---@param text string #Localised tooltip text.
+---@param text_source string #source of text in format of a stringtable key (tablename_recordname_key)
 ---@param set_all_states boolean #Set all states.
-function UIC:SetTooltipText(text, set_all_states) end
+function UIC:SetTooltipText(text, text_source, set_all_states) end
 
 --- Returns the tooltip text of the current state of the uicomponent as a localised string.
 ---@return string #tooltip text 

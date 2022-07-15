@@ -690,9 +690,9 @@ function find_child_uicomponent(parent_ui_component, name) end
 function find_child_uicomponent_by_index(parent_ui_component, index) end
 
 --- Finds and returns a uicomponent based on a set of strings that define its path in the ui hierarchy. This parent uicomponent can be supplied as the first argument - if omitted, the root uicomponent is used. Starting from the parent or root, the function searches through all descendants for a uicomponent with the next supplied uicomponent name in the sequence. If a uicomponent is found, its descendants are then searched for a uicomponent with the next name in the list, and so on until the list is finished or no uicomponent with the supplied name is found. A fragmentary path may be supplied if it still unambiguously specifies the intended uicomponent.
----@param parent_ui_component UIC? #optional, default value=nil parent ui component
----@param ... any #list of string names
----@return UIC
+---@param parent_ui_component UIC|string parent ui component - either a UIComponent or the string name of a child of Root.
+---@vararg string The names of the descendants from parent_ui_component, in a tree going down the line.
+---@return UIC  
 function find_uicomponent(parent_ui_component, ...) end
 
 --- Takes a start uicomponent and a numerically-indexed table of string uicomponent names. Starting from the supplied start uicomponent, the function searches through all descendants for a uicomponent with the next supplied uicomponent name in the table. If a uicomponent is found, its descendants are then searched for a uicomponent with the next name in the list, and so on until the list is finished or no uicomponent with the supplied name is found. This allows a uicomponent to be searched for by matching its name and part of or all of its path.

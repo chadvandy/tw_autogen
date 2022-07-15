@@ -422,7 +422,7 @@ function campaign_manager:turn_number() end
 function campaign_manager:set_turn_number_modifier(modifier) end
 
 --- Returns a scripted-generated object that emulates a campaign null interface.
----@return any   
+---@return any
 function campaign_manager:null_interface() end
 
 --- Returns whether the advice history indicates that a specific help page has been viewed by the player.
@@ -914,7 +914,7 @@ function campaign_manager:num_mobile_forces_in_force_list(military_force_list) e
 --- Returns the unary proportion (0-1) of units in the supplied military force which are of the supplied unit class.
 ---@param military_force MILITARY_FORCE_SCRIPT_INTERFACE #military force
 ---@param unit_class string #unit class
----@return number # units of unit class 
+---@return number # #units of unit class 
 function campaign_manager:proportion_of_unit_class_in_military_force(military_force, unit_class) end
 
 --- Returns true if the supplied military force contains any units of a type contained in the supplied unit type list, false otherwise.
@@ -968,7 +968,7 @@ function campaign_manager:get_owner_of_province(province) end
 --- Returns whether the supplied region object is adjacent to regions owned by the supplied faction. If the region is owned by the faction then false is returned.
 ---@param region REGION_SCRIPT_INTERFACE #region
 ---@param faction FACTION_SCRIPT_INTERFACE #region
----@return boolean # region adjacent to faction 
+---@return boolean # #region adjacent to faction 
 function campaign_manager:region_adjacent_to_faction(region, faction) end
 
 --- Instantly upgrades the building in the supplied slot to the supplied building key.
@@ -1013,7 +1013,7 @@ function campaign_manager:get_closest_region_for_faction(faction, x, y, conditio
 --- If an optional condition function is supplied then it is called for each region with the region supplied as a single argument. In this case, the condition function must return true for the region to be included in the results.
 ---@param faction_specifier FACTION_SCRIPT_INTERFACE #Faction specifier - this can be a faction script interface object, or a string faction key from the factions database table.
 ---@param regions_as_keys boolean #Populate the returned table with region keys, rather than REGION_SCRIPT_INTERFACE objects.
----@return table # table of all adjacent regions 
+---@return table # #table of all adjacent regions 
 function campaign_manager:get_regions_adjacent_to_faction(faction_specifier, regions_as_keys) end
 
 --- Returns the value of the key specified corruption in the specified region object. It may also be supplied a region key in place of a region object.

@@ -570,12 +570,12 @@ local function parse_override_file(file_path)
                 method_name = method_name:match("[%a_]+:[%a_]+%(.+%)")
                 -- printf("Method: %s", method_name)
 
-                local class = line:match("[%a_]+:")
-                class = class:gsub(":", "")
+                local class = line:match("[%a_]+[.:]")
+                class = class:gsub("[.:]", "")
                 printf("Class is %s", class)
 
-                local method = line:match(":[%a_]+")
-                method = method:gsub(":", "")
+                local method = line:match("[.:][%a_]+")
+                method = method:gsub("[.:]", "")
                 printf("Method is %s", method)
 
                 -- this.parent_class = class
