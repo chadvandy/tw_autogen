@@ -198,11 +198,11 @@ function core:get_or_create_component(name, file_path, parent) end
 --- A name must be specified for the listener which may be used to cancel it at any time. Names do not have to be unique between listeners.<br />
 --- The conditional test should be a function that returns a boolean value. This conditional test callback is called when the event is triggered, and the listener only goes on to trigger the supplied target callback if the conditional test returns true. Alternatively, a boolean true value may be given in place of a conditional callback, in which case the listener will always go on to call the target callback if the event is triggered.<br />
 --- Once a listener has called its callback it then shuts down unless the persistent flag is set to true, in which case it may only be stopped by being cancelled by name.
----@param listener_name string #listener name
----@param event_name string #event name
----@param conditional_test function #Conditional test, or true to always pass
----@param target_callback function #target callback
----@param listener_persists_after_target_callback_called boolean #listener persists after target callback called
+---@param listener_name string ##listener name
+---@param event_name string ##event name
+---@param conditional_test function|true ##Conditional test, or true to always pass
+---@param target_callback function ##target callback
+---@param listener_persists_after_target_callback_called boolean ##listener persists after target callback called
 function core:add_listener(listener_name, event_name, conditional_test, target_callback, listener_persists_after_target_callback_called) end
 
 --- Removes and stops any event listeners with the specified name.

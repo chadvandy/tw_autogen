@@ -26,9 +26,8 @@ function campaign_ui_manager:get_open_fullscreen_panel() end
 function campaign_ui_manager:is_char_selected(character) end
 
 --- Returns the cqi of the selected character.
----@param character CHARACTER_SCRIPT_INTERFACE #character
----@return boolean #is character selected 
-function campaign_ui_manager:get_char_selected_cqi(character) end
+---@return number # #the CQI of selected character.
+function campaign_ui_manager:get_char_selected_cqi() end
 
 --- Returns whether a character from the supplied faction is selected.
 ---@param faction_name string #faction name

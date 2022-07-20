@@ -389,7 +389,7 @@ function campaign_manager:is_game_running() end
 function campaign_manager:is_first_tick() end
 
 --- Returns a handle to the game model at any time (after the game has been created). See the Model Hierarchy pages for more information about the game model interface.
----@return any #model 
+---@return MODEL_SCRIPT_INTERFACE # model 
 function campaign_manager:model() end
 
 --- Returns a handle to the raw episodic scripting interface. Generally it's not necessary to call this function, as calls made on the campaign manager which the campaign manager doesn't itself provide are passed through to the episodic scripting interface, but a direct handle to the episodic scripting interface may be sought with this function if speed of repeated access.

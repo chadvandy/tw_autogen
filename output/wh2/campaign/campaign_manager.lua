@@ -218,7 +218,7 @@ function campaign_manager:is_new_game() end
 function campaign_manager:is_game_running() end
 
 --- Returns a handle to the game model at any time (after the game has been created). See the Model Hierarchy pages for more information about the game model interface.
----@return any #model 
+---@return MODEL_SCRIPT_INTERFACE # model 
 function campaign_manager:model() end
 
 --- Returns a handle to the raw episodic scripting interface. Generally it's not necessary to call this function, as calls made on the campaign manager which the campaign manager doesn't itself provide are passed through to the episodic scripting interface, but a direct handle to the episodic scripting interface may be sought with this function if speed of repeated access.
@@ -258,7 +258,7 @@ function campaign_manager:turn_number() end
 function campaign_manager:set_turn_number_modifier(modifier) end
 
 --- Returns a scripted-generated object that emulates a campaign null interface.
----@return NULL_SCRIPT_INTERFACE
+---@return any
 function campaign_manager:null_interface() end
 
 --- Returns whether the advice history indicates that a specific help page has been viewed by the player.
@@ -574,7 +574,7 @@ function campaign_manager:num_mobile_forces_in_force_list(military_force_list) e
 --- Returns the unary proportion (0-1) of units in the supplied military force which are of the supplied unit class.
 ---@param military_force MILITARY_FORCE_SCRIPT_INTERFACE #military force
 ---@param unit_class string #unit class
----@return number # units of unit class 
+---@return number # #units of unit class 
 function campaign_manager:proportion_of_unit_class_in_military_force(military_force, unit_class) end
 
 --- Returns true if the supplied military force contains any units of a type contained in the supplied unit type list, false otherwise.

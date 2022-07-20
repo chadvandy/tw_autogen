@@ -137,3 +137,7 @@ function UIC:SetState(state_name) end
 ---@param target_callback function #target callback
 ---@param listener_persists_after_target_callback_called boolean #listener persists after target callback called
 function core:add_listener(listener_name, event_name, conditional_test, target_callback, listener_persists_after_target_callback_called) end
+
+--- Returns a handle to the game model at any time (after the game has been created). See the Model Hierarchy pages for more information about the game model interface.
+---@return MODEL_SCRIPT_INTERFACE  model 
+function campaign_manager:model() end
