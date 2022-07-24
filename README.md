@@ -1,5 +1,7 @@
 # tw_autogen
  
+**NOTE: If you are looking to just download this to use debugging tools, download the Sumneko extension mentioned below and then open up RPFM and use its "check tw_autogen" feature. It will automatically download this repository's necessary files for the game you're modding. If you don't want to use that feature, or want to make direct edits to the tw_autogen, read on!**
+
 This is an autogenerator program to create all the necessary files to set up a development environment, to make creating Lua mods for Total War significantly easier. This process uses the script documentation provided by Creative Assembly, translates their HTML files to Lua files, and uses a Lua plugin to incorporate pretty good error checking.
 
 All information on how to install and set this up to follow.
