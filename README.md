@@ -16,7 +16,7 @@ After opening Visual Studio Code, click the "Extensions" button on the left-hand
 
 I also recommend the following plugins, while you're at it:
 - [Bookmarks](https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks), so you can quickly return to important spots in your code.
-- [Code Runner](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner), which I use to test non-TW Lua code (for instance, this autogenerator).
+- [Code Runner](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner), which I use to test non-TW Lua code (for instance, this autogenerator) NOT NEEDED for TW code.
 - [Lines of Code](https://marketplace.visualstudio.com/items?itemName=lyzerk.linecounter) so you can get some statistics about how much you've written.
 - [TODO Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree) so you can quickly find todo items you have left in your code.
 
