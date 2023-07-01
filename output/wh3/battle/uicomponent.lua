@@ -88,6 +88,11 @@ function UIC:Bounds() end
 ---@return number
 function UIC:Position() end
 
+--- Returns the relative position of the uicomponent
+---@return number
+---@return number
+function UIC:RelativePosition() end
+
 --- Sets the uicomponent to a new screen position, measured from the top-left corner of the game window/screen.
 ---@param x number #X co-ordinate in pixels.
 ---@param y number #Y co-ordinate in pixels.
@@ -250,6 +255,11 @@ function UIC:Destroy() end
 
 --- Destroys all children of this uicomponent.
 function UIC:DestroyChildren() end
+
+--- Sets the text on all available states of the uicomponent to the supplied text. Localised text must be specified - common.get_localised_string can be used to look this up from anywhere in the database.
+---@param localised_text string #Localised text.
+---@param text_source string #source of text in format of a stringtable key (tablename_recordname_key)
+function UIC:SetText(localised_text, text_source) end
 
 --- Sets the text on the current state of the uicomponent to the supplied text. Localised text must be specified - common.get_localised_string can be used to look this up from anywhere in the database.
 ---@param localised_text string #Localised text.
@@ -425,6 +435,10 @@ function UIC:GetCurrentStateImageFlip(state_image_index) end
 ---@param recursive boolean? #optional, default value=false Also test all parents up to the root.
 ---@return boolean #is visible 
 function UIC:Visible(recursive) end
+
+--- Returns whether this uicomponent is visible, all its parents are visible, and the hierarchy is attached to the ui root. If the supplied parent (or an ancestor of it) is orphaned from the ui root this function will return false where uicomponent:Visible may return true, as the uicomponent would not be displayed if not attached to the ui root.
+---@return boolean #is visible from root 
+function UIC:VisibleFromRoot() end
 
 --- Sets the visibility state of this uicomponent.
 ---@param is_visible boolean #is visible

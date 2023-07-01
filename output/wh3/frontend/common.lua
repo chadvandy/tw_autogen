@@ -249,13 +249,15 @@ function common.setup_dynamic_loading_screen(json_filename, layout_name) end
 
 --- Will create a CcoScriptObject to context cache with specified value (or update existing objects value), and send notification of change so ContextInitScriptObject can refresh display of self and children
 ---@param unique_id string #the unique id for the value so can set and get the value
-function common.set_context_value(unique_id) end
+---@param value string|number|table #the unique id for the value so can set and get the value
+function common.set_context_value(cco_class, unique_id, value) end
 
 --- Will look up the context object from the context cache or construct one with the type "context_object_typename" and the data (usually a CQI) from "construction_data", call the context function specified by context_function_id and return the value.
 ---@param object_id string? #optional, default value="CcoScriptObject" Context object id on which to call the function. If omitted, the function is called on the CcoScriptObject object.
+---@param context_id string? #optional, default value="CcoScriptObject" Context object id on which to call the function. If omitted, the function is called on the CcoScriptObject object.
 ---@param function_id string #Function id on the context object to call. This can also be an expression, but the result must return a context id.
 ---@return any
-function common.get_context_value(object_id, function_id) end
+function common.get_context_value(object_id, context_id, function_id) end
 
 --- Calls a specified function on a specified context object that makes changes to the game. This allows script to use the context system to modify the state of the game.
 ---@param object_id string? #optional, default value="CcoScriptObject" Context object id on which to call the function. If omitted, the function is called on the CcoScriptObject object.

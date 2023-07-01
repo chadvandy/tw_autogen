@@ -199,6 +199,11 @@ i.parameter {
 	font-size: 0.9em;
 }
 
+ul.model_hierarchy_list {
+	margin: 5px 0 0 1em;
+	padding: 0;
+}
+
 strong { font-weight: bold;}
 
 em { font-style: italic;}
@@ -411,6 +416,12 @@ div.key {
 	font-size: .8em;
 }
 
+div.model_hierarchy_list {
+	margin: 0.5em 0 2em 0;
+	padding: 1em 1em 2em 1em;
+	background-color: ghostwhite;
+}
+
 table.key {
 	width: 21em; 
 	margin-left: 3em;
@@ -531,6 +542,8 @@ table.function_list td.summary { width: 100%; }
 
 
 h3.variable_list {border-top: 1px solid #ccc; margin-bottom: 3em; padding-top: 1em;}
+
+table.variable_list {margin-top: 1em; margin-bottom: 5em;}
 
 table.variable_list td {
     border-width: 1px;

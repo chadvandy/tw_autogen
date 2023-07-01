@@ -9,7 +9,7 @@ local text_pointer = {}
 ---@param length number? #optional, default value=0 Length of the attached arrow pointer and line. Can be zero.
 ---@param x_position number? #optional, default value=0 X position. This is either the absolute position on-screen, or the position in 3D space if the pointer display mode is set to worldspace. 
 ---@param y_position number? #optional, default value=0 Y position. This is either the absolute position on-screen, or the position in 3D space if the pointer display mode is set to worldspace.
----@return text_pointer
+---@return text_pointer #text pointer 
 function text_pointer:new(name, display_mode, length, x_position, y_position) end
 
 --- Creates a text_pointer object pointing to a supplied uicomponent. The uicomponent may either be supplied directly or as a function that returns a uicomponent.
@@ -19,7 +19,7 @@ function text_pointer:new(name, display_mode, length, x_position, y_position) en
 ---@param ui_component any #UI component to point at. This can be supplied as either a uicomponent or a function that returns a uicomponent. By default the pointer will point to the middle of the component - use the offset parameters to change this.
 ---@param x_proportion number? #optional, default value=0.5 Unary x proportion specifying a pointed position relative to the dimensions of the specified component. Supply zero to point at the left edge of the component, one to point at the right edge of the component, or 0.5 to point at the middle of the component, for example. Values less than zero or greater than one are valid.
 ---@param y_proportion number? #optional, default value=0.5 Unary y proportion specifying a pointed position relative to the dimensions of the specified component. Supply zero to point at the top edge of the component, one to point at the bottom edge of the component, or 0.5 to point at the middle of the component, for example. Values less than zero or greater than one are valid.
----@return text_pointer
+---@return text_pointer #text pointer 
 function text_pointer:new_from_component(name, display_mode, length, ui_component, x_proportion, y_proportion) end
 
 --- Creates a text_pointer object with a position relative to another text pointer. This can be used to make text pointers appear in a sequence on the screen.
@@ -27,7 +27,7 @@ function text_pointer:new_from_component(name, display_mode, length, ui_componen
 ---@param text_pointer text_pointer #Text pointer object to display relative to.
 ---@param x_offset number #x offset in pixels from the other text pointer. This takes into account the other text pointer's size, so the two text pointers cannot overlap. Supplying a value of 10 would mean a gap of 10 pixels between the two text pointers, with this text pointer on the right of the other, while a value of -10 would mean a gap of 10 pixels with this text pointer on the left.
 ---@param y_offset number #y offset in pixels from the other text pointer. This takes into account the other text pointer's size, so the two text pointers cannot overlap. Supplying a value of 10 would mean a gap of 10 pixels between the two text pointers, with this text pointer below the other (as a higher value of y means a position further down the screen), while a value of -10 would mean a gap of 10 pixels with this text pointer above the other.
----@return text_pointer
+---@return text_pointer #text pointer 
 function text_pointer:new_from_position_offset_to_text_pointer(name, text_pointer, x_offset, y_offset) end
 
 --- Sets the path to the folder that contains the component layout file. Default value is "UI/Common UI/".

@@ -137,6 +137,7 @@
 					<li><a href="cinematics.html">Cinematics</a></li>
 					<li><a href="common.html">Common</a></li>
 					<li><a href="episodic_scripting.html">Episodic Scripting</a></li>
+					<li><a href="model_hierarchy.html">Model Hierarchy</a></li>
 					<li><a href="scriptedvalueregistry.html">ScriptedValueRegistry</a></li>
 					<li><a href="uicomponent.html">UIComponents</a></li>
 
@@ -153,7 +154,6 @@
 					<li><a href="global.html">Global</a></li>
 					<li><a href="infotext_manager.html">Infotext Manager</a></li>
 					<li><a href="intervention.html">Interventions</a></li>
-					<li><a href="intro_campaign_scripts.html">Helper Scripts</a></li>
 					<li><a href="invasion_manager.html">Invasion Manager</a></li>
 					<li><a href="mission_manager.html">Mission Managers</a></li>
 					<li><a href="movie_overlay.html">Movie Overlays</a></li>
@@ -174,6 +174,8 @@
 
 				<h2 style="background-color:#ffed8c">Data Interfaces</h2>
 				<ul>
+					<li><a href="custom_starts.html">Campaign Custom Starts</a></li>
+					<li><a href="faction_intro.html">Faction Intro</a></li>
 					<li><a href="narrative.html">Narrative</a></li>
 					<li><strong> > Narrative Event Templates</strong></li>
 					<li><a href="narrative_queries.html">Narrative Query Templates</a></li>
@@ -1472,7 +1474,7 @@
 					</dl>
 					<dl class="function">
 						<dt>
-							<a name="function:narrative_events:generic"><h3 class="function_name"><strong><code>narrative_events.generic(<br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">unique name</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">faction key</i><code><strong>, <br />&emsp;&emsp;[<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">advice key</i><code><strong>], <br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">mission key</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">mission text</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:table">table</a></code> </strong></code><i class="parameter">event/conditions</i><code><strong>, <br />&emsp;&emsp;[<code><a href="lua.html#class:function">function</a></code> </strong></code><i class="parameter">camera scroll callback</i><code><strong>], <br />&emsp;&emsp;[<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">mission issuer</i><code><strong>], <br />&emsp;&emsp;<code><a href="lua.html#class:table">table</a></code> </strong></code><i class="parameter">mission rewards</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">trigger message</i><code><strong>, <br />&emsp;&emsp;[<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">on-issued message</i><code><strong>], <br />&emsp;&emsp;[<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">on-completed message</i><code><strong>], <br />&emsp;&emsp;[<code><a href="lua.html#class:table">table</a></code> </strong></code><i class="parameter">inherit list</i><code><strong>]<br />)</code></strong></h3></a>
+							<a name="function:narrative_events:generic"><h3 class="function_name"><strong><code>narrative_events.generic(<br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">unique name</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">faction key</i><code><strong>, <br />&emsp;&emsp;[<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">advice key</i><code><strong>], <br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">mission key</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">mission text</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:table">table</a></code> </strong></code><i class="parameter">event/conditions</i><code><strong>, <br />&emsp;&emsp;[<code><a href="lua.html#class:function">function</a></code> </strong></code><i class="parameter">camera scroll callback</i><code><strong>], <br />&emsp;&emsp;[<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">mission issuer</i><code><strong>], <br />&emsp;&emsp;<code><a href="lua.html#class:table">table</a></code> </strong></code><i class="parameter">mission rewards</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">trigger message</i><code><strong>, <br />&emsp;&emsp;[<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">on-issued message</i><code><strong>], <br />&emsp;&emsp;[<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">on-completed message</i><code><strong>], <br />&emsp;&emsp;[<code><a href="lua.html#class:table">table</a></code> </strong></code><i class="parameter">inherit list</i><code><strong>], <br />&emsp;&emsp;[<code><a href="lua.html#class:boolean">boolean</a></code> </strong></code><i class="parameter">force_advice</i><code><strong>]<br />)</code></strong></h3></a>
 						</dt>
 						<dd>
 							Creates and starts a narrative event that issues a generic scripted mission. One or more event/condition pairs to pass to the underlying <code><a href="mission_manager.html#class:mission_manager">mission_manager</a></code> must be supplied in a <code><a href="lua.html#class:table">table</a></code>. Advice may optionally be supplied to be issued with the mission.
@@ -1633,13 +1635,25 @@
 										<p>Table of string names of other narrative events to inherit the rewards from. If this narrative event triggers before another that it's set to inherit from, this narrative event will add the mission rewards from the other to its own mission rewards, and prevent the other narrative event from triggering.</p>
 									</td>
 								</tr>
+								<tr>
+									<td>
+										<p><strong>14</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:boolean">boolean</a></code></code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=nil</i></p>
+										<p>this is used to override the default advice priority logic - by setting this to true, the supplied advice key will always be played regardless of advice level</p>
+									</td>
+								</tr>
 							</table>
 
 							<h4>Returns:</h4>
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 1281</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 1284</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1799,7 +1813,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 1367</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 1371</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1959,7 +1973,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 1390</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 1394</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2120,7 +2134,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 1509</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 1513</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2259,7 +2273,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 1533</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 1537</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2419,7 +2433,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 1609</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 1613</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2568,7 +2582,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 1632</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 1636</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2717,12 +2731,12 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 1654</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 1658</p>
 						</dd>
 					</dl>
 					<dl class="function">
 						<dt>
-							<a name="function:narrative_events:gain_pooled_resource_scripted"><h3 class="function_name"><strong><code>narrative_events.gain_pooled_resource_scripted(<br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">unique name</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">faction key</i><code><strong>, <br />&emsp;&emsp;[<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">advice key</i><code><strong>], <br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">mission key</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">mission text</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">pooled resource key</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:number">number</a></code> </strong></code><i class="parameter">lower threshold</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:number">number</a></code> </strong></code><i class="parameter">upper threshold</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:boolean">boolean</a></code> </strong></code><i class="parameter">additive</i><code><strong>, <br />&emsp;&emsp;[<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">mission issuer</i><code><strong>], <br />&emsp;&emsp;<code><a href="lua.html#class:table">table</a></code> </strong></code><i class="parameter">mission rewards</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">trigger message</i><code><strong>, <br />&emsp;&emsp;[<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">on-issued message</i><code><strong>], <br />&emsp;&emsp;[<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">on-completed message</i><code><strong>], <br />&emsp;&emsp;[<code><a href="lua.html#class:table">table</a></code> </strong></code><i class="parameter">inherit list</i><code><strong>], <br />&emsp;&emsp;<code><a href="lua.html#class:boolean">boolean</a></code> </strong></code><i class="parameter">is_regular_income</i><code><strong><br />)</code></strong></h3></a>
+							<a name="function:narrative_events:gain_pooled_resource_scripted"><h3 class="function_name"><strong><code>narrative_events.gain_pooled_resource_scripted(<br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">unique name</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">faction key</i><code><strong>, <br />&emsp;&emsp;[<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">advice key</i><code><strong>], <br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">mission key</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">mission text</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">pooled resource key</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:number">number</a></code> </strong></code><i class="parameter">lower threshold</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:number">number</a></code> </strong></code><i class="parameter">upper threshold</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:boolean">boolean</a></code> </strong></code><i class="parameter">additive</i><code><strong>, <br />&emsp;&emsp;[<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">mission issuer</i><code><strong>], <br />&emsp;&emsp;<code><a href="lua.html#class:table">table</a></code> </strong></code><i class="parameter">mission rewards</i><code><strong>, <br />&emsp;&emsp;<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">trigger message</i><code><strong>, <br />&emsp;&emsp;[<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">on-issued message</i><code><strong>], <br />&emsp;&emsp;[<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">on-completed message</i><code><strong>], <br />&emsp;&emsp;[<code><a href="lua.html#class:table">table</a></code> </strong></code><i class="parameter">inherit list</i><code><strong>]<br />)</code></strong></h3></a>
 						</dt>
 						<dd>
 							Creates and starts a narrative event that issues a mission for the specified faction to gain a specified amount of one or more specified pooled resources. Unlike <code><a href="#function:narrative_events:gain_pooled_resource">narrative_events.gain_pooled_resource</a></code> this sets up a scripted mission, where script is responsible for the completion of the mission. This allows multiple pooled resources to be considered at the same time, either additively or not, allowing mission constructs such as "earn x of pooled resources a, b and c together", or "earn x of pooled resources a, b or c".<br />
@@ -2905,24 +2919,13 @@
 										<p>Table of string names of other narrative events to inherit the rewards from. If this narrative event triggers before another that it's set to inherit from, this narrative event will add the mission rewards from the other to its own mission rewards, and prevent the other narrative event from triggering.</p>
 									</td>
 								</tr>
-								<tr>
-									<td>
-										<p><strong>16</strong></p>
-									</td>
-									<td>
-										<p><code><code><a href="lua.html#class:boolean">boolean</a></code></code></p>
-									</td>
-									<td>
-										<p>If set to <code>true</code>, then ScriptEventTrackedPooledResourceRegularIncome event/callback will be used instead of ScriptEventTrackedPooledResourceChanged</p>
-									</td>
-								</tr>
 							</table>
 
 							<h4>Returns:</h4>
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 1860</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 1885</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3096,7 +3099,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2004</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2028</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3245,7 +3248,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2080</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2104</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3419,7 +3422,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2185</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2209</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3581,7 +3584,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2284</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2308</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3730,7 +3733,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2381</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2405</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3903,7 +3906,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2480</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2504</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4088,7 +4091,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2590</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2614</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4250,7 +4253,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2682</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2706</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4412,7 +4415,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2706</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2730</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4563,7 +4566,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2777</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2801</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4701,7 +4704,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2928</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 2952</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4873,7 +4876,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3012</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3036</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -5022,7 +5025,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3079</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3103</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -5182,7 +5185,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3186</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3214</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -5320,7 +5323,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3258</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3286</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -5458,7 +5461,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3327</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3355</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -5607,7 +5610,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3436</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3517</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -5756,7 +5759,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3505</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3586</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -5931,7 +5934,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3602</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3683</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -6141,7 +6144,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3781</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3873</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -6279,7 +6282,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3826</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3918</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -6417,7 +6420,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3864</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3956</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -6567,7 +6570,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 3908</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4000</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -6750,7 +6753,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4024</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4144</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -6911,7 +6914,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4100</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4220</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -7072,7 +7075,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4193</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4313</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -7233,7 +7236,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4297</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4417</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -7371,7 +7374,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4320</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4440</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -7568,7 +7571,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4505</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4626</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -7729,7 +7732,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4531</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4652</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -7890,7 +7893,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4617</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4750</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -8051,7 +8054,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4696</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4845</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -8212,7 +8215,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4771</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/campaign/_narrative/wh3_narrative_event_templates.lua, line 4920</p>
 						</dd>
 					</dl>
 				</div>
@@ -8222,7 +8225,7 @@
 
 		</div>
 
-		<div id="about">Last updated 20/01/2022 17:32:53</div>
+		<div id="about">Last updated 12/08/2022 11:56:58</div>
 
 	</div>
 

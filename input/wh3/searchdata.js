@@ -552,6 +552,14 @@ var all_terms = [
 		}
 	},
 	{
+		term:"is_factionprovince()",
+		envs:{
+			campaign:"campaign/global.html#function:global:is_factionprovince",
+			battle:"battle/global.html#function:global:is_factionprovince",
+			frontend:"frontend/global.html#function:global:is_factionprovince"
+		}
+	},
+	{
 		term:"is_regionlist()",
 		envs:{
 			campaign:"campaign/global.html#function:global:is_regionlist",
@@ -944,6 +952,14 @@ var all_terms = [
 		}
 	},
 	{
+		term:"is_factionintrodata()",
+		envs:{
+			campaign:"campaign/global.html#function:global:is_factionintrodata",
+			battle:"battle/global.html#function:global:is_factionintrodata",
+			frontend:"frontend/global.html#function:global:is_factionintrodata"
+		}
+	},
+	{
 		term:"is_campaigncutscene()",
 		envs:{
 			campaign:"campaign/global.html#function:global:is_campaigncutscene",
@@ -1037,22 +1053,6 @@ var all_terms = [
 			campaign:"campaign/global.html#function:global:is_narrativetrigger",
 			battle:"battle/global.html#function:global:is_narrativetrigger",
 			frontend:"frontend/global.html#function:global:is_narrativetrigger"
-		}
-	},
-	{
-		term:"is_introcampaigncameramarker()",
-		envs:{
-			campaign:"campaign/global.html#function:global:is_introcampaigncameramarker",
-			battle:"battle/global.html#function:global:is_introcampaigncameramarker",
-			frontend:"frontend/global.html#function:global:is_introcampaigncameramarker"
-		}
-	},
-	{
-		term:"is_introcampaigncamerapositionsadvice()",
-		envs:{
-			campaign:"campaign/global.html#function:global:is_introcampaigncamerapositionsadvice",
-			battle:"battle/global.html#function:global:is_introcampaigncamerapositionsadvice",
-			frontend:"frontend/global.html#function:global:is_introcampaigncamerapositionsadvice"
 		}
 	},
 	{
@@ -1906,12 +1906,6 @@ var all_terms = [
 		term:"cutscene:set_should_restore_battle_speed()",
 		envs:{
 			battle:"battle/cutscene.html#function:cutscene:set_should_restore_battle_speed"
-		}
-	},
-	{
-		term:"cutscene:set_do_not_end()",
-		envs:{
-			battle:"battle/cutscene.html#function:cutscene:set_do_not_end"
 		}
 	},
 	{
@@ -2890,6 +2884,12 @@ var all_terms = [
 		term:"battle_manager:show_player_alliance_units_for_mp_cutscenes()",
 		envs:{
 			battle:"battle/battle_manager.html#function:battle_manager:show_player_alliance_units_for_mp_cutscenes"
+		}
+	},
+	{
+		term:"battle_manager:show_player_army_units_for_mp_cutscenes()",
+		envs:{
+			battle:"battle/battle_manager.html#function:battle_manager:show_player_army_units_for_mp_cutscenes"
 		}
 	},
 	{
@@ -4459,12 +4459,6 @@ var all_terms = [
 		}
 	},
 	{
-		term:"campaign_cutscene:set_do_not_end()",
-		envs:{
-			campaign:"campaign/campaign_cutscene.html#function:campaign_cutscene:set_do_not_end"
-		}
-	},
-	{
 		term:"campaign_cutscene:set_use_cinematic_borders()",
 		envs:{
 			campaign:"campaign/campaign_cutscene.html#function:campaign_cutscene:set_use_cinematic_borders"
@@ -4507,9 +4501,27 @@ var all_terms = [
 		}
 	},
 	{
+		term:"campaign_cutscene:set_intro_cutscene()",
+		envs:{
+			campaign:"campaign/campaign_cutscene.html#function:campaign_cutscene:set_intro_cutscene"
+		}
+	},
+	{
+		term:"campaign_cutscene:is_intro_cutscene()",
+		envs:{
+			campaign:"campaign/campaign_cutscene.html#function:campaign_cutscene:is_intro_cutscene"
+		}
+	},
+	{
 		term:"campaign_cutscene:set_end_callback()",
 		envs:{
 			campaign:"campaign/campaign_cutscene.html#function:campaign_cutscene:set_end_callback"
+		}
+	},
+	{
+		term:"campaign_cutscene:prepend_end_cutscene()",
+		envs:{
+			campaign:"campaign/campaign_cutscene.html#function:campaign_cutscene:prepend_end_cutscene"
 		}
 	},
 	{
@@ -4555,6 +4567,18 @@ var all_terms = [
 		}
 	},
 	{
+		term:"campaign_cutscene:set_music_trigger_argument()",
+		envs:{
+			campaign:"campaign/campaign_cutscene.html#function:campaign_cutscene:set_music_trigger_argument"
+		}
+	},
+	{
+		term:"campaign_cutscene:set_relative_mode()",
+		envs:{
+			campaign:"campaign/campaign_cutscene.html#function:campaign_cutscene:set_relative_mode"
+		}
+	},
+	{
 		term:"campaign_cutscene:add_cinematic_trigger_listener()",
 		envs:{
 			campaign:"campaign/campaign_cutscene.html#function:campaign_cutscene:add_cinematic_trigger_listener"
@@ -4570,6 +4594,42 @@ var all_terms = [
 		term:"campaign_cutscene:action()",
 		envs:{
 			campaign:"campaign/campaign_cutscene.html#function:campaign_cutscene:action"
+		}
+	},
+	{
+		term:"campaign_cutscene:action_set_camera_position()",
+		envs:{
+			campaign:"campaign/campaign_cutscene.html#function:campaign_cutscene:action_set_camera_position"
+		}
+	},
+	{
+		term:"campaign_cutscene:action_scroll_camera_to_position()",
+		envs:{
+			campaign:"campaign/campaign_cutscene.html#function:campaign_cutscene:action_scroll_camera_to_position"
+		}
+	},
+	{
+		term:"campaign_cutscene:action_show_advice()",
+		envs:{
+			campaign:"campaign/campaign_cutscene.html#function:campaign_cutscene:action_show_advice"
+		}
+	},
+	{
+		term:"campaign_cutscene:action_override_ui_visibility()",
+		envs:{
+			campaign:"campaign/campaign_cutscene.html#function:campaign_cutscene:action_override_ui_visibility"
+		}
+	},
+	{
+		term:"campaign_cutscene:action_fade_scene()",
+		envs:{
+			campaign:"campaign/campaign_cutscene.html#function:campaign_cutscene:action_fade_scene"
+		}
+	},
+	{
+		term:"campaign_cutscene:action_end_cutscene()",
+		envs:{
+			campaign:"campaign/campaign_cutscene.html#function:campaign_cutscene:action_end_cutscene"
 		}
 	},
 	{
@@ -4600,12 +4660,6 @@ var all_terms = [
 		term:"campaign_cutscene:skip()",
 		envs:{
 			campaign:"campaign/campaign_cutscene.html#function:campaign_cutscene:skip"
-		}
-	},
-	{
-		term:"campaign_cutscene:set_music_trigger_argument()",
-		envs:{
-			campaign:"campaign/campaign_cutscene.html#function:campaign_cutscene:set_music_trigger_argument"
 		}
 	},
 	{
@@ -5263,6 +5317,12 @@ var all_terms = [
 		}
 	},
 	{
+		term:"campaign_manager:add_immortal_character_defeated_listener()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:add_immortal_character_defeated_listener"
+		}
+	},
+	{
 		term:"campaign_manager:add_pooled_resource_changed_listener_by_faction()",
 		envs:{
 			campaign:"campaign/campaign_manager.html#function:campaign_manager:add_pooled_resource_changed_listener_by_faction"
@@ -5413,6 +5473,18 @@ var all_terms = [
 		}
 	},
 	{
+		term:"campaign_manager:get_human_factions_of_culture()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:get_human_factions_of_culture"
+		}
+	},
+	{
+		term:"campaign_manager:get_human_factions_of_subculture()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:get_human_factions_of_subculture"
+		}
+	},
+	{
 		term:"campaign_manager:get_active_human_factions()",
 		envs:{
 			campaign:"campaign/campaign_manager.html#function:campaign_manager:get_active_human_factions"
@@ -5422,6 +5494,24 @@ var all_terms = [
 		term:"campaign_manager:are_any_factions_human()",
 		envs:{
 			campaign:"campaign/campaign_manager.html#function:campaign_manager:are_any_factions_human"
+		}
+	},
+	{
+		term:"campaign_manager:are_any_factions_ai()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:are_any_factions_ai"
+		}
+	},
+	{
+		term:"campaign_manager:are_all_factions_human()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:are_all_factions_human"
+		}
+	},
+	{
+		term:"campaign_manager:are_all_factions_ai()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:are_all_factions_ai"
 		}
 	},
 	{
@@ -5536,6 +5626,108 @@ var all_terms = [
 		term:"campaign_manager:is_subculture_in_campaign()",
 		envs:{
 			campaign:"campaign/campaign_manager.html#function:campaign_manager:is_subculture_in_campaign"
+		}
+	},
+	{
+		term:"campaign_manager:is_intro_cutscene_playing()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:is_intro_cutscene_playing"
+		}
+	},
+	{
+		term:"campaign_manager:has_intro_cutscene_played()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:has_intro_cutscene_played"
+		}
+	},
+	{
+		term:"campaign_manager:faction_has_dlc_or_is_ai()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:faction_has_dlc_or_is_ai"
+		}
+	},
+	{
+		term:"campaign_manager:is_dlc_flag_enabled_by_anyone()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:is_dlc_flag_enabled_by_anyone"
+		}
+	},
+	{
+		term:"campaign_manager:is_dlc_flag_enabled_by_everyone()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:is_dlc_flag_enabled_by_everyone"
+		}
+	},
+	{
+		term:"campaign_manager:log_to_dis()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:log_to_dis"
+		}
+	},
+	{
+		term:"campaign_manager:dis_to_log()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:dis_to_log"
+		}
+	},
+	{
+		term:"campaign_manager:distance_squared()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:distance_squared"
+		}
+	},
+	{
+		term:"campaign_manager:get_characters_bonus_value()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:get_characters_bonus_value"
+		}
+	},
+	{
+		term:"campaign_manager:get_regions_bonus_value()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:get_regions_bonus_value"
+		}
+	},
+	{
+		term:"campaign_manager:get_provinces_bonus_value()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:get_provinces_bonus_value"
+		}
+	},
+	{
+		term:"campaign_manager:get_factions_bonus_value()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:get_factions_bonus_value"
+		}
+	},
+	{
+		term:"campaign_manager:get_forces_bonus_value()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:get_forces_bonus_value"
+		}
+	},
+	{
+		term:"campaign_manager:add_hex_area_trigger()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:add_hex_area_trigger"
+		}
+	},
+	{
+		term:"campaign_manager:remove_hex_area_trigger()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:remove_hex_area_trigger"
+		}
+	},
+	{
+		term:"campaign_manager:add_interactable_campaign_marker()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:add_interactable_campaign_marker"
+		}
+	},
+	{
+		term:"campaign_manager:remove_interactable_campaign_marker()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:remove_interactable_campaign_marker"
 		}
 	},
 	{
@@ -5797,6 +5989,168 @@ var all_terms = [
 		}
 	},
 	{
+		term:"campaign_manager:get_most_recently_created_character_of_type()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:get_most_recently_created_character_of_type"
+		}
+	},
+	{
+		term:"campaign_manager:create_force()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:create_force"
+		}
+	},
+	{
+		term:"campaign_manager:create_force_with_full_diplomatic_discovery()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:create_force_with_full_diplomatic_discovery"
+		}
+	},
+	{
+		term:"campaign_manager:create_force_with_general()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:create_force_with_general"
+		}
+	},
+	{
+		term:"campaign_manager:create_force_with_existing_general()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:create_force_with_existing_general"
+		}
+	},
+	{
+		term:"campaign_manager:create_agent()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:create_agent"
+		}
+	},
+	{
+		term:"campaign_manager:kill_character()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:kill_character"
+		}
+	},
+	{
+		term:"campaign_manager:add_building_to_force()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:add_building_to_force"
+		}
+	},
+	{
+		term:"campaign_manager:reposition_starting_character_for_faction()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:reposition_starting_character_for_faction"
+		}
+	},
+	{
+		term:"campaign_manager:spawn_army_starting_character_for_faction()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:spawn_army_starting_character_for_faction"
+		}
+	},
+	{
+		term:"campaign_manager:move_character()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:move_character"
+		}
+	},
+	{
+		term:"campaign_manager:cancel_all_move_character()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:cancel_all_move_character"
+		}
+	},
+	{
+		term:"campaign_manager:is_character_moving()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:is_character_moving"
+		}
+	},
+	{
+		term:"campaign_manager:stop_is_character_moving()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:stop_is_character_moving"
+		}
+	},
+	{
+		term:"campaign_manager:notify_on_character_halt()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:notify_on_character_halt"
+		}
+	},
+	{
+		term:"campaign_manager:stop_notify_on_character_halt()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:stop_notify_on_character_halt"
+		}
+	},
+	{
+		term:"campaign_manager:notify_on_character_movement()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:notify_on_character_movement"
+		}
+	},
+	{
+		term:"campaign_manager:stop_notify_on_character_movement()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:stop_notify_on_character_movement"
+		}
+	},
+	{
+		term:"campaign_manager:attack()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:attack"
+		}
+	},
+	{
+		term:"campaign_manager:teleport_to()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:teleport_to"
+		}
+	},
+	{
+		term:"campaign_manager:enable_movement_for_character()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:enable_movement_for_character"
+		}
+	},
+	{
+		term:"campaign_manager:disable_movement_for_character()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:disable_movement_for_character"
+		}
+	},
+	{
+		term:"campaign_manager:enable_movement_for_faction()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:enable_movement_for_faction"
+		}
+	},
+	{
+		term:"campaign_manager:disable_movement_for_faction()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:disable_movement_for_faction"
+		}
+	},
+	{
+		term:"campaign_manager:force_add_trait()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:force_add_trait"
+		}
+	},
+	{
+		term:"campaign_manager:force_add_skill()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:force_add_skill"
+		}
+	},
+	{
+		term:"campaign_manager:add_agent_experience()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:add_agent_experience"
+		}
+	},
+	{
 		term:"campaign_manager:remove_all_units_from_general()",
 		envs:{
 			campaign:"campaign/campaign_manager.html#function:campaign_manager:remove_all_units_from_general"
@@ -5806,12 +6160,6 @@ var all_terms = [
 		term:"campaign_manager:grant_units_to_character_by_position_from_faction()",
 		envs:{
 			campaign:"campaign/campaign_manager.html#function:campaign_manager:grant_units_to_character_by_position_from_faction"
-		}
-	},
-	{
-		term:"campaign_manager:get_most_recently_created_character_of_type()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:get_most_recently_created_character_of_type"
 		}
 	},
 	{
@@ -6007,6 +6355,12 @@ var all_terms = [
 		}
 	},
 	{
+		term:"campaign_manager:get_mobile_force_interface_list()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:get_mobile_force_interface_list"
+		}
+	},
+	{
 		term:"campaign_manager:proportion_of_unit_class_in_military_force()",
 		envs:{
 			campaign:"campaign/campaign_manager.html#function:campaign_manager:proportion_of_unit_class_in_military_force"
@@ -6040,6 +6394,18 @@ var all_terms = [
 		term:"campaign_manager:get_region()",
 		envs:{
 			campaign:"campaign/campaign_manager.html#function:campaign_manager:get_region"
+		}
+	},
+	{
+		term:"campaign_manager:get_region_data_at_position()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:get_region_data_at_position"
+		}
+	},
+	{
+		term:"campaign_manager:get_province_at_position()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:get_province_at_position"
 		}
 	},
 	{
@@ -6115,6 +6481,12 @@ var all_terms = [
 		}
 	},
 	{
+		term:"campaign_manager:get_corruption_value_in_province()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:get_corruption_value_in_province"
+		}
+	},
+	{
 		term:"campaign_manager:get_corruption_value_in_region()",
 		envs:{
 			campaign:"campaign/campaign_manager.html#function:campaign_manager:get_corruption_value_in_region"
@@ -6130,6 +6502,12 @@ var all_terms = [
 		term:"campaign_manager:get_total_corruption_value_in_region()",
 		envs:{
 			campaign:"campaign/campaign_manager.html#function:campaign_manager:get_total_corruption_value_in_region"
+		}
+	},
+	{
+		term:"campaign_manager:change_corruption_in_province_by()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:change_corruption_in_province_by"
 		}
 	},
 	{
@@ -6199,6 +6577,12 @@ var all_terms = [
 		}
 	},
 	{
+		term:"campaign_manager:pending_battle_cache_get_attacker_subtype()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:pending_battle_cache_get_attacker_subtype"
+		}
+	},
+	{
 		term:"campaign_manager:pending_battle_cache_num_attacker_units()",
 		envs:{
 			campaign:"campaign/campaign_manager.html#function:campaign_manager:pending_battle_cache_num_attacker_units"
@@ -6241,6 +6625,12 @@ var all_terms = [
 		}
 	},
 	{
+		term:"campaign_manager:pending_battle_cache_get_defender_subtype()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:pending_battle_cache_get_defender_subtype"
+		}
+	},
+	{
 		term:"campaign_manager:pending_battle_cache_num_defender_units()",
 		envs:{
 			campaign:"campaign/campaign_manager.html#function:campaign_manager:pending_battle_cache_num_defender_units"
@@ -6250,6 +6640,12 @@ var all_terms = [
 		term:"campaign_manager:pending_battle_cache_get_defender_unit()",
 		envs:{
 			campaign:"campaign/campaign_manager.html#function:campaign_manager:pending_battle_cache_get_defender_unit"
+		}
+	},
+	{
+		term:"campaign_manager:pending_battle_cache_get_defender_location()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:pending_battle_cache_get_defender_location"
 		}
 	},
 	{
@@ -6268,6 +6664,24 @@ var all_terms = [
 		term:"campaign_manager:pending_battle_cache_faction_is_involved()",
 		envs:{
 			campaign:"campaign/campaign_manager.html#function:campaign_manager:pending_battle_cache_faction_is_involved"
+		}
+	},
+	{
+		term:"campaign_manager:pending_battle_cache_faction_set_member_is_attacker()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:pending_battle_cache_faction_set_member_is_attacker"
+		}
+	},
+	{
+		term:"campaign_manager:pending_battle_cache_faction_set_member_is_defender()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:pending_battle_cache_faction_set_member_is_defender"
+		}
+	},
+	{
+		term:"campaign_manager:pending_battle_cache_faction_set_member_is_involved()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:pending_battle_cache_faction_set_member_is_involved"
 		}
 	},
 	{
@@ -6418,6 +6832,24 @@ var all_terms = [
 		term:"campaign_manager:pending_battle_cache_human_victory()",
 		envs:{
 			campaign:"campaign/campaign_manager.html#function:campaign_manager:pending_battle_cache_human_victory"
+		}
+	},
+	{
+		term:"campaign_manager:pending_battle_cache_faction_won_battle()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:pending_battle_cache_faction_won_battle"
+		}
+	},
+	{
+		term:"campaign_manager:pending_battle_cache_faction_lost_battle()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:pending_battle_cache_faction_lost_battle"
+		}
+	},
+	{
+		term:"campaign_manager:pending_battle_cache_faction_won_battle_against_culture()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:pending_battle_cache_faction_won_battle_against_culture"
 		}
 	},
 	{
@@ -6853,216 +7285,6 @@ var all_terms = [
 		}
 	},
 	{
-		term:"campaign_manager:progress_on_event()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:progress_on_event"
-		}
-	},
-	{
-		term:"campaign_manager:cancel_progress_on_event()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:cancel_progress_on_event"
-		}
-	},
-	{
-		term:"campaign_manager:create_force()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:create_force"
-		}
-	},
-	{
-		term:"campaign_manager:create_force_with_full_diplomatic_discovery()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:create_force_with_full_diplomatic_discovery"
-		}
-	},
-	{
-		term:"campaign_manager:create_force_with_general()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:create_force_with_general"
-		}
-	},
-	{
-		term:"campaign_manager:create_force_with_existing_general()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:create_force_with_existing_general"
-		}
-	},
-	{
-		term:"campaign_manager:kill_character()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:kill_character"
-		}
-	},
-	{
-		term:"campaign_manager:add_building_to_force()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:add_building_to_force"
-		}
-	},
-	{
-		term:"campaign_manager:create_agent()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:create_agent"
-		}
-	},
-	{
-		term:"campaign_manager:reposition_starting_character_for_faction()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:reposition_starting_character_for_faction"
-		}
-	},
-	{
-		term:"campaign_manager:spawn_army_starting_character_for_faction()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:spawn_army_starting_character_for_faction"
-		}
-	},
-	{
-		term:"campaign_manager:move_character()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:move_character"
-		}
-	},
-	{
-		term:"campaign_manager:cancel_all_move_character()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:cancel_all_move_character"
-		}
-	},
-	{
-		term:"campaign_manager:is_character_moving()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:is_character_moving"
-		}
-	},
-	{
-		term:"campaign_manager:stop_is_character_moving()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:stop_is_character_moving"
-		}
-	},
-	{
-		term:"campaign_manager:notify_on_character_halt()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:notify_on_character_halt"
-		}
-	},
-	{
-		term:"campaign_manager:stop_notify_on_character_halt()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:stop_notify_on_character_halt"
-		}
-	},
-	{
-		term:"campaign_manager:notify_on_character_movement()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:notify_on_character_movement"
-		}
-	},
-	{
-		term:"campaign_manager:stop_notify_on_character_movement()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:stop_notify_on_character_movement"
-		}
-	},
-	{
-		term:"campaign_manager:attack()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:attack"
-		}
-	},
-	{
-		term:"campaign_manager:teleport_to()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:teleport_to"
-		}
-	},
-	{
-		term:"campaign_manager:enable_movement_for_character()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:enable_movement_for_character"
-		}
-	},
-	{
-		term:"campaign_manager:disable_movement_for_character()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:disable_movement_for_character"
-		}
-	},
-	{
-		term:"campaign_manager:enable_movement_for_faction()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:enable_movement_for_faction"
-		}
-	},
-	{
-		term:"campaign_manager:disable_movement_for_faction()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:disable_movement_for_faction"
-		}
-	},
-	{
-		term:"campaign_manager:force_add_trait()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:force_add_trait"
-		}
-	},
-	{
-		term:"campaign_manager:force_add_skill()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:force_add_skill"
-		}
-	},
-	{
-		term:"campaign_manager:add_agent_experience()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:add_agent_experience"
-		}
-	},
-	{
-		term:"campaign_manager:log_to_dis()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:log_to_dis"
-		}
-	},
-	{
-		term:"campaign_manager:dis_to_log()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:dis_to_log"
-		}
-	},
-	{
-		term:"campaign_manager:distance_squared()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:distance_squared"
-		}
-	},
-	{
-		term:"campaign_manager:add_hex_area_trigger()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:add_hex_area_trigger"
-		}
-	},
-	{
-		term:"campaign_manager:remove_hex_area_trigger()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:remove_hex_area_trigger"
-		}
-	},
-	{
-		term:"campaign_manager:add_interactable_campaign_marker()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:add_interactable_campaign_marker"
-		}
-	},
-	{
-		term:"campaign_manager:remove_interactable_campaign_marker()",
-		envs:{
-			campaign:"campaign/campaign_manager.html#function:campaign_manager:remove_interactable_campaign_marker"
-		}
-	},
-	{
 		term:"campaign_manager:draw_text()",
 		envs:{
 			campaign:"campaign/campaign_manager.html#function:campaign_manager:draw_text"
@@ -7405,6 +7627,18 @@ var all_terms = [
 		}
 	},
 	{
+		term:"campaign_manager:faction_has_campaign_feature()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:faction_has_campaign_feature"
+		}
+	},
+	{
+		term:"campaign_manager:faction_has_faction_feature()",
+		envs:{
+			campaign:"campaign/campaign_manager.html#function:campaign_manager:faction_has_faction_feature"
+		}
+	},
+	{
 		term:"campaign_manager:add_custom_battlefield()",
 		envs:{
 			campaign:"campaign/campaign_manager.html#function:campaign_manager:add_custom_battlefield"
@@ -7498,6 +7732,12 @@ var all_terms = [
 		term:"mission_manager:set_show_mission()",
 		envs:{
 			campaign:"campaign/mission_manager.html#function:mission_manager:set_show_mission"
+		}
+	},
+	{
+		term:"mission_manager:set_victory_mission()",
+		envs:{
+			campaign:"campaign/mission_manager.html#function:mission_manager:set_victory_mission"
 		}
 	},
 	{
@@ -7678,6 +7918,12 @@ var all_terms = [
 		term:"mission_manager:trigger()",
 		envs:{
 			campaign:"campaign/mission_manager.html#function:mission_manager:trigger"
+		}
+	},
+	{
+		term:"mission_manager:cancel_dismiss_callback_listeners()",
+		envs:{
+			campaign:"campaign/mission_manager.html#function:mission_manager:cancel_dismiss_callback_listeners"
 		}
 	},
 	{
@@ -10105,6 +10351,30 @@ var all_terms = [
 		}
 	},
 	{
+		term:"validate.is_regiondata()",
+		envs:{
+			campaign:"campaign/validate.html#function:validate:is_regiondata",
+			battle:"battle/validate.html#function:validate:is_regiondata",
+			frontend:"frontend/validate.html#function:validate:is_regiondata"
+		}
+	},
+	{
+		term:"validate.is_province()",
+		envs:{
+			campaign:"campaign/validate.html#function:validate:is_province",
+			battle:"battle/validate.html#function:validate:is_province",
+			frontend:"frontend/validate.html#function:validate:is_province"
+		}
+	},
+	{
+		term:"validate.is_factionprovince()",
+		envs:{
+			campaign:"campaign/validate.html#function:validate:is_factionprovince",
+			battle:"battle/validate.html#function:validate:is_factionprovince",
+			frontend:"frontend/validate.html#function:validate:is_factionprovince"
+		}
+	},
+	{
 		term:"validate.is_regionlist()",
 		envs:{
 			campaign:"campaign/validate.html#function:validate:is_regionlist",
@@ -10864,6 +11134,30 @@ var all_terms = [
 		}
 	},
 	{
+		term:"core:get_scripts_in_directory()",
+		envs:{
+			campaign:"campaign/core.html#function:core:get_scripts_in_directory",
+			battle:"battle/core.html#function:core:get_scripts_in_directory",
+			frontend:"frontend/core.html#function:core:get_scripts_in_directory"
+		}
+	},
+	{
+		term:"core:get_filepaths_from_folder()",
+		envs:{
+			campaign:"campaign/core.html#function:core:get_filepaths_from_folder",
+			battle:"battle/core.html#function:core:get_filepaths_from_folder",
+			frontend:"frontend/core.html#function:core:get_filepaths_from_folder"
+		}
+	},
+	{
+		term:"core:load_global_script()",
+		envs:{
+			campaign:"campaign/core.html#function:core:load_global_script",
+			battle:"battle/core.html#function:core:load_global_script",
+			frontend:"frontend/core.html#function:core:load_global_script"
+		}
+	},
+	{
 		term:"core:load_mods()",
 		envs:{
 			campaign:"campaign/core.html#function:core:load_mods",
@@ -11480,6 +11774,14 @@ var all_terms = [
 		}
 	},
 	{
+		term:"custom_context:table_data()",
+		envs:{
+			campaign:"campaign/core.html#function:custom_context:table_data",
+			battle:"battle/core.html#function:custom_context:table_data",
+			frontend:"frontend/core.html#function:custom_context:table_data"
+		}
+	},
+	{
 		term:"custom_context:region()",
 		envs:{
 			campaign:"campaign/core.html#function:custom_context:region",
@@ -11549,6 +11851,14 @@ var all_terms = [
 			campaign:"campaign/core.html#function:custom_context:building",
 			battle:"battle/core.html#function:custom_context:building",
 			frontend:"frontend/core.html#function:custom_context:building"
+		}
+	},
+	{
+		term:"custom_context:vector()",
+		envs:{
+			campaign:"campaign/core.html#function:custom_context:vector",
+			battle:"battle/core.html#function:custom_context:vector",
+			frontend:"frontend/core.html#function:custom_context:vector"
 		}
 	},
 	{
@@ -12074,6 +12384,12 @@ var all_terms = [
 		}
 	},
 	{
+		term:"generated_army:use_army_special_ability_on_message()",
+		envs:{
+			battle:"battle/generated_battle.html#function:generated_army:use_army_special_ability_on_message"
+		}
+	},
+	{
 		term:"generated_army:change_behaviour_active_on_message()",
 		envs:{
 			battle:"battle/generated_battle.html#function:generated_army:change_behaviour_active_on_message"
@@ -12101,12 +12417,6 @@ var all_terms = [
 		term:"generated_army:assign_to_spawn_zone_from_collection_on_message()",
 		envs:{
 			battle:"battle/generated_battle.html#function:generated_army:assign_to_spawn_zone_from_collection_on_message"
-		}
-	},
-	{
-		term:"generated_army:assign_to_spawn_zone_on_message()",
-		envs:{
-			battle:"battle/generated_battle.html#function:generated_army:assign_to_spawn_zone_on_message"
 		}
 	},
 	{
@@ -12574,6 +12884,14 @@ var all_terms = [
 		}
 	},
 	{
+		term:"string.split()",
+		envs:{
+			campaign:"campaign/lua.html#function:string:split",
+			battle:"battle/lua.html#function:string:split",
+			frontend:"frontend/lua.html#function:string:split"
+		}
+	},
+	{
 		term:"string.upper()",
 		envs:{
 			campaign:"campaign/lua.html#function:string:upper",
@@ -12667,6 +12985,22 @@ var all_terms = [
 			campaign:"campaign/lua.html#function:table:indexed_to_lookup",
 			battle:"battle/lua.html#function:table:indexed_to_lookup",
 			frontend:"frontend/lua.html#function:table:indexed_to_lookup"
+		}
+	},
+	{
+		term:"table:compile_tables()",
+		envs:{
+			campaign:"campaign/lua.html#function:table:compile_tables",
+			battle:"battle/lua.html#function:table:compile_tables",
+			frontend:"frontend/lua.html#function:table:compile_tables"
+		}
+	},
+	{
+		term:"table:merge_tables()",
+		envs:{
+			campaign:"campaign/lua.html#function:table:merge_tables",
+			battle:"battle/lua.html#function:table:merge_tables",
+			frontend:"frontend/lua.html#function:table:merge_tables"
 		}
 	},
 	{
@@ -13653,6 +13987,14 @@ var all_terms = [
 		}
 	},
 	{
+		term:"scripted_tour:clear_skip_actions()",
+		envs:{
+			campaign:"campaign/scripted_tour.html#function:scripted_tour:clear_skip_actions",
+			battle:"battle/scripted_tour.html#function:scripted_tour:clear_skip_actions",
+			frontend:"frontend/scripted_tour.html#function:scripted_tour:clear_skip_actions"
+		}
+	},
+	{
 		term:"scripted_tour:show_skip_button()",
 		envs:{
 			campaign:"campaign/scripted_tour.html#function:scripted_tour:show_skip_button",
@@ -14282,54 +14624,6 @@ var all_terms = [
 			campaign:"campaign/text_pointer.html#function:active_pointer:show_on_event",
 			battle:"battle/text_pointer.html#function:active_pointer:show_on_event",
 			frontend:"frontend/text_pointer.html#function:active_pointer:show_on_event"
-		}
-	},
-	{
-		term:"intro_campaign_camera_marker:new()",
-		envs:{
-			campaign:"campaign/intro_campaign_scripts.html#function:intro_campaign_camera_marker:new"
-		}
-	},
-	{
-		term:"intro_campaign_camera_marker:set_skip_camera()",
-		envs:{
-			campaign:"campaign/intro_campaign_scripts.html#function:intro_campaign_camera_marker:set_skip_camera"
-		}
-	},
-	{
-		term:"intro_campaign_camera_marker:action()",
-		envs:{
-			campaign:"campaign/intro_campaign_scripts.html#function:intro_campaign_camera_marker:action"
-		}
-	},
-	{
-		term:"intro_campaign_camera_marker:wait_for_advisor()",
-		envs:{
-			campaign:"campaign/intro_campaign_scripts.html#function:intro_campaign_camera_marker:wait_for_advisor"
-		}
-	},
-	{
-		term:"intro_campaign_camera_positions_advice:new()",
-		envs:{
-			campaign:"campaign/intro_campaign_scripts.html#function:intro_campaign_camera_positions_advice:new"
-		}
-	},
-	{
-		term:"intro_campaign_camera_positions_advice:set_should_skip()",
-		envs:{
-			campaign:"campaign/intro_campaign_scripts.html#function:intro_campaign_camera_positions_advice:set_should_skip"
-		}
-	},
-	{
-		term:"intro_campaign_camera_positions_advice:start()",
-		envs:{
-			campaign:"campaign/intro_campaign_scripts.html#function:intro_campaign_camera_positions_advice:start"
-		}
-	},
-	{
-		term:"intro_campaign_select_and_attack_advice:new()",
-		envs:{
-			campaign:"campaign/intro_campaign_scripts.html#function:intro_campaign_select_and_attack_advice:new"
 		}
 	},
 	{
@@ -16507,18 +16801,6 @@ var all_terms = [
 		}
 	},
 	{
-		term:"battle:set_music_auto_playback()",
-		envs:{
-			battle:"battle/battle.html#function:battle:set_music_auto_playback"
-		}
-	},
-	{
-		term:"battle:set_music_loop()",
-		envs:{
-			battle:"battle/battle.html#function:battle:set_music_loop"
-		}
-	},
-	{
 		term:"battle:play_music()",
 		envs:{
 			battle:"battle/battle.html#function:battle:play_music"
@@ -17753,6 +18035,14 @@ var all_terms = [
 		}
 	},
 	{
+		term:"uicomponent:RelativePosition()",
+		envs:{
+			campaign:"campaign/uicomponent.html#function:uicomponent:RelativePosition",
+			battle:"battle/uicomponent.html#function:uicomponent:RelativePosition",
+			frontend:"frontend/uicomponent.html#function:uicomponent:RelativePosition"
+		}
+	},
+	{
 		term:"uicomponent:MoveTo()",
 		envs:{
 			campaign:"campaign/uicomponent.html#function:uicomponent:MoveTo",
@@ -18025,6 +18315,14 @@ var all_terms = [
 		}
 	},
 	{
+		term:"uicomponent:SetText()",
+		envs:{
+			campaign:"campaign/uicomponent.html#function:uicomponent:SetText",
+			battle:"battle/uicomponent.html#function:uicomponent:SetText",
+			frontend:"frontend/uicomponent.html#function:uicomponent:SetText"
+		}
+	},
+	{
 		term:"uicomponent:SetStateText()",
 		envs:{
 			campaign:"campaign/uicomponent.html#function:uicomponent:SetStateText",
@@ -18286,6 +18584,14 @@ var all_terms = [
 			campaign:"campaign/uicomponent.html#function:uicomponent:Visible",
 			battle:"battle/uicomponent.html#function:uicomponent:Visible",
 			frontend:"frontend/uicomponent.html#function:uicomponent:Visible"
+		}
+	},
+	{
+		term:"uicomponent:VisibleFromRoot()",
+		envs:{
+			campaign:"campaign/uicomponent.html#function:uicomponent:VisibleFromRoot",
+			battle:"battle/uicomponent.html#function:uicomponent:VisibleFromRoot",
+			frontend:"frontend/uicomponent.html#function:uicomponent:VisibleFromRoot"
 		}
 	},
 	{
@@ -19207,6 +19513,14 @@ var all_terms = [
 		}
 	},
 	{
+		term:"common.execute_cli_command()",
+		envs:{
+			campaign:"campaign/common.html#function:common:execute_cli_command",
+			battle:"battle/common.html#function:common:execute_cli_command",
+			frontend:"frontend/common.html#function:common:execute_cli_command"
+		}
+	},
+	{
 		term:"common.take_screenshot()",
 		envs:{
 			campaign:"campaign/common.html#function:common:take_screenshot",
@@ -19399,6 +19713,132 @@ var all_terms = [
 		}
 	},
 	{
+		term:"custom_starts:region_change()",
+		envs:{
+			campaign:"campaign/custom_starts.html#function:custom_starts:region_change"
+		}
+	},
+	{
+		term:"custom_starts:absorb_other_faction()",
+		envs:{
+			campaign:"campaign/custom_starts.html#function:custom_starts:absorb_other_faction"
+		}
+	},
+	{
+		term:"custom_starts:primary_slot_change()",
+		envs:{
+			campaign:"campaign/custom_starts.html#function:custom_starts:primary_slot_change"
+		}
+	},
+	{
+		term:"custom_starts:port_slot_change()",
+		envs:{
+			campaign:"campaign/custom_starts.html#function:custom_starts:port_slot_change"
+		}
+	},
+	{
+		term:"custom_starts:secondary_slot_change()",
+		envs:{
+			campaign:"campaign/custom_starts.html#function:custom_starts:secondary_slot_change"
+		}
+	},
+	{
+		term:"custom_starts:create_army()",
+		envs:{
+			campaign:"campaign/custom_starts.html#function:custom_starts:create_army"
+		}
+	},
+	{
+		term:"custom_starts:create_army_for_faction_leader()",
+		envs:{
+			campaign:"campaign/custom_starts.html#function:custom_starts:create_army_for_faction_leader"
+		}
+	},
+	{
+		term:"custom_starts:teleport_character()",
+		envs:{
+			campaign:"campaign/custom_starts.html#function:custom_starts:teleport_character"
+		}
+	},
+	{
+		term:"custom_starts:teleport_character_faction_leader()",
+		envs:{
+			campaign:"campaign/custom_starts.html#function:custom_starts:teleport_character_faction_leader"
+		}
+	},
+	{
+		term:"custom_starts:hide_faction_leader()",
+		envs:{
+			campaign:"campaign/custom_starts.html#function:custom_starts:hide_faction_leader"
+		}
+	},
+	{
+		term:"custom_starts:modify_units_in_army()",
+		envs:{
+			campaign:"campaign/custom_starts.html#function:custom_starts:modify_units_in_army"
+		}
+	},
+	{
+		term:"custom_starts:add_xp_to_units()",
+		envs:{
+			campaign:"campaign/custom_starts.html#function:custom_starts:add_xp_to_units"
+		}
+	},
+	{
+		term:"custom_starts:force_diplomacy_change()",
+		envs:{
+			campaign:"campaign/custom_starts.html#function:custom_starts:force_diplomacy_change"
+		}
+	},
+	{
+		term:"custom_starts:block_diplomacy()",
+		envs:{
+			campaign:"campaign/custom_starts.html#function:custom_starts:block_diplomacy"
+		}
+	},
+	{
+		term:"custom_starts:abandon_region()",
+		envs:{
+			campaign:"campaign/custom_starts.html#function:custom_starts:abandon_region"
+		}
+	},
+	{
+		term:"custom_starts:kill_faction()",
+		envs:{
+			campaign:"campaign/custom_starts.html#function:custom_starts:kill_faction"
+		}
+	},
+	{
+		term:"custom_starts:apply_effect_bundle_character()",
+		envs:{
+			campaign:"campaign/custom_starts.html#function:custom_starts:apply_effect_bundle_character"
+		}
+	},
+	{
+		term:"custom_starts:force_change_faction_cai_personality()",
+		envs:{
+			campaign:"campaign/custom_starts.html#function:custom_starts:force_change_faction_cai_personality"
+		}
+	},
+	{
+		term:"custom_starts:add_pooled_resource_to_faction()",
+		envs:{
+			campaign:"campaign/custom_starts.html#function:custom_starts:add_pooled_resource_to_faction"
+		}
+	},
+	{
+		term:"custom_starts:generate_random_army()",
+		envs:{
+			campaign:"campaign/custom_starts.html#function:custom_starts:generate_random_army"
+		}
+	},
+	{
+		term:"faction_intro:perform_intro()",
+		envs:{
+			campaign:"campaign/faction_intro.html#function:faction_intro:perform_intro"
+		}
+	},
+	{
 		term:"frontend.start_named_battle()",
 		envs:{
 			frontend:"frontend/frontend.html#function:frontend:start_named_battle"
@@ -19450,6 +19890,18 @@ var all_terms = [
 		term:"episodic_scripting:is_benchmark_mode()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:is_benchmark_mode"
+		}
+	},
+	{
+		term:"episodic_scripting:is_replay()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:is_replay"
+		}
+	},
+	{
+		term:"episodic_scripting:is_cinematic_editor_attached()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:is_cinematic_editor_attached"
 		}
 	},
 	{
@@ -19513,24 +19965,6 @@ var all_terms = [
 		}
 	},
 	{
-		term:"episodic_scripting:disable_ending_turn()",
-		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:disable_ending_turn"
-		}
-	},
-	{
-		term:"episodic_scripting:end_turn()",
-		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:end_turn"
-		}
-	},
-	{
-		term:"episodic_scripting:set_ai_uses_human_display_speed()",
-		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_ai_uses_human_display_speed"
-		}
-	},
-	{
 		term:"episodic_scripting:dismiss_advice()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:dismiss_advice"
@@ -19546,6 +19980,60 @@ var all_terms = [
 		term:"episodic_scripting:trigger_campaign_vo()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:trigger_campaign_vo"
+		}
+	},
+	{
+		term:"episodic_scripting:stop_campaign_vo()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:stop_campaign_vo"
+		}
+	},
+	{
+		term:"episodic_scripting:stop_campaign_advisor_vo()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:stop_campaign_advisor_vo"
+		}
+	},
+	{
+		term:"episodic_scripting:trigger_2d_ui_sound()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:trigger_2d_ui_sound"
+		}
+	},
+	{
+		term:"episodic_scripting:stop_2d_ui_sound()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:stop_2d_ui_sound"
+		}
+	},
+	{
+		term:"episodic_scripting:activate_music_trigger()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:activate_music_trigger"
+		}
+	},
+	{
+		term:"episodic_scripting:set_music_paused()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_music_paused"
+		}
+	},
+	{
+		term:"episodic_scripting:set_global_vo_argument()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_global_vo_argument"
+		}
+	},
+	{
+		term:"episodic_scripting:contextual_vo_enabled()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:contextual_vo_enabled"
+		}
+	},
+	{
+		term:"episodic_scripting:add_character_actor_group_override()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:add_character_actor_group_override"
 		}
 	},
 	{
@@ -19579,6 +20067,36 @@ var all_terms = [
 		}
 	},
 	{
+		term:"episodic_scripting:enable_camera_bearing_clamp()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:enable_camera_bearing_clamp"
+		}
+	},
+	{
+		term:"episodic_scripting:disable_camera_bearing_clamp()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:disable_camera_bearing_clamp"
+		}
+	},
+	{
+		term:"episodic_scripting:set_camera_height()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_camera_height"
+		}
+	},
+	{
+		term:"episodic_scripting:set_camera_minimum_height()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_camera_minimum_height"
+		}
+	},
+	{
+		term:"episodic_scripting:set_camera_maximum_height()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_camera_maximum_height"
+		}
+	},
+	{
 		term:"episodic_scripting:register_instant_movie()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:register_instant_movie"
@@ -19600,6 +20118,48 @@ var all_terms = [
 		term:"episodic_scripting:cinematic()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:cinematic"
+		}
+	},
+	{
+		term:"episodic_scripting:end_turn()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:end_turn"
+		}
+	},
+	{
+		term:"episodic_scripting:end_turn_for_faction()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:end_turn_for_faction"
+		}
+	},
+	{
+		term:"episodic_scripting:set_ai_uses_human_display_speed()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_ai_uses_human_display_speed"
+		}
+	},
+	{
+		term:"episodic_scripting:disable_end_turn()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:disable_end_turn"
+		}
+	},
+	{
+		term:"episodic_scripting:set_skip_faction_turn()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_skip_faction_turn"
+		}
+	},
+	{
+		term:"episodic_scripting:skip_all_ai_factions()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:skip_all_ai_factions"
+		}
+	},
+	{
+		term:"episodic_scripting:unskip_all_factions()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:unskip_all_factions"
 		}
 	},
 	{
@@ -19633,12 +20193,6 @@ var all_terms = [
 		}
 	},
 	{
-		term:"episodic_scripting:disable_end_turn()",
-		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:disable_end_turn"
-		}
-	},
-	{
 		term:"episodic_scripting:disable_shortcut()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:disable_shortcut"
@@ -19651,9 +20205,27 @@ var all_terms = [
 		}
 	},
 	{
+		term:"episodic_scripting:add_character_model_override()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:add_character_model_override"
+		}
+	},
+	{
+		term:"episodic_scripting:toggle_character_hidden_from_view()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:toggle_character_hidden_from_view"
+		}
+	},
+	{
 		term:"episodic_scripting:highlight_movement_extents()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:highlight_movement_extents"
+		}
+	},
+	{
+		term:"episodic_scripting:set_army_outer_movement_extents_rendering_disabled()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_army_outer_movement_extents_rendering_disabled"
 		}
 	},
 	{
@@ -19753,6 +20325,12 @@ var all_terms = [
 		}
 	},
 	{
+		term:"episodic_scripting:reset_shroud()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:reset_shroud"
+		}
+	},
+	{
 		term:"episodic_scripting:take_shroud_snapshot()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:take_shroud_snapshot"
@@ -19810,6 +20388,42 @@ var all_terms = [
 		term:"episodic_scripting:disable_shopping_for_ai_under_shroud()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:disable_shopping_for_ai_under_shroud"
+		}
+	},
+	{
+		term:"episodic_scripting:force_terrain_patch_visible()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:force_terrain_patch_visible"
+		}
+	},
+	{
+		term:"episodic_scripting:reset_forced_terrain_patch_visibility()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:reset_forced_terrain_patch_visibility"
+		}
+	},
+	{
+		term:"episodic_scripting:grant_faction_additional_vision()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:grant_faction_additional_vision"
+		}
+	},
+	{
+		term:"episodic_scripting:remove_faction_additional_vision()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:remove_faction_additional_vision"
+		}
+	},
+	{
+		term:"episodic_scripting:set_script_state()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_script_state"
+		}
+	},
+	{
+		term:"episodic_scripting:remove_script_state()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:remove_script_state"
 		}
 	},
 	{
@@ -19927,21 +20541,39 @@ var all_terms = [
 		}
 	},
 	{
-		term:"episodic_scripting:lock_starting_general_recruitment()",
+		term:"episodic_scripting:appoint_character_to_force()",
 		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:lock_starting_general_recruitment"
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:appoint_character_to_force"
 		}
 	},
 	{
-		term:"episodic_scripting:unlock_starting_general_recruitment()",
+		term:"episodic_scripting:lock_starting_character_recruitment()",
 		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:unlock_starting_general_recruitment"
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:lock_starting_character_recruitment"
+		}
+	},
+	{
+		term:"episodic_scripting:unlock_starting_character_recruitment()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:unlock_starting_character_recruitment"
+		}
+	},
+	{
+		term:"episodic_scripting:replace_general_in_force()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:replace_general_in_force"
 		}
 	},
 	{
 		term:"episodic_scripting:add_agent_experience()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:add_agent_experience"
+		}
+	},
+	{
+		term:"episodic_scripting:add_agent_experience_through_family_member()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:add_agent_experience_through_family_member"
 		}
 	},
 	{
@@ -19981,6 +20613,12 @@ var all_terms = [
 		}
 	},
 	{
+		term:"episodic_scripting:move_to_queued()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:move_to_queued"
+		}
+	},
+	{
 		term:"episodic_scripting:cancel_actions_for()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:cancel_actions_for"
@@ -19990,6 +20628,12 @@ var all_terms = [
 		term:"episodic_scripting:teleport_to()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:teleport_to"
+		}
+	},
+	{
+		term:"episodic_scripting:teleport_military_force_to()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:teleport_military_force_to"
 		}
 	},
 	{
@@ -20014,6 +20658,12 @@ var all_terms = [
 		term:"episodic_scripting:attack_region()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:attack_region"
+		}
+	},
+	{
+		term:"episodic_scripting:attack_queued()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:attack_queued"
 		}
 	},
 	{
@@ -20125,45 +20775,195 @@ var all_terms = [
 		}
 	},
 	{
+		term:"episodic_scripting:heal_military_force()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:heal_military_force"
+		}
+	},
+	{
 		term:"episodic_scripting:set_unit_hp_to_unary_of_maximum()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_unit_hp_to_unary_of_maximum"
 		}
 	},
 	{
-		term:"episodic_scripting:add_circle_area_trigger()",
+		term:"episodic_scripting:set_army_trespass_disabled()",
 		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:add_circle_area_trigger"
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_army_trespass_disabled"
 		}
 	},
 	{
-		term:"episodic_scripting:add_outline_area_trigger()",
+		term:"episodic_scripting:set_multi_turn_movement_enabled()",
 		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:add_outline_area_trigger"
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_multi_turn_movement_enabled"
 		}
 	},
 	{
-		term:"episodic_scripting:remove_area_trigger()",
+		term:"episodic_scripting:set_character_path_traversal_speed_multiplier()",
 		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:remove_area_trigger"
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_character_path_traversal_speed_multiplier"
 		}
 	},
 	{
-		term:"episodic_scripting:add_hex_area_trigger()",
+		term:"episodic_scripting:clear_character_path_traversal_speed_multiplier()",
 		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:add_hex_area_trigger"
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:clear_character_path_traversal_speed_multiplier"
 		}
 	},
 	{
-		term:"episodic_scripting:remove_hex_area_trigger()",
+		term:"episodic_scripting:set_character_excluded_from_trespassing()",
 		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:remove_hex_area_trigger"
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_character_excluded_from_trespassing"
+		}
+	},
+	{
+		term:"episodic_scripting:set_force_has_retreated_this_turn()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_force_has_retreated_this_turn"
+		}
+	},
+	{
+		term:"episodic_scripting:set_character_cannot_disband()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_character_cannot_disband"
+		}
+	},
+	{
+		term:"episodic_scripting:suppress_immortality()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:suppress_immortality"
+		}
+	},
+	{
+		term:"episodic_scripting:add_armory_item_to_character()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:add_armory_item_to_character"
+		}
+	},
+	{
+		term:"episodic_scripting:remove_armory_item_from_character()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:remove_armory_item_from_character"
+		}
+	},
+	{
+		term:"episodic_scripting:unequip_all_armory_items_from_character()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:unequip_all_armory_items_from_character"
+		}
+	},
+	{
+		term:"episodic_scripting:equip_armory_item_variant_on_character()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:equip_armory_item_variant_on_character"
+		}
+	},
+	{
+		term:"episodic_scripting:unequip_armory_item_variant_from_character()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:unequip_armory_item_variant_from_character"
+		}
+	},
+	{
+		term:"episodic_scripting:unequip_active_item_variant_in_slot_from_character()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:unequip_active_item_variant_in_slot_from_character"
+		}
+	},
+	{
+		term:"episodic_scripting:add_armory_item_set_to_character()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:add_armory_item_set_to_character"
+		}
+	},
+	{
+		term:"episodic_scripting:equip_armory_item_set_on_character()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:equip_armory_item_set_on_character"
+		}
+	},
+	{
+		term:"episodic_scripting:is_armory_item_compatible_with_categories_on_character()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:is_armory_item_compatible_with_categories_on_character"
+		}
+	},
+	{
+		term:"episodic_scripting:is_armory_item_compatible_with_agent_subtype()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:is_armory_item_compatible_with_agent_subtype"
+		}
+	},
+	{
+		term:"episodic_scripting:can_armory_item_be_equipped_on_character()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:can_armory_item_be_equipped_on_character"
+		}
+	},
+	{
+		term:"episodic_scripting:add_armory_item_category_set_membership()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:add_armory_item_category_set_membership"
+		}
+	},
+	{
+		term:"episodic_scripting:remove_armory_item_category_set_membership()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:remove_armory_item_category_set_membership"
+		}
+	},
+	{
+		term:"episodic_scripting:clear_armory_item_category_membership()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:clear_armory_item_category_membership"
+		}
+	},
+	{
+		term:"episodic_scripting:get_active_armory_item_variant_slot_state_for_character()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:get_active_armory_item_variant_slot_state_for_character"
+		}
+	},
+	{
+		term:"episodic_scripting:set_tint_activity_state_for_character()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_tint_activity_state_for_character"
+		}
+	},
+	{
+		term:"episodic_scripting:get_tint_activity_state_for_character()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:get_tint_activity_state_for_character"
+		}
+	},
+	{
+		term:"episodic_scripting:set_tint_colour_for_character()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_tint_colour_for_character"
+		}
+	},
+	{
+		term:"episodic_scripting:toggle_character_initiative_active()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:toggle_character_initiative_active"
+		}
+	},
+	{
+		term:"episodic_scripting:toggle_character_initiative_script_locked()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:toggle_character_initiative_script_locked"
 		}
 	},
 	{
 		term:"episodic_scripting:force_add_trait()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:force_add_trait"
+		}
+	},
+	{
+		term:"episodic_scripting:force_add_trait_to_character_details()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:force_add_trait_to_character_details"
 		}
 	},
 	{
@@ -20194,6 +20994,12 @@ var all_terms = [
 		term:"episodic_scripting:force_remove_ancillary_from_faction()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:force_remove_ancillary_from_faction"
+		}
+	},
+	{
+		term:"episodic_scripting:reassign_ancillaries_to_character_of_same_faction()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:reassign_ancillaries_to_character_of_same_faction"
 		}
 	},
 	{
@@ -20230,6 +21036,36 @@ var all_terms = [
 		term:"episodic_scripting:set_non_scripted_ancillaries_disabled()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_non_scripted_ancillaries_disabled"
+		}
+	},
+	{
+		term:"episodic_scripting:add_circle_area_trigger()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:add_circle_area_trigger"
+		}
+	},
+	{
+		term:"episodic_scripting:add_outline_area_trigger()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:add_outline_area_trigger"
+		}
+	},
+	{
+		term:"episodic_scripting:remove_area_trigger()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:remove_area_trigger"
+		}
+	},
+	{
+		term:"episodic_scripting:add_hex_area_trigger()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:add_hex_area_trigger"
+		}
+	},
+	{
+		term:"episodic_scripting:remove_hex_area_trigger()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:remove_hex_area_trigger"
 		}
 	},
 	{
@@ -20278,6 +21114,24 @@ var all_terms = [
 		term:"episodic_scripting:change_localised_unit_name()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:change_localised_unit_name"
+		}
+	},
+	{
+		term:"episodic_scripting:change_character_custom_name()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:change_character_custom_name"
+		}
+	},
+	{
+		term:"episodic_scripting:change_character_localised_name()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:change_character_localised_name"
+		}
+	},
+	{
+		term:"episodic_scripting:randomise_character_name()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:randomise_character_name"
 		}
 	},
 	{
@@ -20395,12 +21249,6 @@ var all_terms = [
 		}
 	},
 	{
-		term:"episodic_scripting:force_religion_factors()",
-		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:force_religion_factors"
-		}
-	},
-	{
 		term:"episodic_scripting:add_unit_to_faction_mercenary_pool()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:add_unit_to_faction_mercenary_pool"
@@ -20422,6 +21270,24 @@ var all_terms = [
 		term:"episodic_scripting:add_units_to_province_mercenary_pool_by_region()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:add_units_to_province_mercenary_pool_by_region"
+		}
+	},
+	{
+		term:"episodic_scripting:change_home_region_of_faction()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:change_home_region_of_faction"
+		}
+	},
+	{
+		term:"episodic_scripting:override_human_player_max_units()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:override_human_player_max_units"
+		}
+	},
+	{
+		term:"episodic_scripting:add_or_remove_faction_features()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:add_or_remove_faction_features"
 		}
 	},
 	{
@@ -20449,6 +21315,12 @@ var all_terms = [
 		}
 	},
 	{
+		term:"episodic_scripting:fail_custom_mission()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:fail_custom_mission"
+		}
+	},
+	{
 		term:"episodic_scripting:trigger_mission_with_targets()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:trigger_mission_with_targets"
@@ -20458,6 +21330,30 @@ var all_terms = [
 		term:"episodic_scripting:toggle_mission_generation()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:toggle_mission_generation"
+		}
+	},
+	{
+		term:"episodic_scripting:trigger_custom_incident_with_targets()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:trigger_custom_incident_with_targets"
+		}
+	},
+	{
+		term:"episodic_scripting:mission_is_active_for_faction()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:mission_is_active_for_faction"
+		}
+	},
+	{
+		term:"episodic_scripting:add_custom_pending_mission_from_string()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:add_custom_pending_mission_from_string"
+		}
+	},
+	{
+		term:"episodic_scripting:clear_pending_missions()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:clear_pending_missions"
 		}
 	},
 	{
@@ -20476,6 +21372,18 @@ var all_terms = [
 		term:"episodic_scripting:complete_scripted_mission_objective()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:complete_scripted_mission_objective"
+		}
+	},
+	{
+		term:"episodic_scripting:set_scripted_mission_entity_completion_states()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_scripted_mission_entity_completion_states"
+		}
+	},
+	{
+		term:"episodic_scripting:remove_scripted_mission_entities()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:remove_scripted_mission_entities"
 		}
 	},
 	{
@@ -20536,6 +21444,42 @@ var all_terms = [
 		term:"episodic_scripting:trigger_intrigue()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:trigger_intrigue"
+		}
+	},
+	{
+		term:"episodic_scripting:create_dilemma_builder()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:create_dilemma_builder"
+		}
+	},
+	{
+		term:"episodic_scripting:launch_custom_dilemma_from_builder()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:launch_custom_dilemma_from_builder"
+		}
+	},
+	{
+		term:"episodic_scripting:create_incident_builder()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:create_incident_builder"
+		}
+	},
+	{
+		term:"episodic_scripting:launch_custom_incident_from_builder()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:launch_custom_incident_from_builder"
+		}
+	},
+	{
+		term:"episodic_scripting:create_payload()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:create_payload"
+		}
+	},
+	{
+		term:"episodic_scripting:apply_payload()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:apply_payload"
 		}
 	},
 	{
@@ -20638,6 +21582,12 @@ var all_terms = [
 		term:"episodic_scripting:add_building_to_settlement()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:add_building_to_settlement"
+		}
+	},
+	{
+		term:"episodic_scripting:add_building_to_settlement_queue()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:add_building_to_settlement_queue"
 		}
 	},
 	{
@@ -20809,6 +21759,12 @@ var all_terms = [
 		}
 	},
 	{
+		term:"episodic_scripting:force_rebellion_with_faction()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:force_rebellion_with_faction"
+		}
+	},
+	{
 		term:"episodic_scripting:force_confederation()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:force_confederation"
@@ -20893,9 +21849,27 @@ var all_terms = [
 		}
 	},
 	{
+		term:"episodic_scripting:lock_one_technology_node()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:lock_one_technology_node"
+		}
+	},
+	{
 		term:"episodic_scripting:unlock_technology()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:unlock_technology"
+		}
+	},
+	{
+		term:"episodic_scripting:update_technology_unlock_progress_values()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:update_technology_unlock_progress_values"
+		}
+	},
+	{
+		term:"episodic_scripting:building_level_unlocks_technology_for_faction()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:building_level_unlocks_technology_for_faction"
 		}
 	},
 	{
@@ -20929,45 +21903,45 @@ var all_terms = [
 		}
 	},
 	{
-		term:"episodic_scripting:set_character_cannot_disband()",
-		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_character_cannot_disband"
-		}
-	},
-	{
-		term:"episodic_scripting:modify_faction_slaves_in_a_faction()",
-		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:modify_faction_slaves_in_a_faction"
-		}
-	},
-	{
-		term:"episodic_scripting:modify_faction_slaves_in_a_faction_province()",
-		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:modify_faction_slaves_in_a_faction_province"
-		}
-	},
-	{
-		term:"episodic_scripting:faction_set_food_factor_multiplier()",
-		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:faction_set_food_factor_multiplier"
-		}
-	},
-	{
-		term:"episodic_scripting:faction_set_food_factor_value()",
-		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:faction_set_food_factor_value"
-		}
-	},
-	{
-		term:"episodic_scripting:faction_mod_food_factor_value()",
-		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:faction_mod_food_factor_value"
-		}
-	},
-	{
 		term:"episodic_scripting:faction_add_pooled_resource()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:faction_add_pooled_resource"
+		}
+	},
+	{
+		term:"episodic_scripting:add_regular_pooled_resource_transaction()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:add_regular_pooled_resource_transaction"
+		}
+	},
+	{
+		term:"episodic_scripting:remove_regular_pooled_resource_transaction()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:remove_regular_pooled_resource_transaction"
+		}
+	},
+	{
+		term:"episodic_scripting:pooled_resource_transaction()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:pooled_resource_transaction"
+		}
+	},
+	{
+		term:"episodic_scripting:pooled_resource_factor_transaction()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:pooled_resource_factor_transaction"
+		}
+	},
+	{
+		term:"episodic_scripting:apply_regular_reset_income()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:apply_regular_reset_income"
+		}
+	},
+	{
+		term:"episodic_scripting:force_winds_of_magic_change()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:force_winds_of_magic_change"
 		}
 	},
 	{
@@ -21025,9 +21999,9 @@ var all_terms = [
 		}
 	},
 	{
-		term:"episodic_scripting:unlock_ritual_in_category()",
+		term:"episodic_scripting:unlock_rituals_in_category()",
 		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:unlock_ritual_in_category"
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:unlock_rituals_in_category"
 		}
 	},
 	{
@@ -21061,33 +22035,9 @@ var all_terms = [
 		}
 	},
 	{
-		term:"episodic_scripting:faction_set_unit_purchasable_effect_availability()",
+		term:"episodic_scripting:set_military_force_plague()",
 		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:faction_set_unit_purchasable_effect_availability"
-		}
-	},
-	{
-		term:"episodic_scripting:faction_purchase_unit_effect()",
-		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:faction_purchase_unit_effect"
-		}
-	},
-	{
-		term:"episodic_scripting:faction_set_unit_purchasable_effect_lock_state()",
-		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:faction_set_unit_purchasable_effect_lock_state"
-		}
-	},
-	{
-		term:"episodic_scripting:faction_imprison_character()",
-		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:faction_imprison_character"
-		}
-	},
-	{
-		term:"episodic_scripting:faction_perform_action_on_prisoner()",
-		envs:{
-			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:faction_perform_action_on_prisoner"
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_military_force_plague"
 		}
 	},
 	{
@@ -21142,6 +22092,162 @@ var all_terms = [
 		term:"episodic_scripting:set_faction_max_secondary_cooking_ingredients()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_faction_max_secondary_cooking_ingredients"
+		}
+	},
+	{
+		term:"episodic_scripting:recruit_caravan()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:recruit_caravan"
+		}
+	},
+	{
+		term:"episodic_scripting:start_caravan()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:start_caravan"
+		}
+	},
+	{
+		term:"episodic_scripting:set_caravan_cargo()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_caravan_cargo"
+		}
+	},
+	{
+		term:"episodic_scripting:set_caravan_path()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_caravan_path"
+		}
+	},
+	{
+		term:"episodic_scripting:set_caravan_auto_path()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_caravan_auto_path"
+		}
+	},
+	{
+		term:"episodic_scripting:clear_caravan_path()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:clear_caravan_path"
+		}
+	},
+	{
+		term:"episodic_scripting:move_caravan()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:move_caravan"
+		}
+	},
+	{
+		term:"episodic_scripting:set_region_caravan_banditry()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_region_caravan_banditry"
+		}
+	},
+	{
+		term:"episodic_scripting:set_multi_region_caravan_banditry()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_multi_region_caravan_banditry"
+		}
+	},
+	{
+		term:"episodic_scripting:teleportation_network_open_node()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:teleportation_network_open_node"
+		}
+	},
+	{
+		term:"episodic_scripting:teleportation_network_close_node()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:teleportation_network_close_node"
+		}
+	},
+	{
+		term:"episodic_scripting:teleportation_network_open_random_nodes()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:teleportation_network_open_random_nodes"
+		}
+	},
+	{
+		term:"episodic_scripting:teleportation_network_close_random_nodes()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:teleportation_network_close_random_nodes"
+		}
+	},
+	{
+		term:"episodic_scripting:teleportation_network_close_all_nodes()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:teleportation_network_close_all_nodes"
+		}
+	},
+	{
+		term:"episodic_scripting:teleportation_network_set_effect_level_modifier()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:teleportation_network_set_effect_level_modifier"
+		}
+	},
+	{
+		term:"episodic_scripting:set_next_winds_of_magic_compass_selection_cooldown()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_next_winds_of_magic_compass_selection_cooldown"
+		}
+	},
+	{
+		term:"episodic_scripting:modify_faction_slaves_in_a_faction()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:modify_faction_slaves_in_a_faction"
+		}
+	},
+	{
+		term:"episodic_scripting:modify_faction_slaves_in_a_faction_province()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:modify_faction_slaves_in_a_faction_province"
+		}
+	},
+	{
+		term:"episodic_scripting:faction_set_food_factor_multiplier()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:faction_set_food_factor_multiplier"
+		}
+	},
+	{
+		term:"episodic_scripting:faction_set_food_factor_value()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:faction_set_food_factor_value"
+		}
+	},
+	{
+		term:"episodic_scripting:faction_mod_food_factor_value()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:faction_mod_food_factor_value"
+		}
+	},
+	{
+		term:"episodic_scripting:faction_purchase_unit_effect()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:faction_purchase_unit_effect"
+		}
+	},
+	{
+		term:"episodic_scripting:faction_unpurchase_unit_effect()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:faction_unpurchase_unit_effect"
+		}
+	},
+	{
+		term:"episodic_scripting:faction_set_unit_purchasable_effect_lock_state()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:faction_set_unit_purchasable_effect_lock_state"
+		}
+	},
+	{
+		term:"episodic_scripting:faction_imprison_character()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:faction_imprison_character"
+		}
+	},
+	{
+		term:"episodic_scripting:faction_perform_action_on_prisoner()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:faction_perform_action_on_prisoner"
 		}
 	},
 	{
@@ -21202,6 +22308,78 @@ var all_terms = [
 		term:"episodic_scripting:set_battle_lighting_env_override()",
 		envs:{
 			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_battle_lighting_env_override"
+		}
+	},
+	{
+		term:"episodic_scripting:update_pending_battle()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:update_pending_battle"
+		}
+	},
+	{
+		term:"episodic_scripting:set_prebattle_display_configuration_override()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_prebattle_display_configuration_override"
+		}
+	},
+	{
+		term:"episodic_scripting:set_prebattle_display_configuration_camera_type_override()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_prebattle_display_configuration_camera_type_override"
+		}
+	},
+	{
+		term:"episodic_scripting:clear_prebattle_display_configuration_override()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:clear_prebattle_display_configuration_override"
+		}
+	},
+	{
+		term:"episodic_scripting:set_loading_screen_id()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_loading_screen_id"
+		}
+	},
+	{
+		term:"episodic_scripting:set_character_observation_options_for_faction()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_character_observation_options_for_faction"
+		}
+	},
+	{
+		term:"episodic_scripting:set_character_observation_options_for_allies()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_character_observation_options_for_allies"
+		}
+	},
+	{
+		term:"episodic_scripting:set_character_observation_options_for_enemies()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_character_observation_options_for_enemies"
+		}
+	},
+	{
+		term:"episodic_scripting:set_character_observation_options_for_neutrals()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_character_observation_options_for_neutrals"
+		}
+	},
+	{
+		term:"episodic_scripting:award_achievement()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:award_achievement"
+		}
+	},
+	{
+		term:"episodic_scripting:war_coordination()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:war_coordination"
+		}
+	},
+	{
+		term:"episodic_scripting:set_base_strategic_threat_score()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:set_base_strategic_threat_score"
 		}
 	},
 	{
@@ -21301,6 +22479,102 @@ var all_terms = [
 		}
 	},
 	{
+		term:"episodic_scripting:cai_add_diplomatic_event()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:cai_add_diplomatic_event"
+		}
+	},
+	{
+		term:"episodic_scripting:cai_insert_caravan_diplomatic_event()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:cai_insert_caravan_diplomatic_event"
+		}
+	},
+	{
+		term:"episodic_scripting:cai_disable_targeting_against_settlement()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:cai_disable_targeting_against_settlement"
+		}
+	},
+	{
+		term:"episodic_scripting:cai_enable_targeting_against_settlement()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:cai_enable_targeting_against_settlement"
+		}
+	},
+	{
+		term:"episodic_scripting:cai_evaluate_quick_deal_action()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:cai_evaluate_quick_deal_action"
+		}
+	},
+	{
+		term:"episodic_scripting:cai_set_global_script_context()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:cai_set_global_script_context"
+		}
+	},
+	{
+		term:"episodic_scripting:cai_get_global_script_context()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:cai_get_global_script_context"
+		}
+	},
+	{
+		term:"episodic_scripting:cai_clear_global_script_context()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:cai_clear_global_script_context"
+		}
+	},
+	{
+		term:"episodic_scripting:cai_set_faction_script_context()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:cai_set_faction_script_context"
+		}
+	},
+	{
+		term:"episodic_scripting:cai_get_faction_script_context()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:cai_get_faction_script_context"
+		}
+	},
+	{
+		term:"episodic_scripting:cai_clear_faction_script_context()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:cai_clear_faction_script_context"
+		}
+	},
+	{
+		term:"episodic_scripting:cai_add_point_of_interest_generic_marker()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:cai_add_point_of_interest_generic_marker"
+		}
+	},
+	{
+		term:"episodic_scripting:cai_remove_point_of_interest_generic_marker()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:cai_remove_point_of_interest_generic_marker"
+		}
+	},
+	{
+		term:"episodic_scripting:trigger_performance_metrics_start()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:trigger_performance_metrics_start"
+		}
+	},
+	{
+		term:"episodic_scripting:trigger_performance_metrics_stop()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:trigger_performance_metrics_stop"
+		}
+	},
+	{
+		term:"episodic_scripting:trigger_scripted_tour_metrics_start()",
+		envs:{
+			campaign:"campaign/episodic_scripting.html#function:episodic_scripting:trigger_scripted_tour_metrics_start"
+		}
+	},
+	{
 		term:"cinematics:cindy_preload()",
 		envs:{
 			campaign:"campaign/cinematics.html#function:cinematics:cindy_preload"
@@ -21340,6 +22614,12 @@ var all_terms = [
 		term:"narrative.add_playable_faction()",
 		envs:{
 			campaign:"campaign/narrative.html#function:narrative:add_playable_faction"
+		}
+	},
+	{
+		term:"narrative.add_exception_faction()",
+		envs:{
+			campaign:"campaign/narrative.html#function:narrative:add_exception_faction"
 		}
 	},
 	{

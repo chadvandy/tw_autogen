@@ -79,6 +79,7 @@
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:uicomponent:Dimensions">Dimensions</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:uicomponent:Bounds">Bounds</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:uicomponent:Position">Position</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:uicomponent:RelativePosition">RelativePosition</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:uicomponent:MoveTo">MoveTo</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:uicomponent:SetMoveable">SetMoveable</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:uicomponent:IsMoveable">IsMoveable</a></li>
@@ -117,6 +118,7 @@
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:uicomponent:Destroy">Destroy</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:uicomponent:DestroyChildren">DestroyChildren</a></li>
 						<li>&emsp;&emsp;<a href="#section:uicomponent:Text and Tooltips">Text and Tooltips</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:uicomponent:SetText">SetText</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:uicomponent:SetStateText">SetStateText</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:uicomponent:GetStateText">GetStateText</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:uicomponent:SetTooltipText">SetTooltipText</a></li>
@@ -153,6 +155,7 @@
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:uicomponent:GetCurrentStateImageFlip">GetCurrentStateImageFlip</a></li>
 						<li>&emsp;&emsp;<a href="#section:uicomponent:Visibility and Interactivity">Visibility and Interactivity</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:uicomponent:Visible">Visible</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:uicomponent:VisibleFromRoot">VisibleFromRoot</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:uicomponent:SetVisible">SetVisible</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:uicomponent:PropagateVisibility">PropagateVisibility</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:uicomponent:Opacity">Opacity</a></li>
@@ -245,7 +248,7 @@
 					<li><a href="battle_capture_location.html">Capture Location</a></li>
 					<li><a href="battle_composite_scenes_system.html">Composite Scenes System</a></li>
 					<li><a href="battle_debug_drawing.html">Debug Drawing</a></li>
-					<li><a href="battle_reinforcements.html">Reinforcements</a></li>
+					<li><a href="battle_reinforcements.html">reinforcements Reinforcements</a></li>
 					<li><a href="battle_sound_effect.html">Sound Effects</a></li>
 					<li><a href="battle_subtitles.html">Subtitles</a></li>
 					<li><a href="battle_toggle_system.html">Toggle System</a></li>
@@ -361,7 +364,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> is_valid</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 570</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 575</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -376,7 +379,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:string">string</a></code></code> name</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 584</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 589</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -391,7 +394,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:string">string</a></code></code> callback id</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 601</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 606</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -406,7 +409,7 @@
 							<ol>
 								<li><code>address</code> uicomponent address</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 618</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 623</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -421,7 +424,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 631</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 636</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -436,7 +439,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> is dragged</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 644</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 649</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -451,7 +454,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> cursor over children</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 661</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 666</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -490,7 +493,7 @@
 							<div id="example_code"><code>
 								 uic_example:SetContextObject(cco("CcoBattleUnit", "1001"));<br />
 							</code></div>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 678</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 683</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -530,7 +533,7 @@
 								 local object_id = UIComponent("building_slot").GetContextObjectId("CcoCampaignBuildingSlot")<br />
 								 local building_slot_tooltip = effect.get_context_value("CcoCampaignBuildingSlot", object_id, "Tooltip")<br />
 							</code></div>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 706</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 711</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -569,7 +572,7 @@
 							<div id="example_code"><code>
 								 local cco_building_slot = uic_example:GetContextObject("CcoCampaignBuildingSlot");<br />
 							</code></div>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 738</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 743</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -584,7 +587,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 768</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 773</p>
 						</dd>
 					</dl>
 				</div>
@@ -607,7 +610,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:string">string</a></code></code> state name</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 794</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 799</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -641,7 +644,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> State was successfully set</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 811</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 816</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -656,7 +659,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> number of states</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 832</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 837</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -691,7 +694,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:string">string</a></code></code> state name</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 853</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 858</p>
 						</dd>
 					</dl>
 				</div>
@@ -714,7 +717,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> width</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 882</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 887</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -729,7 +732,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> height</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 898</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 903</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -745,7 +748,7 @@
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> width</li>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> height</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 914</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 919</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -761,7 +764,7 @@
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> width</li>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> height</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 932</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 937</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -777,7 +780,23 @@
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> x, X co-ordinate in pixels.</li>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> y, Y co-ordinate in pixels.</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 968</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 973</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:uicomponent:RelativePosition"><h3 class="function_name"><strong><code>uicomponent:RelativePosition()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns the relative position of the uicomponent
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:number">number</a></code></code> x, X co-ordinate in pixels.</li>
+								<li><code><code><a href="lua.html#class:number">number</a></code></code> y, Y co-ordinate in pixels.</li>
+							</ol>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 992</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -822,7 +841,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 987</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1011</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -856,7 +875,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1008</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1032</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -871,7 +890,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> is moveable</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1025</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1049</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -928,7 +947,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1040</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1064</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -963,7 +982,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1065</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1089</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -998,7 +1017,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1089</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1113</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1044,7 +1063,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1113</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1137</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1061,7 +1080,7 @@
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> height in pixels</li>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> number of lines</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1136</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1160</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1097,7 +1116,7 @@
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> height in pixels</li>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> number of lines</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1155</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1179</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1131,7 +1150,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> width in pixels</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1179</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1203</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1147,7 +1166,7 @@
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> left offset</li>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> right offset</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1201</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1225</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1163,7 +1182,7 @@
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> top offset</li>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> bottom offset</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1222</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1246</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1208,7 +1227,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1243</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1267</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1253,7 +1272,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1267</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1291</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1287,7 +1306,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1291</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1315</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1302,7 +1321,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:string">string</a></code></code> horizontal text alignment</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1318</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1342</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1336,7 +1355,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1345</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1369</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1351,7 +1370,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:string">string</a></code></code> vertical text alignment</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1373</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1397</p>
 						</dd>
 					</dl>
 				</div>
@@ -1386,7 +1405,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> docking point</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1415</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1439</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1420,7 +1439,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1433</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1457</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1465,7 +1484,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1452</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1476</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1481,7 +1500,7 @@
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> x offset in pixels.</li>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> y offset in pixels.</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1473</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1497</p>
 						</dd>
 					</dl>
 				</div>
@@ -1552,7 +1571,7 @@
 								 &emsp;&emsp;&emsp;&emsp;-- do stuff<br />
 								 end<br />
 							</code></div>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1500</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1524</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1586,7 +1605,7 @@
 							<ol>
 								<li><code>address</code> of found component</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1566</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1590</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1625,7 +1644,7 @@
 							<div id="example_code"><code>
 								 uic = UIComponent(root:FindByScriptTag("example_tag"))<br />
 							</code></div>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1617</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1641</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1664,7 +1683,7 @@
 							<div id="example_code"><code>
 								 uic = UIComponent(root:FindByGuid("730A2C75-2C65-4337-BCB8189F0C65FAC2"))<br />
 							</code></div>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1642</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1666</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1679,7 +1698,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> number of children</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1668</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1692</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1699,7 +1718,7 @@
 							<div id="example_code"><code>
 								 uic_parent = UIComponent(uic_child:Parent())<br />
 							</code></div>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1685</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1709</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1746,7 +1765,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1767</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1791</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1781,7 +1800,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1795</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1819</p>
 						</dd>
 					</dl>
 				</div>
@@ -1839,7 +1858,7 @@
 							<div id="example_code"><code>
 								 local uic_scripted_subtitles = UIComponent(ui_root:CreateComponent("scripted_subtitles", "UI/Campaign UI/scripted_subtitles"));<br />
 							</code></div>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1823</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1847</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1878,7 +1897,7 @@
 							<div id="example_code"><code>
 								 local uic_list_entry = UIComponent(uic_list_entry_template:CopyComponent("list_entry_1"));<br />
 							</code></div>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1855</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1879</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1893,7 +1912,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1895</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1919</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1908,7 +1927,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1908</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1932</p>
 						</dd>
 					</dl>
 				</div>
@@ -1919,6 +1938,51 @@
 					<a name="section:uicomponent:Text and Tooltips"><h2 class="section_header">Text and Tooltips</h2></a>
 				</div>
 				<div class="section_body">
+					<dl class="function">
+						<dt>
+							<a name="function:uicomponent:SetText"><h3 class="function_name"><strong><code>uicomponent:SetText(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">localised text</i><code><strong>, <code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">text source</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Sets the text on all available states of the uicomponent to the supplied text. Localised text must be specified - <code><a href="common.html#function:common:get_localised_string">common.get_localised_string</a></code> can be used to look this up from anywhere in the database.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>Localised text.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="lua.html#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>source of text in format of a stringtable key (tablename_recordname_key)</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1964</p>
+						</dd>
+					</dl>
 					<dl class="function">
 						<dt>
 							<a name="function:uicomponent:SetStateText"><h3 class="function_name"><strong><code>uicomponent:SetStateText(<code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">localised text</i><code><strong>, <code><a href="lua.html#class:string">string</a></code> </strong></code><i class="parameter">text source</i><code><strong>)</code></strong></h3></a>
@@ -1961,7 +2025,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1940</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2009</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1977,7 +2041,7 @@
 								<li><code><code><a href="lua.html#class:string">string</a></code></code> localised uicomponent text</li>
 								<li><code><code><a href="lua.html#class:string">string</a></code></code> text source for where text comes from in format of a stringtable key (tablename_recordname_key). Handy if getting text then setting again as require source for set, so can get from here to set it back again</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 1985</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2054</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2033,7 +2097,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2012</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2081</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2049,7 +2113,7 @@
 								<li><code><code><a href="lua.html#class:string">string</a></code></code> tooltip text</li>
 								<li><code><code><a href="lua.html#class:string">string</a></code></code> text source for where text comes from in format of a stringtable key (tablename_recordname_key). Handy if getting text then setting again as require source for set, so can get from here to set it back again</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2051</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2120</p>
 						</dd>
 					</dl>
 				</div>
@@ -2126,7 +2190,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2086</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2155</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2185,7 +2249,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2117</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2186</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2220,7 +2284,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2158</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2227</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2256,7 +2320,7 @@
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> image width</li>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> image height</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2189</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2258</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2271,7 +2335,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2221</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2290</p>
 						</dd>
 					</dl>
 				</div>
@@ -2315,7 +2379,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> The index of this image on the uicomponent itself. This can be plugged into <code><a href="#function:uicomponent:GetImagePath">uicomponent:GetImagePath</a></code> and other functions.</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2246</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2315</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2330,7 +2394,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> number of images</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2286</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2355</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2375,7 +2439,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2304</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2373</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2409,7 +2473,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> Current opacity</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2335</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2404</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2443,7 +2507,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> width, Width in pixels.</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2365</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2434</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2477,7 +2541,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> height, Height in pixels.</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2395</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2464</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2512,7 +2576,7 @@
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> width, Width in pixels.</li>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> height, Height in pixels.</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2425</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2494</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2568,7 +2632,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2456</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2525</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2602,7 +2666,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> can resize width</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2489</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2558</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2636,7 +2700,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> can resize height</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2519</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2588</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2681,7 +2745,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2549</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2618</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2726,7 +2790,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2580</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2649</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2771,7 +2835,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2611</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2680</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2805,7 +2869,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> dock point, Dock point.</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2647</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2716</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2861,7 +2925,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2683</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2752</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2896,7 +2960,7 @@
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> x offset in pixels.</li>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> y offset in pixels.</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2721</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2790</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2941,7 +3005,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2761</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2830</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2975,7 +3039,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> is image tiled.</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2797</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2866</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3053,7 +3117,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2833</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2902</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3090,7 +3154,7 @@
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> bottom margin value in pixels</li>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> left margin value in pixels</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2871</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2940</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3135,7 +3199,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2912</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2981</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3180,7 +3244,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2947</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3016</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3214,7 +3278,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> is flipped horizontally.</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 2982</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3051</p>
 						</dd>
 					</dl>
 				</div>
@@ -3257,7 +3321,22 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> is visible</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3030</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3099</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:uicomponent:VisibleFromRoot"><h3 class="function_name"><strong><code>uicomponent:VisibleFromRoot()</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns whether this uicomponent is visible, all its parents are visible, and the hierarchy is attached to the ui root. If the supplied parent (or an ancestor of it) is orphaned from the ui root this function will return <code>false</code> where <code><a href="#function:uicomponent:Visible">uicomponent:Visible</a></code> may return <code>true</code>, as the uicomponent would not be displayed if not attached to the ui root.
+
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> is visible from root</li>
+							</ol>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3129</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3291,7 +3370,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3060</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3147</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3325,7 +3404,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3078</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3165</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3340,7 +3419,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> opacity</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3095</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3182</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3386,7 +3465,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3112</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3199</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3432,7 +3511,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3140</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3227</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3447,7 +3526,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> is interactive</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3169</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3256</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3481,7 +3560,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3184</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3271</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3496,7 +3575,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> is interactive</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3201</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3288</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3530,7 +3609,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3216</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3303</p>
 						</dd>
 					</dl>
 				</div>
@@ -3553,7 +3632,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:string">string</a></code></code> animation name</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3236</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3323</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3587,7 +3666,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3253</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3340</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3621,7 +3700,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> animation exists</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3273</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3360</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3636,7 +3715,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> animations</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3294</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3381</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3651,7 +3730,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:table">table</a></code></code> numerically-indexed table of animation names</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3312</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3399</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3685,7 +3764,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> animation frames</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3341</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3428</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3788,7 +3867,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3370</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3457</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3844,7 +3923,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3422</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3509</p>
 						</dd>
 					</dl>
 				</div>
@@ -3886,7 +3965,7 @@
 							<ol>
 								<li><code>variable</code> property value</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3458</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3545</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3931,7 +4010,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3480</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3567</p>
 						</dd>
 					</dl>
 				</div>
@@ -3977,7 +4056,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3507</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3594</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3992,7 +4071,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3528</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3615</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4007,7 +4086,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> priority</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3541</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3628</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4041,7 +4120,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> old priority</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3557</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3644</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4056,7 +4135,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3583</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3670</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4071,7 +4150,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3598</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3685</p>
 						</dd>
 					</dl>
 				</div>
@@ -4159,7 +4238,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3638</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3725</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4174,7 +4253,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:string">string</a></code></code> shader key</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3683</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3770</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4269,7 +4348,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3699</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3786</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4287,7 +4366,7 @@
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> third value</li>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> fourth value</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3752</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3839</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4333,7 +4412,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3774</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3861</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4412,7 +4491,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3807</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3894</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4430,7 +4509,7 @@
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> third value</li>
 								<li><code><code><a href="lua.html#class:number">number</a></code></code> fourth value</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3845</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3932</p>
 						</dd>
 					</dl>
 				</div>
@@ -4485,7 +4564,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> success</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3870</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3957</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4519,7 +4598,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3916</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4003</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4553,7 +4632,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3947</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4034</p>
 						</dd>
 					</dl>
 				</div>
@@ -4619,7 +4698,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 3969</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4056</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4666,7 +4745,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4002</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4089</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4713,7 +4792,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4031</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4118</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4748,7 +4827,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4068</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4155</p>
 						</dd>
 					</dl>
 				</div>
@@ -4801,7 +4880,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4093</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4180</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4816,7 +4895,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> has callback interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4118</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4205</p>
 						</dd>
 					</dl>
 				</div>
@@ -4871,7 +4950,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4210</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4297</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4918,7 +4997,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4236</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4323</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4965,7 +5044,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4263</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4350</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -5012,7 +5091,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4290</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4377</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -5027,7 +5106,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4317</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4404</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -5042,7 +5121,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4334</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4421</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -5089,7 +5168,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4351</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4438</p>
 						</dd>
 					</dl>
 				</div>
@@ -5274,7 +5353,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4558</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4645</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -5308,7 +5387,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4578</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4665</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -5342,7 +5421,7 @@
 							<ol>
 								<li><code>nil</code></li>
 							</ol>
-							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4598</p>
+							<p class="file_comment">defined in ../../common/UiComponentLib/Source/LuaComponentInterface.cpp, line 4685</p>
 						</dd>
 					</dl>
 				</div>
@@ -5352,7 +5431,7 @@
 
 		</div>
 
-		<div id="about">Last updated 20/01/2022 17:32:53</div>
+		<div id="about">Last updated 12/08/2022 11:56:59</div>
 
 	</div>
 

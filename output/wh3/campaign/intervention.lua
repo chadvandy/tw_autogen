@@ -185,7 +185,7 @@ function intervention:scroll_camera_to_character_for_intervention(cqi, advice_ke
 function intervention:scroll_camera_to_settlement_for_intervention(region_key, advice_key, infotext, mission, duration, scroll_callback, continuation_callback) end
 
 --- Scrolls the camera to a supplied position on the campaign map during an intervention, showing advice and optionally showing infotext and a mission. This should only be called while this intervention is actually running after having been triggered.
----@param region_key string #Target region key. If a region is supplied here the shroud over it will be lifted while the intervention is playing.
+---@param region_key string? #optional, default value=nil Target region key. If a region is supplied here the shroud over it will be lifted while the intervention is playing.
 ---@param x number #Display x co-ordinate of position to scroll to.
 ---@param y number #Display y co-ordinate of position to scroll to.
 ---@param advice_key string #Advice key.

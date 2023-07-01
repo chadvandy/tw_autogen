@@ -349,7 +349,8 @@ function battle_manager:print_watch_list() end
 function battle_manager:clear_watches_and_callbacks() end
 
 --- By default the watch system performs load balancing, where it tries to stagger its running watches so they don't all process on the same tick. If this is causes problems for any reason it can be disabled with set_load_balancing. Supply a boolean parameter to enable or disable load balancing.
-function battle_manager:set_load_balancing() end
+---@param enable_load_balancing boolean #enable load balancing
+function battle_manager:set_load_balancing(enable_load_balancing) end
 
 --- Enqueues a line of advice for delivery to the player. If there is no other advice playing, or nothing is blocking the advisor system, then the advice gets delivered immediately. Otherwise, the supplied advice will be queued and shown at an appropriate time.<br />
 --- The function must be supplied an advice key from the advice_levels/advice_threads tables as its first parameter, unless the advisor entry is set to be debug (see below).
@@ -421,7 +422,8 @@ function battle_manager:cancel_progress_on_advice_finished(name) end
 function battle_manager:progress_on_sound_effect_finished(name, sound_effect, callback, minimum_playtime) end
 
 --- Cancels a process started by battle_manager:progress_on_sound_effect_finished with the supplied name.
-function battle_manager:cancel_progress_on_sound_effect_finished() end
+---@param name string #name
+function battle_manager:cancel_progress_on_sound_effect_finished(name) end
 
 --- Sets up a scripted objective for the player, which appears in the scripted objectives panel. This objective can then be updated, removed, or marked as completed or failed by the script at a later time.<br />
 --- A key to the scripted_objectives table must be supplied with set_objective, and optionally one or two numeric parameters to show some running count related to the objective. To update these parameter values later, set_objective may be re-called with the same objective key and updated values.<br />
@@ -676,6 +678,10 @@ function battle_manager:disable_unit_details_panel(disable) end
 ---@param show boolean #show
 function battle_manager:show_player_alliance_units_for_mp_cutscenes(show) end
 
+--- Shows or hides all units in the player's army. This is primarily intended for multiplayer cutscenes but could be used for other purposes.
+---@param show boolean #show
+function battle_manager:show_player_army_units_for_mp_cutscenes(show) end
+
 --- Returns a table containing a battle_building object for each fort tower building on the map. The table will not be copied, so modifying the returned table will also modify the battle manager's internal version.
 ---@return table #fort tower buildings 
 function battle_manager:get_fort_tower_buildings() end
@@ -738,6 +744,16 @@ function battle_manager:get_camera_altitude_change() end
 
 --- Gets the total distance the camera has travelled between now and when the tracker was started. This distance is not exact, but gives the calling script an indication of how much the player is moving the camera.
 ---@return number #distance in m 
+---@return ScriptEventBattleArmiesEngaging
+---@return ScriptEventPlayerGeneralWounded
+---@return ScriptEventPlayerGeneralDies
+---@return ScriptEventEnemyGeneralWounded
+---@return ScriptEventEnemyGeneralDies
+---@return ScriptEventPlayerGeneralRouts
+---@return ScriptEventEnemyGeneralRouts
+---@return ScriptEventPlayerUnitRouts
+---@return ScriptEventPlayerUnitRallies
+---@return ScriptEventEnemyUnitRouts
 function battle_manager:get_camera_distance_travelled() end
 
 --- Starts the engagement monitor. This must be called before the "Deployed" phase change occurs (i.e. before the end of deployment).

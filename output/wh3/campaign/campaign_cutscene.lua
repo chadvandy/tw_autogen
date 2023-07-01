@@ -5,7 +5,7 @@ local campaign_cutscene = {}
 
 --- Creates a cutscene object. A cutscene must be given a unique string name, a length in seconds and optionally an end callback.
 ---@param name string #Unique name for the cutscene.
----@param duration number? #optional, default value=nil Cutscene duration in seconds. If nil or 0 is specified then the cutscene will be set to not end, and will only finish when skipped by the player or ended by an external process - see campaign_cutscene:set_do_not_end.
+---@param duration number? #optional, default value=nil Cutscene duration in seconds. If nil or 0 is specified then the cutscene will be set to not end unless action_end_cutscene is used, and will only finish when skipped by the player or ended by an external process.
 ---@param end_callback function? #optional, default value=nil End callback.
 ---@param send_metrics_data boolean? #optional, default value=nil Send performance data to metrics.
 ---@return campaign_cutscene #cutscene object 
@@ -37,10 +37,6 @@ function campaign_cutscene:set_skippable(set_skippable, skip_callback) end
 ---@param dismiss_advice boolean? #optional, default value=true dismiss advice
 function campaign_cutscene:set_dismiss_advice_on_end(dismiss_advice) end
 
---- Sets the cutscene to not terminate once its duration is reached. If this is enabled, the cutscene can only be ended by being skipped or by being terminated by external script.
----@param do_not_end boolean? #optional, default value=true do not end
-function campaign_cutscene:set_do_not_end(do_not_end) end
-
 --- Sets the cutscene to show cinematic borders whilst playing, or not. Cutscenes by default will show cinematic borders - use this function to disable this behaviour.
 ---@param show_borders boolean? #optional, default value=true show borders
 function campaign_cutscene:set_use_cinematic_borders(show_borders) end
@@ -70,9 +66,21 @@ function campaign_cutscene:set_restore_shroud(restore_shroud) end
 ---@param show_advisor_close_button boolean? #optional, default value=true show advisor close button
 function campaign_cutscene:set_show_advisor_close_button_on_end(show_advisor_close_button) end
 
+--- Tells the cutscene system that this cutscene is a faction intro cutscene. Intro cutscenes inform the campaign manager when they start and stop, and also trigger an additional "ScriptEventCampaignIntroCutsceneCompleted" event when the cutscene completes.
+---@param is_intro_cutscene boolean? #optional, default value=true is intro cutscene
+function campaign_cutscene:set_intro_cutscene(is_intro_cutscene) end
+
+--- Returns whether this cutscene has been set to be an intro cutscene.
+---@return boolean #is intro cutscene 
+function campaign_cutscene:is_intro_cutscene() end
+
 --- Sets the cutscene end callback. This replaces any end callback previously set (e.g. with campaign_cutscene:new).
 ---@param end_callback function #end callback
 function campaign_cutscene:set_end_callback(end_callback) end
+
+--- Adds the specified callback to the start of the existing end-callback, without overwriting the existing end-callback's contents. If there is no end-callback yet, this cutscene's end-callback will simply be set to the one provided.
+---@param callback function #callback to prepend to the existing end-callback
+function campaign_cutscene:prepend_end_cutscene(callback) end
 
 --- Returns true if the cutscene has an end callback specified, false otherwise.
 ---@return boolean #has end callback 
@@ -117,6 +125,13 @@ function campaign_cutscene:is_active() end
 --- Note that cutscenes don't steal input when debug mode is set with campaign_cutscene:set_debug or campaign_cutscene:set_debug_all, which affects this command too.
 function campaign_cutscene:steal_input_immediately() end
 
+--- Sets the cutscene music trigger argument to be passed to the music system when the cutscene starts
+---@param music_trigger_argument string #A uniquely identifying name for the cutscene relevant to the music system
+function campaign_cutscene:set_music_trigger_argument(music_trigger_argument) end
+
+--- Sets relative mode for enqueuing actions on the cutscene. With relative mode enabled, the time specified for each action is relative to the previously-added action, rather than absolute from the start of the cutscene. Relative mode is disabled by default.
+function campaign_cutscene:set_relative_mode() end
+
 --- Registers a new cinematic trigger listener. When the cindy scene triggers a script event with the supplied id in script, the supplied function is called.
 ---@param id string #Cinematic trigger id. This should match the an id of a cinematic event triggered from a cindy scene played during this cutscene.
 ---@param callback function #Callback to call.
@@ -128,8 +143,40 @@ function campaign_cutscene:show_esc_prompt(should_show) end
 
 --- Registers a new action with the cutscene. The action is supplied a function callback, which is called at the appropriate time after the cutscene has been started (assuming the cutscene is not skipped beforehand).
 ---@param callback function #Action callback to call.
----@param delay number #Delay in seconds after the cutscene starts before calling this action callback.
+---@param delay number #Delay in seconds after the cutscene starts before calling this action callback (or after the preceeding action, if in relative mode).
 function campaign_cutscene:action(callback, delay) end
+
+--- Set the camera position. When using this, it's best to wait a fraction of a second before enacting other camera movements, as the action is not instant and can be overriden by other camera actions.
+---@param delay number #The delay in seconds.
+---@param camera_coords table #The coordinates to move the camera to. List of numbers as defined in Camera Movement.
+function campaign_cutscene:action_set_camera_position(delay, camera_coords) end
+
+--- Scroll the camera from its current location to the specified location.
+---@param delay number #The delay in seconds.
+---@param scroll_duration number #How long it takes, in seconds, for the camera to reach its new coordinate.
+---@param correct_endpoint boolean #Correct endpoint. If true, the game will adjust the final position of the camera so that it's a valid camera position for the game. Set to true if control is being released back to the player after this camera movement finishes.
+---@param camera_coords table #The coordinates to scroll the camera to. List of numbers as defined in Camera Movement.
+function campaign_cutscene:action_scroll_camera_to_position(delay, scroll_duration, correct_endpoint, camera_coords) end
+
+--- Display some advice.
+---@param delay number #The delay in seconds.
+---@param advice_key string #Advice thread key.
+function campaign_cutscene:action_show_advice(delay, advice_key) end
+
+--- Disable or enable the UI of the specified string keys, as defined in campaign_ui_manager.
+---@param delay number #The delay in seconds.
+---@param ... any #A variable number of UI override arguments to enable or disable. UI overrides may be specified as multiple string arguments or a single table of strings.
+function campaign_cutscene:action_override_ui_visibility(delay, ...) end
+
+--- Fades the scene to black or back to picture over a specified period.
+---@param delay number #The delay in seconds.
+---@param brightness number #Brightness, as a unary value. Supply a value of 0 to fade to black, supply a value of 1 to fade to picture, or supply a value in between to transition to a partially-faded picture.
+---@param duration number #Duration of the fade effect in seconds.
+function campaign_cutscene:action_fade_scene(delay, brightness, duration) end
+
+--- Sets a listener to end the cutscene at the specified delay. This will also update the cutscene's internal duration.
+---@param delay number #The delay in seconds.
+function campaign_cutscene:action_end_cutscene(delay) end
 
 --- Starts the cutscene.
 ---@return boolean #cutscene was started successfully 
@@ -151,7 +198,3 @@ function campaign_cutscene:dismiss_advice() end
 
 --- This function is called internally when the cutscene has been skipped by the player. Additionally, it may be called by external scripts to force the running cutscene to skip.
 function campaign_cutscene:skip() end
-
---- Sets the cutscene music trigger argument to be passed to the music system when the cutscene starts
----@param music_trigger_argument string #A uniquely identifying name for the cutscene relevant to the music system
-function campaign_cutscene:set_music_trigger_argument(music_trigger_argument) end

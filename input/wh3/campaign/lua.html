@@ -98,6 +98,7 @@
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:string:starts_with">starts_with</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:string:sub">sub</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:string:sub_lua">sub_lua</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:string:split">split</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:string:upper">upper</a></li>
 					</ul>
 					<li><a href="#class:function">Functions</a><img alt="Loaded in Campaign" style="float:right; margin-right:1em;" src="../images/loaded_in_campaign.png" height="10" width="10" /></li>
@@ -121,6 +122,8 @@
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:table:copy">copy</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:table:mem_address">mem_address</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:table:indexed_to_lookup">indexed_to_lookup</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:table:compile_tables">compile_tables</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:table:merge_tables">merge_tables</a></li>
 					</ul>
 					<li><a href="#class:userdata">Userdata</a><img alt="Loaded in Campaign" style="float:right; margin-right:1em;" src="../images/loaded_in_campaign.png" height="10" width="10" /></li>
 					<ul>
@@ -179,6 +182,7 @@
 					<li><a href="cinematics.html">Cinematics</a></li>
 					<li><a href="common.html">Common</a></li>
 					<li><a href="episodic_scripting.html">Episodic Scripting</a></li>
+					<li><a href="model_hierarchy.html">Model Hierarchy</a></li>
 					<li><a href="scriptedvalueregistry.html">ScriptedValueRegistry</a></li>
 					<li><a href="uicomponent.html">UIComponents</a></li>
 
@@ -195,7 +199,6 @@
 					<li><a href="global.html">Global</a></li>
 					<li><a href="infotext_manager.html">Infotext Manager</a></li>
 					<li><a href="intervention.html">Interventions</a></li>
-					<li><a href="intro_campaign_scripts.html">Helper Scripts</a></li>
 					<li><a href="invasion_manager.html">Invasion Manager</a></li>
 					<li><a href="mission_manager.html">Mission Managers</a></li>
 					<li><a href="movie_overlay.html">Movie Overlays</a></li>
@@ -216,6 +219,8 @@
 
 				<h2 style="background-color:#ffed8c">Data Interfaces</h2>
 				<ul>
+					<li><a href="custom_starts.html">Campaign Custom Starts</a></li>
+					<li><a href="faction_intro.html">Faction Intro</a></li>
 					<li><a href="narrative.html">Narrative</a></li>
 					<li><a href="narrative_events.html">Narrative Event Templates</a></li>
 					<li><a href="narrative_queries.html">Narrative Query Templates</a></li>
@@ -247,7 +252,7 @@
 				<div id="example_result"><code>
 					6<br />
 					nil<br />
-				</code></div>
+</code></div>
 							<table class="loaded_in" style="margin-top: 1em;">
 								<tr>
 									<td>
@@ -769,7 +774,7 @@
 				<div id="example_result"><code>
 					no_value has a value of nil and is of type nil<br />
 					some_value is false or nil<br />
-				</code></div>
+</code></div>
 				<hr class="superblock_divider" />
 
 
@@ -799,7 +804,7 @@
 					not f is true<br />
 					f and t is true<br />
 					f or t must be true!<br />
-				</code></div>
+</code></div>
 				<hr class="superblock_divider" />
 
 
@@ -818,7 +823,7 @@
 				</code></div>
 				<div id="example_result"><code>
 					5&emsp;&emsp;&emsp;&emsp;15&emsp;&emsp;&emsp;&emsp;30&emsp;&emsp;&emsp;&emsp;3.0&emsp;&emsp;&emsp;&emsp;125.0<br />
-				</code></div>
+</code></div>
 				<hr class="superblock_divider" />
 
 
@@ -834,7 +839,7 @@
 				</code></div>
 				<div id="example_result"><code>
 					hello world<br />
-				</code></div>
+</code></div>
 
 				<div>
 					<a style="float:right;" href="#top">Back to top</a>
@@ -1998,6 +2003,73 @@
 					</dl>
 					<dl class="function">
 						<dt>
+							<a name="function:string:split"><h3 class="function_name"><strong><code>string.split(<code><a href="#class:string">string</a></code> </strong></code><i class="parameter">subject_str</i><code><strong>, <code><a href="#class:string">string</a></code> </strong></code><i class="parameter">split_str</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Returns a list representing the specified subject_str split up by occurances of split_str, not including those occurances.<br />
+							An empty table is returned if no occurances of split_str are found.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>The string to be split.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="#class:string">string</a></code></code></p>
+									</td>
+									<td>
+										<p>The character or string to split the subject string at.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code>nil</code></li>
+							</ol>
+
+							<h4>Example - Splitting a string by spaces:</h4>
+							<div id="example_code"><code>
+								 string.split("The quick brown fox", ' ')<br />
+							</code></div>
+							<div id="example_result"><code>
+								{ "The", "quick", "brown", "fox" }<br />
+							</code></div>
+
+							<h4>Example - Splitting a string with another string (note that the pattern matches at its earliest possible location):</h4>
+							<div id="example_result"><code>
+								{ "Bananas: Price ", "-- £150" }<br />
+							</code></div>
+
+							<h4>Example - Trimming the start and end occurances of spaces:</h4>
+							<div id="example_code"><code>
+								 string.split("NoSpacesHere", ' ')<br />
+							</code></div>
+							<div id="example_result"><code>
+								{ "NoSpacesHere" }<br />
+							</code></div>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 644</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
 							<a name="function:string:upper"><h3 class="function_name"><strong><code>string.upper(<code><a href="#class:string">string</a></code> </strong></code><i class="parameter">input</i><code><strong>)</code></strong></h3></a>
 						</dt>
 						<dd>
@@ -2036,7 +2108,7 @@
 							<div id="example_result"><code>
 								A TEST STRING<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 644</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 677</p>
 						</dd>
 					</dl>
 				</div>
@@ -2062,7 +2134,7 @@
 				</code></div>
 				<div id="example_result"><code>
 					test_function() called<br />
-				</code></div>
+</code></div>
 
 				<h4>Example - Alternative form of function declaration:</h4>
 					This alternative form of function declaration is identical to the previous example. It better illustrates the nature of functions as just another type of variable, created by assignment like a string or number.
@@ -2077,7 +2149,7 @@
 				</code></div>
 				<div id="example_result"><code>
 					test_function() called<br />
-				</code></div>
+</code></div>
 
 				<h4>Example - Function taking two arguments:</h4>
 					Arguments can be specified in the function specification as follows. The arguments will be accessible as local variables throughout the lifetime of the function.
@@ -2104,7 +2176,7 @@
 					f() called<br />
 					&emsp;&emsp;&emsp;&emsp;first is nil<br />
 					&emsp;&emsp;&emsp;&emsp;second is lonely<br />
-				</code></div>
+</code></div>
 
 				<h4>Example - Function returning two values:</h4>
 				<div id="example_code"><code>
@@ -2117,7 +2189,7 @@
 				</code></div>
 				<div id="example_result"><code>
 					1080p screen resolution is [1920, 1080]<br />
-				</code></div>
+</code></div>
 
 				<h4>Example - Example of passing functions as arguments to another function:</h4>
 					This includes an example of an anonymous function.
@@ -2149,7 +2221,7 @@
 					a_function is a function<br />
 					anonymous_function is a function<br />
 					is_function is a function<br />
-				</code></div>
+</code></div>
 
 				<div>
 					<a style="float:right;" href="#top">Back to top</a>
@@ -2206,7 +2278,7 @@
 				</code></div>
 				<div id="example_result"><code>
 					Peter is 25 years old, his hair colour is brown<br />
-				</code></div>
+</code></div>
 
 				<div>
 					<a style="float:right;" href="#top">Back to top</a>
@@ -2418,7 +2490,7 @@
 								firstsecondthirdfourthfifth<br />
 								second third fourth<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 890</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 923</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2487,7 +2559,7 @@
 							<div id="example_result"><code>
 								1 2 goodbye 3 hello<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 903</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 936</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2538,7 +2610,7 @@
 								table.maxn(t) is 6<br />
 								#t is 4<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 916</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 949</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2595,7 +2667,7 @@
 							<div id="example_result"><code>
 								134<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 933</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 966</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2671,7 +2743,7 @@
 							<div id="example_result"><code>
 								short...longer...very_long...really_really_long<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 944</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 977</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2740,7 +2812,7 @@
 							<ol>
 								<li><code><code><a href="#class:string">string</a></code></code> table to string</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 968</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1001</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2785,7 +2857,7 @@
 							<ol>
 								<li><code>value</code> key corresponding to value</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1074</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1107</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2819,7 +2891,7 @@
 							<ol>
 								<li><code><code><a href="#class:boolean">boolean</a></code></code> is empty</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1093</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1126</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2868,7 +2940,7 @@
 								apple topped with cinnamon<br />
 								banana topped with chocolate<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1106</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1139</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2915,7 +2987,7 @@
 							<ol>
 								<li><code><code><a href="#class:string">string</a></code></code> address string</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1152</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1185</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2963,7 +3035,121 @@
 								oranges&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;true<br />
 								apples&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;true<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1193</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1226</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:table:compile_tables"><h3 class="function_name"><strong><code>table:compile_tables(<code><a href="#class:table">table</a></code> </strong></code><i class="parameter">table_list</i><code><strong>, [rules </strong></code><i class="parameter">(fully recursive</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Given a list of tables, sorts all tables by an optional <code>load_order</code> and then merges each one onto the previous successively. Can be used to merge and override data tables for mod compatibility.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="#class:table">table</a></code></code></p>
+									</td>
+									<td>
+										<p>The list of tables to be merged, indexed numerically.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code>rules</code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=default rules (fully recursive, allow overrides)</i></p>
+										<p>allow overrides)] <code><a href="#class:table">table</a></code> merge_rules, A table describing the rules for merging, including <code>recursion_levels</code> and <code>allow_overrides</code>.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="#class:table">table</a></code></code> Returns the fully compiled table (a new table reference).</li>
+							</ol>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1291</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:table:merge_tables"><h3 class="function_name"><strong><code>table:merge_tables(<code><a href="#class:table">table</a></code> </strong></code><i class="parameter">merge_to</i><code><strong>, <code><a href="#class:table">table</a></code> </strong></code><i class="parameter">merge_from</i><code><strong>, <code><a href="#class:table">table</a></code> </strong></code><i class="parameter">merge_rules</i><code><strong>, [<code><a href="#class:number">number</a></code> </strong></code><i class="parameter">recursion_level</i><code><strong>])</code></strong></h3></a>
+						</dt>
+						<dd>
+							Merge two tables given a set of merge rules, implanting the data from <code>merge_from</code> into <code>merge_to</code>.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="#class:table">table</a></code></code></p>
+									</td>
+									<td>
+										<p>The table to which data will be merged. The return value is this table, following the merge.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>2</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="#class:table">table</a></code></code></p>
+									</td>
+									<td>
+										<p>The table from which data will be merged.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>3</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="#class:table">table</a></code></code></p>
+									</td>
+									<td>
+										<p>A table describing the rules for merging, including <code>recursion_levels</code> and <code>allow_overrides</code>.</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p><strong>4</strong></p>
+									</td>
+									<td>
+										<p><code><code><a href="#class:number">number</a></code></code></p>
+									</td>
+									<td>
+										<p><i>optional, default value=1</i></p>
+										<p>The number of recursions this function call is at, i.e. the number of table layers into the original table that the merge has reached. If unspecified, this begins at 1.</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="#class:table">table</a></code></code> Returns the original merge_to table, but with the contents of merge_from incoorporated into it.</li>
+							</ol>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1320</p>
 						</dd>
 					</dl>
 				</div>
@@ -2988,6 +3174,7 @@
 				<div class="section_body">
 
 					<h3 class "variable_list">Variables in this section:</h3>
+					<p>These variables may be accessed via <code>&lt;interface&gt;.&lt;variable_name&gt;</code>:</p>
 					<table class="variable_list">
 						<tr>
 							<td class="variable_name">
@@ -3012,7 +3199,6 @@
 							</td>
 						</tr>
 					</table>
-					<p>These variables are also listed in the global variables list for this class or module.</p>
 				</div>
 
 
@@ -3060,7 +3246,7 @@
 							<div id="example_result"><code>
 								4<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1262</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1402</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3102,7 +3288,7 @@
 							<div id="example_result"><code>
 								1.0471975511966<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1270</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1410</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3144,7 +3330,7 @@
 							<div id="example_result"><code>
 								0.5235987755983<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1278</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1418</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3186,7 +3372,7 @@
 							<div id="example_result"><code>
 								0.64350110879328<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1286</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1426</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3241,7 +3427,7 @@
 								0.78539816339745<br />
 								-0.78539816339745<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1294</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1434</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3283,7 +3469,7 @@
 							<div id="example_result"><code>
 								3<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1305</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1445</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3325,7 +3511,7 @@
 							<div id="example_result"><code>
 								0.5<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1313</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1453</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3367,7 +3553,7 @@
 							<div id="example_result"><code>
 								1.5430806348152<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1321</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1461</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3409,7 +3595,7 @@
 							<div id="example_result"><code>
 								180.0<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1329</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1469</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3451,7 +3637,7 @@
 							<div id="example_result"><code>
 								2.718281828459<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1337</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1477</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3493,7 +3679,7 @@
 							<div id="example_result"><code>
 								2<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1345</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1485</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3547,7 +3733,7 @@
 							<div id="example_result"><code>
 								3<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1353</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1493</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3590,7 +3776,7 @@
 							<div id="example_result"><code>
 								0.625&emsp;&emsp;&emsp;&emsp;4<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1363</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1503</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3643,7 +3829,7 @@
 							<div id="example_result"><code>
 								32.0<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1372</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1512</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3685,7 +3871,7 @@
 							<div id="example_result"><code>
 								2.302585092994<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1381</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1521</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3727,7 +3913,7 @@
 							<div id="example_result"><code>
 								1.0<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1389</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1529</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3769,7 +3955,7 @@
 							<div id="example_result"><code>
 								14<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1397</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1537</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3811,7 +3997,7 @@
 							<div id="example_result"><code>
 								3<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1405</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1545</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3856,7 +4042,7 @@
 								5&emsp;&emsp;&emsp;&emsp;0.0<br />
 								5&emsp;&emsp;&emsp;&emsp;0.4<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1413</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1553</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3914,7 +4100,7 @@
 							<ol>
 								<li><code><code><a href="#class:number">number</a></code></code> normalized value</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1424</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1564</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3967,7 +4153,7 @@
 							<div id="example_result"><code>
 								16.0<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1437</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1577</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4009,7 +4195,7 @@
 							<div id="example_result"><code>
 								3.1415926535898<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1446</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1586</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4070,7 +4256,7 @@
 								4<br />
 								9<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1454</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1594</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4109,7 +4295,7 @@
 							<div id="example_code"><code>
 								 math.randomseed(os.clock()))&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-- use os clock as random seed<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1469</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1609</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4151,7 +4337,7 @@
 							<div id="example_result"><code>
 								0.5<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1475</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1615</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4193,7 +4379,7 @@
 							<div id="example_result"><code>
 								0.54785347388804<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1483</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1623</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4235,7 +4421,7 @@
 							<div id="example_result"><code>
 								2.0<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1491</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1631</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4277,7 +4463,7 @@
 							<div id="example_result"><code>
 								0.74999999999999<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1499</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1639</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -4319,7 +4505,7 @@
 							<div id="example_result"><code>
 								0.56727870240097<br />
 							</code></div>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1507</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_lua_extensions.lua, line 1647</p>
 						</dd>
 					</dl>
 				</div>
@@ -4331,7 +4517,8 @@
 				</div>
 				<div class="section_body">
 
-					<h3 class "variable_list">All variables provided by math</h3>
+					<h3 class "variable_list">Variables in this section:</h3>
+					<p>These variables may be accessed via <code>&lt;interface&gt;.&lt;variable_name&gt;</code>:</p>
 					<table class="variable_list">
 						<tr>
 							<td class="variable_name">
@@ -4363,7 +4550,7 @@
 
 		</div>
 
-		<div id="about">Last updated 20/01/2022 17:32:52</div>
+		<div id="about">Last updated 12/08/2022 11:56:58</div>
 
 	</div>
 

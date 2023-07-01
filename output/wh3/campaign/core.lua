@@ -62,6 +62,24 @@ function core:get_env() end
 ---@return timer_manager #timer manager 
 function core:get_tm() end
 
+--- Get a list of all lua files in the specified folder (relative from the working_data folder)
+---@param directory string #Directory to search under, relative to working_data. e.g. /script/campaign/
+---@param include_file_extension boolean? #optional, default value=false Whether or not to include the script file extension in the returned strings.
+---@return table
+function core:get_scripts_in_directory(directory, include_file_extension) end
+
+--- Returns a list of all files in a specified folder, conforming to an optional filter. The list is returned as an indexed table of string file paths.<br />
+--- The folder path should be given from the working data folder. If no filter is supplied, then all files are searched for.
+---@param folder_path string #Folder path, from the working data folder.
+---@param filter string? #optional, default value="*" File filter.
+---@return table #indexed table of file paths 
+function core:get_filepaths_from_folder(folder_path, filter) end
+
+--- This function attempts to load a lua script from all folders currently on the path, and, when loaded, sets the environment of the loaded file to match the global environment. This is used when loading scripts within a block (within if statement that is testing for the file's existence, for example) - loading the file with require would not give it access to the global environment.<br />
+--- If the script file fails to load cleanly, a script error will be thrown.
+---@param script_name string #script name
+function core:load_global_script(script_name) end
+
 --- Loads all mod scripts found on each of the supplied paths, setting the environment of every loaded mod to the global environment.
 ---@param ... any #List of string paths from which to load mods from. The terminating / character must be included.
 ---@return boolean #All mods loaded correctly 
@@ -463,18 +481,21 @@ local custom_context = {}
 ---@return custom_context
 function custom_context:new() end
 
---- adds data to the custom context object. Supported data types:<br />
+--- Adds data to the custom context object. Supported data types:<br />
 --- boolean: will be accessible to the receiving script as context.bool<br />
---- string: will be accessible to the receiving script as context.string<br />
---- region: will be accessible to the receiving script using context:region()<br />
---- character: will be accessible to the receiving script using context:character()<br />
---- faction: will be accessible to the receiving script using context:faction()<br />
---- component: will be accessible to the receiving script using context:component()<br />
---- military_force: will be accessible to the receiving script using context:military_force()<br />
---- pending_battle: will be accessible to the receiving script using context:pending_battle()<br />
---- garrison_residence: will be accessible to the receiving script using context:garrison_residence()<br />
---- building: will be accessible to the receiving script using context:building()<br />
---- A limitation of the implementation is that only one object of each type may be placed on the custom context.
+--- string: will be accessible to the receiving script as context.string.<br />
+--- number: will be accessible to the receiving script as context.number.<br />
+--- table: will be accessible to the receiving script using custom_context:table_data.<br />
+--- region: will be accessible to the receiving script using custom_context:region.<br />
+--- character: will be accessible to the receiving script using custom_context:character. A second character, if added, is accessible to the receiving script using custom_context:target_character.<br />
+--- faction: will be accessible to the receiving script using custom_context:faction.<br />
+--- component: will be accessible to the receiving script using custom_context:component.<br />
+--- military_force: will be accessible to the receiving script using custom_context:military_force.<br />
+--- pending_battle: will be accessible to the receiving script using custom_context:pending_battle.<br />
+--- garrison_residence: will be accessible to the receiving script using custom_context:garrison_residence.<br />
+--- building: will be accessible to the receiving script using custom_context:building.<br />
+--- vector: will be accessible to the receiving script using custom_context:vector.<br />
+--- A limitation of the implementation is that only one object of each type may be placed on the custom context (except for characters, currently).
 ---@param context_data any #Data object to add
 function custom_context:add_data(context_data) end
 
@@ -482,6 +503,10 @@ function custom_context:add_data(context_data) end
 ---@param value any #Value to add to custom context. Any value may be supplied.
 ---@param function_name string #Name of function at which the value may be retrieved, if called on the custom context.
 function custom_context:add_data_with_key(value, function_name) end
+
+--- Called by the receiving script to retrieve the table placed on the custom context, were one specified by the script that created it.
+---@return table #of user defined values 
+function custom_context:table_data() end
 
 --- Called by the receiving script to retrieve the region object placed on the custom context, were one specified by the script that created it.
 ---@return REGION_SCRIPT_INTERFACE #region object 
@@ -518,3 +543,7 @@ function custom_context:garrison_residence() end
 --- Called by the receiving script to retrieve the building object placed on the custom context, were one specified by the script that created it.
 ---@return BUILDING_SCRIPT_INTERFACE #building object 
 function custom_context:building() end
+
+--- Called by the receiving script to retrieve the vector object placed on the custom context, were one specified by the script that created it.
+---@return battle_vector #vector object 
+function custom_context:vector() end

@@ -1,0 +1,324 @@
+
+@import url(https://fonts.googleapis.com/css?family=Alef);
+
+body
+{
+  font-family: Alef;
+  height:100%
+}
+
+/* headers */
+h1 
+{
+  color: black;
+  text-align: left;
+  font-weight: bold;
+}
+
+h2 
+{
+  color: black;
+  text-align: left;
+}
+
+h3 
+{
+  margin-top: 2em;
+  color: #636363;
+  text-align: left;
+}
+
+h4 
+{
+  color: black;
+  text-align: left;
+}
+
+
+/* table stuff */
+table 
+{ 
+  border-collapse: collapse; 
+} 
+
+td, th
+{ 
+  border: 1px solid #b4b4b4; 
+  text-align: left; 
+  padding: 8px; 
+} 
+
+td:nth-child(1)
+{
+  font-weight: bold;
+}
+
+tr:nth-child(even) 
+{ 
+  background-color: #e7e7e7; 
+}
+
+hr
+{
+  width:50%; 
+  text-align:left;
+  margin-left:0.5em;
+  margin-top: 2.5em;
+}
+
+
+#main 
+{
+  height: 100%;
+  position: relative;
+  margin-left: 370px;
+  z-index: 0;
+  overflow-x: scroll;
+}
+
+
+/*
+=============================================================================================
+                                            sidebar
+============================================================================================= 
+*/
+
+
+#sidebar {
+  height: 100%;
+  width: 360px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-right: 1px;
+  top: 0;
+  left: 0;
+  background: #d4d4d4;
+  box-shadow: 0 0 2px 0px #c9c9c9;
+}
+
+#title {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  background: #fff;
+  box-shadow: 0 0 1px 0 black;
+}
+
+#title > h2 {
+    margin: 0;
+}
+
+
+#index-holder {
+  height: 100%;
+  display: flex;
+  padding-top: 1px;
+}
+
+
+
+/*
+=============================================================================================
+                                     sidebar: index-tabs
+============================================================================================= 
+*/
+
+
+#index-tabs {
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+#index-tabs > button {
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1px;
+  border: 0;
+  background: #dcdcdc;
+  box-shadow: 0 0 1px 0 #000000;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+#index-tabs > button[active] {
+  background-color: white;
+}
+
+
+#index-tabs > button:not([active]):hover {
+  background-color: #ebeaea;;
+}
+
+
+#index-tabs > button > span {
+  display: inline-block;
+  transform: rotate(-90deg);
+}
+
+
+/*
+=============================================================================================
+                                       sidebar: index
+============================================================================================= 
+*/
+
+
+#index-wrapper
+{
+  height: 100%;
+  width: 100%;
+  position: relative;
+  margin-left: 1px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background: white;
+}
+
+
+.index {
+  height: max-content;
+  display: none;
+  position: absolute;
+  padding-top: 8px;
+  overflow-y: visible;
+ }
+
+.index[active] {
+  display: block;
+}
+
+
+/* mouse over link */
+.index a:hover {
+  background-color: #e7e7e7;
+  color: #000000;
+}
+
+
+/* links */
+.index a
+{
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 1.2em;
+  color: #2c2c2c;
+  display: block;
+  border: none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  width: 280px;
+  height: max-content;
+  font-size: 12px;
+}
+
+
+.index a:hover
+{
+text-overflow: clip;
+    white-space: normal;
+    word-break: keep-all;
+}
+
+
+.small_link
+{
+  height: 30px;
+  overflow: hidden;
+}
+
+.index a:hover + .tooltip 
+{
+  visibility: hidden;
+  transition: opacity 0.5s ease;
+  opacity: 1;
+}
+
+.tooltip 
+{
+  width: max-content;
+  visibility: hidden;
+  background-color: rgb(223, 219, 219);
+  padding: 5px;
+  box-shadow: 0 0 50px 0 rgba(0,0,0,0.3);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  font-size: 12px;
+
+  position: absolute;
+  left: 200px;
+  z-index: 99;
+}
+
+
+/*
+=============================================================================================
+                                            other
+============================================================================================= 
+*/
+
+
+
+/* scroll bars */
+/* Firefox scrollbar */
+*{
+  scrollbar-width: thin;
+  scrollbar-color: rgb(255, 255, 255) rgb(197, 197, 197);
+  z-index: 0;
+ }
+  
+/* Chrome/Edge/Safari scroll bar */
+*::-webkit-scrollbar 
+{
+  width: 12px;
+  z-index: 0;
+}
+
+*::-webkit-scrollbar-track 
+{
+  z-index: 0;
+}
+
+*::-webkit-scrollbar-thumb 
+{
+  background-color: rgb(197, 197, 197);
+  border-radius: 20px;
+  z-index: 0;
+}
+
+details > summary {
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+summary {
+  height: 30px;
+  overflow: hidden;
+  margin: 5px 0px -5px 15px;
+  font-weight: 500;
+}
+
+summary:after {
+    content: "+"
+}
+
+details[open] summary:after {
+  content: "-";
+}

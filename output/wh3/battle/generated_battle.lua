@@ -144,7 +144,7 @@ function generated_battle:set_locatable_objective_callback_on_message(message, o
 --- Instructs the generated_battle to add a battlefield ping icon on receipt of a message. This is a marker that appears in 3D space and can be used to point out the location of objectives to the player.
 ---@param message string #Add the ping icon on receipt of this message.
 ---@param marker_position battle_vector #Marker position.
----@param marker_type number #Marker type. These have to be looked up from code.
+---@param marker_type number #Marker type. These have to be looked up from code. See the documentation for battle:add_ping_icon for a list of valid values.
 ---@param wait_offset number? #optional, default value=0 Delay between receipt of the message and the marker being added, in ms.
 ---@param duration number? #optional, default value=nil Duration that the marker should stay visible for, in ms. If not set then the marker stays on-screen until it is removed with generated_battle:remove_ping_icon_on_message.
 function generated_battle:add_ping_icon_on_message(message, marker_position, marker_type, wait_offset, duration) end
@@ -349,9 +349,9 @@ function generated_army:goto_start_location(move_fast) end
 
 --- Instructs all units in a generated army to go to a location offset from their current position. Supply a numeric x/z offset and a boolean argument specifying whether they should run.
 ---@param x_offset number #x offset in m
----@param z_offset number #z offset in m
+---@param x_offset number #z offset in m
 ---@param move_fast boolean? #optional, default value=false move fast
-function generated_army:goto_location_offset(x_offset, z_offset, move_fast) end
+function generated_army:goto_location_offset(x_offset, x_offset, move_fast) end
 
 --- Instructs all units in a generated army to move to a position under control of a script_ai_planner. See script_ai_planner:move_to_position.
 ---@param position battle_vector #position
@@ -469,6 +469,15 @@ function generated_army:withdraw_on_message(message) end
 ---@param release boolean? #optional, default value=false Release script control afterwards.
 function generated_army:set_melee_mode_on_message(message, activate, release) end
 
+--- Instructs the logical battle_army associated with the first unit in this generated_army to use the supplied special ability, upon receipt of the supplied message. An optional position, orientation and width may be specified for the army special ability. A delay may also be specified, in which case an interval in ms will be waited between the message being received and the ability being used.
+---@param message string #Message.
+---@param special_ability_key string #Special ability key, from the army_special_abilities table.
+---@param position battle_vector? #optional, default value=nil Position to trigger special ability with, if applicable.
+---@param orientation number? #optional, default value=nil Orientation to trigger special ability with, if applicable. This is specified in radians.
+---@param width number? #optional, default value=nil Width in m to trigger special ability with, if applicable.
+---@param delay number? #optional, default value=0 Delay in ms to wait after receiving the message before triggering the ability.
+function generated_army:use_army_special_ability_on_message(message, special_ability_key, position, orientation, width, delay) end
+
 --- Activates or deactivates a supplied behaviour on units within the generated army on receipt of a supplied message. An additional flag specifies whether script control of the units should be released afterwards - set this to true if the player is controlling this army.
 ---@param message string #Message.
 ---@param behaviour string #Behaviour to activate or deactivate. See documentation on script_unit:change_behaviour_active for a list of valid values.
@@ -507,14 +516,6 @@ function generated_army:deploy_at_random_intervals_on_message(message, min_units
 ---@param spawn_zone_collection table #spawn zone collection
 ---@param suppress_warning boolean? #optional, default value=false suppress warning
 function generated_army:assign_to_spawn_zone_from_collection_on_message(message, spawn_zone_collection, suppress_warning) end
-
---- Assigns this army to a specific battle_spawn_zone on receipt of the supplied message. This will make units that deploy onto the battlefield from this army come on from the position of the spawn zone that is chosen.<br />
---- It is valid to call this function while the army is partially deployed. In this case, units that subsequently deploy will enter the battlefield from the position of the new spawn zone. This functiom may be used in conjuction with other functions such as generated_army:message_on_number_deployed, which broadcasts script messages when a certain number of units have deployed from the army. This function switches spawn zones in response to these messages, so that the enemy force appears from multiple directions. To facilitate this behaviour, this function persists in listening for its message after the message is first received, which is uncommon behaviour amongst generated battle message listeners.<br />
---- Note that this function breaks the generated battle system paradigm that generated army objects can represent a subset of a logical army. Units are assigned to spawn zones on a per-logical-army basis, so if this generated army shares a logical army with another generated army, then changing the spawn zone on this generated army will also change the spawn zone for the other. To increase visibility of this issue the function will throw a script error if called on a generated army that does not control all units for its associated logical army, unless the suppress warning flag is enabled.
----@param message string #message
----@param spawn_zone battle_spawn_zone #spawn zone
----@param suppress_warning boolean? #optional, default value=false suppress warning
-function generated_army:assign_to_spawn_zone_on_message(message, spawn_zone, suppress_warning) end
 
 --- Adds the scriptunits in this generated army to a survival battle wave on receipt of the supplied message. This will call battle_manager:add_survival_battle_wave and start a process which monitors these units and updates the UI as if they were a survival battle wave. Calling this has no effect on the actual behaviour of the units.<br />
 --- The survival battle wave is specified by numeric index. Additional waves can be introduced by ascending index.

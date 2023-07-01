@@ -75,6 +75,9 @@ function scripted_tour:add_skip_action(skip_action, name) end
 ---@param name string #name
 function scripted_tour:remove_skip_action(name) end
 
+--- Removes any skip actions currently associated with this scripted tour.
+function scripted_tour:clear_skip_actions() end
+
 --- Manually shows or hides the skip button while the scripted tour is running. Generally this should not be called externally, as the scripted_tour will show the skip and hide the skip button automatically along with the fullscreen highlight.
 ---@param should_show boolean #should show
 function scripted_tour:show_skip_button(should_show) end

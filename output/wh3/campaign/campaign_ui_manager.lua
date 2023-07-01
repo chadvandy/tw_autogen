@@ -75,27 +75,10 @@ function campaign_ui_manager:start_scripted_sequence() end
 --- Removes "scripted_sequence" from the panel open list. This must be called after campaign_ui_manager:start_scripted_sequence.
 function campaign_ui_manager:stop_scripted_sequence() end
 
---- Activates or deactivates a suppression on a specified end-turn warning. If an end-turn warning is suppressed it is prevented from appearing. End-turn warnings are specified by a numeric enumerator. Enumerators to use may be looked up in the table below:<br />
---- warning iddescription<br />
---- 0None
---- 1Low funds
---- 2Research available
---- 4Commandment available
---- 8Character upgrade available
---- 16Settlement upgrade available
---- 32Vortex ritual available
---- 64Siege construction available
---- 128Low fightiness
---- 256Damaged building
---- 512Building available
---- 1024Office slot available
---- 2048Army ap available
---- 4096Hero ap available
---- 8192Imminent rebellion
---- 16384Garrison army ap available
----@param warning number #Warning to suppress - should be a number from the table above.
+--- Activates or deactivates a suppression on a specified end-turn warning. If an end-turn warning is suppressed it is prevented from appearing.
+---@param type string #Warning to suppress. See the documentation for the End Turn Warnings section for available end turn warnings.
 ---@param suppress boolean #Activate suppression.
-function campaign_ui_manager:suppress_end_turn_warning(warning, suppress) end
+function campaign_ui_manager:suppress_end_turn_warning(type, suppress) end
 
 --- Returns an incremental number which can be used for matching output between tabs.
 ---@return number #output stamp 

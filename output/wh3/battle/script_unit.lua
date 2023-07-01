@@ -375,7 +375,8 @@ function script_unit:remove_ping_icon() end
 function script_unit:start_attack_closest_enemy(interval, debug) end
 
 --- Stops any running attack closest enemy process that was started with script_unit:start_attack_closest_enemy. An optional string reason may be supplied which is printed as debug output.
-function script_unit:stop_attack_closest_enemy() end
+---@param reason string? #optional, default value=nil reason
+function script_unit:stop_attack_closest_enemy(reason) end
 
 ---@class script_units
 local script_units = {}

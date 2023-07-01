@@ -153,6 +153,21 @@ function validate.is_regionmanager(value) end
 ---@return boolean #value is a region interface 
 function validate.is_region(value) end
 
+--- Throws a script_error and returns false if the supplied value is not a campaign region data interface. If the supplied value is a region data interface then true is returned.
+---@param value any #value
+---@return boolean #value is a region data interface 
+function validate.is_regiondata(value) end
+
+--- Throws a script_error and returns false if the supplied value is not a campaign province interface. If the supplied value is a province interface then true is returned.
+---@param value any #value
+---@return boolean #value is a province interface 
+function validate.is_province(value) end
+
+--- Throws a script_error and returns false if the supplied value is not a campaign faction province interface. If the supplied value is a faction province interface then true is returned.
+---@param value any #value
+---@return boolean #value is a faction province interface 
+function validate.is_factionprovince(value) end
+
 --- Throws a script_error and returns false if the supplied value is not a campaign region list interface. If the supplied value is a region list interface then true is returned.
 ---@param value any #value
 ---@return boolean #value is a region list interface 

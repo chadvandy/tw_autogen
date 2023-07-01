@@ -3110,7 +3110,10 @@ function MODEL_SCRIPT_INTERFACE:character_can_ever_reach_character() end
 function MODEL_SCRIPT_INTERFACE:character_can_ever_reach_settlement() end
 function MODEL_SCRIPT_INTERFACE:difficulty_level() end
 function MODEL_SCRIPT_INTERFACE:combined_difficulty_level() end
-function MODEL_SCRIPT_INTERFACE:faction_is_local() end
+
+---@param faction_key string
+---@return boolean
+function MODEL_SCRIPT_INTERFACE:faction_is_local(faction_key) end
 function MODEL_SCRIPT_INTERFACE:player_steam_id_is_even() end
 function MODEL_SCRIPT_INTERFACE:campaign_ai() end
 function MODEL_SCRIPT_INTERFACE:campaign_type() end

@@ -5,6 +5,7 @@
 
 ---@class campaign_manager : episodic_scripting
 ---@field game_interface episodic_scripting
+---@field save_counter integer 
 cm = {}
 
 ---@class campaignui

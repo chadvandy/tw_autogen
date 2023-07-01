@@ -74,32 +74,6 @@ function common.get_advice_level() end
 --- Clears out the advice session history. This is the list of advice shown in this particular game session, accessed by the next/previous buttons on the advisor panel.
 function common.clear_advice_session_history() end
 
---- Triggers a keyboard shortcut event. Valid shortcut events are defined in data\text\default_keys.xml.
----@param shortcut_name string #shortcut name
-function common.trigger_shortcut(shortcut_name) end
-
---- Simulates a key down followed by a key up key event. Valid key events are listed here: Simulating Keyboard Events
----@param event string #event
-function common.key_press(event) end
-
---- Triggers a key down key event. Note that the game will think the key is held down until a key up event is received. Valid key events are listed here: Simulating Keyboard Events
----@param event string #event
-function common.key_down(event) end
-
---- Triggers a key up event. Valid key events are listed here: Simulating Keyboard Events.
----@param event string #event
-function common.key_up(event) end
-
---- Triggers a mouse event at a specified position. Valid mouse events are listed in the cursor_mouse_events table.
----@param event string #event
----@param screen_pos_x number #screen pos x
----@param screen_pos_y number #screen pos y
-function common.mouse_event(event, screen_pos_x, screen_pos_y) end
-
---- Compels all uicomponents to fires UI script events such as ComponentMouseOn and ComponentAnimationFinished, regardless of whether they have a ScriptEventReporter callback set on them. This should only be used by modders since they can't modify ui layouts easily in order to add ScriptEventReporter callbacks. The game will throw an error if this is called in a configuration other than final release.
----@param force_reporting boolean #Force reporting of script events on or off. Reporting is off by default, except when running an autotest.
-function common.force_report_of_all_ui_script_events(force_reporting) end
-
 --- Directs the advisor to consider issuing advice on the supplied advice thread. The supplied number of points are added to the thread - if a record from the advice_levels table subsequently becomes eligible to be issued, then that advice is issued.
 ---@param advice_thread string #Advice thread key.
 ---@param points number #Points to add to thread.
@@ -129,6 +103,32 @@ function common.fade_volume(volume_type, target_level, fade_time) end
 --- Oneshot triggers a sound event with the sound engine with no position information. This is not suitable for long running events or looping events.
 ---@param sound_event_name string #sound event name
 function common.trigger_soundevent(sound_event_name) end
+
+--- Triggers a keyboard shortcut event. Valid shortcut events are defined in data\text\default_keys.xml.
+---@param shortcut_name string #shortcut name
+function common.trigger_shortcut(shortcut_name) end
+
+--- Simulates a key down followed by a key up key event. Valid key events are listed here: Simulating Keyboard Events
+---@param event string #event
+function common.key_press(event) end
+
+--- Triggers a key down key event. Note that the game will think the key is held down until a key up event is received. Valid key events are listed here: Simulating Keyboard Events
+---@param event string #event
+function common.key_down(event) end
+
+--- Triggers a key up event. Valid key events are listed here: Simulating Keyboard Events.
+---@param event string #event
+function common.key_up(event) end
+
+--- Triggers a mouse event at a specified position. Valid mouse events are listed in the cursor_mouse_events table.
+---@param event string #event
+---@param screen_pos_x number #screen pos x
+---@param screen_pos_y number #screen pos y
+function common.mouse_event(event, screen_pos_x, screen_pos_y) end
+
+--- Compels all uicomponents to fires UI script events such as ComponentMouseOn and ComponentAnimationFinished, regardless of whether they have a ScriptEventReporter callback set on them. This should only be used by modders since they can't modify ui layouts easily in order to add ScriptEventReporter callbacks. The game will throw an error if this is called in a configuration other than final release.
+---@param force_reporting boolean #Force reporting of script events on or off. Reporting is off by default, except when running an autotest.
+function common.force_report_of_all_ui_script_events(force_reporting) end
 
 --- Returns whether the specified boolean user preference setting is true or not.
 ---@param preference_key string #preference key
@@ -172,6 +172,10 @@ function common.vfs_working_directory() end
 ---@param pattern string #Search pattern.
 ---@return string #file list 
 function common.filesystem_lookup(path, pattern) end
+
+--- Calls a command line command as if it were typed in to the game console.
+---@param cli_command string #cli command
+function common.execute_cli_command(cli_command) end
 
 --- Takes a screenshot and writes a tga file with the supplied filename. If no path is specified with the filename then the screenshot file is written into the binaries folder. The file path to the screenshots folder in appdata may be retrieved with common.get_appdata_screenshots_path.
 ---@param screenshot_filename string #screenshot filename
@@ -248,8 +252,9 @@ function common.set_custom_loading_screen_key(key) end
 function common.setup_dynamic_loading_screen(json_filename, layout_name) end
 
 --- Will create a CcoScriptObject to context cache with specified value (or update existing objects value), and send notification of change so ContextInitScriptObject can refresh display of self and children
----@param unique_id string #the unique id for the value so can set and get the value
-function common.set_context_value(unique_id) end
+---@param unique_id string ##the unique id for the value so can set and get the value
+---@param value string|number ##The value we're saving for this ScriptObject.
+function common:set_context_value(unique_id, value) end
 
 --- Will look up the context object from the context cache or construct one with the type "context_object_typename" and the data (usually a CQI) from "construction_data", call the context function specified by context_function_id and return the value.
 ---@param object_id string? #optional, default value="CcoScriptObject" Context object id on which to call the function. If omitted, the function is called on the CcoScriptObject object.

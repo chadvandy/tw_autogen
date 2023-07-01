@@ -186,3 +186,26 @@ text-overflow: clip;
   border-radius: 20px;
   z-index: 0;
 }
+
+details > summary {
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+summary {
+  height: 30px;
+  overflow: hidden;
+  margin: 5px 0px -5px 15px;
+  font-weight: 500;
+}
+
+summary:after {
+    content: "+"
+}
+
+details[open] summary:after {
+  content: "-";
+}

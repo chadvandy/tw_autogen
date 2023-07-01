@@ -11,8 +11,16 @@ function episodic_scripting:is_new_game() end
 ---@return boolean #is benchmark mode 
 function episodic_scripting:is_benchmark_mode() end
 
+--- Returns whether this a campaign replay.
+---@return boolean #is replay 
+function episodic_scripting:is_replay() end
+
+--- Returns whether the cinematic editor tool is currently attached to the game.
+---@return boolean #is cinematic editor attached 
+function episodic_scripting:is_cinematic_editor_attached() end
+
 --- Returns a handle to the campaign model object.
----@return userdata #campaign model 
+---@return model #campaign model 
 function episodic_scripting:model() end
 
 --- Perform a VFS lookup in the specified path (root is the data folder) for files matching the pattern. Returns a comma-delimited list of files found.
@@ -26,10 +34,11 @@ function episodic_scripting:filesystem_lookup(path) end
 ---@return boolean #localisation matches 
 function episodic_scripting:compare_localised_string(uicomponent, label_string) end
 
---- Returns whether the dlc with the specified key is activated.
----@param dlc_key string #dlc key
----@return dlc #flag enabled 
-function episodic_scripting:is_dlc_flag_enabled(dlc_key) end
+--- Returns whether the dlc with the specified key is activated for the given player, specified by faction.
+---@param dlc_product_key string #dlc product key
+---@param player_faction_key string #player faction key
+---@return dlc #flag enabled for this faction 
+function episodic_scripting:is_dlc_flag_enabled(dlc_product_key, player_faction_key) end
 
 --- Write a value to the savegame. This should only be called when the SavingGame event is received, and must be passed the context object supplied by that event.<br />
 --- It's recommended to use the saving functions provided by the campaign manager, listed in the Saving Game section of this documentation, instead of directly calling this function.
@@ -63,18 +72,6 @@ function episodic_scripting:add_time_trigger(id, interval, do_repeat) end
 ---@param id string #id
 function episodic_scripting:remove_time_trigger(id) end
 
---- Prevents or allows ending turn.
----@param should_disable boolean #should disable
-function episodic_scripting:disable_ending_turn(should_disable) end
-
---- Ends the turn for the current faction, optionally forcing at the next opportunity. This optional flag should only be set for a player faction.
----@param force boolean? #optional, default value=false force
-function episodic_scripting:end_turn(force) end
-
---- Forces or un-forces any characters visible to humans to move at normal speed during the end-turn sequence. Overrides set using this function are saved into the savegame.
----@param use_human_speed_ boolean #use human speed 
-function episodic_scripting:set_ai_uses_human_display_speed(use_human_speed_) end
-
 --- Dismisses the advisor panel.
 function episodic_scripting:dismiss_advice() end
 
@@ -87,6 +84,36 @@ function episodic_scripting:dismiss_advice_at_end_turn(should_dismiss) end
 ---@param character_lookup string #Character lookup string - see Character Lookups for more information.
 ---@param delay number #Delay in seconds before triggering the vo.
 function episodic_scripting:trigger_campaign_vo(sound_event, character_lookup, delay) end
+
+--- Stops a playing campaign voiceover sound event.
+---@param sound_event string #Sound event name.
+function episodic_scripting:stop_campaign_vo(sound_event) end
+
+--- Stops any playing campaign advisor voiceover.
+function episodic_scripting:stop_campaign_advisor_vo() end
+
+--- Activates a trigger within the music system. A string argument must also be supplied.
+---@param trigger_name string #trigger name
+---@param trigger_argument string #trigger argument
+function episodic_scripting:activate_music_trigger(trigger_name, trigger_argument) end
+
+--- Pauses or unpauses any playing music.
+---@param pause boolean #Pause the music. If false is specified then the music is unpaused.
+function episodic_scripting:set_music_paused(pause) end
+
+--- Sets a VO state that can be used to alter what VO will play.
+---@param state_group string #state group
+---@param state string #state
+function episodic_scripting:set_global_vo_argument(state_group, state) end
+
+--- Enables or disables contextual VO sounds. By default contextual vo is enabled - use this function to disable it.
+---@param enable_contextual_vo boolean #enable contextual vo
+function episodic_scripting:contextual_vo_enabled(enable_contextual_vo) end
+
+--- Override the actor of the desired character with an actor id from the provided actor group record.
+---@param character CHARACTER_SCRIPT_INTERFACE #Character interface.
+---@param actor_vo_record_key string #Actor VO record key, from the audio_vo_actors database table.
+function episodic_scripting:add_character_actor_group_override(character, actor_vo_record_key) end
 
 --- Repositions the camera to the specified co-ordinates.
 ---@param x number #Display x co-ordinate of camera target.
@@ -117,6 +144,28 @@ function episodic_scripting:stop_camera() end
 ---@param duration number #Duration of the fade effect in seconds.
 function episodic_scripting:fade_scene(brightness, duration) end
 
+--- Enables a yaw (side to side) rotation constraint on the camera. Such a constraint may be later unset with cm:disable_camera_bearing_clamp.
+---@param min_rotation number #Minimum rotation value in radians. A value less than zero is permissable.
+---@param max_rotation number #Maximum rotation value in radians.
+function episodic_scripting:enable_camera_bearing_clamp(min_rotation, max_rotation) end
+
+--- Disables a yaw rotation clamp previously enabled with cm:enable_camera_bearing_clamp.
+---@param min_rotation number #Minimum rotation value in radians. A value less than zero is permissable.
+---@param max_rotation number #Maximum rotation value in radians.
+function episodic_scripting:disable_camera_bearing_clamp(min_rotation, max_rotation) end
+
+--- Immediately sets the camera height.
+---@param height number #height
+function episodic_scripting:set_camera_height(height) end
+
+--- Sets a minimum height for the camera.
+---@param height number #height
+function episodic_scripting:set_camera_minimum_height(height) end
+
+--- Sets a minimum height for the camera.
+---@param height number #height
+function episodic_scripting:set_camera_maximum_height(height) end
+
 --- Plays a fullscreen movie, by path from the data/Movies directory.
 ---@param movie_path string #movie path
 function episodic_scripting:register_instant_movie(movie_path) end
@@ -132,6 +181,33 @@ function episodic_scripting:play_movie_in_ui(movie_path) end
 --- Returns a cinematic script interface.
 ---@return cinematics #cinematic interface 
 function episodic_scripting:cinematic() end
+
+--- Ends the turn for the current faction, optionally forcing at the next opportunity. This optional flag should only be set for a player faction.
+---@param force boolean? #optional, default value=false force
+function episodic_scripting:end_turn(force) end
+
+--- Ends the turn for the specified faction.
+---@param faction FACTION_SCRIPT_INTERFACE #faction
+function episodic_scripting:end_turn_for_faction(faction) end
+
+--- Forces or un-forces any characters visible to humans to move at normal speed during the end-turn sequence. Overrides set using this function are saved into the savegame.
+---@param use_human_speed boolean #use human speed
+function episodic_scripting:set_ai_uses_human_display_speed(use_human_speed) end
+
+--- Disables or re-enables the local player's ability to end the turn.
+---@param should_disable boolean #should disable
+function episodic_scripting:disable_end_turn(should_disable) end
+
+--- Set a faction to have their turn skipped, or not. A faction that is skipped is entirely removed from the turn sequence, no start/end of turn/round will be ran on them or objects they own.
+---@param faction FACTION_SCRIPT_INTERFACE #faction
+---@param should_skip boolean #should skip
+function episodic_scripting:set_skip_faction_turn(faction, should_skip) end
+
+--- Set all AI factions to have their turn skipped. A faction that is skipped is entirely removed from the turn sequence, no start/end of turn/round will be ran on them or objects they own.
+function episodic_scripting:skip_all_ai_factions() end
+
+--- Restore the turn of every faction in the game, undoing any skipping behaviour previously set with cm:set_skip_faction_turn or cm:skip_all_ai_factions.
+function episodic_scripting:unskip_all_factions() end
 
 --- Activates or deactivates a ui override.
 ---@param ui_override_name string #ui override name
@@ -154,9 +230,6 @@ function episodic_scripting:steal_escape_key(steal_escape_key) end
 ---@param enable_ui boolean #enable ui
 function episodic_scripting:enable_ui(enable_ui) end
 
---- Disables or re-enables the local player's ability to end the turn.
-function episodic_scripting:disable_end_turn() end
-
 --- Disables or re-enables a shortcut by name. Shortcuts can be looked up in data/text/default_keys.xml.
 ---@param component_id string #Component id, specified by the component attibute of a func element.
 ---@param function_id string #Function id, specified by the name attribute of a func element.
@@ -165,12 +238,26 @@ function episodic_scripting:disable_shortcut(component_id, function_id, should_d
 
 --- Swap a model for a certain character. This needs to be set up at a new session.
 ---@param character_lookup string #Character lookup string - see Character Lookups for more information.
----@param model_key string #model key
+---@param model_key string #Model key, from the campaign_character_art_sets database table.
 function episodic_scripting:add_unit_model_overrides(character_lookup, model_key) end
+
+--- Swap a model for a specific character. Same as add_unit_model_overrides, but doesn't use the character lookup.
+---@param character CHARACTER_SCRIPT_INTERFACE #Character interface.
+---@param model_key string #Model key, from the campaign_character_art_sets database table.
+function episodic_scripting:add_character_model_override(character, model_key) end
+
+--- Hides or unhides a character from the view.
+---@param character CHARACTER_SCRIPT_INTERFACE #character
+---@param hide boolean #hide
+function episodic_scripting:toggle_character_hidden_from_view(character, hide) end
 
 --- Causes movement extents surrounded a selected character in the game to flash or not.
 ---@param should_highlight boolean #should highlight
 function episodic_scripting:highlight_movement_extents(should_highlight) end
+
+--- Globally disable or enable army movement extents from rendering.
+---@param should_disable boolean #should disable
+function episodic_scripting:set_army_outer_movement_extents_rendering_disabled(should_disable) end
 
 --- Causes the zone of control surrounding a selected character in the game to flash or not.
 ---@param should_highlight boolean #should highlight
@@ -285,6 +372,10 @@ function episodic_scripting:remove_scripted_composite_scene(name) end
 ---@param show boolean #show
 function episodic_scripting:show_shroud(show) end
 
+--- Resets the shroud of a specified faction. If no faction is specified, the shrouds of all factions are reset.
+---@param faction FACTION_SCRIPT_INTERFACE? #optional, default value=nil faction
+function episodic_scripting:reset_shroud(faction) end
+
 --- Caches the state of the shroud across the map, so that it may later be recalled with cm:restore_shroud_from_snapshot.
 function episodic_scripting:take_shroud_snapshot() end
 
@@ -323,6 +414,35 @@ function episodic_scripting:disable_movement_for_ai_under_shroud(player_faction_
 --- Prevents all factions hidden under the shroud from constructing or repairing buildings. Unlike other functions documented here this is a game-wide toggle and does not need to be set each turn. This should only be used in a singleplayer game.
 ---@param should_disable boolean #should disable
 function episodic_scripting:disable_shopping_for_ai_under_shroud(should_disable) end
+
+--- Forces a terrain patch to be visible, alongside its associated props, trees and areas of interest. If an empty string is passed then all patch areas will be visible. The visibility change applies to all factions.
+---@param patch string #Terrain patch key, from the campaign_terrain_patch_areas database table.
+function episodic_scripting:force_terrain_patch_visible(patch) end
+
+--- Resets all terrain patch visility changes previously made with cm:force_terrain_patch_visible.
+function episodic_scripting:reset_forced_terrain_patch_visibility() end
+
+--- Grants a faction visibility over a region they might not otherwise be able to see for a number of turns, or indefinitely. This additional vision will persist through shroud recalculations.
+---@param faction FACTION_SCRIPT_INTERFACE #Faction interface.
+---@param region_data REGION_DATA_SCRIPT_INTERFACE #Region data interface.
+---@param duration number? #optional, default value=0 Duration of the additional visibility in turns. If a duration of 0 or less is supplied, or if this argument is omitted, then the vision will be granted indefinitely.
+function episodic_scripting:grant_faction_additional_vision(faction, region_data, duration) end
+
+--- Removes a faction's additional visibility over a region. If no additional visiblity was set for this faction/region with cm:grant_faction_additional_vision then nothing will happen.
+---@param faction FACTION_SCRIPT_INTERFACE #Faction interface.
+---@param region_data REGION_DATA_SCRIPT_INTERFACE #Region data interface.
+function episodic_scripting:remove_faction_additional_vision(faction, region_data) end
+
+--- Sets the value of a shared state. An optional object with which the value is associated, such as a faction script interface, may be supplied as the first argument.
+---@param object any? #optional, default value=nil Interface object to associate the shared value with. This argument may be omitted.
+---@param key string #Key of shared value to set.
+---@param value any #Value to set. Supported value types are boolean, number and string.
+function episodic_scripting:set_script_state(object, key, value) end
+
+--- Removes a value from the shared state system. An optional object with which the value is associated, such as a faction script interface, may be supplied as the first argument.
+---@param object any? #optional, default value=nil Interface object to associate the shared value with. This argument may be omitted.
+---@param key string #Key of shared value to set.
+function episodic_scripting:remove_script_state(object, key) end
 
 --- Creates an army or a navy at the specified position, belonging to the specified faction, with the specified list of units. If the faction doesn't exist on the campaign map then it will also be created.
 ---@param faction_key string #Faction key from the factions table.
@@ -380,8 +500,7 @@ function episodic_scripting:create_force_with_full_diplomatic_discovery(faction_
 ---@param id string #ID of agent. A ScriptedAgentCreated event is triggered once the character is created, and this ID is included in the context of the event so that listening scripts can differentiate between multiple created agents.
 function episodic_scripting:create_agent(faction_key, agent_type, agent_subtype, x, y, id) end
 
---- Spawns an agent of the specified type at the specified logical position.<br />
---- See the Model Hierarchy documentation for more information on the FACTION_SCRIPT_INTERFACE interface.
+--- Spawns an agent of the specified type at the specified logical position.
 ---@param faction FACTION_SCRIPT_INTERFACE #Faction interface for the agent's faction.
 ---@param x number #x logical co-ordinate.
 ---@param y number #y logical co-ordinate.
@@ -389,23 +508,21 @@ function episodic_scripting:create_agent(faction_key, agent_type, agent_subtype,
 ---@param agent_subtype string? #optional, default value="" Agent subtype key, from the agent_subtypes table. This can be omitted.
 function episodic_scripting:spawn_agent_at_position(faction, x, y, agent_type, agent_subtype) end
 
---- Spawns an agent of the specified type next to the specified settlement.<br />
---- See the Model Hierarchy documentation for more information on the FACTION_SCRIPT_INTERFACE or SETTLEMENT_SCRIPT_INTERFACE interfaces.
+--- Spawns an agent of the specified type next to the specified settlement.
 ---@param faction FACTION_SCRIPT_INTERFACE #Faction interface for the agent's faction.
 ---@param settlement SETTLEMENT_SCRIPT_INTERFACE #Settlement at which to spawn the agent.
 ---@param agent_type string #Agent type key, from the agents table.
 ---@param agent_subtype string? #optional, default value="" Agent subtype key, from the agent_subtypes table. This can be omitted.
 function episodic_scripting:spawn_agent_at_settlement(faction, settlement, agent_type, agent_subtype) end
 
---- Spawns an agent of the specified type next to the specified military force.<br />
---- See the Model Hierarchy documentation for more information on the FACTION_SCRIPT_INTERFACE or MILITARY_FORCE_SCRIPT_INTERFACE interfaces.
+--- Spawns an agent of the specified type next to the specified military force.
 ---@param faction FACTION_SCRIPT_INTERFACE #Faction interface for the agent's faction.
 ---@param force MILITARY_FORCE_SCRIPT_INTERFACE #Military force at which to spawn the agent.
 ---@param agent_type string #Agent type key, from the agents table.
 ---@param agent_subtype string? #optional, default value="" Agent subtype key, from the agent_subtypes table. This can be omitted.
 function episodic_scripting:spawn_agent_at_military_force(faction, force, agent_type, agent_subtype) end
 
---- Instantly embed the specified agent in the specified force. The agent will teleport into the force, disregarding normal restrictions other than that force being under siege. See the Model Hierarchy documentation for more information on the CHARACTER_SCRIPT_INTERFACE or MILITARY_FORCE_SCRIPT_INTERFACE interfaces.
+--- Instantly embed the specified agent in the specified force. The agent will teleport into the force, disregarding normal restrictions other than that force being under siege.
 ---@param agent CHARACTER_SCRIPT_INTERFACE #agent
 ---@param military_force MILITARY_FORCE_SCRIPT_INTERFACE #military force
 function episodic_scripting:embed_agent_in_force(agent, military_force) end
@@ -436,7 +553,7 @@ function episodic_scripting:spawn_unique_agent_at_character(faction_cqi, agent_k
 ---@param y number #Logical y co-ordinate.
 function episodic_scripting:spawn_rogue_army(x, y) end
 
---- Spawns a new character in the specified faction's recruitment pool. The CHARACTER_DETAILS_SCRIPT_INTERFACE related to the spawned character is returned.
+--- Spawns a new character in the specified faction's recruitment pool. The character_details interface related to the spawned character is returned.
 ---@param faction string #Faction key, from the factions table.
 ---@param forename string #Forename key. This should be a value from the id field of the names table.
 ---@param surname string #Surname key. This should be a value from the id field of the names table. A blank string may be supplied to omit this.
@@ -499,20 +616,36 @@ function episodic_scripting:find_valid_spawn_location_for_character_from_charact
 ---@param character_lookup string #Character lookup string of subject character. For more information see the documentation on Character Lookups.
 function episodic_scripting:appoint_character_to_most_expensive_force(character_lookup) end
 
---- Locks recruitment of a starting general, preventing them from being created from the recruitment pool. This also works for characters that are convalescing. The character must be specified by startpos id.
+--- Appoints the specified character to the command of the specified military force.
+---@param character_lookup string #Character lookup string of subject character. For more information see the documentation on Character Lookups.
+---@param military_force_cqi number #Command-queue index of target military force.
+function episodic_scripting:appoint_character_to_force(character_lookup, military_force_cqi) end
+
+--- Locks recruitment of a starting character, preventing them from being created from the recruitment pool. This also works for characters that are convalescing. The character must be specified by startpos id.
 ---@param startpos_id string #Startpos id of the target character. This is looked up from the ID field of the start_pos_characters table. This function cannot be used to lock recruitment of a character not present in the startpos data.
 ---@param faction_key string #Faction key of the character, from the factions table.
-function episodic_scripting:lock_starting_general_recruitment(startpos_id, faction_key) end
+function episodic_scripting:lock_starting_character_recruitment(startpos_id, faction_key) end
 
---- Unlocks recruitment of a starting general, allowing them to be recruited. This also works for characters that are convalescing. The character must be specified by startpos id.
+--- Unlocks recruitment of a starting character, allowing them to be recruited. This also works for characters that are convalescing. The character must be specified by startpos id.
 ---@param startpos_id string #Startpos id of the target character. This is looked up from the ID field of the start_pos_characters table. This function cannot be used to unlock recruitment of a character not present in the startpos data.
 ---@param faction_key string #Faction key of the character, from the factions table.
-function episodic_scripting:unlock_starting_general_recruitment(startpos_id, faction_key) end
+function episodic_scripting:unlock_starting_character_recruitment(startpos_id, faction_key) end
+
+--- Replaces the commanding general of the specified military force with a new character of the specified agent subtype. The new commanding character is returned.
+---@param military_force MILITARY_FORCE_SCRIPT_INTERFACE #Military force interface.
+---@param agent_subtype string #Agent subtype key, from the agent_subtypes database table.
+---@return CHARACTER_SCRIPT_INTERFACE #created character 
+function episodic_scripting:replace_general_in_force(military_force, agent_subtype) end
 
 --- Adds experience points to a specified character.
 ---@param character_lookup string #Character lookup string. For more information, see Character Lookups.
 ---@param points number #Experience points to award.
 function episodic_scripting:add_agent_experience(character_lookup, points) end
+
+--- Adds experience points to a specified character, through a family member interface.
+---@param family_member FAMILY_MEMBER_SCRIPT_INTERFACE #family memmber interface.
+---@param points number #Experience points to award.
+function episodic_scripting:add_agent_experience_through_family_member(family_member, points) end
 
 --- Adds experience points to a supplied unit's existing experience level.
 ---@param unit UNIT_SCRIPT_INTERFACE #unit
@@ -544,6 +677,13 @@ function episodic_scripting:grant_unit_to_character(character_lookup, unit_key) 
 ---@param y number #Logical y co-ordinate of target position.
 function episodic_scripting:move_to(character_lookup, x, y) end
 
+--- Orders the specified character to move to a specified logical position. This action is queue if another action is currently active.<br />
+--- Note that if the character is in a settlement, or the intended destination is a settlement, an enemy army, or another kind of special obstacle then it's likely that a different type of order is required - see cm:join_garrison, cm:leave_garrison and cm:attack, for example.
+---@param character_lookup string #Character lookup string. For more information, see Character Lookups.
+---@param x number #Logical x co-ordinate of target position.
+---@param y number #Logical y co-ordinate of target position.
+function episodic_scripting:move_to_queued(character_lookup, x, y) end
+
 --- Immediately cancels the current actions of a specified character.
 ---@param character_lookup string #Character lookup string. For more information, see Character Lookups.
 function episodic_scripting:cancel_actions_for(character_lookup) end
@@ -552,7 +692,15 @@ function episodic_scripting:cancel_actions_for(character_lookup) end
 ---@param character_lookup string #Character lookup string. For more information, see Character Lookups.
 ---@param x number #Logical x co-ordinate of target position.
 ---@param y number #Logical y co-ordinate of target position.
+---@return boolean #teleport successful 
 function episodic_scripting:teleport_to(character_lookup, x, y) end
+
+--- Immediately teleports the supplied military force to a specified logical position. This order should only be given on that faction's turn.
+---@param military_force MILITARY_FORCE_SCRIPT_INTERFACE #Military force.
+---@param x number #Logical x co-ordinate of target position.
+---@param y number #Logical y co-ordinate of target position.
+---@return boolean #teleport successful 
+function episodic_scripting:teleport_military_force_to(military_force, x, y) end
 
 --- Orders the specified character to move into a specified garrison residence. The garrison is specified by settlement key. This is equivalent to the player or AI issuing the same order, and as such should only be done on that faction's turn.
 ---@param character_lookup string #Character lookup string. For more information, see Character Lookups.
@@ -575,6 +723,11 @@ function episodic_scripting:attack(character_lookup, target_character_lookup, la
 ---@param character_lookup string #Character lookup string. For more information, see Character Lookups.
 ---@param region_key string #Region key containing the target settlement, from the campaign_map_regions table.
 function episodic_scripting:attack_region(character_lookup, region_key) end
+
+--- Orders the specified character to attack a target character. This command is added to a queue if another queued attacker is currently active.
+---@param target_character_lookup string #Target character lookup string. For more information, see Character Lookups.
+---@param lay_siege boolean? #optional, default value=false Lay siege if the target is a garrison residence.
+function episodic_scripting:attack_queued(target_character_lookup, lay_siege) end
 
 --- Orders the specified character to attack a target character through an attack of opportunity - either an interception or an ambush. Note that this function requires character cqis to be passed in as arguments and not lookup strings.<br />
 --- The two characters must be of different factions that are at war and neither may be garrisoned for the action to succeed.
@@ -658,15 +811,246 @@ function episodic_scripting:add_attack_of_opportunity_overrides(character_lookup
 ---@param character_lookup string #Character lookup string. For more information, see Character Lookups.
 function episodic_scripting:remove_attack_of_opportunity_overrides(character_lookup) end
 
---- Converts a military force to a specific type. The military force is specified by MILITARY_FORCE_SCRIPT_INTERFACE - see the Model Hierarchy documentation for more information. The military force type is specified by string key, from the military_force_types database table.
+--- Converts a military force to a specific type.
 ---@param force MILITARY_FORCE_SCRIPT_INTERFACE #Military force.
 ---@param type string #Military force type, from the military_force_types table.
 function episodic_scripting:convert_force_to_type(force, type) end
 
---- Sets the hit points/number of men to the given unary proportion of the maximum for that unit. The unit is specified by UNIT_SCRIPT_INTERFACE - see the Model Hierarchy documentation for more information.
+--- Heals the supplied military force back to full health.
+---@param force MILITARY_FORCE_SCRIPT_INTERFACE #Military force.
+function episodic_scripting:heal_military_force(force) end
+
+--- Sets the hit points/number of men to the given unary proportion of the maximum for that unit.
 ---@param unit UNIT_SCRIPT_INTERFACE #Unit.
 ---@param unary_hp number #Unary proportion (0-1) of max hp value to set unit health to.
 function episodic_scripting:set_unit_hp_to_unary_of_maximum(unit, unary_hp) end
+
+--- Globally disable or enable army trespassing penalties.
+---@param should_disable boolean #should disable
+function episodic_scripting:set_army_trespass_disabled(should_disable) end
+
+--- Globally enable or disable multiturn movement. If disabled, characters will only be able to walk to the extents allowed by their remaining action points.
+---@param should_enable boolean #should enable
+function episodic_scripting:set_multi_turn_movement_enabled(should_enable) end
+
+--- 
+---@param character CHARACTER_SCRIPT_INTERFACE #Character interface.
+---@param multiplier number #Multiplier value.
+function episodic_scripting:set_character_path_traversal_speed_multiplier(character, multiplier) end
+
+--- Clears a locomotion speed multiplier of a character previously set with cm:set_character_path_traversal_speed_multiplier.
+---@param character CHARACTER_SCRIPT_INTERFACE #Character interface.
+function episodic_scripting:clear_character_path_traversal_speed_multiplier(character) end
+
+--- Sets a character to be excluded from trespassing calculations or not.
+---@param character CHARACTER_SCRIPT_INTERFACE #Character interface.
+---@param excluded boolean #Should the character be excluded.
+function episodic_scripting:set_character_excluded_from_trespassing(character, excluded) end
+
+--- Sets a military force so that it behaves as if it's already retreated from battle this turn.
+---@param military_force MILITARY_FORCE_SCRIPT_INTERFACE #military force
+function episodic_scripting:set_force_has_retreated_this_turn(military_force) end
+
+--- Sets whether the provided character can disband or not.
+---@param character CHARACTER_SCRIPT_INTERFACE #Character interface.
+---@param stop_disbanding boolean #Stop the desired character from disbanding.
+function episodic_scripting:set_character_cannot_disband(character, stop_disbanding) end
+
+--- Suppresses or un-suppresses the immortality of the specified character. The character is specified by the command-queue index value of the related family_member interface.
+---@param fm_cqi number #Family member cqi.
+---@param suppress boolean #Suppress immortality.
+function episodic_scripting:suppress_immortality(fm_cqi, suppress) end
+
+--- Adds an armory item to a character.
+---@param character CHARACTER_SCRIPT_INTERFACE #Character to add item to.
+---@param armory_item string #Key for armory item to equip, from the armory_items database table.
+---@param equip_default boolean #Equips a default variant of the armory item (if one exists) if the target slot on the character is empty. Armory item variants are defined in the armory_item_variants database table.
+---@param clear_conflicting_items boolean #Unequips any conflicting items when this item is equipped.
+---@return boolean #item was successfully equipped 
+function episodic_scripting:add_armory_item_to_character(character, armory_item, equip_default, clear_conflicting_items) end
+
+--- Removes an armory item from a character.
+---@param character CHARACTER_SCRIPT_INTERFACE #Character to remove item from.
+---@param armory_item string #Key for armory item to unequip, from the armory_items database table.
+---@return boolean #item was successfully unequipped 
+function episodic_scripting:remove_armory_item_from_character(character, armory_item) end
+
+--- Unequips all armory items equipped by the specified character.
+---@param character CHARACTER_SCRIPT_INTERFACE #Character to remove items from.
+---@return boolean #any items were unequipped 
+function episodic_scripting:unequip_all_armory_items_from_character(character) end
+
+--- Equips a specific variant of an armory item on the specified character.
+---@param character CHARACTER_SCRIPT_INTERFACE #Character to add item to.
+---@param item_variant string #Variant of armory item to equip, from the armory_item_variants database table.
+---@param clear_conflicting_items boolean #Unequips any conflicting items when this item is equipped.
+---@return boolean #item was successfully equipped 
+function episodic_scripting:equip_armory_item_variant_on_character(character, item_variant, clear_conflicting_items) end
+
+--- Unequips a specific variant of an armory item from the specified character.
+---@param character CHARACTER_SCRIPT_INTERFACE #Character to add item to.
+---@param item_variant string #Variant of armory item to unequip, from the armory_item_variants database table.
+---@return boolean #item was successfully unequipped 
+function episodic_scripting:unequip_armory_item_variant_from_character(character, item_variant) end
+
+--- Unequips any amory item variant from the specified slot of the specified character.
+---@param character CHARACTER_SCRIPT_INTERFACE #Character to add item to.
+---@param armory_slot string #Armory slot key, from the armory_slot_types database table.
+function episodic_scripting:unequip_active_item_variant_in_slot_from_character(character, armory_slot) end
+
+--- Adds all armory items in the specified armory set to the specified character.
+---@param item_set string #Key for armory item set to equip, from the armory_item_sets database table.
+---@param equip_default boolean #Equips a default variant of each armory item (if one exists) if the target slot on the character is empty. Armory item variants are defined in the armory_item_variants database table.
+---@param clear_conflicting_items boolean #Unequips any conflicting items when each item is equipped.
+---@return boolean #any item was successfully equipped 
+function episodic_scripting:add_armory_item_set_to_character(item_set, equip_default, clear_conflicting_items) end
+
+--- Equips all armory items in the specified armory set on the specified character.
+---@param character CHARACTER_SCRIPT_INTERFACE #Character to add item to.
+---@param armory_item_set string #Key for armory item set to equip, from the armory_item_sets database table.
+---@return boolean #any item was successfully equipped 
+function episodic_scripting:equip_armory_item_set_on_character(character, armory_item_set) end
+
+--- Returns whether the supplied armory item can be equipped by the specified character, based on the armory set categories associated with that character.
+---@param character CHARACTER_SCRIPT_INTERFACE #Character to check.
+---@param armory_item string #Key for armory item to check, from the armory_items database table.
+---@return boolean #item is compatible 
+function episodic_scripting:is_armory_item_compatible_with_categories_on_character(character, armory_item) end
+
+--- Returns whether the specified armory item is compatible with the specified character's agent subtype.
+---@param character CHARACTER_SCRIPT_INTERFACE #Character to check.
+---@param armory_item string #Key for armory item to check, from the armory_items database table.
+---@return boolean #item is compatible 
+function episodic_scripting:is_armory_item_compatible_with_agent_subtype(character, armory_item) end
+
+--- Returns whether the specified character can equip the specified armory item.
+---@param character CHARACTER_SCRIPT_INTERFACE #Character to check.
+---@param armory_item string #Key for armory item to check, from the armory_items database table.
+---@return boolean #item can be equipped 
+function episodic_scripting:can_armory_item_be_equipped_on_character(character, armory_item) end
+
+--- Add an armory set category to the specified character, allowing them to equip armory set items from that category.
+---@param character CHARACTER_SCRIPT_INTERFACE #Subject character.
+---@param category string #Category key, from the armory_items_category_sets database table.
+---@return boolean #were any items removed from the character during the category assignment 
+function episodic_scripting:add_armory_item_category_set_membership(character, category) end
+
+--- Removes an armory set category from the specified character, meaning they will no longer be able to equip armory items from that category.
+---@param character CHARACTER_SCRIPT_INTERFACE #Subject character.
+---@param category string #Category key, from the armory_items_category_sets database table.
+function episodic_scripting:remove_armory_item_category_set_membership(character, category) end
+
+--- Removes all armory set categories from the specified character.
+---@param character CHARACTER_SCRIPT_INTERFACE #Subject character.
+function episodic_scripting:clear_armory_item_category_membership(character) end
+
+--- Returns the active slot state for the specified armory item variant on the specified character. If no slot state value can be found then "INVALID" is returned.
+---@param character CHARACTER_SCRIPT_INTERFACE #Character to add item to.
+---@param item_variant string #Variant of armory item to query, from the armory_item_variants database table.
+---@return string #slot state 
+function episodic_scripting:get_active_armory_item_variant_slot_state_for_character(character, item_variant) end
+
+--- Enables or disables tinting on the supplied character.
+---@param character CHARACTER_SCRIPT_INTERFACE #character
+---@param enable_tinting boolean #enable tinting
+function episodic_scripting:set_tint_activity_state_for_character(character, enable_tinting) end
+
+--- Returns whether tinting is active on the supplied character.
+---@param character CHARACTER_SCRIPT_INTERFACE #character
+---@return boolean #tinting enabled 
+function episodic_scripting:get_tint_activity_state_for_character(character) end
+
+--- Sets the tint colour for the specified character. Two colour keys from the colours database table are specified, and an intensity value for each.
+---@param character CHARACTER_SCRIPT_INTERFACE #character interface.
+---@param first_colour_key string #First colour key, from the colours database table.
+---@param first_colour_intensity number #Intensity of the first colour. This should be a number in the range 0-255.
+---@param second_colour_key string #Second colour key, from the colours database table.
+---@param second_colour_intensity number #Intensity of the second colour. This should be a number in the range 0-255.
+function episodic_scripting:set_tint_colour_for_character(character, first_colour_key, first_colour_intensity, second_colour_key, second_colour_intensity) end
+
+--- Sets a character initiative to active/inactive. A boolean value indicating whether the toggle was successful is returned.
+---@param initiative CHARACTER_INITIATIVE_INTERFACE #initiative
+---@param set_active boolean #set active
+---@return boolean #toggle successful 
+function episodic_scripting:toggle_character_initiative_active(initiative, set_active) end
+
+--- Sets whether a character initiative is script locked. A boolean value indicating whether the toggle was successful is returned.
+---@param initiative CHARACTER_INITIATIVE_INTERFACE #initiative
+---@param script_locked boolean #script locked
+function episodic_scripting:toggle_character_initiative_script_locked(initiative, script_locked) end
+
+--- Grant the specified trait to the specified character. If the character already has the trait, a trait point will be added.
+---@param character_lookup string #Character lookup string. For more information, see Character Lookups.
+---@param trait_key string #Trait key, from the character_traits database table.
+---@param trait_points number? #optional, default value=1 Number of trait points to add.
+function episodic_scripting:force_add_trait(character_lookup, trait_key, trait_points) end
+
+--- Grant the specified trait to the specified character, using the character's persistent character details interface. If the character already has the trait, a trait point will be added.
+---@param character_details CHARACTER_DETAILS_SCRIPT_INTERFACE #Character details interface related to the subject character.
+---@param trait_key string #Trait key, from the character_traits database table.
+function episodic_scripting:force_add_trait_to_character_details(character_details, trait_key) end
+
+--- Removes the specified trait from the specified character. If the character is past the point of no return in the trait, it will be removed anyway.
+---@param character_lookup string #Character lookup string. For more information, see Character Lookups.
+---@param trait_key string #Trait key, from the character_traits database table.
+function episodic_scripting:force_remove_trait(character_lookup, trait_key) end
+
+--- Grant the specified ancillary to the specified character.
+---@param target_character CHARACTER_SCRIPT_INTERFACE #target_character
+---@param ancillary_key string #Ancillary key, from the ancillaries table.
+---@param force_equip boolean #if true the ancillary will be equipped and bypass any cooldowns or pre-conditions
+---@param suppress_event_feed boolean #if true no event feed events will be generated by this action
+function episodic_scripting:force_add_ancillary(target_character, ancillary_key, force_equip, suppress_event_feed) end
+
+--- Remove the specified ancilliary from the specified character.
+---@param target_character CHARACTER_SCRIPT_INTERFACE #target_character
+---@param ancillary_key string #Ancillary key, from the ancillaries table.
+---@param remove_to_pool boolean #Removes the ancillary from the character but leaves it in the pool of available ancillaries.
+---@param suppress_event_feed boolean #if true no event feed events will be generated by this action
+function episodic_scripting:force_remove_ancillary(target_character, ancillary_key, remove_to_pool, suppress_event_feed) end
+
+--- Grants the specified ancillary to the specified faction. The ancillary goes into that faction's ancillary pool, from where it may be equipped by a character.
+---@param target_faction FACTION_SCRIPT_INTERFACE #target faction
+---@param ancillary_key string #Ancillary key, from the ancillaries table.
+---@param suppress_event_feed boolean #if true no event feed events will be generated by this action
+function episodic_scripting:add_ancillary_to_faction(target_faction, ancillary_key, suppress_event_feed) end
+
+--- Remove all instances of the specified ancillary from every character, and the shared ancillary pool, of the specified faction.
+---@param faction FACTION_SCRIPT_INTERFACE #faction
+---@param ancillary_key string #Ancillary key, from the ancillaries table.
+function episodic_scripting:force_remove_ancillary_from_faction(faction, ancillary_key) end
+
+--- Reassign all ancillaries from one character to another.
+---@param source_character CHARACTER_SCRIPT_INTERFACE #source character
+---@param destination_character CHARACTER_SCRIPT_INTERFACE #destination character
+function episodic_scripting:reassign_ancillaries_to_character_of_same_faction(source_character, destination_character) end
+
+--- Grant the specified skill to the specified character, or adds a point if they already have it.
+---@param character_lookup string #Character lookup string. For more information, see Character Lookups.
+---@param skill_key string #Skill key, from the character_skills table.
+function episodic_scripting:force_add_skill(character_lookup, skill_key) end
+
+--- Remove a skill point from the specified character and skill. Returns true if successful.
+---@param character_lookup string #Character lookup string. For more information, see Character Lookups.
+---@param skill_key string #Skill key, from the character_skills table.
+---@return boolean #skill point was removed 
+function episodic_scripting:remove_skill_point(character_lookup, skill_key) end
+
+--- Completely resets the skill points of the target character. Does not remove background skills.
+---@param character_lookup string #Character lookup string. For more information, see Character Lookups.
+function episodic_scripting:force_reset_skills(character_lookup) end
+
+--- Forcibly remove all background skills for the specified character.
+---@param character_lookup string #Character lookup string. For more information, see Character Lookups.
+function episodic_scripting:remove_all_background_skills(character_lookup) end
+
+--- Prevents or allows the application of traits by common.trait, which is intended to be the general-purpose trait-adding function. cm:force_add_trait will still work even with this restriction in place.
+---@param disable boolean #disable
+function episodic_scripting:set_non_scripted_traits_disabled(disable) end
+
+--- Prevents or allows the application of ancillaries by common.ancillary, which is intended to be the general-purpose ancillary-adding function. cm:force_add_ancillary will still work even with this restriction in place.
+---@param disable boolean #disable
+function episodic_scripting:set_non_scripted_ancillaries_disabled(disable) end
 
 --- Establishes a circular area trigger monitor around a specified display position, with a specified character lookup string filter. This monitor will trigger an AreaEntered or AreaExited script event if a character that matches the specified filter moves through the specified circular area boundary.
 ---@param x number #x display co-ordinate.
@@ -704,69 +1088,6 @@ function episodic_scripting:add_hex_area_trigger(trigger_name, x, y, radius, fac
 ---@param trigger_name string #trigger name
 function episodic_scripting:remove_hex_area_trigger(trigger_name) end
 
---- Grant the specified trait to the specified character. If the character already has the trait, a trait point will be added.
----@param character_lookup string #Character lookup string. For more information, see Character Lookups.
----@param trait_key string #Trait key, from the character_traits table.
----@param trait_points number? #optional, default value=1 Number of trait points to add.
-function episodic_scripting:force_add_trait(character_lookup, trait_key, trait_points) end
-
---- Removes the specified trait from the specified character. If the character is past the point of no return in the trait, it will be removed anyway.
----@param character_lookup string #Character lookup string. For more information, see Character Lookups.
----@param trait_key string #Trait key, from the character_traits table.
-function episodic_scripting:force_remove_trait(character_lookup, trait_key) end
-
---- Grant the specified ancillary to the specified character.
----@param target_character CHARACTER_SCRIPT_INTERFACE #target_character
----@param ancillary_key string #Ancillary key, from the ancillaries table.
----@param force_equip boolean #if true the ancillary will be equipped and bypass any cooldowns or pre-conditions
----@param suppress_event_feed boolean #if true no event feed events will be generated by this action
-function episodic_scripting:force_add_ancillary(target_character, ancillary_key, force_equip, suppress_event_feed) end
-
---- Remove the specified ancilliary from the specified character.
----@param target_character CHARACTER_SCRIPT_INTERFACE #target_character
----@param ancillary_key string #Ancillary key, from the ancillaries table.
----@param remove_to_pool boolean #Removes the ancillary from the character but leaves it in the pool of available ancillaries.
----@param suppress_event_feed boolean #if true no event feed events will be generated by this action
-function episodic_scripting:force_remove_ancillary(target_character, ancillary_key, remove_to_pool, suppress_event_feed) end
-
---- Grants the specified ancillary to the specified faction. The ancillary goes into that faction's ancillary pool, from where it may be equipped by a character.
----@param target_faction FACTION_SCRIPT_INTERFACE #target faction
----@param ancillary_key string #Ancillary key, from the ancillaries table.
----@param suppress_event_feed boolean #if true no event feed events will be generated by this action
-function episodic_scripting:add_ancillary_to_faction(target_faction, ancillary_key, suppress_event_feed) end
-
---- Remove all instances of the specified ancillary from every character, and the shared ancillary pool, of the specified faction.
----@param faction FACTION_SCRIPT_INTERFACE #faction
----@param ancillary_key string #Ancillary key, from the ancillaries table.
-function episodic_scripting:force_remove_ancillary_from_faction(faction, ancillary_key) end
-
---- Grant the specified skill to the specified character, or adds a point if they already have it.
----@param character_lookup string #Character lookup string. For more information, see Character Lookups.
----@param skill_key string #Skill key, from the character_skills table.
-function episodic_scripting:force_add_skill(character_lookup, skill_key) end
-
---- Remove a skill point from the specified character and skill. Returns true if successful.
----@param character_lookup string #Character lookup string. For more information, see Character Lookups.
----@param skill_key string #Skill key, from the character_skills table.
----@return boolean #skill point was removed 
-function episodic_scripting:remove_skill_point(character_lookup, skill_key) end
-
---- Completely resets the skill points of the target character. Does not remove background skills.
----@param character_lookup string #Character lookup string. For more information, see Character Lookups.
-function episodic_scripting:force_reset_skills(character_lookup) end
-
---- Forcibly remove all background skills for the specified character.
----@param character_lookup string #Character lookup string. For more information, see Character Lookups.
-function episodic_scripting:remove_all_background_skills(character_lookup) end
-
---- Prevents or allows the application of traits by common.trait, which is intended to be the general-purpose trait-adding function. cm:force_add_trait will still work even with this restriction in place.
----@param disable boolean #disable
-function episodic_scripting:set_non_scripted_traits_disabled(disable) end
-
---- Prevents or allows the application of ancillaries by common.ancillary, which is intended to be the general-purpose ancillary-adding function. cm:force_add_ancillary will still work even with this restriction in place.
----@param disable boolean #disable
-function episodic_scripting:set_non_scripted_ancillaries_disabled(disable) end
-
 --- Changes the name of a faction. The new name is specified by full localised text key, in the [table]_[key]_[field] format.
 ---@param faction_key string #Faction key, from the factions table.
 ---@param name_key string #Localised name key, in the [table]_[key]_[field] format.
@@ -778,34 +1099,56 @@ function episodic_scripting:change_localised_faction_name(faction_key, name_key)
 function episodic_scripting:change_custom_faction_name(faction_key, name) end
 
 --- Changes the name of a settlement. The new name is specified by full localised text key, in the [table]_[key]_[field] format.
----@param settlement SETTLEMENT_SCRIPT_INTERFACE #Settlement object - see the Model Hierarchy documentation for more information about this interface.
+---@param settlement SETTLEMENT_SCRIPT_INTERFACE #Settlement interface.
 ---@param name_key string #Localised name key, in the [table]_[key]_[field] format.
 function episodic_scripting:change_custom_settlement_name(settlement, name_key) end
 
 --- Changes the name of a faction. The new name is specified directly as a string.
----@param settlement SETTLEMENT_SCRIPT_INTERFACE #Settlement object - see the Model Hierarchy documentation for more information about this interface.
+---@param settlement SETTLEMENT_SCRIPT_INTERFACE #Settlement interface.
 ---@param name string #New name for the faction.
 function episodic_scripting:change_localised_settlement_name(settlement, name) end
 
 --- Changes the name of a region. The new name is specified by full localised text key, in the [table]_[key]_[field] format. Note that the region name is not currently used for display - see cm:change_custom_settlement_name instead.
----@param region REGION_SCRIPT_INTERFACE #Region object - see the Model Hierarchy documentation for more information about this interface.
+---@param region REGION_SCRIPT_INTERFACE #Region interface.
 ---@param name_key string #Localised name key, in the [table]_[key]_[field] format.
 function episodic_scripting:change_custom_region_name(region, name_key) end
 
 --- Changes the name of a region. The new name is specified directly as a string. Note that the region name is not currently used for display - see cm:change_localised_settlement_name instead.
----@param region REGION_SCRIPT_INTERFACE #Region object - see the Model Hierarchy documentation for more information about this interface.
+---@param region REGION_SCRIPT_INTERFACE #Region interface.
 ---@param name string #New name for the region.
 function episodic_scripting:change_localised_region_name(region, name) end
 
 --- Changes the name of a unit. The new name is specified by full localised text key, in the [table]_[key]_[field] format.
----@param unit UNIT_SCRIPT_INTERFACE #Unit object - see the Model Hierarchy documentation for more information about this interface.
+---@param unit UNIT_SCRIPT_INTERFACE #Unit interface.
 ---@param name_key string #Localised name key, in the [table]_[key]_[field] format.
 function episodic_scripting:change_custom_unit_name(unit, name_key) end
 
 --- Changes the name of a unit. The new name is specified directly as a string.
----@param unit UNIT_SCRIPT_INTERFACE #Unit object - see the Model Hierarchy documentation for more information about this interface.
+---@param unit UNIT_SCRIPT_INTERFACE #Unit interface.
 ---@param name string #New name for the unit.
 function episodic_scripting:change_localised_unit_name(unit, name) end
+
+--- Replace the name of a character with a new value supplied directly from script. No database lookup will be performed. Be warned that our lua implementation only deals with ANSI strings, so the name will be limited to latin characters.<br />
+--- If a value is not required for a particular name type then a blank string may be supplied for that parameter.
+---@param character CHARACTER_SCRIPT_INTERFACE #Target character.
+---@param forename string #Forename.
+---@param surname string #Surname.
+---@param clan_name string #Clan name.
+---@param other_name string #Other name.
+function episodic_scripting:change_character_custom_name(character, forename, surname, clan_name, other_name) end
+
+--- Replace the name of a character with a set of names from the database. Names must be specified by full localised text key, in the [table]_[key]_[field] format. Don't use this function on rebel characters.<br />
+--- If a value is not required for a particular name type then a blank string may be supplied for that parameter.
+---@param character CHARACTER_SCRIPT_INTERFACE #Target character.
+---@param forename string #Localised forename key, in the [table]_[key]_[field] format.
+---@param surname string #Localised surname key, in the [table]_[key]_[field] format.
+---@param clan_name string #Localised clan name key, in the [table]_[key]_[field] format.
+---@param other_name string #Localised other name key, in the [table]_[key]_[field] format.
+function episodic_scripting:change_character_localised_name(character, forename, surname, clan_name, other_name) end
+
+--- Replace the name of the supplied character with a new random name from the pool. Don't use this function on rebel characters.
+---@param character CHARACTER_SCRIPT_INTERFACE #Target character.
+function episodic_scripting:randomise_character_name(character) end
 
 --- Sets the tax rate for a specified faction. The tax rate may be one of the following integer values:<br />
 --- ValueDescription<br />
@@ -908,18 +1251,10 @@ function episodic_scripting:heal_garrison(region_cqi) end
 ---@param disable boolean #disable
 function episodic_scripting:set_liberation_options_disabled(disable) end
 
---- Forces the balance of religions in a specified province to specified values. The key of a region within the target province must be specified, along with one or more argument pairs specifying a religion key and a proportion for that religion. The sum of all specified religion proportions must equal 1. At least one religion/religion proportion pair of arguments must therefore be specified. Religions not specified in the arguments of this function call will not be present in the target province.<br />
---- The religion system in Warhammer is repurposed to represent corruption. Use this function to override the setup of corruption within a province.<br />
---- Note that this function will only work if called on turn one.
----@param region_key string #Key of a region within the target province, from the campaign_map_regions table.
----@param religion_key string #Key of a religion, from the religions table.
----@param religion_proportion number #Unary proportion (0-1) of the religion specified by the previous argument. The unary proportion of all specified religions should add up to 1.
----@param ... any #Extra religion key/religion proportion pairs of arguments, if desired.
-function episodic_scripting:force_religion_factors(region_key, religion_key, religion_proportion, ...) end
-
 --- Adds one or more units of a specified type to a faction's mercenary pool. These units can then be recruitable by that faction (or potentially other factions) using gameplay mechanics such as Regiments of Renown or Wulfhart's Mercenaries.
----@param faction FACTION_SCRIPT_INTERFACE #Faction whose pool the unit(s) should be added to. For more information about the FACTION_SCRIPT_INTERFACE interface see the Model Hierarchy documentation.
+---@param faction FACTION_SCRIPT_INTERFACE #Faction whose pool the unit(s) should be added to.
 ---@param unit string #Key of unit to add to the mercenary pool, from the main_units table.
+---@param recruitment_source string #Key of the recruitment pool that the unit will be available from, from the recruitment_sources table.
 ---@param count number #Number of units to add to the mercenary pool.
 ---@param replenishment_chance number #Replenishment chance, as a percentage. This is the chance per-turn that the number of available units in the pool of the supplied type will be increased, if not already at its maximum.
 ---@param max_units number #The maximum number of units of the supplied type that the pool is allowed to contain.
@@ -928,7 +1263,8 @@ function episodic_scripting:force_religion_factors(region_key, religion_key, rel
 ---@param subculture_restriction string #The key of the subculture who can actually recruit the units, from the cultures_subcultures database table. An empty string "" may be supplied to omit this, which will usually be the case.
 ---@param tech_restriction string #The key of a technology that must be researched in order to recruit the units, from the technologies database table.
 ---@param partial_replenishment boolean #Allow replenishment of partial units.
-function episodic_scripting:add_unit_to_faction_mercenary_pool(faction, unit, count, replenishment_chance, max_units, max_per_turn, faction_restriction, subculture_restriction, tech_restriction, partial_replenishment) end
+---@param mercenary_unit_group string #The key of the mercenary unit group that contains the units you want to add, from the mercenary_unit_groups database table.
+function episodic_scripting:add_unit_to_faction_mercenary_pool(faction, unit, recruitment_source, count, replenishment_chance, max_units, max_per_turn, faction_restriction, subculture_restriction, tech_restriction, partial_replenishment, mercenary_unit_group) end
 
 --- Adds one or more of a specified unit to the specified faction's mercenary pool. Unlike with cm:add_units_to_faction_mercenary_pool, the unit type must already be represented in the pool.
 ---@param faction_cqi number #CQI of the subject faction.
@@ -937,7 +1273,7 @@ function episodic_scripting:add_unit_to_faction_mercenary_pool(faction, unit, co
 function episodic_scripting:add_units_to_faction_mercenary_pool(faction_cqi, unit_key, count) end
 
 --- Adds one or more units of a specified type to the mercenary pool in a province. These units can then be recruitable by that faction (or potentially other factions) using gameplay mechanics such as Raising Dead.
----@param region REGION_SCRIPT_INTERFACE #Region within the province to which the unit(s) should be added. For more information about the REGION_SCRIPT_INTERFACE interface see the Model Hierarchy documentation.
+---@param region REGION_SCRIPT_INTERFACE #Region within the province to which the unit(s) should be added.
 ---@param unit string #Key of unit to add to the mercenary pool, from the main_units table.
 ---@param count number #Number of units to add to the mercenary pool.
 ---@param replenishment_chance number #Replenishment chance, as a percentage. This is the chance per-turn that the number of available units in the pool of the supplied type will be increased, if not already at its maximum.
@@ -953,6 +1289,22 @@ function episodic_scripting:add_unit_to_province_mercenary_pool(region, unit, co
 ---@param unit_key string #Unit key, from the main_units table.
 ---@param count number #Number of units to add.
 function episodic_scripting:add_units_to_province_mercenary_pool_by_region(region_key, unit_key, count) end
+
+--- Updates the home region of a faction.
+---@param faction FACTION_SCRIPT_INTERFACE #faction
+---@param region REGION_SCRIPT_INTERFACE #region
+function episodic_scripting:change_home_region_of_faction(faction, region) end
+
+--- Overrides the maximum number of units a human player may have in their force. Pass any value at or below 0 to clear the override. This does not remove existing units if there are more than the cap in any player army.
+---@param max_units number #max units
+function episodic_scripting:override_human_player_max_units(max_units) end
+
+--- Adds or removes a feature to or from the supplied faction. Valid feature keys may be found in the faction_features database table.
+---@param faction FACTION_SCRIPT_INTERFACE #Faction interface.
+---@param feature_list table #List of features to add or remove. This should be a table of string feature keys, each from the faction_features database table.
+---@param should_add boolean #Add or remove the specified feature(s).
+---@return boolean #any features successfully added or removed 
+function episodic_scripting:add_or_remove_faction_features(faction, feature_list, should_add) end
 
 --- Instructs the campaign director to attempt to trigger a mission of a particular type, based on a mission record from the database. The mission will be triggered if its conditions, defined in the cdir_events_mission_option_junctions, pass successfully. The function returns whether the mission was successfully triggered or not. Note that if the command is sent via the command queue then true will always be returned, regardless of whether the mission successfully triggers.
 ---@param faction_key string #Faction key, from the factions table.
@@ -976,6 +1328,11 @@ function episodic_scripting:trigger_custom_mission_from_string(faction_key, miss
 ---@param mission_key string #Mission key, from the missions table.
 function episodic_scripting:cancel_custom_mission(faction_key, mission_key) end
 
+--- Fails an active custom mission.
+---@param faction_key string #Faction key, from the factions table.
+---@param mission_key string #Mission key, from the missions table.
+function episodic_scripting:fail_custom_mission(faction_key, mission_key) end
+
 --- Attempts to trigger a mission from database records with one or more target game objects. The game object or objects to associate the mission with are specified by command-queue index. The mission will need to pass any conditions set up in the cdir_events_mission_option_junctions table in order to trigger.<br />
 --- A value of 0 may be supplied to omit a particular type of target.
 ---@param faction_cqi number #Command-queue index of the faction to which the mission is issued. This must be supplied.
@@ -991,6 +1348,34 @@ function episodic_scripting:trigger_mission_with_targets(faction_cqi, mission_ke
 --- Sets whether the campaign director system can generate missions or not.
 ---@param can_generate boolean #can generate
 function episodic_scripting:toggle_mission_generation(can_generate) end
+
+--- Attempts to trigger an incident from database records with one or more target game objects. The game object or objects to associate the mission with are specified by command-queue index. The incident will need to pass any conditions set up in the cdir_events_incidents_option_junctions database table in order to trigger.
+---@param faction_cqi number #Command-queue index of the faction to which the incident is issued. This must be supplied.
+---@param fire_immediately boolean #Set the mission to fire immediately, instead of waiting for the start of the faction's turn. This also overrides any delay set in the incident data.
+---@param incident_payload string #Payload string. Check missions.txt for examples of how to structure a payload string.
+---@param target_faction_cqi number #Command-queue index of a target faction. 0 may be specified to omit this target (and other target arguments following this one).
+---@param secondary_faction_cqi number #Command-queue index of a second target faction. May be 0.
+---@param character_cqi number #Command-queue index of a target character. May be 0.
+---@param military_force_cqi number #Command-queue index of a target military force. May be 0.
+---@param region_cqi number #Command-queue index of a target region. May be 0.
+---@param settlement_cqi number #Command-queue index of a target settlement. May be 0.
+function episodic_scripting:trigger_custom_incident_with_targets(faction_cqi, fire_immediately, incident_payload, target_faction_cqi, secondary_faction_cqi, character_cqi, military_force_cqi, region_cqi, settlement_cqi) end
+
+--- Checks whether the supplied faction has an active mission with the specified key.
+---@param faction FACTION_SCRIPT_INTERFACE #Faction.
+---@param key mission #Mission key, from the missions database table.
+function episodic_scripting:mission_is_active_for_faction(faction, key) end
+
+--- Triggers a custom pending mission from a string passed into the function. A pending mission is a mission created but not formally issued to the recipient faction. This functionality is used to empower features such as Ogre contracts, where several missions are created and the player selects from them.<br />
+--- The mission string must be supplied in a custom format - see the missions.txt that commonly accompanies a campaign for examples.
+---@param recipient_faction FACTION_SCRIPT_INTERFACE #Recipient faction object.
+---@param issuing_faction FACTION_SCRIPT_INTERFACE #Issuing faction object.
+---@param mission string #Mission definition string.
+function episodic_scripting:add_custom_pending_mission_from_string(recipient_faction, issuing_faction, mission) end
+
+--- Clears any unissued pending missions for the supplied faction.
+---@param faction FACTION_SCRIPT_INTERFACE #Faction.
+function episodic_scripting:clear_pending_missions(faction) end
 
 --- Updates the text shown for a particular objective of a specified scripted mission. This can be used to update a representation of mission progress on the panel.
 ---@param mission_key string #Mission key, from the missions table.
@@ -1011,6 +1396,20 @@ function episodic_scripting:set_scripted_mission_position(mission_key, script_ke
 ---@param script_key string #Key of the particular scripted objective associated with the mission.
 ---@param is_success boolean #Objective was completed successfully.
 function episodic_scripting:complete_scripted_mission_objective(faction_name, mission_key, script_key, is_success) end
+
+--- Sets the completion state for entities targeted by a scripted mission objective. These entities are target factions, settlements, characters etc that are shown on the mission panel and can be marked as completed when the entity in question has been captured/destroyed etc.<br />
+--- Entities can be specified as either completed or uncompleted. If an entity passed in to this function is not already present on the mission panel then it will be added.<br />
+--- This function can only be used for scripted missions i.e. missions of objective type SCRIPTED, where script controls the completion conditions of the mission.
+---@param mission_key string #Mission key, from the missions database table.
+---@param script_key string #Key of the particular scripted objective associated with the mission.
+---@param entities table #Entity table. This should be a table containing one or more sub-tables in the form { {region, true}, {character, false} }. The first element of each sub-table is an interface object such as faction interface, and the second a boolean indicating whether it should be marked as completed or not on the UI.
+function episodic_scripting:set_scripted_mission_entity_completion_states(mission_key, script_key, entities) end
+
+--- Remove specified entity completion states that were previously added with cm:set_scripted_mission_entity_completion_states from a scripted mission objective. These entities are target factions, settlements, characters etc that are shown on the mission panel and can be marked as completed when the entity in question has been captured/destroyed etc.
+---@param mission_key string #Mission key, from the missions database table.
+---@param script_key string #Key of the particular scripted objective associated with the mission.
+---@param entities table #Entity table. This should be a table containing one or more interface objects to remove, in the form {region, character, faction}.
+function episodic_scripting:remove_scripted_mission_entities(mission_key, script_key, entities) end
 
 --- Instructs the campaign director to attempt to trigger a specified incident, based on record from the database. The incident will be triggered if its conditions, defined in the cdir_events_incident_option_junctions, pass successfully. The function returns whether the incident was successfully triggered or not.
 ---@param faction_key string #Faction key, from the factions table.
@@ -1087,6 +1486,35 @@ function episodic_scripting:toggle_dilemma_generation(can_generate) end
 ---@param exempt_from_cost boolean #Specifies that the intrigue should not cost influence points for issuing faction.
 function episodic_scripting:trigger_intrigue(issuing_faction, faction_a_key, faction_b_key, improve, exempt_from_cost) end
 
+--- Creates and returns an empty dilemma builder. Functions provided by the returned campaign_dilemma_builder interface can be used to create a new custom dilemma from script.
+---@param dilemma_key string #Dilemma record key, from the dilemmas database table.
+---@return campaign_dilemma_builder #dilemma builder 
+function episodic_scripting:create_dilemma_builder(dilemma_key) end
+
+--- Launches a dilemma previously constructed with cm:create_dilemma_builder for the recipient faction.
+---@param dilemma_builder campaign_dilemma_builder #Dilemma builder interface.
+---@param faction FACTION_SCRIPT_INTERFACE #Recipient faction interface.
+function episodic_scripting:launch_custom_dilemma_from_builder(dilemma_builder, faction) end
+
+--- Creates and returns an empty incident builder. Functions provided by the returned campaign_incident_builder interface can be used to create a new custom incident from script.
+---@param incident_key string #Incident record key, from the incidents database table.
+---@return campaign_incident_builder #incident builder 
+function episodic_scripting:create_incident_builder(incident_key) end
+
+--- Launches an incident previously constructed with cm:create_incident_builder for the recipient faction.
+---@param incident_builder campaign_incident_builder #Incident builder interface.
+---@param faction FACTION_SCRIPT_INTERFACE #Recipient faction interface.
+function episodic_scripting:launch_custom_incident_from_builder(incident_builder, faction) end
+
+--- Creates and returns a new payload builder. Functions provided by the campaign_payload_builder interface which can be used to create a new payload from script, which can be applied to created dilemmas.
+---@return campaign_payload_builder #custom payload 
+function episodic_scripting:create_payload() end
+
+--- Directly applies a custom created payload to the specified faction. This can be used if it's desired to directly apply a created payload to the faction for some reason.
+---@param payload campaign_payload_builder #Custom payload, created with cm:create_payload.
+---@param faction FACTION_SCRIPT_INTERFACE #Target faction interface.
+function episodic_scripting:apply_payload(payload, faction) end
+
 --- Enables or disables random event generation by the campaign director system.
 ---@param enable boolean #enable
 function episodic_scripting:set_event_generation_enabled(enable) end
@@ -1136,21 +1564,24 @@ function episodic_scripting:event_feed_event_type_pending(event_type) end
 ---@param event string #Event feed event to block, from the event_feed_events table. Supply a blank string to not filter by event.
 function episodic_scripting:disable_event_feed_events(should_disable, category, subcategory, event) end
 
---- Instantly dismantle the building in the supplied region slot. The slot is specified by SLOT_SCRIPT_INTERFACE - see the Model Hierarchy documentation for more information.
-function episodic_scripting:region_slot_instantly_dismantle_building() end
+--- Instantly dismantle the building in the supplied region slot.
+---@param slot slot #Slot script interface.
+function episodic_scripting:region_slot_instantly_dismantle_building(slot) end
 
---- Instantly upgrade the building in the supplied region slot to the supplied building. The slot is specified by SLOT_SCRIPT_INTERFACE - see the Model Hierarchy documentation for more information. The building specified must be a valid upgrade for the building chain present in the slot.
-function episodic_scripting:region_slot_instantly_upgrade_building() end
+--- Instantly upgrade the building in the supplied region slot to the supplied building. The building specified must be a valid upgrade for the building chain present in the slot.
+---@param slot slot #Slot script interface.
+---@param building_key string #Building key, from the building_levels database table.
+function episodic_scripting:region_slot_instantly_upgrade_building(slot, building_key) end
 
---- Instantly repair the building in the specified slot. Slots are specified by SLOT_SCRIPT_INTERFACE, see the Model Hierarchy documentation for more information.
----@param slot SLOT_SCRIPT_INTERFACE #slot
+--- Instantly repair the building in the specified slot.
+---@param slot slot #Slot script interface.
 function episodic_scripting:region_slot_instantly_repair_building(slot) end
 
---- Instantly dismantles the building in the specified foreign slot. The slot is specified by slot cqi, which can be obtained from the foreign slot script interface on the model hierarchy.
+--- Instantly dismantles the building in the specified foreign slot. The slot is specified by slot cqi, which can be obtained from the foreign_slot script interface on the model_hierarchy.
 ---@param foreign_slot_cqi number #foreign slot cqi
 function episodic_scripting:foreign_slot_instantly_dismantle_building(foreign_slot_cqi) end
 
---- Instantly upgrades the building in the specified foreign slot. The slot is specified by slot cqi, which can be obtained from the foreign slot script interface on the model hierarchy.
+--- Instantly upgrades the building in the specified foreign slot. The slot is specified by slot cqi, which can be obtained from the foreign_slot script interface on the model_hierarchy.
 ---@param foreign_slot_cqi number #Foreign slot cqi.
 ---@param building_key string #Building key, from the building_levels table.
 function episodic_scripting:foreign_slot_instantly_upgrade_building(foreign_slot_cqi, building_key) end
@@ -1184,15 +1615,20 @@ function episodic_scripting:add_building_to_force(force_cqi, building_key, opera
 ---@param operation_was_successful boolean #operation was successful
 function episodic_scripting:add_building_to_settlement(region_key, building_key, operation_was_successful) end
 
+--- Adds a building to a settlement queue, by building slot.
+---@param target_slot slot #Target slot script interface.
+---@param building string #Building level key, from the building_levels database table.
+function episodic_scripting:add_building_to_settlement_queue(target_slot, building) end
+
 --- Adds the specified foreign slot set to the target region, for the target faction. The foreign slot manager of the faction is returned, or a null script interface if parameters are invalid.
 ---@param faction_cqi number #Command-queue index value of the target faction.
 ---@param region_cqi number #Command-queue index value of the target region.
 ---@param slot_set_key string #Slot set key, from the slot_sets table.
----@return FOREIGN_SLOT_MANAGER_SCRIPT_INTERFACE #foreign slot manager 
+---@return foreign_slot_manager #foreign slot manager 
 function episodic_scripting:add_foreign_slot_set_to_region_for_faction(faction_cqi, region_cqi, slot_set_key) end
 
---- Instantly sets the primary slot level of the supplied settlement. The settlement is specified by SETTLEMENT_SCRIPT_INTERFACE - see the Model Hierarchy documentation for more information. The supplied level Will be clamped to the maximum level of the chain.<br />
---- The new primary slot building will be returned, as a BUILDING_SCRIPT_INTERFACE object.
+--- Instantly sets the primary slot level of the supplied settlement. The supplied level will be clamped to the maximum level of the chain. The new primary slot building will be returned.
+---@return BUILDING_SCRIPT_INTERFACE #new primary building 
 function episodic_scripting:instantly_set_settlement_primary_slot_level() end
 
 --- Returns a lua table containing a list of building keys that are upgrades from a supplied building key. If the building specified by the supplied key has no upgrades then the returned table will be empty. If the supplied key does not specify a building then nothing is returned.<br />
@@ -1234,13 +1670,13 @@ function episodic_scripting:apply_effect_bundle_to_characters_force(effect_bundl
 ---@param character_cqi number #Command-queue index of the character commanding the military force.
 function episodic_scripting:remove_effect_bundle_from_characters_force(effect_bundle_key, character_cqi) end
 
---- Applies an effect bundle to a character. The character is specified by CHARACTER_SCRIPT_INTERFACE - see the Model Hierarchy documentation for more information.
+--- Applies an effect bundle to a character.
 ---@param effect_bundle string #Effect bundle key, from the effect_bundles table.
 ---@param character CHARACTER_SCRIPT_INTERFACE #Target character.
 ---@param turns number #Number of turns to apply the effect bundle for. -1 may be supplied to apply the effect indefinitely.
 function episodic_scripting:apply_effect_bundle_to_character(effect_bundle, character, turns) end
 
---- Removes an effect bundle from a character. The character is specified by CHARACTER_SCRIPT_INTERFACE - see the Model Hierarchy documentation for more information.
+--- Removes an effect bundle from a character.
 ---@param effect_bundle string #Effect bundle key, from the effect_bundles table.
 ---@param character CHARACTER_SCRIPT_INTERFACE #Target character.
 function episodic_scripting:remove_effect_bundle_from_character(effect_bundle, character) end
@@ -1256,55 +1692,49 @@ function episodic_scripting:apply_effect_bundle_to_region(effect_bundle_key, reg
 ---@param region_key string #Region key, from the campaign_map_regions table.
 function episodic_scripting:remove_effect_bundle_from_region(effect_bundle_key, region_key) end
 
---- Applies an effect bundle to a province. The province is specified by REGION_SCRIPT_INTERFACE - see the Model Hierarchy documentation for more information. The effect bundle will be applied to the portion of the province owned by the owner of the specified region - this can be the whole province if one faction controls it all.
+--- Applies an effect bundle to a faction province. The faction province is specified by region interface. The effect bundle will be applied to the portion of the province owned by the owner of the specified region - this can be the whole province if one faction controls it all.
 ---@param effect_bundle string #Effect bundle key, from the effect_bundles table.
----@param region REGION_SCRIPT_INTERFACE #Target region.
+---@param region REGION_SCRIPT_INTERFACE #Region within the target faction province.
 ---@param turns number #Number of turns to apply the effect bundle for. -1 may be supplied to apply the effect indefinitely.
 function episodic_scripting:apply_effect_bundle_to_faction_province(effect_bundle, region, turns) end
 
---- Removes an effect bundle from a province. The province is specified by REGION_SCRIPT_INTERFACE - see the Model Hierarchy documentation for more information. The effect bundle will be removed from the portion of the province owned by the owner of the specified region - this can be the whole province if one faction controls it all.
+--- Removes an effect bundle from a faction province. The faction province is specified by region interface. The effect bundle will be removed from the portion of the province owned by the owner of the specified region - this can be the whole province if one faction controls it all.
 ---@param effect_bundle string #Effect bundle key, from the effect_bundles table.
 ---@param region REGION_SCRIPT_INTERFACE #Target region.
 function episodic_scripting:remove_effect_bundle_from_faction_province(effect_bundle, region) end
 
---- Creates a new custom effect bundle, using the specified effect bundle record as a base. The custom effect bundle is returned as a CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE - see the Model Hierarchy documentation for more information.
+--- Creates a new custom effect bundle, using the specified effect bundle record as a base.
 ---@param base_effect_bundle string #Base effect bundle key, from the effect_bundles table.
----@return CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE #custom effect bundle 
+---@return custom_effect_bundle #custom effect bundle 
 function episodic_scripting:create_new_custom_effect_bundle(base_effect_bundle) end
 
---- Applies a custom effect bundle to a region. This replaces any existing effect bundle with the same record.<br />
---- For more information about the CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE or REGION_SCRIPT_INTERFACE interfaces see the Model Hierarchy documentation.
----@param custom_effect_bundle CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE #custom effect bundle
+--- Applies a custom effect bundle to a region. This replaces any existing effect bundle with the same record.
+---@param custom_effect_bundle custom_effect_bundle #custom effect bundle
 ---@param region REGION_SCRIPT_INTERFACE #region
 function episodic_scripting:apply_custom_effect_bundle_to_region(custom_effect_bundle, region) end
 
---- Applies a custom effect bundle to a faction. This replaces any existing effect bundle with the same record.<br />
---- For more information about the CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE or FACTION_SCRIPT_INTERFACE interfaces see the Model Hierarchy documentation.
----@param custom_effect_bundle CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE #custom effect bundle
+--- Applies a custom effect bundle to a faction. This replaces any existing effect bundle with the same record.
+---@param custom_effect_bundle custom_effect_bundle #custom effect bundle
 ---@param faction FACTION_SCRIPT_INTERFACE #faction
 function episodic_scripting:apply_custom_effect_bundle_to_faction(custom_effect_bundle, faction) end
 
---- Applies a custom effect bundle to a character. This replaces any existing effect bundle with the same record.<br />
---- For more information about the CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE or CHARACTER_SCRIPT_INTERFACE interfaces see the Model Hierarchy documentation.
----@param custom_effect_bundle CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE #custom effect bundle
+--- Applies a custom effect bundle to a character. This replaces any existing effect bundle with the same record.
+---@param custom_effect_bundle custom_effect_bundle #custom effect bundle
 ---@param character CHARACTER_SCRIPT_INTERFACE #character
 function episodic_scripting:apply_custom_effect_bundle_to_character(custom_effect_bundle, character) end
 
---- Applies a custom effect bundle to a military force. This replaces any existing effect bundle with the same record.<br />
---- For more information about the CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE or MILITARY_FORCE_SCRIPT_INTERFACE interfaces see the Model Hierarchy documentation.
----@param custom_effect_bundle CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE #custom effect bundle
+--- Applies a custom effect bundle to a military force. This replaces any existing effect bundle with the same record.
+---@param custom_effect_bundle custom_effect_bundle #custom effect bundle
 ---@param military_force MILITARY_FORCE_SCRIPT_INTERFACE #military force
 function episodic_scripting:apply_custom_effect_bundle_to_force(custom_effect_bundle, military_force) end
 
---- Applies a custom effect bundle to a province. This replaces any existing effect bundle with the same record. The effect bundle will be applied to the portion of the province owned by the owner of the specified region - this can be the whole province if one faction controls it all.<br />
---- For more information about the CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE or REGION_SCRIPT_INTERFACE interfaces see the Model Hierarchy documentation.
----@param custom_effect_bundle CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE #custom effect bundle
+--- Applies a custom effect bundle to a province. This replaces any existing effect bundle with the same record. The effect bundle will be applied to the portion of the province owned by the owner of the specified region - this can be the whole province if one faction controls it all.
+---@param custom_effect_bundle custom_effect_bundle #custom effect bundle
 ---@param region REGION_SCRIPT_INTERFACE #region
 function episodic_scripting:apply_custom_effect_bundle_to_faction_province(custom_effect_bundle, region) end
 
---- Applies a custom effect bundle to a character's military force. This replaces any existing effect bundle with the same record.<br />
---- For more information about the CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE or CHARACTER_SCRIPT_INTERFACE interfaces see the Model Hierarchy documentation.
----@param custom_effect_bundle CUSTOM_EFFECT_BUNDLE_SCRIPT_INTERFACE #custom effect bundle
+--- Applies a custom effect bundle to a character's military force. This replaces any existing effect bundle with the same record.
+---@param custom_effect_bundle custom_effect_bundle #custom effect bundle
 ---@param character CHARACTER_SCRIPT_INTERFACE #character
 function episodic_scripting:apply_custom_effect_bundle_to_characters_force(custom_effect_bundle, character) end
 
@@ -1375,6 +1805,15 @@ function episodic_scripting:force_grant_military_access(granting_faction_key, re
 ---@param first_faction_key string #Faction key of the first faction, from the factions table.
 ---@param second_faction_key string #Faction key of the second faction, from the factions table.
 function episodic_scripting:force_make_peace(first_faction_key, second_faction_key) end
+
+--- Forces a rebellion by a specified faction of a specified size in a given region. If a rebellion force is spawned then it is returned.
+---@param region REGION_SCRIPT_INTERFACE #Interface of the region in which to spawn rebellion force.
+---@param faction_key string #Faction key of the rebelling faction, from the factions database table.
+---@param max_units number #Maximum number of units to spawn.
+---@param full_strength boolean #Spawn at full strength or not.
+---@param suppress_public_order_penalty boolean? #optional, default value=false Set this argument to true for the rebellion to not affect public order in the target region.
+---@return MILITARY_FORCE_SCRIPT_INTERFACE #spawned military force 
+function episodic_scripting:force_rebellion_with_faction(region, faction_key, max_units, full_strength, suppress_public_order_penalty) end
 
 --- Forces a proposing faction to subsume a target faction into its confederation.
 ---@param proposing_faction_key string #Faction key of the proposing faction, from the factions table.
@@ -1452,10 +1891,30 @@ function episodic_scripting:remove_event_restricted_building_record_for_faction(
 ---@param technology_key string #Technology key, from the technologies table.
 function episodic_scripting:lock_technology(faction_key, technology_key) end
 
+--- Lock one technology node, without locking any of its children.
+---@param faction_key string #Faction key, from the factions database table.
+---@param technology_key string #Technology key, from the technologies database table.
+function episodic_scripting:lock_one_technology_node(faction_key, technology_key) end
+
 --- Removes a lock previously placed with cm:lock_technology.
 ---@param faction_key string #Faction key, from the factions table.
 ---@param technology_key string #Technology key, from the technologies table.
 function episodic_scripting:unlock_technology(faction_key, technology_key) end
+
+--- Updates the value of a design-driven unlock condition for a technology.<br />
+--- Designer-driven unlock conditions can be added to a technology through an entry in the technology_script_lock_reasons database table. A text condition specified in the added record is displayed when the cursor is placed over the related technology, such as "Win 5 Ambush battles.\nCurrent Amount: %d". This function may be used to update the text variable within the displayed string.<br />
+--- The function should also be used at the start of the campaign to set the initial condition of each design-driven technology unlock condition e.g. setting a counter to 0.<br />
+--- Note that this function does not unlock the technology when the condition is fully met. Use cm:unlock_technology to unlock the technology at this time.
+---@param faction_key string #Key of the faction owning the technology, from the factions database table.
+---@param technology_key string #Key of the technology, from the technologies database table.
+---@param progress_values table #Table of one or more values to insert into the technology progress string. Multiple values are supported where appropriate, e.g. {3, 7} to update a string such as "Find all Snow White's Dwarfs.\nCurrent Amount: %d of %d".
+function episodic_scripting:update_technology_unlock_progress_values(faction_key, technology_key, progress_values) end
+
+--- Returns whether the specified building level unlocks any technologies for the specified faction.
+---@param faction FACTION_SCRIPT_INTERFACE #Faction interface.
+---@param building_key string #Building level key, from the building_levels database table.
+---@return boolean
+function episodic_scripting:building_level_unlocks_technology_for_faction(faction, building_key) end
 
 --- Prevents the specified character from moving, regardless of where the move order comes from, until movement is subsequently re-enabled with cm:enable_movement_for_faction or cm:enable_movement_for_character.<br />
 --- This setting is saved into the campaign save file when the game is saved, and automatically re-established when the campaign is reloaded.
@@ -1480,10 +1939,275 @@ function episodic_scripting:enable_movement_for_faction(faction_key) end
 ---@param id number #Pathfinding restriction layer id to un-restrict. Layers are numbered sequentially - lifting the restriction on one layer will also lift it on all layers with a lower numerical id.
 function episodic_scripting:disable_pathfinding_restriction(id) end
 
---- Stops the player from disbanding specific characters
----@param source_character CHARACTER_SCRIPT_INTERFACE #source character
----@param stop_disbanding boolean #Stop the desired character from disbanding.
-function episodic_scripting:set_character_cannot_disband(source_character, stop_disbanding) end
+--- Add the specified amount to the specified resource pool (type of resource), as the specified factor (type of change). The supplied value will be clamped to pool and factor bounds.
+---@param faction_key string #Faction key, from the factions table.
+---@param resource_key string #Pooled resource key, from the pooled_resources table.
+---@param factor_key string #Change factor key, from the pooled_resource_factors table.
+---@param amount number #Amount of resource to add. This value can be negative.
+function episodic_scripting:faction_add_pooled_resource(faction_key, resource_key, factor_key, amount) end
+
+--- Adds a regular resource transaction to an entity such as a character, faction or province. This will cause the target entity to spend or earn a particular pooled resource at the start of a number of turns, or indefinitely. A record for the transaction must be defined in the database, in the resource_costs table.
+---@param entity_interface interface #Interface of entity to apply the pooled resource transaction to e.g. character, faction.
+---@param resource_cost_key string #Key of the resource cost record to apply, from the resource_costs database table.
+---@param turns number #Number of turns to apply the transaction for. If 0 is supplied, the transaction is applied indefinitely.
+function episodic_scripting:add_regular_pooled_resource_transaction(entity_interface, resource_cost_key, turns) end
+
+--- Removes a specified regular resource transaction from an entity such as a character, faction or province. An empty key will remove all regular pooled resource transactions for the entity in the system.
+---@param entity_interface interface #Interface of entity to remove the pooled resource transaction from e.g. province, military_force.
+---@param resource_cost_key string #Key of the resource cost record to remove, from the resource_costs database table. If a blank string is supplied then all resource costs are removed.
+function episodic_scripting:remove_regular_pooled_resource_transaction(entity_interface, resource_cost_key) end
+
+--- Apply a transaction to a pooled resource manager. A record from the resource_costs database table is specified, which determines the factors and amounts of pooled resources to modify.
+---@param resource_manager pooled_resource_manager #Resource manager interface.
+---@param resource_cost_key string #Key of the resource cost record to apply, from the resource_costs database table.
+function episodic_scripting:pooled_resource_transaction(resource_manager, resource_cost_key) end
+
+--- Apply a transaction to a pooled resource manager. The single factor to change and amount to change it by are supplied as arguments.
+---@param resource_manager pooled_resource_manager #Resource manager interface.
+---@param resource_factor_key string #Key of the resource factor to change, from the pooled_resource_factors database table.
+---@param amount number #Change amount. This may be negative.
+function episodic_scripting:pooled_resource_factor_transaction(resource_manager, resource_factor_key, amount) end
+
+--- Apply regular pooled resoure income and expenditure on provided pooled resource manager.
+---@param resource_manager pooled_resource_manager #Resource manager interface.
+function episodic_scripting:apply_regular_reset_income(resource_manager) end
+
+--- Forces a change in the winds of magic for a given area.
+---@param area_key string #Winds of Magic area key, from the campaign_map_winds_of_magic_area database table.
+---@param strength_key string #Winds of Magic strength key, from the campaign_map_winds_of_magic_strengths database table.
+function episodic_scripting:force_winds_of_magic_change(area_key, strength_key) end
+
+--- Perform a ritual for a faction. The ritual must be available and valid for the action to succeed.
+---@param performing_faction_key string #Faction key of the faction performing the ritual, from the factions table.
+---@param target_faction_key string #Faction key of the target faction of the ritual, from the factions table. An empty string may be supplied, in which case the performing faction is the target.
+---@param ritual_key string #Ritual key, from the rituals table.
+function episodic_scripting:perform_ritual(performing_faction_key, target_faction_key, ritual_key) end
+
+--- Creates and returns a new modify ritual setup interface, based on an existing ritual.
+---@param performing_faction FACTION_SCRIPT_INTERFACE #Faction to perform the ritual.
+---@param ritual_key string #Ritual key, from the rituals table.
+---@return modify_ritual_setup #modify ritual setup interface 
+function episodic_scripting:create_new_ritual_setup(performing_faction, ritual_key) end
+
+--- Perform a ritual with the provided setup. It must be available and valid for this call to succeed. Both modify and standard ritual setup interfaces are valid for this method.
+---@param setup modify_ritual_setup #Ritual setup to use. This may be either a mutable modify_ritual_setup or immutable ritual_setup object.
+function episodic_scripting:perform_ritual_with_setup(setup) end
+
+--- Rolls back a linked ritual chain to the specified stage. It is safe to call this function if the ritual chain isn't at this stage yet.
+---@param ritual_chain_key string #Ritual chain key, from the campaign_group_ritual_chains table.
+---@param stage number #Stage number.
+function episodic_scripting:rollback_linked_ritual_chain(ritual_chain_key, stage) end
+
+--- Lock a ritual for a faction.
+---@param faction FACTION_SCRIPT_INTERFACE #Target faction interface.
+---@param ritual_key string #Ritual key, from the rituals table.
+function episodic_scripting:lock_ritual(faction, ritual_key) end
+
+--- Unlock a ritual for a faction.
+---@param faction FACTION_SCRIPT_INTERFACE #Target faction interface.
+---@param ritual_key string #Ritual key, from the rituals table.
+---@param duration number #Duration, number of rounds the ritual will be unlocked for. Zero or negative will be infinite.
+function episodic_scripting:unlock_ritual(faction, ritual_key, duration) end
+
+--- Lock a ritual chain for a faction.
+---@param faction FACTION_SCRIPT_INTERFACE #Target faction interface.
+---@param ritual_chain_key string #Ritual chain key, from the ritual_chains table.
+function episodic_scripting:lock_ritual_chain(faction, ritual_chain_key) end
+
+--- Unlock a ritual chain for a faction.
+---@param faction FACTION_SCRIPT_INTERFACE #Target faction interface.
+---@param ritual_chain_key string #Ritual Chain key, from the ritual_chains table.
+---@param duration number #Duration, number of rounds the ritual chain will be unlocked for. Zero or negative will be infinite.
+function episodic_scripting:unlock_ritual_chain(faction, ritual_chain_key, duration) end
+
+--- Lock all rituals in a category for a faction.
+---@param faction FACTION_SCRIPT_INTERFACE #Target faction interface.
+---@param ritual_category_key string #Ritual category key, from the ritual_categories table.
+function episodic_scripting:lock_rituals_in_category(faction, ritual_category_key) end
+
+--- Unlock rituals in a category for a faction.
+---@param faction FACTION_SCRIPT_INTERFACE #Target faction interface.
+---@param ritual_category_key string #Ritual category key, from the ritual_categories table.
+---@param duration number #Duration, number of rounds the rituals in the category will be unlocked for. Zero or negative will be infinite.
+function episodic_scripting:unlock_rituals_in_category(faction, ritual_category_key, duration) end
+
+--- Applies the effect of a ritual that is active right now. This is used in conjunction with the delay_payload_application field of the rituals database table. Should this field be set for a ritual, then that ritual will not apply its payload effects when triggered until this function or cm:apply_active_rituals is called.<br />
+--- Calls to this function will not succeed if the ritual has not been actively triggered.
+---@param faction FACTION_SCRIPT_INTERFACE #Target faction interface.
+---@param ritual active_ritual #Target ritual interface.
+function episodic_scripting:apply_active_ritual(faction, ritual) end
+
+--- Applies the effect of all rituals that are active for a faction right now. This is used in conjunction with the delay_payload_application field of the rituals database table. Should this field be set for a ritual, then that ritual will not apply its payload effects when triggered until this function or cm:apply_active_ritual is called.<br />
+--- Calls to this function will not succeed if the ritual has not been actively triggered.
+---@param faction FACTION_SCRIPT_INTERFACE #Target faction.
+function episodic_scripting:apply_active_rituals(faction) end
+
+--- Spawn a plague at a settlement.
+---@param settlement SETTLEMENT_SCRIPT_INTERFACE #Target settlement.
+---@param plague_key string #Plague key, from the plagues table.
+function episodic_scripting:spawn_plague_at_settlement(settlement, plague_key) end
+
+--- Spawn a plague in a region.
+---@param region REGION_SCRIPT_INTERFACE #Target region.
+---@param plague_key string #Plague key, from the plagues table.
+function episodic_scripting:spawn_plague_at_region(region, plague_key) end
+
+--- Spawn a plague at a military force.
+---@param military_force MILITARY_FORCE_SCRIPT_INTERFACE #Target military force.
+---@param plague_key string #Plague key, from the plagues table.
+function episodic_scripting:spawn_plague_at_military_force(military_force, plague_key) end
+
+--- Sets the plague on a military force.
+---@param military_force MILITARY_FORCE_SCRIPT_INTERFACE #Target military force.
+---@param plague_key string #Plague key, from the plagues table.
+function episodic_scripting:set_military_force_plague(military_force, plague_key) end
+
+--- Attempt to cook a recipe for a faction. The default ingredients will be used.
+---@param faction FACTION_SCRIPT_INTERFACE #Faction interface.
+---@param recipe string #Recipe to cook. This should be a key from the cooking_recipes database table.
+---@return boolean #attempt was successful 
+function episodic_scripting:cook_recipe(faction, recipe) end
+
+--- Attempt to cook a recipe for a faction with the specified ingredients. The ingredients lists should be specified as tables of strings.
+---@param faction FACTION_SCRIPT_INTERFACE #Faction interface.
+---@param recipe string #Recipe to cook. This should be a key from the cooking_recipes database table.
+---@param primary_ingredients table #Table containing a list of string values. Each should be a key from the cooking_ingredients database table.
+---@param secondary_ingredients table #Table containing a list of string values. Each should be a key from the cooking_ingredients database table.
+---@return boolean #attempt was successful 
+function episodic_scripting:cook_recipe_with_ingredients(faction, recipe, primary_ingredients, secondary_ingredients) end
+
+--- Force a recipe to be cooked for a faction. The default ingredients will be used.
+---@param faction FACTION_SCRIPT_INTERFACE #Faction interface.
+---@param recipe string #Recipe to cook. This should be a key from the cooking_recipes database table.
+---@param apply_cost boolean #Apply the recipe cost.
+---@return boolean #attempt was successful 
+function episodic_scripting:force_cook_recipe(faction, recipe, apply_cost) end
+
+--- Force a recipe to be cooked for a faction with the specified ingredients. The ingredients lists should be specified as tables of strings.
+---@param faction FACTION_SCRIPT_INTERFACE #Faction interface.
+---@param recipe string #Recipe to cook. This should be a key from the cooking_recipes database table.
+---@param primary_ingredients table #Table containing a list of string values. Each should be a key from the cooking_ingredients database table.
+---@param secondary_ingredients table #Table containing a list of string values. Each should be a key from the cooking_ingredients database table.
+---@param apply_cost boolean #Apply the recipe cost.
+---@return boolean #attempt was successful 
+function episodic_scripting:force_cook_recipe_with_ingredients(faction, recipe, primary_ingredients, secondary_ingredients, apply_cost) end
+
+--- Unlock an ingredient for a faction. The ingredient must be permitted for the faction.
+---@param faction FACTION_SCRIPT_INTERFACE #Faction interface.
+---@param ingredient string #Ingredient key, from the cooking_ingredients database table.
+function episodic_scripting:unlock_cooking_ingredient(faction, ingredient) end
+
+--- Unlock a cooking recipe for a faction. The recipe must be permitted for the faction.
+---@param faction FACTION_SCRIPT_INTERFACE #Faction interface.
+---@param recipe string #Recipe key, from the cooking_recipes database table.
+function episodic_scripting:unlock_cooking_recipe(faction, recipe) end
+
+--- Clears the active recipe for the specified faction.
+---@param faction FACTION_SCRIPT_INTERFACE #Faction interface.
+---@return boolean #recipe was cleared 
+function episodic_scripting:clear_active_cooking_recipe(faction) end
+
+--- Sets the maximum number of primary ingredients that the specified faction may cook with. This value is clamped between 0 and 10.
+---@param faction FACTION_SCRIPT_INTERFACE #Faction interface.
+---@param max_ingredients number #Maximum number of ingredients.
+function episodic_scripting:set_faction_max_primary_cooking_ingredients(faction, max_ingredients) end
+
+--- Sets the maximum number of secondary ingredients that the specified faction may cook with. This value is clamped between 0 and 10.
+---@param faction FACTION_SCRIPT_INTERFACE #Faction interface.
+---@param max_ingredients number #Maximum number of ingredients.
+function episodic_scripting:set_faction_max_secondary_cooking_ingredients(faction, max_ingredients) end
+
+--- Recruits the specified caravan recruitment item into the specified faction. If successful, a caravan script interface is returned.
+---@param faction FACTION_SCRIPT_INTERFACE #Faction interface.
+---@param caravan_recruitment_item caravan_recruitment_item #Caravan recruitment item interface.
+---@return caravan
+function episodic_scripting:recruit_caravan(faction, caravan_recruitment_item) end
+
+--- Start a character on a new caravan journey. If successful, the caravan script interface is returned.
+---@param faction FACTION_SCRIPT_INTERFACE #Faction interface.
+---@param family_member FAMILY_MEMBER_SCRIPT_INTERFACE #Family member interface of caravan master character.
+---@param cargo number #Cargo value.
+---@param start_node route_node #Starting node of journey.
+---@return caravan
+function episodic_scripting:start_caravan(faction, family_member, cargo, start_node) end
+
+--- Set the cargo value of a caravan. The new cargo value that was set is returned - this can be different to the value passed in to this function if that value was out of bounds.
+---@param caravan caravan #Caravan script interface.
+---@param cargo number #Cargo value.
+---@return number #cargo value set 
+function episodic_scripting:set_caravan_cargo(caravan, cargo) end
+
+--- Set the path of a caravan. A boolean value indicating whether the path was successfully set is returned.
+---@param caravan caravan #caravan
+---@param path_destination route_path #path destination
+---@return boolean #caravan path successfully set 
+function episodic_scripting:set_caravan_path(caravan, path_destination) end
+
+--- Set the path of a caravan, auto-generating the best route to avoid banditry. A boolean value indicating whether the path was successfully set is returned.
+---@param caravan caravan #caravan
+---@param target route_position #target
+---@return boolean #caravan path successfully set 
+function episodic_scripting:set_caravan_auto_path(caravan, target) end
+
+--- Clears a caravan's current path. A boolean value indicating whether the path was successfully cleared is returned.
+---@param caravan caravan #caravan
+---@return boolean #caravan path successfully cleared 
+function episodic_scripting:clear_caravan_path(caravan) end
+
+--- Move a caravan to the next node on its current path. A boolean value indicating whether the movement was successful is returned.
+---@param caravan caravan #caravan
+---@return boolean #caravan successfully moved 
+function episodic_scripting:move_caravan(caravan) end
+
+--- Set the banditry value for a region. The value that was set is returned - this can be different to the value passed in to this function if that value was less than zero or higher than the maximum banditry value set in the campaign_variables database table (or the campaigns_campaign_variables_junctions override table).
+---@param region REGION_DATA_SCRIPT_INTERFACE #region
+---@param banditry_value number #banditry value
+---@return number #set banditry value 
+function episodic_scripting:set_region_caravan_banditry(region, banditry_value) end
+
+--- Set the banditry value for multiple regions, supplied as region_data objects in a lua table.
+---@param regions table #Table of region_data objects.
+---@param banditry_value number #banditry value
+function episodic_scripting:set_multi_region_caravan_banditry(regions, banditry_value) end
+
+--- Opens a specific teleportation node. The template key may be omitted if one is already defined in the teleportation_network_nodes record in the database, otherwise it's required.
+---@param node_key string #Node record key, from the teleportation_network_nodes database table.
+---@param template_key string? #optional, default value=nil Teleportation network node template key, from the teleportation_node_templates database table. This only needs to be provided if the node record specified in the first argument does not provide a template.
+---@return boolean #network node opened successfully 
+function episodic_scripting:teleportation_network_open_node(node_key, template_key) end
+
+--- Closes a specified teleportation node.
+---@param node_key string #Node record key, from the teleportation_network_nodes database table.
+function episodic_scripting:teleportation_network_close_node(node_key) end
+
+--- Opens random nodes in a given teleportation network with the specified template type. The number of nodes opened is returned.
+---@param network_key string #Node network key, from the teleportation_networks database table.
+---@param template_key string #Node template key of nodes to open, from the teleportation_node_templates database table.
+---@param nodes_to_open number #Target number of nodes to open.
+---@return number #number of nodes opened 
+function episodic_scripting:teleportation_network_open_random_nodes(network_key, template_key, nodes_to_open) end
+
+--- Closes random nodes in a teleportation network with a specific template type. The number of nodes closed is returned.
+---@param network_key string #Node network key, from the teleportation_networks database table.
+---@param template_key string #Node template key of nodes to open, from the teleportation_node_templates database table.
+---@param nodes_to_close number #Target number of nodes to close.
+---@return number #number of nodes closed 
+function episodic_scripting:teleportation_network_close_random_nodes(network_key, template_key, nodes_to_close) end
+
+--- Closes all nodes in a teleportation network with a specific template type. The template type may be omitted in order to close the entire network.
+---@param network_key string #Node network key, from the teleportation_networks database table.
+---@param template_key string? #optional, default value=nil Node template key of nodes to close, from the teleportation_node_templates database table.
+function episodic_scripting:teleportation_network_close_all_nodes(network_key, template_key) end
+
+--- Set an effect level modifier to be applied to the nodes of a given teleportation network.
+---@param network_key string #Node network key, from the teleportation_networks database table.
+---@param modifier number #Modifier value.
+function episodic_scripting:teleportation_network_set_effect_level_modifier(network_key, modifier) end
+
+--- Sets the cooldown in turns before the compass heading may be changed for the specified faction.
+---@param faction FACTION_SCRIPT_INTERFACE #Faction interface.
+---@param turns number #Number of turns before the faction may alter the compass direction.
+function episodic_scripting:set_next_winds_of_magic_compass_selection_cooldown(faction, turns) end
 
 --- Modify the number of faction slaves in the specified faction. The change can be positive or negative. This function will only have an affect if the target faction makes use of the slaves mechanic.
 ---@param faction_key string #Faction key, from the factions table.
@@ -1514,176 +2238,34 @@ function episodic_scripting:faction_set_food_factor_value(faction_key, food_fact
 ---@param modifier number #Modifier.
 function episodic_scripting:faction_mod_food_factor_value(faction_key, food_factor_key, modifier) end
 
---- Add the specified amount to the specified resource pool (type of resource), as the specified factor (type of change). The supplied value will be clamped to pool and factor bounds.
----@param faction_key string #Faction key, from the factions table.
----@param resource_key string #Pooled resource key, from the pooled_resources table.
----@param factor_key string #Change factor key, from the pooled_resource_factors table.
----@param amount number #Amount of resource to add. This value can be negative.
-function episodic_scripting:faction_add_pooled_resource(faction_key, resource_key, factor_key, amount) end
-
---- Perform a ritual for a faction. The ritual must be available and valid for the action to succeed.
----@param performing_faction_key string #Faction key of the faction performing the ritual, from the factions table.
----@param target_faction_key string #Faction key of the target faction of the ritual, from the factions table. An empty string may be supplied, in which case the performing faction is the target.
----@param ritual_key string #Ritual key, from the rituals table.
-function episodic_scripting:perform_ritual(performing_faction_key, target_faction_key, ritual_key) end
-
---- Create a new modify ritual setup interface
----@param performing_faction FACTION_SCRIPT_INTERFACE #Faction to perform the ritual
----@param ritual_key string #Ritual key, from the rituals table.
-function episodic_scripting:create_new_ritual_setup(performing_faction, ritual_key) end
-
---- Perform a ritual with the provided setup, it must be available and valid for this call to succeed. Both modify and standard ritual setup interfaces are valid for this method
----@param setup MODIFY_RITUAL_SETUP_SCRIPT_INTERFACE|RITUAL_SETUP_SCRIPT_INTERFACE #Ritual setup to use
-function episodic_scripting:perform_ritual_with_setup(setup) end
-
---- Rolls back a linked ritual chain to the specified stage. It is safe to call this function if the ritual chain isn't at this stage yet.
----@param ritual_chain_key string #Ritual chain key, from the campaign_group_ritual_chains table.
----@param stage number #Stage number.
-function episodic_scripting:rollback_linked_ritual_chain(ritual_chain_key, stage) end
-
---- Lock a ritual for a faction.
----@param faction FACTION_SCRIPT_INTERFACE #Target Faction
----@param ritual_key string #Ritual key, from the rituals table.
-function episodic_scripting:lock_ritual(faction, ritual_key) end
-
---- Unlock a ritual for a faction.
----@param faction FACTION_SCRIPT_INTERFACE #Target Faction
----@param ritual_key string #Ritual key, from the rituals table.
----@param duration number #Duration, number of rounds the ritual will be unlocked for. Zero or negative will be infinite.
-function episodic_scripting:unlock_ritual(faction, ritual_key, duration) end
-
---- Lock a ritual chain for a faction.
----@param faction FACTION_SCRIPT_INTERFACE #Target Faction
----@param ritual_chain_key string #Ritual chain key, from the ritual_chains table.
-function episodic_scripting:lock_ritual_chain(faction, ritual_chain_key) end
-
---- Unlock a ritual chain for a faction.
----@param faction FACTION_SCRIPT_INTERFACE #Target Faction
----@param ritual_chain_key string #Ritual Chain key, from the ritual_chains table.
----@param duration number #Duration, number of rounds the ritual chain will be unlocked for. Zero or negative will be infinite.
-function episodic_scripting:unlock_ritual_chain(faction, ritual_chain_key, duration) end
-
---- Lock all rituals in a category for a faction.
----@param faction FACTION_SCRIPT_INTERFACE #Target Faction
----@param ritual_category_key string #Ritual category key, from the ritual_categories table.
-function episodic_scripting:lock_rituals_in_category(faction, ritual_category_key) end
-
---- Unlock a rituals in a category for a faction.
----@param faction FACTION_SCRIPT_INTERFACE #Target Faction
----@param ritual_category_key string #Ritual category key, from the ritual_categories table.
----@param duration number #Duration, number of rounds the rituals in the category will be unlocked for. Zero or negative will be infinite.
-function episodic_scripting:unlock_ritual_in_category(faction, ritual_category_key, duration) end
-
---- Applies the effect of a ritual that is active right now. This is used in conjunction with the delay_payload_application field of the rituals database table. Should this field be set for a ritual, then that ritual will not apply its payload effects when triggered until this function or cm:apply_active_rituals is called.<br />
---- Calls to this function will not succeed if the ritual has not been actively triggered.
----@param faction FACTION_SCRIPT_INTERFACE #Target faction.
----@param ritual ACTIVE_RITUAL_SCRIPT_INTERFACE #Target ritual.
-function episodic_scripting:apply_active_ritual(faction, ritual) end
-
---- Applies the effect of all rituals that are active for a faction right now. This is used in conjunction with the delay_payload_application field of the rituals database table. Should this field be set for a ritual, then that ritual will not apply its payload effects when triggered until this function or cm:apply_active_ritual is called.<br />
---- Calls to this function will not succeed if the ritual has not been actively triggered.
----@param faction FACTION_SCRIPT_INTERFACE #Target faction.
-function episodic_scripting:apply_active_rituals(faction) end
-
---- Spawn a plague at a settlement.
----@param settlement SETTLEMENT_SCRIPT_INTERFACE #Target settlement.
----@param plague_key string #Plague key, from the plagues table.
-function episodic_scripting:spawn_plague_at_settlement(settlement, plague_key) end
-
---- Spawn a plague in a region.
----@param region REGION_SCRIPT_INTERFACE #Target region.
----@param plague_key string #Plague key, from the plagues table.
-function episodic_scripting:spawn_plague_at_region(region, plague_key) end
-
---- Spawn a plague at a military force.
----@param military_force MILITARY_FORCE_SCRIPT_INTERFACE #Target military force.
----@param plague_key string #Plague key, from the plagues table.
-function episodic_scripting:spawn_plague_at_military_force(military_force, plague_key) end
-
---- Sets a unit purchasable effect to be available or unavailable for a specified faction. Unit purchasable effects are upgrades for units, which is supported for some factions/races.
----@param faction_key string #Key of the target faction, from the factions database table.
----@param purchasable_effect_key string #Key of the purchasable effect, from the unit_purchasable_effects database table.
----@param available boolean #Sets whether the purchasable effect should be available or not.
-function episodic_scripting:faction_set_unit_purchasable_effect_availability(faction_key, purchasable_effect_key, available) end
-
---- Makes the supplied faction purchase a supplied effect for a supplied unit. All arguments are specified by model hierarchy objects - see the Model Hierarchy documentation for more information.
+--- Makes the supplied faction purchase a supplied effect for a supplied unit. Unit purchasable effects are upgrades for units, which is supported for some factions/races.
 ---@param faction FACTION_SCRIPT_INTERFACE #faction
 ---@param unit UNIT_SCRIPT_INTERFACE #unit
----@param purchasable_effect UNIT_PURCHASABLE_EFFECT_SCRIPT_INTERFACE #purchasable effect
+---@param purchasable_effect unit_purchasable_effect #purchasable effect
 function episodic_scripting:faction_purchase_unit_effect(faction, unit, purchasable_effect) end
 
---- Locks or unlocks the purchasable unit effect faction-wide, with an optional lock reason record. The purchasable effect is specified by string key. The faction is specified by FACTION_SCRIPT_INTERFACE - see the Model Hierarchy documentation for more information.
----@param faction FACTION_SCRIPT_INTERFACE #Faction object.
+--- Makes the supplied faction unpurchase a supplied effect for a supplied unit, marking the effect as purchasable again. See also cm:faction_purchase_unit_effect.
+---@param unit UNIT_SCRIPT_INTERFACE #unit
+---@param purchasable_effect unit_purchasable_effect #purchasable effect
+function episodic_scripting:faction_unpurchase_unit_effect(unit, purchasable_effect) end
+
+--- Locks or unlocks the purchasable unit effect faction-wide, with an optional lock reason record.
+---@param faction FACTION_SCRIPT_INTERFACE #Faction interface.
 ---@param purchasable_effect string #Unit purchasable effect. This should be a key from the unit_purchasable_effects database table.
 ---@param lock_reason string #Lock reason. This should be a key from the unit_purchasable_effect_lock_reasons database table. A blank string may be supplied to not provide a lock reason.
 ---@param should_lock boolean #Should lock - supply true to lock the effect, and false to unlock it.
 function episodic_scripting:faction_set_unit_purchasable_effect_lock_state(faction, purchasable_effect, lock_reason, should_lock) end
 
---- Puts the supplied character into the supplied faction's prison. The faction and character are specified by model hierarchy objects - see the Model Hierarchy documentation for more information.
+--- Puts the supplied character into the supplied faction's prison.
 ---@param imprisoning_faction FACTION_SCRIPT_INTERFACE #imprisoning faction
 ---@param imprisoned_character CHARACTER_SCRIPT_INTERFACE #imprisoned character
 function episodic_scripting:faction_imprison_character(imprisoning_faction, imprisoned_character) end
 
---- Performs an action on a character within the faction's prison. The faction and character (family member) are specified by model hierarchy objects - see the Model Hierarchy documentation for more information.
+--- Performs an action on a character within the faction's prison.
 ---@param faction FACTION_SCRIPT_INTERFACE #Imprisoning faction.
----@param character FAMILY_MEMBER_SCRIPT_INTERFACE #Imprisoned character - this is specified as a family member.
+---@param character FAMILY_MEMBER_SCRIPT_INTERFACE #Family member interface related to the imprisoned character.
 ---@param action string #Action to perform. This should be a key from the campaign_prison_actions database table.
 function episodic_scripting:faction_perform_action_on_prisoner(faction, character, action) end
-
---- Attempt to cook a recipe for a faction. The default ingredients will be used.
----@param faction FACTION_SCRIPT_INTERFACE #Faction object - see the Model Hierarchy documentation for more information.
----@param recipe string #Recipe to cook. This should be a key from the cooking_recipes database table.
----@return boolean #attempt was successful 
-function episodic_scripting:cook_recipe(faction, recipe) end
-
---- Attempt to cook a recipe for a faction with the specified ingredients. The ingredients lists should be specified as tables of strings.
----@param faction FACTION_SCRIPT_INTERFACE #Faction object - see the Model Hierarchy documentation for more information.
----@param recipe string #Recipe to cook. This should be a key from the cooking_recipes database table.
----@param primary_ingredients table #Table containing a list of string values. Each should be a key from the cooking_ingredients database table.
----@param secondary_ingredients table #Table containing a list of string values. Each should be a key from the cooking_ingredients database table.
----@return boolean #attempt was successful 
-function episodic_scripting:cook_recipe_with_ingredients(faction, recipe, primary_ingredients, secondary_ingredients) end
-
---- Force a recipe to be cooked for a faction. The default ingredients will be used.
----@param faction FACTION_SCRIPT_INTERFACE #Faction object - see the Model Hierarchy documentation for more information.
----@param recipe string #Recipe to cook. This should be a key from the cooking_recipes database table.
----@param apply_cost boolean #Apply the recipe cost.
----@return boolean #attempt was successful 
-function episodic_scripting:force_cook_recipe(faction, recipe, apply_cost) end
-
---- Force a recipe to be cooked for a faction with the specified ingredients. The ingredients lists should be specified as tables of strings.
----@param faction FACTION_SCRIPT_INTERFACE #Faction object - see the Model Hierarchy documentation for more information.
----@param recipe string #Recipe to cook. This should be a key from the cooking_recipes database table.
----@param primary_ingredients table #Table containing a list of string values. Each should be a key from the cooking_ingredients database table.
----@param secondary_ingredients table #Table containing a list of string values. Each should be a key from the cooking_ingredients database table.
----@param apply_cost boolean #Apply the recipe cost.
----@return boolean #attempt was successful 
-function episodic_scripting:force_cook_recipe_with_ingredients(faction, recipe, primary_ingredients, secondary_ingredients, apply_cost) end
-
---- Unlock an ingredient for a faction. The ingredient must be permitted for the faction.
----@param faction FACTION_SCRIPT_INTERFACE #Faction object - see the Model Hierarchy documentation for more information.
----@param ingredient string #Ingredient key, from the cooking_ingredients database table.
-function episodic_scripting:unlock_cooking_ingredient(faction, ingredient) end
-
---- Unlock a cooking recipe for a faction. The recipe must be permitted for the faction.
----@param faction FACTION_SCRIPT_INTERFACE #Faction object - see the Model Hierarchy documentation for more information.
----@param recipe string #Recipe key, from the cooking_recipes database table.
-function episodic_scripting:unlock_cooking_recipe(faction, recipe) end
-
---- Clears the active recipe for the specified faction.
----@param faction FACTION_SCRIPT_INTERFACE #Faction object - see the Model Hierarchy documentation for more information.
----@return boolean #recipe was cleared 
-function episodic_scripting:clear_active_cooking_recipe(faction) end
-
---- Sets the maximum number of primary ingredients that the specified faction may cook with. This value is clamped between 0 and 10.
----@param faction FACTION_SCRIPT_INTERFACE #Faction object - see the Model Hierarchy documentation for more information.
----@param max_ingredients number #Maximum number of ingredients.
-function episodic_scripting:set_faction_max_primary_cooking_ingredients(faction, max_ingredients) end
-
---- Sets the maximum number of secondary ingredients that the specified faction may cook with. This value is clamped between 0 and 10.
----@param faction FACTION_SCRIPT_INTERFACE #Faction object - see the Model Hierarchy documentation for more information.
----@param max_ingredients number #Maximum number of ingredients.
-function episodic_scripting:set_faction_max_secondary_cooking_ingredients(faction, max_ingredients) end
 
 --- Adds a record which modifies or completely overrides a fought or autoresolved battle, if that battle happens within a certain supplied radius of a supplied campaign anchor position. Aspects of the battle may be specified, such as the loading screen and script to use, or the entire battle may be subsituted with an xml battle.<br />
 --- Note that the campaign_manager intercepts calls which modify custom battlefield records, and will defer them if a battle is currently active and has been fought. This is to stop existing custom battlefield records, which are needed by the code to process the battle result, from being tampered with. See the Custom Battlefields section.
@@ -1745,6 +2327,62 @@ function episodic_scripting:pending_battle_remove_scripted_tile_upgrade_tags(til
 --- Override the battle environment of upcoming battles. This needs to be cleared by calling it without any parameters.
 ---@param file_name string #The file path of the battle environment file. E.g. "weather/battle/wh_day_clear_02.environment_group"
 function episodic_scripting:set_battle_lighting_env_override(file_name) end
+
+--- Rebuild pending battle setup and autoresolve results. This should be called after any model modification, when processing the PendingBattle event.
+function episodic_scripting:update_pending_battle() end
+
+--- Set an override for the prebattle display camera configuration. This allows the camera to be positioned in a custom manner on the pre-battle screen.
+---@param distance number #Camera distance.
+---@param height number #Camera height.
+---@param bearing number #Bearing from camera to target in radians.
+---@param scale number #Unary scale of army leaders.
+---@param scale number #Separation of army leaders.
+function episodic_scripting:set_prebattle_display_configuration_override(distance, height, bearing, scale, scale) end
+
+--- Set an override for the prebattle display camera configuration type. Valid values are "character", "settlement" and "tunnel".
+---@param camera_type string #camera type
+function episodic_scripting:set_prebattle_display_configuration_camera_type_override(camera_type) end
+
+--- Clears any prebattle display configuration overrides previously set with cm:set_prebattle_display_configuration_override or cm:set_prebattle_display_configuration_camera_type_override.
+function episodic_scripting:clear_prebattle_display_configuration_override() end
+
+--- Sets a custom loading screen layout, altering the loading screen that is used to load out of this campaign into battle. The supplied argument should be the filename of a json file found in data\UI\loading_ui\dynamic_loading_screen_data.
+---@param loading_screen_id string #loading screen id
+---@return observation_options_for_faction
+---@return observation_options_for_allies
+---@return observation_options_for_enemies
+---@return observation_options_for_neutrals
+function episodic_scripting:set_loading_screen_id(loading_screen_id) end
+
+--- Sets character observation options for a specific faction. The observation_options may be retrieved by calling observation_options_for_faction on a world interface, and calling functions on it to customise view options before passing it back to this function.
+---@param subject_faction FACTION_SCRIPT_INTERFACE #subject faction
+---@param observation_options observation_options #observation options
+function episodic_scripting:set_character_observation_options_for_faction(subject_faction, observation_options) end
+
+--- Sets character observation options for all allies. The observation_options may be retrieved by calling observation_options_for_allies on a world interface, and calling functions on it to customise view options before passing it back to this function.
+---@param observation_options observation_options #observation options
+function episodic_scripting:set_character_observation_options_for_allies(observation_options) end
+
+--- Sets character observation options for all enemies. The observation_options may be retrieved by calling observation_options_for_enemies on a world interface, and calling functions on it to customise view options before passing it back to this function.
+---@param observation_options observation_options #observation options
+function episodic_scripting:set_character_observation_options_for_enemies(observation_options) end
+
+--- Sets character observation options for all neutral factions. The observation_options may be retrieved by calling observation_options_for_neutrals on a world interface, and calling functions on it to customise view options before passing it back to this function.
+---@param observation_options observation_options #observation options
+function episodic_scripting:set_character_observation_options_for_neutrals(observation_options) end
+
+--- Awards an achievement to the local player.
+---@param achievement_key string #Achievement key, from the achievements database table.
+function episodic_scripting:award_achievement(achievement_key) end
+
+--- Returns a war_coordination, through which war co-ordination queries are made and by which war co-ordination requests can be made.
+---@return war_coordination
+function episodic_scripting:war_coordination() end
+
+--- Set the base strategic threat score for a faction. This corresponds to score levels seen in the faction_strategic_threat_levels database table.
+---@param faction_interface FACTION_SCRIPT_INTERFACE #faction interface
+---@param threat_score number #threat score
+function episodic_scripting:set_base_strategic_threat_score(faction_interface, threat_score) end
 
 --- Force the specified faction to adopt the specified AI personality.
 ---@param faction_key string #Faction key, from the factions table.
@@ -1827,3 +2465,76 @@ function episodic_scripting:cai_disable_command_assignment_for_character(charact
 --- Allows the AI to assigning the specified character to a position of command again after it was previously blocked with cm:cai_disable_command_assignment_for_character.
 ---@param character_lookup string #Character lookup string - see Character Lookups for more information.
 function episodic_scripting:cai_enable_command_assignment_for_character(character_lookup) end
+
+--- Creates a diplomatic event that modifies the diplomatic standing between two factions. Example events include army trespassing, financial gifts, hostile agent actions etc.
+---@param originating_faction string #Key of the faction the diplomatic event is originating from, from the factions database table.
+---@param target_faction string #Key of the faction the diplomatic event is targeting, from the factions database table.
+---@param diplomatic_action string #Key of the diplomatic action, from the cai_personality_diplomatic_events database table.
+function episodic_scripting:cai_add_diplomatic_event(originating_faction, target_faction, diplomatic_action) end
+
+--- Inserts a diplomatic event for a caravan arriving for a given faction.
+---@param event_faction_name string #Name of the faction receiving the diplomatic event, from the factions database table.
+---@param caravan_faction_name string #Name of the faction owning the caravan, from the factions database table.
+function episodic_scripting:cai_insert_caravan_diplomatic_event(event_faction_name, caravan_faction_name) end
+
+--- Disables the ability of the ai to target a settlement.
+---@param settlement_key string #Settlement key, from the campaign_map_settlements database table.
+function episodic_scripting:cai_disable_targeting_against_settlement(settlement_key) end
+
+--- Enables the ability of the ai to target a settlement after it was disabled with cm:cai_disable_targeting_against_settlement.
+---@param settlement_key string #Settlement key, from the campaign_map_settlements database table.
+function episodic_scripting:cai_enable_targeting_against_settlement(settlement_key) end
+
+--- Evaluates a quick-deal action between two factions, and returns both the quick deal score and whether the deal can be proposed. A quick deal score greater than zero means it would likely be accepted by the target faction (if controlled by the AI).
+---@param proposing_faction FACTION_SCRIPT_INTERFACE #proposing faction interface.
+---@param recipient_faction FACTION_SCRIPT_INTERFACE #recipient faction interface.
+---@param deal_type string #Deal type, from the diplomatic_actions database table.
+function episodic_scripting:cai_evaluate_quick_deal_action(proposing_faction, recipient_faction, deal_type) end
+
+--- Sets the global script context value.
+---@param value string #Value to set. Valid values are "DEFAULT", "ALPHA", "BETA", "GAMMA", "DELTA", "EPSILON" and "ZETA".
+function episodic_scripting:cai_set_global_script_context(value) end
+
+--- Returns the current global script context value.
+---@return string #global script context value 
+function episodic_scripting:cai_get_global_script_context() end
+
+--- Clears the current global script context value, setting it to "DEFAULT".
+function episodic_scripting:cai_clear_global_script_context() end
+
+--- Sets the script context value for the specified faction.
+---@param faction_key string #Faction key, from the factions database table.
+---@param value string #Value to set. Valid values are "DEFAULT", "ALPHA", "BETA", "GAMMA", "DELTA", "EPSILON" and "ZETA".
+function episodic_scripting:cai_set_faction_script_context(faction_key, value) end
+
+--- Returns the current script context value for the specified faction.
+---@param faction_key string #Faction key, from the factions database table.
+---@return string #script context value 
+function episodic_scripting:cai_get_faction_script_context(faction_key) end
+
+--- Clears the script context value for the specified faction, setting it to "DEFAULT".
+---@param faction_key string #Faction key, from the factions database table.
+function episodic_scripting:cai_clear_faction_script_context(faction_key) end
+
+--- Adds a point of interest marker for the AI. An optional associated faction can be specified.
+---@param poi_group_id number #point-of-interest group identifier index.
+---@param poi_id number #point-of-interest identifier index. This is the id within the group the POI belongs to.
+---@param x number #Logical x co-ordinate.
+---@param y number #Logical y co-ordinate.
+---@param faction_key string? #optional, default value=nil Key of associated faction, from the factions database table.
+function episodic_scripting:cai_add_point_of_interest_generic_marker(poi_group_id, poi_id, x, y, faction_key) end
+
+--- Removes a point-of-interest marker based on its group id and id.
+---@param poi_group_id number #point-of-interest group identifier index.
+---@param poi_id number #point-of-interest identifier index.
+function episodic_scripting:cai_remove_point_of_interest_generic_marker(poi_group_id, poi_id) end
+
+--- Start gathering timing information for metrics.
+function episodic_scripting:trigger_performance_metrics_start() end
+
+--- Stop gather timing information for metrics and send.
+function episodic_scripting:trigger_performance_metrics_stop() end
+
+--- Report that a scripted tour was started by a user.
+---@param tour_name string #tour name
+function episodic_scripting:trigger_scripted_tour_metrics_start(tour_name) end

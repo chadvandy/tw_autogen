@@ -89,6 +89,9 @@
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:validate:is_characterlist">is_characterlist</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:validate:is_regionmanager">is_regionmanager</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:validate:is_region">is_region</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:validate:is_regiondata">is_regiondata</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:validate:is_province">is_province</a></li>
+							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:validate:is_factionprovince">is_factionprovince</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:validate:is_regionlist">is_regionlist</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:validate:is_garrisonresidence">is_garrisonresidence</a></li>
 							<li>&emsp;&emsp;&emsp;&emsp;<a href="#function:validate:is_settlement">is_settlement</a></li>
@@ -187,6 +190,7 @@
 					<li><a href="cinematics.html">Cinematics</a></li>
 					<li><a href="common.html">Common</a></li>
 					<li><a href="episodic_scripting.html">Episodic Scripting</a></li>
+					<li><a href="model_hierarchy.html">Model Hierarchy</a></li>
 					<li><a href="scriptedvalueregistry.html">ScriptedValueRegistry</a></li>
 					<li><a href="uicomponent.html">UIComponents</a></li>
 
@@ -203,7 +207,6 @@
 					<li><a href="global.html">Global</a></li>
 					<li><a href="infotext_manager.html">Infotext Manager</a></li>
 					<li><a href="intervention.html">Interventions</a></li>
-					<li><a href="intro_campaign_scripts.html">Helper Scripts</a></li>
 					<li><a href="invasion_manager.html">Invasion Manager</a></li>
 					<li><a href="mission_manager.html">Mission Managers</a></li>
 					<li><a href="movie_overlay.html">Movie Overlays</a></li>
@@ -224,6 +227,8 @@
 
 				<h2 style="background-color:#ffed8c">Data Interfaces</h2>
 				<ul>
+					<li><a href="custom_starts.html">Campaign Custom Starts</a></li>
+					<li><a href="faction_intro.html">Faction Intro</a></li>
 					<li><a href="narrative.html">Narrative</a></li>
 					<li><a href="narrative_events.html">Narrative Event Templates</a></li>
 					<li><a href="narrative_queries.html">Narrative Query Templates</a></li>
@@ -302,7 +307,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is nil</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1855</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1866</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -336,7 +341,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a number</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1862</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1873</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -370,7 +375,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a function</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1869</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1880</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -404,7 +409,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a string</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1876</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1887</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -438,7 +443,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a boolean</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1883</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1894</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -472,7 +477,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a boolean</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1890</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1901</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -506,7 +511,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a table</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1904</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1915</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -540,7 +545,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is userdata</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1911</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1922</p>
 						</dd>
 					</dl>
 				</div>
@@ -583,7 +588,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is an integer</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1933</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1944</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -617,7 +622,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a positive number</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1940</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1951</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -651,7 +656,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a non-negative number</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1947</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1958</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -685,7 +690,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a non-empty table</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1954</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1965</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -719,7 +724,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a non-empty indexed table</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1969</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1980</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -753,7 +758,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a table of strings</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1983</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1994</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -787,7 +792,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a string/table of strings</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 1997</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2008</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -821,7 +826,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a string/table of strings</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2011</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2022</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -855,7 +860,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a function or true</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2025</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2036</p>
 						</dd>
 					</dl>
 				</div>
@@ -898,7 +903,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is an event context</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2042</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2053</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -932,7 +937,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is an event context</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2049</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2060</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -966,7 +971,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a component memory address</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2056</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2067</p>
 						</dd>
 					</dl>
 				</div>
@@ -1009,7 +1014,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a null script interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2078</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2089</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1043,7 +1048,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a model interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2085</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2096</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1077,7 +1082,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a world interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2092</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2103</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1111,7 +1116,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a faction interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2099</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2110</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1145,7 +1150,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a faction list interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2106</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2117</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1179,7 +1184,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a character interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2113</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2124</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1213,7 +1218,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a family member interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2120</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2131</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1247,7 +1252,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a character list interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2127</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2138</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1281,7 +1286,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a region manager interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2134</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2145</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1315,7 +1320,109 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a region interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2141</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2152</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:validate:is_regiondata"><h3 class="function_name"><strong><code>validate.is_regiondata(value </strong></code><i class="parameter">value</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Throws a <code><a href="global.html#function:global:script_error">script_error</a></code> and returns <code>false</code> if the supplied value is not a campaign region data interface. If the supplied value is a region data interface then <code>true</code> is returned.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>value</code></p>
+									</td>
+									<td>
+										<p>value</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a region data interface</li>
+							</ol>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2159</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:validate:is_province"><h3 class="function_name"><strong><code>validate.is_province(value </strong></code><i class="parameter">value</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Throws a <code><a href="global.html#function:global:script_error">script_error</a></code> and returns <code>false</code> if the supplied value is not a campaign province interface. If the supplied value is a province interface then <code>true</code> is returned.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>value</code></p>
+									</td>
+									<td>
+										<p>value</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a province interface</li>
+							</ol>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2166</p>
+						</dd>
+					</dl>
+					<dl class="function">
+						<dt>
+							<a name="function:validate:is_factionprovince"><h3 class="function_name"><strong><code>validate.is_factionprovince(value </strong></code><i class="parameter">value</i><code><strong>)</code></strong></h3></a>
+						</dt>
+						<dd>
+							Throws a <code><a href="global.html#function:global:script_error">script_error</a></code> and returns <code>false</code> if the supplied value is not a campaign faction province interface. If the supplied value is a faction province interface then <code>true</code> is returned.
+
+							<h4>Parameters:</h4>
+							<table class="parameter_list">
+								<colgroup>
+									<col style="width: 3%;">
+									<col style="width: 12%;">
+									<col style="width: 85%;">
+								</colgroup>
+								<tr>
+									<td>
+										<p><strong>1</strong></p>
+									</td>
+									<td>
+										<p><code>value</code></p>
+									</td>
+									<td>
+										<p>value</p>
+									</td>
+								</tr>
+							</table>
+
+							<h4>Returns:</h4>
+							<ol>
+								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a faction province interface</li>
+							</ol>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2173</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1349,7 +1456,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a region list interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2148</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2180</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1383,7 +1490,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a garrison residence interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2155</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2187</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1417,7 +1524,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a settlement interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2162</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2194</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1451,7 +1558,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a slot interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2169</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2201</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1485,7 +1592,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a slot list interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2176</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2208</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1519,7 +1626,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a military force interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2183</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2215</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1553,7 +1660,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a military force list interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2190</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2222</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1587,7 +1694,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a unit interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2197</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2229</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1621,7 +1728,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a unit list interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2204</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2236</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1655,7 +1762,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a pending battle interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2211</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2243</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1689,7 +1796,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a mission interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2218</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2250</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1723,7 +1830,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a campaign ai interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2225</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2257</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1757,7 +1864,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a building list interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2232</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2264</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1791,7 +1898,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a building interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2239</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2271</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1825,7 +1932,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a foreign slot manager interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2246</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2278</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1859,7 +1966,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a foreign slot interface</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2253</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2285</p>
 						</dd>
 					</dl>
 				</div>
@@ -1902,7 +2009,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a battle sound effect</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2274</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2306</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1936,7 +2043,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a battle object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2281</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2313</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -1970,7 +2077,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is an alliances object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2288</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2320</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2004,7 +2111,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is an alliance object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2295</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2327</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2038,7 +2145,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is an armies object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2302</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2334</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2072,7 +2179,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is an army object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2309</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2341</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2106,7 +2213,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a units object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2316</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2348</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2140,7 +2247,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a unitcontroller object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2323</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2355</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2174,7 +2281,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a battle vector object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2330</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2362</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2208,7 +2315,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a buildings collection object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2337</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2369</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2242,7 +2349,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a subtitles object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2344</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2376</p>
 						</dd>
 					</dl>
 				</div>
@@ -2285,7 +2392,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a core object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2368</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2400</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2319,7 +2426,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a timer manager object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2375</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2407</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2353,7 +2460,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a script messager object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2382</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2414</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2387,7 +2494,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a script messager object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2389</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2421</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2421,7 +2528,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is an objectives manager object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2396</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2428</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2455,7 +2562,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is an infotext manager object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2403</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2435</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2489,7 +2596,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a link parser object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2410</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2442</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2523,7 +2630,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a tooltip listener object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2417</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2449</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2557,7 +2664,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a tooltip patcher object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2424</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2456</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2591,7 +2698,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a help page manager object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2431</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2463</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2625,7 +2732,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a help page object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2438</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2470</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2659,7 +2766,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a help page object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2445</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2477</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2693,7 +2800,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is an active pointer object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2452</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2484</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2727,7 +2834,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a scripted tour object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2459</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2491</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2761,7 +2868,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a navigable tour object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2466</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2498</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2795,7 +2902,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a navigable tour section object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2473</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2505</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2829,7 +2936,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a movie overlay object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2480</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2512</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2863,7 +2970,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a windowed movie player object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2487</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2519</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2897,7 +3004,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a topic leader object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2494</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2526</p>
 						</dd>
 					</dl>
 				</div>
@@ -2940,7 +3047,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a campaign manager script object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2518</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2550</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -2974,7 +3081,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a campaign cutscene script object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2525</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2557</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3008,7 +3115,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a ui override script object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2532</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2564</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3042,7 +3149,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a campaign ui manager script object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2539</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2571</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3076,7 +3183,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a campaign mission manager script object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2546</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2578</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3110,7 +3217,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a campaign chapter mission script object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2553</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2585</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3144,7 +3251,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a campaign intervention script object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2560</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2592</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3178,7 +3285,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a campaign intervention manager script object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2567</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2599</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3212,7 +3319,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a campaign intervention manager script object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2574</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2606</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3246,7 +3353,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a campaign random army manager script object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2581</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2613</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3280,7 +3387,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a campaign narrative event script object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2588</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2620</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3314,7 +3421,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a campaign narrative query script object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2595</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2627</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3348,7 +3455,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a campaign narrative trigger script object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2602</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2634</p>
 						</dd>
 					</dl>
 				</div>
@@ -3391,7 +3498,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a battle manager script object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2627</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2659</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3425,7 +3532,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a battle cutscene script object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2634</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2666</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3459,7 +3566,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a battle convex area script object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2641</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2673</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3493,7 +3600,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a battle scriptunit object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2648</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2680</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3527,7 +3634,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a battle scriptunits collection object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2655</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2687</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3561,7 +3668,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a battle scriptunits collection object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2662</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2694</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3595,7 +3702,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a battle scriptunits collection object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2669</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2701</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3629,7 +3736,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a battle script ai planner object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2676</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2708</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3663,7 +3770,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a generated battle object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2683</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2715</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3697,7 +3804,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a generated army object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2690</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2722</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3731,7 +3838,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is a generated cutscene object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2697</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2729</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3765,7 +3872,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is an advice manager script object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2704</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2736</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3799,7 +3906,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is an advice monitor script object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2711</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2743</p>
 						</dd>
 					</dl>
 					<dl class="function">
@@ -3833,7 +3940,7 @@
 							<ol>
 								<li><code><code><a href="lua.html#class:boolean">boolean</a></code></code> value is an attack lane manager script object</li>
 							</ol>
-							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2718</p>
+							<p class="file_comment">defined in ../../Warhammer/working_data/script/_lib/lib_types.lua, line 2750</p>
 						</dd>
 					</dl>
 				</div>
@@ -3843,7 +3950,7 @@
 
 		</div>
 
-		<div id="about">Last updated 20/01/2022 17:32:52</div>
+		<div id="about">Last updated 12/08/2022 11:56:58</div>
 
 	</div>
 

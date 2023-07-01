@@ -6,7 +6,7 @@ local cutscene = {}
 --- Creates a cutscene object. A cutscene must be given a string name, an object granting control over the player's army (to allow it to be taken away during the cutscene), a length, and, optionally, a function to call when the cutscene finishes.
 ---@param name string #Name for cutscene.
 ---@param unit_controller any #Either a unitcontroller with control over the player's army, or a script_units collection containing all of the player's units.
----@param duration number? #optional, default value=nil Cutscene duration in milliseconds. If nil or 0 is specified then the cutscene will be set to not end, and will only finish when skipped by the player or ended by an external process - see cutscene:set_do_not_end.
+---@param duration number? #optional, default value=nil Cutscene duration in milliseconds. If nil or 0 is specified then the cutscene will be set to not end, and will only finish when skipped by the player or ended by an external process
 ---@param end_callback function? #optional, default value=nil End callback. A callback is usually specified here, although not always.
 ---@return cutscene #cutscene object 
 function cutscene:new(name, unit_controller, duration, end_callback) end
@@ -37,7 +37,8 @@ function cutscene:add_cinematic_trigger_listener(id, callback) end
 --- Adds an action to the cutscene. Specify a function callback to be called, and a time after the start of the cutscene to call it in ms. If relative mode has been set with cutscene:set_relative_mode then the specified time should instead be relative to the previously-enqueued action.
 ---@param action_callback function #Action callback.
 ---@param action_time number #Action time in ms. This can be 0, but cannot be greater than the length of the cutscene.
-function cutscene:action(action_callback, action_time) end
+---@param is_terminator boolean? #optional, default value=true If true, no actions will be called after this one.
+function cutscene:action(action_callback, action_time, is_terminator) end
 
 --- Instructs the cutscene to play a sound. This sound is registered to the cutscene, so that it can query its status later and also stop it if the cutscene is skipped.
 ---@param sound battle_sound_effect #sound
@@ -130,10 +131,6 @@ function cutscene:set_battle_speed(battle_speed) end
 --- Sets whether the cutscene should restore battle speed to that set prior to the cutscene starting. By default this behaviour is enabled.
 ---@param should_restore boolean? #optional, default value=true should restore
 function cutscene:set_should_restore_battle_speed(should_restore) end
-
---- Sets the cutscene to not end naturally. A cutscene set up in this manner may only be ended by being skipped or by an external script.
----@param do_not_end boolean? #optional, default value=true do not end
-function cutscene:set_do_not_end(do_not_end) end
 
 --- Sets whether unit ID uicomponents should be disabled during the cutscene. By default they are disabled, but by supplying false as an argument this function can be used to make them display.
 ---@param disable_unit_ids boolean? #optional, default value=true disable unit ids

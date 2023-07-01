@@ -302,14 +302,6 @@ function battle:suppress_unit_voices(should_suppress) end
 ---@param should_suppress boolean #should suppress
 function battle:suppress_unit_musicians(should_suppress) end
 
---- Enables or disables the automatic management of music by the game. Music-auto-playback should be disabled using this function if music is to be scripted.
----@param auto_playback boolean #Automatic music playback enabled.
-function battle:set_music_auto_playback(auto_playback) end
-
---- Sets whether scripted music should loop.
----@param should_loop boolean #should loop
-function battle:set_music_loop(should_loop) end
-
 --- Plays a specified piece of music. The music to play is specified by its sound event name.
 ---@param music_name string #music name
 function battle:play_music(music_name) end

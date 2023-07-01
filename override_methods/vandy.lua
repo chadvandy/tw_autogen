@@ -141,3 +141,8 @@ function core:add_listener(listener_name, event_name, conditional_test, target_c
 --- Returns a handle to the game model at any time (after the game has been created). See the Model Hierarchy pages for more information about the game model interface.
 ---@return MODEL_SCRIPT_INTERFACE  model 
 function campaign_manager:model() end
+
+--- Will create a CcoScriptObject to context cache with specified value (or update existing objects value), and send notification of change so ContextInitScriptObject can refresh display of self and children
+---@param unique_id string #the unique id for the value so can set and get the value
+---@param value string|number #The value we're saving for this ScriptObject.
+function common.set_context_value(unique_id, value) end

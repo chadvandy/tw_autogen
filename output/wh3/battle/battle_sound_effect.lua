@@ -22,6 +22,6 @@ function battle_sound_effect:stop() end
 ---@return boolean #is playing 
 function battle_sound_effect:is_playing() end
 
---- Returns whether the sound effect is currently valid. An invalid sound effect is one that hasn't had a valid sound event associated with it with battle_sound_effect:load.
+--- Returns whether the sound effect is currently valid. An invalid sound effect is one that hasn't had a valid sound event associated with it with sound_effect:load.
 ---@return boolean #is valid 
 function battle_sound_effect:is_valid() end

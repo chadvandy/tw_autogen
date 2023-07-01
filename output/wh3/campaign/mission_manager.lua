@@ -26,6 +26,11 @@ function mission_manager:set_should_whitelist(should_whitelist) end
 ---@param show_event boolean? #optional, default value=true show event
 function mission_manager:set_show_mission(show_event) end
 
+--- Specifies that this mission is a victory condition. These missions have different string formatting, so use their own function for constructing the strings.<br />
+--- This setting only takes effect if the mission manager is triggering a mission via string. It has no effect if the mission manager has been set to trigger an incident or dilemma with mission_manager:set_is_incident_in_db or mission_manager:set_is_dilemma_in_db.
+---@param show_event boolean? #optional, default value=true show event
+function mission_manager:set_victory_mission(show_event) end
+
 --- Specifies a callback to call, one time, when the mission is first triggered. This can be used to set up other scripts or game objects for this mission.
 ---@param callback function #callback
 function mission_manager:add_first_time_trigger_callback(callback) end
@@ -92,6 +97,7 @@ function mission_manager:set_victory_type(victory_type) end
 ---@param event string #Script event name of mission success condition.
 ---@param condition function #A function that returns a boolean value when called. The function will be passed the context of the event specified in the second parameter. Alternatively, if no conditional test needs to be performed then true may be supplied in place of a function block. While the mission is active the mission manager listens for the event specified in the second parameter. When it is received, the condition specified here is called. If it returns true, or if true was specified in place of a condition function, the mission objective is marked as being successfully completed.
 ---@param script_name string? #optional, default value=nil Script name for this objective. If specified, this allows calls to mission_manager:add_scripted_objective_success_condition, mission_manager:add_scripted_objective_failure_condition, mission_manager:force_scripted_objective_success or mission_manager:force_scripted_objective_failure to target this objective (they target the first objective by default).
+---@return string #script name of the new scripted objective 
 function mission_manager:add_new_scripted_objective(display_text, event, condition, script_name) end
 
 --- Adds a new success condition to a scripted objective. scripted objective. If a script key is specified the success condition is added to the objective with this key (assuming it exists), otherwise the success condition is added to the first scripted objective.
@@ -116,11 +122,13 @@ function mission_manager:force_scripted_objective_success(script_name) end
 ---@param script_name string? #optional, default value=nil Script name of the scripted objective to force the failure of.
 function mission_manager:force_scripted_objective_failure(script_name) end
 
---- Updates the displayed objective text of a scripted objective. This can be useful if some counter needs to be updated as progress towards an objective is made. A particular scripted objective may be specified by supplying a script key, otherwise this function will target the first scripted objective in the mission manager.<br />
+--- Updates the displayed objective text of a scripted objective. This can be useful if some counter needs to be updated as progress towards an objective is made, and optional count and total numerical values may be specified which are formatted in to the displayed text. A particular scripted objective may be specified by supplying a script key, otherwise this function will target the first scripted objective in the mission manager.<br />
 --- This should only be called after the mission manager has been triggered.
 ---@param display_text string #Display text for this objective. This should be supplied as a full localisation key, i.e. [table]_[field]_[key].
+---@param count number? #optional, default value=nil Numeric count value to display. This is an optional first number formatted in to the display text, to allow a count value to be shown (e.g. "Current progress towards goal: %n")
+---@param total number? #optional, default value=nil Numeric total value to display. This is an optional second number formatted in to the display text, to allow a count and total value to be shown (e.g. "Current progress towards goal: %n of %n")
 ---@param script_name string? #optional, default value=nil Script name of the scripted objective to update the key of.
-function mission_manager:update_scripted_objective_text(display_text, script_name) end
+function mission_manager:update_scripted_objective_text(display_text, count, total, script_name) end
 
 --- Sets a persistent value on the mission manager with a supplied string name. The value can be a boolean, number, string or table.
 ---@param name string #name
@@ -159,3 +167,6 @@ function mission_manager:reset() end
 ---@param dismiss_callback function? #optional, default value=nil Dismiss callback. If specified, this is called when the event panel is dismissed.
 ---@param callback_delay number? #optional, default value=nil Dismiss callback delay, in seconds. If specified this introduces a delay between the event panel being dismissed and the dismiss callback being called.
 function mission_manager:trigger(dismiss_callback, callback_delay) end
+
+--- Cancels any dismiss callback listeners started by mission_manager:trigger. This can be useful in certain circumstances if the mission has failed to trigger.
+function mission_manager:cancel_dismiss_callback_listeners() end

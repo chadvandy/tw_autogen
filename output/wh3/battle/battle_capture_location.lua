@@ -88,10 +88,10 @@ local battle_capture_location_manager = {}
 ---@return battle_capture_location #capture location 
 function battle_capture_location_manager:capture_location_from_script_id() end
 
---- Retrieves a battle_capture_location by numerical index. If no capture location exists at the supplied index then nothing is returned. The number of capture locations on the battlefield can be queried using battle_capture_location_manager:count.
+--- Retrieves a battle_capture_location by numerical index. If no capture location exists at the supplied index then nothing is returned. The number of capture locations on the battlefield can be queried using capture_location_manager:count.
 ---@return battle_capture_location #capture location 
 function battle_capture_location_manager:item() end
 
---- Retrieves the number of battle_capture_location objects on the battlefield. Each individual capture location can be retrieved with battle_capture_location_manager:item.
+--- Retrieves the number of battle_capture_location objects on the battlefield. Each individual capture location can be retrieved with capture_location_manager:item.
 ---@return number #number of capture locations 
 function battle_capture_location_manager:count() end

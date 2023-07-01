@@ -59,7 +59,7 @@
 						<li>&emsp;&emsp;<a href="#section:campaign_script_structure:Script Start - scripting.lua">Script Start - scripting.lua</a></li>
 						<li>&emsp;&emsp;<a href="#section:campaign_script_structure:Loading Campaign Files - required.lua">Loading Campaign Files - required.lua</a></li>
 						<li>&emsp;&emsp;<a href="#section:campaign_script_structure:xx_start.lua">xx_start.lua</a></li>
-						<li>&emsp;&emsp;<a href="#section:campaign_script_structure:xx_quests.lua">xx_quests.lua</a></li>
+						<li>&emsp;&emsp;<a href="#section:campaign_script_structure:Scripts During Loading">Scripts During Loading</a></li>
 						<li>&emsp;&emsp;<a href="#section:campaign_script_structure:Shared Campaign Files">Shared Campaign Files</a></li>
 						<li>&emsp;&emsp;<a href="#section:campaign_script_structure:Faction-Specific Files">Faction-Specific Files</a></li>
 					</ul>
@@ -83,6 +83,7 @@
 					<li><a href="cinematics.html">Cinematics</a></li>
 					<li><a href="common.html">Common</a></li>
 					<li><a href="episodic_scripting.html">Episodic Scripting</a></li>
+					<li><a href="model_hierarchy.html">Model Hierarchy</a></li>
 					<li><a href="scriptedvalueregistry.html">ScriptedValueRegistry</a></li>
 					<li><a href="uicomponent.html">UIComponents</a></li>
 
@@ -99,7 +100,6 @@
 					<li><a href="global.html">Global</a></li>
 					<li><a href="infotext_manager.html">Infotext Manager</a></li>
 					<li><a href="intervention.html">Interventions</a></li>
-					<li><a href="intro_campaign_scripts.html">Helper Scripts</a></li>
 					<li><a href="invasion_manager.html">Invasion Manager</a></li>
 					<li><a href="mission_manager.html">Mission Managers</a></li>
 					<li><a href="movie_overlay.html">Movie Overlays</a></li>
@@ -120,6 +120,8 @@
 
 				<h2 style="background-color:#ffed8c">Data Interfaces</h2>
 				<ul>
+					<li><a href="custom_starts.html">Campaign Custom Starts</a></li>
+					<li><a href="faction_intro.html">Faction Intro</a></li>
 					<li><a href="narrative.html">Narrative</a></li>
 					<li><a href="narrative_events.html">Narrative Event Templates</a></li>
 					<li><a href="narrative_queries.html">Narrative Query Templates</a></li>
@@ -204,9 +206,14 @@
 
 				<div>
 					<a style="float:right;" href="#top">Back to top</a>
-					<a name="section:campaign_script_structure:xx_quests.lua"><h2 class="section_header">xx_quests.lua</h2></a>
+					<a name="section:campaign_script_structure:Scripts During Loading"><h2 class="section_header">Scripts During Loading</h2></a>
 				</div>
-				<p>Script data relating to quest chains is set up in this script file, which lives in <code>data\script\campaign\%campaign_name%\</code> for each campaign.</p>
+				<p>Unlike in battle, campaign scripts begin to load near to the start of the loading sequence. This is to allow scripts to be present while the save file (or startpos file) are loaded - the scripts can save values into the savegame when the game is saved and it is during the loading sequence that these values are read back out. Being loaded at such an early stage presents some complications, however, as the game model is not initialised until much later in the load sequence. If the script attempts to access or interrogate the game model before it's created then the game will crash. Care must be taken to ensure that this doesn't happen.</p>
+				<p>The standard script architecture put in place for each campaign attempts to ameliorate this issue by providing loading sequence processes with which callbacks to be registered. These registered callbacks will then be called at key points during the loading sequence when certain new elements of functionality become available.</p>
+				<p>Use <code><a href="campaign_manager.html#function:campaign_manager:add_loading_game_callback">campaign_manager:add_loading_game_callback</a></code> to register a function to be called when the <code>LoadingGame</code> event is triggered. This happens early in the load sequence, before the model is created. Scripts may load values in from the savegame at this point but may not access the model. Other methods of loading information from the savegame exist - see the <code><a href="campaign_manager.html#section:campaign_manager:Loading Game">Loading Game</a></code> section in the campaign manager documentation.</p>
+				<p>Use <code><a href="campaign_manager.html#function:campaign_manager:add_pre_first_tick_callback">campaign_manager:add_pre_first_tick_callback</a></code> to register a function to be called when the game and ui have been created. The campaign model may be queried after this point in the loading sequence. It is only at this point that the local faction can be identified and any faction-specific scripts loaded in.</p>
+				<p>Use <code><a href="campaign_manager.html#function:campaign_manager:add_first_tick_callback">campaign_manager:add_first_tick_callback</a></code> or a related function (see the list available in the <code><a href="campaign_manager.html#section:campaign_manager:First Tick">First Tick</a></code> section) to register a function to be called when time in the game first starts ticking. This event is triggered once loading is finished and the game becomes interactive.</p>
+				<p>The campaign model (and hence the campaign scripts) completely shut down when the game loads from campaign into battle. From the perspective of campaign script the load back into campaign after a battle is (nearly) indistinguishable from being loaded from a savegame.</p>
 				<div class="section_body">
 				</div>
 
@@ -236,7 +243,7 @@
 
 		</div>
 
-		<div id="about">Last updated 20/01/2022 17:32:52</div>
+		<div id="about">Last updated 12/08/2022 11:56:57</div>
 
 	</div>
 
